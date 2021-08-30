@@ -1,5 +1,5 @@
 import React from 'react'
 
 export const Main = () => (
-    <div>Main</div>
+        <div>Main</div>
 )

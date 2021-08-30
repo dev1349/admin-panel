@@ -1,6 +1,13 @@
-import React from 'react'
 import {Main} from './Main'
+import React from 'react'
 
-export const MainContainer = () => {
-    return <Main/>
+class MainContainer extends React.Component {
+    render() {
+        return <div>
+            {this.props.allGood &&
+            <Main allGood={this.props.allGood}/>}
+        </div>
+    }
 }
+
+export default MainContainer

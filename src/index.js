@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import {I18nextProvider} from 'react-i18next'
 import i18n from './i18n'
-import {store} from './redux'
 import App from './components/app/App'
+import {applyMiddleware, createStore} from '@reduxjs/toolkit'
+import {rootReducer} from './reducers/index'
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from 'redux-thunk'
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
     <Provider store={store}>
