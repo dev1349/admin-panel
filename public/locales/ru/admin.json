@@ -1,0 +1,14 @@
+{
+  "adminHeader": "Админская страница",
+  "dashboard": "Панель управления",
+  "settings": "Настройки",
+  "tools": "Инструменты",
+  "users": "Пользователи",
+  "goods": "Товары",
+  "add": "Добавить",
+  "categories": "Категории",
+  "tags": "Теги",
+  "attributes": "Атрибуты",
+  "goodsCatalogSettings": "Настройки каталога товаров",
+  "purchaseHistory": "История покупок"
+}

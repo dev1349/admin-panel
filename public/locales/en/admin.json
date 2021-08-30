@@ -1,0 +1,14 @@
+{
+  "adminHeader": "Admin page",
+  "dashboard": "Dashboard",
+  "settings": "Settings",
+  "tools": "Tools",
+  "users": "Users",
+  "goods": "Goods",
+  "add": "Add",
+  "categories": "Categories",
+  "tags": "Tags",
+  "attributes": "Attributes",
+  "goodsCatalogSettings": "Goods catalog settings",
+  "purchaseHistory": "Purchase history"
+}
