@@ -29,6 +29,12 @@ const FilterInput = ({typeOfField, typeOfInput, name, title, placeholder, items,
         changeGoodFilter(name, value)
     }
 
+    const inputNumberKeyDown = (evt) => {
+        if (evt.code === 'KeyE') {
+            evt.preventDefault()
+        }
+    }
+
     return (
         <label className="filter--label">
             {title}
@@ -40,6 +46,7 @@ const FilterInput = ({typeOfField, typeOfInput, name, title, placeholder, items,
                 placeholder={placeholder}
                 value={value || ''}
                 onChange={changeHandler}
+                onKeyDown={typeOfInput === 'number' ? inputNumberKeyDown : null}
             />}
 
             {typeOfField === 'select' && <select
