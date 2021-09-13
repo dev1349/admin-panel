@@ -1,0 +1,15 @@
+image: node:12.18.2
+options:
+  max-time: 30
+pipelines:
+  default:
+    - step:
+        name: Install and build
+        caches:
+          - npm
+        script:
+          - npm install
+          - npm run build
+definitions:
+  caches:
+    npm: $HOME/.npm
