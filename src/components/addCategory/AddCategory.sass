@@ -1,0 +1,115 @@
+.addCategory
+
+  &--container
+    max-width: 768px
+    margin: 0 auto
+    height: 100px
+    margin-top: 10px
+    padding-left: 5px
+    padding-right: 5px
+
+  &--header
+    display: flex
+
+  &--title
+    font-size: 22px
+    color: #444
+
+  &--subTitle
+    font-size: 18px
+    color: #444
+    background-color: lightgray
+    padding: 10px
+
+  &--save
+    margin: 0 0 0 auto
+    font-size: 14px
+    background-color: darkgrey
+    border: 1px solid darkgrey
+    color: white
+    border-radius: 3px
+    padding: 4px 10px 5px 10px
+
+    &:hover
+      box-shadow: 0px 0px 1px 0px rgba(0,0,0,1)
+
+
+  &--return
+    font-size: 14px
+    margin-left: 5px
+    border-radius: 3px
+    padding: 4px 10px 5px 10px
+    border: 1px solid darkgrey
+    color: #444
+
+    &:hover
+      box-shadow: 0px 0px 1px 0px rgba(0,0,0,1)
+
+  &--body
+    border: 1px solid lightgray
+    border-top: 2px solid lightgrey
+    margin-top: 10px
+    margin-bottom: 10px
+
+  &--tabs
+    padding: 10px
+    position: relative
+    //z-index: -1
+
+  &--tabTitleList
+    display: flex
+    position: relative
+    z-index: 1
+
+  &--tabTitle
+    padding: 5px 15px
+    font-size: 14px
+    cursor: pointer
+    box-sizing: border-box
+    border: 1px solid transparent
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
+
+    &__active
+      border-top: 1px solid lightgray
+      border-right: 1px solid lightgray
+      border-bottom: 1px solid white
+      border-left: 1px solid lightgray
+
+  &--tabContainerList
+    position: relative
+    top: -1px
+
+
+  &--tabContainerItem
+    min-height: 100px
+    padding: 10px
+    border: 1px solid lightgray
+
+  &--inputField
+
+    @media(min-width: 500px)
+      display: flex
+
+  &--inputFieldLabel
+    padding-top: 5px
+
+    @media(min-width: 500px)
+      padding: 10px
+      width: 30%
+      text-align: right
+
+  &--inputFieldInput
+    padding-bottom: 5px
+
+    @media(min-width: 500px)
+      padding: 10px
+      width: 70%
+
+  &--input
+    width: 100%
+
+  &--textarea
+    width: 100%
+
+  &--label

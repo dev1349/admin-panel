@@ -13,3 +13,5 @@ export const GET_GOOD_TYPE_PATH = SERVER_PATH + '/api/getGoodType'
 export const GET_ALL_GOOD_TYPE_PATH = SERVER_PATH + '/api/getAllGoodType'
 export const PUT_GOOD_TYPE_PATH = SERVER_PATH + '/api/putGoodType'
 export const DELETE_GOOD_TYPE_PATH = SERVER_PATH + '/api/deleteGoodType'
+
+export const POST_CATEGORY_PATH = SERVER_PATH + '/api/postCategory'
