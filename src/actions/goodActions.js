@@ -1,10 +1,12 @@
 import {
-    CHANGE_GOOD_FILTER, CREATE_FILTERED_GOOD,
+    CHANGE_GOOD_FILTER,
+    CREATE_FILTERED_GOOD,
     DELETE_GOOD_SUCCESS,
     GET_ALL_GOOD_SUCCESS,
     GET_GOOD_SUCCESS,
     POST_GOOD_SUCCESS,
-    PUT_GOOD_SUCCESS
+    PUT_GOOD_SUCCESS,
+    SET_MY_GOOD_LIST_SORTING_STATUS
 } from './actionTypes'
 import {deleteGoodFetch, getAllGoodFetch, getGoodFetch, postGoodFetch, putGoodFetch} from '../api/goodApi'
 
@@ -106,4 +108,66 @@ export const filteringGood = () => {
             payload: filteredGood
         })
     }
+}
+
+const setMyGoodListSortingStatus = (name, value) => {
+    return {
+        type: SET_MY_GOOD_LIST_SORTING_STATUS,
+        payload: {
+            [name]: value,
+        }
+    }
+}
+
+const setSortedAllGood = (sortedAllGood) => {
+    return {
+        type: 'SET_SORTED_ALL_GOOD',
+        payload: [...sortedAllGood]
+    }
+}
+
+const sortMyGoodList = () => (dispatch, getState) => {
+    const sortingField = Object.keys(getState().good.sortingStatus)[0]
+    const sortingValue = getState().good.sortingStatus[sortingField]
+    const allGood = getState().good.allGood
+    const sortedAllGood = allGood.sort((a, b) => {
+        if (sortingValue === 'down') {
+            if (a[sortingField] > b[sortingField]) {
+                return 1
+            }
+            if (a[sortingField] < b[sortingField]) {
+                return -1
+            }
+        }
+        if (sortingValue === 'up') {
+            if (a[sortingField] < b[sortingField]) {
+                return 1
+            }
+            if (a[sortingField] > b[sortingField]) {
+                return -1
+            }
+        }
+        return 0
+    })
+
+    dispatch(setSortedAllGood(sortedAllGood))
+}
+
+export const changeMyGoodListSortingStatus = (nameOfField) => (dispatch, getState) => {
+    const sortingField = Object.keys(getState().good.sortingStatus)[0]
+    const sortingValue = getState().good.sortingStatus[sortingField]
+
+    if (sortingField !== nameOfField) {
+        dispatch(setMyGoodListSortingStatus(nameOfField, 'down'))
+    }
+
+    if ((sortingField === nameOfField) && (sortingValue === 'down')) {
+        dispatch(setMyGoodListSortingStatus(nameOfField, 'up'))
+    }
+
+    if ((sortingField === nameOfField) && (sortingValue === 'up')) {
+        dispatch(setMyGoodListSortingStatus(nameOfField, 'down'))
+    }
+
+    dispatch(sortMyGoodList())
 }
