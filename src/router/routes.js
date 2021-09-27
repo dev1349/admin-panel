@@ -7,6 +7,7 @@ import {
     MAIN_ROUTE,
     ATTRIBUTE_GROUP,
     MY_GOOD_LIST_ROUTE,
+    MADE_COMPONENT_LIST,
 } from './routerConsts'
 import {LoginContainer} from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -16,7 +17,7 @@ import GoodFilterContainer from '../components/goodFilter/GoodFilterContainer'
 import AddCategoryContainer from '../components/addCategory/AddCategoryContainer'
 import AttributeGroupContainer from '../components/attributeGroup/AttributeGroupContainer'
 import MyGoodListContainer from '../components/myGoodList/MyGoodListContainer'
-
+import MadeComponentList from '../components/madeComponentList/MadeComponentList'
 
 
 export const authRoutes = [
@@ -48,6 +49,11 @@ export const authRoutes = [
         path: MY_GOOD_LIST_ROUTE,
         Component: MyGoodListContainer
     },
+    {
+        path: MADE_COMPONENT_LIST,
+        Component: MadeComponentList
+    },
+
 ]
 
 export const publicRoutes = [
