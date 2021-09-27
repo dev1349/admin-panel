@@ -42,11 +42,11 @@ export const getAllAttributeGroup = () => {
                     payload: transformData
                 })
 
-                dispatch(changeAttributeGroupFetchStatus('success'))
+                dispatch(changeAttributeGroupFetchStatus('successGetAllGroup'))
                 dispatch(changeAttributeGroupFetchStatus('idle'))
             })
-            .catch(error => {
-                    dispatch(changeAttributeGroupFetchStatus('error'))
+            .catch(() => {
+                    dispatch(changeAttributeGroupFetchStatus('errorGetAllGroup'))
                 }
             )
     }
@@ -117,6 +117,7 @@ export const addedAttributeGroup = () => dispatch => {
     dispatch(changeAttributeGroupFetchStatus('idle'))
     dispatch(resetAddAttributesGroupFields())
     dispatch(getAllAttributeGroup())
+    dispatch(switchMode('list'))
 }
 
 export const editAttributeGroup = (groupId) => (dispatch, getState) => {
@@ -130,6 +131,11 @@ export const savedEditedAttributeGroup = () => dispatch => {
     dispatch(resetAddAttributesGroupFields())
     dispatch(getAllAttributeGroup())
     dispatch(switchMode('list'))
+}
+
+export const deletedAttributeGroup = () => dispatch => {
+    dispatch(changeAttributeGroupFetchStatus('idle'))
+    dispatch(getAllAttributeGroup())
 }
 
 export const errorInGroupOperation = () => dispatch => {
@@ -170,8 +176,6 @@ export const removeSelectedAttributesGroup = () => (dispatch, getState) => {
         .then(() => {
             dispatch(changeAttributeGroupFetchStatus('successDeleteGroup'))
             dispatch(resetIdArrayForDeleting())
-            dispatch(changeAttributeGroupFetchStatus('idle'))
-            dispatch(getAllAttributeGroup())
         })
         .catch(() => {
             dispatch(changeAttributeGroupFetchStatus('errorDeleteGroup'))
