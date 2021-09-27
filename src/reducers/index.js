@@ -4,6 +4,7 @@ import {combineReducers} from '@reduxjs/toolkit'
 import {headerReducer} from './headerReducer'
 import {addCategoryReducer} from './addCategoryReducer'
 import {attributeGroupReducer} from './attributeGroupReducer'
+import {statisticsReducer} from "./statisticsReducer";
 
 export const rootReducer = combineReducers({
     good: goodReducer,
@@ -11,4 +12,6 @@ export const rootReducer = combineReducers({
     header: headerReducer,
     addCategory: addCategoryReducer,
     attributeGroup: attributeGroupReducer,
+    statistics: statisticsReducer
+
 })

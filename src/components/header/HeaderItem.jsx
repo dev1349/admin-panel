@@ -4,6 +4,7 @@ import icons from './icons.svg'
 
 
 const HeaderItem = ({id, icon, title, subMenu, isSubMenuActive, setActiveSubMenu}) => {
+
     const iconsStyle = ['header--icon']
     !title && iconsStyle.push('header--icon__nomargin')
     isSubMenuActive && iconsStyle.push('header--icon__active')

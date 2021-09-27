@@ -58,12 +58,12 @@ const initialState = {
                 ]
             }
         },
-        {
-            id: 4,
-            title: null,
-            icon: '#statistic',
-            subMenu: null,
-        },
+        // {
+        //     id: 4,
+        //     title: null,
+        //     icon: '#statistic',
+        //     subMenu: null,
+        // },
         {
             id: 5,
             title: null,

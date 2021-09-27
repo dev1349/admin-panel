@@ -2,18 +2,21 @@ import React from 'react'
 import Header from './Header'
 import {connect} from "react-redux";
 import {setActiveSubMenu} from "../../actions/headerActions";
+import {setActiveStatistics} from "../../actions/StatisticsActions";
 
 
 class HeaderContainer extends React.Component {
 
     render() {
-        const {headerItems, activeSubMenu, setActiveSubMenu} = this.props
-
+        const {headerItems, activeSubMenu, setActiveSubMenu,isStaticActive,setActiveStatistics, titleItem} = this.props
         return (
             <Header
                 headerItems={headerItems}
                 activeSubMenu={activeSubMenu}
                 setActiveSubMenu={setActiveSubMenu}
+                isStatisticActive = {isStaticActive}
+                setActiveStatistics = {setActiveStatistics}
+                titleItem = {titleItem}
             />
         )
     }
@@ -23,13 +26,18 @@ class HeaderContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         headerItems: state.header.headerItems,
-        activeSubMenu: state.header.activeSubMenu
+        activeSubMenu: state.header.activeSubMenu,
+        isStaticActive: state.statistics.isActive,
+        titleItem: state.statistics.statisticsItems.map((el) => el.titleItem)
     }
 }
 
 const mapDispatchToProps = dispatch => ({
     setActiveSubMenu: (id) => {
         dispatch(setActiveSubMenu(id))
+    },
+    setActiveStatistics: (id) => {
+        dispatch(setActiveStatistics(id))
     }
 })
 
