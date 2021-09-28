@@ -7,3 +7,4 @@ export const ADD_CATEGORY_ROUTE = '/addCategory'
 export const ATTRIBUTE_GROUP = '/attributeGroup'
 export const MY_GOOD_LIST_ROUTE = '/myGoodList'
 export const MADE_COMPONENT_LIST = '/madeComponentList'
+export const CATEGORIES_LIST_ROUTE = `/categoriesList/:id?`

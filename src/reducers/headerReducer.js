@@ -34,6 +34,7 @@ const initialState = {
                     {
                         id: 33,
                         title: 'Категории',
+                        link: '/categoriesList'
                     },
                     {
                         id: 34,

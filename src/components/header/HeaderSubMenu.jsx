@@ -8,10 +8,10 @@ const HeaderSubMenu = ({title, subMenuItems}) => {
             <p className="header--subMenuTitle">{title}</p>
             <ul className="header--subMenuItems">
 
-                {subMenuItems.map(({id, title}) => {
+                {subMenuItems.map(({id, title, link}) => {
                     return (
                         <li className="header--subMenuItem" key={id}>
-                            <Link to={''} className="header--subMenuLink">
+                            <Link to={link || ''} className="header--subMenuLink">
                                 {title}
                             </Link>
                         </li>
