@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {Subcategories} from "./Subcategories";
 import {NavLink} from "react-router-dom";
 import icons from './icons.svg'
+import {useDispatch} from "react-redux";
 
 
 export const Categories = ({
@@ -15,17 +16,17 @@ export const Categories = ({
                                setCurrentCategory,
                                currentCategory,
                                currentSubcategory,
-                               setCurrentSubcategory
+                               setCurrentSubcategory,
                            }) => {
 
+    const dispatch = useDispatch()
 
-    const [childVisible, setChildVisibility] = useState(true)
+    const [childVisible, setChildVisibility] = useState(false)
     const [dragOverBottomElement, setDragOverBottomElement] = useState(false)
 
     const hasChild = !!category?.subcategories
 
     const dragStartHandler = (e, category) => {
-        setCurrentCategory(category)
         setDraggingCategory(category)
     };
 
@@ -44,7 +45,7 @@ export const Categories = ({
 
     const dropHandler = (e, category) => {
         e.preventDefault()
-        getCategories(categories, draggingCategory, category)
+        dispatch(getCategories(categories, draggingCategory, category))
         e.target.style.borderBottom = 'none'
         e.target.style.borderTop = 'none'
         setDragOverBottomElement(false)
@@ -60,12 +61,11 @@ export const Categories = ({
 
     const dragEndHandler = () => {
         setDraggingCategory(null)
-        setCurrentCategory(null)
     };
 
     return (<div>
             <div className={'categories__list-expand'}>
-                {hasChild &&<svg height="18px" width="24px"
+                {hasChild && <svg height="18px" width="24px"
                      className={'categories__list-expand-svg'}
                      onClick={() => setChildVisibility(v => !v)}
                 >
@@ -93,7 +93,6 @@ export const Categories = ({
                         onDragEnd={(e) => {
                             dragEndHandler(e)
                         }}
-                        onClick={() => setCurrentCategory(category)}
                         draggable
                     >
                         {category?.name}

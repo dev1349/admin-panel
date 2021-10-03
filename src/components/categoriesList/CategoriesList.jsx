@@ -2,6 +2,7 @@ import './CategoriesList.sass'
 import {Categories} from "./Categories";
 import React from "react";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 
 export const CategoriesList = ({
@@ -10,7 +11,6 @@ export const CategoriesList = ({
                                    getSubcategories,
                                    setDraggingCategory,
                                    draggingCategory,
-                                   setIsActiveButton,
                                    match,
                                    currentCategory,
                                    setCurrentCategory,
@@ -18,6 +18,9 @@ export const CategoriesList = ({
                                    currentSubcategory,
                                    setCurrentSubcategory
                                }) => {
+
+    const dispatch = useDispatch()
+
     return (
         <div className="categories">
             <div className="categories__header">
@@ -36,7 +39,7 @@ export const CategoriesList = ({
                     <div className="categories__header-btn">
                         <Link to='/addCategory'>
                         <button
-                            disabled={!match.params.id}>
+                            disabled={!match.params.categoryId}>
                             Добавить подкатегорию
                         </button>
                         </Link>
@@ -45,9 +48,9 @@ export const CategoriesList = ({
                         <Link to='/categoriesList'>
                             <button
                                 onClick={() => {
-                                    deleteCategory(currentCategory?.id || match.params.id)
+                                    dispatch(deleteCategory(Number(match.params.categoryId)))
                                 }}
-                                disabled={!match.params.id}>
+                                disabled={!match.params.categoryId}>
                                 Удалить категорию
                             </button>
                         </Link>
@@ -63,10 +66,8 @@ export const CategoriesList = ({
                                     category={category}
                                     setDraggingCategory={setDraggingCategory}
                                     draggingCategory={draggingCategory}
-                                    setIsActiveButton={setIsActiveButton}
                                     setCurrentCategory={setCurrentCategory}
                                     currentCategory={currentCategory}
-                                    match={match}
                                     currentSubcategory={currentSubcategory}
                                     setCurrentSubcategory={setCurrentSubcategory}
                         />

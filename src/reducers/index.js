@@ -5,7 +5,7 @@ import {headerReducer} from './headerReducer'
 import {addCategoryReducer} from './addCategoryReducer'
 import {attributeGroupReducer} from './attributeGroupReducer'
 import {statisticsReducer} from "./statisticsReducer";
-import { categoriesListReducer } from './categoryListReducer';
+import categoriesListSlice from './categoriesListSlice';
 
 export const rootReducer = combineReducers({
     good: goodReducer,
@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
     header: headerReducer,
     addCategory: addCategoryReducer,
     attributeGroup: attributeGroupReducer,
-    categoriesList: categoriesListReducer,
+    categoriesList: categoriesListSlice,
     statistics: statisticsReducer
 
 })

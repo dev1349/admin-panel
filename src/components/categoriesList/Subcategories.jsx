@@ -1,5 +1,6 @@
 import './CategoriesList.sass'
 import {NavLink} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 
 export const Subcategories = ({
@@ -13,6 +14,7 @@ export const Subcategories = ({
                                   setCurrentSubcategory
                               }) => {
 
+    const dispatch = useDispatch()
 
     const dragStartHandler = (e, category, subcategory) => {
         setCurrentCategory(category)
@@ -34,12 +36,12 @@ export const Subcategories = ({
     };
 
     const dropHandler = (e, category, subcategory) => {
-        e.preventDefault()
         if (category === currentCategory) {
-            getSubcategories(categories, currentCategory, currentSubcategory, subcategory)
+            e.preventDefault()
+            dispatch(getSubcategories(categories, currentCategory, currentSubcategory, subcategory))
+            e.target.style.borderBottom = 'none'
+            e.target.style.borderTop = 'none'
         }
-        e.target.style.borderBottom = 'none'
-        e.target.style.borderTop = 'none'
     };
 
     const dragLeaveHandler = e => {
@@ -47,12 +49,17 @@ export const Subcategories = ({
         e.target.style.borderTop = 'none'
     };
 
+    const dragEndHandler = e => {
+        setCurrentCategory(null)
+        setCurrentSubcategory(null)
+    };
+
     return (
         <ul className="categories__list-subcategories">
             <li>
                 <div>
                     <NavLink
-                        to={`/categoriesList/${subcategory?.id}`}
+                        to={`/categoriesList/${category?.id}/${subcategory?.id}`}
                         activeClassName={'activeLink'}
                     >
                             <span
@@ -69,7 +76,9 @@ export const Subcategories = ({
                                 onDrop={(e) => {
                                     dropHandler(e, category, subcategory)
                                 }}
-                                onClick={() => setCurrentCategory(category)}
+                                onDragEnd={(e) => {
+                                    dragEndHandler(e, category, subcategory)
+                                }}
                                 draggable>
                                 -{subcategory?.name}
                             </span>
