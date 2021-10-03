@@ -1,6 +1,5 @@
-import {CHANGE_STATUS_STATISTICS} from "../actions/actionTypes";
-
-const allItems = {
+export const statisticsMockData = {
+    id: 1000,
     statisticsItems: [
 
         {
@@ -99,19 +98,5 @@ const allItems = {
         }
 
 
-    ],
-    isActive: false,
-
-}
-
-    export function statisticsReducer(state = allItems, action) {
-    switch (action.type) {
-        case CHANGE_STATUS_STATISTICS:
-            return {
-                ...state,
-                isActive: action.payload
-            }
-        default:
-            return state
-    }
+    ]
 }

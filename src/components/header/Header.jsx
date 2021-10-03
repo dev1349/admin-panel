@@ -3,7 +3,7 @@ import './Header.sass'
 import HeaderItem from "./HeaderItem";
 import StatisticsContainer from "../statistics/StatisticsContainer";
 
-const Header = ({headerItems, activeSubMenu, setActiveSubMenu, isStatisticActive, setActiveStatistics, titleItem}) => {
+const Header = ({headerItems, activeSubMenu, setActiveSubMenu, statisticsId}) => {
 
     const setActiveSubMenuId = () => {
         setActiveSubMenu(null)
@@ -32,11 +32,9 @@ const Header = ({headerItems, activeSubMenu, setActiveSubMenu, isStatisticActive
 
 
             <StatisticsContainer
-                key={10000}
-                id={10000}
-                isSubMenuActive={activeSubMenu === 10000}
+                isSubMenuActive={activeSubMenu === statisticsId}
                 setActiveSubMenu={setActiveSubMenu}
-                
+                statisticsId={statisticsId}
             />
 
         </ul>

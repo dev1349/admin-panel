@@ -4,7 +4,13 @@ import StatisticsSubMenu from './StatisticsSubMenu'
 import icons from "../header/icons.svg";
 
 
-export const Statistics = ({id, statisticsItems, titleItem, isSubMenuActive, setActiveSubMenu, icon}) => {
+export const Statistics = ({
+                               statisticsId,
+                               statisticsItems,
+                               titleItem,
+                               isSubMenuActive,
+                               setActiveSubMenu
+                           }) => {
 
     const styles = ['statistic_container', 'header--item']
     if (isSubMenuActive) {
@@ -16,14 +22,14 @@ export const Statistics = ({id, statisticsItems, titleItem, isSubMenuActive, set
             setActiveSubMenu(null)
             return
         }
-        setActiveSubMenu(id)
+        setActiveSubMenu(statisticsId)
     }
 
     return (
         <li className={styles.join(' ')} onClick={setActiveSubMenuId}>
             <div
                 onClick={() => {
-                    setActiveSubMenu(id)
+                    setActiveSubMenu(statisticsId)
                 }}
                 className="statistics_button">
                 <svg height={"15px"} width={"15px"}>
