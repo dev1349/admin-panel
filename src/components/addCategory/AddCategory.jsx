@@ -19,8 +19,9 @@ const AddCategory = ({
                          setCategoryAttributes,
                          postCategory,
                          fetchStatus,
-                         changeFetchStatus,
-                         resetCategory,
+                         addedCategory,
+                         notAddedCategory,
+                         notFillRequireFields,
                          goBack
                      }) => {
 
@@ -32,13 +33,6 @@ const AddCategory = ({
         onSubTabTitleClick(subTitleId)
     }
 
-    const setFetchStatusIdleHandler = () => {
-        changeFetchStatus('idle')
-    }
-
-    const resetCategoryHandler = () => {
-        resetCategory()
-    }
 
     return (
         <div className={"addCategory--container"}>
@@ -46,13 +40,18 @@ const AddCategory = ({
             {fetchStatus === 'pending' && <Loader/>}
 
             {fetchStatus === 'error' && (<Modal
-                message={'Error to add Category'}
-                action={setFetchStatusIdleHandler}
+                message={'Ошибка добавления категории'}
+                action={notAddedCategory}
             />)}
 
             {fetchStatus === 'success' && (<Modal
-                message={'Success to add Category'}
-                action={resetCategoryHandler}
+                message={'Категория успешно добавлена!'}
+                action={addedCategory}
+            />)}
+
+            {fetchStatus === 'required' && (<Modal
+                message={'Обязательные поля не заполенны!'}
+                action={notFillRequireFields}
             />)}
 
             <div className="addCategory--header">
@@ -68,7 +67,7 @@ const AddCategory = ({
                 <Button
                     className="addCategory--return"
                     onClick={goBack}
-                    disabled={null}
+                    disabled={fetchStatus === 'pending'}
                     title={'Return'}
                 />
 
@@ -106,18 +105,18 @@ const AddCategory = ({
                                         <InputField
                                             type={'input'}
                                             typeOfInput={'text'}
-                                            name={'categoryName'}
+                                            name={'name'}
                                             label={'* Название категории:'}
-                                            id={'categoryName'}
-                                            value={categoryFields['categoryName']}
+                                            id={'name'}
+                                            value={categoryFields['name']}
                                             onChange={setCategoryAttributes}
                                         />
                                         <InputField
                                             type={'textarea'}
-                                            name={'categoryDescription'}
+                                            name={'description'}
                                             label={'Описание:'}
                                             id={'categoryDescription'}
-                                            value={categoryFields['categoryDescription']}
+                                            value={categoryFields['description']}
                                             onChange={setCategoryAttributes}
                                         />
                                     </TabContent>}
@@ -126,18 +125,18 @@ const AddCategory = ({
                                         <InputField
                                             type={'input'}
                                             typeOfInput={'text'}
-                                            name={'categoryNameEnglish'}
+                                            name={'englishName'}
                                             label={'* Name of category:'}
                                             id={'categoryNameEnglish'}
-                                            value={categoryFields['categoryNameEnglish']}
+                                            value={categoryFields['englishName']}
                                             onChange={setCategoryAttributes}
                                         />
                                         <InputField
                                             type={'textarea'}
-                                            name={'categoryDescriptionEnglish'}
+                                            name={'englishDescription'}
                                             label={'Categories description:'}
                                             id={'categoryDescriptionEnglish'}
-                                            value={categoryFields['categoryDescriptionEnglish']}
+                                            value={categoryFields['englishDescription']}
                                             onChange={setCategoryAttributes}
                                         />
                                     </TabContent>}

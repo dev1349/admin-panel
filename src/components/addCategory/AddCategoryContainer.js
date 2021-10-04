@@ -1,96 +1,99 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, {useState} from 'react'
 import AddCategory from './AddCategory'
-import {changeFetchStatus, postCategory, resetCategory, setCategoryAttributes} from '../../actions/addCategoryActions'
+import {
+    addedCategory,
+    getCategoryFields,
+    getFetchStatus,
+    notAddedCategory, notFillRequireFields,
+    postCategory,
+    setAttributes
+} from '../../reducers/addCategorySlice'
+import {useDispatch, useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
 
-class AddCategoryContainer extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            tabs: [
-                {
-                    id: 0,
-                    title: 'Общие',
-                },
-                {
-                    id: 1,
-                    title: 'Дизайн',
-                },
-                {
-                    id: 2,
-                    title: 'Данные',
-                }
-            ],
-            subTabs: [
-                {
-                    id: 0,
-                    title: 'Russian'
-                },
-                {
-                    id: 1,
-                    title: 'English'
-                }
-            ],
-            activeTabs: 0,
-            activeSubTabs: 0
-        }
+const AddCategoryContainer = () => {
+    const tabs = {
+        tabs: [
+            {
+                id: 0,
+                title: 'Общие',
+            },
+            {
+                id: 1,
+                title: 'Дизайн',
+            },
+            {
+                id: 2,
+                title: 'Данные',
+            }
+        ],
+        subTabs: [
+            {
+                id: 0,
+                title: 'Russian'
+            },
+            {
+                id: 1,
+                title: 'English'
+            }
+        ],
     }
 
-    tabTitleClickHandler = (tabId) => {
-        this.setState({
-            activeTabs: tabId
-        })
+    const [activeTabs, setActiveTabs] = useState(0)
+    const [activeSubTabs, setActiveSubTabs] = useState(0)
+
+    const tabTitleClickHandler = (tabId) => {
+        setActiveTabs(tabId)
+    }
+    const subTabTitleClickHandler = (subTabId) => {
+        setActiveSubTabs(subTabId)
     }
 
-    subTabTitleClickHandler = (subTabId) => {
-        this.setState({
-            activeSubTabs: subTabId
-        })
-    }
+    const categoryFields = useSelector(getCategoryFields)
+    const fetchStatus = useSelector(getFetchStatus)
 
-    render() {
-        return (
-            <AddCategory
-                tabs={this.state.tabs}
-                subTabs={this.state.subTabs}
-                activeTabs={this.state.activeTabs}
-                activeSubTabs={this.state.activeSubTabs}
-                onTabTitleClick={this.tabTitleClickHandler}
-                onSubTabTitleClick={this.subTabTitleClickHandler}
-                categoryFields={this.props.categoryFields}
-                setCategoryAttributes={this.props.setCategoryAttributes}
-                postCategory={this.props.postCategory}
-                fetchStatus={this.props.fetchStatus}
-                changeFetchStatus={this.props.changeFetchStatus}
-                resetCategory={this.props.resetCategory}
-                goBack={this.props.history.goBack}
-            />
-        )
+    const dispatch = useDispatch()
+    const setCategoryAttributes = attribute => {
+        dispatch(setAttributes(attribute))
     }
-}
-
-const mapStateToProps = state => {
-    return {
-        categoryFields: state.addCategory.categoryFields,
-        fetchStatus: state.addCategory.fetchStatus
-    }
-}
-
-const mapDispatchToProps = dispatch => ({
-    setCategoryAttributes: (attribute) => {
-        dispatch(setCategoryAttributes(attribute))
-    },
-    postCategory: () => {
+    const postCategoryAttributes = () => {
         dispatch(postCategory())
-    },
-    changeFetchStatus: (status) => {
-        dispatch(changeFetchStatus(status))
-    },
-    resetCategory: () => {
-        dispatch(resetCategory())
     }
-})
+    const addedCategoryHandler = () => {
+        dispatch(addedCategory())
+    }
+    const notAddedCategoryHandler = () => {
+        dispatch(notAddedCategory())
+    }
+    const notFillRequireFieldsHandler = () => {
+        dispatch(notFillRequireFields())
+    }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddCategoryContainer)
+    const history = useHistory()
+    const goBackHandler = () => {
+        history.goBack()
+    }
+
+
+    return (
+        <AddCategory
+            tabs={tabs.tabs}
+            subTabs={tabs.subTabs}
+            activeTabs={activeTabs}
+            activeSubTabs={activeSubTabs}
+            onTabTitleClick={tabTitleClickHandler}
+            onSubTabTitleClick={subTabTitleClickHandler}
+            categoryFields={categoryFields}
+            setCategoryAttributes={setCategoryAttributes}
+            postCategory={postCategoryAttributes}
+            fetchStatus={fetchStatus}
+            addedCategory={addedCategoryHandler}
+            notAddedCategory={notAddedCategoryHandler}
+            notFillRequireFields={notFillRequireFieldsHandler}
+            goBack={goBackHandler}
+        />
+    )
+}
+
+export default AddCategoryContainer

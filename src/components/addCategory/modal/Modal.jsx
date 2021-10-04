@@ -11,7 +11,6 @@ const Modal = ({message, action}) => {
                 <Button
                     className="modal--button"
                     onClick={action}
-                    disabled={null}
                     title={'Ok'}
                 />
             </div>
