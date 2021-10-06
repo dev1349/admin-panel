@@ -1,50 +1,43 @@
 import React from 'react'
 import Modals from './Modals'
-import {connect} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {
+    getFetchStatus,
     addedAttributeGroup,
-    deletedAttributeGroup,
     errorInGroupOperation,
-    savedEditedAttributeGroup
-} from '../../../actions/attributeGroupActions'
+    savedEditedAttributeGroup,
+    deletedAttributeGroup
+} from '../../../reducers/attributeGroupSlice'
 
 
-class ModalsContainer extends React.Component {
-    render () {
-        return (
-            <Modals
-                fetchStatus={this.props.fetchStatus}
-                addedAttributeGroup={this.props.addedAttributeGroup}
-                errorInGroupOperation={this.props.errorInGroupOperation}
-                savedEditedAttributeGroup={this.props.savedEditedAttributeGroup}
-                deletedAttributeGroup={this.props.deletedAttributeGroup}
-            />
-        )
+
+const ModalsContainer = () => {
+    const fetchStatus = useSelector(getFetchStatus)
+
+    const dispatch = useDispatch()
+    const addedGroup = () => {
+        dispatch(addedAttributeGroup())
     }
+    const errorGroupOperation = () => {
+        dispatch(errorInGroupOperation())
+    }
+    const savedEditedGroup = () => {
+        dispatch(savedEditedAttributeGroup())
+    }
+    const deletedGroup = () => {
+        dispatch(deletedAttributeGroup())
+    }
+
+    return (
+        <Modals
+            fetchStatus={fetchStatus}
+            addedAttributeGroup={addedGroup}
+            errorInGroupOperation={errorGroupOperation}
+            savedEditedAttributeGroup={savedEditedGroup}
+            deletedAttributeGroup={deletedGroup}
+        />
+    )
 }
 
 
-const mapStateToProps = state => {
-    return {
-        fetchStatus: state.attributeGroup.fetchStatus,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addedAttributeGroup: () => {
-            dispatch(addedAttributeGroup())
-        },
-        errorInGroupOperation: () => {
-            dispatch(errorInGroupOperation())
-        },
-        savedEditedAttributeGroup: () => {
-            dispatch(savedEditedAttributeGroup())
-        },
-        deletedAttributeGroup: () => {
-            dispatch(deletedAttributeGroup())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ModalsContainer)
+export default ModalsContainer

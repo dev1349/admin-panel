@@ -1,60 +1,57 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import AttributeGroupList from './AttributeGroupList'
+import {useDispatch, useSelector} from 'react-redux'
 import {
     addAllGroupForDeleting,
     addRemoveIdGroupForDeleting,
     editAttributeGroup,
+    getAttributeGroupItems,
+    getAttributeGroupMode,
+    getIdGroupForDeletingArray,
+    getSortOrderGroupName,
+    isAllGroupChecked,
+    isAttributeGroupListEmpty,
     sortAttributeGroup
-} from '../../../actions/attributeGroupActions'
+} from '../../../reducers/attributeGroupSlice'
 
 
-class AttributeGroupListContainer extends React.Component {
-    render () {
-        return (
-            <AttributeGroupList
-                attributeGroupMode={this.props.attributeGroupMode}
-                attributeGroupItems={this.props.attributeGroupItems}
-                editAttributeGroup={this.props.editAttributeGroup}
-                addRemoveIdGroupForDeleting={this.props.addRemoveIdGroupForDeleting}
-                idGroupArrayForDeleting={this.props.idGroupArrayForDeleting}
-                sortAttributeGroup={this.props.sortAttributeGroup}
-                sortOrderGroupName={this.props.sortOrderGroupName}
-                isAllGroupChecked={this.props.isAllGroupChecked}
-                checkedAllGroup={this.props.checkedAllGroup}
-                isAttributeGroupListEmpty={this.props.isAttributeGroupListEmpty}
-            />
-        )
+const AttributeGroupListContainer = () => {
+    const attributeGroupMode = useSelector(getAttributeGroupMode)
+    const attributeGroupItems = useSelector(getAttributeGroupItems)
+    const idGroupArrayForDeleting = useSelector(getIdGroupForDeletingArray)
+    const sortOrderGroupName = useSelector(getSortOrderGroupName)
+    const isAllGroupsChecked = useSelector(isAllGroupChecked)
+    const isGroupListEmpty = useSelector(isAttributeGroupListEmpty)
+
+    const dispatch = useDispatch()
+    const editGroup = groupId => {
+        dispatch(editAttributeGroup(groupId))
     }
+    const addRemoveIdForDeleting = id => {
+        dispatch(addRemoveIdGroupForDeleting(id))
+    }
+    const sortGroup = () => {
+        dispatch(sortAttributeGroup())
+    }
+    const checkedAllGroup = () => {
+        dispatch(addAllGroupForDeleting())
+    }
+
+    return (
+        <AttributeGroupList
+            attributeGroupMode={attributeGroupMode}
+            attributeGroupItems={attributeGroupItems}
+            editAttributeGroup={editGroup}
+            addRemoveIdGroupForDeleting={addRemoveIdForDeleting}
+            idGroupArrayForDeleting={idGroupArrayForDeleting}
+            sortAttributeGroup={sortGroup}
+            sortOrderGroupName={sortOrderGroupName}
+            isAllGroupChecked={isAllGroupsChecked}
+            checkedAllGroup={checkedAllGroup}
+            isAttributeGroupListEmpty={isGroupListEmpty}
+        />
+    )
 }
 
 
-const mapStateToProps = state => {
-    return {
-        attributeGroupMode: state.attributeGroup.attributeGroupMode,
-        attributeGroupItems: state.attributeGroup.attributeGroupItems,
-        idGroupArrayForDeleting: state.attributeGroup.forDeleting,
-        sortOrderGroupName: state.attributeGroup.sortOrder,
-        isAllGroupChecked: (state.attributeGroup.attributeGroupItems.length !== 0) && (state.attributeGroup.attributeGroupItems.length === state.attributeGroup.forDeleting.length),
-        isAttributeGroupListEmpty: !state.attributeGroup.attributeGroupItems.length
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        editAttributeGroup: (groupId) => {
-            dispatch(editAttributeGroup(groupId))
-        },
-        addRemoveIdGroupForDeleting: (id) => {
-            dispatch(addRemoveIdGroupForDeleting(id))
-        },
-        sortAttributeGroup: () => {
-            dispatch(sortAttributeGroup())
-        },
-        checkedAllGroup: () => {
-            dispatch(addAllGroupForDeleting())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AttributeGroupListContainer)
+export default AttributeGroupListContainer

@@ -1,47 +1,43 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import Buttons from './Buttons'
+import {useDispatch, useSelector} from 'react-redux'
 import {
+    getAttributeGroupMode,
+    isButtonDisabled,
+    isGroupDeletingListEmpty,
     removeSelectedAttributesGroup,
     saveGroup,
     switchMode
-} from '../../../actions/attributeGroupActions'
+} from '../../../reducers/attributeGroupSlice'
 
 
-class ButtonsContainer extends React.Component {
-    render() {
-        return (
-            <Buttons
-                attributeGroupMode={this.props.attributeGroupMode}
-                isButtonDisabled={this.props.isButtonDisabled}
-                changeAttributeGroupMode={this.props.changeAttributeGroupMode}
-                removeSelectedAttributesGroup={this.props.removeSelectedAttributesGroup}
-                saveAttributeGroup={this.props.saveAttributeGroup}
-            />
-        )
+const ButtonsContainer = () => {
+    const attributeGroupMode = useSelector(getAttributeGroupMode)
+    const isButtonsDisabled = useSelector(isButtonDisabled)
+    const isDeletingListEmpty = useSelector(isGroupDeletingListEmpty)
+
+    const dispatch = useDispatch()
+    const changeGroupMode = mode => {
+        dispatch(switchMode(mode))
     }
+    const removeSelectedGroup = () => {
+        dispatch(removeSelectedAttributesGroup())
+    }
+    const saveAttributeGroup = () => {
+        dispatch(saveGroup())
+    }
+
+    return (
+        <Buttons
+            attributeGroupMode={attributeGroupMode}
+            isButtonDisabled={isButtonsDisabled}
+            changeAttributeGroupMode={changeGroupMode}
+            removeSelectedAttributesGroup={removeSelectedGroup}
+            saveAttributeGroup={saveAttributeGroup}
+            isDeletingListEmpty={isDeletingListEmpty}
+        />
+    )
 }
 
 
-const mapStateToProps = state => {
-    return {
-        attributeGroupMode: state.attributeGroup.attributeGroupMode,
-        isButtonDisabled: state.attributeGroup.fetchStatus !== 'idle',
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        changeAttributeGroupMode: (mode) => {
-            dispatch(switchMode(mode))
-        },
-        removeSelectedAttributesGroup: () => {
-            dispatch(removeSelectedAttributesGroup())
-        },
-        saveAttributeGroup: () => {
-            dispatch(saveGroup())
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonsContainer)
+export default ButtonsContainer

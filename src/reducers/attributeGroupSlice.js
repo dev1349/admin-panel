@@ -1,9 +1,5 @@
-import {
-    CHANGE_ADD_ATTRIBUTE_GROUP_FIELDS,
-    CHANGE_ATTRIBUTE_GROUP_FETCH_STATUS,
-    CHANGE_ATTRIBUTE_GROUP_MODE, CHANGE_SORT_ORDER, RESET_ADD_ATTRIBUTE_GROUP_FIELDS, RESET_ID_ARRAY_FOR_DELETING,
-    SET_ATTRIBUTE_GROUP, SET_NEW_ID_ARRAY_FOR_DELETING, SORT_ATTRIBUTE_GROUP
-} from './actionTypes'
+import {createSlice} from '@reduxjs/toolkit'
+import initialState from '../mock/attributeGroupInitialState'
 import {
     deleteAttributeGroupFetch,
     getAllAttributeGroupFetch,
@@ -12,12 +8,71 @@ import {
 } from '../api/attributeGroupApi'
 
 
-export const changeAttributeGroupFetchStatus = (fetchStatus) => {
-    return {
-        type: CHANGE_ATTRIBUTE_GROUP_FETCH_STATUS,
-        payload: fetchStatus,
+const attributeGroupSlice = createSlice({
+    name: 'attributeGroup',
+    initialState,
+    reducers: {
+        setAttributeGroup(state, action) {
+            state.attributeGroupItems = action.payload
+        },
+        changeFetchStatus(state, action) {
+            state.fetchStatus = action.payload
+        },
+        changeFieldsValue(state, action) {
+            return {
+                ...state,
+                addAttributeGroupFields: {
+                    ...state.addAttributeGroupFields,
+                    ...action.payload
+                },
+            }
+        },
+        changeMode(state, action) {
+            state.attributeGroupMode = action.payload
+        },
+        resetFieldsValue(state) {
+            state.addAttributeGroupFields = initialState.addAttributeGroupFields
+        },
+        setIdForDeletingArray(state, action) {
+            state.forDeleting = action.payload
+        },
+        resetIdForDeletingArray(state) {
+            state.forDeleting = initialState.forDeleting
+        },
+        sorting(state, action) {
+            state.attributeGroupItems = action.payload
+        },
+        changeSortOrder(state, action) {
+            state.sortOrder = action.payload
+        }
     }
-}
+})
+
+export const {
+    setAttributeGroup,
+    changeFetchStatus,
+    changeFieldsValue,
+    changeMode,
+    resetFieldsValue,
+    setIdForDeletingArray,
+    resetIdForDeletingArray,
+    sorting,
+    changeSortOrder
+} = attributeGroupSlice.actions
+
+export default attributeGroupSlice.reducer
+
+
+export const getAttributeGroupMode = state => state.attributeGroup.attributeGroupMode
+export const getFetchStatus = state => state.attributeGroup.fetchStatus
+export const isButtonDisabled = state => state.attributeGroup.fetchStatus !== 'idle'
+export const getAttributeGroupItems = state => state.attributeGroup.attributeGroupItems
+export const getIdGroupForDeletingArray = state => state.attributeGroup.forDeleting
+export const getSortOrderGroupName = state => state.attributeGroup.sortOrder
+export const isAllGroupChecked = state => (state.attributeGroup.attributeGroupItems.length !== 0) && (state.attributeGroup.attributeGroupItems.length === state.attributeGroup.forDeleting.length)
+export const isAttributeGroupListEmpty = state => !state.attributeGroup.attributeGroupItems.length
+export const getAddAttributeGroupFields = state => state.attributeGroup.addAttributeGroupFields
+export const isGroupDeletingListEmpty = state => !state.attributeGroup.forDeleting.length
 
 const generateSortOrder = (el) => {
     const newEl = {...el}
@@ -28,128 +83,97 @@ const generateSortOrder = (el) => {
 }
 
 export const getAllAttributeGroup = () => {
-
     return dispatch => {
-        dispatch(changeAttributeGroupFetchStatus('pending'))
+        dispatch(changeFetchStatus('pending'))
         getAllAttributeGroupFetch()
             .then(data => {
                 const transformData = data.map(el => {
                     return generateSortOrder(el)
                 })
 
-                dispatch({
-                    type: SET_ATTRIBUTE_GROUP,
-                    payload: transformData
-                })
+                dispatch(setAttributeGroup(transformData))
 
-                dispatch(changeAttributeGroupFetchStatus('successGetAllGroup'))
-                dispatch(changeAttributeGroupFetchStatus('idle'))
+                dispatch(changeFetchStatus('successGetAllGroup'))
+                dispatch(changeFetchStatus('idle'))
             })
             .catch(() => {
-                    dispatch(changeAttributeGroupFetchStatus('errorGetAllGroup'))
+                    dispatch(changeFetchStatus('errorGetAllGroup'))
                 }
             )
     }
 }
 
-export const changeAddAttributeGroupFields = (field) => {
-    return {
-        type: CHANGE_ADD_ATTRIBUTE_GROUP_FIELDS,
-        payload: field,
-    }
-}
-
-export const changeAttributeGroupMode = (mode) => {
-    return {
-        type: CHANGE_ATTRIBUTE_GROUP_MODE,
-        payload: mode,
-    }
-}
-
-export const resetAddAttributesGroupFields = () => {
-    return {
-        type: RESET_ADD_ATTRIBUTE_GROUP_FIELDS,
-    }
-}
-
-export const switchMode = (mode) => dispatch => {
-    dispatch(changeAttributeGroupMode(mode))
+export const switchMode = mode => dispatch => {
+    dispatch(changeMode(mode))
     if (mode === 'list') {
-        dispatch(resetAddAttributesGroupFields())
-        dispatch(resetIdArrayForDeleting())
+        dispatch(resetFieldsValue())
+        dispatch(resetIdForDeletingArray())
     }
 }
 
 export const saveGroup = () => (dispatch, getState) => {
     if (!getState().attributeGroup.addAttributeGroupFields.name) {
-        dispatch(changeAttributeGroupFetchStatus('emptyName'))
+        dispatch(changeFetchStatus('emptyName'))
         return
     }
 
-    dispatch(changeAttributeGroupFetchStatus('pending'))
+    dispatch(changeFetchStatus('pending'))
     const newGroup = getState().attributeGroup.addAttributeGroupFields
     const mode = getState().attributeGroup.attributeGroupMode
 
     if (mode === 'add') {
         postAttributeGroupFetch(newGroup)
             .then(() => {
-                dispatch(changeAttributeGroupFetchStatus('successAddGroup'))
+                dispatch(changeFetchStatus('successAddGroup'))
             })
             .catch(() => {
-                dispatch(changeAttributeGroupFetchStatus('errorAddGroup'))
+                dispatch(changeFetchStatus('errorAddGroup'))
             })
     }
 
     if (mode === 'edit') {
-        dispatch(changeAttributeGroupFetchStatus('pending'))
+        dispatch(changeFetchStatus('pending'))
         const editedAttributeGroup = getState().attributeGroup.addAttributeGroupFields
         putAttributeGroupFetch(editedAttributeGroup)
             .then(() => {
-                dispatch(changeAttributeGroupFetchStatus('successEditGroup'))
+                dispatch(changeFetchStatus('successEditGroup'))
             })
             .catch(() => {
-                dispatch(changeAttributeGroupFetchStatus('errorEditGroup'))
+                dispatch(changeFetchStatus('errorEditGroup'))
             })
     }
 }
 
 export const addedAttributeGroup = () => dispatch => {
-    dispatch(changeAttributeGroupFetchStatus('idle'))
-    dispatch(resetAddAttributesGroupFields())
+    dispatch(changeFetchStatus('idle'))
+    dispatch(resetFieldsValue())
     dispatch(getAllAttributeGroup())
     dispatch(switchMode('list'))
 }
 
-export const editAttributeGroup = (groupId) => (dispatch, getState) => {
+export const editAttributeGroup = groupId => (dispatch, getState) => {
     dispatch(switchMode('edit'))
     const currentGroup = getState().attributeGroup.attributeGroupItems.find(item => item.id === groupId)
-    Object.keys(currentGroup).forEach(key => dispatch(changeAddAttributeGroupFields({[key]: currentGroup[key]})))
+    Object.keys(currentGroup).forEach(key => dispatch(changeFieldsValue({[key]: currentGroup[key]})))
 }
 
 export const savedEditedAttributeGroup = () => dispatch => {
-    dispatch(changeAttributeGroupFetchStatus('idle'))
-    dispatch(resetAddAttributesGroupFields())
+    dispatch(changeFetchStatus('idle'))
+    dispatch(resetFieldsValue())
     dispatch(getAllAttributeGroup())
     dispatch(switchMode('list'))
 }
 
 export const deletedAttributeGroup = () => dispatch => {
-    dispatch(changeAttributeGroupFetchStatus('idle'))
+    dispatch(changeFetchStatus('idle'))
     dispatch(getAllAttributeGroup())
 }
 
 export const errorInGroupOperation = () => dispatch => {
-    dispatch(changeAttributeGroupFetchStatus('idle'))
+    dispatch(changeFetchStatus('idle'))
 }
 
-export const setNewIdArrayForDeleting = (newArray) => {
-    return {
-        type: SET_NEW_ID_ARRAY_FOR_DELETING,
-        payload: newArray
-    }
-}
-
-export const addRemoveIdGroupForDeleting = (id) => (dispatch, getState) => {
+export const addRemoveIdGroupForDeleting = id => (dispatch, getState) => {
     const groupArrayForDeleting = getState().attributeGroup.forDeleting
     let newGroupArrayForDeleting
     const position = groupArrayForDeleting.indexOf(id)
@@ -159,41 +183,21 @@ export const addRemoveIdGroupForDeleting = (id) => (dispatch, getState) => {
         newGroupArrayForDeleting = [...groupArrayForDeleting]
         newGroupArrayForDeleting.splice(position, 1)
     }
-    dispatch(setNewIdArrayForDeleting(newGroupArrayForDeleting))
-}
-
-export const resetIdArrayForDeleting = () => {
-    return {
-        type: RESET_ID_ARRAY_FOR_DELETING,
-    }
+    dispatch(setIdForDeletingArray(newGroupArrayForDeleting))
 }
 
 export const removeSelectedAttributesGroup = () => (dispatch, getState) => {
     const idGroupForDeleting = getState().attributeGroup.forDeleting
     const groupForDeleting = getState().attributeGroup.attributeGroupItems.filter(item => idGroupForDeleting.includes(item.id))
-    dispatch(changeAttributeGroupFetchStatus('pending'))
+    dispatch(changeFetchStatus('pending'))
     Promise.all(groupForDeleting.map(group => deleteAttributeGroupFetch(group)))
         .then(() => {
-            dispatch(changeAttributeGroupFetchStatus('successDeleteGroup'))
-            dispatch(resetIdArrayForDeleting())
+            dispatch(changeFetchStatus('successDeleteGroup'))
+            dispatch(resetIdForDeletingArray())
         })
         .catch(() => {
-            dispatch(changeAttributeGroupFetchStatus('errorDeleteGroup'))
+            dispatch(changeFetchStatus('errorDeleteGroup'))
         })
-}
-
-export const setSortedAttributeGroup = (sorted) => {
-    return {
-        type: SORT_ATTRIBUTE_GROUP,
-        payload: sorted
-    }
-}
-
-export const changeSortOrder = (sortOrder) => {
-    return {
-        type: CHANGE_SORT_ORDER,
-        payload: sortOrder
-    }
 }
 
 export const sortAttributeGroup = () => (dispatch, getState) => {
@@ -238,20 +242,16 @@ export const sortAttributeGroup = () => (dispatch, getState) => {
         dispatch(changeSortOrder('up'))
     }
 
-    dispatch(setSortedAttributeGroup(newAttributeGroupItems))
+    dispatch(sorting(newAttributeGroupItems))
 }
 
 export const addAllGroupForDeleting = () => (dispatch, getState) => {
     const allGroup = getState().attributeGroup.attributeGroupItems
     if (!allGroup.length) return
     if (getState().attributeGroup.attributeGroupItems.length === getState().attributeGroup.forDeleting.length) {
-        dispatch(resetIdArrayForDeleting())
+        dispatch(resetIdForDeletingArray())
     } else {
-        dispatch(resetIdArrayForDeleting())
+        dispatch(resetIdForDeletingArray())
         allGroup.forEach(item => dispatch(addRemoveIdGroupForDeleting(item.id)))
     }
-
-
-
 }
-

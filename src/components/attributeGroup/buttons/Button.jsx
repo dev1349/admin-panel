@@ -11,10 +11,12 @@ const StyledButton = styled.button`
   border: 1px solid transparent;
   background-color: white;
   cursor: pointer;
+
   &:hover {
     background-color: lightgray;
     border: 1px solid lightgray;
   }
+
   ${props => props.padding && css`
     padding: ${props.padding}px;
   `}

@@ -3,7 +3,7 @@ import {goodTypeReducer} from './goodTypeReducer'
 import {combineReducers} from '@reduxjs/toolkit'
 import {headerReducer} from './headerReducer'
 import addCategoryReducer from './addCategorySlice'
-import {attributeGroupReducer} from './attributeGroupReducer'
+import attributeGroupReducer from './attributeGroupSlice'
 import statisticsSlice from './statisticsSlice'
 import categoriesListSlice from './categoriesListSlice';
 

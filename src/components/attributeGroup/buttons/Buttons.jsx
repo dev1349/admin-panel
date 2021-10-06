@@ -8,7 +8,15 @@ const ButtonGroup = styled.div`
 `
 
 
-const Buttons = ({attributeGroupMode, isButtonDisabled, changeAttributeGroupMode, removeSelectedAttributesGroup, saveAttributeGroup}) => {
+const Buttons = ({
+                     attributeGroupMode,
+                     isButtonDisabled,
+                     changeAttributeGroupMode,
+                     removeSelectedAttributesGroup,
+                     saveAttributeGroup,
+                     isDeletingListEmpty
+                 }) => {
+
     const resetToListModeHandler = () => {
         changeAttributeGroupMode('list')
     }
@@ -28,7 +36,7 @@ const Buttons = ({attributeGroupMode, isButtonDisabled, changeAttributeGroupMode
             {attributeGroupMode === 'list' && <Button
                 icon={'#delete'}
                 onClick={removeSelectedAttributesGroup}
-                disabled={isButtonDisabled}
+                disabled={isButtonDisabled || isDeletingListEmpty}
             />}
             {(attributeGroupMode === 'add' || attributeGroupMode === 'edit') && <Button
                 icon={'#save'}

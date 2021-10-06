@@ -3,7 +3,13 @@ import Loader from "../loader/Loader";
 import Modal from "./Modal";
 
 
-const Modals = ({fetchStatus, addedAttributeGroup, errorInGroupOperation, savedEditedAttributeGroup, deletedAttributeGroup}) => {
+const Modals = ({
+                    fetchStatus,
+                    addedAttributeGroup,
+                    errorInGroupOperation,
+                    savedEditedAttributeGroup,
+                    deletedAttributeGroup
+                }) => {
     return (
         <>
             {fetchStatus === 'pending' && <Loader/>}

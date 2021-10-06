@@ -1,34 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import AttributeGroup from './AttributeGroup'
-import {connect} from 'react-redux'
-import {getAllAttributeGroup} from '../../actions/attributeGroupActions'
+import {useDispatch, useSelector} from 'react-redux'
+import {getAllAttributeGroup, getAttributeGroupMode} from '../../reducers/attributeGroupSlice'
 
 
-class AttributeGroupContainer extends React.Component {
-    componentDidMount() {
-        this.props.getAllAttributeGroup()
-    }
+const AttributeGroupContainer = () => {
+    const dispatch = useDispatch()
 
-    render() {
-        return (
-            <AttributeGroup
-                attributeGroupMode={this.props.attributeGroupMode}
-            />
-        )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        attributeGroupMode: state.attributeGroup.attributeGroupMode,
-    }
-}
-
-const mapDispatchToProps = dispatch => ({
-    getAllAttributeGroup: () => {
+    useEffect(() => {
         dispatch(getAllAttributeGroup())
-    },
-})
+    }, [dispatch])
+
+    const attributeGroupMode = useSelector(getAttributeGroupMode)
+
+    return (
+        <AttributeGroup
+            attributeGroupMode={attributeGroupMode}
+        />
+    )
+}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AttributeGroupContainer)
+export default AttributeGroupContainer
