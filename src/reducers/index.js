@@ -1,5 +1,5 @@
 import {goodReducer} from './goodReducer'
-import {goodTypeReducer} from './goodTypeReducer'
+import goodTypeReducer from './goodTypeSlice'
 import {combineReducers} from '@reduxjs/toolkit'
 import {headerReducer} from './headerReducer'
 import addCategoryReducer from './addCategorySlice'

@@ -1,56 +1,55 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {postGood} from '../../actions/goodActions'
 import {AddGood} from './AddGood'
-import {getAllGoodType} from '../../actions/goodTypeActions'
+import {allGoodType, getAllGoodType} from '../../reducers/goodTypeSlice'
 
 
-class AddGoodContainer extends React.Component {
-    componentDidMount() {
-        this.props.getAllGoodType()
-    }
+const AddGoodContainer = () => {
+    const [values, setValues] = useState({})
 
-    handleChange = (event) => {
-        this.setState({
-            ...this.state,
-            [event.target.name]: event.target.value
-        })
-    }
+    const allGoodTypes = useSelector(allGoodType)
 
-    handleChangeSelect = (event) => {
-        this.setState({
-            ...this.state,
-            goodType: this.props.allGoodType[event.target.value]
-        })
-    }
+    const dispatch = useDispatch()
 
-    handleSubmit = () => {
-        this.props.addGood(this.state)
-    }
-
-    render() {
-        return (
-            this.props.allGoodType ?
-                <AddGood allGoodType={this.props.allGoodType}
-                         handleChange={this.handleChange}
-                         handleChangeSelect={this.handleChangeSelect}
-                         handleSubmit={this.handleSubmit}/>
-                : <div/>
-        )
-    }
-}
-
-const mapStateToProps = state => {
-    return {allGoodType: state.goodType.allGoodType}
-}
-
-const mapDispatchToProps = dispatch => ({
-    getAllGoodType: () => {
-        dispatch(getAllGoodType())
-    },
-    addGood: (good) => {
+    const addGood = good => {
         good && dispatch(postGood(good))
     }
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddGoodContainer)
+    useEffect(() => {
+        const getAllGoodTypes = () => {
+            dispatch(getAllGoodType())
+        }
+        getAllGoodTypes()
+    }, [dispatch])
+
+    const handleChange = event => {
+        setValues({
+            ...values,
+            [event.target.name]: event.target.value,
+        })
+    }
+
+    const handleChangeSelect = (event) => {
+        setValues({
+            ...values,
+            'goodType': allGoodTypes[event.target.value]
+        })
+    }
+
+    const handleSubmit = () => {
+        addGood(values)
+    }
+
+    return (
+        allGoodTypes ?
+            <AddGood allGoodType={allGoodTypes}
+                     handleChange={handleChange}
+                     handleChangeSelect={handleChangeSelect}
+                     handleSubmit={handleSubmit}/>
+            : <div/>
+    )
+}
+
+
+export default AddGoodContainer
