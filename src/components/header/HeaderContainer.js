@@ -1,31 +1,29 @@
 import React from 'react'
 import Header from './Header'
-import {connect} from "react-redux";
-import {setActiveSubMenu} from "../../actions/headerActions";
+import {useDispatch, useSelector} from 'react-redux'
+import {getActiveSubMenu, getHeaderItems, setActiveSubMenu} from '../../reducers/headerSlice'
+import {getStatisticsId} from '../../reducers/statisticsSlice'
 
 
-class HeaderContainer extends React.Component {
+const HeaderContainer = () => {
+    const headerItems = useSelector(getHeaderItems)
+    const activeSubMenu = useSelector(getActiveSubMenu)
+    const statisticsId = useSelector(getStatisticsId)
 
-    render() {
-        const {headerItems, activeSubMenu, setActiveSubMenu, statisticsId} = this.props
-        return (
-            <Header
-                headerItems={headerItems}
-                activeSubMenu={activeSubMenu}
-                setActiveSubMenu={setActiveSubMenu}
-                statisticsId={statisticsId}
-            />
-        )
+    const dispatch = useDispatch()
+    const setActiveSubmenu = (id) => {
+        dispatch(setActiveSubMenu(id))
     }
+
+    return (
+        <Header
+            headerItems={headerItems}
+            activeSubMenu={activeSubMenu}
+            setActiveSubMenu={setActiveSubmenu}
+            statisticsId={statisticsId}
+        />
+    )
 }
 
 
-const mapStateToProps = state => {
-    return {
-        headerItems: state.header.headerItems,
-        activeSubMenu: state.header.activeSubMenu,
-        statisticsId: state.statistics.id,
-    }
-}
-
-export default connect(mapStateToProps, {setActiveSubMenu})(HeaderContainer)
+export default HeaderContainer

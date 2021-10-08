@@ -1,7 +1,3 @@
-import {
-    SET_ACTIVE_SUBMENU
-} from '../actions/actionTypes'
-
 const initialState = {
     headerItems: [
         {
@@ -111,14 +107,4 @@ const initialState = {
     activeSubMenu: null,
 }
 
-export function headerReducer(state = initialState, action) {
-    switch (action.type) {
-        case SET_ACTIVE_SUBMENU:
-            return {
-                ...state,
-                activeSubMenu: action.payload
-            }
-        default:
-            return state
-    }
-}
+export default initialState

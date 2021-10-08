@@ -8,3 +8,6 @@ const statisticsSlice = createSlice({
 })
 
 export default statisticsSlice.reducer
+
+
+export const getStatisticsId = state => state.statistics.id

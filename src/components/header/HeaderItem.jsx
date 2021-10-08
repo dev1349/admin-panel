@@ -23,7 +23,7 @@ const HeaderItem = ({id, icon, title, subMenu, isSubMenuActive, setActiveSubMenu
     return (
         <li className={itemStyle.join(' ')} onClick={setActiveSubMenuId}>
             {icon && <svg className={iconsStyle.join(' ')} height="15px" width="15px">
-                <use xlinkHref={icons + icon}></use>
+                <use xlinkHref={icons + icon}/>
             </svg>}
 
             {title && <div className={'header--description'}>
