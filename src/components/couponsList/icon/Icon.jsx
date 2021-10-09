@@ -19,7 +19,7 @@ const SvgIcon = styled.svg`
 const Icon = ({icon, size}) => {
     return (
         <SvgIcon size={size}>
-            <use xlinkHref={icons + icon}></use>
+            <use xlinkHref={icons + icon}/>
         </SvgIcon>
     )
 }

@@ -7,6 +7,7 @@ import attributeGroupReducer from './attributeGroupSlice'
 import statisticsSlice from './statisticsSlice'
 import categoriesListSlice from './categoriesListSlice';
 import styleSlice from './styleSlice'
+import couponsReducer from './couponsSlice'
 
 export const rootReducer = combineReducers({
     goods: goodsSlice,
@@ -16,6 +17,6 @@ export const rootReducer = combineReducers({
     attributeGroup: attributeGroupReducer,
     categoriesList: categoriesListSlice,
     statistics: statisticsSlice,
-    style: styleSlice
-
+    style: styleSlice,
+    coupons: couponsReducer,
 })

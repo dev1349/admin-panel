@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import Button from '../button/Button'
+import Button from '../Button'
 
 
 const Overlay = styled.div`
@@ -38,11 +38,7 @@ const H1 = styled.h1`
 `
 
 
-
 const Modal = ({message, success, error, action}) => {
-
-
-
     return (
         <Overlay onClick={action}>
             <Window>

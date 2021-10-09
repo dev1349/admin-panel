@@ -9,6 +9,7 @@ import {
     MY_GOODS_LIST_ROUTE,
     CATEGORIES_LIST_ROUTE,
     MADE_COMPONENT_LIST,
+    COUPONS_LIST_ROUTE,
 } from './routerConsts'
 import {LoginContainer} from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -21,6 +22,7 @@ import MyGoodsListContainer from '../components/myGoodsList/MyGoodsListContainer
 import CategoriesListContainer from "../components/categoriesList/CategoriesListContainer";
 import MadeComponentList from '../components/madeComponentList/MadeComponentList'
 import {GoodPageA} from '../components/pages/goodPageA/GoodPageA'
+import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 
 
 export const authRoutes = [
@@ -59,6 +61,10 @@ export const authRoutes = [
     {
         path: CATEGORIES_LIST_ROUTE,
         Component: CategoriesListContainer
+    },
+    {
+        path: COUPONS_LIST_ROUTE,
+        Component: CouponsListContainer
     },
 ]
 

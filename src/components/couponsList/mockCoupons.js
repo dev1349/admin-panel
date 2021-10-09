@@ -1,0 +1,78 @@
+const mockCoupons = [
+    {
+        id: 0,
+        name: '-10.00 скидка',
+        code: '1111',
+        discount: {
+            type: 'fixedSum',
+            value: 10,
+        },
+        totalSum: 1000,
+        authUser: false,
+        good: null,
+        goodCategory: null,
+        startDate: '2021-09-30T19:33:54.344Z',
+        endDate: '2021-09-30T19:33:54.344Z',
+        useCount: 10,
+        useOneClientCount: 10,
+        status: true
+    },
+    {
+        id: 1,
+        name: '-5% скидка',
+        code: '2222',
+        discount: {
+            type: 'percent',
+            value: 10,
+        },
+        totalSum: 1000,
+        authUser: false,
+        good: null,
+        goodCategory: null,
+        startDate: '2021-09-30T19:33:54.344Z',
+        endDate: '2021-09-30T19:33:54.344Z',
+        useCount: 5,
+        useOneClientCount: 2,
+        status: true
+    },
+    {
+        id: 2,
+        name: '-15.00 скидка',
+        code: '3333',
+        discount: {
+            type: 'percent',
+            value: 10,
+        },
+        totalSum: 1000,
+        authUser: true,
+        good: null,
+        goodCategory: null,
+        startDate: '2021-09-30T19:33:54.344Z',
+        endDate: '2021-09-30T19:33:54.344Z',
+        useCount: 8,
+        useOneClientCount: 3,
+        status: true
+    },
+]
+
+export const currentCoupon = {
+    id: 0,
+    name: null,
+    code: null,
+    discount: {
+        type: null,
+        value: null,
+    },
+    totalSum: null,
+    authUser: false,
+    good: null,
+    goodCategory: null,
+    startDate: null,
+    endDate: null,
+    useCount: null,
+    useOneClientCount: null,
+    status: null
+}
+
+
+export default mockCoupons
