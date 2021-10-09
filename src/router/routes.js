@@ -20,6 +20,7 @@ import AttributeGroupContainer from '../components/attributeGroup/AttributeGroup
 import MyGoodListContainer from '../components/myGoodList/MyGoodListContainer'
 import CategoriesListContainer from "../components/categoriesList/CategoriesListContainer";
 import MadeComponentList from '../components/madeComponentList/MadeComponentList'
+import {GoodPageA} from '../components/pages/goodPageA/GoodPageA'
 
 
 export const authRoutes = [
@@ -65,5 +66,9 @@ export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         Component: LoginContainer
+    },
+    {
+        path: "/goodA",
+        Component: GoodPageA
     }
 ]
