@@ -1,23 +1,23 @@
 import {
     GOOD_ADD_ROUTE,
-    GOOD_FILTER_ROUTE,
+    GOODS_FILTER_ROUTE,
     ADD_CATEGORY_ROUTE,
-    GOOD_LIST_ROUTE,
+    GOODS_LIST_ROUTE,
     LOGIN_ROUTE,
     MAIN_ROUTE,
     ATTRIBUTE_GROUP,
-    MY_GOOD_LIST_ROUTE,
+    MY_GOODS_LIST_ROUTE,
     CATEGORIES_LIST_ROUTE,
     MADE_COMPONENT_LIST,
 } from './routerConsts'
 import {LoginContainer} from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
-import GoodListContainer from '../components/goodList/GoodListContainer'
+import GoodsListContainer from '../components/goodsList/GoodsListContainer'
 import AddGoodContainer from '../components/addGood/AddGoodContainer'
-import GoodFilterContainer from '../components/goodFilter/GoodFilterContainer'
+import GoodsFilterContainer from '../components/goodsFilter/GoodsFilterContainer'
 import AddCategoryContainer from '../components/addCategory/AddCategoryContainer'
 import AttributeGroupContainer from '../components/attributeGroup/AttributeGroupContainer'
-import MyGoodListContainer from '../components/myGoodList/MyGoodListContainer'
+import MyGoodsListContainer from '../components/myGoodsList/MyGoodsListContainer'
 import CategoriesListContainer from "../components/categoriesList/CategoriesListContainer";
 import MadeComponentList from '../components/madeComponentList/MadeComponentList'
 import {GoodPageA} from '../components/pages/goodPageA/GoodPageA'
@@ -29,16 +29,16 @@ export const authRoutes = [
         Component: MainContainer
     },
     {
-        path: GOOD_LIST_ROUTE,
-        Component: GoodListContainer
+        path: GOODS_LIST_ROUTE,
+        Component: GoodsListContainer
     },
     {
         path: GOOD_ADD_ROUTE,
         Component: AddGoodContainer
     },
     {
-        path: GOOD_FILTER_ROUTE,
-        Component: GoodFilterContainer
+        path: GOODS_FILTER_ROUTE,
+        Component: GoodsFilterContainer
     },
     {
         path: ADD_CATEGORY_ROUTE,
@@ -49,8 +49,8 @@ export const authRoutes = [
         Component: AttributeGroupContainer
     },
     {
-        path: MY_GOOD_LIST_ROUTE,
-        Component: MyGoodListContainer
+        path: MY_GOODS_LIST_ROUTE,
+        Component: MyGoodsListContainer
     },
     {
         path: MADE_COMPONENT_LIST,

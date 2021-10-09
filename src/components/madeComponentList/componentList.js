@@ -8,8 +8,8 @@ const componentList = [
     {
         componentName: 'Компонент "Фильтр товаров"',
         task: 'WSADMIN-2',
-        routeText: '/goodFilter',
-        routeLink: '/goodFilter',
+        routeText: '/goodsFilter',
+        routeLink: '/goodsFilter',
     },
     {
         componentName: 'Компонент "Список категорий"',
@@ -44,8 +44,8 @@ const componentList = [
     {
         componentName: 'Компонент "Список товаров"',
         task: 'WSADMIN-9',
-        routeText: '/myGoodList',
-        routeLink: '/myGoodList',
+        routeText: '/myGoodsList',
+        routeLink: '/myGoodsList',
     }
 ]
 

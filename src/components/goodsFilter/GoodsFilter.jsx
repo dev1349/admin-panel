@@ -1,13 +1,20 @@
 import React from 'react'
-import './GoodFilter.sass'
+import './GoodsFilter.sass'
 import FilterInput from './FilterInput'
 
 
-const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodFilter, filteringGood}) => {
+const GoodsFilter = ({
+                         goodStatus,
+                         goodImageStatus,
+                         goodTypes,
+                         filter,
+                         setGoodsFilterHandler,
+                         filteringGoodsHandler
+                     }) => {
 
     const submitHandler = (evt) => {
         evt.preventDefault()
-        filteringGood()
+        filteringGoodsHandler()
     }
 
     return (
@@ -22,7 +29,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             title={"Наименование:"}
                             placeholder={"Наименование"}
                             value={filter.name}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                     <div className="filter--item">
@@ -33,7 +40,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             title={"Цена:"}
                             placeholder={"Цена"}
                             value={filter.price}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                     <div className="filter--item">
@@ -45,7 +52,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             value={filter.status}
                             items={goodStatus}
                             translateBoolean={['Есть', 'Нет']}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                     <div className="filter--item">
@@ -56,7 +63,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             title={"Модель:"}
                             placeholder={"Модель"}
                             value={filter.model}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                     <div className="filter--item">
@@ -67,7 +74,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             title={"Количество:"}
                             placeholder={"Количество"}
                             value={filter.count}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                     <div className="filter--item">
@@ -79,7 +86,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             value={filter.imageStatus}
                             items={goodImageStatus}
                             translateBoolean={['Есть', 'Нет']}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                     <div className="filter--item">
@@ -90,7 +97,7 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
                             placeholder={"Категория"}
                             value={filter["goodType.name"]}
                             items={goodTypes}
-                            changeGoodFilter={changeGoodFilter}
+                            setGoodsFilterHandler={setGoodsFilterHandler}
                         />
                     </div>
                 </div>
@@ -104,4 +111,4 @@ const GoodFilter = ({goodStatus, goodImageStatus, goodTypes, filter, changeGoodF
 }
 
 
-export default GoodFilter
+export default GoodsFilter

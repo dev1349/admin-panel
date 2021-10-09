@@ -1,7 +1,17 @@
 import React from 'react'
 
 
-const FilterInput = ({typeOfField, typeOfInput, name, title, placeholder, items, translateBoolean, value, changeGoodFilter}) => {
+const FilterInput = ({
+                         typeOfField,
+                         typeOfInput,
+                         name,
+                         title,
+                         placeholder,
+                         items,
+                         translateBoolean,
+                         value,
+                         setGoodsFilterHandler
+                     }) => {
 
     const createValueForState = (typeOfField, typeOfInput, translateBoolean, evt) => {
         switch (typeOfField) {
@@ -26,7 +36,7 @@ const FilterInput = ({typeOfField, typeOfInput, name, title, placeholder, items,
 
     const changeHandler = (evt) => {
         const value = createValueForState(typeOfField, typeOfInput, translateBoolean, evt)
-        changeGoodFilter(name, value)
+        setGoodsFilterHandler(name, value)
     }
 
     const inputNumberKeyDown = (evt) => {
@@ -50,7 +60,7 @@ const FilterInput = ({typeOfField, typeOfInput, name, title, placeholder, items,
             />}
 
             {typeOfField === 'select' && <select
-                value={value === null ? '' : value}
+                value={value}
                 className={"filter--input"}
                 onChange={changeHandler}
             >
@@ -59,7 +69,7 @@ const FilterInput = ({typeOfField, typeOfInput, name, title, placeholder, items,
                 {items.map((el) => {
 
                     let title
-                    if (typeof(el) === 'boolean') {
+                    if (typeof (el) === 'boolean') {
                         title = el ? translateBoolean[0] : translateBoolean[1]
                     } else {
                         title = el

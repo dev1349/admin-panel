@@ -4,8 +4,8 @@ import React from 'react'
 class MainContainer extends React.Component {
     render() {
         return <div>
-            {this.props.allGood &&
-            <Main allGood={this.props.allGood}/>}
+            {this.props.allGoods &&
+            <Main allGood={this.props.allGoods}/>}
         </div>
     }
 }

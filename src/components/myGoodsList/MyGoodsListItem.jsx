@@ -18,7 +18,7 @@ const printCategory = (categorySet, printArray = []) => {
 }
 
 
-const MyGoodListItem = ({good}) => {
+const MyGoodsListItem = ({good}) => {
     return (
         <Tr>
             <Td centered>
@@ -73,4 +73,4 @@ const MyGoodListItem = ({good}) => {
 }
 
 
-export default MyGoodListItem
+export default MyGoodsListItem

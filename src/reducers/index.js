@@ -1,4 +1,4 @@
-import {goodReducer} from './goodReducer'
+import goodsSlice from './goodsSlice'
 import goodTypeReducer from './goodTypeSlice'
 import {combineReducers} from '@reduxjs/toolkit'
 import headerReducer from './headerSlice'
@@ -9,7 +9,7 @@ import categoriesListSlice from './categoriesListSlice';
 import styleSlice from './styleSlice'
 
 export const rootReducer = combineReducers({
-    good: goodReducer,
+    goods: goodsSlice,
     goodType: goodTypeReducer,
     header: headerReducer,
     addCategory: addCategoryReducer,

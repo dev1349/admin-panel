@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {postGood} from '../../actions/goodActions'
+import {postGood} from '../../reducers/goodsSlice'
 import {AddGood} from './AddGood'
 import {allGoodType, getAllGoodType} from '../../reducers/goodTypeSlice'
 

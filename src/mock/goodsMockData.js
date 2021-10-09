@@ -1,18 +1,5 @@
-import {
-    CHANGE_GOOD_FILTER,
-    SET_MY_GOOD_LIST_SORTING_STATUS,
-    CREATE_FILTERED_GOOD,
-    DELETE_GOOD_SUCCESS,
-    GET_ALL_GOOD_SUCCESS,
-    GET_GOOD_SUCCESS,
-    POST_GOOD_SUCCESS,
-    PUT_GOOD_SUCCESS,
-    SET_SORTED_ALL_GOOD
-} from '../actions/actionTypes'
-
-
-const initialState = {
-    allGood: [
+export const goodsMockData = {
+    allGoods: [
         {
             'id': 0,
             'name': 'Рюкзак синий SWISSWIN 7611 900-blue 32L',
@@ -328,7 +315,7 @@ const initialState = {
         imageStatus: null,
         'goodType.name': '',
     },
-    filteredGood: [],
+    filteredGoods: [],
     sortingStatus: {},
     theme: {
         main: {
@@ -345,58 +332,5 @@ const initialState = {
         alternative: {
             minCountColor: 'coral'
         }
-    }
-}
-
-export function goodReducer(state = initialState, action) {
-    switch (action.type) {
-        case POST_GOOD_SUCCESS:
-            return {
-                ...state,
-                allGood: [...state.allGood, action.payload]
-            }
-        case GET_GOOD_SUCCESS:
-            return {
-                ...state,
-                currentGood: action.payload
-            }
-        case GET_ALL_GOOD_SUCCESS:
-            return {
-                ...state,
-                allGood: action.payload
-            }
-        case PUT_GOOD_SUCCESS:
-            return state
-        case DELETE_GOOD_SUCCESS:
-            return {
-                ...state,
-                allGood: [...state.allGood.filter((item) => item.id !== action.payload.id)]
-            }
-        case CHANGE_GOOD_FILTER:
-            return {
-                ...state,
-                filter: {
-                    ...state.filter,
-                    ...action.payload
-                }
-            }
-        case CREATE_FILTERED_GOOD:
-            return {
-                ...state,
-                filteredGood: [...action.payload]
-            }
-
-        case SET_MY_GOOD_LIST_SORTING_STATUS:
-            return {
-                ...state,
-                sortingStatus: {...action.payload}
-            }
-        case SET_SORTED_ALL_GOOD:
-            return {
-                ...state,
-                allGood: [...action.payload]
-            }
-        default:
-            return state
     }
 }
