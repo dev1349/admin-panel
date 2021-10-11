@@ -14,6 +14,12 @@ export const GET_ALL_GOOD_TYPE_PATH = SERVER_PATH + '/api/getAllGoodType'
 export const PUT_GOOD_TYPE_PATH = SERVER_PATH + '/api/putGoodType'
 export const DELETE_GOOD_TYPE_PATH = SERVER_PATH + '/api/deleteGoodType'
 
+export const POST_ATTRIBUTE_PATH = SERVER_PATH + '/api/postAttribute'
+export const GET_ATTRIBUTE_PATH = SERVER_PATH + '/api/getAttribute'
+export const GET_ALL_ATTRIBUTE_PATH = SERVER_PATH + '/api/getAllAttribute'
+export const PUT_ATTRIBUTE_PATH = SERVER_PATH + '/api/putAttribute'
+export const DELETE_ATTRIBUTE_PATH = SERVER_PATH + '/api/deleteAttribute'
+
 export const POST_CATEGORY_PATH = SERVER_PATH + '/api/postCategory'
 
 export const GET_ALL_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/getAllAttributeGroup'

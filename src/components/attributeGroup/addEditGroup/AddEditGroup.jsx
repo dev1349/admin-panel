@@ -4,6 +4,7 @@ import Field from '../field/Field'
 
 
 const AddEditGroup = ({addAttributeGroupFields, attributeGroupMode, changeAddAttributesGroupFields}) => {
+    console.log('EditAttributeGroup', addAttributeGroupFields)
     const {name, uaName, sortOrder} = addAttributeGroupFields
 
     return (
