@@ -65,6 +65,12 @@ const componentList = [
         routeText: '/editGood или по нажатию карандаша в /myGoodList',
         routeLink: '/editGood',
     },
+    {
+        componentName: 'Компонент "Хедер добавления товаров"',
+        task: 'WSADMIN-33',
+        routeText: '/goodAdd',
+        routeLink: '/goodAdd',
+    },
 ]
 
 
