@@ -10,7 +10,8 @@ import {
     CATEGORIES_LIST_ROUTE,
     MADE_COMPONENT_LIST,
     COUPONS_LIST_ROUTE,
-    ATTRIBUTE_LIST
+    ATTRIBUTE_LIST,
+    EDIT_GOOD
 } from './routerConsts'
 import {LoginContainer} from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -25,6 +26,7 @@ import CategoriesListContainer from "../components/categoriesList/CategoriesList
 import MadeComponentList from '../components/madeComponentList/MadeComponentList'
 import {GoodPageA} from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
+import EditGoodContainer from '../components/editGood/EditGoodContainer'
 
 
 export const authRoutes = [
@@ -71,6 +73,11 @@ export const authRoutes = [
     {
         path: COUPONS_LIST_ROUTE,
         Component: CouponsListContainer
+    },
+
+    {
+        path: EDIT_GOOD,
+        Component: EditGoodContainer
     },
 ]
 

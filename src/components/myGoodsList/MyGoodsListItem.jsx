@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import defaultImage from './no_image.png'
 import {CellList, CellListItem, Img, Label, Td, Tr} from './styledComponents'
 import EditButtonContainer from './editButton/EditButtonContainer'
@@ -66,7 +67,10 @@ const MyGoodsListItem = ({good}) => {
             </Td>
 
             <Td centered>
-               <EditButtonContainer/>
+                <Link to={'/editGood'}>
+                    <EditButtonContainer/>
+                </Link>
+
             </Td>
         </Tr>
     )

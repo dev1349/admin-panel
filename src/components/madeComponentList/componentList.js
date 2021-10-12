@@ -59,6 +59,12 @@ const componentList = [
         routeText: '/couponsList',
         routeLink: '/couponsList',
     },
+    {
+        componentName: 'Компонент "Редактирование товаров"',
+        task: 'WSADMIN-11',
+        routeText: '/editGood или по нажатию карандаша в /myGoodList',
+        routeLink: '/editGood',
+    },
 ]
 
 
