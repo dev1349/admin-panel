@@ -1,10 +1,8 @@
 import React from 'react'
-import {DeleteAttributeButton} from './DeleteAttributeButton'
+import { DeleteAttributeButton } from './DeleteAttributeButton'
 
-const DeleteAttributeButtonContainer = (props) => {
-    return(
-        <DeleteAttributeButton handleDelete={props.handleDelete}/>
-    )
+const DeleteAttributeButtonContainer = props => {
+    return <DeleteAttributeButton handleDelete={props.handleDelete} />
 }
 
-export default DeleteAttributeButtonContainer;
+export default DeleteAttributeButtonContainer

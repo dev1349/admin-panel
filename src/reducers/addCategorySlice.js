@@ -1,7 +1,6 @@
 import initialState from '../mock/addCategoryInitialState'
-import {createSlice} from '@reduxjs/toolkit'
-import {postCategoryFetch} from '../api/addCategoryApi'
-
+import { createSlice } from '@reduxjs/toolkit'
+import { postCategoryFetch } from '../api/addCategoryApi'
 
 const todosSlice = createSlice({
     name: 'addCategory',
@@ -16,18 +15,17 @@ const todosSlice = createSlice({
         },
         resetAttributes() {
             return initialState
-        }
-    }
+        },
+    },
 })
 
-export const {setAttributes, changeFetchStatus, resetAttributes} = todosSlice.actions
+export const { setAttributes, changeFetchStatus, resetAttributes } =
+    todosSlice.actions
 
 export default todosSlice.reducer
 
-
 export const getCategoryFields = state => state.addCategory.categoryFields
 export const getFetchStatus = state => state.addCategory.fetchStatus
-
 
 export const postCategory = () => (dispatch, getState) => {
     const name = getState().addCategory.categoryFields.name

@@ -1,8 +1,7 @@
 import React from 'react'
 import CouponsList from './CouponsList'
-import {getError, getViewMode, setError} from '../../reducers/couponsSlice'
-import {useDispatch, useSelector} from 'react-redux'
-
+import { getError, getViewMode, setError } from '../../reducers/couponsSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const CouponsListContainer = () => {
     const viewMode = useSelector(getViewMode)
@@ -21,6 +20,5 @@ const CouponsListContainer = () => {
         />
     )
 }
-
 
 export default CouponsListContainer

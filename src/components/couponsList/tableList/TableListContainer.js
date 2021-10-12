@@ -1,8 +1,7 @@
 import React from 'react'
 import TableList from './TableList'
-import {useSelector} from 'react-redux'
-import {getAllCoupons} from '../../../reducers/couponsSlice'
-
+import { useSelector } from 'react-redux'
+import { getAllCoupons } from '../../../reducers/couponsSlice'
 
 const TableListContainer = () => {
     const coupons = useSelector(getAllCoupons)
@@ -50,6 +49,5 @@ const TableListContainer = () => {
         />
     )
 }
-
 
 export default TableListContainer

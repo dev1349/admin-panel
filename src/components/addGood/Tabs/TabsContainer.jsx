@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Tabs from './Tabs'
 
-
-const TabsContainer = ({children}) => {
+const TabsContainer = ({ children }) => {
     const tabTitles = [
         {
             id: 0,
@@ -50,7 +49,7 @@ const TabsContainer = ({children}) => {
         },
         {
             id: 11,
-            name: 'Дополнительные вкладки'
+            name: 'Дополнительные вкладки',
         },
     ]
 
@@ -66,6 +65,5 @@ const TabsContainer = ({children}) => {
         </Tabs>
     )
 }
-
 
 export default TabsContainer

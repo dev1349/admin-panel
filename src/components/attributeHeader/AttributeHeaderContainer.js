@@ -1,8 +1,8 @@
 import React from 'react'
-import {AttributeHeader} from './AttributeHeader'
+import { AttributeHeader } from './AttributeHeader'
 
-const AttributeHeaderContainer = (props) => {
-    return(
+const AttributeHeaderContainer = props => {
+    return (
         <div>
             <AttributeHeader
                 firstButton={props.firstButton}
@@ -11,11 +11,9 @@ const AttributeHeaderContainer = (props) => {
                 title={props.title}
             >
                 setSubmit={props.setSubmit}
-
             </AttributeHeader>
         </div>
-
     )
 }
 
-export default AttributeHeaderContainer;
+export default AttributeHeaderContainer

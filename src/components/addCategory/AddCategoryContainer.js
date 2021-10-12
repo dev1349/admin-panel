@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import AddCategory from './AddCategory'
 import {
     addedCategory,
     getCategoryFields,
     getFetchStatus,
-    notAddedCategory, notFillRequireFields,
+    notAddedCategory,
+    notFillRequireFields,
     postCategory,
-    setAttributes
+    setAttributes,
 } from '../../reducers/addCategorySlice'
-import {useDispatch, useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 const AddCategoryContainer = () => {
     const tabs = {
@@ -26,27 +26,27 @@ const AddCategoryContainer = () => {
             {
                 id: 2,
                 title: 'Данные',
-            }
+            },
         ],
         subTabs: [
             {
                 id: 0,
-                title: 'Russian'
+                title: 'Russian',
             },
             {
                 id: 1,
-                title: 'English'
-            }
+                title: 'English',
+            },
         ],
     }
 
     const [activeTabs, setActiveTabs] = useState(0)
     const [activeSubTabs, setActiveSubTabs] = useState(0)
 
-    const tabTitleClickHandler = (tabId) => {
+    const tabTitleClickHandler = tabId => {
         setActiveTabs(tabId)
     }
-    const subTabTitleClickHandler = (subTabId) => {
+    const subTabTitleClickHandler = subTabId => {
         setActiveSubTabs(subTabId)
     }
 
@@ -74,7 +74,6 @@ const AddCategoryContainer = () => {
     const goBackHandler = () => {
         history.goBack()
     }
-
 
     return (
         <AddCategory

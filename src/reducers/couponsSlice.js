@@ -1,6 +1,7 @@
-import {createSelector, createSlice} from '@reduxjs/toolkit'
-import mockCoupons, {currentCoupon} from '../components/couponsList/mockCoupons'
-
+import { createSelector, createSlice } from '@reduxjs/toolkit'
+import mockCoupons, {
+    currentCoupon,
+} from '../components/couponsList/mockCoupons'
 
 export const couponsSlice = createSlice({
     name: 'coupons',
@@ -16,7 +17,7 @@ export const couponsSlice = createSlice({
             state.sortedBy = action.payload
         },
         sortingCouponsList(state, action) {
-            const {name, sortingStatus} = action.payload
+            const { name, sortingStatus } = action.payload
             switch (sortingStatus) {
                 case 'down':
                     state.couponsList.sort((a, b) => {
@@ -48,7 +49,9 @@ export const couponsSlice = createSlice({
             state.viewMode = action.payload
         },
         changeCurrentCoupon(state, action) {
-            state.currentCoupon = state.couponsList.find(el => el.id === action.payload)
+            state.currentCoupon = state.couponsList.find(
+                el => el.id === action.payload
+            )
         },
         resetCurrentCoupon(state) {
             state.currentCoupon = currentCoupon
@@ -57,7 +60,7 @@ export const couponsSlice = createSlice({
             state.couponsList.push(action.payload)
         },
         saveChangedCoupon(state, action) {
-            const {couponIndex, coupon} = action.payload
+            const { couponIndex, coupon } = action.payload
             state.couponsList[couponIndex] = coupon
         },
         changeCouponId(state, action) {
@@ -104,8 +107,8 @@ export const couponsSlice = createSlice({
         },
         setError(state, action) {
             state.error = action.payload
-        }
-    }
+        },
+    },
 })
 
 export const {
@@ -130,35 +133,44 @@ export const {
     changeCouponUseCount,
     changeCouponUseOneClientCount,
     changeCouponStatus,
-    setError
+    setError,
 } = couponsSlice.actions
 
 export default couponsSlice.reducer
 
-
 export const sortingCoupons = (name, newSortingStatus) => dispatch => {
-    dispatch(changeSortingStatus({[name]: newSortingStatus}))
-    dispatch(sortingCouponsList({name, sortingStatus: newSortingStatus}))
+    dispatch(
+        changeSortingStatus({
+            [name]: newSortingStatus,
+        })
+    )
+    dispatch(
+        sortingCouponsList({
+            name,
+            sortingStatus: newSortingStatus,
+        })
+    )
 }
 
-
 export const getAllCoupons = state => state.coupons.couponsList
-export const getCurrentCoupons = id => state => state.coupons.couponsList.find(el => el.id === id)
+export const getCurrentCoupons = id => state =>
+    state.coupons.couponsList.find(el => el.id === id)
 export const getError = state => state.coupons.error
 export const getCurrentCouponId = state => state.coupons.currentCoupon.id
 export const getViewMode = state => state.coupons.viewMode
 export const getCurrentCoupon = state => state.coupons.currentCoupon
-export const getSortingStatus = name => createSelector(
-    state => state.coupons.sortedBy,
-    sortedBy => {
-        if (sortedBy[name]) {
-            return sortedBy[name]
+export const getSortingStatus = name =>
+    createSelector(
+        state => state.coupons.sortedBy,
+        sortedBy => {
+            if (sortedBy[name]) {
+                return sortedBy[name]
+            }
+            return 'none'
         }
-        return 'none'
-    }
-)
+    )
 
-export const changeDiscountValue = (value) => (dispatch, getState) => {
+export const changeDiscountValue = value => (dispatch, getState) => {
     const discountType = getState().coupons.currentCoupon.discount.type
 
     if (discountType === 'percent') {
@@ -178,7 +190,10 @@ export const goToEditMode = (viewMode, id) => (dispatch, getState) => {
     dispatch(changeViewMode(viewMode))
 
     if (viewMode === 'add') {
-        const newCouponId = Math.max(...getState().coupons.couponsList.map(coupon => coupon.id)) + 1
+        const newCouponId =
+            Math.max(
+                ...getState().coupons.couponsList.map(coupon => coupon.id)
+            ) + 1
         dispatch(changeCouponId(newCouponId))
         return
     }
@@ -212,18 +227,23 @@ export const saveCoupon = () => (dispatch, getState) => {
 
     if (viewMode === 'edit') {
         const id = getState().coupons.currentCoupon.id
-        const couponIndex = getState().coupons.couponsList.findIndex(coupon => coupon.id === id)
+        const couponIndex = getState().coupons.couponsList.findIndex(
+            coupon => coupon.id === id
+        )
         coupon = getState().coupons.currentCoupon
-        dispatch(saveChangedCoupon({
-            couponIndex, coupon
-        }))
+        dispatch(
+            saveChangedCoupon({
+                couponIndex,
+                coupon,
+            })
+        )
     }
 
     dispatch(changeViewMode('list'))
     dispatch(resetCurrentCoupon())
 }
 
-export const changeDiscountType = (value) => dispatch => {
+export const changeDiscountType = value => dispatch => {
     dispatch(changeCouponDiscountType(value))
     dispatch(changeCouponDiscountValue(null))
 }

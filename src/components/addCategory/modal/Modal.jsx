@@ -2,8 +2,7 @@ import React from 'react'
 import './Modal.sass'
 import Button from '../button/Button'
 
-
-const Modal = ({message, action}) => {
+const Modal = ({ message, action }) => {
     return (
         <div className="modal--overlay" onClick={action}>
             <div className="modal--window">
@@ -17,6 +16,5 @@ const Modal = ({message, action}) => {
         </div>
     )
 }
-
 
 export default Modal

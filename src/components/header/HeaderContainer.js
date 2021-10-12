@@ -1,9 +1,12 @@
 import React from 'react'
 import Header from './Header'
-import {useDispatch, useSelector} from 'react-redux'
-import {getActiveSubMenu, getHeaderItems, setActiveSubMenu} from '../../reducers/headerSlice'
-import {getStatisticsId} from '../../reducers/statisticsSlice'
-
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    getActiveSubMenu,
+    getHeaderItems,
+    setActiveSubMenu,
+} from '../../reducers/headerSlice'
+import { getStatisticsId } from '../../reducers/statisticsSlice'
 
 const HeaderContainer = () => {
     const headerItems = useSelector(getHeaderItems)
@@ -11,7 +14,7 @@ const HeaderContainer = () => {
     const statisticsId = useSelector(getStatisticsId)
 
     const dispatch = useDispatch()
-    const setActiveSubmenu = (id) => {
+    const setActiveSubmenu = id => {
         dispatch(setActiveSubMenu(id))
     }
 
@@ -24,6 +27,5 @@ const HeaderContainer = () => {
         />
     )
 }
-
 
 export default HeaderContainer

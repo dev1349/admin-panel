@@ -1,15 +1,14 @@
 import React from 'react'
 import Buttons from './Buttons'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
     getAttributeGroupMode,
     isButtonDisabled,
     isGroupDeletingListEmpty,
     removeSelectedAttributesGroup,
     saveGroup,
-    switchMode
+    switchMode,
 } from '../../../reducers/attributeGroupSlice'
-
 
 const ButtonsContainer = () => {
     const attributeGroupMode = useSelector(getAttributeGroupMode)
@@ -38,6 +37,5 @@ const ButtonsContainer = () => {
         />
     )
 }
-
 
 export default ButtonsContainer

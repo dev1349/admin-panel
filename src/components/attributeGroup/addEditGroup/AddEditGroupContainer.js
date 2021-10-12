@@ -1,10 +1,10 @@
 import React from 'react'
 import AddEditGroup from './AddEditGroup'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
     changeFieldsValue,
     getAddAttributeGroupFields,
-    getAttributeGroupMode
+    getAttributeGroupMode,
 } from '../../../reducers/attributeGroupSlice'
 
 const AddEditGroupContainer = () => {
@@ -24,6 +24,5 @@ const AddEditGroupContainer = () => {
         />
     )
 }
-
 
 export default AddEditGroupContainer

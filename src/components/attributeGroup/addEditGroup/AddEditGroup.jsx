@@ -2,16 +2,30 @@ import React from 'react'
 import ContainerWithHead from '../ContainerWithHead'
 import Field from '../field/Field'
 
-
-const AddEditGroup = ({addAttributeGroupFields, attributeGroupMode, changeAddAttributesGroupFields}) => {
-    console.log('EditAttributeGroup', addAttributeGroupFields)
-    const {name, uaName, sortOrder} = addAttributeGroupFields
+const AddEditGroup = ({
+    addAttributeGroupFields,
+    attributeGroupMode,
+    changeAddAttributesGroupFields,
+}) => {
+    const { name, uaName, sortOrder } = addAttributeGroupFields
 
     return (
         <ContainerWithHead
-            icon={attributeGroupMode === 'edit' ? '#edit' : attributeGroupMode === 'add' ? '#plus' : null}
+            icon={
+                attributeGroupMode === 'edit'
+                    ? '#edit'
+                    : attributeGroupMode === 'add'
+                    ? '#plus'
+                    : null
+            }
             size={12}
-            title={attributeGroupMode === 'add' ? 'Добавление группы' : attributeGroupMode === 'edit' ? 'Редактирование группы' : null}
+            title={
+                attributeGroupMode === 'add'
+                    ? 'Добавление группы'
+                    : attributeGroupMode === 'edit'
+                    ? 'Редактирование группы'
+                    : null
+            }
         >
             <Field
                 type={'input'}
@@ -44,6 +58,5 @@ const AddEditGroup = ({addAttributeGroupFields, attributeGroupMode, changeAddAtt
         </ContainerWithHead>
     )
 }
-
 
 export default AddEditGroup

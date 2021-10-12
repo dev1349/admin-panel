@@ -1,11 +1,8 @@
 import React from 'react'
-import {EditGood} from './EditGood';
-
+import { EditGood } from './EditGood'
 
 const EditGoodContainer = () => {
-    return(
-        <EditGood/>
-    )
+    return <EditGood />
 }
 
 export default EditGoodContainer

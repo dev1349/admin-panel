@@ -1,9 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
-import {ColTmp} from '../colTmp/ColTmp'
-import {RowTmp} from '../rowTmp/RowTmp'
+import { ColTmp } from '../colTmp/ColTmp'
+import { RowTmp } from '../rowTmp/RowTmp'
 
 //todo: удалить после перехода на atomic design
-export const Template1 = ({children}) => {
+export const Template1 = ({ children }) => {
     return (
         <Template1Style>
             <ColTmp>
@@ -18,5 +19,5 @@ export const Template1 = ({children}) => {
 }
 
 const Template1Style = styled.div`
-  color: ${props => props.theme.field};
+    color: ${props => props.theme.field};
 `

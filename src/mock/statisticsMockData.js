@@ -1,7 +1,6 @@
 export const statisticsMockData = {
     id: 1000,
     statisticsItems: [
-
         {
             id: 1,
 
@@ -10,19 +9,19 @@ export const statisticsMockData = {
                 {
                     id: 11,
                     name_title: 'В прогрессе',
-                    countEl: 2
+                    countEl: 2,
                 },
                 {
                     id: 12,
                     name_title: 'Завершено',
-                    countEl: 5
+                    countEl: 5,
                 },
                 {
                     id: 13,
                     name_title: 'Возвраты',
-                    countEl: 5
+                    countEl: 5,
                 },
-            ]
+            ],
         },
         {
             id: 2,
@@ -31,14 +30,14 @@ export const statisticsMockData = {
                 {
                     id: 21,
                     name_title: 'Онлайн',
-                    countEl: 2
+                    countEl: 2,
                 },
                 {
                     id: 22,
                     name_title: 'В ожидании',
-                    countEl: 0
+                    countEl: 0,
                 },
-            ]
+            ],
         },
 
         {
@@ -48,14 +47,14 @@ export const statisticsMockData = {
                 {
                     id: 31,
                     name_title: 'Нет в наличии',
-                    countEl: 2
+                    countEl: 2,
                 },
                 {
                     id: 32,
                     name_title: 'Отзывы',
-                    countEl: 0
+                    countEl: 0,
                 },
-            ]
+            ],
         },
         {
             id: 4,
@@ -64,25 +63,25 @@ export const statisticsMockData = {
                 {
                     id: 41,
                     name_title: 'Отзывы о магазине',
-                    countEl: 2
+                    countEl: 2,
                 },
                 {
                     id: 42,
                     name_title: 'Заказ обратн. звонка',
-                    countEl: 15
+                    countEl: 15,
                 },
 
                 {
                     id: 43,
                     name_title: 'Вопросы о товарах',
-                    countEl: 0
+                    countEl: 0,
                 },
                 {
                     id: 44,
                     name_title: 'Комментарии',
-                    countEl: 0
+                    countEl: 0,
                 },
-            ]
+            ],
         },
         {
             id: 5,
@@ -91,12 +90,9 @@ export const statisticsMockData = {
                 {
                     id: 55,
                     name_title: 'В ожидании',
-                    countEl: 2
+                    countEl: 2,
                 },
-
-            ]
-        }
-
-
-    ]
+            ],
+        },
+    ],
 }

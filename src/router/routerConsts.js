@@ -9,6 +9,7 @@ export const ADD_CATEGORY_ROUTE = '/addCategory'
 export const ATTRIBUTE_GROUP = '/attributeGroup'
 export const MY_GOODS_LIST_ROUTE = '/myGoodsList'
 export const MADE_COMPONENT_LIST = '/madeComponentList'
-export const CATEGORIES_LIST_ROUTE = `/categoriesList/:categoryId?/:subcategoryId?`
+export const CATEGORIES_LIST_ROUTE =
+    '/categoriesList/:categoryId?/:subcategoryId?'
 export const COUPONS_LIST_ROUTE = '/couponsList'
 export const EDIT_GOOD = '/editGood'

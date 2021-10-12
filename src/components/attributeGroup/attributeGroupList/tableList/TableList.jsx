@@ -3,32 +3,29 @@ import styled from 'styled-components'
 import TableListItem from './TableListItem'
 import ColumnHead from './ColumnHead'
 
-
 const Table = styled.table`
-  width: 100%;
-  border: 1px solid lightgray;
-  border-collapse: collapse;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
 `
 
 const Thead = styled.thead`
-  background-color: lightgray;
+    background-color: lightgray;
 `
 
-const Tbody = styled.tbody`
-`
-
+const Tbody = styled.tbody``
 
 const TableList = ({
-                       columnTitle,
-                       attributeGroupItems,
-                       editAttributeGroup,
-                       addRemoveIdGroupForDeleting,
-                       idGroupArrayForDeleting,
-                       sortAttributeGroup,
-                       sortOrder,
-                       isAllGroupChecked,
-                       checkedAllGroup
-                   }) => {
+    columnTitle,
+    attributeGroupItems,
+    editAttributeGroup,
+    addRemoveIdGroupForDeleting,
+    idGroupArrayForDeleting,
+    sortAttributeGroup,
+    sortOrder,
+    isAllGroupChecked,
+    checkedAllGroup,
+}) => {
     return (
         <Table>
             <Thead>
@@ -41,22 +38,20 @@ const TableList = ({
                 />
             </Thead>
             <Tbody>
-
-                {attributeGroupItems.map((item) => (
-                        <TableListItem
-                            item={item}
-                            key={item.id}
-                            editAttributeGroup={editAttributeGroup}
-                            addRemoveIdGroupForDeleting={addRemoveIdGroupForDeleting}
-                            idGroupArrayForDeleting={idGroupArrayForDeleting}
-                        />
-                    )
-                )}
-
+                {attributeGroupItems.map(item => (
+                    <TableListItem
+                        item={item}
+                        key={item.id}
+                        editAttributeGroup={editAttributeGroup}
+                        addRemoveIdGroupForDeleting={
+                            addRemoveIdGroupForDeleting
+                        }
+                        idGroupArrayForDeleting={idGroupArrayForDeleting}
+                    />
+                ))}
             </Tbody>
         </Table>
     )
 }
-
 
 export default TableList

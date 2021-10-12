@@ -1,6 +1,6 @@
 import React from 'react'
 import EditCoupon from './EditCoupon'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
     changeCouponAuthUser,
     changeCouponCode,
@@ -15,50 +15,49 @@ import {
     changeCouponUseOneClientCount,
     changeDiscountType,
     changeDiscountValue,
-    getCurrentCoupon
+    getCurrentCoupon,
 } from '../../../reducers/couponsSlice'
-
 
 const EditCouponContainer = () => {
     const currentCoupon = useSelector(getCurrentCoupon)
     const dispatch = useDispatch()
-    const changeCouponNameHandler = (value) => {
+    const changeCouponNameHandler = value => {
         dispatch(changeCouponName(value))
     }
-    const changeCouponCodeHandler = (value) => {
+    const changeCouponCodeHandler = value => {
         dispatch(changeCouponCode(value))
     }
-    const changeCouponDiscountTypeHandler = (value) => {
+    const changeCouponDiscountTypeHandler = value => {
         dispatch(changeDiscountType(value))
     }
-    const changeCouponDiscountValueHandler = (value) => {
+    const changeCouponDiscountValueHandler = value => {
         dispatch(changeDiscountValue(value))
     }
-    const changeCouponTotalSumHandler = (value) => {
+    const changeCouponTotalSumHandler = value => {
         dispatch(changeCouponTotalSum(value))
     }
-    const changeCouponAuthUserHandler = (value) => {
+    const changeCouponAuthUserHandler = value => {
         dispatch(changeCouponAuthUser(value))
     }
-    const changeCouponGoodHandler = (value) => {
+    const changeCouponGoodHandler = value => {
         dispatch(changeCouponGood(value))
     }
-    const changeCouponGoodCategoryHandler = (value) => {
+    const changeCouponGoodCategoryHandler = value => {
         dispatch(changeCouponGoodCategory(value))
     }
-    const changeCouponStartDateHandler = (value) => {
+    const changeCouponStartDateHandler = value => {
         dispatch(changeCouponStartDate(value))
     }
-    const changeCouponEndDateHandler = (value) => {
+    const changeCouponEndDateHandler = value => {
         dispatch(changeCouponEndDate(value))
     }
-    const changeCouponUseCountHandler = (value) => {
+    const changeCouponUseCountHandler = value => {
         dispatch(changeCouponUseCount(value))
     }
-    const changeCouponUseOneClientCountHandler = (value) => {
+    const changeCouponUseOneClientCountHandler = value => {
         dispatch(changeCouponUseOneClientCount(value))
     }
-    const changeCouponStatusHandler = (value) => {
+    const changeCouponStatusHandler = value => {
         dispatch(changeCouponStatus(value))
     }
 
@@ -81,6 +80,5 @@ const EditCouponContainer = () => {
         />
     )
 }
-
 
 export default EditCouponContainer

@@ -8,7 +8,7 @@ import {
 } from '../actions/actionTypes'
 
 const initialState = {
-    allAttribute:[
+    allAttribute: [
         {
             id: 0,
             status: false,
@@ -32,63 +32,68 @@ const initialState = {
             nameEng: '',
             group: 'grop3',
             sortingOrder: '2',
-        }
+        },
     ],
     attributeItem: {
         name: '',
         attributeGroup: {
             id: null,
-            name: ''
+            name: '',
         },
-        attributeType: {}
-    }
+        attributeType: {},
+    },
 }
 
-export function attributeReducer(state= initialState, action){
-    switch (action.type){
+export function attributeReducer(state = initialState, action) {
+    switch (action.type) {
         case POST_ATTRIBUTE_SUCCESS:
             return {
                 ...state,
-                allAttribute: [...state.allAttribute, action.payload]
+                allAttribute: [...state.allAttribute, action.payload],
             }
         case PUT_ATTRIBUTE_SUCCESS:
             return {
                 ...state,
-                allAttribute: [...state.allAttribute.map((el)=> {
-
-                    if(el.id === action.payload.elementId) {
-                        el.name = action.payload.data.nameEng
-                    }
-                    return el // Если все работает попробовать написать через тернарный оператор
-                })]
+                allAttribute: [
+                    ...state.allAttribute.map(el => {
+                        if (el.id === action.payload.elementId) {
+                            el.name = action.payload.data.nameEng
+                        }
+                        return el // Если все работает попробовать написать через тернарный оператор
+                    }),
+                ],
             }
         case DELETE_ATTRIBUTE_SUCCESS:
             return {
                 ...state,
-                allAttribute: [...state.allAttribute.filter((item) => item.id !== action.payload.id)]
+                allAttribute: [
+                    ...state.allAttribute.filter(
+                        item => item.id !== action.payload.id
+                    ),
+                ],
             }
         case PUT_CHECK:
             return {
                 ...state,
-                allAttribute: [...state.allAttribute.map((el)=> {
-                    if(el.id !== (+action.payload)) return el
-                    el.status = !el.status
-                    return el
-                })]
+                allAttribute: [
+                    ...state.allAttribute.map(el => {
+                        if (el.id !== +action.payload) return el
+                        el.status = !el.status
+                        return el
+                    }),
+                ],
             }
         case GET_ALL_ATTRIBUTE_SUCCESS:
             return {
                 ...state,
-                allAttribute: action.payload
+                allAttribute: action.payload,
             }
         case CHANGE_ADD_ATTRIBUTE_ITEM:
             return {
                 ...state,
-                attributeItem: {...state.attributeItem, ...action.payload},
+                attributeItem: { ...state.attributeItem, ...action.payload },
             }
         default:
             return state
-
     }
-
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 import i18n from 'i18next'
-import {withTranslation} from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 import App from './App'
 
 const AppContainer = () => {
     if (i18n.isInitialized) {
-        return <App/>
+        return <App />
     } else {
-        return <div/>
+        return <div />
     }
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import {AddAttributeButton} from './AddAttributeButton'
+import { AddAttributeButton } from './AddAttributeButton'
 
-const AddAttributesContainer = (props) => {
-    return(
-        <AddAttributeButton showAddAttribute={props.handleShowAddAttribute}/>
+const AddAttributesContainer = props => {
+    return (
+        <AddAttributeButton showAddAttribute={props.handleShowAddAttribute} />
     )
 }
 
-export default AddAttributesContainer;
+export default AddAttributesContainer

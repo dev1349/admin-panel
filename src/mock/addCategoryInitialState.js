@@ -5,7 +5,7 @@ const initialState = {
         englishName: '',
         englishDescription: '',
     },
-    fetchStatus: 'idle'
+    fetchStatus: 'idle',
 }
 
 export default initialState

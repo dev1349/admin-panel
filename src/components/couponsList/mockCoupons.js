@@ -15,7 +15,7 @@ const mockCoupons = [
         endDate: '2021-09-30T19:33:54.344Z',
         useCount: 10,
         useOneClientCount: 10,
-        status: true
+        status: true,
     },
     {
         id: 1,
@@ -33,7 +33,7 @@ const mockCoupons = [
         endDate: '2021-09-30T19:33:54.344Z',
         useCount: 5,
         useOneClientCount: 2,
-        status: true
+        status: true,
     },
     {
         id: 2,
@@ -51,7 +51,7 @@ const mockCoupons = [
         endDate: '2021-09-30T19:33:54.344Z',
         useCount: 8,
         useOneClientCount: 3,
-        status: true
+        status: true,
     },
 ]
 
@@ -71,8 +71,7 @@ export const currentCoupon = {
     endDate: null,
     useCount: null,
     useOneClientCount: null,
-    status: null
+    status: null,
 }
-
 
 export default mockCoupons

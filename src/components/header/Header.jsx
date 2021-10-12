@@ -3,19 +3,23 @@ import './Header.sass'
 import HeaderItem from './HeaderItem'
 import StatisticsContainer from '../statistics/StatisticsContainer'
 
-const Header = ({headerItems, activeSubMenu, setActiveSubMenu, statisticsId}) => {
-
+const Header = ({
+    headerItems,
+    activeSubMenu,
+    setActiveSubMenu,
+    statisticsId,
+}) => {
     const setActiveSubMenuId = () => {
         setActiveSubMenu(null)
     }
 
     return (
-
         <ul className="header">
-            {activeSubMenu && <div className="header--overlay" onClick={setActiveSubMenuId}/>}
+            {activeSubMenu && (
+                <div className="header--overlay" onClick={setActiveSubMenuId} />
+            )}
 
-            {headerItems.map(({id, title, icon, subMenu}) => {
-
+            {headerItems.map(({ id, title, icon, subMenu }) => {
                 return (
                     <HeaderItem
                         key={id}
@@ -29,17 +33,13 @@ const Header = ({headerItems, activeSubMenu, setActiveSubMenu, statisticsId}) =>
                 )
             })}
 
-
             <StatisticsContainer
                 isSubMenuActive={activeSubMenu === statisticsId}
                 setActiveSubMenu={setActiveSubMenu}
                 statisticsId={statisticsId}
             />
-
         </ul>
-
     )
 }
-
 
 export default Header

@@ -1,13 +1,12 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import initialState from '../mock/goodTypeInitialState'
 import {
     deleteGoodTypeFetch,
     getAllGoodTypeFetch,
     getGoodTypeFetch,
     postGoodTypeFetch,
-    putGoodTypeFetch
+    putGoodTypeFetch,
 } from '../api/goodTypeApi'
-
 
 const goodTypeSlice = createSlice({
     name: 'goodType',
@@ -23,12 +22,14 @@ const goodTypeSlice = createSlice({
             state.allGoodType = action.payload
         },
         putGoodTypeSuccess(state) {
-            return {...state}
+            return {
+                ...state,
+            }
         },
         deleteGoodTypeSuccess(state, action) {
-            state.allGoodType.filter((item) => item.id !== action.payload.id)
+            state.allGoodType.filter(item => item.id !== action.payload.id)
         },
-    }
+    },
 })
 
 export const {
@@ -36,14 +37,12 @@ export const {
     getGoodTypeSuccess,
     getAllGoodTypeSuccess,
     putGoodTypeSuccess,
-    deleteGoodTypeSuccess
+    deleteGoodTypeSuccess,
 } = goodTypeSlice.actions
 
 export default goodTypeSlice.reducer
 
-
 export const allGoodType = state => state.goodType.allGoodType
-
 
 export const postGoodType = goodType => dispatch => {
     postGoodTypeFetch(goodType)
@@ -52,13 +51,13 @@ export const postGoodType = goodType => dispatch => {
 }
 
 export const getGoodType = id => dispatch => {
-    getGoodTypeFetch(id)
-        .then(data => dispatch(getGoodTypeSuccess(data)))
+    getGoodTypeFetch(id).then(data => dispatch(getGoodTypeSuccess(data)))
 }
 
 export const getAllGoodType = () => dispatch => {
-    getAllGoodTypeFetch()
-        .then(data => dispatch(getAllGoodTypeSuccess(Object.values(data))))
+    getAllGoodTypeFetch().then(data =>
+        dispatch(getAllGoodTypeSuccess(Object.values(data)))
+    )
 }
 
 export const putGoodType = goodType => dispatch => {
@@ -68,8 +67,7 @@ export const putGoodType = goodType => dispatch => {
 }
 
 export const deleteGoodType = goodType => dispatch => {
-    deleteGoodTypeFetch(goodType)
-        .then(data => {
-            dispatch(deleteGoodTypeSuccess(data))
-        })
+    deleteGoodTypeFetch(goodType).then(data => {
+        dispatch(deleteGoodTypeSuccess(data))
+    })
 }

@@ -73,5 +73,4 @@ const componentList = [
     },
 ]
 
-
 export default componentList

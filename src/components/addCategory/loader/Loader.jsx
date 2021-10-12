@@ -1,7 +1,6 @@
 import React from 'react'
 import './Loader.sass'
 
-
 const Loader = () => {
     return (
         <div className="loader--overlay">
@@ -9,6 +8,5 @@ const Loader = () => {
         </div>
     )
 }
-
 
 export default Loader

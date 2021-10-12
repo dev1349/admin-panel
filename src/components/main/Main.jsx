@@ -1,5 +1,3 @@
 import React from 'react'
 
-export const Main = () => (
-        <div>Hello world</div>
-)
+export const Main = () => <div>Hello world</div>

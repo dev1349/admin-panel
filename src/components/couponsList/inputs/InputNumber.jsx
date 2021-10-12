@@ -2,52 +2,57 @@ import styled from 'styled-components'
 import React from 'react'
 
 const FieldContainer = styled.div`
-  padding: 5px 0;
+    padding: 5px 0;
 
-  @media (min-width: 600px) {
-    display: flex;
-    align-items: center;
-  }
+    @media (min-width: 600px) {
+        display: flex;
+        align-items: center;
+    }
 `
 
 const FieldLabel = styled.label`
-  display: block;
+    display: block;
 
-  @media (min-width: 600px) {
-    width: 25%;
-    text-align: right;
-  }
+    @media (min-width: 600px) {
+        width: 25%;
+        text-align: right;
+    }
 `
 
 const FieldInput = styled.input`
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 
-  @media (min-width: 600px) {
-    margin-left: 10px;
-    width: 75%;
-  }
+    @media (min-width: 600px) {
+        margin-left: 10px;
+        width: 75%;
+    }
 `
 
-
-const InputNumber = ({placeholder, name, label, id, value, onChange, autofocus, disabled}) => {
-    const changeHandler = (evt) => {
-        const sendingValue = evt.target.value === '' ? null : parseInt(evt.target.value)
+const InputNumber = ({
+    placeholder,
+    name,
+    label,
+    id,
+    value,
+    onChange,
+    autofocus,
+    disabled,
+}) => {
+    const changeHandler = evt => {
+        const sendingValue =
+            evt.target.value === '' ? null : parseInt(evt.target.value)
         onChange(sendingValue)
     }
 
-    const inputNumberKeyDownHandler = (evt) => {
+    const inputNumberKeyDownHandler = evt => {
         if (evt.code === 'KeyE') {
             evt.preventDefault()
         }
     }
     return (
         <FieldContainer>
-            <FieldLabel
-                htmlFor={id}
-            >
-                {label}
-            </FieldLabel>
+            <FieldLabel htmlFor={id}>{label}</FieldLabel>
             <FieldInput
                 placeholder={placeholder}
                 type={'number'}
@@ -62,6 +67,5 @@ const InputNumber = ({placeholder, name, label, id, value, onChange, autofocus, 
         </FieldContainer>
     )
 }
-
 
 export default InputNumber

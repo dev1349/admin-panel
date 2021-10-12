@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {postGood} from '../../reducers/goodsSlice'
-import {AddGood} from './AddGood'
-import {allGoodType, getAllGoodType} from '../../reducers/goodTypeSlice'
-
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { postGood } from '../../reducers/goodsSlice'
+import { AddGood } from './AddGood'
+import { allGoodType, getAllGoodType } from '../../reducers/goodTypeSlice'
 
 const AddGoodContainer = () => {
     const [values, setValues] = useState({})
@@ -30,10 +29,10 @@ const AddGoodContainer = () => {
         })
     }
 
-    const handleChangeSelect = (event) => {
+    const handleChangeSelect = event => {
         setValues({
             ...values,
-            'goodType': allGoodTypes[event.target.value]
+            goodType: allGoodTypes[event.target.value],
         })
     }
 
@@ -41,15 +40,16 @@ const AddGoodContainer = () => {
         addGood(values)
     }
 
-    return (
-        allGoodTypes ?
-            <AddGood allGoodType={allGoodTypes}
-                     handleChange={handleChange}
-                     handleChangeSelect={handleChangeSelect}
-                     handleSubmit={handleSubmit}/>
-            : <div/>
+    return allGoodTypes ? (
+        <AddGood
+            allGoodType={allGoodTypes}
+            handleChange={handleChange}
+            handleChangeSelect={handleChangeSelect}
+            handleSubmit={handleSubmit}
+        />
+    ) : (
+        <div />
     )
 }
-
 
 export default AddGoodContainer

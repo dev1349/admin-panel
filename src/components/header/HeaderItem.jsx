@@ -1,10 +1,15 @@
 import React from 'react'
-import HeaderSubMenu from "./HeaderSubMenu";
+import HeaderSubMenu from './HeaderSubMenu'
 import icons from './icons.svg'
 
-
-const HeaderItem = ({id, icon, title, subMenu, isSubMenuActive, setActiveSubMenu}) => {
-
+const HeaderItem = ({
+    id,
+    icon,
+    title,
+    subMenu,
+    isSubMenuActive,
+    setActiveSubMenu,
+}) => {
     const iconsStyle = ['header--icon']
     !title && iconsStyle.push('header--icon__nomargin')
     isSubMenuActive && iconsStyle.push('header--icon__active')
@@ -22,21 +27,26 @@ const HeaderItem = ({id, icon, title, subMenu, isSubMenuActive, setActiveSubMenu
 
     return (
         <li className={itemStyle.join(' ')} onClick={setActiveSubMenuId}>
-            {icon && <svg className={iconsStyle.join(' ')} height="15px" width="15px">
-                <use xlinkHref={icons + icon}/>
-            </svg>}
+            {icon && (
+                <svg
+                    className={iconsStyle.join(' ')}
+                    height="15px"
+                    width="15px"
+                >
+                    <use xlinkHref={icons + icon} />
+                </svg>
+            )}
 
-            {title && <div className={'header--description'}>
-                {title}
-            </div>}
+            {title && <div className={'header--description'}>{title}</div>}
 
-            {subMenu && isSubMenuActive && <HeaderSubMenu
-                subMenuItems={subMenu.subMenuItems}
-                title={subMenu.title}
-            />}
+            {subMenu && isSubMenuActive && (
+                <HeaderSubMenu
+                    subMenuItems={subMenu.subMenuItems}
+                    title={subMenu.title}
+                />
+            )}
         </li>
     )
 }
-
 
 export default HeaderItem

@@ -1,11 +1,9 @@
 import React from 'react'
 import ColumnsTitle from './ColumnsTitle'
 import MyGoodsListItem from './MyGoodsListItem'
-import {Container, Table, Tbody, Thead} from './styledComponents'
+import { Container, Table, Tbody, Thead } from './styledComponents'
 
-
-const MyGoodsList = ({allGoods, columnsTitle, sortingStatus}) => {
-
+const MyGoodsList = ({ allGoods, columnsTitle, sortingStatus }) => {
     return (
         <Container>
             <Table>
@@ -16,21 +14,13 @@ const MyGoodsList = ({allGoods, columnsTitle, sortingStatus}) => {
                     />
                 </Thead>
                 <Tbody>
-
-                    {allGoods.map((good) => (
-                            <MyGoodsListItem
-                                key={good.id}
-                                good={good}
-                            />
-                        )
-                    )}
-
+                    {allGoods.map(good => (
+                        <MyGoodsListItem key={good.id} good={good} />
+                    ))}
                 </Tbody>
             </Table>
         </Container>
-
     )
 }
-
 
 export default MyGoodsList

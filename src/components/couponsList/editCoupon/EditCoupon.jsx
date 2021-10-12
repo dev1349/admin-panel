@@ -7,50 +7,48 @@ import InputSelect from '../inputs/InputSelect'
 import InputRadio from '../inputs/InputRadio'
 import InputFloat from '../inputs/InputFloat'
 
-
 const RadioFieldGroup = styled.div`
-  padding: 5px 0;
+    padding: 5px 0;
 
-  @media (min-width: 600px) {
-    display: flex;
-    align-items: center;
-  }
+    @media (min-width: 600px) {
+        display: flex;
+        align-items: center;
+    }
 `
 
 const RadioFieldGroupLabel = styled.div`
-
-  @media (min-width: 600px) {
-    width: 25%;
-    text-align: right;
-  }
+    @media (min-width: 600px) {
+        width: 25%;
+        text-align: right;
+    }
 `
 
 const RadioFieldSet = styled.div`
-  display: flex;
-  justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
 
-  @media (min-width: 600px) {
-    margin-left: 10px;
-    width: 75%;
-  }
+    @media (min-width: 600px) {
+        margin-left: 10px;
+        width: 75%;
+    }
 `
 
 const EditCoupon = ({
-                        currentCoupon,
-                        changeCouponName,
-                        changeCouponCode,
-                        changeCouponDiscountType,
-                        changeCouponDiscountValue,
-                        changeCouponTotalSum,
-                        changeCouponAuthUser,
-                        changeCouponGood,
-                        changeCouponGoodCategory,
-                        changeCouponStartDate,
-                        changeCouponEndDate,
-                        changeCouponUseCount,
-                        changeCouponUseOneClientCount,
-                        changeCouponStatus
-                    }) => {
+    currentCoupon,
+    changeCouponName,
+    changeCouponCode,
+    changeCouponDiscountType,
+    changeCouponDiscountValue,
+    changeCouponTotalSum,
+    changeCouponAuthUser,
+    changeCouponGood,
+    changeCouponGoodCategory,
+    changeCouponStartDate,
+    changeCouponEndDate,
+    changeCouponUseCount,
+    changeCouponUseOneClientCount,
+    changeCouponStatus,
+}) => {
     return (
         <form>
             <InputText
@@ -78,11 +76,11 @@ const EditCoupon = ({
                 items={[
                     {
                         title: 'Проценты',
-                        value: 'percent'
+                        value: 'percent',
                     },
                     {
                         title: 'Фиксированная сума',
-                        value: 'fixedSum'
+                        value: 'fixedSum',
                     },
                 ]}
                 value={currentCoupon.discount.type}
@@ -93,7 +91,9 @@ const EditCoupon = ({
                 name={'discount.value'}
                 label={'Скидка'}
                 id={'discountValue'}
-                pattern={'^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$'}
+                pattern={
+                    '^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$'
+                }
                 value={currentCoupon.discount.value}
                 onChange={changeCouponDiscountValue}
                 disabled={!currentCoupon.discount.type}
@@ -103,7 +103,9 @@ const EditCoupon = ({
                 name={'totalSum'}
                 label={'Итого'}
                 id={'total'}
-                pattern={'^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$'}
+                pattern={
+                    '^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$'
+                }
                 value={currentCoupon.totalSum}
                 onChange={changeCouponTotalSum}
             />
@@ -140,15 +142,15 @@ const EditCoupon = ({
                 items={[
                     {
                         title: 'Процессоры',
-                        value: 'cpu'
+                        value: 'cpu',
                     },
                     {
                         title: 'Видеокарты',
-                        value: 'videoCard'
+                        value: 'videoCard',
                     },
                     {
                         title: 'Твердотельные накопители',
-                        value: 'ssd'
+                        value: 'ssd',
                     },
                 ]}
                 value={currentCoupon.good}
@@ -161,15 +163,15 @@ const EditCoupon = ({
                 items={[
                     {
                         title: 'Компьютерные комплектующие',
-                        value: 'pc'
+                        value: 'pc',
                     },
                     {
                         title: 'Товары для дома',
-                        value: 'home'
+                        value: 'home',
                     },
                     {
                         title: 'Автотовары',
-                        value: 'auto'
+                        value: 'auto',
                     },
                 ]}
                 value={currentCoupon.goodCategory}
@@ -212,20 +214,18 @@ const EditCoupon = ({
                 items={[
                     {
                         title: 'Включено',
-                        value: true
+                        value: true,
                     },
                     {
                         title: 'Не включено',
-                        value: false
+                        value: false,
                     },
                 ]}
                 value={currentCoupon.status}
                 onChange={changeCouponStatus}
             />
         </form>
-
     )
 }
-
 
 export default EditCoupon

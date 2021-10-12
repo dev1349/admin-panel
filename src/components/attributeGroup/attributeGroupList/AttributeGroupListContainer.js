@@ -1,6 +1,6 @@
 import React from 'react'
 import AttributeGroupList from './AttributeGroupList'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
     addAllGroupForDeleting,
     addRemoveIdGroupForDeleting,
@@ -11,9 +11,8 @@ import {
     getSortOrderGroupName,
     isAllGroupChecked,
     isAttributeGroupListEmpty,
-    sortAttributeGroup
+    sortAttributeGroup,
 } from '../../../reducers/attributeGroupSlice'
-
 
 const AttributeGroupListContainer = () => {
     const attributeGroupMode = useSelector(getAttributeGroupMode)
@@ -52,6 +51,5 @@ const AttributeGroupListContainer = () => {
         />
     )
 }
-
 
 export default AttributeGroupListContainer

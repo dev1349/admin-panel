@@ -30,7 +30,7 @@ const initialState = {
                     {
                         id: 33,
                         title: 'Категории',
-                        link: '/categoriesList'
+                        link: '/categoriesList',
                     },
                     {
                         id: 34,
@@ -52,8 +52,8 @@ const initialState = {
                         id: 38,
                         title: 'О модуле',
                     },
-                ]
-            }
+                ],
+            },
         },
         // {
         //     id: 4,
@@ -72,7 +72,7 @@ const initialState = {
                         id: 1,
                         title: 'Магазин кроссовок',
                     },
-                ]
+                ],
             },
         },
         {
@@ -94,7 +94,7 @@ const initialState = {
                         id: 63,
                         title: 'Форум',
                     },
-                ]
+                ],
             },
         },
         {

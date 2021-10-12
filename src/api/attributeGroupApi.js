@@ -2,16 +2,22 @@ import {
     DELETE_ATTRIBUTE_GROUP_PATH,
     GET_ALL_ATTRIBUTE_GROUP_PATH,
     POST_ATTRIBUTE_GROUP_PATH,
-    PUT_ATTRIBUTE_GROUP_PATH
+    PUT_ATTRIBUTE_GROUP_PATH,
 } from './apiConstants'
-import {deleteRequestOptions, getRequestOptions, postRequestOptions, putRequestOptions} from './requestOptions'
+import {
+    deleteRequestOptions,
+    getRequestOptions,
+    postRequestOptions,
+    putRequestOptions,
+} from './requestOptions'
 
 export const getAllAttributeGroupFetch = () => {
-    return fetch(GET_ALL_ATTRIBUTE_GROUP_PATH, getRequestOptions())
-        .then(response => response.json())
+    return fetch(GET_ALL_ATTRIBUTE_GROUP_PATH, getRequestOptions()).then(
+        response => response.json()
+    )
 }
 
-export const postAttributeGroupFetch = (group) => {
+export const postAttributeGroupFetch = group => {
     return fetch(POST_ATTRIBUTE_GROUP_PATH, postRequestOptions(group))
 }
 

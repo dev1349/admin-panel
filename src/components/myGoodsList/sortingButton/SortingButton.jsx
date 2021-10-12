@@ -1,9 +1,13 @@
 import React from 'react'
-import {TitleButton, TitleCaption} from '../styledComponents'
+import { TitleButton, TitleCaption } from '../styledComponents'
 import Icon from '../Icon'
 
-
-const SortingButton = ({title, name, sortingStatus, changeMyGoodsListSortingStatus}) => {
+const SortingButton = ({
+    title,
+    name,
+    sortingStatus,
+    changeMyGoodsListSortingStatus,
+}) => {
     const sortButtonClickHandler = () => {
         changeMyGoodsListSortingStatus(name)
     }
@@ -12,16 +16,17 @@ const SortingButton = ({title, name, sortingStatus, changeMyGoodsListSortingStat
         <TitleButton onClick={sortButtonClickHandler}>
             <TitleCaption>{title}</TitleCaption>
             <Icon
-                icon={(Object.keys(sortingStatus).length === 0 ||
+                icon={
+                    Object.keys(sortingStatus).length === 0 ||
                     !sortingStatus[name] ||
-                    sortingStatus[name] === 'down') ?
-                    '#sort-down' :
-                    '#sort-up'}
+                    sortingStatus[name] === 'down'
+                        ? '#sort-down'
+                        : '#sort-up'
+                }
                 titleIcon
             />
         </TitleButton>
     )
 }
-
 
 export default SortingButton

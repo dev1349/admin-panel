@@ -1,27 +1,33 @@
 import React from 'react'
 import Button from '../../buttons/Button'
-import styled, {css} from 'styled-components'
-
+import styled, { css } from 'styled-components'
 
 const Tr = styled.tr`
-  border: 1px solid lightgray;
+    border: 1px solid lightgray;
 `
 
 const Td = styled.td`
-  border: 1px solid lightgray;
-  padding: 0 10px;
-  ${props => props.centered && css`
-    text-align: center;
-  `}
-  ${props => props.edit && css`
-    width: 50px;
-    text-align: center;
-  `}
+    border: 1px solid lightgray;
+    padding: 0 10px;
+    ${props =>
+        props.centered &&
+        css`
+            text-align: center;
+        `}
+    ${props =>
+        props.edit &&
+        css`
+            width: 50px;
+            text-align: center;
+        `}
 `
 
-
-const TableListItem = ({item, editAttributeGroup, addRemoveIdGroupForDeleting, idGroupArrayForDeleting}) => {
-
+const TableListItem = ({
+    item,
+    editAttributeGroup,
+    addRemoveIdGroupForDeleting,
+    idGroupArrayForDeleting,
+}) => {
     const editAttributeGroupHandler = () => {
         editAttributeGroup(item.id)
     }
@@ -35,18 +41,20 @@ const TableListItem = ({item, editAttributeGroup, addRemoveIdGroupForDeleting, i
             <Td centered>
                 <input
                     checked={idGroupArrayForDeleting.includes(item.id)}
-                    type={"checkbox"}
+                    type={'checkbox'}
                     onChange={checkHandler}
                 />
             </Td>
 
-            {Object.keys(item).slice(1).map((key, index) => {
-                return (
-                    <Td key={key} centered={index > 0}>
-                        {item[key]}
-                    </Td>
-                )
-            })}
+            {Object.keys(item)
+                .slice(1)
+                .map((key, index) => {
+                    return (
+                        <Td key={key} centered={index > 0}>
+                            {item[key]}
+                        </Td>
+                    )
+                })}
 
             <Td centered edit>
                 <Button
@@ -59,6 +67,5 @@ const TableListItem = ({item, editAttributeGroup, addRemoveIdGroupForDeleting, i
         </Tr>
     )
 }
-
 
 export default TableListItem

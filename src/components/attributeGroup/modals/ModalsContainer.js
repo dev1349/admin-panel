@@ -1,15 +1,13 @@
 import React from 'react'
 import Modals from './Modals'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
     getFetchStatus,
     addedAttributeGroup,
     errorInGroupOperation,
     savedEditedAttributeGroup,
-    deletedAttributeGroup
+    deletedAttributeGroup,
 } from '../../../reducers/attributeGroupSlice'
-
-
 
 const ModalsContainer = () => {
     const fetchStatus = useSelector(getFetchStatus)
@@ -38,6 +36,5 @@ const ModalsContainer = () => {
         />
     )
 }
-
 
 export default ModalsContainer

@@ -22,7 +22,9 @@ export const DELETE_ATTRIBUTE_PATH = SERVER_PATH + '/api/deleteAttribute'
 
 export const POST_CATEGORY_PATH = SERVER_PATH + '/api/postCategory'
 
-export const GET_ALL_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/getAllAttributeGroup'
+export const GET_ALL_ATTRIBUTE_GROUP_PATH =
+    SERVER_PATH + '/api/getAllAttributeGroup'
 export const POST_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/postAttributeGroup'
 export const PUT_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/putAttributeGroup'
-export const DELETE_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/deleteAttributeGroup'
+export const DELETE_ATTRIBUTE_GROUP_PATH =
+    SERVER_PATH + '/api/deleteAttributeGroup'

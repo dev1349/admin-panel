@@ -1,9 +1,18 @@
 import React from 'react'
 
-
-const InputField = ({type, typeOfInput, name, label, id, value, onChange}) => {
-    const onChangeFieldValueHandler = (evt) => {
-        onChange({[name]: evt.target.value})
+const InputField = ({
+    type,
+    typeOfInput,
+    name,
+    label,
+    id,
+    value,
+    onChange,
+}) => {
+    const onChangeFieldValueHandler = evt => {
+        onChange({
+            [name]: evt.target.value,
+        })
     }
 
     switch (type) {
@@ -14,7 +23,7 @@ const InputField = ({type, typeOfInput, name, label, id, value, onChange}) => {
                         <li className="addCategory--inputFieldLabel">
                             <label
                                 htmlFor={id}
-                                className={"addCategory--label"}
+                                className={'addCategory--label'}
                             >
                                 {label}
                             </label>
@@ -24,7 +33,7 @@ const InputField = ({type, typeOfInput, name, label, id, value, onChange}) => {
                                 type={typeOfInput}
                                 name={name}
                                 id={id}
-                                className={"addCategory--input"}
+                                className={'addCategory--input'}
                                 value={value}
                                 onChange={onChangeFieldValueHandler}
                             />
@@ -37,10 +46,7 @@ const InputField = ({type, typeOfInput, name, label, id, value, onChange}) => {
             return (
                 <ul className="addCategory--inputField">
                     <li className="addCategory--inputFieldLabel">
-                        <label
-                            htmlFor={id}
-                            className={"addCategory--label"}
-                        >
+                        <label htmlFor={id} className={'addCategory--label'}>
                             {label}
                         </label>
                     </li>
@@ -48,16 +54,16 @@ const InputField = ({type, typeOfInput, name, label, id, value, onChange}) => {
                         <textarea
                             name={name}
                             id={id}
-                            className={"addCategory--textarea"}
+                            className={'addCategory--textarea'}
                             value={value}
                             onChange={onChangeFieldValueHandler}
                         />
                     </li>
                 </ul>
             )
-        default: return null
+        default:
+            return null
     }
 }
-
 
 export default InputField

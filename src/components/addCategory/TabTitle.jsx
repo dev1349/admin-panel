@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-const TabTitle = ({title, isTabActive, onClickHandler}) => {
+const TabTitle = ({ title, isTabActive, onClickHandler }) => {
     const tabClasses = ['addCategory--tabTitle']
 
     if (isTabActive) tabClasses.push('addCategory--tabTitle__active')
@@ -12,6 +11,5 @@ const TabTitle = ({title, isTabActive, onClickHandler}) => {
         </li>
     )
 }
-
 
 export default TabTitle

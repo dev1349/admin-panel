@@ -6,8 +6,7 @@ import {
     goToListMode,
     saveCoupon,
 } from '../../../../reducers/couponsSlice'
-import {useDispatch, useSelector} from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
 
 const ButtonsContainer = () => {
     const viewMode = useSelector(getViewMode)
@@ -34,6 +33,5 @@ const ButtonsContainer = () => {
         />
     )
 }
-
 
 export default ButtonsContainer
