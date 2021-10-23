@@ -9,6 +9,8 @@ const initialState = {
     },
     forDeleting: [],
     sortOrder: 'none',
+    order: 'asc',
+    orderBy: 'name',
 }
 
 export default initialState

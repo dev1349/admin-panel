@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Template1 } from '../../templtes/template1/Template1'
+import { Template1 } from '../../templates/template1/Template1'
 import { SectionA } from '../../atoms/sectionA/SectionA'
 import { useSelector } from 'react-redux'
 import { style } from '../../../reducers/styleSlice'

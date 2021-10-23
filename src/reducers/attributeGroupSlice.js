@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
 import initialState from '../mock/attributeGroupInitialState'
 import {
     deleteAttributeGroupFetch,
@@ -44,6 +44,12 @@ const attributeGroupSlice = createSlice({
         changeSortOrder(state, action) {
             state.sortOrder = action.payload
         },
+        changeOrder(state, action) {
+            state.order = action.payload
+        },
+        changeOrderBy(state, action) {
+            state.orderBy = action.payload
+        },
     },
 })
 
@@ -57,6 +63,8 @@ export const {
     resetIdForDeletingArray,
     sorting,
     changeSortOrder,
+    changeOrder,
+    changeOrderBy,
 } = attributeGroupSlice.actions
 
 export default attributeGroupSlice.reducer
@@ -66,21 +74,50 @@ export const getAttributeGroupMode = state =>
 export const getFetchStatus = state => state.attributeGroup.fetchStatus
 export const isButtonDisabled = state =>
     state.attributeGroup.fetchStatus !== 'idle'
+export const isGroupNameFieldEmpty = state =>
+    !state.attributeGroup.addAttributeGroupFields.name
+export const isSaveGroupButtonDisabled = createSelector(
+    isButtonDisabled,
+    isGroupNameFieldEmpty,
+    getAttributeGroupMode,
+    state => state.attributeGroup.addAttributeGroupFields.id,
+    state => state.attributeGroup.addAttributeGroupFields.name,
+    state => state.attributeGroup.addAttributeGroupFields.sortOrder,
+    state => state.attributeGroup.attributeGroupItems,
+    (isButtonDisabled, isFieldEmpty, mode, id, name, sortOrder, allGroups) => {
+        if (mode === 'add') {
+            return isButtonDisabled || isFieldEmpty
+        }
+        if (mode === 'edit') {
+            if (!id) return false
+            const currentGroupBeforeChange = allGroups.find(el => el.id === id)
+            const isNotCurrentGroupFieldsChanged =
+                currentGroupBeforeChange.name === name &&
+                currentGroupBeforeChange.sortOrder == sortOrder
+            return isButtonDisabled || isNotCurrentGroupFieldsChanged
+        }
+    }
+)
 export const getAttributeGroupItems = state =>
     state.attributeGroup.attributeGroupItems
 export const getIdGroupForDeletingArray = state =>
     state.attributeGroup.forDeleting
 export const getSortOrderGroupName = state => state.attributeGroup.sortOrder
-export const isAllGroupChecked = state =>
-    state.attributeGroup.attributeGroupItems.length !== 0 &&
-    state.attributeGroup.attributeGroupItems.length ===
-        state.attributeGroup.forDeleting.length
 export const isAttributeGroupListEmpty = state =>
     !state.attributeGroup.attributeGroupItems.length
 export const getAddAttributeGroupFields = state =>
     state.attributeGroup.addAttributeGroupFields
 export const isGroupDeletingListEmpty = state =>
     !state.attributeGroup.forDeleting.length
+
+export const getOrder = state => state.attributeGroup.order
+export const getOrderBy = state => state.attributeGroup.orderBy
+export const getIsAttributeGroupChecked = id => state =>
+    state.attributeGroup.forDeleting.includes(id)
+export const getRowCount = state =>
+    state.attributeGroup.attributeGroupItems.length
+export const getSelectedRowCount = state =>
+    state.attributeGroup.forDeleting.length
 
 const generateSortOrder = el => {
     const newEl = {
@@ -92,40 +129,37 @@ const generateSortOrder = el => {
     return newEl
 }
 
-export const getAllAttributeGroup = () => {
-    return dispatch => {
-        dispatch(changeFetchStatus('pending'))
-        getAllAttributeGroupFetch()
-            .then(data => {
-                const transformData = data.map(el => {
-                    return generateSortOrder(el)
-                })
-
-                dispatch(setAttributeGroup(transformData))
-
-                dispatch(changeFetchStatus('successGetAllGroup'))
-                dispatch(changeFetchStatus('idle'))
+export const getAllAttributeGroup = () => (dispatch, getState) => {
+    dispatch(changeFetchStatus('pending'))
+    getAllAttributeGroupFetch()
+        .then(data => {
+            const transformData = data.map(el => {
+                return generateSortOrder(el)
             })
-            .catch(() => {
-                dispatch(changeFetchStatus('errorGetAllGroup'))
-            })
-    }
+            const comparator = getComparator(
+                getState().attributeGroup.order,
+                getState().attributeGroup.orderBy
+            )
+            const sortedAttributeGroupItems = toSortTable(
+                transformData,
+                comparator
+            )
+            dispatch(setAttributeGroup(sortedAttributeGroupItems))
+            dispatch(changeFetchStatus('successGetAllGroup'))
+            dispatch(changeFetchStatus('idle'))
+        })
+        .catch(() => {
+            dispatch(changeFetchStatus('errorGetAllGroup'))
+        })
 }
 
-export const switchMode = mode => dispatch => {
-    dispatch(changeMode(mode))
-    if (mode === 'list') {
-        dispatch(resetFieldsValue())
-        dispatch(resetIdForDeletingArray())
-    }
+export const returnToListMode = () => dispatch => {
+    dispatch(changeMode('list'))
+    dispatch(resetFieldsValue())
+    dispatch(resetIdForDeletingArray())
 }
 
 export const saveGroup = () => (dispatch, getState) => {
-    if (!getState().attributeGroup.addAttributeGroupFields.name) {
-        dispatch(changeFetchStatus('emptyName'))
-        return
-    }
-
     dispatch(changeFetchStatus('pending'))
     const newGroup = getState().attributeGroup.addAttributeGroupFields
     const mode = getState().attributeGroup.attributeGroupMode
@@ -141,10 +175,7 @@ export const saveGroup = () => (dispatch, getState) => {
     }
 
     if (mode === 'edit') {
-        dispatch(changeFetchStatus('pending'))
-        const editedAttributeGroup =
-            getState().attributeGroup.addAttributeGroupFields
-        putAttributeGroupFetch(editedAttributeGroup)
+        putAttributeGroupFetch(newGroup)
             .then(() => {
                 dispatch(changeFetchStatus('successEditGroup'))
             })
@@ -158,11 +189,11 @@ export const addedAttributeGroup = () => dispatch => {
     dispatch(changeFetchStatus('idle'))
     dispatch(resetFieldsValue())
     dispatch(getAllAttributeGroup())
-    dispatch(switchMode('list'))
+    dispatch(returnToListMode())
 }
 
 export const editAttributeGroup = groupId => (dispatch, getState) => {
-    dispatch(switchMode('edit'))
+    dispatch(changeMode('edit'))
     const currentGroup = getState().attributeGroup.attributeGroupItems.find(
         item => item.id === groupId
     )
@@ -179,7 +210,7 @@ export const savedEditedAttributeGroup = () => dispatch => {
     dispatch(changeFetchStatus('idle'))
     dispatch(resetFieldsValue())
     dispatch(getAllAttributeGroup())
-    dispatch(switchMode('list'))
+    dispatch(returnToListMode())
 }
 
 export const deletedAttributeGroup = () => dispatch => {
@@ -221,51 +252,6 @@ export const removeSelectedAttributesGroup = () => (dispatch, getState) => {
         })
 }
 
-export const sortAttributeGroup = () => (dispatch, getState) => {
-    const attributeGroupItems = getState().attributeGroup.attributeGroupItems
-    let newAttributeGroupItems = [...attributeGroupItems]
-
-    const sortOrder = getState().attributeGroup.sortOrder
-    if (sortOrder === 'none') {
-        newAttributeGroupItems.sort((a, b) => {
-            if (a.name > b.name) {
-                return 1
-            }
-            if (a.name < b.name) {
-                return -1
-            }
-            return 0
-        })
-        dispatch(changeSortOrder('down'))
-    }
-    if (sortOrder === 'up') {
-        newAttributeGroupItems.sort((a, b) => {
-            if (a.name > b.name) {
-                return 1
-            }
-            if (a.name < b.name) {
-                return -1
-            }
-            return 0
-        })
-        dispatch(changeSortOrder('down'))
-    }
-    if (sortOrder === 'down') {
-        newAttributeGroupItems.sort((a, b) => {
-            if (a.name < b.name) {
-                return 1
-            }
-            if (a.name > b.name) {
-                return -1
-            }
-            return 0
-        })
-        dispatch(changeSortOrder('up'))
-    }
-
-    dispatch(sorting(newAttributeGroupItems))
-}
-
 export const addAllGroupForDeleting = () => (dispatch, getState) => {
     const allGroup = getState().attributeGroup.attributeGroupItems
     if (!allGroup.length) return
@@ -278,4 +264,53 @@ export const addAllGroupForDeleting = () => (dispatch, getState) => {
         dispatch(resetIdForDeletingArray())
         allGroup.forEach(item => dispatch(addRemoveIdGroupForDeleting(item.id)))
     }
+}
+
+function descendingComparator(a, b, orderBy) {
+    if (b[orderBy] < a[orderBy]) {
+        return -1
+    }
+    if (b[orderBy] > a[orderBy]) {
+        return 1
+    }
+    return 0
+}
+
+function getComparator(order, orderBy) {
+    return order === 'desc'
+        ? (a, b) => descendingComparator(a, b, orderBy)
+        : (a, b) => -descendingComparator(a, b, orderBy)
+}
+
+// This method is created for cross-browser compatibility, if you don't
+// need to support IE11, you can use Array.prototype.sort() directly
+function stableSort(array, comparator) {
+    const stabilizedThis = array.map((el, index) => [el, index])
+    stabilizedThis.sort((a, b) => {
+        const order = comparator(a[0], b[0])
+        if (order !== 0) {
+            return order
+        }
+        return a[1] - b[1]
+    })
+    return stabilizedThis.map(el => el[0])
+}
+
+const toSortTable = (rows, comparator) => {
+    return stableSort(rows, comparator)
+}
+
+export const clickTableSortLabel = property => (dispatch, getState) => {
+    const order = getState().attributeGroup.order
+    const orderBy = getState().attributeGroup.orderBy
+    const isAsc = orderBy === property && order === 'asc'
+    dispatch(changeOrder(isAsc ? 'desc' : 'asc'))
+    dispatch(changeOrderBy(property))
+    const attributeGroups = getState().attributeGroup.attributeGroupItems
+    const comparator = getComparator(
+        getState().attributeGroup.order,
+        getState().attributeGroup.orderBy
+    )
+    const sortedAttributeGroupItems = toSortTable(attributeGroups, comparator)
+    dispatch(setAttributeGroup(sortedAttributeGroupItems))
 }

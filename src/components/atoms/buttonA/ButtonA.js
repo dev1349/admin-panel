@@ -4,7 +4,11 @@ import { Button } from '@mui/material'
 
 //todo: удалить после перехода на atomic design
 export const ButtonA = props => {
-    return <ButtonAStyle {...props}>{props.children}</ButtonAStyle>
+    return (
+        <ButtonAStyle {...props} color="success">
+            {props.children}
+        </ButtonAStyle>
+    )
 }
 
 const ButtonAStyle = styled(Button)`

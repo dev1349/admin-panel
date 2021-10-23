@@ -32,7 +32,7 @@ const AddCategory = ({
     }
 
     return (
-        <div className={'addCategory--container'}>
+        <div className={'addCategory--wrapper'}>
             {fetchStatus === 'pending' && <Loader />}
 
             {fetchStatus === 'error' && (

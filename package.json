@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@mui/utils": "^5.0.1",
     "@storybook/addon-actions": "^6.3.9",
     "@storybook/addon-essentials": "^6.3.9",
     "@storybook/addon-links": "^6.3.9",
