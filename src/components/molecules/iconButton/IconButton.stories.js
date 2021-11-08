@@ -6,10 +6,12 @@ import EditIcon from '../../atoms/icons/editIcon/EditIcon'
 import SaveIcon from '../../atoms/icons/saveIcon/SaveIcon'
 import UndoIcon from '../../atoms/icons/undoIcon/UndoIcon'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'molecules/IconButtons/IconButton',
     component: IconButton,
+    argTypes: {
+        onClick: { action: 'click' },
+    },
 }
 
 const Template = args => <IconButton {...args} />

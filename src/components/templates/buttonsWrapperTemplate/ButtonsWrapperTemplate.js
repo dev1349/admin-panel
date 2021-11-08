@@ -1,14 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 
-const ButtonsWrapperStyled = styled.div`
-    display: flex;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-`
+const ButtonsWrapperTemplateStyled = styled('div', {
+    name: 'ButtonsWrapperTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyButtonsWrapperTemplate = ({ children }) => {
-    return <ButtonsWrapperStyled>{children}</ButtonsWrapperStyled>
+const WSButtonsWrapperTemplate = ({ children }) => {
+    return (
+        <ButtonsWrapperTemplateStyled>{children}</ButtonsWrapperTemplateStyled>
+    )
 }
 
-export default MyButtonsWrapperTemplate
+export default WSButtonsWrapperTemplate

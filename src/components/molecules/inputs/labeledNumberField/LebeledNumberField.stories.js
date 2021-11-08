@@ -1,7 +1,6 @@
 import React from 'react'
 import LabeledNumberField from './LabeledNumberField'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'molecules/inputs/LabeledNumberField',
     component: LabeledNumberField,
@@ -13,8 +12,9 @@ export const Example1 = Template.bind({})
 Example1.args = {
     id: 'addEditAttributeGroupLabel0',
     label: 'Some label text...',
-    value: 345,
-    onChange: () => alert(345),
-    autoFocus: false,
+    value: 3,
+    onChange: () => console.log('change'),
+    autoFocus: true,
     name: 'sortOrder',
+    pattern: '^[1-9]+[,.]?[0-9]*$',
 }

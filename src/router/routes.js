@@ -19,8 +19,8 @@ import GoodsListContainer from '../components/goodsList/GoodsListContainer'
 import AddGoodContainer from '../components/addGood/AddGoodContainer'
 import AttributesListContainer from '../components/attributeList/AttributesListContainer'
 import GoodsFilterContainer from '../components/goodsFilter/GoodsFilterContainer'
-import AddCategoryContainer from '../components/addCategory/AddCategoryContainer'
-import AttributeGroupContainer from '../components/attributeGroup/AttributeGroupContainer'
+import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
+import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsListContainer from '../components/myGoodsList/MyGoodsListContainer'
 import CategoriesListContainer from '../components/categoriesList/CategoriesListContainer'
 import MadeComponentList from '../components/madeComponentList/MadeComponentList'
@@ -51,7 +51,7 @@ export const authRoutes = [
     },
     {
         path: ADD_CATEGORY_ROUTE,
-        Component: AddCategoryContainer,
+        Component: AddAttributeCategoryContainer,
     },
     {
         path: ATTRIBUTE_GROUP,

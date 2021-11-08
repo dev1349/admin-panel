@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import H1 from '../../../atoms/headers/H1/H1'
 import IconButton from '../../iconButton/IconButton'
 import AddIcon from '../../../atoms/icons/addIcon/AddIcon'
@@ -9,16 +9,21 @@ import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'
 import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/ButtonsWrapperTemplate'
 import TitleAndButtonsTemplate from '../../../templates/titleAndButtonsTemplate/TitleAndButtonsTemplate'
 
-const Header1Styled = styled.header``
+export const Header1Styled = styled('header', {
+    name: 'Header1Styled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyHeader1 = ({
+const WSHeader1 = ({
     mode,
     children,
-    toAddGroup,
-    returnToListMode,
-    saveGroup,
-    isSaveGroupButtonDisabled,
-    deleteGroup,
+    toAdd,
+    toReturn,
+    isAllButtonDisabled,
+    toSave,
+    isSaveButtonDisabled,
+    toDelete,
     isDeleteButtonDisabled,
 }) => {
     return (
@@ -28,11 +33,14 @@ const MyHeader1 = ({
                 <ButtonsWrapperTemplate>
                     {mode === 'list' && (
                         <>
-                            <IconButton onClick={toAddGroup}>
+                            <IconButton
+                                onClick={toAdd}
+                                disabled={isAllButtonDisabled}
+                            >
                                 <AddIcon />
                             </IconButton>
                             <IconButton
-                                onClick={deleteGroup}
+                                onClick={toDelete}
                                 disabled={isDeleteButtonDisabled}
                             >
                                 <DeleteIcon />
@@ -42,12 +50,15 @@ const MyHeader1 = ({
                     {(mode === 'add' || mode === 'edit') && (
                         <>
                             <IconButton
-                                disabled={isSaveGroupButtonDisabled}
-                                onClick={saveGroup}
+                                disabled={isSaveButtonDisabled}
+                                onClick={toSave}
                             >
                                 <SaveIcon />
                             </IconButton>
-                            <IconButton onClick={returnToListMode}>
+                            <IconButton
+                                onClick={toReturn}
+                                disabled={isAllButtonDisabled}
+                            >
                                 <UndoIcon />
                             </IconButton>
                         </>
@@ -58,4 +69,4 @@ const MyHeader1 = ({
     )
 }
 
-export default MyHeader1
+export default WSHeader1

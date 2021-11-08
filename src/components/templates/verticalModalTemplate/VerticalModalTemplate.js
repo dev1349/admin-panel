@@ -1,25 +1,20 @@
 import React from 'react'
-import Styled from 'styled-components'
+import { styled } from '@mui/material'
+import PaddingBottomTemplate from '../paddingBottomTemplate/PaddingBottomTemplate'
 
-const VerticalModalTemplateStyled = Styled.div`
-    display: block;
-`
+const VerticalModalTemplateStyled = styled('div', {
+    name: 'VerticalModalTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const ModalTitleStyled = Styled.div`
-    padding: 10px;
-`
-
-const ModalButtonStyled = Styled.div`
-    text-align: center;
-`
-
-const MyVerticalModalTemplate = ({ children, ...rest }) => {
+const WSVerticalModalTemplate = ({ children, ...rest }) => {
     return (
         <VerticalModalTemplateStyled {...rest}>
-            <ModalTitleStyled>{children[0]}</ModalTitleStyled>
-            <ModalButtonStyled>{children[1]}</ModalButtonStyled>
+            <PaddingBottomTemplate>{children[0]}</PaddingBottomTemplate>
+            {children[1]}
         </VerticalModalTemplateStyled>
     )
 }
 
-export default MyVerticalModalTemplate
+export default WSVerticalModalTemplate

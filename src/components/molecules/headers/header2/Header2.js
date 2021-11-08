@@ -1,20 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import H2 from '../../../atoms/headers/H2/H2'
 import IconTitleTemplate from '../../../templates/iconTitleTemplate/IconTitleTemplate'
 
-const Header2Styled = styled.header`
-    background-color: lightgrey;
-`
-
-const H2Styled = styled(H2)``
+const Header2Styled = styled('header', {
+    name: 'Header2Styled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
 const Header2 = ({ icon, children }) => {
     return (
         <Header2Styled>
             <IconTitleTemplate>
                 {icon}
-                <H2Styled>{children}</H2Styled>
+                <H2>{children}</H2>
             </IconTitleTemplate>
         </Header2Styled>
     )

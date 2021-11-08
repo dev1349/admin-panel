@@ -1,31 +1,33 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import IconButton from '../../iconButton/IconButton'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
 
-const RowStyled = styled(TableRow)`
-    border: 1px solid lightgrey;
-`
+export const TableRowStyled = styled(TableRow, {
+    name: 'TableRowStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyTableRow = ({
+const WSTableRow = ({
     rowFields,
     id,
-    isHeadCellsNumeric,
-    checkAttributeGroup,
-    clickEditAttributeGroup,
-    isAttributeGroupChecked,
+    headerCellTypes,
+    onCheckRow,
+    onEditRow,
+    isRowChecked,
 }) => {
     const labelId = `enhanced-table-checkbox-${id}`
 
     return (
-        <RowStyled>
+        <TableRowStyled>
             <TableCell key={'checkbox'} padding="checkbox">
                 <Checkbox
-                    checked={isAttributeGroupChecked(id)}
-                    onChange={checkAttributeGroup(id)}
+                    checked={isRowChecked(id)}
+                    onChange={onCheckRow(id)}
                     inputProps={{
                         'aria-labelledby': labelId,
                     }}
@@ -36,19 +38,19 @@ const MyTableRow = ({
                 .map((keyName, index) => (
                     <TableCell
                         key={keyName}
-                        align={isHeadCellsNumeric[index] ? 'right' : 'left'}
+                        align={headerCellTypes[index] ? 'right' : 'left'}
                         padding={'none'}
                     >
                         {rowFields[keyName]}
                     </TableCell>
                 ))}
             <TableCell key={'editButton'} align={'center'} padding={'none'}>
-                <IconButton onClick={clickEditAttributeGroup(id)}>
+                <IconButton onClick={onEditRow(id)}>
                     <EditIcon />
                 </IconButton>
             </TableCell>
-        </RowStyled>
+        </TableRowStyled>
     )
 }
 
-export default MyTableRow
+export default WSTableRow

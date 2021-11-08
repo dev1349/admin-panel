@@ -1,11 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
-import { TextField } from '@mui/material'
+import { TextFieldStyled } from '../textField/TextField'
 
-const TextFieldStyled = styled(TextField)``
-
-const MyNumberField = props => {
-    return <TextFieldStyled {...props} type={'number'} />
+const WSNumberField = props => {
+    return <TextFieldStyled type={'number'} {...props} />
 }
 
-export default MyNumberField
+export default WSNumberField

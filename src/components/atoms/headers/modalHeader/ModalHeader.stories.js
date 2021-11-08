@@ -1,7 +1,6 @@
 import React from 'react'
 import ModalHeader from './ModalHeader'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'atoms/headers/ModalHeader',
     component: ModalHeader,

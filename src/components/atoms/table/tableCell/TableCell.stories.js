@@ -1,13 +1,21 @@
 import React from 'react'
-import Cell from './TableCell'
+import TableCell from './TableCell'
+import { Table, TableBody, TableRow } from '@mui/material'
 
-//todo: удалить после перехода на atomic design
 export default {
-    title: 'atoms/table/Cell',
-    component: Cell,
+    title: 'atoms/table/TableCell',
+    component: TableCell,
 }
 
-const Template = args => <Cell {...args} />
+const Template = args => (
+    <Table>
+        <TableBody>
+            <TableRow>
+                <TableCell {...args} />
+            </TableRow>
+        </TableBody>
+    </Table>
+)
 
 export const Example1 = Template.bind({})
 Example1.args = {
@@ -18,13 +26,11 @@ Example1.args = {
 export const Example2 = Template.bind({})
 Example2.args = {
     align: 'center',
-    width: '400px',
     children: 'Some tableCell`s text',
 }
 
 export const Example3 = Template.bind({})
 Example3.args = {
     align: 'right',
-    width: '400px',
     children: 'Some tableCell`s text',
 }

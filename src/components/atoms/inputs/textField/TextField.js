@@ -1,11 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material/styles'
 import { TextField } from '@mui/material'
 
-const TextFieldStyled = styled(TextField)``
+export const TextFieldStyled = styled(TextField, {
+    name: 'TextFieldStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyTextField = props => {
+const WSTextField = props => {
     return <TextFieldStyled {...props} />
 }
 
-export default MyTextField
+export default WSTextField

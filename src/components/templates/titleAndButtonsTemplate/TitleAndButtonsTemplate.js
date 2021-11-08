@@ -1,23 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 
-const WrapperStyled = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-`
+const TitleAndButtonsTemplateStyled = styled('div', {
+    name: 'TitleAndButtonsTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const TitleWrapperStyled = styled.div``
-const ButtonsWrapperStyled = styled.div``
-
-const TitleAndButtonsTemplate = ({ children }) => {
+const WSTitleAndButtonsTemplate = ({ children }) => {
     return (
-        <WrapperStyled>
-            <TitleWrapperStyled>{children[0]}</TitleWrapperStyled>
-            <ButtonsWrapperStyled>{children[1]}</ButtonsWrapperStyled>
-        </WrapperStyled>
+        <TitleAndButtonsTemplateStyled>
+            {children}
+        </TitleAndButtonsTemplateStyled>
     )
 }
 
-export default TitleAndButtonsTemplate
+export default WSTitleAndButtonsTemplate

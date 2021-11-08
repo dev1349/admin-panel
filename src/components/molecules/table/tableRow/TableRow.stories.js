@@ -1,15 +1,22 @@
 import React from 'react'
 import TableRow from './TableRow'
+import { Table, TableBody } from '@mui/material'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'molecules/table/tableRow',
     component: TableRow,
 }
 
-const Template = args => <TableRow {...args} />
+const Template = args => (
+    <Table>
+        <TableBody>
+            <TableRow {...args} />
+        </TableBody>
+    </Table>
+)
 
-const createData = (name, calories, fat, carbs, protein) => ({
+const createData = (id, name, calories, fat, carbs, protein) => ({
+    id,
     name,
     calories,
     fat,
@@ -17,14 +24,14 @@ const createData = (name, calories, fat, carbs, protein) => ({
     protein,
 })
 
-const row = createData('Cupcake', 305, 3.7, 67, 4.3)
+const row = createData(1, 'Cupcake', 305, 3.7, 67, 4.3)
 
 export const Example1 = Template.bind({})
 Example1.args = {
     rowFields: row,
     id: 1,
-    isHeadCellsNumeric: true,
-    checkAttributeGroup: () => () => alert('Check attributeGroup'),
-    clickEditAttributeGroup: () => () => alert('Edit attribute group'),
-    isAttributeGroupChecked: id => () => alert(id),
+    headerCellTypes: [false, true, true, true, true],
+    onCheckRow: () => () => console.log('Check row'),
+    onEditRow: () => () => console.log('Edit row'),
+    isRowChecked: () => true,
 }

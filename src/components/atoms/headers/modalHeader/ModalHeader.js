@@ -1,13 +1,14 @@
 import React from 'react'
-import Styled from 'styled-components'
+import { styled } from '@mui/material'
 import { Typography } from '@mui/material'
 
-const ModalHeaderStyled = Styled(Typography)`
-    display: block;
-    text-align: center;
-`
+const ModalHeaderStyled = styled(Typography, {
+    name: 'ModalHeaderStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const ModalHeader = ({ children, ...rest }) => {
+const WSModalHeader = ({ children, ...rest }) => {
     return (
         <ModalHeaderStyled
             id="modal-modal-title"
@@ -20,4 +21,4 @@ const ModalHeader = ({ children, ...rest }) => {
     )
 }
 
-export default ModalHeader
+export default WSModalHeader

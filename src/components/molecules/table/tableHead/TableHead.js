@@ -1,41 +1,42 @@
 import React from 'react'
-import styled from 'styled-components'
-import { TableHead, TableRow } from '@mui/material'
-import Cell from '../../../atoms/table/tableCell/TableCell'
+import { styled, TableHead } from '@mui/material'
+import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
-import TableSortLabel from '../tableSortLabel/TableSortLabel'
+import TableSortLabel from '../../../atoms/table/tableSortLabel/TableSortLabel'
+import { TableRowStyled } from '../tableRow/TableRow'
 
-const HeadStyled = styled(TableHead)`
-    background-color: lightgrey;
-    border: 1px solid lightgrey;
-`
+const TableHeadStyled = styled(TableHead, {
+    name: 'TableHeadStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyTableHead = ({
-    headCells,
+const WSTableHead = ({
+    headerCells,
     order,
     orderBy,
-    clickTableSortLabel,
+    onClickSortLabel,
     rowCount,
     selectedRowCount,
-    clickAllSelectCheckbox,
+    onCheckAll,
 }) => {
     return (
-        <HeadStyled>
-            <TableRow>
-                <Cell key={'checkbox'} align={'left'} padding="checkbox">
+        <TableHeadStyled>
+            <TableRowStyled>
+                <TableCell key={'checkbox'} align={'left'} padding="checkbox">
                     <Checkbox
                         indeterminate={
                             selectedRowCount > 0 && selectedRowCount < rowCount
                         }
                         checked={rowCount > 0 && selectedRowCount === rowCount}
-                        onChange={clickAllSelectCheckbox}
+                        onChange={onCheckAll}
                         inputProps={{
                             'aria-label': 'select all desserts',
                         }}
                     />
-                </Cell>
-                {headCells.map(cell => (
-                    <Cell
+                </TableCell>
+                {headerCells.map(cell => (
+                    <TableCell
                         key={cell.id}
                         align={cell.numeric ? 'right' : 'left'}
                         padding={cell.disablePadding ? 'none' : 'normal'}
@@ -45,21 +46,21 @@ const MyTableHead = ({
                             <TableSortLabel
                                 active={orderBy === cell.id}
                                 direction={orderBy === cell.id ? order : 'asc'}
-                                onClick={clickTableSortLabel(cell.id)}
+                                onClick={onClickSortLabel(cell.id)}
                             >
                                 {cell.label}
                             </TableSortLabel>
                         ) : (
                             cell.label
                         )}
-                    </Cell>
+                    </TableCell>
                 ))}
-                <Cell key={'action'} align={'center'} padding={'none'}>
+                <TableCell key={'action'} align={'center'} padding={'none'}>
                     Действие
-                </Cell>
-            </TableRow>
-        </HeadStyled>
+                </TableCell>
+            </TableRowStyled>
+        </TableHeadStyled>
     )
 }
 
-export default MyTableHead
+export default WSTableHead

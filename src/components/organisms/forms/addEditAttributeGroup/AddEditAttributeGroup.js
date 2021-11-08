@@ -1,15 +1,11 @@
 import React from 'react'
-import Styled from 'styled-components'
 import LabeledTextField from '../../../molecules/inputs/labeledTextField/LabeledTextField'
 import LabeledNumberField from '../../../molecules/inputs/labeledNumberField/LabeledNumberField'
-
-const FormStyled = Styled.form`
-    padding: 0;
-`
+import Form from '../../../atoms/form/Form'
 
 const AddEditAttributeGroup = ({ fields }) => {
     return (
-        <FormStyled>
+        <Form>
             <LabeledTextField
                 key={fields[0].id}
                 id={fields[0].id}
@@ -36,7 +32,7 @@ const AddEditAttributeGroup = ({ fields }) => {
                 value={fields[2].value === null ? '' : fields[2].value}
                 onChange={fields[2].onChange}
             />
-        </FormStyled>
+        </Form>
     )
 }
 

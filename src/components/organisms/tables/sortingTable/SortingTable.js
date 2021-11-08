@@ -1,57 +1,50 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Table, TableBody } from '@mui/material'
 import TableHead from '../../../molecules/table/tableHead/TableHead'
 import TableRow from '../../../molecules/table/tableRow/TableRow'
+import Table from '../../../atoms/table/table/Table'
+import TableBody from '../../../atoms/table/tableBody/TableBody'
 
-const TableStyled = styled(Table)``
-const TableBodyStyled = styled(TableBody)``
-
-const MySortingTable = ({
-    headCells,
+const WSSortingTable = ({
+    headerCells,
     tableRows,
     order,
     orderBy,
-    clickTableSortLabel,
-    checkAttributeGroup,
+    onClickSortLabel,
+    onCheckRow,
     rowCount,
     selectedRowCount,
-    clickAllSelectCheckbox,
-    clickEditAttributeGroup,
-    isAttributeGroupChecked,
+    onCheckAll,
+    onEditRow,
+    isRowChecked,
 }) => {
-    const isHeadCellsNumeric = headCells.map(cell => cell.numeric)
+    const headerCellTypes = headerCells.map(cell => cell.numeric)
     return (
         <>
             {rowCount ? (
-                <TableStyled>
+                <Table>
                     <TableHead
-                        headCells={headCells}
+                        headerCells={headerCells}
                         order={order}
                         orderBy={orderBy}
-                        clickTableSortLabel={clickTableSortLabel}
+                        onClickSortLabel={onClickSortLabel}
                         rowCount={rowCount}
                         selectedRowCount={selectedRowCount}
-                        clickAllSelectCheckbox={clickAllSelectCheckbox}
+                        onCheckAll={onCheckAll}
                     />
-                    <TableBodyStyled>
+                    <TableBody>
                         {tableRows.map(row => (
                             <TableRow
                                 rowFields={row}
                                 key={row.id}
                                 id={row.id}
-                                isHeadCellsNumeric={isHeadCellsNumeric}
-                                checkAttributeGroup={checkAttributeGroup}
-                                clickEditAttributeGroup={
-                                    clickEditAttributeGroup
-                                }
-                                isAttributeGroupChecked={
-                                    isAttributeGroupChecked
-                                }
+                                headerCellTypes={headerCellTypes}
+                                onCheckRow={onCheckRow}
+                                onEditRow={onEditRow}
+                                isRowChecked={isRowChecked}
                             />
                         ))}
-                    </TableBodyStyled>
-                </TableStyled>
+                    </TableBody>
+                </Table>
             ) : (
                 <div>Список групп атрибутов пуст</div>
             )}
@@ -59,4 +52,4 @@ const MySortingTable = ({
     )
 }
 
-export default MySortingTable
+export default WSSortingTable

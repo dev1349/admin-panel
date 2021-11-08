@@ -1,11 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material/styles'
 import TableCell from '@mui/material/TableCell'
 
-const CellStyled = styled(TableCell)``
+const TableCellStyled = styled(TableCell, {
+    name: 'TableCellStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyCell = ({ children, ...rest }) => {
-    return <CellStyled {...rest}>{children}</CellStyled>
+const WSTableCell = ({ children, ...rest }) => {
+    return <TableCellStyled {...rest}>{children}</TableCellStyled>
 }
 
-export default MyCell
+export default WSTableCell

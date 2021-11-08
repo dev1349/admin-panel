@@ -1,7 +1,6 @@
 import React from 'react'
 import SimpleModal from './SimpleModal'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'molecules/modals/SimpleModal',
     component: SimpleModal,
@@ -13,6 +12,16 @@ export const Example1 = Template.bind({})
 Example1.args = {
     modalText: 'Some text',
     modalType: 'success',
-    action: () => alert('Some action'),
+    action: () => console.log('Some action'),
     open: true,
+    onClose: () => console.log('close'),
+}
+
+export const Example2 = Template.bind({})
+Example2.args = {
+    modalText: 'Some text',
+    modalType: 'error',
+    action: () => console.log('Some action'),
+    open: true,
+    onClose: () => console.log('close'),
 }

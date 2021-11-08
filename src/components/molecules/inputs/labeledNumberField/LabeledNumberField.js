@@ -1,16 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import NumberField from '../../../atoms/inputs/numberField/NumberField'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 
-const InputWrapperStyled = styled.div``
+const LabeledNumberFieldStyled = styled('div', {
+    name: 'LabeledNumberFieldStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const InputLabelStyled = styled(InputLabel)``
-
-const NumberFieldStyled = styled(NumberField)``
-
-const MyLabeledNumberField = ({
+const WSLabeledNumberField = ({
     id,
     label,
     name,
@@ -37,22 +37,21 @@ const MyLabeledNumberField = ({
         }
     }
     return (
-        <InputWrapperStyled>
+        <LabeledNumberFieldStyled>
             <LabeledInputTemplate>
-                <InputLabelStyled htmlFor={id}>{label}</InputLabelStyled>
-                <NumberFieldStyled
+                <InputLabel htmlFor={id}>{label}</InputLabel>
+                <NumberField
                     id={id}
                     fullWidth={true}
                     name={name}
-                    pattern={pattern}
                     value={value}
                     onChange={changeHandler}
                     onKeyDown={inputNumberKeyDownHandler}
                     autoFocus={autoFocus}
                 />
             </LabeledInputTemplate>
-        </InputWrapperStyled>
+        </LabeledNumberFieldStyled>
     )
 }
 
-export default MyLabeledNumberField
+export default WSLabeledNumberField

@@ -1,11 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 
-const IconButtonStyled = styled(IconButton)``
+const IconButtonStyled = styled(IconButton, {
+    name: 'IconButtonStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyIconButton = ({ children, ...rest }) => {
+const WSIconButton = ({ children, ...rest }) => {
     return <IconButtonStyled {...rest}>{children}</IconButtonStyled>
 }
 
-export default MyIconButton
+export default WSIconButton

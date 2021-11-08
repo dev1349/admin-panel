@@ -1,14 +1,14 @@
 import React from 'react'
-import Styled from 'styled-components'
+import { styled } from '@mui/material'
 
-const MaxWidthContainerStyled = Styled.div`
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 10px;
-`
+const MaxWidthTemplateStyled = styled('div', {
+    name: 'MaxWidthTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyMaxWidthContainer = ({ children }) => {
-    return <MaxWidthContainerStyled>{children}</MaxWidthContainerStyled>
+const WSMaxWidthContainer = ({ children }) => {
+    return <MaxWidthTemplateStyled>{children}</MaxWidthTemplateStyled>
 }
 
-export default MyMaxWidthContainer
+export default WSMaxWidthContainer

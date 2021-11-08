@@ -1,16 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import TextField from '../../../atoms/inputs/textField/TextField'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 
-const InputWrapperStyled = styled.div``
+const LabeledTextFieldStyled = styled('div', {
+    name: 'LabeledTextFieldStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const InputLabelStyled = styled(InputLabel)``
-
-const TextFieldStyled = styled(TextField)``
-
-const MyLabeledTextField = ({
+const WSLabeledTextField = ({
     id,
     label,
     name,
@@ -22,10 +22,10 @@ const MyLabeledTextField = ({
         onChange({ [name]: evt.target.value })
     }
     return (
-        <InputWrapperStyled>
+        <LabeledTextFieldStyled>
             <LabeledInputTemplate>
-                <InputLabelStyled htmlFor={id}>{label}</InputLabelStyled>
-                <TextFieldStyled
+                <InputLabel htmlFor={id}>{label}</InputLabel>
+                <TextField
                     id={id}
                     fullWidth={true}
                     name={name}
@@ -34,8 +34,8 @@ const MyLabeledTextField = ({
                     autoFocus={autoFocus}
                 />
             </LabeledInputTemplate>
-        </InputWrapperStyled>
+        </LabeledTextFieldStyled>
     )
 }
 
-export default MyLabeledTextField
+export default WSLabeledTextField

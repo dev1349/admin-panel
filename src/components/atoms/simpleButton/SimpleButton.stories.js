@@ -1,10 +1,12 @@
 import React from 'react'
 import SimpleButton from './SimpleButton'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'atoms/SimpleButton',
     component: SimpleButton,
+    argTypes: {
+        onClick: { action: 'click' },
+    },
 }
 
 const Template = args => <SimpleButton {...args} />

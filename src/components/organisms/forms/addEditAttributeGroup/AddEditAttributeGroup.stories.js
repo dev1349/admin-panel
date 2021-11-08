@@ -1,9 +1,8 @@
 import React from 'react'
 import AddEditAttributeGroup from './AddEditAttributeGroup'
 
-//todo: удалить после перехода на atomic design
 export default {
-    title: 'organisms/AddEditAttributeGroup',
+    title: 'organisms/forms/AddEditAttributeGroup',
     component: AddEditAttributeGroup,
 }
 
@@ -16,23 +15,23 @@ Example1.args = {
             id: 'addEditAttributeGroupLabel0',
             label: '*Название (rus)',
             name: 'name',
-            value: 'aaaaa',
-            onChange: props => console.log(props),
+            value: 'value 01',
+            onChange: () => console.log('change'),
         },
         {
             id: 'addEditAttributeGroupLabel1',
             label: 'Название (ua)',
             name: 'uaName',
-            value: 'bbbbbb',
-            onChange: props => console.log(props),
+            value: 'value 02',
+            onChange: () => console.log('change'),
         },
         {
             id: 'addEditAttributeGroupLabel2',
             label: 'Порядок сортировки',
             name: 'sortOrder',
             pattern: '^[1-9]?$',
-            value: '2',
-            onChange: props => console.log(props),
+            value: '3',
+            onChange: () => console.log('change'),
         },
     ],
 }

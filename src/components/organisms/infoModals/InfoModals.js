@@ -1,7 +1,7 @@
 import React from 'react'
 import SimpleModal from '../../molecules/modals/simpleModal/SimpleModal'
 
-const MyInfoModals = ({ fetchStatus, modalData }) => {
+const WSInfoModals = ({ fetchStatus, modalData }) => {
     const indexStatus = modalData.findIndex(
         el => el.fetchStatus === fetchStatus
     )
@@ -18,4 +18,4 @@ const MyInfoModals = ({ fetchStatus, modalData }) => {
     )
 }
 
-export default MyInfoModals
+export default WSInfoModals

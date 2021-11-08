@@ -1,11 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 
-const ArrowDropUpIconStyled = styled(ArrowDropUpIcon)``
+const ArrowDropUpIconStyled = styled(ArrowDropUpIcon, {
+    name: 'ArrowDropUpIconStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyArrowDropUpIcon = props => {
+const WSArrowDropUpIcon = props => {
     return <ArrowDropUpIconStyled {...props} />
 }
 
-export default MyArrowDropUpIcon
+export default WSArrowDropUpIcon

@@ -1,17 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled, Typography } from '@mui/material'
 
-const H2Styled = styled.h1`
-    font-size: 16px;
-    color: ${props => props.color || 'black'};
-    margin: 0;
-    display: block;
-    font-family: Arial;
-    font-weight: 700;
-`
+const H2Styled = styled(Typography, {
+    name: 'H2Styled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const H2 = ({ children, ...rest }) => {
+const WSH2 = ({ children, ...rest }) => {
     return <H2Styled {...rest}>{children}</H2Styled>
 }
 
-export default H2
+export default WSH2

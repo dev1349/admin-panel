@@ -1,7 +1,6 @@
 import React from 'react'
 import SortingTable from './SortingTable'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'organisms/table/SortingTable',
     component: SortingTable,
@@ -9,36 +8,41 @@ export default {
 
 const Template = args => <SortingTable {...args} />
 
-const HeadCells = [
+const headerCells = [
     {
         id: 'name',
         numeric: false,
         disablePadding: true,
         label: 'Dessert (100g serving)',
+        sorting: true,
     },
     {
         id: 'calories',
         numeric: true,
         disablePadding: false,
         label: 'Calories',
+        sorting: true,
     },
     {
         id: 'fat',
         numeric: true,
         disablePadding: false,
         label: 'Fat (g)',
+        sorting: true,
     },
     {
         id: 'carbs',
         numeric: true,
         disablePadding: false,
         label: 'Carbs (g)',
+        sorting: true,
     },
     {
         id: 'protein',
         numeric: true,
         disablePadding: false,
         label: 'Protein (g)',
+        sorting: true,
     },
 ]
 
@@ -64,15 +68,15 @@ const rows = [
 
 export const Example1 = Template.bind({})
 Example1.args = {
-    headCells: HeadCells,
+    headerCells: headerCells,
     tableRows: rows,
     rowCount: rows.length,
     order: 'asc',
     orderBy: 'name',
-    clickTableSortLabel: id => console.log(id),
-    checkAttributeGroup: id => console.log(id),
-    selectedRowCount: 5,
-    clickAllSelectCheckbox: id => console.log(id),
-    clickEditAttributeGroup: id => console.log(id),
-    isAttributeGroupChecked: id => console.log(id),
+    onClickSortLabel: () => () => console.log('sorting'),
+    onCheckRow: () => () => console.log('check row'),
+    selectedRowCount: 0,
+    onCheckAll: () => console.log('check all'),
+    onEditRow: () => () => console.log('editing'),
+    isRowChecked: () => false,
 }

@@ -1,11 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 
-const ArrowDropDownIconStyled = styled(ArrowDropDownIcon)``
+const ArrowDropDownIconStyled = styled(ArrowDropDownIcon, {
+    name: 'ArrowDropDownIconStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyArrowDropDownIcon = props => {
+const WSArrowDropDownIcon = props => {
     return <ArrowDropDownIconStyled {...props} />
 }
 
-export default MyArrowDropDownIcon
+export default WSArrowDropDownIcon

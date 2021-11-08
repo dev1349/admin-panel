@@ -1,11 +1,15 @@
 import React from 'react'
+import { styled } from '@mui/material'
 import UndoIcon from '@mui/icons-material/Undo'
-import styled from 'styled-components'
 
-const UndoIconStyled = styled(UndoIcon)``
+const UndoIconStyled = styled(UndoIcon, {
+    name: 'UndoIconStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyUndoIcon = props => {
+const WSUndoIcon = props => {
     return <UndoIconStyled {...props} />
 }
 
-export default MyUndoIcon
+export default WSUndoIcon

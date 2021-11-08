@@ -1,10 +1,14 @@
 import React from 'react'
+import { styled } from '@mui/material'
 import Checkbox from '@mui/material/Checkbox'
-import styled from 'styled-components'
 
-const CheckboxStyled = styled(Checkbox)``
+const CheckboxStyled = styled(Checkbox, {
+    name: 'CheckboxStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyCheckbox = props => {
+const WSCheckbox = props => {
     return (
         <CheckboxStyled
             {...props}
@@ -13,4 +17,4 @@ const MyCheckbox = props => {
     )
 }
 
-export default MyCheckbox
+export default WSCheckbox

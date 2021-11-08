@@ -16,7 +16,7 @@ const GoodsFilter = ({
     }
 
     return (
-        <div className={'filter--wrapper'}>
+        <div className={'filter--wrappers'}>
             <form onSubmit={submitHandler}>
                 <div className={'filter--items'}>
                     <div className="filter--item">

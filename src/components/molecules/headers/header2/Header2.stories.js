@@ -4,7 +4,6 @@ import ListIcon from '../../../atoms/icons/listIcon/ListIcon'
 import AddIcon from '../../../atoms/icons/addIcon/AddIcon'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
 
-//todo: удалить после перехода на atomic design
 export default {
     title: 'molecules/headers/Header2',
     component: Header2,

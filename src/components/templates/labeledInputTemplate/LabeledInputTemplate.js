@@ -1,48 +1,21 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
+import LabelTemplate from '../labelTemplate/LabelTemplate'
+import FieldTemplate from '../fieldTemplate/FeildTemplate'
 
-const WrapperStyled = styled.div`
-    padding: 5px 0;
-    border: none;
-    display: block;
+const LabeledInputTemplateStyled = styled('div', {
+    name: 'LabeledInputTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-    @media (min-width: 600px) {
-        display: flex;
-        align-items: center;
-    }
-`
-
-const LabelWrapperStyled = styled.div`
-    display: block;
-    width: 100%;
-
-    @media (min-width: 600px) {
-        width: 25%;
-        text-align: right;
-    }
-`
-
-const FieldWrapperStyled = styled.div`
-    display: block;
-    width: 100%;
-
-    & .MuiInputBase-input {
-        padding: 7px 10px;
-    }
-
-    @media (min-width: 600px) {
-        margin-left: 10px;
-        width: 75%;
-    }
-`
-
-const LabeledInputTemplate = ({ children }) => {
+const WSLabeledInputTemplate = ({ children }) => {
     return (
-        <WrapperStyled>
-            <LabelWrapperStyled>{children[0]}</LabelWrapperStyled>
-            <FieldWrapperStyled>{children[1]}</FieldWrapperStyled>
-        </WrapperStyled>
+        <LabeledInputTemplateStyled>
+            <LabelTemplate>{children[0]}</LabelTemplate>
+            <FieldTemplate>{children[1]}</FieldTemplate>
+        </LabeledInputTemplateStyled>
     )
 }
 
-export default LabeledInputTemplate
+export default WSLabeledInputTemplate

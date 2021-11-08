@@ -1,15 +1,19 @@
 import React from 'react'
-import Styled from 'styled-components'
+import { styled } from '@mui/material/styles'
 import { Button } from '@mui/material'
 
-const ButtonStyled = Styled(Button)``
+const SimpleButtonStyled = styled(Button, {
+    name: 'SimpleButtonStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const MyButton = ({ children, modalType, ...rest }) => {
+const WSSimpleButton = ({ children, modalType, ...rest }) => {
     return (
-        <ButtonStyled color={modalType} variant={'contained'} {...rest}>
+        <SimpleButtonStyled color={modalType} variant={'contained'} {...rest}>
             {children}
-        </ButtonStyled>
+        </SimpleButtonStyled>
     )
 }
 
-export default MyButton
+export default WSSimpleButton

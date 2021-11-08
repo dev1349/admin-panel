@@ -1,12 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 
-const WrapperStyled = styled.div`
-    padding: 10px;
-`
+const PaddingTemplateStyled = styled('div', {
+    name: 'PaddingTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
-const PaddingTemplate = ({ children }) => {
-    return <WrapperStyled>{children}</WrapperStyled>
+const WSPaddingTemplate = ({ children }) => {
+    return <PaddingTemplateStyled>{children}</PaddingTemplateStyled>
 }
 
-export default PaddingTemplate
+export default WSPaddingTemplate
