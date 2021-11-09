@@ -1,16 +1,12 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import styled from 'styled-components'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
-import NumberField from '../../../atoms/inputs/numberField/NumberField'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
+import TextField from '../../../atoms/inputs/textField/TextField'
 
-const LabeledNumberFieldStyled = styled('div', {
-    name: 'LabeledNumberFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
+const InputWrapper = styled.div``
 
-const WSLabeledNumberField = ({
+const LabeledFloatField = ({
     id,
     label,
     name,
@@ -21,8 +17,7 @@ const WSLabeledNumberField = ({
 }) => {
     const changeHandler = evt => {
         if (pattern && new RegExp(pattern).test(evt.target.value)) {
-            const sendValue =
-                evt.target.value === '' ? null : parseInt(evt.target.value)
+            const sendValue = evt.target.value === '' ? null : evt.target.value
             onChange({ [name]: sendValue })
         }
     }
@@ -30,28 +25,28 @@ const WSLabeledNumberField = ({
         if (
             evt.code === 'KeyE' ||
             evt.code === 'Equal' ||
-            evt.code === 'Minus' ||
-            evt.code === 'Period'
+            evt.code === 'Minus'
         ) {
             evt.preventDefault()
         }
     }
     return (
-        <LabeledNumberFieldStyled>
+        <InputWrapper>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <NumberField
+                <TextField
                     id={id}
                     fullWidth={true}
                     name={name}
+                    pattern={pattern}
                     value={value}
                     onChange={changeHandler}
                     onKeyDown={inputNumberKeyDownHandler}
                     autoFocus={autoFocus}
                 />
             </LabeledInputTemplate>
-        </LabeledNumberFieldStyled>
+        </InputWrapper>
     )
 }
 
-export default WSLabeledNumberField
+export default LabeledFloatField

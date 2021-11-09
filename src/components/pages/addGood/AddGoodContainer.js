@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { postGood } from '../../reducers/goodsSlice'
-import { AddGood } from './AddGood'
-import { allGoodType, getAllGoodType } from '../../reducers/goodTypeSlice'
+import { postGood } from '../../../reducers/goodsSlice'
+import { allGoodType, getAllGoodType } from '../../../reducers/goodTypeSlice'
+import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
+import AddGood from '../../organisms/forms/addGood/AddGood'
 
 const AddGoodContainer = () => {
     const [values, setValues] = useState({})
@@ -22,10 +23,10 @@ const AddGoodContainer = () => {
         getAllGoodTypes()
     }, [dispatch])
 
-    const handleChange = event => {
+    const handleChange = payload => {
         setValues({
             ...values,
-            [event.target.name]: event.target.value,
+            ...payload,
         })
     }
 
@@ -40,15 +41,20 @@ const AddGoodContainer = () => {
         addGood(values)
     }
 
-    return allGoodTypes ? (
-        <AddGood
-            allGoodType={allGoodTypes}
-            handleChange={handleChange}
-            handleChangeSelect={handleChangeSelect}
-            handleSubmit={handleSubmit}
-        />
-    ) : (
-        <div />
+    return (
+        <MaxWidthTemplate>
+            {allGoodTypes ? (
+                <AddGood
+                    allGoodType={allGoodTypes}
+                    handleChange={handleChange}
+                    handleChangeSelect={handleChangeSelect}
+                    handleSubmit={handleSubmit}
+                    values={values}
+                />
+            ) : (
+                <div />
+            )}
+        </MaxWidthTemplate>
     )
 }
 

@@ -17,13 +17,14 @@ const HorizontalTabTitlesStyled = styled(Tabs, {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSHorizontalTabTitles = ({ titles, value, onChange }) => {
+const WSHorizontalTabTitles = ({ titles, value, onChange, ...rest }) => {
     return (
         <TabTitlesWrapper>
             <HorizontalTabTitlesStyled
                 value={value}
                 onChange={onChange}
                 aria-label="basic tabs example"
+                {...rest}
             >
                 {titles.map((title, index) => (
                     <Tab key={index} label={title} {...a11yProps(index)} />

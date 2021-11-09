@@ -31,7 +31,7 @@ const WSTableHead = ({
                         checked={rowCount > 0 && selectedRowCount === rowCount}
                         onChange={onCheckAll}
                         inputProps={{
-                            'aria-label': 'select all desserts',
+                            'aria-label': 'selectField all desserts',
                         }}
                     />
                 </TableCell>

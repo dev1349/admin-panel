@@ -16,7 +16,7 @@ import {
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
 import GoodsListContainer from '../components/goodsList/GoodsListContainer'
-import AddGoodContainer from '../components/addGood/AddGoodContainer'
+import AddGoodContainer from '../components/pages/addGood/AddGoodContainer'
 import AttributesListContainer from '../components/attributeList/AttributesListContainer'
 import GoodsFilterContainer from '../components/goodsFilter/GoodsFilterContainer'
 import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'

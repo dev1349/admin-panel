@@ -13,9 +13,11 @@ import {
 } from './apiConstants'
 
 export const postGoodFetch = good => {
-    return fetch(POST_GOOD_PATH, postRequestOptions(good)).then(response =>
-        response.json()
-    )
+    return fetch(POST_GOOD_PATH, postRequestOptions(good))
+        .then
+        // response =>
+        // response.json()
+        ()
 }
 
 export const getGoodFetch = id => {

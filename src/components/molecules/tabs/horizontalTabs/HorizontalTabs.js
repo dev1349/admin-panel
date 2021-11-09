@@ -9,7 +9,7 @@ const HorizontalTabsBoxStyled = styled(Box, {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSTabsHorizontal = ({ titles, children }) => {
+const WSTabsHorizontal = ({ titles, children, ...rest }) => {
     const [value, setValue] = useState(0)
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -30,6 +30,7 @@ const WSTabsHorizontal = ({ titles, children }) => {
                 titles={titles}
                 value={value}
                 onChange={handleChange}
+                {...rest}
             />
             {tabsContent.map((ch, index) => (
                 <TabPanel key={index} value={value} index={index}>

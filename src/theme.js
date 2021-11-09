@@ -114,6 +114,25 @@ const globalTheme = createTheme({
                 },
             },
         },
+        FormControlStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        MenuItemStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        SelectStyled: {
+            styleOverrides: {
+                root: {
+                    '& .MuiInputBase-input': {
+                        padding: `7px 10px`,
+                    },
+                },
+            },
+        },
         CircularProgressStyled: {
             styleOverrides: {
                 root: {},
@@ -353,7 +372,11 @@ const globalTheme = createTheme({
         },
         HorizontalTabTitlesStyled: {
             styleOverrides: {
-                root: {},
+                root: {
+                    '& .MuiTabs-scrollButtons.Mui-disabled': {
+                        opacity: '0.3',
+                    },
+                },
             },
         },
         HorizontalTabsBoxStyled: {
