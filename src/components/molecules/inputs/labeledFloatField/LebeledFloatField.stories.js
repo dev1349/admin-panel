@@ -15,7 +15,7 @@ Example1.args = {
     value: 345,
     pattern:
         '^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$',
-    onChange: () => alert(345),
+    onChange: () => console.log('change'),
     autoFocus: false,
     name: 'sortOrder',
 }

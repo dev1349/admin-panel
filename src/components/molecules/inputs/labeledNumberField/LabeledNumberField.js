@@ -44,7 +44,7 @@ const WSLabeledNumberField = ({
                     id={id}
                     fullWidth={true}
                     name={name}
-                    value={value}
+                    value={value === null || value === undefined ? '' : value}
                     onChange={changeHandler}
                     onKeyDown={inputNumberKeyDownHandler}
                     autoFocus={autoFocus}

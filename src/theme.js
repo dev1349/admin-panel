@@ -42,6 +42,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        FilterIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         IconButtonStyled: {
             styleOverrides: {
                 root: {},

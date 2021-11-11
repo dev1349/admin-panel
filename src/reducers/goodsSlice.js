@@ -106,7 +106,6 @@ export const filteringGoods = (allGoods, filter) => {
 
     return dispatch => {
         const filteredGoods = filteringGoodByFilter()
-
         dispatch(setFilteredGoods(filteredGoods))
     }
 }
@@ -181,3 +180,14 @@ export const {
     setSortingStatus,
     setSortedAllGoods,
 } = goodsSlice.actions
+
+export const getGoodStatus = state =>
+    Array.from(new Set(state.goods.allGoods.map(el => el.status)).values())
+export const getGoodImageStatus = state =>
+    Array.from(new Set(state.goods.allGoods.map(el => el.imageStatus)).values())
+export const getGoodTypes = state =>
+    Array.from(
+        new Set(state.goods.allGoods.map(el => el.goodType.name)).values()
+    )
+export const getFilterValues = state => state.goods.filter
+export const getGoods = state => state.goods.allGoods

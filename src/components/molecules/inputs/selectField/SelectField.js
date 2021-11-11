@@ -3,7 +3,14 @@ import FormControl from '../../../atoms/inputs/selectField/formControl/FormContr
 import Select from '../../../atoms/inputs/selectField/select/Select'
 import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
 
-const SelectField = ({ value, onChange, items, fullWidth }) => {
+const SelectField = ({
+    value,
+    onChange,
+    items,
+    fullWidth,
+    defaultLabel,
+    isStartItemDisabled,
+}) => {
     return (
         <FormControl fullWidth={fullWidth}>
             <Select
@@ -12,12 +19,12 @@ const SelectField = ({ value, onChange, items, fullWidth }) => {
                 displayEmpty
                 inputProps={{ 'aria-label': 'Without label' }}
             >
-                <MenuItem value="" disabled>
-                    Выберите тип товара
+                <MenuItem value="" disabled={isStartItemDisabled}>
+                    {defaultLabel}
                 </MenuItem>
                 {items.map(item => (
-                    <MenuItem key={item.id} value={item}>
-                        {item.name}
+                    <MenuItem key={item.id} value={item.value}>
+                        {item.label}
                     </MenuItem>
                 ))}
             </Select>

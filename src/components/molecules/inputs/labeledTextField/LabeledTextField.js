@@ -29,7 +29,7 @@ const WSLabeledTextField = ({
                     id={id}
                     fullWidth={true}
                     name={name}
-                    value={value}
+                    value={!value ? '' : value}
                     onChange={changeHandler}
                     autoFocus={autoFocus}
                 />

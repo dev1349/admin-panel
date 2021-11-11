@@ -6,7 +6,7 @@ export const goodsMockData = {
             description: '',
             goodType: {
                 id: 0,
-                name: 'string',
+                name: 'Тип 01',
             },
             price: 250000,
             salePrice: 240000,
@@ -46,7 +46,7 @@ export const goodsMockData = {
                 },
                 {
                     id: 1,
-                    name: 'Swiss Gear',
+                    name: 'Сумка',
                 },
             ],
         },
@@ -56,7 +56,7 @@ export const goodsMockData = {
             description: '',
             goodType: {
                 id: 0,
-                name: 'string',
+                name: 'Тип 02',
             },
             price: 504700,
             salePrice: 503700,
@@ -96,7 +96,7 @@ export const goodsMockData = {
                 },
                 {
                     id: 3,
-                    name: 'Adidas',
+                    name: 'Женский кроссовки',
                 },
             ],
         },
@@ -106,7 +106,7 @@ export const goodsMockData = {
             description: '',
             goodType: {
                 id: 0,
-                name: 'string',
+                name: 'Тип 02',
             },
             price: 649000,
             salePrice: 600000,
@@ -117,7 +117,7 @@ export const goodsMockData = {
                 id: 0,
                 name: 'string',
             },
-            imageStatus: false,
+            imageStatus: true,
             attributeValueList: [
                 {
                     id: {
@@ -146,7 +146,7 @@ export const goodsMockData = {
                 },
                 {
                     id: 3,
-                    name: 'Adidas',
+                    name: 'Женский кроссовки',
                 },
             ],
         },
@@ -156,7 +156,7 @@ export const goodsMockData = {
             description: '',
             goodType: {
                 id: 0,
-                name: 'string',
+                name: 'Тип 03',
             },
             price: 535600,
             salePrice: 500000,
@@ -196,7 +196,7 @@ export const goodsMockData = {
                 },
                 {
                     id: 3,
-                    name: 'Adidas',
+                    name: 'Женский кроссовки',
                 },
             ],
         },
@@ -206,7 +206,7 @@ export const goodsMockData = {
             description: '',
             goodType: {
                 id: 0,
-                name: 'string',
+                name: 'Тип 01',
             },
             price: 530000,
             salePrice: 440000,
@@ -246,7 +246,7 @@ export const goodsMockData = {
                 },
                 {
                     id: 3,
-                    name: 'Adidas',
+                    name: 'Женский кроссовки',
                 },
             ],
         },
@@ -256,7 +256,7 @@ export const goodsMockData = {
             description: '',
             goodType: {
                 id: 0,
-                name: 'string',
+                name: 'Тип 04',
             },
             price: 530000,
             salePrice: 340000,
@@ -300,19 +300,19 @@ export const goodsMockData = {
                 },
                 {
                     id: 3,
-                    name: 'Adidas',
+                    name: 'Женский кроссовки',
                 },
             ],
         },
     ],
     filter: {
-        name: '',
+        name: null,
         price: null,
         status: null,
-        model: '',
+        model: null,
         count: null,
         imageStatus: null,
-        'goodType.name': '',
+        'goodType.name': null,
     },
     filteredGoods: [],
     sortingStatus: {},

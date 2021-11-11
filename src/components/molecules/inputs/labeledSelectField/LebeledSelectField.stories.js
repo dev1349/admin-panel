@@ -14,19 +14,52 @@ Example1.args = {
     label: 'Тип',
     name: 'type',
     value: '',
-    onChange: evt => console.log(evt.target.value),
+    onChange: () => console.log('change'),
     items: [
         {
             id: 0,
-            name: '10',
+            label: '10',
+            value: 10,
         },
         {
             id: 1,
-            name: '20',
+            label: '20',
+            value: 20,
         },
         {
             id: 2,
-            name: '30',
+            label: '30',
+            value: 30,
         },
     ],
+    defaultLabel: 'Выберите тип',
+    isStartItemDisabled: false,
+}
+
+export const Example2 = Template.bind({})
+Example2.args = {
+    id: 'goodField03',
+    label: 'Тип',
+    name: 'type',
+    value: '',
+    onChange: () => console.log('change'),
+    items: [
+        {
+            id: 0,
+            label: '10',
+            value: 10,
+        },
+        {
+            id: 1,
+            label: '20',
+            value: 20,
+        },
+        {
+            id: 2,
+            label: '30',
+            value: 30,
+        },
+    ],
+    defaultLabel: 'Выберите тип',
+    isStartItemDisabled: true,
 }

@@ -60,7 +60,12 @@ const AddGood = props => {
                                 name={'type'}
                                 value={props.values['type'] || ''}
                                 onChange={props.handleChangeSelect}
-                                items={props.allGoodType}
+                                items={props.allGoodType.map((item, index) => ({
+                                    id: index,
+                                    label: item.name,
+                                    value: item.id,
+                                }))}
+                                defaultLabel={'Выберите тип товара'}
                             />
                             <LabeledFloatField
                                 id={'goodField04'}
