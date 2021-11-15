@@ -21,7 +21,7 @@ import AttributesListContainer from '../components/attributeList/AttributesListC
 import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterContainer'
 import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
-import MyGoodsListContainer from '../components/myGoodsList/MyGoodsListContainer'
+import MyGoodsListContainer from '../components/pages/myGoodsList/MyGoodsListContainer'
 import CategoriesListContainer from '../components/categoriesList/CategoriesListContainer'
 import MadeComponentList from '../components/madeComponentList/MadeComponentList'
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'

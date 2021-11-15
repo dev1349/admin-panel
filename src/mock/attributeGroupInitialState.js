@@ -8,7 +8,6 @@ const initialState = {
         sortOrder: null,
     },
     forDeleting: [],
-    sortOrder: 'none',
     order: 'asc',
     orderBy: 'name',
 }

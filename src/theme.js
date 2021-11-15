@@ -47,6 +47,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        HideImageIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         IconButtonStyled: {
             styleOverrides: {
                 root: {},
@@ -173,7 +178,9 @@ const globalTheme = createTheme({
         },
         TableCellStyled: {
             styleOverrides: {
-                root: {},
+                root: {
+                    padding: '0 5px',
+                },
             },
         },
         TabStyled: {
@@ -193,6 +200,41 @@ const globalTheme = createTheme({
                     border: '1px solid lightgrey',
                 },
             },
+        },
+        PriceStyled: {
+            styleOverrides: {
+                root: {
+                    color: 'orange',
+                    fontSize: '14px',
+                },
+            },
+            variants: [
+                {
+                    props: { oldPrice: true },
+                    style: {
+                        color: 'inherit',
+                        textDecoration: 'line-through',
+                    },
+                },
+            ],
+        },
+        CountLabelStyled: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'green',
+                    margin: 0,
+                    padding: '5px',
+                    borderRadius: '3px',
+                },
+            },
+            variants: [
+                {
+                    props: { attention: true },
+                    style: {
+                        backgroundColor: 'orange',
+                    },
+                },
+            ],
         },
         GreyBorderedWrapperForComponentStyled: {
             styleOverrides: {

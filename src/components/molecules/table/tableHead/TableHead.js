@@ -38,7 +38,13 @@ const WSTableHead = ({
                 {headerCells.map(cell => (
                     <TableCell
                         key={cell.id}
-                        align={cell.numeric ? 'right' : 'left'}
+                        align={
+                            cell.numeric === undefined
+                                ? 'center'
+                                : cell.numeric
+                                ? 'right'
+                                : 'left'
+                        }
                         padding={cell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === cell.id ? order : false}
                     >

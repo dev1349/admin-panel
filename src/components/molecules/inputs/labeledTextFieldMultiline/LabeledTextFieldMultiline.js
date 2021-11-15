@@ -19,7 +19,8 @@ const WSLabeledMultilineTextField = ({
     autoFocus,
 }) => {
     const changeHandler = evt => {
-        onChange({ [name]: evt.target.value })
+        const sendValue = evt.target.value === '' ? null : evt.target.value
+        onChange({ [name]: sendValue })
     }
     return (
         <LabeledTextFieldMultilineStyled>
@@ -29,7 +30,7 @@ const WSLabeledMultilineTextField = ({
                     id={id}
                     fullWidth={true}
                     name={name}
-                    value={value}
+                    value={!value ? '' : value}
                     multiline
                     rows={4}
                     onChange={changeHandler}

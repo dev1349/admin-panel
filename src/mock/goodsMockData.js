@@ -1,56 +1,6 @@
 export const goodsMockData = {
     allGoods: [
         {
-            id: 0,
-            name: 'Рюкзак синий SWISSWIN 7611 900-blue 32L',
-            description: '',
-            goodType: {
-                id: 0,
-                name: 'Тип 01',
-            },
-            price: 250000,
-            salePrice: 240000,
-            model: '7611b',
-            count: 3,
-            status: true,
-            manufacturer: {
-                id: 0,
-                name: 'string',
-            },
-            imageStatus: false,
-            attributeValueList: [
-                {
-                    id: {
-                        attributeId: 0,
-                        goodId: 0,
-                    },
-                    attribute: {
-                        id: 0,
-                        name: 'string',
-                        attributeGroup: {
-                            id: 0,
-                            name: 'string',
-                        },
-                        attributeType: {
-                            id: 0,
-                            name: 'string',
-                        },
-                    },
-                    value: 'string',
-                },
-            ],
-            categorySet: [
-                {
-                    id: 0,
-                    name: 'Рюкзак',
-                },
-                {
-                    id: 1,
-                    name: 'Сумка',
-                },
-            ],
-        },
-        {
             id: 1,
             name: "Adidas EQT Running Support ' 93 Tech Beige",
             description: '',
@@ -147,6 +97,56 @@ export const goodsMockData = {
                 {
                     id: 3,
                     name: 'Женский кроссовки',
+                },
+            ],
+        },
+        {
+            id: 0,
+            name: 'Рюкзак синий SWISSWIN 7611 900-blue 32L',
+            description: '',
+            goodType: {
+                id: 0,
+                name: 'Тип 01',
+            },
+            price: 250000,
+            salePrice: 240000,
+            model: '7611b',
+            count: 3,
+            status: true,
+            manufacturer: {
+                id: 0,
+                name: 'string',
+            },
+            imageStatus: false,
+            attributeValueList: [
+                {
+                    id: {
+                        attributeId: 0,
+                        goodId: 0,
+                    },
+                    attribute: {
+                        id: 0,
+                        name: 'string',
+                        attributeGroup: {
+                            id: 0,
+                            name: 'string',
+                        },
+                        attributeType: {
+                            id: 0,
+                            name: 'string',
+                        },
+                    },
+                    value: 'string',
+                },
+            ],
+            categorySet: [
+                {
+                    id: 0,
+                    name: 'Рюкзак',
+                },
+                {
+                    id: 1,
+                    name: 'Сумка',
                 },
             ],
         },
@@ -315,21 +315,7 @@ export const goodsMockData = {
         'goodType.name': null,
     },
     filteredGoods: [],
-    sortingStatus: {},
-    theme: {
-        main: {
-            color: '#444',
-            backgroundTitleColor: 'grey',
-            fontTitleColor: 'white',
-            titleIconSize: '10px',
-            buttonIconSize: '15px',
-            buttonPadding: '10px',
-            captionPadding: '15px',
-            actualPriceColor: 'orange',
-            minCountColor: 'orange',
-        },
-        alternative: {
-            minCountColor: 'coral',
-        },
-    },
+    order: 'asc',
+    orderBy: 'name',
+    selectedGoods: [],
 }

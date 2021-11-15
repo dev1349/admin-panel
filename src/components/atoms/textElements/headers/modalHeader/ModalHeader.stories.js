@@ -2,7 +2,7 @@ import React from 'react'
 import ModalHeader from './ModalHeader'
 
 export default {
-    title: 'atoms/headers/ModalHeader',
+    title: 'atoms/textElements/headers/ModalHeader',
     component: ModalHeader,
 }
 

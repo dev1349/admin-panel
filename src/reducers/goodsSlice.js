@@ -7,6 +7,7 @@ import {
     postGoodFetch,
     putGoodFetch,
 } from '../api/goodApi'
+import { getComparator, toSortTable } from './common/sortingFunctions'
 
 const goodsSlice = createSlice({
     name: 'goods',
@@ -39,8 +40,35 @@ const goodsSlice = createSlice({
         setSortedAllGoods(state, action) {
             state.allGoods = action.payload
         },
+        changeOrder(state, action) {
+            state.order = action.payload
+        },
+        changeOrderBy(state, action) {
+            state.orderBy = action.payload
+        },
+        setSelectedGoodId(state, action) {
+            state.selectedGoods = action.payload
+        },
+        clearSelectedGoods(state) {
+            state.selectedGoods = goodsMockData.selectedGoods
+        },
     },
 })
+
+export default goodsSlice.reducer
+
+export const {
+    addGood,
+    setCurrentGood,
+    setAllGoods,
+    deleteGoodSuccess,
+    setGoodsFilter,
+    setFilteredGoods,
+    changeOrder,
+    changeOrderBy,
+    setSelectedGoodId,
+    clearSelectedGoods,
+} = goodsSlice.actions
 
 export const postGood = good => {
     return dispatch => {
@@ -110,76 +138,51 @@ export const filteringGoods = (allGoods, filter) => {
     }
 }
 
-const sortMyGoodsList = (allGoods, sortingStatus) => dispatch => {
-    const sortingField = Object.keys(sortingStatus)[0]
-    const sortingValue = sortingStatus[sortingField]
-    const newArr = [...allGoods]
-    newArr.sort((a, b) => {
-        if (sortingValue === 'down') {
-            if (a[sortingField] > b[sortingField]) {
-                return 1
-            }
-            if (a[sortingField] < b[sortingField]) {
-                return -1
-            }
-        }
-        if (sortingValue === 'up') {
-            if (a[sortingField] < b[sortingField]) {
-                return 1
-            }
-            if (a[sortingField] > b[sortingField]) {
-                return -1
-            }
-        }
-        return 0
-    })
-
-    dispatch(setSortedAllGoods(newArr))
+export const sortingGoods = () => (dispatch, getState) => {
+    const goods = getState().goods.allGoods
+    const comparator = getComparator(
+        getState().goods.order,
+        getState().goods.orderBy
+    )
+    const sortedGoods = toSortTable(goods, comparator)
+    dispatch(setAllGoods(sortedGoods))
 }
 
-export const changeMyGoodsListSortingStatus =
-    (nameOfField, allGoods, sortingStatus) => dispatch => {
-        const sortingField = Object.keys(sortingStatus)[0]
-        const sortingValue = sortingStatus[sortingField]
+export const clickTableSortLabel = property => (dispatch, getState) => {
+    const order = getState().goods.order
+    const orderBy = getState().goods.orderBy
+    const isAsc = orderBy === property && order === 'asc'
+    dispatch(changeOrder(isAsc ? 'desc' : 'asc'))
+    dispatch(changeOrderBy(property))
+    dispatch(sortingGoods())
+}
 
-        if (sortingField !== nameOfField) {
-            dispatch(
-                setSortingStatus({
-                    [nameOfField]: 'down',
-                })
-            )
-        }
-
-        if (sortingField === nameOfField && sortingValue === 'down') {
-            dispatch(
-                setSortingStatus({
-                    [nameOfField]: 'up',
-                })
-            )
-        }
-
-        if (sortingField === nameOfField && sortingValue === 'up') {
-            dispatch(
-                setSortingStatus({
-                    [nameOfField]: 'down',
-                })
-            )
-        }
-        dispatch(sortMyGoodsList(allGoods, sortingStatus))
+export const selectGood = id => (dispatch, getState) => {
+    const selectedGoods = getState().goods.selectedGoods
+    let newSelectedGoods
+    const position = selectedGoods.indexOf(id)
+    if (position === -1) {
+        newSelectedGoods = [...selectedGoods, id]
+    } else {
+        newSelectedGoods = [...selectedGoods]
+        newSelectedGoods.splice(position, 1)
     }
+    dispatch(setSelectedGoodId(newSelectedGoods))
+}
 
-export default goodsSlice.reducer
-
-export const {
-    addGood,
-    setCurrentGood,
-    setAllGoods,
-    deleteGoodSuccess,
-    setGoodsFilter,
-    setFilteredGoods,
-    setSortingStatus,
-    setSortedAllGoods,
-} = goodsSlice.actions
+export const selectAllGoods = () => (dispatch, getState) => {
+    const allGoods = getState().goods.allGoods
+    if (!allGoods.length) return
+    if (
+        getState().goods.allGoods.length ===
+        getState().goods.selectedGoods.length
+    ) {
+        dispatch(clearSelectedGoods())
+    } else {
+        dispatch(clearSelectedGoods())
+        allGoods.forEach(item => dispatch(selectGood(item.id)))
+    }
+}
 
 export const getGoodStatus = state =>
     Array.from(new Set(state.goods.allGoods.map(el => el.status)).values())
@@ -191,3 +194,9 @@ export const getGoodTypes = state =>
     )
 export const getFilterValues = state => state.goods.filter
 export const getGoods = state => state.goods.allGoods
+export const getOrder = state => state.goods.order
+export const getOrderBy = state => state.goods.orderBy
+export const getRowCount = state => state.goods.allGoods.length
+export const getSelectedRowCount = state => state.goods.selectedGoods.length
+export const getGoodChecked = id => state =>
+    state.goods.selectedGoods.includes(id)

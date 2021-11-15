@@ -23,9 +23,14 @@ const headerCells = [
     },
     {
         id: 'sortOrder',
-        numeric: true,
         disablePadding: true,
         label: 'Порядок сортировки',
+        sorting: true,
+    },
+    {
+        id: 'sort',
+        disablePadding: true,
+        label: 'Сорт',
         sorting: true,
     },
 ]

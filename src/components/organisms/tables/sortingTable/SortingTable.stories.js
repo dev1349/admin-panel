@@ -18,7 +18,6 @@ const headerCells = [
     },
     {
         id: 'calories',
-        numeric: true,
         disablePadding: false,
         label: 'Calories',
         sorting: true,

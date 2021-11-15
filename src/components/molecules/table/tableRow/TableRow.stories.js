@@ -30,7 +30,7 @@ export const Example1 = Template.bind({})
 Example1.args = {
     rowFields: row,
     id: 1,
-    headerCellTypes: [false, true, true, true, true],
+    headerCellTypes: [undefined, true, true, true, true],
     onCheckRow: () => () => console.log('Check row'),
     onEditRow: () => () => console.log('Edit row'),
     isRowChecked: () => true,

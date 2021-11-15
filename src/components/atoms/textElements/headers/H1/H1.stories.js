@@ -2,7 +2,7 @@ import React from 'react'
 import H1 from './H1'
 
 export default {
-    title: 'atoms/headers/H1',
+    title: 'atoms/textElements/headers/H1',
     component: H1,
 }
 

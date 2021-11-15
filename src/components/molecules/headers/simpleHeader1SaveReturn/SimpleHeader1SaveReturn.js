@@ -1,5 +1,5 @@
 import React from 'react'
-import H1 from '../../../atoms/headers/H1/H1'
+import H1 from '../../../atoms/textElements/headers/H1/H1'
 import IconButton from '../../iconButton/IconButton'
 import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
 import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'

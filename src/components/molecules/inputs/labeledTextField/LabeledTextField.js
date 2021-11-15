@@ -19,7 +19,8 @@ const WSLabeledTextField = ({
     autoFocus,
 }) => {
     const changeHandler = evt => {
-        onChange({ [name]: evt.target.value })
+        const sendValue = evt.target.value === '' ? null : evt.target.value
+        onChange({ [name]: sendValue })
     }
     return (
         <LabeledTextFieldStyled>

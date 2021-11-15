@@ -1,6 +1,5 @@
 import React from 'react'
-import { styled } from '@mui/material'
-import { TableRow } from '@mui/material'
+import { styled, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import IconButton from '../../iconButton/IconButton'
@@ -38,7 +37,13 @@ const WSTableRow = ({
                 .map((keyName, index) => (
                     <TableCell
                         key={keyName}
-                        align={headerCellTypes[index] ? 'right' : 'left'}
+                        align={
+                            headerCellTypes[index] === undefined
+                                ? 'center'
+                                : headerCellTypes[index]
+                                ? 'right'
+                                : 'left'
+                        }
                         padding={'none'}
                     >
                         {rowFields[keyName]}
