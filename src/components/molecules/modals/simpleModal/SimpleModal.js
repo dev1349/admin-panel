@@ -5,15 +5,21 @@ import VerticalModalTemplate from '../../../templates/verticalModalTemplate/Vert
 import ModalHeader from '../../../atoms/textElements/headers/modalHeader/ModalHeader'
 import SimpleButton from '../../../atoms/simpleButton/SimpleButton'
 
-const SimpleModalStyled = styled(Box, {
+export const SimpleModalStyled = styled(Box, {
     name: 'SimpleModalStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
+
+export const ZIndexedModalStyled = styled(Modal, {
+    name: 'ZIndexedModalStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
 const WSSimpleModal = ({ modalText, modalType, action, ...rest }) => {
     return (
-        <Modal {...rest}>
+        <ZIndexedModalStyled {...rest}>
             <SimpleModalStyled>
                 <VerticalModalTemplate>
                     <ModalHeader>{modalText}</ModalHeader>
@@ -26,7 +32,7 @@ const WSSimpleModal = ({ modalText, modalType, action, ...rest }) => {
                     </SimpleButton>
                 </VerticalModalTemplate>
             </SimpleModalStyled>
-        </Modal>
+        </ZIndexedModalStyled>
     )
 }
 

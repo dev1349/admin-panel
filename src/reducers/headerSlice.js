@@ -17,3 +17,4 @@ export default headerSlice.reducer
 
 export const getHeaderItems = state => state.header.headerItems
 export const getActiveSubMenu = state => state.header.activeSubMenu
+export const getHeaderItemsConf = state => state.header.headerItemsConf

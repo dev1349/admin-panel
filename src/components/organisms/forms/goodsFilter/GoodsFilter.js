@@ -5,7 +5,7 @@ import LabeledFloatField from '../../../molecules/inputs/labeledFloatField/Label
 import LabeledSelectField from '../../../molecules/inputs/labeledSelectField/LabeledSelectField'
 import LabeledNumberField from '../../../molecules/inputs/labeledNumberField/LabeledNumberField'
 import TextAlignRightTemplate from '../../../templates/textAlignRightTemplate/TextAlignRightTemplate'
-import IconButton from '../../../molecules/iconButton/IconButton'
+import IconButton from '../../../molecules/buttons/iconButton/IconButton'
 import FilterIcon from '../../../atoms/icons/filterIcon/FilterIcon'
 
 const WSGoodsFilter = ({

@@ -7,13 +7,16 @@ import './Constants.sass'
 import HeaderContainer from '../header/HeaderContainer'
 import { ThemeProvider } from '@mui/material'
 import globalTheme from '../../theme'
+import PageHeader from '../pages/pageHeader/PageHeader'
 
 const App = () => {
     const isAuth = true
     return (
         <BrowserRouter>
             <ThemeProvider theme={globalTheme}>
-                <HeaderContainer />
+                <HeaderContainer />{' '}
+                {/* После рефакторинга statistics компонент <HeaderContainer/> удалить*/}
+                <PageHeader />
                 {isAuth &&
                     authRoutes.map(({ path, Component }) => (
                         <Route
@@ -23,7 +26,6 @@ const App = () => {
                             exact
                         />
                     ))}
-
                 {publicRoutes.map(({ path, Component }) => (
                     <Route key={path} path={path} component={Component} exact />
                 ))}

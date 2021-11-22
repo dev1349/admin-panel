@@ -52,7 +52,78 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        MenuIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ImportExportIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ShopsIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        HelpIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        LogoutIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ImgStyled: {
+            styleOverrides: {
+                root: {},
+            },
+            variants: [
+                {
+                    props: { logo: true },
+                    style: {
+                        height: '24px',
+                    },
+                },
+            ],
+        },
         IconButtonStyled: {
+            styleOverrides: {
+                root: {},
+            },
+            variants: [
+                {
+                    props: { menuButton: true },
+                    style: {
+                        zIndex: 1310,
+                    },
+                },
+            ],
+        },
+        MenuButtonStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        MenuStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        MenuButtonWrapperStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        PageHeaderWrapperStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        LinkStyled: {
             styleOverrides: {
                 root: {},
             },
@@ -157,7 +228,7 @@ const globalTheme = createTheme({
                     top: '50%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
-                    zIndex: '1500',
+                    zIndex: '1350',
                 },
             },
         },
@@ -349,6 +420,21 @@ const globalTheme = createTheme({
                 },
             },
         },
+        PageHeaderTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    alignItems: 'center',
+                },
+            },
+        },
+        PageHeaderItemRightTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    margin: '0 0 0 auto',
+                },
+            },
+        },
         Header1Styled: {
             styleOverrides: {
                 root: {},
@@ -387,6 +473,13 @@ const globalTheme = createTheme({
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
                     maxWidth: '400px',
+                },
+            },
+        },
+        ZIndexedModalStyled: {
+            styleOverrides: {
+                root: {
+                    zIndex: 1350,
                 },
             },
         },

@@ -1,6 +1,6 @@
 import React from 'react'
 import H1 from '../../../atoms/textElements/headers/H1/H1'
-import IconButton from '../../iconButton/IconButton'
+import IconButton from '../../buttons/iconButton/IconButton'
 import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
 import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'
 import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/ButtonsWrapperTemplate'

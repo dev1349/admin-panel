@@ -3,6 +3,7 @@ import { styled } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 
 const IconButtonStyled = styled(IconButton, {
+    shouldForwardProp: prop => prop !== 'menuButton',
     name: 'IconButtonStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

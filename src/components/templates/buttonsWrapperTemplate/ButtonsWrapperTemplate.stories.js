@@ -2,7 +2,7 @@ import React from 'react'
 import ButtonsWrapperTemplate from './ButtonsWrapperTemplate'
 import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
-import IconButton from '../../molecules/iconButton/IconButton'
+import IconButton from '../../molecules/buttons/iconButton/IconButton'
 
 export default {
     title: 'templates/ButtonsWrapperTemplate',

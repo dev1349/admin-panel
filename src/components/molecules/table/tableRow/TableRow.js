@@ -2,7 +2,7 @@ import React from 'react'
 import { styled, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
-import IconButton from '../../iconButton/IconButton'
+import IconButton from '../../buttons/iconButton/IconButton'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
 
 export const TableRowStyled = styled(TableRow, {
