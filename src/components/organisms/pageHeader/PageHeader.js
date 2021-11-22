@@ -10,6 +10,8 @@ import HelpIcon from '../../atoms/icons/helpIcon/HelpIcon'
 import LogoutIcon from '../../atoms/icons/logoutIcon/LogoutIcon'
 import PageHeaderItemRightTemplate from '../../templates/pageHeaderItemRightTemplate/PageHeaderItemRightTemplate'
 import Link from '../../atoms/link/Link'
+import Drawer from '../../atoms/drawer/Drawer'
+import NavMenu from '../../pages/navMenu/NavMenu'
 
 const PageHeader = ({
     onClickMenu,
@@ -20,6 +22,7 @@ const PageHeader = ({
     onClickLogout,
 }) => {
     const [anchorEl, setAnchorEl] = useState(null)
+    const [isMenuOpen, setMenuOpenStatus] = useState(false)
     const handleClick = evt => {
         if (evt.currentTarget === anchorEl) {
             setAnchorEl(null)
@@ -32,11 +35,21 @@ const PageHeader = ({
     }
     const handleMenuButtonClick = () => {
         setAnchorEl(null)
-        onClickMenu()
+        setMenuOpenStatus(true)
+        onClickMenu && onClickMenu()
     }
     const handleLogoutButtonClick = () => {
         setAnchorEl(null)
-        onClickLogout()
+        onClickLogout && onClickLogout()
+    }
+    const hideDrawer = event => {
+        if (
+            event.type === 'keydown' &&
+            (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+            return
+        }
+        setMenuOpenStatus(false)
     }
 
     return (
@@ -79,6 +92,9 @@ const PageHeader = ({
             <IconButton onClick={handleLogoutButtonClick} menuButton>
                 <LogoutIcon />
             </IconButton>
+            <Drawer anchor={'left'} open={isMenuOpen} onClose={hideDrawer}>
+                <NavMenu hideNavMenu={hideDrawer} />
+            </Drawer>
         </PageHeaderTemplate>
     )
 }

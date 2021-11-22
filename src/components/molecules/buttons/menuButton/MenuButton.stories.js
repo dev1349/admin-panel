@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuButton from './MenuButton'
 import ImportExportIcon from '../../../atoms/icons/importExportIcon/ImportExportIcon'
+import { BrowserRouter } from 'react-router-dom'
 
 export default {
     title: 'molecules/buttons/MenuButton',
@@ -17,12 +18,14 @@ const Template = args => {
     }
 
     return (
-        <MenuButton
-            {...args}
-            handleClick={handleClick}
-            handleClose={handleClose}
-            anchorEl={anchorEl}
-        />
+        <BrowserRouter>
+            <MenuButton
+                {...args}
+                handleClick={handleClick}
+                handleClose={handleClose}
+                anchorEl={anchorEl}
+            />
+        </BrowserRouter>
     )
 }
 

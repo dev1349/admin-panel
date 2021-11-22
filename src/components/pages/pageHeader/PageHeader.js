@@ -12,7 +12,6 @@ const PageHeaderPage = () => {
         <PageHeaderWrapper>
             <MaxWidthTemplate>
                 <PageHeader
-                    onClickMenu={() => console.log('Click menu icon')}
                     logo={logoItem}
                     importExportProps={importExportItem}
                     shopsProps={shopsItem}

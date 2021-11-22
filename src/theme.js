@@ -77,6 +77,89 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        HomeIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ShoppingCartIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        CatalogIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ClientsIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        DialogsIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        SiteIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        SettingsIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        AccountIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ListItemIconStyled: {
+            styleOverrides: {
+                root: {
+                    minWidth: '38px',
+                },
+            },
+        },
+        ExpandLessIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ExpandMoreIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ListItemTextStyled: {
+            styleOverrides: {
+                root: {
+                    padding: '0',
+                    margin: '0',
+                },
+            },
+        },
+        ListItemButtonStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ListStyled: {
+            styleOverrides: {
+                root: {
+                    width: '100%',
+                    padding: '0',
+                },
+            },
+        },
+        ListSubHeaderStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ImgStyled: {
             styleOverrides: {
                 root: {},
@@ -116,6 +199,13 @@ const globalTheme = createTheme({
         MenuButtonWrapperStyled: {
             styleOverrides: {
                 root: {},
+            },
+        },
+        DrawerStyled: {
+            styleOverrides: {
+                root: {
+                    zIndex: 1360,
+                },
             },
         },
         PageHeaderWrapperStyled: {
@@ -432,6 +522,13 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {
                     margin: '0 0 0 auto',
+                },
+            },
+        },
+        NavTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    padding: '20px',
                 },
             },
         },
