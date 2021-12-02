@@ -71,6 +71,18 @@ const componentList = [
         routeText: '/goodAdd',
         routeLink: '/goodAdd',
     },
+    {
+        componentName: 'Компонент "Главное меню"',
+        task: 'WSADMIN-70',
+        routeText: 'Виден при нажатии на кнопке МЕНЮ',
+        routeLink: '',
+    },
+    {
+        componentName: 'Компонент №1 в форме "Новый заказ"',
+        task: 'WSADMIN-82',
+        routeText: '/orders/1',
+        routeLink: '/orders/1',
+    },
 ]
 
 export default componentList

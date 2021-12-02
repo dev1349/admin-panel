@@ -1,17 +1,18 @@
 import {
+    ADD_CATEGORY_ROUTE,
+    ATTRIBUTE_GROUP,
+    ATTRIBUTE_LIST,
+    CATEGORIES_LIST_ROUTE,
+    COUPONS_LIST_ROUTE,
+    EDIT_GOOD,
     GOOD_ADD_ROUTE,
     GOODS_FILTER_ROUTE,
-    ADD_CATEGORY_ROUTE,
     GOODS_LIST_ROUTE,
     LOGIN_ROUTE,
-    MAIN_ROUTE,
-    ATTRIBUTE_GROUP,
-    MY_GOODS_LIST_ROUTE,
-    CATEGORIES_LIST_ROUTE,
     MADE_COMPONENT_LIST,
-    COUPONS_LIST_ROUTE,
-    ATTRIBUTE_LIST,
-    EDIT_GOOD,
+    MAIN_ROUTE,
+    MY_GOODS_LIST_ROUTE,
+    ORDERS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -27,6 +28,7 @@ import MadeComponentList from '../components/madeComponentList/MadeComponentList
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import EditGoodContainer from '../components/editGood/EditGoodContainer'
+import NewOrder from '../components/pages/newOrder/NewOrder'
 
 export const authRoutes = [
     {
@@ -77,6 +79,10 @@ export const authRoutes = [
     {
         path: EDIT_GOOD,
         Component: EditGoodContainer,
+    },
+    {
+        path: ORDERS,
+        Component: NewOrder,
     },
 ]
 

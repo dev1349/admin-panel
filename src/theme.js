@@ -284,6 +284,16 @@ const globalTheme = createTheme({
                     },
                 },
             },
+            variants: [
+                {
+                    props: { forTable: true },
+                    style: {
+                        '& .MuiInputBase-input': {
+                            fontSize: '14px',
+                        },
+                    },
+                },
+            ],
         },
         FormControlStyled: {
             styleOverrides: {
@@ -294,6 +304,14 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {},
             },
+            variants: [
+                {
+                    props: { forTable: true },
+                    style: {
+                        fontSize: '14px',
+                    },
+                },
+            ],
         },
         SelectStyled: {
             styleOverrides: {
@@ -303,6 +321,14 @@ const globalTheme = createTheme({
                     },
                 },
             },
+            variants: [
+                {
+                    props: { forTable: true },
+                    style: {
+                        fontSize: '14px',
+                    },
+                },
+            ],
         },
         CircularProgressStyled: {
             styleOverrides: {
@@ -588,11 +614,38 @@ const globalTheme = createTheme({
                 },
             },
         },
+        SimpleTableHeadStyled: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'lightgrey',
+                    border: '1px solid lightgrey',
+                },
+            },
+        },
         TableRowStyled: {
             styleOverrides: {
                 root: {
                     border: '1px solid lightgrey',
                 },
+            },
+        },
+        SimpleTableRowStyled: {
+            styleOverrides: {
+                root: {
+                    border: '1px solid lightgrey',
+                },
+            },
+        },
+        SimpleTableFooterStyled: {
+            styleOverrides: {
+                root: {
+                    border: '1px solid lightgrey',
+                },
+            },
+        },
+        SimpleTableTotalStyled: {
+            styleOverrides: {
+                root: {},
             },
         },
         TableSortLabelStyled: {

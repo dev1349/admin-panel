@@ -10,7 +10,7 @@ const initialState = {
             {
                 id: 'orders',
                 title: 'Заказы',
-                link: '/orders',
+                link: '/orders/1',
             },
             {
                 id: 'catalog',

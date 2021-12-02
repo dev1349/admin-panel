@@ -10,8 +10,9 @@ const Template = args => <SelectField {...args} />
 
 export const Example1 = Template.bind({})
 Example1.args = {
+    name: 'selectDelivery',
     value: '',
-    onChange: null,
+    onChange: payload => console.log('change selection value: ', payload),
     items: [
         {
             id: 0,
@@ -36,8 +37,9 @@ Example1.args = {
 
 export const Example2 = Template.bind({})
 Example2.args = {
+    name: 'selectDelivery',
     value: '',
-    onChange: null,
+    onChange: payload => console.log('change selection value: ', payload),
     items: [
         {
             id: 0,
@@ -55,7 +57,9 @@ Example2.args = {
             value: 30,
         },
     ],
-    fullWidth: true,
+    fullWidth: false,
     defaultLabel: 'Выберите что-нибудь',
-    isStartItemDisabled: false,
+    isStartItemDisabled: true,
+    disabled: true,
+    forTable: true,
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { MenuItem, styled } from '@mui/material'
 
 const MenuItemStyled = styled(MenuItem, {
+    shouldForwardProp: prop => prop !== 'forTable',
     name: 'MenuItemStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

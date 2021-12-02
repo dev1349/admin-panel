@@ -4,26 +4,44 @@ import Select from '../../../atoms/inputs/selectField/select/Select'
 import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
 
 const SelectField = ({
+    name,
     value,
     onChange,
     items,
     fullWidth,
     defaultLabel,
     isStartItemDisabled,
+    autoFocus,
+    disabled,
+    forTable,
 }) => {
+    const changeHandler = evt => {
+        onChange({ [name]: evt.target.value === '' ? null : evt.target.value })
+    }
     return (
         <FormControl fullWidth={fullWidth}>
             <Select
-                value={value}
-                onChange={onChange}
+                value={value === null || value === undefined ? '' : value}
+                onChange={changeHandler}
                 displayEmpty
                 inputProps={{ 'aria-label': 'Without label' }}
+                autoFocus={autoFocus}
+                disabled={disabled}
+                forTable={forTable}
             >
-                <MenuItem value="" disabled={isStartItemDisabled}>
+                <MenuItem
+                    value=""
+                    disabled={isStartItemDisabled}
+                    forTable={forTable}
+                >
                     {defaultLabel}
                 </MenuItem>
                 {items.map(item => (
-                    <MenuItem key={item.id} value={item.value}>
+                    <MenuItem
+                        key={item.id}
+                        value={item.value}
+                        forTable={forTable}
+                    >
                         {item.label}
                     </MenuItem>
                 ))}

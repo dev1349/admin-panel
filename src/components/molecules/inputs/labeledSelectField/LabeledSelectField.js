@@ -17,9 +17,6 @@ const WSLabeledSelectField = ({
     defaultLabel,
     isStartItemDisabled,
 }) => {
-    const changeHandler = evt => {
-        onChange({ [name]: evt.target.value === '' ? null : evt.target.value })
-    }
     return (
         <InputWrapper>
             <LabeledInputTemplate>
@@ -28,8 +25,8 @@ const WSLabeledSelectField = ({
                     id={id}
                     fullWidth={true}
                     name={name}
-                    value={value === null || value === undefined ? '' : value}
-                    onChange={changeHandler}
+                    value={value}
+                    onChange={onChange}
                     autoFocus={autoFocus}
                     items={items}
                     defaultLabel={defaultLabel}
