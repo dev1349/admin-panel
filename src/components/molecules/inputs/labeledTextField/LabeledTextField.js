@@ -1,10 +1,10 @@
 import React from 'react'
 import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
-import TextField from '../../../atoms/inputs/textField/TextField'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
+import TextField from '../textField/TextField'
 
-const LabeledTextFieldStyled = styled('div', {
+export const LabeledTextFieldStyled = styled('div', {
     name: 'LabeledTextFieldStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
@@ -17,22 +17,22 @@ const WSLabeledTextField = ({
     value,
     onChange,
     autoFocus,
+    pattern,
+    ...rest
 }) => {
-    const changeHandler = evt => {
-        const sendValue = evt.target.value === '' ? null : evt.target.value
-        onChange({ [name]: sendValue })
-    }
     return (
         <LabeledTextFieldStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <TextField
                     id={id}
-                    fullWidth={true}
                     name={name}
-                    value={!value ? '' : value}
-                    onChange={changeHandler}
+                    value={value}
+                    onChange={onChange}
                     autoFocus={autoFocus}
+                    fullWidth={true}
+                    pattern={pattern}
+                    {...rest}
                 />
             </LabeledInputTemplate>
         </LabeledTextFieldStyled>

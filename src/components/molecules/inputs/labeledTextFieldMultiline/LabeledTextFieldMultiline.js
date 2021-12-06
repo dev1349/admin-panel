@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
-import MultilineField from '../../../atoms/inputs/multilineField/MultilineField'
+import TextFieldMultiline from '../textFieldMultiline/TextFieldMultiline'
 
 const LabeledTextFieldMultilineStyled = styled('div', {
     name: 'LabeledTextFieldMultilineStyled',
@@ -10,35 +10,33 @@ const LabeledTextFieldMultilineStyled = styled('div', {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSLabeledMultilineTextField = ({
+const LabeledMultilineTextField = ({
     id,
     label,
     name,
     value,
     onChange,
     autoFocus,
+    placeholder,
 }) => {
-    const changeHandler = evt => {
-        const sendValue = evt.target.value === '' ? null : evt.target.value
-        onChange({ [name]: sendValue })
-    }
     return (
         <LabeledTextFieldMultilineStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <MultilineField
+                <TextFieldMultiline
                     id={id}
                     fullWidth={true}
                     name={name}
-                    value={!value ? '' : value}
+                    value={value}
                     multiline
                     rows={4}
-                    onChange={changeHandler}
+                    onChange={onChange}
                     autoFocus={autoFocus}
+                    placeholder={placeholder}
                 />
             </LabeledInputTemplate>
         </LabeledTextFieldMultilineStyled>
     )
 }
 
-export default WSLabeledMultilineTextField
+export default LabeledMultilineTextField

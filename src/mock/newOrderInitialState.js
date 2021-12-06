@@ -103,6 +103,54 @@ const initialState = {
             numeric: true,
         },
     ],
+    fields: {
+        clientName: null,
+        clientPhone: null,
+        clientEmail: null,
+        hasDelivery: false,
+        clientAddress: null,
+        clientCity: null,
+        clientDeliveryDateTime: {
+            date: null,
+            timeFromHours: null,
+            timeFromMinutes: null,
+            timeToHours: null,
+            timeToMinutes: null,
+        },
+        comments: null,
+    },
+    cities: [
+        {
+            city: 'Киев',
+            district: null,
+            region: 'Киевская обл.',
+        },
+        {
+            city: 'Киев',
+            district: null,
+            region: null,
+        },
+        {
+            city: 'Киевское',
+            district: 'Новоодесский район',
+            region: 'Николаевская обл.',
+        },
+        {
+            city: 'Киевка',
+            district: 'Голопристанский район',
+            region: 'Днепровская обл.',
+        },
+        {
+            city: 'Киевец',
+            district: 'Николаевский район',
+            region: 'Львовская обл.',
+        },
+        {
+            city: 'Киевское',
+            district: 'Новониколаевский район',
+            region: 'Запорожская обл.',
+        },
+    ],
 }
 
 export default initialState

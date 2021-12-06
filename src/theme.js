@@ -134,6 +134,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        SearchIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ListItemTextStyled: {
             styleOverrides: {
                 root: {
@@ -238,6 +243,16 @@ const globalTheme = createTheme({
                 },
             },
         },
+        H3Styled: {
+            styleOverrides: {
+                root: {
+                    fontSize: '16px',
+                    color: 'rgba(0, 0, 0, 0.87)',
+                    display: 'block',
+                    fontWeight: '400',
+                },
+            },
+        },
         ModalHeaderStyled: {
             styleOverrides: {
                 root: {
@@ -259,7 +274,17 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        FormControlLabelStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         InputLabelStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        TextFieldMultilineStyled: {
             styleOverrides: {
                 root: {},
             },
@@ -329,6 +354,25 @@ const globalTheme = createTheme({
                     },
                 },
             ],
+        },
+        AutocompleteStyled: {
+            styleOverrides: {
+                root: {
+                    '& .MuiAutocomplete-inputRoot': {
+                        padding: '0',
+                    },
+                },
+            },
+        },
+        LabeledAutocompleteStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        LabeledDateTimeFromToFieldStyled: {
+            styleOverrides: {
+                root: {},
+            },
         },
         CircularProgressStyled: {
             styleOverrides: {
@@ -422,6 +466,14 @@ const globalTheme = createTheme({
                     },
                 },
             ],
+        },
+        TextBetweenInputsStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'inline-flex',
+                    lineHeight: '36px',
+                },
+            },
         },
         GreyBorderedWrapperForComponentStyled: {
             styleOverrides: {
@@ -548,6 +600,16 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {
                     margin: '0 0 0 auto',
+                },
+            },
+        },
+        FlexSpaceBetweenTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    padding: '10px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                 },
             },
         },

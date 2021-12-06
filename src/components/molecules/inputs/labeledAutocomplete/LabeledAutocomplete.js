@@ -2,39 +2,38 @@ import React from 'react'
 import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
-import NumberField from '../numberField/NumberField'
+import Autocomplete from '../autocomplete/Autocomplete'
 
-const LabeledNumberFieldStyled = styled('div', {
-    name: 'LabeledNumberFieldStyled',
+export const LabeledAutocompleteStyled = styled('div', {
+    name: 'LabeledAutocompleteStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSLabeledNumberField = ({
+const LabeledAutocomplete = ({
     id,
     label,
     name,
-    pattern,
     value,
-    onChange,
-    autoFocus,
+    changeValue,
+    options,
+    ...rest
 }) => {
     return (
-        <LabeledNumberFieldStyled>
+        <LabeledAutocompleteStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <NumberField
-                    id={id}
-                    fullWidth={true}
+                <Autocomplete
+                    textFieldId={id}
                     name={name}
                     value={value}
-                    onChange={onChange}
-                    autoFocus={autoFocus}
-                    pattern={pattern}
+                    changeValue={changeValue}
+                    options={options}
+                    {...rest}
                 />
             </LabeledInputTemplate>
-        </LabeledNumberFieldStyled>
+        </LabeledAutocompleteStyled>
     )
 }
 
-export default WSLabeledNumberField
+export default LabeledAutocomplete

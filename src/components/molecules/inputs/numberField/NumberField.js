@@ -12,6 +12,13 @@ const NumberFieldWS = ({
     disabled,
 }) => {
     const changeHandler = evt => {
+        if (!pattern) {
+            const sendValue =
+                evt.target.value === '' ? null : parseInt(evt.target.value)
+            onChange({ [name]: sendValue })
+            return
+        }
+
         if (pattern && new RegExp(pattern).test(evt.target.value)) {
             const sendValue =
                 evt.target.value === '' ? null : parseInt(evt.target.value)

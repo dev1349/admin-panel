@@ -1,40 +1,38 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
-import NumberField from '../numberField/NumberField'
+import DropDownTextFieldWithValidation from '../dropDownTextFieldWithValidation/DropDownTextFieldWithValidation'
+import { LabeledTextFieldStyled } from '../labeledTextField/LabeledTextField'
 
-const LabeledNumberFieldStyled = styled('div', {
-    name: 'LabeledNumberFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const WSLabeledNumberField = ({
+const LabeledDropDownTextFieldWithValidation = ({
     id,
     label,
     name,
-    pattern,
     value,
     onChange,
     autoFocus,
+    pattern,
+    helperText,
+    check,
 }) => {
     return (
-        <LabeledNumberFieldStyled>
+        <LabeledTextFieldStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <NumberField
+                <DropDownTextFieldWithValidation
                     id={id}
-                    fullWidth={true}
                     name={name}
                     value={value}
                     onChange={onChange}
                     autoFocus={autoFocus}
+                    fullWidth={true}
                     pattern={pattern}
+                    helperText={helperText}
+                    check={check}
                 />
             </LabeledInputTemplate>
-        </LabeledNumberFieldStyled>
+        </LabeledTextFieldStyled>
     )
 }
 
-export default WSLabeledNumberField
+export default LabeledDropDownTextFieldWithValidation

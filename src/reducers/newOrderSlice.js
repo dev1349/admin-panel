@@ -22,6 +22,15 @@ const newOrderSlice = createSlice({
         changeDeliveryPrice(state, action) {
             state.delivery.price = action.payload.deliveryPrice
         },
+        changeClientFields(state, action) {
+            state.fields = { ...state.fields, ...action.payload }
+        },
+        changeClientDeliveryDateTime(state, action) {
+            state.fields.clientDeliveryDateTime = {
+                ...state.fields.clientDeliveryDateTime,
+                ...action.payload,
+            }
+        },
     },
 })
 
@@ -31,6 +40,8 @@ export const {
     deleteGood,
     changeDeliveryType,
     changeDeliveryPrice,
+    changeClientFields,
+    changeClientDeliveryDateTime,
 } = newOrderSlice.actions
 
 export default newOrderSlice.reducer
@@ -92,3 +103,6 @@ export const getTotalPrice = createSelector(
 )
 export const getDeliveryCurrentType = state =>
     state.newOrder.delivery.currentType
+export const getClientFields = state => state.newOrder.fields
+export const getHadDelivery = state => state.newOrder.fields.hasDelivery
+export const getCities = state => state.newOrder.cities

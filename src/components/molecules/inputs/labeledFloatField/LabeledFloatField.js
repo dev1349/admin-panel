@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
-import TextField from '../../../atoms/inputs/textField/TextField'
+import TextField from '../textField/TextField'
 
 const InputWrapper = styled.div``
 
@@ -15,21 +15,6 @@ const LabeledFloatField = ({
     onChange,
     autoFocus,
 }) => {
-    const changeHandler = evt => {
-        if (pattern && new RegExp(pattern).test(evt.target.value)) {
-            const sendValue = evt.target.value === '' ? null : evt.target.value
-            onChange({ [name]: sendValue })
-        }
-    }
-    const inputNumberKeyDownHandler = evt => {
-        if (
-            evt.code === 'KeyE' ||
-            evt.code === 'Equal' ||
-            evt.code === 'Minus'
-        ) {
-            evt.preventDefault()
-        }
-    }
     return (
         <InputWrapper>
             <LabeledInputTemplate>
@@ -39,9 +24,8 @@ const LabeledFloatField = ({
                     fullWidth={true}
                     name={name}
                     pattern={pattern}
-                    value={!value ? '' : value}
-                    onChange={changeHandler}
-                    onKeyDown={inputNumberKeyDownHandler}
+                    value={value}
+                    onChange={onChange}
                     autoFocus={autoFocus}
                 />
             </LabeledInputTemplate>

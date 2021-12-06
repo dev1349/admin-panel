@@ -30,6 +30,7 @@ const SelectField = ({
                 forTable={forTable}
             >
                 <MenuItem
+                    key={'start'}
                     value=""
                     disabled={isStartItemDisabled}
                     forTable={forTable}
