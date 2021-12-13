@@ -12,10 +12,13 @@ import PageHeaderItemRightTemplate from '../../templates/pageHeaderItemRightTemp
 import Link from '../../atoms/link/Link'
 import Drawer from '../../atoms/drawer/Drawer'
 import NavMenu from '../../pages/navMenu/NavMenu'
+import StatisticsButton from '../../molecules/buttons/statisticsButton/StatisticsButton'
+import NotificationsIcon from '../../atoms/icons/notificationsIcon/NotificationsIcon'
 
 const PageHeader = ({
     onClickMenu,
     logo,
+    statisticsProps,
     importExportProps,
     shopsProps,
     helpProps,
@@ -61,16 +64,25 @@ const PageHeader = ({
                 <Img path={logo.imgSrc} altText={logo.altTextImg} logo />
             </Link>
             <PageHeaderItemRightTemplate>
-                <MenuButton
-                    id={importExportProps.id}
+                <StatisticsButton
+                    id={statisticsProps.id}
                     anchorEl={anchorEl}
                     handleClick={handleClick}
                     handleClose={handleClose}
-                    menuItems={importExportProps.menuItems}
+                    menuItems={statisticsProps.menuItems}
                 >
-                    <ImportExportIcon />
-                </MenuButton>
+                    <NotificationsIcon />
+                </StatisticsButton>
             </PageHeaderItemRightTemplate>
+            <MenuButton
+                id={importExportProps.id}
+                anchorEl={anchorEl}
+                handleClick={handleClick}
+                handleClose={handleClose}
+                menuItems={importExportProps.menuItems}
+            >
+                <ImportExportIcon />
+            </MenuButton>
             <MenuButton
                 id={shopsProps.id}
                 anchorEl={anchorEl}

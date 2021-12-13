@@ -4,7 +4,6 @@ import { authRoutes, publicRoutes } from '../../router/routes'
 import './Reset.css'
 import './App.sass'
 import './Constants.sass'
-import HeaderContainer from '../header/HeaderContainer'
 import { ThemeProvider } from '@mui/material'
 import globalTheme from '../../theme'
 import PageHeader from '../pages/pageHeader/PageHeader'
@@ -14,8 +13,6 @@ const App = () => {
     return (
         <BrowserRouter>
             <ThemeProvider theme={globalTheme}>
-                <HeaderContainer />{' '}
-                {/* После рефакторинга statistics компонент <HeaderContainer/> удалить*/}
                 <PageHeader />
                 {isAuth &&
                     authRoutes.map(({ path, Component }) => (

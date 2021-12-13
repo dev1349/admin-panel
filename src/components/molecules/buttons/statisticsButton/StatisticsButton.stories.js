@@ -1,5 +1,38 @@
-export const statisticsMockData = {
+import React from 'react'
+import StatisticsButton from './StatisticsButton'
+import NotificationsIcon from '../../../atoms/icons/notificationsIcon/NotificationsIcon'
+
+export default {
+    title: 'molecules/buttons/StatisticsButton',
+    component: StatisticsButton,
+}
+
+const Template = args => {
+    const [anchorEl, setAnchorEl] = React.useState(null)
+    const handleClick = event => {
+        setAnchorEl(event.currentTarget)
+    }
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
+
+    return (
+        <StatisticsButton
+            {...args}
+            handleClick={handleClick}
+            handleClose={handleClose}
+            anchorEl={anchorEl}
+        />
+    )
+}
+
+export const Example1 = Template.bind({})
+Example1.args = {
+    children: <NotificationsIcon />,
     id: 0,
+    anchorEl: null,
+    handleClick: () => console.log('menu click'),
+    handleClose: () => console.log('menu close'),
     menuItems: [
         {
             id: 1,

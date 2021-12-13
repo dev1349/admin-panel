@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, styled } from '@mui/material'
 
 const LinkStyled = styled(Link, {
-    name: 'ImgStyled',
+    name: 'LinkStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))

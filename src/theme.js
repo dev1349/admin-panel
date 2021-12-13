@@ -139,6 +139,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        NotificationsIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ListItemTextStyled: {
             styleOverrides: {
                 root: {
@@ -165,6 +170,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        ListDividerStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ImgStyled: {
             styleOverrides: {
                 root: {},
@@ -177,6 +187,16 @@ const globalTheme = createTheme({
                     },
                 },
             ],
+        },
+        BadgeStyled: {
+            styleOverrides: {
+                root: {
+                    '& .MuiBadge-badge': {
+                        backgroundColor: 'orange',
+                        color: 'white',
+                    },
+                },
+            },
         },
         IconButtonStyled: {
             styleOverrides: {
@@ -202,6 +222,11 @@ const globalTheme = createTheme({
             },
         },
         MenuButtonWrapperStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        StatisticsButtonWrapperStyled: {
             styleOverrides: {
                 root: {},
             },
@@ -250,6 +275,16 @@ const globalTheme = createTheme({
                     color: 'rgba(0, 0, 0, 0.87)',
                     display: 'block',
                     fontWeight: '400',
+                },
+            },
+        },
+        StatisticsSubHeaderStyled: {
+            styleOverrides: {
+                root: {
+                    paddingLeft: '16px',
+                    paddingTop: '6px',
+                    color: 'lightgrey',
+                    fontSize: '12px',
                 },
             },
         },
@@ -449,6 +484,44 @@ const globalTheme = createTheme({
                 },
             ],
         },
+        StatisticsCountStyled: {
+            styleOverrides: {
+                root: {
+                    color: 'white',
+                    backgroundColor: 'green',
+                    fontSize: '12px',
+                    padding: '0 5px',
+                    borderRadius: '10px',
+                    marginLeft: '20px',
+                },
+            },
+            variants: [
+                {
+                    props: { attention: true },
+                    style: {
+                        backgroundColor: 'orange',
+                    },
+                },
+            ],
+        },
+        StatisticsTextStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        StatisticsLiStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        StatisticsUlStyled: {
+            styleOverrides: {
+                root: {
+                    padding: 0,
+                    margin: 0,
+                },
+            },
+        },
         CountLabelStyled: {
             styleOverrides: {
                 root: {
@@ -610,6 +683,16 @@ const globalTheme = createTheme({
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                },
+            },
+        },
+        StatisticsItemTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
                 },
             },
         },

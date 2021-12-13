@@ -1,6 +1,8 @@
 import React from 'react'
 import PageHeader from './PageHeader'
 import { BrowserRouter } from 'react-router-dom'
+import { store } from '../../../index'
+import { Provider } from 'react-redux'
 
 export default {
     title: 'organisms/PageHeader',
@@ -8,9 +10,11 @@ export default {
 }
 
 const Template = args => (
-    <BrowserRouter>
-        <PageHeader {...args} />
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <PageHeader {...args} />
+        </BrowserRouter>
+    </Provider>
 )
 
 export const Example1 = Template.bind({})
@@ -21,8 +25,105 @@ Example1.args = {
         imgSrc: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Logo-Logo.svg',
         altTextImg: 'logo',
     },
-    importExportProps: {
+    statisticsProps: {
         id: 0,
+        menuItems: [
+            {
+                id: 1,
+                title: 'Заказы',
+                subItems: [
+                    {
+                        id: 11,
+                        title: 'В прогрессе',
+                        count: 2,
+                    },
+                    {
+                        id: 12,
+                        title: 'Завершено',
+                        count: 5,
+                    },
+                    {
+                        id: 13,
+                        title: 'Возвраты',
+                        count: 5,
+                    },
+                ],
+            },
+            {
+                id: 2,
+                title: 'Покупатели',
+                subItems: [
+                    {
+                        id: 21,
+                        title: 'Онлайн',
+                        count: 2,
+                    },
+                    {
+                        id: 22,
+                        title: 'В ожидании',
+                        count: 0,
+                    },
+                ],
+            },
+
+            {
+                id: 3,
+                title: 'Товары',
+                subItems: [
+                    {
+                        id: 31,
+                        title: 'Нет в наличии',
+                        count: 2,
+                    },
+                    {
+                        id: 32,
+                        title: 'Отзывы',
+                        count: 0,
+                    },
+                ],
+            },
+            {
+                id: 4,
+                title: 'Магазин ',
+                subItems: [
+                    {
+                        id: 41,
+                        title: 'Отзывы о магазине',
+                        count: 2,
+                    },
+                    {
+                        id: 42,
+                        title: 'Заказ обратн. звонка',
+                        count: 15,
+                    },
+
+                    {
+                        id: 43,
+                        title: 'Вопросы о товарах',
+                        count: 0,
+                    },
+                    {
+                        id: 44,
+                        title: 'Комментарии',
+                        count: 0,
+                    },
+                ],
+            },
+            {
+                id: 5,
+                title: 'Партнерская программа',
+                subItems: [
+                    {
+                        id: 55,
+                        title: 'В ожидании',
+                        count: 2,
+                    },
+                ],
+            },
+        ],
+    },
+    importExportProps: {
+        id: 1,
         menuItems: [
             {
                 id: 'importExportItem0',
@@ -67,7 +168,7 @@ Example1.args = {
         ],
     },
     shopsProps: {
-        id: 1,
+        id: 2,
         menuItems: [
             {
                 id: 0,
@@ -77,7 +178,7 @@ Example1.args = {
         ],
     },
     helpProps: {
-        id: 2,
+        id: 3,
         menuItems: [
             {
                 id: 0,
