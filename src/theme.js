@@ -594,6 +594,35 @@ const globalTheme = createTheme({
                 },
             },
         },
+        FlexTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                },
+            },
+        },
+        FixedWidthContainerTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    width: '100%',
+                    '@media (min-width: 1500px)': {
+                        width: '18%',
+                    },
+                },
+            },
+        },
+        PaddingWidthContainerTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    width: '100%',
+                    paddingLeft: '20px',
+                    '@media (min-width: 1500px)': {
+                        width: '15%',
+                    },
+                },
+            },
+        },
         LabeledInputTemplateStyled: {
             styleOverrides: {
                 root: {
@@ -606,6 +635,18 @@ const globalTheme = createTheme({
                     },
                 },
             },
+            variants: [
+                {
+                    props: { fixedWidthWithMarginRight: true },
+                    style: {
+                        width: '100%',
+                        '@media (min-width: 1500px)': {
+                            width: '18%',
+                            marginRight: '20px',
+                        },
+                    },
+                },
+            ],
         },
         LabelTemplateStyled: {
             styleOverrides: {
@@ -618,6 +659,19 @@ const globalTheme = createTheme({
                     },
                 },
             },
+            variants: [
+                {
+                    props: { alignLeft: true },
+                    style: {
+                        textAlign: 'left',
+                        width: '100%',
+                        '@media (min-width: 1500px)': {
+                            width: '60%',
+                            textAlign: 'left',
+                        },
+                    },
+                },
+            ],
         },
         MaxWidthTemplateStyled: {
             styleOverrides: {

@@ -13,6 +13,7 @@ import {
     MAIN_ROUTE,
     MY_GOODS_LIST_ROUTE,
     ORDERS,
+    ORDER_INFO,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -29,6 +30,7 @@ import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import EditGoodContainer from '../components/editGood/EditGoodContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
+import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 
 export const authRoutes = [
     {
@@ -83,6 +85,10 @@ export const authRoutes = [
     {
         path: ORDERS,
         Component: NewOrder,
+    },
+    {
+        path: ORDER_INFO,
+        Component: OrderInfoContainer,
     },
 ]
 

@@ -29,3 +29,9 @@ export const POST_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/postAttributeGroup'
 export const PUT_ATTRIBUTE_GROUP_PATH = SERVER_PATH + '/api/putAttributeGroup'
 export const DELETE_ATTRIBUTE_GROUP_PATH =
     SERVER_PATH + '/api/deleteAttributeGroup'
+
+export const DELETE_ORDER_PATH = SERVER_PATH + '/api/deleteOrder'
+export const GET_ALL_ORDER_PATH = SERVER_PATH + '/api/getAllOrder'
+export const GET_ORDER_PATH = SERVER_PATH + '/api/getOrder'
+export const POST_ORDER_PATH = SERVER_PATH + '/api/postOrder'
+export const PUT_ORDER_PATH = SERVER_PATH + '/api/putOrder'

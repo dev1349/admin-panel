@@ -14,3 +14,4 @@ export const CATEGORIES_LIST_ROUTE =
 export const COUPONS_LIST_ROUTE = '/couponsList'
 export const EDIT_GOOD = '/editGood'
 export const ORDERS = '/orders/1'
+export const ORDER_INFO = '/orderInfo'

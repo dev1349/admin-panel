@@ -4,15 +4,22 @@ import LabelTemplate from '../labelTemplate/LabelTemplate'
 import FieldTemplate from '../fieldTemplate/FeildTemplate'
 
 const LabeledInputTemplateStyled = styled('div', {
+    shouldForwardProp: prop => prop !== 'fixedWidthWithMarginRight',
     name: 'LabeledInputTemplateStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSLabeledInputTemplate = ({ children }) => {
+const WSLabeledInputTemplate = ({
+    children,
+    alignLeft,
+    fixedWidthWithMarginRight,
+}) => {
     return (
-        <LabeledInputTemplateStyled>
-            <LabelTemplate>{children[0]}</LabelTemplate>
+        <LabeledInputTemplateStyled
+            fixedWidthWithMarginRight={fixedWidthWithMarginRight}
+        >
+            <LabelTemplate alignLeft={alignLeft}>{children[0]}</LabelTemplate>
             <FieldTemplate>{children[1]}</FieldTemplate>
         </LabeledInputTemplateStyled>
     )

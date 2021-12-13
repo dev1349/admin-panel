@@ -31,6 +31,15 @@ const newOrderSlice = createSlice({
                 ...action.payload,
             }
         },
+        setCurrentOrderStatus(state, action) {
+            state.currentOrderStatus = action.payload
+        },
+        setCurrentPaymentStatus(state, action) {
+            state.currentPaymentStatus = action.payload
+        },
+        setPayedStatus(state, action) {
+            state.isPayed = action.payload
+        },
     },
 })
 
@@ -42,6 +51,9 @@ export const {
     changeDeliveryPrice,
     changeClientFields,
     changeClientDeliveryDateTime,
+    setCurrentOrderStatus,
+    setCurrentPaymentStatus,
+    setPayedStatus,
 } = newOrderSlice.actions
 
 export default newOrderSlice.reducer
@@ -106,3 +118,9 @@ export const getDeliveryCurrentType = state =>
 export const getClientFields = state => state.newOrder.fields
 export const getHadDelivery = state => state.newOrder.fields.hasDelivery
 export const getCities = state => state.newOrder.cities
+export const getCurrentOrderStatus = state => state.newOrder.currentOrderStatus
+export const getCurrentPaymentStatus = state =>
+    state.newOrder.currentPaymentStatus
+export const getStatusTypes = state => state.newOrder.statusTypes
+export const getPaymentTypes = state => state.newOrder.paymentTypes
+export const getIsPayed = state => state.newOrder.isPayed

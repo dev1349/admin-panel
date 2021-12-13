@@ -16,10 +16,15 @@ const WSLabeledSelectField = ({
     items,
     defaultLabel,
     isStartItemDisabled,
+    alignLeft,
+    fixedWidthWithMarginRight,
 }) => {
     return (
         <InputWrapper>
-            <LabeledInputTemplate>
+            <LabeledInputTemplate
+                alignLeft={alignLeft}
+                fixedWidthWithMarginRight={fixedWidthWithMarginRight}
+            >
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <SelectField
                     id={id}

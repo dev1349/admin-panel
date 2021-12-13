@@ -28,7 +28,7 @@ const SimpleTableHeadWS = ({ headerCells }) => {
                         {cell.label}
                     </TableCell>
                 ))}
-                <TableCell key={'delete'} padding={'none'}></TableCell>
+                <TableCell key={'delete'} padding={'none'} />
             </TableRowStyled>
         </SimpleTableHeadStyled>
     )
