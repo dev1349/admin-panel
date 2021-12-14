@@ -247,6 +247,16 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {},
             },
+            variants: [
+                {
+                    props: { hoverUnderline: true },
+                    style: {
+                        '&:hover': {
+                            textDecoration: 'underline',
+                        },
+                    },
+                },
+            ],
         },
         H1Styled: {
             styleOverrides: {
@@ -805,6 +815,11 @@ const globalTheme = createTheme({
                 },
             },
         },
+        AtomTableHeadStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         TableHeadStyled: {
             styleOverrides: {
                 root: {
@@ -819,6 +834,11 @@ const globalTheme = createTheme({
                     backgroundColor: 'lightgrey',
                     border: '1px solid lightgrey',
                 },
+            },
+        },
+        AtomTableRowStyled: {
+            styleOverrides: {
+                root: {},
             },
         },
         TableRowStyled: {

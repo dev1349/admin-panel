@@ -1,0 +1,129 @@
+import React from 'react'
+import ComponentsTable from './ComponentsTable'
+import { BrowserRouter } from 'react-router-dom'
+
+export default {
+    title: 'organisms/table/ComponentsTable',
+    component: ComponentsTable,
+}
+
+const Template = args => (
+    <BrowserRouter>
+        <ComponentsTable {...args} />
+    </BrowserRouter>
+)
+
+export const Example1 = Template.bind({})
+Example1.args = {
+    tableHeader: [
+        {
+            id: 0,
+            label: '№',
+            align: 'right',
+        },
+        {
+            id: 1,
+            label: 'Component',
+        },
+        {
+            id: 2,
+            label: 'Task',
+        },
+        {
+            id: 3,
+            label: 'Link',
+        },
+    ],
+    tableRows: [
+        {
+            componentName: 'Компонент "Хедер"',
+            task: 'WSADMIN-1',
+            routeText: 'Виден сейчас)',
+            routeLink: '',
+        },
+        {
+            componentName: 'Компонент "Фильтр товаров"',
+            task: 'WSADMIN-2',
+            routeText: '/goodsFilter',
+            routeLink: '/goodsFilter',
+        },
+        {
+            componentName: 'Компонент "Список категорий"',
+            task: 'WSADMIN-3',
+            routeText: '/categoriesList',
+            routeLink: '/categoriesList',
+        },
+        {
+            componentName: 'Компонент "Статистика"',
+            task: 'WSADMIN-4',
+            routeText: 'Виден сейчас в хедере',
+            routeLink: '',
+        },
+        {
+            componentName: 'Компонент "Добавление категории"',
+            task: 'WSADMIN-5',
+            routeText: '/addAttributeCategory',
+            routeLink: '/addAttributeCategory',
+        },
+        {
+            componentName: 'Компонент "Атрибуты"',
+            task: 'WSADMIN-6',
+            routeText: '/attributeList',
+            routeLink: '/attributeList',
+        },
+        {
+            componentName: 'Компонент "Группы атрибутов"',
+            task: 'WSADMIN-7',
+            routeText: '/attributeGroup',
+            routeLink: '/attributeGroup',
+        },
+        {
+            componentName: 'Компонент "Список товаров"',
+            task: 'WSADMIN-9',
+            routeText: '/myGoodsList',
+            routeLink: '/myGoodsList',
+        },
+        {
+            componentName: 'Компонент "Купоны"',
+            task: 'WSADMIN-17',
+            routeText: '/couponsList',
+            routeLink: '/couponsList',
+        },
+        {
+            componentName: 'Компонент "Редактирование купонов"',
+            task: 'WSADMIN-18',
+            routeText: '/couponsList',
+            routeLink: '/couponsList',
+        },
+        {
+            componentName: 'Компонент "Редактирование товаров"',
+            task: 'WSADMIN-11',
+            routeText: '/editGood или по нажатию карандаша в /myGoodList',
+            routeLink: '/editGood',
+        },
+        {
+            componentName: 'Компонент "Хедер добавления товаров"',
+            task: 'WSADMIN-33',
+            routeText: '/goodAdd',
+            routeLink: '/goodAdd',
+        },
+        {
+            componentName: 'Компонент "Главное меню"',
+            task: 'WSADMIN-70',
+            routeText: 'Виден при нажатии на кнопке МЕНЮ',
+            routeLink: '',
+        },
+        {
+            componentName: 'Компонент №1 в форме "Новый заказ"',
+            task: 'WSADMIN-82',
+            routeText: '/orders/1',
+            routeLink: '/orders/1',
+        },
+        {
+            componentName: 'Компонент №3 в форме "Новый заказ"',
+            task: 'WSADMIN-88',
+            routeText: '/orders/1',
+            routeLink: '/orders/1',
+        },
+    ],
+}

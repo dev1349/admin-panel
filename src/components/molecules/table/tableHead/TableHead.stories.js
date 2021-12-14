@@ -3,7 +3,7 @@ import TableHead from './TableHead'
 import { Table } from '@mui/material'
 
 export default {
-    title: 'molecules/table/tableHead',
+    title: 'molecules/table/TableHead',
     component: TableHead,
 }
 

@@ -3,7 +3,7 @@ import TableRow from './TableRow'
 import { Table, TableBody } from '@mui/material'
 
 export default {
-    title: 'molecules/table/tableRow',
+    title: 'molecules/table/TableRow',
     component: TableRow,
 }
 

@@ -25,11 +25,11 @@ import AddAttributeCategoryContainer from '../components/pages/addAttributeCateg
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsListContainer from '../components/pages/myGoodsList/MyGoodsListContainer'
 import CategoriesListContainer from '../components/categoriesList/CategoriesListContainer'
-import MadeComponentList from '../components/madeComponentList/MadeComponentList'
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import EditGoodContainer from '../components/editGood/EditGoodContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
+import ComponentsTable from '../components/pages/componentsTable/ComponentsTable'
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 
 export const authRoutes = [
@@ -67,7 +67,7 @@ export const authRoutes = [
     },
     {
         path: MADE_COMPONENT_LIST,
-        Component: MadeComponentList,
+        Component: ComponentsTable,
     },
     {
         path: CATEGORIES_LIST_ROUTE,
