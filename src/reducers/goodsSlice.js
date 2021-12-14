@@ -200,3 +200,12 @@ export const getRowCount = state => state.goods.allGoods.length
 export const getSelectedRowCount = state => state.goods.selectedGoods.length
 export const getGoodChecked = id => state =>
     state.goods.selectedGoods.includes(id)
+export const getGoodsFields = state =>
+    state.goods.allGoods.map(good => ({
+        id: good.id,
+        name: good.name,
+        description: good.description,
+        price: good.price,
+        salePrice: good.price,
+    }))
+export const getHeaderCells = state => state.goods.headerCells

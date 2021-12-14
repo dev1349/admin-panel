@@ -841,6 +841,14 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        GoodsTableHeadStyled: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'lightgrey',
+                    border: '1px solid lightgrey',
+                },
+            },
+        },
         TableRowStyled: {
             styleOverrides: {
                 root: {
@@ -849,6 +857,13 @@ const globalTheme = createTheme({
             },
         },
         SimpleTableRowStyled: {
+            styleOverrides: {
+                root: {
+                    border: '1px solid lightgrey',
+                },
+            },
+        },
+        GoodsTableRowStyled: {
             styleOverrides: {
                 root: {
                     border: '1px solid lightgrey',

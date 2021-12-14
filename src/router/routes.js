@@ -12,12 +12,11 @@ import {
     MADE_COMPONENT_LIST,
     MAIN_ROUTE,
     MY_GOODS_LIST_ROUTE,
-    ORDERS,
     ORDER_INFO,
+    ORDERS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
-import GoodsListContainer from '../components/goodsList/GoodsListContainer'
 import AddGoodContainer from '../components/pages/addGood/AddGoodContainer'
 import AttributesListContainer from '../components/attributeList/AttributesListContainer'
 import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterContainer'
@@ -31,6 +30,7 @@ import EditGoodContainer from '../components/editGood/EditGoodContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
 import ComponentsTable from '../components/pages/componentsTable/ComponentsTable'
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
+import GoodsList from '../components/pages/goodsList/GoodsList'
 
 export const authRoutes = [
     {
@@ -39,7 +39,7 @@ export const authRoutes = [
     },
     {
         path: GOODS_LIST_ROUTE,
-        Component: GoodsListContainer,
+        Component: GoodsList,
     },
     {
         path: GOOD_ADD_ROUTE,

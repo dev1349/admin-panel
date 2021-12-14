@@ -318,4 +318,26 @@ export const goodsMockData = {
     order: 'asc',
     orderBy: 'name',
     selectedGoods: [],
+    headerCells: [
+        {
+            id: 'name',
+            label: 'Название товара',
+            numeric: false,
+        },
+        {
+            id: 'description',
+            label: 'Описание',
+            numeric: false,
+        },
+        {
+            id: 'price',
+            label: 'Цена',
+            numeric: true,
+        },
+        {
+            id: 'salePrice',
+            label: 'Цена для продажи',
+            numeric: true,
+        },
+    ],
 }
