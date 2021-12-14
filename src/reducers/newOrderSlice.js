@@ -65,7 +65,12 @@ export const deleteGoodById = id => (dispatch, getState) => {
     dispatch(deleteGood(goodIndex))
     const rowCount = getState().newOrder.goodsInOrder.length
     if (!rowCount) {
-        dispatch(changeDeliveryTypeAndPrice({ deliveryCurrentType: null }))
+        dispatch(
+            changeDeliveryType({
+                deliveryCurrentType: initialState.delivery.currentType,
+            })
+        )
+        dispatch(changeDeliveryPrice({ deliveryPrice: null }))
     }
 }
 export const changeGoodPriceById = payload => (dispatch, getState) => {
@@ -83,13 +88,6 @@ export const changeGoodCountById = payload => (dispatch, getState) => {
         good => good.id === payload.id
     )
     dispatch(changeGoodCount({ index: goodIndex, count: payload.count }))
-}
-
-export const changeDeliveryTypeAndPrice = payload => dispatch => {
-    dispatch(changeDeliveryType(payload))
-    dispatch(
-        changeDeliveryPrice({ deliveryPrice: payload.deliveryCurrentType })
-    )
 }
 
 export const getHeaderCells = state => state.newOrder.headerCells

@@ -5,7 +5,7 @@ import {
     changeClientDeliveryDateTime,
     changeClientFields,
     changeDeliveryPrice,
-    changeDeliveryTypeAndPrice,
+    changeDeliveryType,
     changeGoodCountById,
     changeGoodPriceById,
     deleteGoodById,
@@ -52,7 +52,7 @@ const NewOrder = () => {
         dispatch(deleteGoodById(id))
     }
     const changeDelivery = payload => {
-        dispatch(changeDeliveryTypeAndPrice(payload))
+        dispatch(changeDeliveryType(payload))
     }
     const changeDeliveryCurrentPrice = payload => {
         dispatch(changeDeliveryPrice(payload))

@@ -45,7 +45,6 @@ const NewOrderTable = ({
                         deliveryPrice={deliveryPrice}
                         changeDeliveryPrice={changeDeliveryPrice}
                         disabled={!tableRows.length}
-                        deliveryPriceDisabled={!deliveryCurrentType}
                     />
                     <SimpleTableTotal totalPrice={totalPrice} />
                 </TableBody>

@@ -49,6 +49,7 @@ const DropDownTextFieldWithValidation = ({
                 autoFocus={autoFocus}
                 fullWidth={fullWidth}
                 onClick={handleClick}
+                helperText={helperText}
                 InputProps={{
                     readOnly: true,
                 }}
@@ -69,7 +70,7 @@ const DropDownTextFieldWithValidation = ({
                     autoFocus={true}
                     fullWidth={true}
                     pattern={pattern}
-                    helperText={attentionMessage || helperText}
+                    helperText={attentionMessage}
                     error={!isChecking}
                 />
             </Menu>

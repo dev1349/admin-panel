@@ -17,7 +17,6 @@ const SimpleTableFooter = ({
     deliveryPrice,
     changeDeliveryPrice,
     disabled,
-    deliveryPriceDisabled,
 }) => {
     return (
         <SimpleTableFooterStyled>
@@ -31,9 +30,8 @@ const SimpleTableFooter = ({
                     items={deliveryTypes.map(el => ({
                         id: el.id,
                         label: el.name,
-                        value: el.price,
+                        value: el.name,
                     }))}
-                    defaultLabel={'Выберите способ'}
                     isStartItemDisabled={false}
                     disabled={disabled}
                     forTable
@@ -47,7 +45,7 @@ const SimpleTableFooter = ({
                     }
                     onChange={changeDeliveryPrice}
                     name={'deliveryPrice'}
-                    disabled={disabled || deliveryPriceDisabled}
+                    disabled={disabled}
                     forTable
                 />
             </TableCell>
