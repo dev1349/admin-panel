@@ -154,6 +154,68 @@ const initialState = {
         comments: null,
     },
     cities: cities,
+    statusTypes: [
+        {
+            id: 0,
+            value: 'Новый',
+            label: 'Новый',
+        },
+        {
+            id: 1,
+            value: 'В обработке',
+            label: 'В обработке',
+        },
+        {
+            id: 2,
+            value: 'Согласован',
+            label: 'Согласован',
+        },
+        {
+            id: 3,
+            value: 'Отгружен',
+            label: 'Отгружен',
+        },
+        {
+            id: 4,
+            value: 'Доставлен',
+            label: 'Доставлен',
+        },
+        {
+            id: 5,
+            value: 'Отменен',
+            label: 'Отменен',
+        },
+        {
+            id: 6,
+            value: 'Возврат',
+            label: 'Возврат',
+        },
+    ],
+    paymentTypes: [
+        {
+            id: 0,
+            value: 'Наличными курьеру',
+            label: 'Наличными курьеру',
+        },
+        {
+            id: 1,
+            value: 'Оплата на карту',
+            label: 'Оплата на карту',
+        },
+        {
+            id: 2,
+            value: 'Безналичная оплата',
+            label: 'Безналичная оплата',
+        },
+        {
+            id: 3,
+            value: 'Наложеный платеж',
+            label: 'Наложеный платеж',
+        },
+    ],
+    currentOrderStatus: 'Новый',
+    currentPaymentStatus: 'Оплата на карту',
+    isPayed: false,
 }
 
 export default initialState
