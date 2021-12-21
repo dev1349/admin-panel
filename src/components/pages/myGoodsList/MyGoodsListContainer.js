@@ -141,8 +141,7 @@ const MyGoodsListContainer = () => {
     }
     let history = useHistory()
     const editRowHandler = id => () => {
-        history.push('/editGood')
-        console.log(id)
+        history.push(`/editGood/${id}`)
     }
     const checkHandler = id => () => {
         dispatch(selectGood(id))

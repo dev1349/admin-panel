@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { goodsMockData } from '../mock/goodsMockData'
 import {
     deleteGoodFetch,
@@ -52,6 +52,18 @@ const goodsSlice = createSlice({
         clearSelectedGoods(state) {
             state.selectedGoods = goodsMockData.selectedGoods
         },
+        changeEditGoodFields(state, action) {
+            state.editGoodFields = {
+                ...state.editGoodFields,
+                ...action.payload,
+            }
+        },
+        saveGoodChanges(state, action) {
+            state.allGoods[action.payload.goodIndex] = {
+                ...state.allGoods[action.payload.goodIndex],
+                ...action.payload.fields,
+            }
+        },
     },
 })
 
@@ -68,6 +80,8 @@ export const {
     changeOrderBy,
     setSelectedGoodId,
     clearSelectedGoods,
+    changeEditGoodFields,
+    saveGoodChanges,
 } = goodsSlice.actions
 
 export const postGood = good => {
@@ -184,6 +198,35 @@ export const selectAllGoods = () => (dispatch, getState) => {
     }
 }
 
+export const setEditGoodStartFieldValues = goodId => (dispatch, getState) => {
+    const currentGood = getState().goods.allGoods.find(
+        good => good.id === parseInt(goodId)
+    )
+    dispatch(
+        changeEditGoodFields({
+            name: currentGood.name || null,
+            description: currentGood.description || null,
+            htmlTitle: currentGood.htmlTitle || null,
+            htmlH1: currentGood.htmlH1 || null,
+            metaDescription: currentGood.metaDescription || null,
+            metaKeywords: currentGood.metaKeywords || null,
+        })
+    )
+}
+
+export const saveGoodFieldsValues = goodId => (dispatch, getState) => {
+    const goodFieldsValues = getState().goods.editGoodFields
+    const goodIndex = getState().goods.allGoods.findIndex(
+        good => parseInt(goodId) === good.id
+    )
+    dispatch(
+        saveGoodChanges({
+            goodIndex,
+            fields: goodFieldsValues,
+        })
+    )
+}
+
 export const getGoodStatus = state =>
     Array.from(new Set(state.goods.allGoods.map(el => el.status)).values())
 export const getGoodImageStatus = state =>
@@ -209,3 +252,20 @@ export const getGoodsFields = state =>
         salePrice: good.price,
     }))
 export const getHeaderCells = state => state.goods.headerCells
+export const getEditGoodFields = state => state.goods.editGoodFields
+export const isGoodInAllGoods = goodId => state =>
+    state.goods.allGoods.find(good => good.id === parseInt(goodId))
+export const isSaveDisabled = goodId =>
+    createSelector(
+        getEditGoodFields,
+        isGoodInAllGoods(goodId),
+        (editFields, goodFields) =>
+            editFields.name === goodFields.name &&
+            editFields.description ===
+                (goodFields.description === '' && null) &&
+            editFields.htmlTitle === (goodFields.htmlTitle || null) &&
+            editFields.htmlH1 === (goodFields.htmlH1 || null) &&
+            editFields.metaDescription ===
+                (goodFields.metaDescription || null) &&
+            editFields.metaKeywords === (goodFields.metaKeywords || null)
+    )

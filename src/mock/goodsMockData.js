@@ -305,6 +305,14 @@ export const goodsMockData = {
             ],
         },
     ],
+    editGoodFields: {
+        name: null,
+        description: null,
+        htmlTitle: null,
+        htmlH1: null,
+        metaDescription: null,
+        metaKeywords: null,
+    },
     filter: {
         name: null,
         price: null,

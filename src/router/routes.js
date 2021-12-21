@@ -26,11 +26,11 @@ import MyGoodsListContainer from '../components/pages/myGoodsList/MyGoodsListCon
 import CategoriesListContainer from '../components/categoriesList/CategoriesListContainer'
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
-import EditGoodContainer from '../components/editGood/EditGoodContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
 import ComponentsTable from '../components/pages/componentsTable/ComponentsTable'
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 import GoodsList from '../components/pages/goodsList/GoodsList'
+import EditGood from '../components/pages/editGood/EditGood'
 
 export const authRoutes = [
     {
@@ -80,7 +80,7 @@ export const authRoutes = [
 
     {
         path: EDIT_GOOD,
-        Component: EditGoodContainer,
+        Component: EditGood,
     },
     {
         path: ORDERS,

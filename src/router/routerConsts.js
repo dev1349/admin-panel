@@ -12,6 +12,6 @@ export const MADE_COMPONENT_LIST = '/madeComponentList'
 export const CATEGORIES_LIST_ROUTE =
     '/categoriesList/:categoryId?/:subcategoryId?'
 export const COUPONS_LIST_ROUTE = '/couponsList'
-export const EDIT_GOOD = '/editGood'
+export const EDIT_GOOD = '/editGood/:goodId'
 export const ORDERS = '/orders/1'
 export const ORDER_INFO = '/orderInfo'
