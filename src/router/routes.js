@@ -23,7 +23,6 @@ import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterCon
 import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsListContainer from '../components/pages/myGoodsList/MyGoodsListContainer'
-import CategoriesListContainer from '../components/categoriesList/CategoriesListContainer'
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
@@ -31,6 +30,7 @@ import ComponentsTable from '../components/pages/componentsTable/ComponentsTable
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 import GoodsList from '../components/pages/goodsList/GoodsList'
 import EditGood from '../components/pages/editGood/EditGood'
+import Categories from '../components/pages/categories/Categories'
 
 export const authRoutes = [
     {
@@ -71,7 +71,7 @@ export const authRoutes = [
     },
     {
         path: CATEGORIES_LIST_ROUTE,
-        Component: CategoriesListContainer,
+        Component: Categories,
     },
     {
         path: COUPONS_LIST_ROUTE,

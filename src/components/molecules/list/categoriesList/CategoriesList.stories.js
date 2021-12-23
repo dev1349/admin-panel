@@ -1,5 +1,22 @@
-export const categoriesListMockData = {
-    categories: [
+import { BrowserRouter } from 'react-router-dom'
+import React from 'react'
+import CategoriesList from './CategoriesList'
+
+export default {
+    title: 'molecules/list/CategoriesList',
+    component: CategoriesList,
+}
+
+const Template = args => (
+    <BrowserRouter>
+        <CategoriesList {...args} />
+    </BrowserRouter>
+)
+
+export const Example1 = Template.bind({})
+Example1.args = {
+    component: 'nav',
+    items: [
         {
             id: 1,
             name: 'Футболки',
@@ -58,4 +75,14 @@ export const categoriesListMockData = {
             ],
         },
     ],
+    open: { 1: true },
+    openCloseSubCategories: () => console.log('open/close subcategories'),
+    draggingCategory: { id: 1 },
+    setDraggingCategory: () => console.log('set dragging category'),
+    draggingSubCategory: { id: 11 },
+    setDraggingSubCategory: () => console.log('set dragging sub category'),
+    draggingFromCategory: { id: 3 },
+    setDraggingFromCategory: () => console.log('set dragging from category'),
+    changeCategory: () => console.log('change category'),
+    changeSubCategory: () => console.log('change subcategory'),
 }

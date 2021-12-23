@@ -26,8 +26,8 @@ const componentList = [
     {
         componentName: 'Компонент "Добавление категории"',
         task: 'WSADMIN-5',
-        routeText: '/addAttributeCategory',
-        routeLink: '/addAttributeCategory',
+        routeText: '/addCategory',
+        routeLink: '/addCategory',
     },
     {
         componentName: 'Компонент "Атрибуты"',

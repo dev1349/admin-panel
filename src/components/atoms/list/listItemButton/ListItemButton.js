@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles'
 import { ListItemButton } from '@mui/material'
 
 const ListItemButtonStyled = styled(ListItemButton, {
+    shouldForwardProp: prop => prop !== 'sub',
     name: 'ListItemButtonStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

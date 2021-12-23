@@ -1,5 +1,6 @@
 import React from 'react'
 import SimpleButton from './SimpleButton'
+import AddIcon from '../icons/addIcon/AddIcon'
 
 export default {
     title: 'atoms/SimpleButton',
@@ -30,4 +31,12 @@ Example3.args = {
     variant: 'contained',
     children: 'Ok',
     color: 'error',
+}
+
+export const Example4 = Template.bind({})
+Example4.args = {
+    variant: 'contained',
+    children: 'Ok',
+    color: 'error',
+    startIcon: <AddIcon />,
 }

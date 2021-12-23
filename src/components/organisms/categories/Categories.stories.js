@@ -1,4 +1,20 @@
-export const categoriesListMockData = {
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import Categories from './Categories'
+
+export default {
+    title: 'organisms/Categories',
+    component: Categories,
+}
+
+const Template = args => (
+    <BrowserRouter>
+        <Categories {...args} />
+    </BrowserRouter>
+)
+
+export const Example1 = Template.bind({})
+Example1.args = {
     categories: [
         {
             id: 1,
@@ -58,4 +74,23 @@ export const categoriesListMockData = {
             ],
         },
     ],
+    title: 'Категории',
+    buttons: {
+        addCategory: {
+            title: 'Добавить категорию',
+            onClick: () => console.log('add category'),
+        },
+        addSubCategory: {
+            title: 'Добавить подкатегорию',
+            onClick: () => console.log('add sub category'),
+        },
+        deleteCategory: {
+            title: 'Удалить категорию',
+            categoryId: null,
+            onClick: () => console.log('delete category'),
+            disabled: true,
+        },
+    },
+    changeCategories: () => console.log('changeCategories'),
+    changeSubCategories: () => console.log('changeSubCategories'),
 }

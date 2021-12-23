@@ -151,16 +151,39 @@ const globalTheme = createTheme({
                     margin: '0',
                 },
             },
+            variants: [
+                {
+                    props: { withoutExpandIcon: true },
+                    style: {
+                        paddingLeft: '25px',
+                    },
+                },
+                {
+                    props: { activeItem: true },
+                    style: {
+                        '& .MuiTypography-root': {
+                            fontWeight: 'bold',
+                        },
+                    },
+                },
+            ],
         },
         ListItemButtonStyled: {
             styleOverrides: {
                 root: {},
             },
+            variants: [
+                {
+                    props: { sub: true },
+                    style: {
+                        paddingLeft: '60px',
+                    },
+                },
+            ],
         },
         ListStyled: {
             styleOverrides: {
                 root: {
-                    width: '100%',
                     padding: '0',
                 },
             },
@@ -612,6 +635,13 @@ const globalTheme = createTheme({
                 },
             },
         },
+        CategoriesWidthTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    maxWidth: '200px',
+                },
+            },
+        },
         FixedWidthContainerTemplateStyled: {
             styleOverrides: {
                 root: {
@@ -726,6 +756,13 @@ const globalTheme = createTheme({
                 },
             },
         },
+        PaddingTopTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    paddingTop: '10px',
+                },
+            },
+        },
         PageHeaderTemplateStyled: {
             styleOverrides: {
                 root: {
@@ -765,6 +802,31 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {
                     padding: '20px',
+                },
+            },
+        },
+        PaddingBetweenButtonsTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'block',
+                    '@media (min-width: 800px)': {
+                        display: 'flex',
+                    },
+                },
+            },
+        },
+        ButtonWrapperStyled: {
+            styleOverrides: {
+                root: {
+                    margin: '0',
+                    marginTop: '10px',
+                    marginLeft: '0',
+                    '@media (min-width: 800px)': {
+                        marginLeft: '20px',
+                        '&:first-of-type': {
+                            marginLeft: '0',
+                        },
+                    },
                 },
             },
         },
