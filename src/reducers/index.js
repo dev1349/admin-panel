@@ -10,6 +10,7 @@ import headerSlice from './headerSlice'
 import addCategorySlice from './addCategorySlice'
 import attributeGroupSlice from './attributeGroupSlice'
 import newOrderSlice from './newOrderSlice'
+import usersSlice from './usersSlice'
 
 export const rootReducer = combineReducers({
     goods: goodsSlice,
@@ -23,4 +24,5 @@ export const rootReducer = combineReducers({
     style: styleSlice,
     coupons: couponsReducer,
     newOrder: newOrderSlice,
+    users: usersSlice,
 })

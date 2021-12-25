@@ -290,6 +290,14 @@ const globalTheme = createTheme({
                     fontWeight: '400',
                 },
             },
+            variants: [
+                {
+                    props: { fs: true },
+                    style: {
+                        fontSize: '32px',
+                    },
+                },
+            ],
         },
         H2Styled: {
             styleOverrides: {
@@ -918,6 +926,21 @@ const globalTheme = createTheme({
                     border: '1px solid lightgrey',
                 },
             },
+            variants: [
+                {
+                    props: { default: true },
+                    style: {
+                        height: '45px',
+                    },
+                },
+                {
+                    props: { defaultHeading: true },
+                    style: {
+                        height: '45px',
+                        backgroundColor: 'lightgrey',
+                    },
+                },
+            ],
         },
         SimpleTableRowStyled: {
             styleOverrides: {
