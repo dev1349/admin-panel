@@ -24,6 +24,7 @@ const CategoryHeader = ({ title, buttons }) => {
                     variant={'contained'}
                     startIcon={<AddIcon />}
                     onClick={buttons.addSubCategory.onClick}
+                    disabled={buttons.addSubCategory.disabled}
                 >
                     {buttons.addSubCategory.title}
                 </SimpleButton>

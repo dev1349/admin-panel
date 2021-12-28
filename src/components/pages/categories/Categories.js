@@ -17,6 +17,7 @@ const CategoriesPages = () => {
     const dispatch = useDispatch()
     const handleDeleteCategory = id => {
         dispatch(deleteCategory(id))
+        history.push('/categoriesList')
     }
     const handleAddCategory = () => {
         history.push('/addCategory')
@@ -56,6 +57,7 @@ const CategoriesPages = () => {
                     addSubCategory: {
                         title: 'Добавить подкатегорию',
                         onClick: handleAddSubCategory,
+                        disabled: !categoryId,
                     },
                     deleteCategory: {
                         title: 'Удалить категорию',
