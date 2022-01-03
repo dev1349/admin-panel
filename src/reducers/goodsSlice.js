@@ -227,6 +227,19 @@ export const saveGoodFieldsValues = goodId => (dispatch, getState) => {
     )
 }
 
+export const deleteSelectedGoods = (dispatch, getState) => {
+    const selectedGoods = getState().goods.selectedGoods
+    const allGoods = getState().goods.allGoods
+    let newAllGoods = [...allGoods]
+    selectedGoods.forEach(
+        selected =>
+            (newAllGoods = newAllGoods.filter(good => good.id !== selected))
+    )
+    dispatch(setAllGoods(newAllGoods))
+    dispatch(setFilteredGoods(newAllGoods))
+    dispatch(setSelectedGoodId([]))
+}
+
 export const getGoodStatus = state =>
     Array.from(new Set(state.goods.allGoods.map(el => el.status)).values())
 export const getGoodImageStatus = state =>
@@ -269,3 +282,4 @@ export const isSaveDisabled = goodId =>
                 (goodFields.metaDescription || null) &&
             editFields.metaKeywords === (goodFields.metaKeywords || null)
     )
+export const getFilteredGoods = state => state.goods.filteredGoods

@@ -281,6 +281,25 @@ const globalTheme = createTheme({
                 },
             ],
         },
+        BreadcrumbsStyled: {
+            styleOverrides: {
+                root: {
+                    marginLeft: '30px',
+                    marginTop: '5px',
+                    '& .MuiBreadcrumbs-li': {
+                        margin: '0',
+                    },
+                    '& .MuiBreadcrumbs-separator': {
+                        marginBottom: '0',
+                    },
+                },
+            },
+        },
+        TypographyStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         H1Styled: {
             styleOverrides: {
                 root: {
@@ -748,6 +767,23 @@ const globalTheme = createTheme({
                 },
             },
         },
+        TitleBreadcrumbsButtonsTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'left',
+                    padding: '10px 0',
+                },
+            },
+        },
+        LastChildToRightTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    margin: '0 0 0 auto',
+                },
+            },
+        },
         VerticalModalTemplateStyled: {
             styleOverrides: {
                 root: {
@@ -969,6 +1005,11 @@ const globalTheme = createTheme({
             },
         },
         TableSortLabelStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        TablePaginationStyled: {
             styleOverrides: {
                 root: {},
             },

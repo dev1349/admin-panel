@@ -8,8 +8,12 @@ const H1Styled = styled(Typography, {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSH1 = ({ children, ...rest }) => {
-    return <H1Styled {...rest}>{children}</H1Styled>
+const H1 = ({ children, ...rest }) => {
+    return (
+        <H1Styled component={'h1'} {...rest}>
+            {children}
+        </H1Styled>
+    )
 }
 
-export default WSH1
+export default H1

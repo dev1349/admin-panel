@@ -6,8 +6,8 @@ import HideImageIcon from '../../atoms/icons/hideImageIcon/HideImageIcon'
 import CountLabel from '../../atoms/textElements/countLabel/CountLabel'
 import {
     clickTableSortLabel,
+    getFilteredGoods,
     getGoodChecked,
-    getGoods,
     getOrder,
     getOrderBy,
     getRowCount,
@@ -87,9 +87,10 @@ const printCategory = (categorySet, printArray = []) => {
     return [...printArray].reverse()
 }
 
-const MyGoodsListContainer = () => {
-    const allGoods = useSelector(getGoods)
-    const goodsForTable = allGoods.map(good => ({
+const MyGoodsList = () => {
+    const filteredGoods = useSelector(getFilteredGoods)
+
+    const goodsForTable = filteredGoods.map(good => ({
         id: good.id,
         picture: good.imageStatus ? (
             <img src={good.imageSrc} alt={'goodPicture'} width={'50'} />
@@ -153,21 +154,25 @@ const MyGoodsListContainer = () => {
 
     return (
         <MaxWidthTemplate>
-            <SortingTable
-                headerCells={HeadCells}
-                tableRows={goodsForTable}
-                order={order}
-                orderBy={orderBy}
-                onClickSortLabel={sortHandler}
-                onCheckRow={checkHandler}
-                rowCount={rowCount}
-                selectedRowCount={selectedRowCount}
-                onCheckAll={selectAllHandler}
-                onEditRow={editRowHandler}
-                isRowChecked={isGoodChecked}
-            />
+            {goodsForTable.length ? (
+                <SortingTable
+                    headerCells={HeadCells}
+                    tableRows={goodsForTable}
+                    order={order}
+                    orderBy={orderBy}
+                    onClickSortLabel={sortHandler}
+                    onCheckRow={checkHandler}
+                    rowCount={rowCount}
+                    selectedRowCount={selectedRowCount}
+                    onCheckAll={selectAllHandler}
+                    onEditRow={editRowHandler}
+                    isRowChecked={isGoodChecked}
+                />
+            ) : (
+                <div>Нет товаров для отображения...(</div>
+            )}
         </MaxWidthTemplate>
     )
 }
 
-export default MyGoodsListContainer
+export default MyGoodsList

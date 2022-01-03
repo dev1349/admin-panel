@@ -6,6 +6,7 @@ import {
     COUPONS_LIST_ROUTE,
     EDIT_GOOD,
     GOOD_ADD_ROUTE,
+    GOODS,
     GOODS_FILTER_ROUTE,
     GOODS_LIST_ROUTE,
     LOGIN_ROUTE,
@@ -23,7 +24,7 @@ import AttributesListContainer from '../components/attributeList/AttributesListC
 import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterContainer'
 import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
-import MyGoodsListContainer from '../components/pages/myGoodsList/MyGoodsListContainer'
+import MyGoodsList from '../components/pages/myGoodsList/MyGoodsList'
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
@@ -33,6 +34,7 @@ import GoodsList from '../components/pages/goodsList/GoodsList'
 import EditGood from '../components/pages/editGood/EditGood'
 import UsersTable from '../components/pages/usersTable/UsersTable'
 import Categories from '../components/pages/categories/Categories'
+import Goods from '../components/pages/goods/Goods'
 
 export const authRoutes = [
     {
@@ -65,7 +67,7 @@ export const authRoutes = [
     },
     {
         path: MY_GOODS_LIST_ROUTE,
-        Component: MyGoodsListContainer,
+        Component: MyGoodsList,
     },
     {
         path: MADE_COMPONENT_LIST,
@@ -95,6 +97,10 @@ export const authRoutes = [
     {
         path: USERS,
         Component: UsersTable,
+    },
+    {
+        path: GOODS,
+        Component: Goods,
     },
 ]
 
