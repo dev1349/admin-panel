@@ -5,21 +5,12 @@ const initialState = {
             email: 'ivanov@gmail.com',
             isBlocked: false,
         },
-        {
-            name: 'Іван1',
-            email: 'ivanov@gmail.com',
-            isBlocked: false,
-        },
-        {
-            name: 'Іван2',
-            email: 'ivanov@gmail.com',
-            isBlocked: true,
-        },
-        {
-            name: 'Іван3',
-            email: 'ivanov@gmail.com',
-            isBlocked: false,
-        },
     ],
+    userFields: {
+        name: '',
+        surname: '',
+        email: '',
+        phone: '',
+    },
 }
 export default initialState

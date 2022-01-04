@@ -16,6 +16,7 @@ import {
     ORDER_INFO,
     ORDERS,
     USERS,
+    ADD_USER,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -32,6 +33,7 @@ import ComponentsTable from '../components/pages/componentsTable/ComponentsTable
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 import GoodsList from '../components/pages/goodsList/GoodsList'
 import EditGood from '../components/pages/editGood/EditGood'
+import AddUser from '../components/pages/addUser/AddUser'
 import UsersTable from '../components/pages/usersTable/UsersTable'
 import Categories from '../components/pages/categories/Categories'
 import Goods from '../components/pages/goods/Goods'
@@ -97,6 +99,10 @@ export const authRoutes = [
     {
         path: USERS,
         Component: UsersTable,
+    },
+    {
+        path: ADD_USER,
+        Component: AddUser,
     },
     {
         path: GOODS,

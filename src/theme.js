@@ -739,6 +739,15 @@ const globalTheme = createTheme({
                         },
                     },
                 },
+                {
+                    props: { alignLeftFixedWidth: true },
+                    style: {
+                        '@media (min-width: 600px)': {
+                            textAlign: 'left',
+                            width: '20%',
+                        },
+                    },
+                },
             ],
         },
         MaxWidthTemplateStyled: {

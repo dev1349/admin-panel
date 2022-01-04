@@ -5,6 +5,7 @@ import LabeledInputTemplate from '../../../templates/labeledInputTemplate/Labele
 import TextField from '../textField/TextField'
 
 export const LabeledTextFieldStyled = styled('div', {
+    shouldForwardProp: prop => prop !== 'fixedWidth',
     name: 'LabeledTextFieldStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
@@ -18,11 +19,17 @@ const WSLabeledTextField = ({
     onChange,
     autoFocus,
     pattern,
+    alignLeft,
+    alignLeftFixedWidth,
+    fixedWidth,
     ...rest
 }) => {
     return (
-        <LabeledTextFieldStyled>
-            <LabeledInputTemplate>
+        <LabeledTextFieldStyled fixedWidth={fixedWidth}>
+            <LabeledInputTemplate
+                alignLeft={alignLeft}
+                alignLeftFixedWidth={alignLeftFixedWidth}
+            >
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <TextField
                     id={id}

@@ -13,13 +13,19 @@ const LabeledInputTemplateStyled = styled('div', {
 const WSLabeledInputTemplate = ({
     children,
     alignLeft,
+    alignLeftFixedWidth,
     fixedWidthWithMarginRight,
 }) => {
     return (
         <LabeledInputTemplateStyled
             fixedWidthWithMarginRight={fixedWidthWithMarginRight}
         >
-            <LabelTemplate alignLeft={alignLeft}>{children[0]}</LabelTemplate>
+            <LabelTemplate
+                alignLeft={alignLeft}
+                alignLeftFixedWidth={alignLeftFixedWidth}
+            >
+                {children[0]}
+            </LabelTemplate>
             <FieldTemplate>{children[1]}</FieldTemplate>
         </LabeledInputTemplateStyled>
     )
