@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
+    clearSelectedGoods,
     filteringGoods,
     getFilterValues,
     getGoodImageStatus,
@@ -25,6 +26,7 @@ const GoodsFilterContainer = () => {
     }
     const filteringGoodsHandler = () => {
         dispatch(filteringGoods(allGoods, filter))
+        dispatch(clearSelectedGoods())
     }
 
     return (

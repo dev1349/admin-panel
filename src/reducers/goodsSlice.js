@@ -160,6 +160,10 @@ export const sortingGoods = () => (dispatch, getState) => {
     )
     const sortedGoods = toSortTable(goods, comparator)
     dispatch(setAllGoods(sortedGoods))
+
+    const filteredGoods = getState().goods.filteredGoods
+    const sortedFilteredGoods = toSortTable(filteredGoods, comparator)
+    dispatch(setFilteredGoods(sortedFilteredGoods))
 }
 
 export const clickTableSortLabel = property => (dispatch, getState) => {
@@ -195,6 +199,20 @@ export const selectAllGoods = () => (dispatch, getState) => {
     } else {
         dispatch(clearSelectedGoods())
         allGoods.forEach(item => dispatch(selectGood(item.id)))
+    }
+}
+
+export const selectAllFilteredGoods = () => (dispatch, getState) => {
+    const filteredGoods = getState().goods.filteredGoods
+    if (!filteredGoods.length) return
+    if (
+        getState().goods.filteredGoods.length ===
+        getState().goods.selectedGoods.length
+    ) {
+        dispatch(clearSelectedGoods())
+    } else {
+        dispatch(clearSelectedGoods())
+        filteredGoods.forEach(item => dispatch(selectGood(item.id)))
     }
 }
 
@@ -238,6 +256,23 @@ export const deleteSelectedGoods = (dispatch, getState) => {
     dispatch(setAllGoods(newAllGoods))
     dispatch(setFilteredGoods(newAllGoods))
     dispatch(setSelectedGoodId([]))
+
+    if (!getGoodStatus(getState()).includes(getFilterValues(getState()).status))
+        dispatch(setGoodsFilter({ status: null }))
+    if (
+        !getGoodImageStatus(getState()).includes(
+            getFilterValues(getState()).imageStatus
+        )
+    )
+        dispatch(setGoodsFilter({ imageStatus: null }))
+    if (
+        !getGoodTypes(getState()).includes(
+            getFilterValues(getState())['goodType.name']
+        )
+    )
+        dispatch(setGoodsFilter({ 'goodType.name': null }))
+
+    dispatch(filteringGoods(getState().goods.allGoods, getState().goods.filter))
 }
 
 export const getGoodStatus = state =>
@@ -253,6 +288,7 @@ export const getGoods = state => state.goods.allGoods
 export const getOrder = state => state.goods.order
 export const getOrderBy = state => state.goods.orderBy
 export const getRowCount = state => state.goods.allGoods.length
+export const getFilteredRowCount = state => state.goods.filteredGoods.length
 export const getSelectedRowCount = state => state.goods.selectedGoods.length
 export const getGoodChecked = id => state =>
     state.goods.selectedGoods.includes(id)

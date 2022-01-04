@@ -7,12 +7,12 @@ import CountLabel from '../../atoms/textElements/countLabel/CountLabel'
 import {
     clickTableSortLabel,
     getFilteredGoods,
+    getFilteredRowCount,
     getGoodChecked,
     getOrder,
     getOrderBy,
-    getRowCount,
     getSelectedRowCount,
-    selectAllGoods,
+    selectAllFilteredGoods,
     selectGood,
     sortingGoods,
 } from '../../../reducers/goodsSlice'
@@ -129,7 +129,7 @@ const MyGoodsList = () => {
 
     const order = useSelector(getOrder)
     const orderBy = useSelector(getOrderBy)
-    const rowCount = useSelector(getRowCount)
+    const rowCount = useSelector(getFilteredRowCount)
     const selectedRowCount = useSelector(getSelectedRowCount)
     const dispatch = useDispatch()
 
@@ -149,7 +149,7 @@ const MyGoodsList = () => {
     }
     const isGoodChecked = id => useSelector(getGoodChecked(id))
     const selectAllHandler = () => {
-        dispatch(selectAllGoods())
+        dispatch(selectAllFilteredGoods())
     }
 
     return (
