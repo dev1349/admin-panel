@@ -124,7 +124,7 @@ export const deleteGood = good => {
     }
 }
 
-export const filteringGoods = (allGoods, filter) => {
+export const filteringGoods = () => {
     const getFieldValueByPath = (pathToField, obj = null) => {
         const properties = Array.isArray(pathToField)
             ? pathToField
@@ -132,13 +132,14 @@ export const filteringGoods = (allGoods, filter) => {
         return properties.reduce((prev, curr) => prev && prev[curr], obj)
     }
 
-    const filteringGoodByFilter = () => {
+    const filteringGoodByFilter = (allGoods, filter) => {
         const filterKeys = Object.keys(filter)
         return allGoods.filter(eachGood => {
             return filterKeys.every(eachKey => {
                 if (filter[eachKey] === '' || filter[eachKey] === null) {
                     return true
                 }
+
                 return (
                     filter[eachKey] === getFieldValueByPath(eachKey, eachGood)
                 )
@@ -146,8 +147,20 @@ export const filteringGoods = (allGoods, filter) => {
         })
     }
 
-    return dispatch => {
-        const filteredGoods = filteringGoodByFilter()
+    return (dispatch, getState) => {
+        dispatch(
+            setGoodsFilter({
+                salePrice:
+                    getFilterValues(getState()).salePrice === null
+                        ? null
+                        : parseFloat(getFilterValues(getState()).salePrice),
+            })
+        )
+
+        const filteredGoods = filteringGoodByFilter(
+            getGoods(getState()),
+            getFilterValues(getState())
+        )
         dispatch(setFilteredGoods(filteredGoods))
     }
 }

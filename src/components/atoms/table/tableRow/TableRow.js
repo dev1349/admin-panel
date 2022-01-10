@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles'
 import TableRow from '@mui/material/TableRow'
 
 const TableRowStyled = styled(TableRow, {
-    shouldForwardProp: prop => prop !== 'default' || 'defaultHeading',
+    shouldForwardProp: prop => prop !== 'default' && prop !== 'defaultHeading',
     name: 'TableRowStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

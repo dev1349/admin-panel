@@ -315,7 +315,7 @@ export const goodsMockData = {
     },
     filter: {
         name: null,
-        price: null,
+        salePrice: null,
         status: null,
         model: null,
         count: null,

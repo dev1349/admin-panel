@@ -101,11 +101,11 @@ const MyGoodsList = () => {
         model: good.model,
         price: [
             <Price variant={'span'} key={0} oldPrice>
-                {good.salePrice}
+                {good.price}
             </Price>,
             <br key={1} />,
             <Price variant={'span'} key={2}>
-                {good.price}
+                {good.salePrice}
             </Price>,
         ],
         categorySet: printCategory(good.categorySet).map((item, index) => {

@@ -28,11 +28,11 @@ const WSGoodsFilter = ({
             <LabeledFloatField
                 id={'priceFilterField'}
                 label={'Цена'}
-                name={'price'}
+                name={'salePrice'}
                 pattern={
                     '^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$'
                 }
-                value={filter.price}
+                value={filter.salePrice}
                 onChange={setGoodsFilterHandler}
             />
             <LabeledSelectField

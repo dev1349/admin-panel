@@ -2,7 +2,8 @@ import React from 'react'
 import { styled } from '@mui/material'
 
 const LabelTemplateStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'alignLeft' || 'alignLeftFixedWidth',
+    shouldForwardProp: prop =>
+        prop !== 'alignLeft' && prop !== 'alignLeftFixedWidth',
     name: 'LabelTemplateStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

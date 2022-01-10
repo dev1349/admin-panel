@@ -5,7 +5,6 @@ import {
     filteringGoods,
     getFilterValues,
     getGoodImageStatus,
-    getGoods,
     getGoodStatus,
     getGoodTypes,
     setGoodsFilter,
@@ -18,14 +17,13 @@ const GoodsFilterContainer = () => {
     const goodImageStatus = useSelector(getGoodImageStatus)
     const goodTypes = useSelector(getGoodTypes)
     const filter = useSelector(getFilterValues)
-    const allGoods = useSelector(getGoods)
 
     const dispatch = useDispatch()
     const setGoodsFilterHandler = payload => {
         dispatch(setGoodsFilter(payload))
     }
     const filteringGoodsHandler = () => {
-        dispatch(filteringGoods(allGoods, filter))
+        dispatch(filteringGoods())
         dispatch(clearSelectedGoods())
     }
 
