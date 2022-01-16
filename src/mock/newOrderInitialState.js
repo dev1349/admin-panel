@@ -38,7 +38,7 @@ cities.sort((first, second) => {
 const initialState = {
     goodsInOrder: [
         {
-            id: 0,
+            id: 100,
             imgSrc: 'https://content2.rozetka.com.ua/goods/images/big/235450119.jpg',
             vendorCode: 3001,
             name: 'Товар 01',
@@ -47,7 +47,7 @@ const initialState = {
             count: 1,
         },
         {
-            id: 1,
+            id: 101,
             imgSrc: 'https://content2.rozetka.com.ua/goods/images/big/235450119.jpg',
             vendorCode: 3002,
             name: 'Товар 02',
@@ -56,7 +56,7 @@ const initialState = {
             count: 1,
         },
         {
-            id: 2,
+            id: 102,
             imgSrc: '',
             vendorCode: 3003,
             name: 'Товар 03',
@@ -65,7 +65,7 @@ const initialState = {
             count: 3,
         },
         {
-            id: 3,
+            id: 103,
             imgSrc: 'https://content2.rozetka.com.ua/goods/images/big/235450119.jpg',
             vendorCode: 3004,
             name: 'Товар 04',
@@ -74,7 +74,7 @@ const initialState = {
             count: 2,
         },
         {
-            id: 4,
+            id: 104,
             imgSrc: 'https://content2.rozetka.com.ua/goods/images/big/235450119.jpg',
             vendorCode: 3005,
             name: 'Товар 05',
@@ -83,6 +83,9 @@ const initialState = {
             count: 1,
         },
     ],
+    discount: null,
+    creationDate: null,
+    salesmanComment: null,
     delivery: {
         types: [
             {

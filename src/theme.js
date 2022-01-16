@@ -144,6 +144,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        ArrowBackIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ListItemTextStyled: {
             styleOverrides: {
                 root: {
@@ -661,6 +666,14 @@ const globalTheme = createTheme({
                     flexWrap: 'wrap',
                 },
             },
+            variants: [
+                {
+                    props: { alignItemsCenter: true },
+                    style: {
+                        alignItems: 'center',
+                    },
+                },
+            ],
         },
         CategoriesWidthTemplateStyled: {
             styleOverrides: {
@@ -786,6 +799,18 @@ const globalTheme = createTheme({
                 },
             },
         },
+        ToggleButtonStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ToggleButtonTextStyled: {
+            styleOverrides: {
+                root: {
+                    marginLeft: '3px',
+                },
+            },
+        },
         LastChildToRightTemplateStyled: {
             styleOverrides: {
                 root: {
@@ -838,6 +863,28 @@ const globalTheme = createTheme({
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                },
+            },
+        },
+        FlexFirstGrowTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    padding: '10px 0 10px 0',
+                },
+            },
+        },
+        FirstElementTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    flexGrow: 1,
+                },
+            },
+        },
+        OtherElementTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    marginLeft: '10px',
                 },
             },
         },

@@ -22,7 +22,7 @@ const SimpleTableFooter = ({
         <SimpleTableFooterStyled>
             <TableCell />
             <TableCell align={'right'}>Доставка</TableCell>
-            <TableCell align={'center'}>
+            <TableCell align={'left'}>
                 <SelectField
                     name={'deliveryCurrentType'}
                     value={deliveryCurrentType}

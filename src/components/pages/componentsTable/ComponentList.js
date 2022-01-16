@@ -107,6 +107,12 @@ const componentList = [
         routeText: '/users',
         routeLink: '/users',
     },
+    {
+        componentName: 'Компонент "Страница НОВЫЙ ЗАКАЗ"',
+        task: 'WSADMIN-87',
+        routeText: '/new-order',
+        routeLink: '/new-order',
+    },
 ]
 
 export default componentList

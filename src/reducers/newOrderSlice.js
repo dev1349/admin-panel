@@ -5,6 +5,24 @@ const newOrderSlice = createSlice({
     name: 'newOrder',
     initialState,
     reducers: {
+        resetNewOrder() {
+            return initialState
+        },
+        setGoodsInOrder(state, action) {
+            state.goodsInOrder = action.payload
+        },
+        setDiscount(state, action) {
+            state.discount = action.payload
+        },
+        setCreationDate(state, action) {
+            state.creationDate = action.payload
+        },
+        deleteDiscount(state) {
+            state.discount = initialState.discount
+        },
+        setSalesmanComment(state, action) {
+            state.salesmanComment = action.payload
+        },
         changeGoodPrice(state, action) {
             state.goodsInOrder[action.payload.index].price =
                 action.payload.price
@@ -44,6 +62,12 @@ const newOrderSlice = createSlice({
 })
 
 export const {
+    resetNewOrder,
+    setGoodsInOrder,
+    setDiscount,
+    deleteDiscount,
+    setSalesmanComment,
+    setCreationDate,
     changeGoodPrice,
     changeGoodCount,
     deleteGood,
@@ -90,17 +114,62 @@ export const changeGoodCountById = payload => (dispatch, getState) => {
     dispatch(changeGoodCount({ index: goodIndex, count: payload.count }))
 }
 
+export const addNewGoodToOrder = id => (dispatch, getState) => {
+    const goodToOrder = getState().goods.allGoods.find(elem => elem.id === id)
+    const goodToOrderTransformed = {
+        id: goodToOrder.id,
+        imgSrc: '',
+        vendorCode: null,
+        name: goodToOrder.name,
+        price: goodToOrder.salePrice,
+        weight: 1.0,
+        count: 1,
+    }
+
+    const goodsInOrder = [...getState().newOrder.goodsInOrder]
+    const goodInOrder = goodsInOrder.find(good => good.id === id)
+    if (!goodInOrder) {
+        goodsInOrder.push(goodToOrderTransformed)
+        dispatch(setGoodsInOrder(goodsInOrder))
+    }
+}
+
 export const getHeaderCells = state => state.newOrder.headerCells
 export const getGoodsInOrder = state => state.newOrder.goodsInOrder
 export const getDeliveryPrice = state => state.newOrder.delivery.price
 export const getDeliveryTypes = state => state.newOrder.delivery.types
+export const getDiscount = state => state.newOrder.discount
+export const getTotalOrderPrice = state =>
+    state.newOrder.goodsInOrder.reduce(
+        (total, currentGoods) =>
+            total + currentGoods.price * currentGoods.count,
+        0
+    )
+export const getDiscountSum = createSelector(
+    getTotalOrderPrice,
+    getDiscount,
+    (total, discount) => {
+        if (discount === null) {
+            return 0
+        }
+
+        let discountSum
+        if (discount.type === '%') {
+            discountSum = ((total * discount.value) / 100).toFixed(2)
+        }
+        if (discount.type === 'грн.') {
+            discountSum = discount.value
+        }
+        return discountSum
+    }
+)
+export const getTotalOrderPriceWithDiscount = createSelector(
+    getTotalOrderPrice,
+    getDiscountSum,
+    (total, discountSum) => total - discountSum
+)
 export const getTotalPrice = createSelector(
-    state =>
-        state.newOrder.goodsInOrder.reduce(
-            (total, currentGoods) =>
-                total + currentGoods.price * currentGoods.count,
-            0
-        ),
+    getTotalOrderPriceWithDiscount,
     state => state.newOrder.delivery.price,
     (totalGoodsPrice, deliveryPrice) => {
         if (deliveryPrice) {
@@ -122,3 +191,5 @@ export const getCurrentPaymentStatus = state =>
 export const getStatusTypes = state => state.newOrder.statusTypes
 export const getPaymentTypes = state => state.newOrder.paymentTypes
 export const getIsPayed = state => state.newOrder.isPayed
+export const getSalesmanComment = state => state.newOrder.salesmanComment
+export const getCreationDate = state => state.newOrder.creationDate

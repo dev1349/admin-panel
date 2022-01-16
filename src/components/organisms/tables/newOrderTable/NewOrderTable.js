@@ -5,6 +5,7 @@ import SimpleTableHead from '../../../molecules/table/simpleTableHead/SimpleTabl
 import SimpleTableRow from '../../../molecules/table/simpleTableRow/SimpleTableRow'
 import SimpleTableFooter from '../../../molecules/table/simpleTableFooter/SimpleTableFooter'
 import SimpleTableTotal from '../../../molecules/table/simpleTableTotal/SimpleTableTotal'
+import SimpleTableDiscount from '../../../molecules/table/simpleTableDiscount/SimpleTableDiscount'
 
 const NewOrderTable = ({
     headerCells,
@@ -18,6 +19,9 @@ const NewOrderTable = ({
     deliveryPrice,
     changeDeliveryPrice,
     totalPrice,
+    discount,
+    deleteDiscount,
+    discountSum,
 }) => {
     const cellsTypes = headerCells.map(cell => cell.numeric)
     return (
@@ -38,6 +42,14 @@ const NewOrderTable = ({
                             changeCount={changeCount}
                         />
                     ))}
+                    {discount && (
+                        <SimpleTableDiscount
+                            discount={discount}
+                            deleteDiscount={deleteDiscount}
+                            discountSum={discountSum}
+                        />
+                    )}
+
                     <SimpleTableFooter
                         deliveryTypes={deliveryTypes}
                         deliveryCurrentType={deliveryCurrentType}

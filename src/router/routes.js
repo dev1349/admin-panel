@@ -17,6 +17,7 @@ import {
     ORDERS,
     USERS,
     ADD_USER,
+    NEW_ORDER,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -107,6 +108,10 @@ export const authRoutes = [
     {
         path: GOODS,
         Component: Goods,
+    },
+    {
+        path: NEW_ORDER,
+        Component: NewOrder,
     },
 ]
 

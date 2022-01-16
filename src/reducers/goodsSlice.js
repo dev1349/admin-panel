@@ -341,3 +341,9 @@ export const isSaveDisabled = goodId =>
             editFields.metaKeywords === (goodFields.metaKeywords || null)
     )
 export const getFilteredGoods = state => state.goods.filteredGoods
+export const getNamePriceGoods = state =>
+    state.goods.allGoods.map(good => ({
+        id: good.id,
+        name: good.name,
+        salePrice: good.salePrice,
+    }))
