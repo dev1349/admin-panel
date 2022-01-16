@@ -18,6 +18,7 @@ const WSLabeledNumberField = ({
     value,
     onChange,
     autoFocus,
+    onPaste,
 }) => {
     return (
         <LabeledNumberFieldStyled>
@@ -31,6 +32,7 @@ const WSLabeledNumberField = ({
                     onChange={onChange}
                     autoFocus={autoFocus}
                     pattern={pattern}
+                    onPaste={onPaste}
                 />
             </LabeledInputTemplate>
         </LabeledNumberFieldStyled>

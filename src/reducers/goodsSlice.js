@@ -157,6 +157,15 @@ export const filteringGoods = () => {
             })
         )
 
+        let name = getState().goods.filter.name
+        if (name) {
+            dispatch(setGoodsFilter({ name: name.trim() }))
+        }
+        let model = getState().goods.filter.model
+        if (model) {
+            dispatch(setGoodsFilter({ model: model.trim() }))
+        }
+
         const filteredGoods = filteringGoodByFilter(
             getGoods(getState()),
             getFilterValues(getState())

@@ -15,6 +15,10 @@ const WSGoodsFilter = ({
     setGoodsFilterHandler,
     filteringGoodsHandler,
 }) => {
+    const handlePaste = event => {
+        event.preventDefault()
+    }
+
     return (
         <Form>
             <LabeledTextField
@@ -63,6 +67,7 @@ const WSGoodsFilter = ({
                 pattern={'^(|0|[0-9]+)$'}
                 value={filter.count}
                 onChange={setGoodsFilterHandler}
+                onPaste={handlePaste}
             />
             <LabeledSelectField
                 id={'imageStatusFilterField'}

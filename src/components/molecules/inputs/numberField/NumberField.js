@@ -10,6 +10,7 @@ const NumberFieldWS = ({
     fullWidth,
     forTable,
     disabled,
+    onPaste,
 }) => {
     const changeHandler = evt => {
         if (!pattern) {
@@ -46,6 +47,7 @@ const NumberFieldWS = ({
             autoFocus={autoFocus}
             forTable={forTable}
             disabled={disabled}
+            onPaste={onPaste}
         />
     )
 }
