@@ -9,7 +9,7 @@ const Header2Styled = styled('header', {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const Header2 = ({ icon, children }) => {
+const Header2 = ({ icon = null, children }) => {
     return (
         <Header2Styled>
             <IconTitleTemplate>

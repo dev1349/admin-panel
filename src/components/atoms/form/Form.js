@@ -9,7 +9,7 @@ const FormStyled = styled('form', {
 
 const WSForm = ({ children, ...rest }) => {
     return (
-        <FormStyled onSubmit={evt => evt.preventDefault()} {...rest}>
+        <FormStyled onSubmit={evt => evt.preventDefault()} {...rest} noValidate>
             {children}
         </FormStyled>
     )

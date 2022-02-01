@@ -17,6 +17,18 @@ const LabeledAutocomplete = ({
     value,
     changeValue,
     options,
+    getOptionLabel,
+    canAddValue,
+    shouldValidate,
+    required,
+    validationRules,
+    validatingNow,
+    setValidationResult,
+    haveHelperText,
+    filterOptions,
+    selectOnFocus,
+    clearOnBlur,
+    handleHomeEndKeys,
     ...rest
 }) => {
     return (
@@ -29,6 +41,18 @@ const LabeledAutocomplete = ({
                     value={value}
                     changeValue={changeValue}
                     options={options}
+                    getOptionLabel={getOptionLabel}
+                    canAddValue={canAddValue}
+                    shouldValidate={shouldValidate}
+                    required={required}
+                    validationRules={validationRules}
+                    validatingNow={validatingNow}
+                    setValidationResult={setValidationResult}
+                    haveHelperText={haveHelperText}
+                    filterOptions={filterOptions}
+                    selectOnFocus={selectOnFocus}
+                    clearOnBlur={clearOnBlur}
+                    handleHomeEndKeys={handleHomeEndKeys}
                     {...rest}
                 />
             </LabeledInputTemplate>

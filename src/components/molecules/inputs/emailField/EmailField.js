@@ -1,8 +1,8 @@
-import React from 'react'
-import TextField from '../../../atoms/inputs/textField/TextField'
+import React, { useMemo } from 'react'
+import EmailField from '../../../atoms/inputs/emailField/EmailField'
 import useValidation from '../../../hooks/useValidation'
 
-const TextFieldWS = ({
+const EmailFieldMolecules = ({
     id,
     name,
     value,
@@ -19,12 +19,26 @@ const TextFieldWS = ({
     haveHelperText,
     ...rest
 }) => {
+    const resultRules = useMemo(
+        () => [
+            {
+                checking: value =>
+                    !new RegExp(
+                        /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i
+                    ).test(value),
+                errorMessage:
+                    validationRules || 'Адрес электронной почты указан неверно',
+            },
+        ],
+        [validationRules]
+    )
+
     const { handleBlur, transformValue, errorMessage } = useValidation(
         name,
         value,
         required,
         shouldValidate,
-        validationRules,
+        resultRules,
         validatingNow,
         setValidationResult
     )
@@ -42,7 +56,7 @@ const TextFieldWS = ({
     }
 
     return (
-        <TextField
+        <EmailField
             id={id}
             fullWidth={fullWidth}
             name={name}
@@ -58,4 +72,4 @@ const TextFieldWS = ({
     )
 }
 
-export default TextFieldWS
+export default EmailFieldMolecules

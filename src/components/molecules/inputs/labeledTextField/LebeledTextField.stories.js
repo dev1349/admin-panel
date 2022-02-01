@@ -38,4 +38,16 @@ Example3.args = {
     onChange: payload => console.log('change', payload),
     autoFocus: true,
     placeholder: 'Имя*',
+    shouldValidate: true,
+    required: true,
+    validationRules: [
+        {
+            checking: value => value.length < 2,
+            errorMessage: 'Введите минимум 2 символа',
+        },
+    ],
+    validatingNow: true,
+    setValidationResult: payload => console.log('payload = ', payload),
+    haveHelperText: true,
+    pattern: /^[a-zа-яё]*$/iu,
 }

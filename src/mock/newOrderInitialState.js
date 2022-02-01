@@ -35,6 +35,8 @@ cities.sort((first, second) => {
     }
 })
 
+export const exportCities = cities
+
 const initialState = {
     goodsInOrder: [
         {

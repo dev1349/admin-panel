@@ -19,6 +19,13 @@ const ClientData = ({
     clientFieldsValues,
     fields,
 }) => {
+    const createFullCityName = option => {
+        const optionValuesWithoutNull = Object.values(option).filter(
+            item => item
+        )
+        return optionValuesWithoutNull.join(', ')
+    }
+
     return (
         <>
             <GreyBorderedWrapper>
@@ -81,6 +88,7 @@ const ClientData = ({
                         value={clientFieldsValues[fields.clientCity.name]}
                         changeValue={changeFieldsValue}
                         options={fields.clientCity.options}
+                        getOptionLabel={createFullCityName}
                     />
                     <LabeledDateTimeFromToField
                         id={fields.clientDeliveryDateTime.name}

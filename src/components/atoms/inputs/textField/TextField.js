@@ -9,8 +9,8 @@ export const TextFieldStyled = styled(TextField, {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSTextField = props => {
+const TextFieldWS = props => {
     return <TextFieldStyled {...props} />
 }
 
-export default WSTextField
+export default TextFieldWS

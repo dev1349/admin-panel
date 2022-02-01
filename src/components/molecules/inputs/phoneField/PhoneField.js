@@ -1,8 +1,8 @@
-import React from 'react'
-import TextField from '../../../atoms/inputs/textField/TextField'
+import React, { useMemo } from 'react'
+import PhoneField from '../../../atoms/inputs/phoneField/PhoneField'
 import useValidation from '../../../hooks/useValidation'
 
-const TextFieldWS = ({
+const PhoneFieldMolecules = ({
     id,
     name,
     value,
@@ -19,14 +19,16 @@ const TextFieldWS = ({
     haveHelperText,
     ...rest
 }) => {
-    const { handleBlur, transformValue, errorMessage } = useValidation(
-        name,
-        value,
-        required,
-        shouldValidate,
-        validationRules,
-        validatingNow,
-        setValidationResult
+    const resultRules = useMemo(
+        () => [
+            {
+                checking: value => !new RegExp(/^(\+38)?0\d{9}$/).test(value),
+                errorMessage:
+                    validationRules ||
+                    'Укажите телефон в формате "0XX XXX XX XX"',
+            },
+        ],
+        [validationRules]
     )
 
     const handleChange = evt => {
@@ -41,8 +43,18 @@ const TextFieldWS = ({
         }
     }
 
+    const { handleBlur, transformValue, errorMessage } = useValidation(
+        name,
+        value,
+        required,
+        shouldValidate,
+        resultRules,
+        validatingNow,
+        setValidationResult
+    )
+
     return (
-        <TextField
+        <PhoneField
             id={id}
             fullWidth={fullWidth}
             name={name}
@@ -58,4 +70,4 @@ const TextFieldWS = ({
     )
 }
 
-export default TextFieldWS
+export default PhoneFieldMolecules

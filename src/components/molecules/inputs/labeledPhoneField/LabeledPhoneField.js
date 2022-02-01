@@ -1,17 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
-import TextField from '../textField/TextField'
+import { LabeledTextFieldStyled } from '../labeledTextField/LabeledTextField'
+import PhoneField from '../phoneField/PhoneField'
 
-export const LabeledTextFieldStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'fixedWidth',
-    name: 'LabeledTextFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const LabeledTextField = ({
+const LabeledPhoneField = ({
     id,
     label,
     name,
@@ -37,7 +30,7 @@ const LabeledTextField = ({
                 alignLeftFixedWidth={alignLeftFixedWidth}
             >
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <TextField
+                <PhoneField
                     id={id}
                     name={name}
                     value={value}
@@ -58,4 +51,4 @@ const LabeledTextField = ({
     )
 }
 
-export default LabeledTextField
+export default LabeledPhoneField

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PaddingBetweenButtonsTemplate from '../../templates/paddingBetweenButtonsTemplate/PaddingBetweenButtonsTemplate'
 import ToggleButton from '../../atoms/toggleButton/ToggleButton'
-import AutocompleteGlobal from '../../molecules/inputs/autocompleteGlobal/AutocompleteGlobal'
 import SimpleButton from '../../atoms/simpleButton/SimpleButton'
 import FlexFirstGrowTemplate from '../../templates/flexFirstGrowTemplate/FlexFirstGrowTemplate'
 import TextField from '../../molecules/inputs/textField/TextField'
 import FloatField from '../../molecules/inputs/floatField/FloatField'
 import SelectField from '../../molecules/inputs/selectField/SelectField'
+import Autocomplete from '../../molecules/inputs/autocomplete/Autocomplete'
 
 const OrderAdditionalButtons = ({
     buttons,
@@ -80,14 +80,14 @@ const OrderAdditionalButtons = ({
             </PaddingBetweenButtonsTemplate>
             {positionButtonDown && (
                 <FlexFirstGrowTemplate>
-                    <AutocompleteGlobal
-                        autofocus={true}
+                    <Autocomplete
+                        autoFocus={true}
                         textFieldId={'addGood'}
                         name={'good'}
                         value={autocompleteValue}
                         changeValue={handleChangeAutocomplete}
                         options={namePriceGoods}
-                        createOptionLabel={option => {
+                        getOptionLabel={option => {
                             const optionValuesWithoutNull =
                                 Object.values(option).slice(1)
                             return optionValuesWithoutNull.join(', ') + ' грн.'

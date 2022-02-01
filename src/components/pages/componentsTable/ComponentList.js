@@ -113,6 +113,12 @@ const componentList = [
         routeText: '/new-order',
         routeLink: '/new-order',
     },
+    {
+        componentName: 'Компонент "Добавление клиента"',
+        task: 'WSADMIN-75',
+        routeText: '/clients/add',
+        routeLink: '/clients/add',
+    },
 ]
 
 export default componentList

@@ -28,3 +28,25 @@ Example2.args = {
     autoFocus: true,
     fullWidth: true,
 }
+
+export const Example3 = Template.bind({})
+Example2.args = {
+    id: 'someId0',
+    name: 'someFieldsName',
+    value: 'd',
+    onChange: payload => console.log('change', payload),
+    autoFocus: true,
+    fullWidth: true,
+    shouldValidate: true,
+    required: true,
+    validationRules: [
+        {
+            checking: value => value.length < 2,
+            errorMessage: 'Введите минимум 2 символа',
+        },
+    ],
+    validatingNow: true,
+    setValidationResult: payload => console.log('payload = ', payload),
+    haveHelperText: true,
+    pattern: /^[a-zа-яё]*$/iu,
+}

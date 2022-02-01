@@ -28,3 +28,8 @@ Example3.args = {
     icon: <EditIcon />,
     children: 'Редактирование группы',
 }
+
+export const Example4 = Template.bind({})
+Example4.args = {
+    children: 'Редактирование группы',
+}
