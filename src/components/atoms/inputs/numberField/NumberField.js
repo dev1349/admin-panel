@@ -1,8 +1,14 @@
 import React from 'react'
 import { TextFieldStyled } from '../textField/TextField'
 
-const WSNumberField = props => {
-    return <TextFieldStyled type={'number'} {...props} />
+const NumberFieldWS = props => {
+    return (
+        <TextFieldStyled
+            type={'text'}
+            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+            {...props}
+        />
+    )
 }
 
-export default WSNumberField
+export default NumberFieldWS
