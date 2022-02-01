@@ -149,6 +149,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        FileDownloadIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ListItemTextStyled: {
             styleOverrides: {
                 root: {

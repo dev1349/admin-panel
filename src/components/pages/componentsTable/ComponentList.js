@@ -119,6 +119,12 @@ const componentList = [
         routeText: '/clients/add',
         routeLink: '/clients/add',
     },
+    {
+        componentName: 'Кнопка "Экспорт"',
+        task: 'WSADMIN-80',
+        routeText: '/export',
+        routeLink: '/export',
+    },
 ]
 
 export default componentList

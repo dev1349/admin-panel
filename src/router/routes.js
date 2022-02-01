@@ -19,6 +19,7 @@ import {
     ADD_USER,
     NEW_ORDER,
     ADD_CLIENT,
+    EXPORT,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -40,6 +41,7 @@ import UsersTable from '../components/pages/usersTable/UsersTable'
 import Categories from '../components/pages/categories/Categories'
 import Goods from '../components/pages/goods/Goods'
 import AddClient from '../components/pages/addClient/AddClient'
+import Export from '../components/pages/export/Export'
 
 export const authRoutes = [
     {
@@ -118,6 +120,10 @@ export const authRoutes = [
     {
         path: ADD_CLIENT,
         Component: AddClient,
+    },
+    {
+        path: EXPORT,
+        Component: Export,
     },
 ]
 
