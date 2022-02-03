@@ -88,9 +88,16 @@ const OrderAdditionalButtons = ({
                         changeValue={handleChangeAutocomplete}
                         options={namePriceGoods}
                         getOptionLabel={option => {
-                            const optionValuesWithoutNull =
+                            const optionValuesWithoutId =
                                 Object.values(option).slice(1)
-                            return optionValuesWithoutNull.join(', ') + ' грн.'
+                            return optionValuesWithoutId.join(', ') + ' грн.'
+                        }}
+                        isOptionEqualToValue={(option, value) => {
+                            return (
+                                option.id === value.id &&
+                                option.name === value.name &&
+                                option.salePrice === value.salePrice
+                            )
                         }}
                     />
                     {autocompleteValue && (

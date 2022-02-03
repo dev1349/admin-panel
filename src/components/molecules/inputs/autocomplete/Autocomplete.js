@@ -29,6 +29,7 @@ const AutocompleteWS = ({
     selectOnFocus,
     clearOnBlur,
     handleHomeEndKeys,
+    isOptionEqualToValue,
     ...rest
 }) => {
     const { handleBlur, errorMessage } = useValidation(
@@ -91,6 +92,7 @@ const AutocompleteWS = ({
             )}
             freeSolo={canAddValue}
             autoFocus={autoFocus}
+            isOptionEqualToValue={isOptionEqualToValue}
             {...rest}
         />
     )

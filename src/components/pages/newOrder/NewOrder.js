@@ -202,6 +202,12 @@ const NewOrder = () => {
         dispatch(resetNewOrder())
     }
 
+    const isCreateOrderButtonDisabled =
+        !goodsInOrder.length ||
+        !clientFields.clientName ||
+        !clientFields.clientPhone ||
+        !clientFields.clientCity
+
     return (
         <MaxWidthTemplate>
             <NewOrderHeader
@@ -272,7 +278,7 @@ const NewOrder = () => {
                     clientPhone: {
                         name: 'clientPhone',
                         label: 'Телефон*',
-                        pattern: /^(|\+[0-9]*|[0-9]*)$/,
+                        pattern: /^(\+?[0-9]*)$/,
                         helperText: 'Максимум 10 символов',
                         check: [
                             {
@@ -293,8 +299,7 @@ const NewOrder = () => {
                     clientEmail: {
                         name: 'clientEmail',
                         label: 'E-mail',
-                        pattern:
-                            /^(|[a-z]\w*|[A-Z]\w*|[a-z]\w*@\w*|[A-Z]\w*@\w*|[a-z]\w*@\w*\.\w*|[A-Z]\w*@\w*\.\w*)$/,
+                        pattern: /^[\w-.@]*$/,
                     },
                     hasDelivery: {
                         name: 'hasDelivery',
@@ -381,7 +386,10 @@ const NewOrder = () => {
             {creationDate && <Typography>{dateForOutput}</Typography>}
             {!creationDate && (
                 <PaddingBetweenButtonsTemplate>
-                    <SimpleButton onClick={handleCreateOrder}>
+                    <SimpleButton
+                        onClick={handleCreateOrder}
+                        disabled={isCreateOrderButtonDisabled}
+                    >
                         Создать заказ
                     </SimpleButton>
                     <SimpleButton variant={'outlined'} onClick={resetOrder}>
