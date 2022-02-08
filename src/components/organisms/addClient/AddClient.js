@@ -97,7 +97,7 @@ const AddClient = ({ cities }) => {
                             validatingNow={validatingNow}
                             setValidationResult={handleSetFieldsInfo}
                             haveHelperText={true}
-                            pattern={/^[a-zа-яё]*$/iu}
+                            pattern={/^[a-zа-яёєії]*$/iu}
                         />
                         <LabeledPhoneField
                             id={'phone'}
