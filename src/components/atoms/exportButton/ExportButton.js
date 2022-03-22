@@ -9,6 +9,7 @@ const ExportButton = ({
     tableList = null,
     fileName = 'data',
     tableHeader = null,
+    ...rest
 }) => {
     const fileType =
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
@@ -37,7 +38,11 @@ const ExportButton = ({
     }
 
     return (
-        <SimpleButton startIcon={<FileDownloadIcon />} onClick={handleExport}>
+        <SimpleButton
+            startIcon={<FileDownloadIcon />}
+            onClick={handleExport}
+            {...rest}
+        >
             {children}
         </SimpleButton>
     )

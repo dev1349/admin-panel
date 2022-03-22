@@ -53,3 +53,15 @@ Example4.args = {
     disabled: false,
     forTable: true,
 }
+
+Example4.args = {
+    value: 345,
+    pattern:
+        '^(|0|0[.]|0[.][0-9]|0[.][0-9][1-9]|0[.][1-9][0-9]|[1-9]|[1-9][0-9]+|[1-9][0-9]+[.]|[1-9][0-9]+[.][0-9]|[1-9][0-9]+[.][0-9][1-9]|[1-9][0-9]+[.][1-9][0-9])$',
+    onChange: () => console.log('change'),
+    autoFocus: true,
+    name: 'sortOrder',
+    disabled: false,
+    forTable: true,
+    forFilter: true,
+}

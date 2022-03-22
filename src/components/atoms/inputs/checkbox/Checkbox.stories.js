@@ -15,3 +15,10 @@ export const Example1 = Template.bind({})
 Example1.args = {
     checked: true,
 }
+
+export const Example2 = Template.bind({})
+Example2.args = {
+    checked: true,
+    size: 'small',
+    forTable: true,
+}

@@ -15,3 +15,9 @@ export const Example1 = Template.bind({})
 Example1.args = {
     children: <div>menu item text...</div>,
 }
+
+export const Example2 = Template.bind({})
+Example2.args = {
+    children: <div>menu item text...</div>,
+    forTable: true,
+}

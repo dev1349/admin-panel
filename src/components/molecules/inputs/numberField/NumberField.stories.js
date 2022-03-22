@@ -36,7 +36,28 @@ Example3.args = {
     autoFocus: true,
     name: 'sortOrder',
     pattern: '^[1-9][0-9]*$',
-    fullWidth: false,
     forTable: false,
-    disabled: true,
+    disabled: false,
+}
+
+export const Example4 = Template.bind({})
+Example4.args = {
+    value: 3,
+    onChange: () => console.log('change'),
+    autoFocus: true,
+    name: 'sortOrder',
+    pattern: '^[1-9][0-9]*$',
+    forFilter: true,
+    disabled: false,
+}
+
+export const Example5 = Template.bind({})
+Example5.args = {
+    value: 3,
+    onChange: () => console.log('change'),
+    autoFocus: true,
+    name: 'sortOrder',
+    pattern: '^[1-9][0-9]*$',
+    clientSearch: true,
+    disabled: false,
 }

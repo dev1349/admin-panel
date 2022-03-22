@@ -76,3 +76,9 @@ Example11.args = {
     children: <LogoutIcon />,
     menuButton: true,
 }
+
+export const Example12 = Template.bind({})
+Example12.args = {
+    children: <LogoutIcon fontSize={'small'} />,
+    size: 'small',
+}

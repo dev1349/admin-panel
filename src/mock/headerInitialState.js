@@ -84,7 +84,7 @@ const initialState = {
                         {
                             id: 'site.menu',
                             title: 'Меню и страницы',
-                            link: '/site/menu',
+                            link: '/site/menu-and-pages',
                         },
                         {
                             id: 'site.articles',

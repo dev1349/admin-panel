@@ -3,7 +3,11 @@ import { styled } from '@mui/material/styles'
 import { TextField } from '@mui/material'
 
 export const TextFieldStyled = styled(TextField, {
-    shouldForwardProp: prop => prop !== 'forTable',
+    shouldForwardProp: prop =>
+        prop !== 'forTable' &&
+        prop !== 'forFilter' &&
+        prop !== 'dateForFilter' &&
+        prop !== 'clientSearch',
     name: 'TextFieldStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

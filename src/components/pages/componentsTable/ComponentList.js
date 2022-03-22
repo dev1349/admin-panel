@@ -125,6 +125,24 @@ const componentList = [
         routeText: '/export',
         routeLink: '/export',
     },
+    {
+        componentName: 'Страница "Клиенты"',
+        task: 'WSADMIN-76',
+        routeText: '/clients/pages/1',
+        routeLink: '/clients/pages/1',
+    },
+    {
+        componentName: 'Дополнительные функции на странице "Клиенты"',
+        task: 'WSADMIN-77',
+        routeText: '/clients/pages/1',
+        routeLink: '/clients/pages/1',
+    },
+    {
+        componentName: 'Шапка/сортировка на странице "Клиенты"',
+        task: 'WSADMIN-78',
+        routeText: '/clients/pages/1',
+        routeLink: '/clients/pages/1',
+    },
 ]
 
 export default componentList

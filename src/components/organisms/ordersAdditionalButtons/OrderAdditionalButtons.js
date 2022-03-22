@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PaddingBetweenButtonsTemplate from '../../templates/paddingBetweenButtonsTemplate/PaddingBetweenButtonsTemplate'
-import ToggleButton from '../../atoms/toggleButton/ToggleButton'
+import ToggleButton from '../../atoms/toggleButtonWithText/ToggleButtonWithText'
 import SimpleButton from '../../atoms/simpleButton/SimpleButton'
 import FlexFirstGrowTemplate from '../../templates/flexFirstGrowTemplate/FlexFirstGrowTemplate'
 import TextField from '../../molecules/inputs/textField/TextField'

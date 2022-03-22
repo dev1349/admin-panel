@@ -10,6 +10,7 @@ const FloatField = ({
     fullWidth,
     disabled,
     forTable,
+    ...rest
 }) => {
     const changeHandler = evt => {
         if (pattern && new RegExp(pattern).test(evt.target.value)) {
@@ -36,6 +37,7 @@ const FloatField = ({
             autoFocus={autoFocus}
             disabled={disabled}
             forTable={forTable}
+            {...rest}
         />
     )
 }

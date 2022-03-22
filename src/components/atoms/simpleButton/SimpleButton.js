@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles'
 import { Button } from '@mui/material'
 
 const SimpleButtonStyled = styled(Button, {
+    shouldForwardProp: prop => prop !== 'noUppercase',
     name: 'SimpleButtonStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],

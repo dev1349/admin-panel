@@ -11,6 +11,7 @@ import addCategorySlice from './addCategorySlice'
 import attributeGroupSlice from './attributeGroupSlice'
 import newOrderSlice from './newOrderSlice'
 import usersSlice from './usersSlice'
+import clientsSlice from './clientsSlice'
 
 export const rootReducer = combineReducers({
     goods: goodsSlice,
@@ -25,4 +26,5 @@ export const rootReducer = combineReducers({
     coupons: couponsReducer,
     newOrder: newOrderSlice,
     users: usersSlice,
+    clients: clientsSlice,
 })

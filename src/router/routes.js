@@ -20,6 +20,8 @@ import {
     NEW_ORDER,
     ADD_CLIENT,
     EXPORT,
+    MENU_AND_PAGES,
+    CLIENTSID,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -42,6 +44,8 @@ import Categories from '../components/pages/categories/Categories'
 import Goods from '../components/pages/goods/Goods'
 import AddClient from '../components/pages/addClient/AddClient'
 import Export from '../components/pages/export/Export'
+import MegaMenu from '../components/pages/megaMenu/MegaMenu'
+import Clients from '../components/pages/clients/Clients'
 
 export const authRoutes = [
     {
@@ -124,6 +128,14 @@ export const authRoutes = [
     {
         path: EXPORT,
         Component: Export,
+    },
+    {
+        path: MENU_AND_PAGES,
+        Component: MegaMenu,
+    },
+    {
+        path: CLIENTSID,
+        Component: Clients,
     },
 ]
 

@@ -26,4 +26,5 @@ Example2.args = {
     autoFocus: true,
     fullWidth: true,
     onChange: payload => console.log('Date', payload),
+    dateForFilter: true,
 }

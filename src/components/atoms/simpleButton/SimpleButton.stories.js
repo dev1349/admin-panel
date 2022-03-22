@@ -39,4 +39,6 @@ Example4.args = {
     children: 'Ok',
     color: 'error',
     startIcon: <AddIcon />,
+    noUppercase: true,
+    size: 'small',
 }

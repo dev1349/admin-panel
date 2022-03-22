@@ -8,8 +8,8 @@ const TableStyled = styled(Table, {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSTable = ({ children, ...rest }) => {
+const TableWS = ({ children, ...rest }) => {
     return <TableStyled {...rest}>{children}</TableStyled>
 }
 
-export default WSTable
+export default TableWS

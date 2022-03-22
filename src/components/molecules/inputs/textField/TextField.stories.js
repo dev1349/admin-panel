@@ -50,3 +50,21 @@ Example2.args = {
     haveHelperText: true,
     pattern: /^[a-zа-яё]*$/iu,
 }
+
+export const Example4 = Template.bind({})
+Example4.args = {
+    id: 'someId0',
+    name: 'someFieldsName',
+    value: 'some text...',
+    onChange: payload => console.log('change', payload),
+    clientSearch: true,
+}
+
+export const Example5 = Template.bind({})
+Example5.args = {
+    id: 'someId0',
+    name: 'someFieldsName',
+    value: 'some text...',
+    onChange: payload => console.log('change', payload),
+    forTable: true,
+}

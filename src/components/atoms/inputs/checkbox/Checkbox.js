@@ -3,12 +3,13 @@ import { styled } from '@mui/material'
 import Checkbox from '@mui/material/Checkbox'
 
 const CheckboxStyled = styled(Checkbox, {
+    shouldForwardProp: prop => prop !== 'forTable',
     name: 'CheckboxStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const WSCheckbox = props => {
+const CheckboxWS = props => {
     return (
         <CheckboxStyled
             {...props}
@@ -17,4 +18,4 @@ const WSCheckbox = props => {
     )
 }
 
-export default WSCheckbox
+export default CheckboxWS

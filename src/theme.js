@@ -2,6 +2,23 @@ import { createTheme } from '@mui/material'
 
 const globalTheme = createTheme({
     components: {
+        PopoverStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        PopperStyled: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#ffffff',
+                    padding: '10px',
+                    border: '1px solid lightgrey',
+                    zIndex: 1,
+                    boxShadow:
+                        '0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%)',
+                },
+            },
+        },
         AddIconStyled: {
             styleOverrides: {
                 root: {},
@@ -309,6 +326,14 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {},
             },
+            variants: [
+                {
+                    props: { smallFontSize: true },
+                    style: {
+                        fontSize: '14px',
+                    },
+                },
+            ],
         },
         H1Styled: {
             styleOverrides: {
@@ -378,11 +403,30 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {},
             },
+            variants: [
+                {
+                    props: { forTable: true },
+                    style: {
+                        padding: '5px',
+                    },
+                },
+            ],
         },
         FormControlLabelStyled: {
             styleOverrides: {
                 root: {},
             },
+            variants: [
+                {
+                    props: { smallFontSize: true },
+                    style: {
+                        '& .MuiTypography-root': {
+                            fontSize: '14px',
+                        },
+                        marginLeft: '-6px',
+                    },
+                },
+            ],
         },
         InputLabelStyled: {
             styleOverrides: {
@@ -421,6 +465,43 @@ const globalTheme = createTheme({
                         '& .MuiInputBase-input': {
                             fontSize: '14px',
                         },
+                    },
+                },
+                {
+                    props: { forFilter: true },
+                    style: {
+                        '& .MuiInputBase-input': {
+                            fontSize: '14px',
+                            padding: '5px',
+                        },
+                        width: '70px',
+                        verticalAlign: 'middle',
+                    },
+                },
+                {
+                    props: { dateForFilter: true },
+                    style: {
+                        '& .MuiInputBase-input': {
+                            fontSize: '14px',
+                            padding: '5px',
+                        },
+                        width: '120px',
+                        verticalAlign: 'middle',
+                        '& .MuiInputBase-input::-webkit-calendar-picker-indicator':
+                            {
+                                marginLeft: '-15px',
+                            },
+                    },
+                },
+                {
+                    props: { clientSearch: true },
+                    style: {
+                        '& .MuiInputBase-input': {
+                            fontSize: '14px',
+                            padding: '5px',
+                        },
+                        width: '250px',
+                        verticalAlign: 'middle',
                     },
                 },
             ],
@@ -469,6 +550,11 @@ const globalTheme = createTheme({
                 },
             },
         },
+        AutocompleteItemStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         LabeledAutocompleteStyled: {
             styleOverrides: {
                 root: {},
@@ -497,7 +583,27 @@ const globalTheme = createTheme({
                 },
             },
         },
+        TableFilterContentTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    padding: '10px 0',
+                },
+            },
+        },
         SimpleButtonStyled: {
+            styleOverrides: {
+                root: {},
+            },
+            variants: [
+                {
+                    props: { noUppercase: true },
+                    style: {
+                        textTransform: 'none',
+                    },
+                },
+            ],
+        },
+        TableContainerStyled: {
             styleOverrides: {
                 root: {},
             },
@@ -518,6 +624,23 @@ const globalTheme = createTheme({
                     padding: '0 5px',
                 },
             },
+            variants: [
+                {
+                    props: { headCell: true },
+                    style: {
+                        whiteSpace: 'nowrap',
+                    },
+                },
+            ],
+        },
+        CellContentStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    verticalAlign: 'middle',
+                },
+            },
         },
         TabStyled: {
             styleOverrides: {
@@ -535,6 +658,11 @@ const globalTheme = createTheme({
                     boxSizing: 'border-box',
                     border: '1px solid lightgrey',
                 },
+            },
+        },
+        BoxStyled: {
+            styleOverrides: {
+                root: {},
             },
         },
         PriceStyled: {
@@ -771,7 +899,7 @@ const globalTheme = createTheme({
         MaxWidthTemplateStyled: {
             styleOverrides: {
                 root: {
-                    maxWidth: '1000px',
+                    maxWidth: '1200px',
                     margin: '0 auto',
                     padding: '10px',
                 },
@@ -805,6 +933,26 @@ const globalTheme = createTheme({
             },
         },
         ToggleButtonStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ToggleButtonGroupStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        ItemsOnPageStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    justifyContent: 'right',
+                    alignItems: 'center',
+                    padding: '5px 0px',
+                },
+            },
+        },
+        ToggleButtonWithTextStyled: {
             styleOverrides: {
                 root: {},
             },
@@ -871,6 +1019,15 @@ const globalTheme = createTheme({
                 },
             },
         },
+        SpaceBetweenTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                },
+            },
+        },
         FlexFirstGrowTemplateStyled: {
             styleOverrides: {
                 root: {
@@ -918,6 +1075,33 @@ const globalTheme = createTheme({
                         display: 'flex',
                     },
                 },
+            },
+        },
+        ClientFunctionContainerTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    padding: '5px 0px 5px 5px',
+                },
+            },
+        },
+        ClientButtonSpaceTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    paddingRight: '5px',
+                },
+            },
+            variants: [
+                {
+                    props: { lastChild: true },
+                    style: {
+                        paddingRight: '0',
+                    },
+                },
+            ],
+        },
+        ClientButtonsTemplateStyled: {
+            styleOverrides: {
+                root: {},
             },
         },
         ButtonWrapperStyled: {
@@ -1073,6 +1257,21 @@ const globalTheme = createTheme({
         TablePaginationStyled: {
             styleOverrides: {
                 root: {},
+            },
+        },
+        PaginationStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
+        PaginationContainerStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '5px',
+                },
             },
         },
         TabTitlesWrapperStyled: {

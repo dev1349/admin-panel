@@ -8,19 +8,8 @@ export const ToggleButtonStyled = styled(ToggleButton, {
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-export const ToggleButtonTextStyled = styled('div', {
-    name: 'ToggleButtonTextStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const ToggleButtonWS = ({ icon, text, ...rest }) => {
-    return (
-        <ToggleButtonStyled {...rest}>
-            {icon}
-            <ToggleButtonTextStyled>{text}</ToggleButtonTextStyled>
-        </ToggleButtonStyled>
-    )
+const ToggleButtonWS = ({ children, ...rest }) => {
+    return <ToggleButtonStyled {...rest}>{children}</ToggleButtonStyled>
 }
 
 export default ToggleButtonWS
