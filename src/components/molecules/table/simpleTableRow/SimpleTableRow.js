@@ -21,6 +21,12 @@ const SimpleTableRow = ({
     changePrice,
     changeCount,
 }) => {
+    const handleBlur = () => {
+        if (!rowFields.count) {
+            deleteRow(rowFields.id)()
+        }
+    }
+
     return (
         <SimpleTableRowStyled>
             <TableCell
@@ -109,6 +115,7 @@ const SimpleTableRow = ({
                     name={'count'}
                     pattern={'^[0-9]*$'}
                     forTable
+                    onBlur={handleBlur}
                 />
             </TableCell>
             <TableCell

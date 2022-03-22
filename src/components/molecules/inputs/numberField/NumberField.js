@@ -11,6 +11,7 @@ const NumberFieldWS = ({
     forTable,
     disabled,
     onPaste,
+    ...rest
 }) => {
     const changeHandler = evt => {
         if (!pattern) {
@@ -48,6 +49,7 @@ const NumberFieldWS = ({
             forTable={forTable}
             disabled={disabled}
             onPaste={onPaste}
+            {...rest}
         />
     )
 }

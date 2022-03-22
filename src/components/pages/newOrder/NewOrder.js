@@ -48,6 +48,14 @@ import SalesmanComment from '../../molecules/inputs/salesmanComment/SalesmanComm
 import SimpleButton from '../../atoms/simpleButton/SimpleButton'
 import PaddingBetweenButtonsTemplate from '../../templates/paddingBetweenButtonsTemplate/PaddingBetweenButtonsTemplate'
 import Typography from '../../atoms/textElements/typography/Typography'
+import useDeliveryTime from '../../../hooks/deliveryTime.hook'
+import {
+    dayNumber,
+    hours,
+    minutes,
+    monthNumber,
+    year,
+} from '../../../common/getDayMonthYearHoursMinutes'
 
 const NewOrder = () => {
     const headerCells = useSelector(getHeaderCells)
@@ -59,6 +67,29 @@ const NewOrder = () => {
     const clientFields = useSelector(getClientFields)
     const cities = useSelector(getCities)
     const creationDate = useSelector(getCreationDate)
+    const namePriceGoods = useSelector(getNamePriceGoods)
+    const discount = useSelector(getDiscount)
+    const currentOrderStatus = useSelector(getCurrentOrderStatus)
+    const currentPaymentStatus = useSelector(getCurrentPaymentStatus)
+    const statusTypes = useSelector(getStatusTypes)
+    const paymentTypes = useSelector(getPaymentTypes)
+    const isPayed = useSelector(getIsPayed)
+    const salesmanComment = useSelector(getSalesmanComment)
+    const discountSum = useSelector(getDiscountSum)
+    const title = 'Информация о заказе'
+
+    const {
+        changeDeliveryFromHours,
+        changeDeliveryFromMinutes,
+        timeFromHoursItems,
+        timeFromMinutesItems,
+        timeToHoursItems,
+        timeToMinutesItems,
+        isFromHoursDisabled,
+        isToHoursDisabled,
+        isFromMinutesDisabled,
+        isToMinutesDisabled,
+    } = useDeliveryTime(clientFields, changeClientDeliveryDateTime)
 
     const dispatch = useDispatch()
     const changePrice = id => payload => {
@@ -93,110 +124,42 @@ const NewOrder = () => {
         dispatch(changeClientDeliveryDateTime(payload))
     }
 
-    const fillHoursItems = (items, name) => {
-        for (let i = 0; i <= 23; i++) {
-            items.push({
-                id: `${name}${i}`,
-                label: `${i}`,
-                value: `${i}`,
-            })
-        }
-    }
-
-    const fillMinutesItems = (items, name) => {
-        for (let i = 1; i <= 59; i++) {
-            items.push({
-                id: `${name}${i}`,
-                label: `${i}`,
-                value: `${i}`,
-            })
-        }
-    }
-
-    const timeFromHoursItems = []
-    fillHoursItems(timeFromHoursItems, 'timeFromHours')
-
-    const timeFromMinutesItems = []
-    fillMinutesItems(timeFromMinutesItems, 'timeFromMinutes')
-
-    const timeToHoursItems = []
-    fillHoursItems(timeToHoursItems, 'timeFromHours')
-
-    const timeToMinutesItems = []
-    fillMinutesItems(timeToMinutesItems, 'timeFromMinutes')
-
     let history = useHistory()
     const handleHeaderButtonClick = () => {
         history.push('/orders')
     }
 
-    const namePriceGoods = useSelector(getNamePriceGoods)
-
     const handleAddGoodFromAutocomplete = id => () => {
         dispatch(addNewGoodToOrder(id))
     }
-
     const handleAddDiscount = payload => {
         dispatch(setDiscount(payload))
     }
-
-    const discount = useSelector(getDiscount)
-
     const handleDeleteDiscount = () => {
         dispatch(deleteDiscount())
     }
-
-    const discountSum = useSelector(getDiscountSum)
-
-    const currentOrderStatus = useSelector(getCurrentOrderStatus)
-    const currentPaymentStatus = useSelector(getCurrentPaymentStatus)
-    const statusTypes = useSelector(getStatusTypes)
-    const paymentTypes = useSelector(getPaymentTypes)
-    const isPayed = useSelector(getIsPayed)
-
-    const title = 'Информация о заказе'
-
-    function orderStatusHandler(orderStatus) {
-        dispatch(setCurrentOrderStatus(orderStatus.name))
-    }
-
-    function paymentStatusHandler(paymentStatus) {
-        dispatch(setCurrentPaymentStatus(paymentStatus.name))
-    }
-
-    function payedStatusHandler(isPayed) {
-        dispatch(setPayedStatus(isPayed.checked))
-    }
-
-    const salesmanComment = useSelector(getSalesmanComment)
-
     const handleChangeSalesmanComment = payload => {
         dispatch(setSalesmanComment(payload.salesmanComment))
     }
-
     const handleCreateOrder = () => {
         dispatch(setCreationDate(Date.now()))
     }
 
-    const dateOfCreateOrder = new Date(creationDate)
-    const dayNumber =
-        dateOfCreateOrder.getDate() < 10
-            ? '0' + dateOfCreateOrder.getDate()
-            : dateOfCreateOrder.getDate()
-    const monthNumber =
-        dateOfCreateOrder.getMonth() + 1 < 10
-            ? '0' + (dateOfCreateOrder.getMonth() + 1)
-            : dateOfCreateOrder.getMonth()
-    const year = dateOfCreateOrder.getFullYear()
-    const hours =
-        dateOfCreateOrder.getHours() < 10
-            ? '0' + dateOfCreateOrder.getHours()
-            : dateOfCreateOrder.getHours()
-    const minutes =
-        dateOfCreateOrder.getMinutes() < 10
-            ? '0' + dateOfCreateOrder.getMinutes()
-            : dateOfCreateOrder.getMinutes()
-    const dateForOutput = `${dayNumber}.${monthNumber}.${year} ${hours}:${minutes} Заказ создан пользователем`
+    function orderStatusHandler(orderStatus) {
+        dispatch(setCurrentOrderStatus(orderStatus.name))
+    }
+    function paymentStatusHandler(paymentStatus) {
+        dispatch(setCurrentPaymentStatus(paymentStatus.name))
+    }
+    function payedStatusHandler(isPayed) {
+        dispatch(setPayedStatus(isPayed.checked))
+    }
+
+    const dateForOutput = `${dayNumber(Date.now())}.${monthNumber(
+        Date.now()
+    )}.${year(Date.now())} ${hours(Date.now())}:${minutes(
+        Date.now()
+    )} Заказ создан пользователем`
 
     const resetOrder = () => {
         dispatch(resetNewOrder())
@@ -335,7 +298,8 @@ const NewOrder = () => {
                                 value: clientFields['clientDeliveryDateTime'][
                                     'timeFromHours'
                                 ],
-                                changeValue: changeDeliveryDateTime,
+                                changeValue: changeDeliveryFromHours,
+                                disabled: isFromHoursDisabled,
                             },
                             minutes: {
                                 name: 'timeFromMinutes',
@@ -345,7 +309,8 @@ const NewOrder = () => {
                                 value: clientFields['clientDeliveryDateTime'][
                                     'timeFromMinutes'
                                 ],
-                                changeValue: changeDeliveryDateTime,
+                                changeValue: changeDeliveryFromMinutes,
+                                disabled: isFromMinutesDisabled,
                             },
                         },
                         timeTo: {
@@ -358,6 +323,7 @@ const NewOrder = () => {
                                     'timeToHours'
                                 ],
                                 changeValue: changeDeliveryDateTime,
+                                disabled: isToHoursDisabled,
                             },
                             minutes: {
                                 name: 'timeToMinutes',
@@ -368,6 +334,7 @@ const NewOrder = () => {
                                     'timeToMinutes'
                                 ],
                                 changeValue: changeDeliveryDateTime,
+                                disabled: isToMinutesDisabled,
                             },
                         },
                     },

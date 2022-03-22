@@ -104,10 +104,6 @@ export const changeGoodPriceById = payload => (dispatch, getState) => {
     dispatch(changeGoodPrice({ index: goodIndex, price: payload.price }))
 }
 export const changeGoodCountById = payload => (dispatch, getState) => {
-    if (payload.count === 0 || payload.count === null) {
-        dispatch(deleteGoodById(payload.id))
-        return
-    }
     const goodIndex = getState().newOrder.goodsInOrder.findIndex(
         good => good.id === payload.id
     )

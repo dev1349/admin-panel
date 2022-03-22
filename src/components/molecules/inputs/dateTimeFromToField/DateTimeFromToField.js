@@ -21,6 +21,7 @@ const DateTimeFromToField = ({ date, timeFrom, timeTo }) => {
                 items={timeFrom.hours.items}
                 defaultLabel={timeFrom.hours.defaultLabel}
                 isStartItemDisabled={timeFrom.hours.isStartItemDisabled}
+                disabled={timeFrom.hours.disabled}
             />
             <SelectField
                 name={timeFrom.minutes.name}
@@ -29,6 +30,7 @@ const DateTimeFromToField = ({ date, timeFrom, timeTo }) => {
                 items={timeFrom.minutes.items}
                 defaultLabel={timeFrom.minutes.defaultLabel}
                 isStartItemDisabled={timeFrom.minutes.isStartItemDisabled}
+                disabled={timeFrom.minutes.disabled}
             />
             <TextBetweenInputs>&nbsp; до &nbsp;</TextBetweenInputs>
             <SelectField
@@ -38,6 +40,7 @@ const DateTimeFromToField = ({ date, timeFrom, timeTo }) => {
                 items={timeTo.hours.items}
                 defaultLabel={timeTo.hours.defaultLabel}
                 isStartItemDisabled={timeTo.hours.isStartItemDisabled}
+                disabled={timeTo.hours.disabled}
             />
             <SelectField
                 name={timeTo.minutes.name}
@@ -46,8 +49,8 @@ const DateTimeFromToField = ({ date, timeFrom, timeTo }) => {
                 items={timeTo.minutes.items}
                 defaultLabel={timeTo.minutes.defaultLabel}
                 isStartItemDisabled={timeTo.minutes.isStartItemDisabled}
+                disabled={timeTo.minutes.disabled}
             />
-            {/*</Typography>*/}
         </>
     )
 }

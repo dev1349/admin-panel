@@ -14,6 +14,7 @@ const SelectField = ({
     autoFocus,
     disabled,
     forTable,
+    ...rest
 }) => {
     const changeHandler = evt => {
         onChange({ [name]: evt.target.value === '' ? null : evt.target.value })
@@ -28,6 +29,7 @@ const SelectField = ({
                 autoFocus={autoFocus}
                 disabled={disabled}
                 forTable={forTable}
+                {...rest}
             >
                 <MenuItem
                     key={'start'}
