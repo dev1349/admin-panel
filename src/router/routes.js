@@ -15,6 +15,7 @@ import {
     MY_GOODS_LIST_ROUTE,
     ORDER_INFO,
     ORDERS,
+    ADD_PRODUCT,
     USERS,
     ADD_USER,
     NEW_ORDER,
@@ -34,6 +35,7 @@ import MyGoodsList from '../components/pages/myGoodsList/MyGoodsList'
 import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
+import AddProduct from '../components/organisms/forms/addProduct/AddProduct'
 import ComponentsTable from '../components/pages/componentsTable/ComponentsTable'
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 import GoodsList from '../components/pages/goodsList/GoodsList'
@@ -100,6 +102,10 @@ export const authRoutes = [
     {
         path: ORDERS,
         Component: NewOrder,
+    },
+    {
+        path: ADD_PRODUCT,
+        Component: AddProduct
     },
     {
         path: ORDER_INFO,
