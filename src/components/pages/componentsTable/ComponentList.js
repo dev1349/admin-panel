@@ -143,6 +143,12 @@ const componentList = [
         routeText: '/clients/pages/1',
         routeLink: '/clients/pages/1',
     },
+    {
+        componentName: 'Страница "Контакты"',
+        task: 'WSADMIN-107',
+        routeText: '/contacts',
+        routeLink: '/contacts',
+    },
 ]
 
 export default componentList

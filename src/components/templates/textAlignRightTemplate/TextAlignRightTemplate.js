@@ -1,9 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from '@mui/material'
 
-const TextAlignRightTemplateStyled = styled.div`
-    text-align: right;
-`
+const TextAlignRightTemplateStyled = styled('div', {
+    shouldForwardProp: prop => prop !== 'topBottomMargin',
+    name: 'TextAlignRightTemplateStyled',
+    slot: 'Root',
+    overridesResolver: (props, styles) => [styles.root],
+})(() => ({}))
 
 const TextAlignRightTemplate = ({ children, ...rest }) => {
     return (

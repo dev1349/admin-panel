@@ -9,7 +9,7 @@ const PhoneFieldMolecules = ({
     onChange,
     autoFocus,
     fullWidth,
-    pattern,
+    pattern = /^\+?[0-9]*$/,
     placeholder,
     shouldValidate,
     required,
@@ -17,6 +17,7 @@ const PhoneFieldMolecules = ({
     validatingNow,
     setValidationResult,
     haveHelperText,
+    clearTouch,
     ...rest
 }) => {
     const resultRules = useMemo(
@@ -50,7 +51,8 @@ const PhoneFieldMolecules = ({
         shouldValidate,
         resultRules,
         validatingNow,
-        setValidationResult
+        setValidationResult,
+        clearTouch
     )
 
     return (

@@ -21,6 +21,7 @@ const LabeledPhoneField = ({
     validatingNow,
     setValidationResult,
     haveHelperText,
+    clearTouch,
     ...rest
 }) => {
     return (
@@ -44,6 +45,7 @@ const LabeledPhoneField = ({
                     validatingNow={validatingNow}
                     setValidationResult={setValidationResult}
                     haveHelperText={haveHelperText}
+                    clearTouch={clearTouch}
                     {...rest}
                 />
             </LabeledInputTemplate>

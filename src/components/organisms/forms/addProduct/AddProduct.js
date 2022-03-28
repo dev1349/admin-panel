@@ -4,13 +4,12 @@ import WSLabeledTextField from '../../../molecules/inputs/labeledTextField/Label
 import React from 'react'
 
 const AddProduct = () => {
-    return(
+    return (
         <div className="wrapp">
-            <WSLabeledTextField label='Наименование*'/>
-            <WSLabeledTextFieldMulti label='Введите краткое описание '/>
-            <WSLabeledTextFieldMulti label='Введите полное описание'/>
+            <WSLabeledTextField label="Наименование*" />
+            <WSLabeledTextFieldMulti label="Введите краткое описание " />
+            <WSLabeledTextFieldMulti label="Введите полное описание" />
         </div>
-
     )
 }
 

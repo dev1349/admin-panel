@@ -2,6 +2,8 @@ import React from 'react'
 import { styled } from '@mui/material'
 
 const FlexFirstGrowTemplateStyled = styled('div', {
+    shouldForwardProp: prop =>
+        prop !== 'noPadding' && prop !== 'alignItemsCenter',
     name: 'FlexFirstGrowTemplateStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
@@ -14,22 +16,32 @@ const FirstElementTemplateStyled = styled('div', {
 })(() => ({}))
 
 const OtherElementTemplateStyled = styled('div', {
+    shouldForwardProp: prop => prop !== 'noMargin',
     name: 'OtherElementTemplateStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
 })(() => ({}))
 
-const FlexFirstGrowTemplate = ({ children }) => {
+const FlexFirstGrowTemplate = ({ children, noMargin, ...rest }) => {
+    const isManyChildren = Array.isArray(children)
+
     return (
-        <FlexFirstGrowTemplateStyled>
+        <FlexFirstGrowTemplateStyled {...rest}>
             <FirstElementTemplateStyled>
-                {children[0]}
+                {isManyChildren ? children[0] : children}
             </FirstElementTemplateStyled>
-            {children.slice(1).map((elem, index) => (
-                <OtherElementTemplateStyled key={index}>
-                    {elem}
-                </OtherElementTemplateStyled>
-            ))}
+            {isManyChildren &&
+                children
+                    .slice(1)
+                    .filter(child => child)
+                    .map((elem, index) => (
+                        <OtherElementTemplateStyled
+                            key={index}
+                            noMargin={noMargin}
+                        >
+                            {elem}
+                        </OtherElementTemplateStyled>
+                    ))}
         </FlexFirstGrowTemplateStyled>
     )
 }

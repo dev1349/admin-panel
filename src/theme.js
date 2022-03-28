@@ -659,6 +659,24 @@ const globalTheme = createTheme({
                     border: '1px solid lightgrey',
                 },
             },
+            variants: [
+                {
+                    props: { topBottomMargin: true },
+                    style: {
+                        marginTop: '10px',
+                        marginBottom: '10px',
+                    },
+                },
+                {
+                    props: { withPadding: true },
+                    style: {
+                        paddingLeft: '10px',
+                        paddingRight: '10px',
+                        paddingTop: '5px',
+                        paddingBottom: '5px',
+                    },
+                },
+            ],
         },
         BoxStyled: {
             styleOverrides: {
@@ -678,6 +696,22 @@ const globalTheme = createTheme({
                     style: {
                         color: 'inherit',
                         textDecoration: 'line-through',
+                    },
+                },
+            ],
+        },
+        TextAlignRightTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    textAlign: 'right',
+                },
+            },
+            variants: [
+                {
+                    props: { topBottomMargin: true },
+                    style: {
+                        marginTop: '10px',
+                        marginBottom: '10px',
                     },
                 },
             ],
@@ -1035,6 +1069,20 @@ const globalTheme = createTheme({
                     padding: '10px 0 10px 0',
                 },
             },
+            variants: [
+                {
+                    props: { noPadding: true },
+                    style: {
+                        padding: '0',
+                    },
+                },
+                {
+                    props: { alignItemsCenter: true },
+                    style: {
+                        alignItems: 'center',
+                    },
+                },
+            ],
         },
         FirstElementTemplateStyled: {
             styleOverrides: {
@@ -1047,6 +1095,29 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {
                     marginLeft: '10px',
+                },
+            },
+            variants: [
+                {
+                    props: { noMargin: true },
+                    style: {
+                        margin: '0',
+                    },
+                },
+            ],
+        },
+        ButtonsRightTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    textAlign: 'right',
+                    marginTop: '10px',
+                },
+            },
+        },
+        ButtonTemplateStyled: {
+            styleOverrides: {
+                root: {
+                    padding: '0 0 0 10px',
                 },
             },
         },

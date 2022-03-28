@@ -7,7 +7,8 @@ const useValidation = (
     shouldValidate,
     validationRules,
     validatingNow,
-    setValidationResult
+    setValidationResult,
+    clearTouch = false
 ) => {
     const [touched, setTouched] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
@@ -29,6 +30,12 @@ const useValidation = (
     )
 
     useEffect(() => {
+        if (clearTouch) {
+            setTouched(false)
+        }
+    }, [clearTouch, setTouched, setErrorMessage])
+
+    useEffect(() => {
         if (validatingNow) {
             const errors = createErrorMessage(transformValue)
             setErrorMessage(errors)
@@ -45,6 +52,8 @@ const useValidation = (
         if (touched) {
             const errors = createErrorMessage(transformValue)
             setErrorMessage(errors)
+        } else {
+            setErrorMessage('')
         }
     }, [touched, value, createErrorMessage, setErrorMessage])
 
