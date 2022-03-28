@@ -24,6 +24,7 @@ import {
     MENU_AND_PAGES,
     CLIENTSID,
     CONTACTS,
+    DELIVERIES,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -50,6 +51,7 @@ import Export from '../components/pages/export/Export'
 import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
+import Delivery from '../components/pages/delivery/Delivery'
 
 export const authRoutes = [
     {
@@ -148,6 +150,10 @@ export const authRoutes = [
     {
         path: CONTACTS,
         Component: Contacts,
+    },
+    {
+        path: DELIVERIES,
+        Component: Delivery,
     },
 ]
 

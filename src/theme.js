@@ -171,6 +171,11 @@ const globalTheme = createTheme({
                 root: {},
             },
         },
+        AddImageIconStyled: {
+            styleOverrides: {
+                root: {},
+            },
+        },
         ListItemTextStyled: {
             styleOverrides: {
                 root: {
@@ -227,13 +232,21 @@ const globalTheme = createTheme({
         },
         ImgStyled: {
             styleOverrides: {
-                root: {},
+                root: {
+                    maxWidth: '100%',
+                },
             },
             variants: [
                 {
                     props: { logo: true },
                     style: {
                         height: '24px',
+                    },
+                },
+                {
+                    props: { block: true },
+                    style: {
+                        display: 'block',
                     },
                 },
             ],
@@ -696,6 +709,34 @@ const globalTheme = createTheme({
                     style: {
                         color: 'inherit',
                         textDecoration: 'line-through',
+                    },
+                },
+            ],
+        },
+        ImageBorderStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    border: '1px solid lightgrey',
+                    borderRadius: '5px',
+                    height: '150px',
+                    overflow: 'hidden',
+                },
+            },
+            variants: [
+                {
+                    props: { noSizes: true },
+                    style: {
+                        width: 'auto',
+                        height: 'auto',
+                    },
+                },
+                {
+                    props: { noBorder: true },
+                    style: {
+                        border: 'none',
                     },
                 },
             ],
@@ -1365,6 +1406,35 @@ const globalTheme = createTheme({
             styleOverrides: {
                 root: {
                     width: '100%',
+                },
+            },
+        },
+        FlexContainerStyled: {
+            styleOverrides: {
+                root: {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                },
+            },
+        },
+        RelativePositionContainerStyled: {
+            styleOverrides: {
+                root: {
+                    position: 'relative',
+                },
+            },
+        },
+        RightBottomContainerStyled: {
+            styleOverrides: {
+                root: {
+                    position: 'absolute',
+                    bottom: '0',
+                    right: '0',
+                    backgroundColor: 'rgb(255, 255, 255)',
+                    padding: '5px 0 0 5px',
+                    borderTopLeftRadius: '50%',
+                    boxSizing: 'border-box',
                 },
             },
         },

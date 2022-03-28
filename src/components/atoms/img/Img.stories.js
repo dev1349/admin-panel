@@ -27,3 +27,10 @@ Example3.args = {
     altText: 'logo',
     width: '100px',
 }
+
+export const Example4 = Template.bind({})
+Example4.args = {
+    path: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Logo-Logo.svg',
+    altText: 'logo',
+    block: true,
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@mui/material'
 
 const ImgStyled = styled('img', {
-    shouldForwardProp: prop => prop !== 'logo',
+    shouldForwardProp: prop => prop !== 'logo' && prop !== 'block',
     name: 'ImgStyled',
     slot: 'Root',
     overridesResolver: (props, styles) => [styles.root],
