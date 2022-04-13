@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
+import StatisticsSubHeaderStyle from './StatisticsSubHeaderStyle'
 
-const StatisticsSubHeaderStyled = styled(Typography, {
-    name: 'StatisticsSubHeaderStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const StatisticsSubHeader = ({ children, ...rest }) => {
+    const StatisticsSubHeaderStyled = useStyle('StatisticsSubHeaderStyled', Typography, StatisticsSubHeaderStyle)
     return (
         <StatisticsSubHeaderStyled {...rest}>
             {children}

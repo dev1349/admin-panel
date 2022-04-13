@@ -1,15 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
+import CountLabelStyle from './CountLabelStyle'
 
-const CountLabelStyled = styled(Typography, {
-    shouldForwardProp: prop => prop !== 'attention',
-    name: 'CountLabelStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSCountLabel = ({ children, ...rest }) => {
+    const CountLabelStyled = useStyle('CountLabelStyled', Typography, CountLabelStyle, 'attention')
     return <CountLabelStyled {...rest}>{children}</CountLabelStyled>
 }
 

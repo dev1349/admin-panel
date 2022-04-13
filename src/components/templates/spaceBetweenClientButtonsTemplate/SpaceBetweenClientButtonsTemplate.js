@@ -1,20 +1,12 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import ClientButtonSpaceTemplateStyle from './ClientButtonSpaceTemplateStyle'
 
-const ClientButtonSpaceTemplateStyled = styled('span', {
-    shouldForwardProp: prop => prop !== 'lastChild',
-    name: 'ClientButtonSpaceTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const ClientButtonsTemplateStyled = styled('div', {
-    name: 'ClientButtonsTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ClientButtonsTemplate = ({ children }) => {
+    const ClientButtonSpaceTemplateStyled = useStyle('ClientButtonSpaceTemplateStyled', 'span', ClientButtonSpaceTemplateStyle)
+    const ClientButtonsTemplateStyled = useStyle('ClientButtonSpaceTemplateStyled', 'div', null)
+
     const childrenWithoutEmpty = Array.isArray(children)
         ? children.filter(child => child)
         : children

@@ -34,7 +34,6 @@ import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterCon
 import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsList from '../components/pages/myGoodsList/MyGoodsList'
-import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
 import AddProduct from '../components/organisms/forms/addProduct/AddProduct'
@@ -52,6 +51,7 @@ import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
 import Delivery from '../components/pages/delivery/Delivery'
+import TestAtom from "../components/atoms/testAtom/TestAtom";
 
 export const authRoutes = [
     {
@@ -163,7 +163,7 @@ export const publicRoutes = [
         Component: LoginContainer,
     },
     {
-        path: '/goodA',
-        Component: GoodPageA,
-    },
+        path: '/testAtom',
+        Component: TestAtom,
+    }
 ]

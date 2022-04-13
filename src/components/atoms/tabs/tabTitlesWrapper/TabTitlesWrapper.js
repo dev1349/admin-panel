@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
+import TabTitlesWrapperStyle from './TabTitlesWrapperStyle'
 
-const TabTitlesWrapperStyled = styled('div', {
-    name: 'TabTitlesWrapperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTabsTitleWrapper = ({ children }) => {
+    const TabTitlesWrapperStyled = useStyle('TabTitlesWrapperStyled', 'div', TabTitlesWrapperStyle)
     return <TabTitlesWrapperStyled>{children}</TabTitlesWrapperStyled>
 }
 

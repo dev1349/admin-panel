@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import FlexStartWithPaddingTemplateStyle from './FlexStartWithPaddingTemplateStyle'
 
-const FlexStartWithPaddingTemplateStyled = styled('div', {
-    name: 'FlexStartWithPaddingTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSFlexStartWithPaddingTemplate = ({ children }) => {
+    const FlexStartWithPaddingTemplateStyled = useStyle('FlexStartWithPaddingTemplateStyled', 'div', FlexStartWithPaddingTemplateStyle)
     return (
         <FlexStartWithPaddingTemplateStyled>
             {children}

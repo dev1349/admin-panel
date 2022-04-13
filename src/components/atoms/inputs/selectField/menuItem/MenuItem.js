@@ -1,14 +1,11 @@
 import React from 'react'
-import { MenuItem, styled } from '@mui/material'
+import { MenuItem } from '@mui/material'
+import { useStyle } from '../../../../../hooks/useStyle'
+import MenuItemStyle from './MenuItemStyle'
 
-const MenuItemStyled = styled(MenuItem, {
-    shouldForwardProp: prop => prop !== 'forTable',
-    name: 'MenuItemStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSMenuItem = ({ children, ...rest }) => {
+    const MenuItemStyled = useStyle('MenuItemStyled', MenuItem, MenuItemStyle, 'forTable')
     return <MenuItemStyled {...rest}>{children}</MenuItemStyled>
 }
 

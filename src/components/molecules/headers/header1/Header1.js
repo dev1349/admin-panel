@@ -9,6 +9,7 @@ import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'
 import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/ButtonsWrapperTemplate'
 import TitleAndButtonsTemplate from '../../../templates/titleAndButtonsTemplate/TitleAndButtonsTemplate'
 
+//todo используется в нескольких компонентах
 export const Header1Styled = styled('header', {
     name: 'Header1Styled',
     slot: 'Root',

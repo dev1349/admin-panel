@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TabPanelStyled = styled('div', {
-    name: 'TabPanelStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTabPanel = ({ children, value, index, ...other }) => {
+    const TabPanelStyled = useStyle('TabPanelStyled', 'div', null)
     return (
         <TabPanelStyled
             role="tabpanel"

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const AccountIconStyled = styled(AccountBoxIcon, {
-    name: 'AccountIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const AccountIconWS = props => {
+    const AccountIconStyled = useStyle('AccountIconStyled', AccountBoxIcon, null)
     return <AccountIconStyled {...props} />
 }
 

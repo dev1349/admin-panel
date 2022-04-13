@@ -1,17 +1,16 @@
 import React from 'react'
-import { styled, TableRow } from '@mui/material'
+import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import IconButton from '../../buttons/iconButton/IconButton'
 import DeleteIcon from '../../../atoms/icons/deleteIcon/DeleteIcon'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
+import { useStyle } from '../../../../hooks/useStyle'
+import GoodsTableRowStyle from './GoodsTableRowStyle'
 
-export const GoodsTableRowStyled = styled(TableRow, {
-    name: 'GoodsTableRowStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SimpleTableRow = ({ rowValues, cellsTypes, deleteGood, changeGood }) => {
+    const GoodsTableRowStyled = useStyle('GoodsTableRowStyled', TableRow, GoodsTableRowStyle)
+
     const handleDeleteGood = () => {
         deleteGood(rowValues)
     }

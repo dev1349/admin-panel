@@ -4,6 +4,7 @@ import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import TextField from '../textField/TextField'
 
+//todo export
 export const LabeledTextFieldStyled = styled('div', {
     shouldForwardProp: prop => prop !== 'fixedWidth',
     name: 'LabeledTextFieldStyled',

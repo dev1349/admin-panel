@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import { TableSortLabel } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TableSortLabelStyled = styled(TableSortLabel, {
-    name: 'TableSortLabelStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTableSortLabel = props => {
+    const TableSortLabelStyled = useStyle('TableSortLabelStyled', TableSortLabel, null)
     return <TableSortLabelStyled {...props} />
 }
 

@@ -1,15 +1,13 @@
 import React from 'react'
-import { Breadcrumbs, styled, Typography } from '@mui/material'
+import { Breadcrumbs, Typography } from '@mui/material'
 import Link from '../../atoms/link/Link'
 import { Link as RouterLink } from 'react-router-dom'
+import { useStyle } from '../../../hooks/useStyle'
+import BreadcrumbsStyle from './BreadcrumbsStyle'
 
-const BreadcrumbsStyled = styled(Breadcrumbs, {
-    name: 'BreadcrumbsStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const BreadcrumbsWS = ({ breadcrumbs }) => {
+    const BreadcrumbsStyled = useStyle('BreadcrumbsStyled', Breadcrumbs, BreadcrumbsStyle)
     return (
         <BreadcrumbsStyled aria-label="breadcrumb">
             {breadcrumbs.map((el, index) =>

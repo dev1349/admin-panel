@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const LogoutIconStyled = styled(LogoutIcon, {
-    name: 'LogoutIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const LogoutIconWS = props => {
+    const LogoutIconStyled = useStyle('LogoutIconStyled', LogoutIcon, null)
     return <LogoutIconStyled {...props} />
 }
 

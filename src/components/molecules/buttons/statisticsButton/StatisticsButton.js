@@ -1,5 +1,4 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
 import IconButton from '../iconButton/IconButton'
 import Menu from '../../../atoms/menu/Menu'
@@ -7,34 +6,23 @@ import StatisticsSubHeader from '../../../atoms/textElements/statisticsSubHeader
 import StatisticsMenuItem from '../../menu/statisticsMenuItem/StatisticsMenuItem'
 import ListDivider from '../../../atoms/list/listDivider/ListDivider'
 import Badge from '../../../atoms/badge/Badge'
+import { useStyle } from '../../../../hooks/useStyle'
+import StatisticsUlStyle from './StatisticsUlStyle'
 
-const StatisticsButtonWrapperStyled = styled('div', {
-    name: 'StatisticsButtonWrapperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const StatisticsLiStyled = styled('li', {
-    name: 'StatisticsLiStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const StatisticsUlStyled = styled('ul', {
-    name: 'StatisticsUlStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const StatisticsButton = ({
-    id,
-    anchorEl,
-    handleClick,
-    handleClose,
-    menuItems,
-    children,
-    ...rest
-}) => {
+                              id,
+                              anchorEl,
+                              handleClick,
+                              handleClose,
+                              menuItems,
+                              children,
+                              ...rest
+                          }) => {
+    const StatisticsButtonWrapperStyled = useStyle('StatisticsButtonWrapperStyled', 'div', null)
+    const StatisticsUlStyled = useStyle('StatisticsUlStyled', 'ul', StatisticsUlStyle)
+    const StatisticsLiStyled = useStyle('StatisticsLiStyled', 'li', null)
+
     const NotificationsCount = menuItems.reduce((acc, item) => {
         return (
             acc +
@@ -82,7 +70,7 @@ const StatisticsButton = ({
                                 </MenuItem>
                             ))}
                         </StatisticsUlStyled>
-                        <ListDivider />
+                        <ListDivider/>
                     </StatisticsLiStyled>
                 ))}
             </Menu>

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const HomeIconStyled = styled(HomeIcon, {
-    name: 'HomeIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const HomeIconWS = props => {
+    const HomeIconStyled = useStyle('HomeIconStyled', HomeIcon, null)
     return <HomeIconStyled {...props} />
 }
 

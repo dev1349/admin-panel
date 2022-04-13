@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled, TableRow } from '@mui/material'
+import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const SimpleTableTotalStyled = styled(TableRow, {
-    name: 'SimpleTableTotalStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SimpleTableTotal = ({ totalPrice }) => {
+    const SimpleTableTotalStyled = useStyle('SimpleTableTotalStyled', TableRow, null)
     return (
         <SimpleTableTotalStyled>
             <TableCell />

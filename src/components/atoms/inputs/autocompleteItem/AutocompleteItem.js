@@ -1,13 +1,10 @@
 import React from 'react'
-import { Box, styled } from '@mui/material'
+import { Box } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const AutocompleteItemStyled = styled(Box, {
-    name: 'AutocompleteItemStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const AutocompleteItem = ({ children, ...rest }) => {
+    const AutocompleteItemStyled = useStyle('AutocompleteItemStyled', Box, null)
     return <AutocompleteItemStyled {...rest}>{children}</AutocompleteItemStyled>
 }
 

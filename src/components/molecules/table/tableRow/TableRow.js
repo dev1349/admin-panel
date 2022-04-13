@@ -1,15 +1,11 @@
 import React from 'react'
-import { styled, TableRow } from '@mui/material'
+import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import IconButton from '../../buttons/iconButton/IconButton'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const TableRowStyled = styled(TableRow, {
-    name: 'TableRowStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTableRow = ({
     rowFields,
@@ -19,6 +15,7 @@ const WSTableRow = ({
     onEditRow,
     isRowChecked,
 }) => {
+    const TableRowStyled = useStyle('TableRowStyled', TableRow, null)
     const labelId = `enhanced-table-checkbox-${id}`
 
     return (

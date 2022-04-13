@@ -1,13 +1,11 @@
 import React from 'react'
-import { Badge, styled } from '@mui/material'
+import { Badge } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import BadgeStyle from './BadgeStyle'
 
-const BadgeStyled = styled(Badge, {
-    name: 'BadgeStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const BadgeWS = ({ children, ...rest }) => {
+    const BadgeStyled = useStyle('BadgeStyled', Badge, BadgeStyle)
     return <BadgeStyled {...rest}>{children}</BadgeStyled>
 }
 

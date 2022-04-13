@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Popper } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import PopperStyle from './PopperStyle'
 
-const PopperStyled = styled(Popper, {
-    name: 'PopperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const PopperWS = ({ children, ...rest }) => {
+    const PopperStyled = useStyle('PopperStyled', Popper, PopperStyle)
     return <PopperStyled {...rest}>{children}</PopperStyled>
 }
 

@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import { useStyle } from '../../../../../hooks/useStyle'
+import H1Style from './H1Style'
 
-const H1Styled = styled(Typography, {
-    shouldForwardProp: prop => prop !== 'fs',
-    name: 'H1Styled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const H1 = ({ children, ...rest }) => {
+    const H1Styled = useStyle('H1Styled', Typography, H1Style, 'fs')
     return (
         <H1Styled component={'h1'} {...rest}>
             {children}

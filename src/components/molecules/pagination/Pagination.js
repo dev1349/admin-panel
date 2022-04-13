@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { styled } from '@mui/material/styles'
 import Pagination from '../../atoms/pagination/Pagination'
 import { useHistory, useParams } from 'react-router-dom'
+import { useStyle } from '../../../hooks/useStyle'
+import PaginationContainerStyle from './PaginationContainerStyle'
 
-export const PaginationContainerStyled = styled('div', {
-    name: 'PaginationContainerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const PaginationMolecule = ({ pathName, count, ...rest }) => {
+    const PaginationContainerStyled = useStyle('PaginationContainerStyled', 'div', PaginationContainerStyle)
     const [currentPage, setCurrentPage] = useState(1)
 
     const history = useHistory()
