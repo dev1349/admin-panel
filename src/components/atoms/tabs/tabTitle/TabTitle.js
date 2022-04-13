@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Tab } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TabStyled = styled(Tab, {
-    name: 'TabStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTab = props => {
+    const TabStyled = useStyle('TabStyled', Tab, null)
     return <TabStyled {...props} />
 }
 

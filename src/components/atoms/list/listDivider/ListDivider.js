@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Divider } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ListDividerStyled = styled(Divider, {
-    name: 'ListDividerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ListDivider = props => {
+    const ListDividerStyled = useStyle('ListDividerStyled', Divider, null)
     return <ListDividerStyled {...props} />
 }
 

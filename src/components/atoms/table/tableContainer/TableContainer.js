@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { TableContainer } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TableContainerStyled = styled(TableContainer, {
-    name: 'TableContainerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const TableContainerAtom = ({ children, ...rest }) => {
+    const TableContainerStyled = useStyle('TableContainerStyled', TableContainer, null)
     return <TableContainerStyled {...rest}>{children}</TableContainerStyled>
 }
 

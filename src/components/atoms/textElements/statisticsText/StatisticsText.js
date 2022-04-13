@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const StatisticsTextStyled = styled(Typography, {
-    name: 'StatisticsTextStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const StatisticsText = ({ children, ...rest }) => {
+    const StatisticsTextStyled = useStyle('StatisticsTextStyled', Typography, null)
     return (
         <StatisticsTextStyled variant={'span'} component={'div'} {...rest}>
             {children}

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const FileDownloadIconStyled = styled(FileDownloadIcon, {
-    name: 'FileDownloadIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FileDownloadIconWS = props => {
+    const FileDownloadIconStyled = useStyle('FileDownloadIconStyled', FileDownloadIcon, null)
     return <FileDownloadIconStyled {...props} />
 }
 

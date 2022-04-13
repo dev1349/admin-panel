@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { TableHead } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
+import TableHeadStyle from './TableHeadStyle'
 
-const TableHeadStyled = styled(TableHead, {
-    name: 'TableHeadStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const TableHeadWS = ({ children, ...rest }) => {
+    const TableHeadStyled = useStyle('TableHeadStyled', TableHead, TableHeadStyle)
     return <TableHeadStyled {...rest}>{children}</TableHeadStyled>
 }
 

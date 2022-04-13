@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ArrowDropDownIconStyled = styled(ArrowDropDownIcon, {
-    name: 'ArrowDropDownIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSArrowDropDownIcon = props => {
+    const ArrowDropDownIconStyled = useStyle('ArrowDropDownIconStyled', ArrowDropDownIcon, null)
     return <ArrowDropDownIconStyled {...props} />
 }
 

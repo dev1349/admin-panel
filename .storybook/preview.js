@@ -1,10 +1,10 @@
 import React from 'react'
-import globalTheme from '../src/theme'
-import { ThemeProvider } from '@mui/material'
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
+import {store} from '../src'
+import {Provider} from 'react-redux'
+import StorybookReduxProvider from './StorybookReduxProvider'
 
 export const parameters = {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    actions: {argTypesRegex: '^on[A-Z].*'},
     controls: {
         matchers: {
             color: /(background|color)$/i,
@@ -14,13 +14,15 @@ export const parameters = {
 }
 
 export const decorators = [
-    Story => (
-        // <div style={{ border: '1px solid red', boxSizing: 'border-box' }}>
-        <EmotionThemeProvider theme={globalTheme}>
-            <ThemeProvider theme={globalTheme}>
-                <Story />
-            </ThemeProvider>
-        </EmotionThemeProvider>
-        // </div>
-    ),
+    Story => {
+        return (
+            // <div style={{ border: '1px solid red', boxSizing: 'border-box' }}>
+            <Provider store={store}>
+                <StorybookReduxProvider>
+                    <Story/>
+                </StorybookReduxProvider>
+            </Provider>
+            // </div>
+        );
+    },
 ]

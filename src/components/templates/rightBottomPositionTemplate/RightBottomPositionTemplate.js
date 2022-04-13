@@ -1,25 +1,14 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import FlexContainerStyle from './FlexContainerStyle'
+import RelativePositionContainerStyle from './RelativePositionContainerStyle'
+import RightBottomContainerStyle from './RightBottomContainerStyle'
 
-const FlexContainerStyled = styled('div', {
-    name: 'FlexContainerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})``
-
-const RelativePositionContainerStyled = styled('div', {
-    name: 'RelativePositionContainerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})``
-
-const RightBottomContainerStyled = styled('div', {
-    name: 'RightBottomContainerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})``
 
 const RightBottomPositionTemplate = ({ children }) => {
+    const FlexContainerStyled = useStyle('FlexContainerStyled', 'div', FlexContainerStyle)
+    const RelativePositionContainerStyled = useStyle('RelativePositionContainerStyled', 'div', RelativePositionContainerStyle)
+    const RightBottomContainerStyled = useStyle('RightBottomContainerStyled', 'div', RightBottomContainerStyle)
     return (
         <FlexContainerStyled>
             <RelativePositionContainerStyled>

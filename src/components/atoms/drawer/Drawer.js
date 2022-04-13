@@ -1,13 +1,11 @@
 import React from 'react'
-import { Drawer, styled } from '@mui/material'
+import { Drawer } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import DrawerStyle from './DrawerStyle'
 
-const DrawerStyled = styled(Drawer, {
-    name: 'DrawerStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})``
 
 const DrawerWS = ({ children, ...rest }) => {
+    const DrawerStyled = useStyle('DrawerStyled', Drawer, DrawerStyle)
     return <DrawerStyled {...rest}>{children}</DrawerStyled>
 }
 

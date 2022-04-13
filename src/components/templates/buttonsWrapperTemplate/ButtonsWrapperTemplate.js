@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import ButtonsWrapperTemplateStyle from './ButtonsWrapperTemplateStyle'
 
-const ButtonsWrapperTemplateStyled = styled('div', {
-    name: 'ButtonsWrapperTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSButtonsWrapperTemplate = ({ children }) => {
+    const ButtonsWrapperTemplateStyled = useStyle('ButtonsWrapperTemplateStyled', 'div', ButtonsWrapperTemplateStyle)
     return (
         <ButtonsWrapperTemplateStyled>{children}</ButtonsWrapperTemplateStyled>
     )

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import ImgStyle from './ImgStyle'
 
-const ImgStyled = styled('img', {
-    shouldForwardProp: prop => prop !== 'logo' && prop !== 'block',
-    name: 'ImgStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ImgWS = ({ path, altText, ...rest }) => {
+    const ImgStyled = useStyle('ImgStyled', 'img', ImgStyle, 'logo', 'block')
     return <ImgStyled src={path} alt={altText} {...rest} />
 }
 

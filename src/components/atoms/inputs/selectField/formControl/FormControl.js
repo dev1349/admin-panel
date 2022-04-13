@@ -1,13 +1,10 @@
 import React from 'react'
-import { FormControl, styled } from '@mui/material'
+import { FormControl } from '@mui/material'
+import { useStyle } from '../../../../../hooks/useStyle'
 
-const FormControlStyled = styled(FormControl, {
-    name: 'FormControlStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSFormControl = ({ children, ...rest }) => {
+    const FormControlStyled = useStyle('FormControlStyled', FormControl, null)
     return <FormControlStyled {...rest}>{children}</FormControlStyled>
 }
 

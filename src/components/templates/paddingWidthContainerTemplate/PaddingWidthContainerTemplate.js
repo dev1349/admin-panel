@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import PaddingWidthContainerTemplateStyle from './PaddingWidthContainerTemplateStyle'
 
-const PaddingWidthContainerTemplateStyled = styled('div', {
-    name: 'PaddingWidthContainerTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSPaddingWidthContainerTemplate = ({ children }) => {
+    const PaddingWidthContainerTemplateStyled = useStyle('PaddingWidthContainerTemplateStyled', 'div', PaddingWidthContainerTemplateStyle)
     return (
         <PaddingWidthContainerTemplateStyled>
             {children}

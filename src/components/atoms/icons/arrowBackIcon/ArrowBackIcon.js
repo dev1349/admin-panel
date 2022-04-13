@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ArrowBackIconStyled = styled(ArrowBackIcon, {
-    name: 'ArrowBackIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ArrowBackIconWS = props => {
+    const ArrowBackIconStyled = useStyle('ArrowBackIconStyled', ArrowBackIcon, null)
     return <ArrowBackIconStyled {...props} />
 }
 

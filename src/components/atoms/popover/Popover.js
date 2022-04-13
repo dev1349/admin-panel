@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Popover } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const PopoverStyled = styled(Popover, {
-    name: 'PopoverStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const PopoverWS = ({ children, ...rest }) => {
+    const PopoverStyled = useStyle('PopoverStyled', Popover, null)
+
     return <PopoverStyled {...rest}>{children}</PopoverStyled>
 }
 

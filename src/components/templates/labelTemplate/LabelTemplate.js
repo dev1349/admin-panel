@@ -1,15 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import LabelTemplateStyle from './LabelTemplateStyle'
 
-const LabelTemplateStyled = styled('div', {
-    shouldForwardProp: prop =>
-        prop !== 'alignLeft' && prop !== 'alignLeftFixedWidth',
-    name: 'LabelTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSLabelTemplate = ({ children, alignLeft, alignLeftFixedWidth }) => {
+    const LabelTemplateStyled = useStyle('LabelTemplateStyled', 'div', LabelTemplateStyle,
+        'alignLeft', 'alignLeftFixedWidth')
     return (
         <LabelTemplateStyled
             alignLeft={alignLeft}

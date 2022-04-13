@@ -1,25 +1,21 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import NumberField from '../numberField/NumberField'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const LabeledNumberFieldStyled = styled('div', {
-    name: 'LabeledNumberFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSLabeledNumberField = ({
-    id,
-    label,
-    name,
-    pattern,
-    value,
-    onChange,
-    autoFocus,
-    onPaste,
-}) => {
+                                  id,
+                                  label,
+                                  name,
+                                  pattern,
+                                  value,
+                                  onChange,
+                                  autoFocus,
+                                  onPaste,
+                              }) => {
+    const LabeledNumberFieldStyled = useStyle('LabeledNumberFieldStyled', 'div', null)
     return (
         <LabeledNumberFieldStyled>
             <LabeledInputTemplate>

@@ -1,15 +1,12 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import H2 from '../../../atoms/textElements/headers/H2/H2'
 import IconTitleTemplate from '../../../templates/iconTitleTemplate/IconTitleTemplate'
+import { useStyle } from '../../../../hooks/useStyle'
+import Header2Style from './Header2Style'
 
-const Header2Styled = styled('header', {
-    name: 'Header2Styled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const Header2 = ({ icon = null, children }) => {
+    const Header2Styled = useStyle('Header2Styled', 'header', Header2Style)
     return (
         <Header2Styled>
             <IconTitleTemplate>

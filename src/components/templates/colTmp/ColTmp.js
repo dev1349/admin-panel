@@ -5,6 +5,7 @@ export const ColTmp = ({ children }) => {
     return <ColTmpStyle>{children}</ColTmpStyle>
 }
 
+//todo mui styled
 const ColTmpStyle = styled.div`
     display: flex;
     flex-direction: column;

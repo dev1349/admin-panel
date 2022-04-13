@@ -1,13 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import PageHeaderTemplateStyle from './PageHeaderTemplateStyle'
 
-const PageHeaderTemplateStyled = styled('div', {
-    name: 'PageHeaderTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const PageHeaderTemplateWS = ({ children }) => {
+    const PageHeaderTemplateStyled = useStyle('PageHeaderTemplateStyled', 'div', PageHeaderTemplateStyle)
+
     return <PageHeaderTemplateStyled>{children}</PageHeaderTemplateStyled>
 }
 

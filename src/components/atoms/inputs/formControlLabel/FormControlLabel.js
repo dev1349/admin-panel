@@ -1,14 +1,11 @@
 import React from 'react'
-import { FormControlLabel, styled } from '@mui/material'
+import { FormControlLabel } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
+import FormControlLabelStyle from './FormControlLabelStyle'
 
-const FormControlLabelStyled = styled(FormControlLabel, {
-    shouldForwardProp: prop => prop !== 'smallFontSize',
-    name: 'FormControlLabelStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FormControlLabelWS = props => {
+    const FormControlLabelStyled = useStyle('FormControlLabelStyled', FormControlLabel, FormControlLabelStyle, 'smallFontSize')
     return <FormControlLabelStyled {...props} />
 }
 

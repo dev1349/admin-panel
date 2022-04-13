@@ -1,37 +1,36 @@
 import React, { useState } from 'react'
-import { Autocomplete, styled } from '@mui/material'
+import { Autocomplete } from '@mui/material'
 import TextField from '../../../atoms/inputs/textField/TextField'
 import AutocompleteItem from '../../../atoms/inputs/autocompleteItem/AutocompleteItem'
 import useValidation from '../../../hooks/useValidation'
+import { useStyle } from '../../../../hooks/useStyle'
+import AutocompleteStyle from './AutocompleteStyle'
 
-const AutocompleteStyled = styled(Autocomplete, {
-    name: 'AutocompleteStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const AutocompleteWS = ({
-    textFieldId,
-    name,
-    value,
-    changeValue,
-    options,
-    getOptionLabel,
-    canAddValue,
-    autoFocus,
-    shouldValidate,
-    required,
-    validationRules,
-    validatingNow,
-    setValidationResult,
-    haveHelperText,
-    filterOptions,
-    selectOnFocus,
-    clearOnBlur,
-    handleHomeEndKeys,
-    isOptionEqualToValue,
-    ...rest
-}) => {
+                            textFieldId,
+                            name,
+                            value,
+                            changeValue,
+                            options,
+                            getOptionLabel,
+                            canAddValue,
+                            autoFocus,
+                            shouldValidate,
+                            required,
+                            validationRules,
+                            validatingNow,
+                            setValidationResult,
+                            haveHelperText,
+                            filterOptions,
+                            selectOnFocus,
+                            clearOnBlur,
+                            handleHomeEndKeys,
+                            isOptionEqualToValue,
+                            ...rest
+                        }) => {
+    const AutocompleteStyled = useStyle('AutocompleteStyled', Autocomplete, AutocompleteStyle)
+
     const { handleBlur, errorMessage } = useValidation(
         name,
         value,

@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import FlexSpaceBetweenTemplateStyle from './FlexSpaceBetweenTemplateStyle'
 
-const FlexSpaceBetweenTemplateStyled = styled('div', {
-    name: 'FlexSpaceBetweenTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FlexSpaceBetweenTemplate = ({ children }) => {
+    const FlexSpaceBetweenTemplateStyled = useStyle('FlexSpaceBetweenTemplateStyled', 'div', FlexSpaceBetweenTemplateStyle)
     return (
         <FlexSpaceBetweenTemplateStyled>
             {children}

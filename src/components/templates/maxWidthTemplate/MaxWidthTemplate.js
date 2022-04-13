@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import MaxWidthTemplateStyle from './MaxWidthTemplateStyle'
 
-const MaxWidthTemplateStyled = styled('div', {
-    name: 'MaxWidthTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSMaxWidthContainer = ({ children }) => {
+    const MaxWidthTemplateStyled = useStyle('MaxWidthTemplateStyled', 'div', MaxWidthTemplateStyle)
     return <MaxWidthTemplateStyled>{children}</MaxWidthTemplateStyled>
 }
 

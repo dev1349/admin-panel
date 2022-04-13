@@ -1,36 +1,33 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import Autocomplete from '../autocomplete/Autocomplete'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const LabeledAutocompleteStyled = styled('div', {
-    name: 'LabeledAutocompleteStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const LabeledAutocomplete = ({
-    id,
-    label,
-    name,
-    value,
-    changeValue,
-    options,
-    getOptionLabel,
-    canAddValue,
-    shouldValidate,
-    required,
-    validationRules,
-    validatingNow,
-    setValidationResult,
-    haveHelperText,
-    filterOptions,
-    selectOnFocus,
-    clearOnBlur,
-    handleHomeEndKeys,
-    ...rest
-}) => {
+                                 id,
+                                 label,
+                                 name,
+                                 value,
+                                 changeValue,
+                                 options,
+                                 getOptionLabel,
+                                 canAddValue,
+                                 shouldValidate,
+                                 required,
+                                 validationRules,
+                                 validatingNow,
+                                 setValidationResult,
+                                 haveHelperText,
+                                 filterOptions,
+                                 selectOnFocus,
+                                 clearOnBlur,
+                                 handleHomeEndKeys,
+                                 ...rest
+                             }) => {
+    const LabeledAutocompleteStyled = useStyle('LabeledAutocompleteStyled', 'div', null)
+
     return (
         <LabeledAutocompleteStyled>
             <LabeledInputTemplate>

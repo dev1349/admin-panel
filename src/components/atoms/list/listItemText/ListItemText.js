@@ -1,16 +1,12 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { ListItemText } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
+import ListItemTextStyle from './ListItemTextStyle'
 
-const ListItemTextStyled = styled(ListItemText, {
-    shouldForwardProp: prop =>
-        prop !== 'withoutExpandIcon' && prop !== 'activeItem',
-    name: 'ListItemTextStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ListItemTextWS = props => {
+    const ListItemTextStyled = useStyle('ListItemTextStyled', ListItemText, ListItemTextStyle,
+        'withoutExpandIcon', 'activeItem')
     return <ListItemTextStyled {...props} />
 }
 

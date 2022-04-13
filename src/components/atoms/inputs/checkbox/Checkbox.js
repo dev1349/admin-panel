@@ -1,15 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import Checkbox from '@mui/material/Checkbox'
+import { useStyle } from '../../../../hooks/useStyle'
+import CheckboxStyle from './CheckboxStyle'
 
-const CheckboxStyled = styled(Checkbox, {
-    shouldForwardProp: prop => prop !== 'forTable',
-    name: 'CheckboxStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const CheckboxWS = props => {
+    const CheckboxStyled = useStyle('CheckboxStyled', Checkbox, CheckboxStyle, 'forTable')
     return (
         <CheckboxStyled
             {...props}

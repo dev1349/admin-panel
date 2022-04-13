@@ -1,14 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import List from '@mui/material/List'
+import { useStyle } from '../../../../hooks/useStyle'
+import ListStyle from './ListStyle'
 
-const ListStyled = styled(List, {
-    name: 'ListStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ListWS = props => {
+    const ListStyled = useStyle('ListStyled', List, ListStyle)
     return <ListStyled {...props} />
 }
 

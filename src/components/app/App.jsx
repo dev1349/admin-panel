@@ -1,21 +1,20 @@
-import { BrowserRouter, Route } from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import React from 'react'
-import { authRoutes, publicRoutes } from '../../router/routes'
+import {authRoutes, publicRoutes} from '../../router/routes'
 import './Reset.css'
 import './App.sass'
 import './Constants.sass'
-import { ThemeProvider } from '@mui/material'
-import globalTheme from '../../theme'
 import PageHeader from '../pages/pageHeader/PageHeader'
+import ReduxThemeProvider from "../molecules/reduxThemeProvider/ReduxThemeProvider";
 
 const App = () => {
     const isAuth = true
     return (
         <BrowserRouter>
-            <ThemeProvider theme={globalTheme}>
-                <PageHeader />
+            <ReduxThemeProvider>
+                <PageHeader/>
                 {isAuth &&
-                    authRoutes.map(({ path, Component }) => (
+                    authRoutes.map(({path, Component}) => (
                         <Route
                             key={path}
                             path={path}
@@ -23,10 +22,10 @@ const App = () => {
                             exact
                         />
                     ))}
-                {publicRoutes.map(({ path, Component }) => (
-                    <Route key={path} path={path} component={Component} exact />
+                {publicRoutes.map(({path, Component}) => (
+                    <Route key={path} path={path} component={Component} exact/>
                 ))}
-            </ThemeProvider>
+            </ReduxThemeProvider>
         </BrowserRouter>
     )
 }

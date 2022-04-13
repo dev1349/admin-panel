@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import BarChartIcon from '@mui/icons-material/BarChart'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const BarChartIconStyled = styled(BarChartIcon, {
-    name: 'BarChartIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const BarChartIconWS = props => {
+    const BarChartIconStyled = useStyle('BarChartIconStyled', BarChartIcon, null)
     return <BarChartIconStyled {...props} />
 }
 

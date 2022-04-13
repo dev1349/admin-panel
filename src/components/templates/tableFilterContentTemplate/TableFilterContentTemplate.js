@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
+import TableFilterContentTemplateStyle from './TableFilterContentTemplateStyle'
 
-const TableFilterContentTemplateStyled = styled('div', {
-    name: 'TableFilterContentTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const TableFilterContentTemplate = ({ children }) => {
+    const TableFilterContentTemplateStyled = useStyle('TableFilterContentTemplateStyled', 'div', TableFilterContentTemplateStyle)
     return (
         <TableFilterContentTemplateStyled>
             {children}

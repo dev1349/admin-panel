@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import ImportExportIcon from '@mui/icons-material/ImportExport'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ImportExportIconStyled = styled(ImportExportIcon, {
-    name: 'ImportExportIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ImportExportIconWS = props => {
+    const ImportExportIconStyled = useStyle('ImportExportIconStyled', ImportExportIcon, null)
     return <ImportExportIconStyled {...props} />
 }
 
