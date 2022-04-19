@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSInputLabel = ({ children, ...rest }) => {
-    const InputLabelStyled = useStyle('InputLabelStyled', InputLabel, null)
+    const InputLabelStyled = useStyle('InputLabelStyle', InputLabel)
     return <InputLabelStyled {...rest}>{children}</InputLabelStyled>
 }
 

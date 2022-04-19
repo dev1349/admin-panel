@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSListIcon = props => {
-    const ListIconStyled = useStyle('ListIconStyled', ListIcon, null)
+    const ListIconStyled = useStyle('ListIconStyle', ListIcon)
     return <ListIconStyled {...props} />
 }
 

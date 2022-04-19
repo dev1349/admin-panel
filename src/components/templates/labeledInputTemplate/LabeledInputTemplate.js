@@ -2,7 +2,6 @@ import React from 'react'
 import LabelTemplate from '../labelTemplate/LabelTemplate'
 import FieldTemplate from '../fieldTemplate/FeildTemplate'
 import { useStyle } from '../../../hooks/useStyle'
-import LabeledInputTemplateStyle from './LabeledInputTemplateStyle'
 
 
 const WSLabeledInputTemplate = ({
@@ -11,7 +10,7 @@ const WSLabeledInputTemplate = ({
     alignLeftFixedWidth,
     fixedWidthWithMarginRight,
 }) => {
-    const LabeledInputTemplateStyled = useStyle('LabeledInputTemplateStyled', 'div', LabeledInputTemplateStyle, 'fixedWidthWithMarginRight')
+    const LabeledInputTemplateStyled = useStyle('LabeledInputTemplateStyle', 'div', 'fixedWidthWithMarginRight')
     return (
         <LabeledInputTemplateStyled
             fixedWidthWithMarginRight={fixedWidthWithMarginRight}

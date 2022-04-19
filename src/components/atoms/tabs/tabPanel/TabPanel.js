@@ -3,7 +3,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSTabPanel = ({ children, value, index, ...other }) => {
-    const TabPanelStyled = useStyle('TabPanelStyled', 'div', null)
+    const TabPanelStyled = useStyle('TabPanelStyle', 'div')
     return (
         <TabPanelStyled
             role="tabpanel"

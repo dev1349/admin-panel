@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSArrowDropDownIcon = props => {
-    const ArrowDropDownIconStyled = useStyle('ArrowDropDownIconStyled', ArrowDropDownIcon, null)
+    const ArrowDropDownIconStyled = useStyle('ArrowDropDownIconStyle', ArrowDropDownIcon)
     return <ArrowDropDownIconStyled {...props} />
 }
 

@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ArrowBackIconWS = props => {
-    const ArrowBackIconStyled = useStyle('ArrowBackIconStyled', ArrowBackIcon, null)
+    const ArrowBackIconStyled = useStyle('ArrowBackIconStyle', ArrowBackIcon)
     return <ArrowBackIconStyled {...props} />
 }
 

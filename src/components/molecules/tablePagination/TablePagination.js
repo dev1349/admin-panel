@@ -4,7 +4,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 
 const TablePaginationWS = () => {
-    const TablePaginationStyled = useStyle('TablePaginationStyled', TablePagination, null)
+    const TablePaginationStyled = useStyle('TablePaginationStyle', TablePagination)
     const [page, setPage] = React.useState(2)
     const [rowsPerPage, setRowsPerPage] = React.useState(10)
 

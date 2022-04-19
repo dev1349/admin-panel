@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSHideImageIcon = props => {
-    const HideImageIconStyled = useStyle('HideImageIconStyled', HideImageIcon, null)
+    const HideImageIconStyled = useStyle('HideImageIconStyle', HideImageIcon)
     return <HideImageIconStyled {...props} />
 }
 

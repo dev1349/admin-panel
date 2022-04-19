@@ -4,7 +4,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 
 const MenuWS = ({ children, ...rest }) => {
-    const MenuStyled = useStyle('MenuStyled', Menu, null)
+    const MenuStyled = useStyle('MenuStyle', Menu)
     return <MenuStyled {...rest}>{children}</MenuStyled>
 }
 

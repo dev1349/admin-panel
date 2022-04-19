@@ -14,7 +14,7 @@ const LabeledMultilineTextField = ({
                                        autoFocus,
                                        placeholder,
                                    }) => {
-    const LabeledTextFieldMultilineStyled = useStyle('LabeledTextFieldMultilineStyled', 'div', null)
+    const LabeledTextFieldMultilineStyled = useStyle('LabeledTextFieldMultilineStyle', 'div')
     return (
         <LabeledTextFieldMultilineStyled>
             <LabeledInputTemplate>

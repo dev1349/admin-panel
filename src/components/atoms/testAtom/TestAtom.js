@@ -1,12 +1,11 @@
 import React from 'react'
 import {Badge} from '@mui/material'
-import TestAtomStyle from './TestAtomStyle'
 import {useStyle} from '../../../hooks/useStyle'
 
 // todo удалить после рефакторинга стилей
 const TestAtom = ({children, ...rest}) => {
 
-    const TestAtomStyled = useStyle('TestAtomStyled', Badge, TestAtomStyle)
+    const TestAtomStyled = useStyle('TestAtomStyle', Badge)
 
     return <TestAtomStyled {...rest}>{children} </TestAtomStyled>
 }

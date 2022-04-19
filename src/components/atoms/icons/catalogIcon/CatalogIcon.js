@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const CatalogIconWS = props => {
-    const CatalogIconStyled = useStyle('CatalogIconStyled', StorageIcon, null)
+    const CatalogIconStyled = useStyle('CatalogIconStyle', StorageIcon)
     return <CatalogIconStyled {...props} />
 }
 

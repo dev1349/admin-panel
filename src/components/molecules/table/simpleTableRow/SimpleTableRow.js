@@ -8,7 +8,6 @@ import Img from '../../../atoms/img/Img'
 import FloatField from '../../inputs/floatField/FloatField'
 import NumberField from '../../inputs/numberField/NumberField'
 import { useStyle } from '../../../../hooks/useStyle'
-import SimpleTableRowStyle from './SimpleTableRowStyle'
 
 
 const SimpleTableRow = ({
@@ -18,7 +17,7 @@ const SimpleTableRow = ({
     changePrice,
     changeCount,
 }) => {
-    const SimpleTableRowStyled = useStyle('SimpleTableRowStyled', TableRow, SimpleTableRowStyle)
+    const SimpleTableRowStyled = useStyle('SimpleTableRowStyle', TableRow)
     const handleBlur = () => {
         if (!rowFields.count) {
             deleteRow(rowFields.id)()

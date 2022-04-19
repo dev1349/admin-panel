@@ -6,7 +6,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const LabeledDateTimeFromToField = ({ id, label, date, timeFrom, timeTo }) => {
-    const LabeledDateTimeFromToFieldStyled = useStyle('LabeledDateTimeFromToFieldStyled', 'div', null)
+    const LabeledDateTimeFromToFieldStyled = useStyle('LabeledDateTimeFromToFieldStyle', 'div')
     return (
         <LabeledDateTimeFromToFieldStyled>
             <LabeledInputTemplate>

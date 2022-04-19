@@ -1,14 +1,11 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import FlexContainerStyle from './FlexContainerStyle'
-import RelativePositionContainerStyle from './RelativePositionContainerStyle'
-import RightBottomContainerStyle from './RightBottomContainerStyle'
 
 
 const RightBottomPositionTemplate = ({ children }) => {
-    const FlexContainerStyled = useStyle('FlexContainerStyled', 'div', FlexContainerStyle)
-    const RelativePositionContainerStyled = useStyle('RelativePositionContainerStyled', 'div', RelativePositionContainerStyle)
-    const RightBottomContainerStyled = useStyle('RightBottomContainerStyled', 'div', RightBottomContainerStyle)
+    const FlexContainerStyled = useStyle('FlexContainerStyle', 'div')
+    const RelativePositionContainerStyled = useStyle('RelativePositionContainerStyle', 'div')
+    const RightBottomContainerStyled = useStyle('RightBottomContainerStyle', 'div')
     return (
         <FlexContainerStyled>
             <RelativePositionContainerStyled>

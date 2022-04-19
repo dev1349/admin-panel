@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const DialogsIconWS = props => {
-    const DialogsIconStyled = useStyle('DialogsIconStyled', ForumIcon, null)
+    const DialogsIconStyled = useStyle('DialogsIconStyle', ForumIcon)
     return <DialogsIconStyled {...props} />
 }
 

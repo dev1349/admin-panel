@@ -4,7 +4,6 @@ import TableCell from '../../../atoms/table/tableCell/TableCell'
 import SelectField from '../../inputs/selectField/SelectField'
 import FloatField from '../../inputs/floatField/FloatField'
 import { useStyle } from '../../../../hooks/useStyle'
-import SimpleTableFooterStyle from './SimpleTableFooterStyle'
 
 
 const SimpleTableFooter = ({
@@ -15,7 +14,7 @@ const SimpleTableFooter = ({
     changeDeliveryPrice,
     disabled,
 }) => {
-    const SimpleTableFooterStyled = useStyle('SimpleTableFooterStyled', TableRow, SimpleTableFooterStyle)
+    const SimpleTableFooterStyled = useStyle('SimpleTableFooterStyle', TableRow)
     return (
         <SimpleTableFooterStyled>
             <TableCell />

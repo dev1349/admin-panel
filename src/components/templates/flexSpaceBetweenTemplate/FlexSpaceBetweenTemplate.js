@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import FlexSpaceBetweenTemplateStyle from './FlexSpaceBetweenTemplateStyle'
 
 
 const FlexSpaceBetweenTemplate = ({ children }) => {
-    const FlexSpaceBetweenTemplateStyled = useStyle('FlexSpaceBetweenTemplateStyled', 'div', FlexSpaceBetweenTemplateStyle)
+    const FlexSpaceBetweenTemplateStyled = useStyle('FlexSpaceBetweenTemplateStyle', 'div')
     return (
         <FlexSpaceBetweenTemplateStyled>
             {children}

@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import TableFilterContentTemplateStyle from './TableFilterContentTemplateStyle'
 
 
 const TableFilterContentTemplate = ({ children }) => {
-    const TableFilterContentTemplateStyled = useStyle('TableFilterContentTemplateStyled', 'div', TableFilterContentTemplateStyle)
+    const TableFilterContentTemplateStyled = useStyle('TableFilterContentTemplateStyle', 'div')
     return (
         <TableFilterContentTemplateStyled>
             {children}

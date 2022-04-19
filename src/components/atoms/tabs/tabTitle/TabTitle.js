@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSTab = props => {
-    const TabStyled = useStyle('TabStyled', Tab, null)
+    const TabStyled = useStyle('TabStyle', Tab)
     return <TabStyled {...props} />
 }
 

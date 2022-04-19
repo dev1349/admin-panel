@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSUndoIcon = props => {
-    const UndoIconStyled = useStyle('UndoIconStyled', UndoIcon, null)
+    const UndoIconStyled = useStyle('UndoIconStyle', UndoIcon)
     return <UndoIconStyled {...props} />
 }
 

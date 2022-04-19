@@ -1,11 +1,10 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import ClientButtonSpaceTemplateStyle from './ClientButtonSpaceTemplateStyle'
 
 
 const ClientButtonsTemplate = ({ children }) => {
-    const ClientButtonSpaceTemplateStyled = useStyle('ClientButtonSpaceTemplateStyled', 'span', ClientButtonSpaceTemplateStyle)
-    const ClientButtonsTemplateStyled = useStyle('ClientButtonSpaceTemplateStyled', 'div', null)
+    const ClientButtonSpaceTemplateStyled = useStyle('ClientButtonSpaceTemplateStyle', 'span')
+    const ClientButtonsTemplateStyled = useStyle('ClientButtonSpaceTemplateStyle', 'div')
 
     const childrenWithoutEmpty = Array.isArray(children)
         ? children.filter(child => child)

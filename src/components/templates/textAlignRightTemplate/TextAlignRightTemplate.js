@@ -1,11 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import TextAlignRightTemplateStyle from './TextAlignRightTemplateStyle'
 
 
 const TextAlignRightTemplate = ({ children, ...rest }) => {
-    const TextAlignRightTemplateStyled = useStyle('TitleAndButtonsTemplateStyled', 'div',
-        TextAlignRightTemplateStyle, 'topBottomMargin')
+    const TextAlignRightTemplateStyled = useStyle('TextAlignRightTemplateStyle', 'div', 'topBottomMargin')
 
     return (
         <TextAlignRightTemplateStyled {...rest}>

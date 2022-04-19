@@ -16,7 +16,7 @@ const MenuButtonWS = ({
                           children,
                           ...rest
                       }) => {
-    const MenuButtonWrapperStyled = useStyle('MenuButtonWrapperStyled', 'div', null)
+    const MenuButtonWrapperStyled = useStyle('MenuButtonWrapperStyle', 'div')
     return (
         <MenuButtonWrapperStyled {...rest}>
             <IconButton

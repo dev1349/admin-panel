@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSTableBody = ({ children, ...rest }) => {
-    const TableBodyStyled = useStyle('TableBodyStyled', TableBody, null)
+    const TableBodyStyled = useStyle('TableBodyStyle', TableBody)
     return <TableBodyStyled {...rest}>{children}</TableBodyStyled>
 }
 

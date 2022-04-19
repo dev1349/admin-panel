@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const AtomTableRow = ({ children, ...rest }) => {
-    const AtomTableRowStyled = useStyle('AtomTableRowStyled', TableRow, null)
+    const AtomTableRowStyled = useStyle('AtomTableRowStyle', TableRow)
     return <AtomTableRowStyled {...rest}>{children}</AtomTableRowStyled>
 }
 

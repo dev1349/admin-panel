@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const TableContainerAtom = ({ children, ...rest }) => {
-    const TableContainerStyled = useStyle('TableContainerStyled', TableContainer, null)
+    const TableContainerStyled = useStyle('TableContainerStyle', TableContainer)
     return <TableContainerStyled {...rest}>{children}</TableContainerStyled>
 }
 

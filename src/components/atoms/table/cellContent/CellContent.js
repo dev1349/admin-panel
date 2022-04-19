@@ -5,7 +5,7 @@ import CellContentStyle from './CellContentStyle'
 
 
 const CellContent = ({ children, ...rest }) => {
-    const CellContentStyled = useStyle('CellContentStyled', Box, CellContentStyle)
+    const CellContentStyled = useStyle('CellContentStyle', Box)
     return (
         <CellContentStyled component={'span'} {...rest}>
             {children}

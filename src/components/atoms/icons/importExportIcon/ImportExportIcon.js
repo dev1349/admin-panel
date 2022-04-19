@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ImportExportIconWS = props => {
-    const ImportExportIconStyled = useStyle('ImportExportIconStyled', ImportExportIcon, null)
+    const ImportExportIconStyled = useStyle('ImportExportIconStyle', ImportExportIcon)
     return <ImportExportIconStyled {...props} />
 }
 

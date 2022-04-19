@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../../hooks/useStyle'
-import ImageBorderStyle from './ImageBorderStyle'
 
 
 const ImageBorder = ({ children, ...rest }) => {
-    const ImageBorderStyled = useStyle('ImageBorderStyled', 'div', ImageBorderStyle, 'noSizes', 'noBorder')
+    const ImageBorderStyled = useStyle('ImageBorderStyle', 'div', 'noSizes', 'noBorder')
     return <ImageBorderStyled {...rest}>{children}</ImageBorderStyled>
 }
 

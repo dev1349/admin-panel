@@ -1,13 +1,12 @@
 import React from 'react'
-import { TableHead } from '@mui/material'
+import { TableHead, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
-import { TableRowStyled } from '../tableRow/TableRow'
 import { useStyle } from '../../../../hooks/useStyle'
-import GoodsTableHeadStyle from './GoodsTableHeadStyle'
 
 
 const SimpleTableHeadWS = ({ headerCells }) => {
-    const GoodsTableHeadStyled = useStyle('GoodsTableHeadStyled', TableHead, GoodsTableHeadStyle)
+    const TableRowStyled = useStyle('TableRowStyle', TableRow)
+    const GoodsTableHeadStyled = useStyle('GoodsTableHeadStyle', TableHead)
     //todo TableRowStyled
     return (
         <GoodsTableHeadStyled>

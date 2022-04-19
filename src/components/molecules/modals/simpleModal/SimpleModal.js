@@ -5,13 +5,11 @@ import VerticalModalTemplate from '../../../templates/verticalModalTemplate/Vert
 import ModalHeader from '../../../atoms/textElements/headers/modalHeader/ModalHeader'
 import SimpleButton from '../../../atoms/simpleButton/SimpleButton'
 import { useStyle } from '../../../../hooks/useStyle'
-import SimpleModalStyle from './SimpleModalStyle'
-import ZIndexedModalStyle from './ZIndexedModalStyle'
 
 
 const WSSimpleModal = ({ modalText, modalType, action, ...rest }) => {
-    const SimpleModalStyled = useStyle('SimpleModalStyled', Box, SimpleModalStyle)
-    const ZIndexedModalStyled = useStyle('ZIndexedModalStyled', Modal, ZIndexedModalStyle)
+    const SimpleModalStyled = useStyle('SimpleModalStyle', Box)
+    const ZIndexedModalStyled = useStyle('ZIndexedModalStyle', Modal)
     return (
         <ZIndexedModalStyled {...rest}>
             <SimpleModalStyled>

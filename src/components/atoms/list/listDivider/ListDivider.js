@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ListDivider = props => {
-    const ListDividerStyled = useStyle('ListDividerStyled', Divider, null)
+    const ListDividerStyled = useStyle('ListDividerStyle', Divider)
     return <ListDividerStyled {...props} />
 }
 

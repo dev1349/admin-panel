@@ -1,11 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import ClientFunctionContainerTemplateStyle from './ClientFunctionContainerTemplateStyle'
 
 
 const ClientFunctionContainerTemplate = ({ children }) => {
-    const ClientFunctionContainerTemplateStyled = useStyle('ClientFunctionContainerTemplateStyled', 'div',
-        ClientFunctionContainerTemplateStyle)
+    const ClientFunctionContainerTemplateStyled = useStyle('ClientFunctionContainerTemplateStyle', 'div')
     return (
         <ClientFunctionContainerTemplateStyled>
             {children}

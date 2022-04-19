@@ -5,7 +5,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const SimpleTableTotal = ({ totalPrice }) => {
-    const SimpleTableTotalStyled = useStyle('SimpleTableTotalStyled', TableRow, null)
+    const SimpleTableTotalStyled = useStyle('SimpleTableTotalStyle', TableRow)
     return (
         <SimpleTableTotalStyled>
             <TableCell />

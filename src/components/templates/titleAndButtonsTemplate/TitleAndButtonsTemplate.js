@@ -1,9 +1,8 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import TitleAndButtonsTemplateStyle from './TitleAndButtonsTemplateStyle'
 
 const WSTitleAndButtonsTemplate = ({ children }) => {
-    const TitleAndButtonsTemplateStyled = useStyle('TitleAndButtonsTemplateStyled', 'div', TitleAndButtonsTemplateStyle)
+    const TitleAndButtonsTemplateStyled = useStyle('TitleAndButtonsTemplateStyle', 'div')
     return (
         <TitleAndButtonsTemplateStyled>
             {children}

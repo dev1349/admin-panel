@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSFilterIcon = props => {
-    const FilterIconStyled = useStyle('FilterIconStyled', FilterAltIcon, null)
+    const FilterIconStyled = useStyle('FilterIconStyle', FilterAltIcon)
     return <FilterIconStyled {...props} />
 }
 

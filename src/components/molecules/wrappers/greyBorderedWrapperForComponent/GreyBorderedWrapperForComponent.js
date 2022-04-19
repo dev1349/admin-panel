@@ -1,8 +1,10 @@
 import React from 'react'
 import PaddingTemplate from '../../../templates/paddingTemplate/PaddingTemplate'
-import { GreyBorderedWrapperStyled } from '../../../atoms/wrappers/greyBorderedWrapper/GreyBorderedWrapper'
+import { useStyle } from '../../../../hooks/useStyle'
 
 const WSGreyBorderedWrapper = ({ displayedComponent }) => {
+    const GreyBorderedWrapperStyled = useStyle('GreyBorderedWrapperStyle', 'div',
+        'topBottomMargin', 'withPadding')
     return (
         <GreyBorderedWrapperStyled>
             <PaddingTemplate>{displayedComponent}</PaddingTemplate>

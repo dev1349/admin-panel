@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const SearchIconWS = props => {
-    const SearchIconStyled = useStyle('SearchIconStyled', SearchIcon, null)
+    const SearchIconStyled = useStyle('SearchIconStyle', SearchIcon)
     return <SearchIconStyled {...props} />
 }
 

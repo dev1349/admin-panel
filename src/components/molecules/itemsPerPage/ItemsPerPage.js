@@ -3,11 +3,10 @@ import ToggleButtonGroup from '../../atoms/toggleButtonGroup/ToggleButtonGroup'
 import ToggleButton from '../../atoms/toggleButton/ToggleButton'
 import Typography from '../../atoms/textElements/typography/Typography'
 import { useStyle } from '../../../hooks/useStyle'
-import ItemsOnPageStyle from './ItemsOnPageStyle'
 
 
 const ItemsPerPage = ({ title, buttonValues, currentValue, onChange }) => {
-    const ItemsOnPageStyled = useStyle('ItemsOnPageStyled', 'div', ItemsOnPageStyle)
+    const ItemsOnPageStyled = useStyle('ItemsOnPageStyle', 'div')
     const handleChange = (event, newValue) => {
         if (newValue !== null) {
             onChange(newValue)

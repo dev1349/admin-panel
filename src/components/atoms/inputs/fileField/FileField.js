@@ -3,7 +3,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const FileField = ({ refer, ...rest }) => {
-    const InputStyled = useStyle('InputStyled', 'input', null)
+    const InputStyled = useStyle('InputStyle', 'input')
     return <InputStyled type={'file'} ref={refer} {...rest} />
 }
 

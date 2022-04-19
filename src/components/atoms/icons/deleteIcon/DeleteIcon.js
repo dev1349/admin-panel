@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSDeleteIcon = props => {
-    const DeleteIconStyled = useStyle('DeleteIconStyled', DeleteIcon, null)
+    const DeleteIconStyled = useStyle('DeleteIconStyle', DeleteIcon)
     return <DeleteIconStyled {...props} />
 }
 

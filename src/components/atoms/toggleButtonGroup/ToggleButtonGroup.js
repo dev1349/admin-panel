@@ -4,7 +4,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 
 const ToggleButtonGroupWS = ({ children, ...rest }) => {
-    const ToggleButtonGroupStyled = useStyle('ToggleButtonGroupStyled', ToggleButtonGroup, null)
+    const ToggleButtonGroupStyled = useStyle('ToggleButtonGroupStyle', ToggleButtonGroup)
     return (
         <ToggleButtonGroupStyled {...rest}>{children}</ToggleButtonGroupStyled>
     )

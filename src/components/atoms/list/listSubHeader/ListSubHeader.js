@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ListSubHeaderWS = props => {
-    const ListSubHeaderStyled = useStyle('ListSubHeaderStyled', ListSubheader, null)
+    const ListSubHeaderStyled = useStyle('ListSubHeaderStyle', ListSubheader)
     return <ListSubHeaderStyled {...props} />
 }
 

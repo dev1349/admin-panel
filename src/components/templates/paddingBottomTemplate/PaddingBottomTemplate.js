@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import PaddingBottomTemplateStyle from './PaddingBottomTemplateStyle'
 
 
 const WSPaddingBottomTemplate = ({ children }) => {
-    const PaddingBottomTemplateStyled = useStyle('PaddingBottomTemplateStyled', 'div', PaddingBottomTemplateStyle)
+    const PaddingBottomTemplateStyled = useStyle('PaddingBottomTemplateStyle', 'div')
     return <PaddingBottomTemplateStyled>{children}</PaddingBottomTemplateStyled>
 }
 

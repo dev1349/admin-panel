@@ -4,7 +4,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 
 const PaginationWS = props => {
-    const PaginationStyled = useStyle('PaginationStyled', Pagination, null)
+    const PaginationStyled = useStyle('PaginationStyle', Pagination)
     return <PaginationStyled {...props} />
 }
 

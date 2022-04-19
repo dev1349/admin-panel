@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ShoppingCartIconWS = props => {
-    const ShoppingCartIconStyled = useStyle('ShoppingCartIconStyled', ShoppingCartIcon, null)
+    const ShoppingCartIconStyled = useStyle('ShoppingCartIconStyle', ShoppingCartIcon)
     return <ShoppingCartIconStyled {...props} />
 }
 

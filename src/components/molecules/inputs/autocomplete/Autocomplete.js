@@ -4,7 +4,6 @@ import TextField from '../../../atoms/inputs/textField/TextField'
 import AutocompleteItem from '../../../atoms/inputs/autocompleteItem/AutocompleteItem'
 import useValidation from '../../../hooks/useValidation'
 import { useStyle } from '../../../../hooks/useStyle'
-import AutocompleteStyle from './AutocompleteStyle'
 
 
 const AutocompleteWS = ({
@@ -29,7 +28,7 @@ const AutocompleteWS = ({
                             isOptionEqualToValue,
                             ...rest
                         }) => {
-    const AutocompleteStyled = useStyle('AutocompleteStyled', Autocomplete, AutocompleteStyle)
+    const AutocompleteStyled = useStyle('AutocompleteStyle', Autocomplete)
 
     const { handleBlur, errorMessage } = useValidation(
         name,

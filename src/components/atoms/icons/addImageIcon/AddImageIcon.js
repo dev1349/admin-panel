@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const AddImageIconWS = props => {
-    const AddImageIconStyled = useStyle('AddImageIconStyled', AddPhotoAlternateIcon, null)
+    const AddImageIconStyled = useStyle('AddImageIconStyle', AddPhotoAlternateIcon)
     return <AddImageIconStyled {...props} />
 }
 

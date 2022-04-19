@@ -1,12 +1,10 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import ButtonsRightTemplateStyle from './ButtonsRightTemplateStyle'
-import ButtonTemplateStyle from './ButtonTemplateStyle'
 
 
 const FlexFirstGrowTemplate = ({ children, ...rest }) => {
-    const ButtonsRightTemplateStyled = useStyle('ButtonsRightTemplateStyled', 'div', ButtonsRightTemplateStyle)
-    const ButtonTemplateStyled = useStyle('ButtonTemplateStyled', 'span', ButtonTemplateStyle)
+    const ButtonsRightTemplateStyled = useStyle('ButtonsRightTemplateStyle', 'div')
+    const ButtonTemplateStyled = useStyle('ButtonTemplateStyle', 'span')
 
     const isManyChildren = Array.isArray(children)
 

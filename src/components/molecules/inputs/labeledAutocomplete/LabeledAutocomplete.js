@@ -26,7 +26,7 @@ const LabeledAutocomplete = ({
                                  handleHomeEndKeys,
                                  ...rest
                              }) => {
-    const LabeledAutocompleteStyled = useStyle('LabeledAutocompleteStyled', 'div', null)
+    const LabeledAutocompleteStyled = useStyle('LabeledAutocompleteStyle', 'div')
 
     return (
         <LabeledAutocompleteStyled>

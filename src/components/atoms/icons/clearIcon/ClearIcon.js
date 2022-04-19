@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSClearIcon = props => {
-    const ClearIconStyled = useStyle('ClearIconStyled', ClearIcon, null)
+    const ClearIconStyled = useStyle('ClearIconStyle', ClearIcon)
     return <ClearIconStyled {...props} />
 }
 

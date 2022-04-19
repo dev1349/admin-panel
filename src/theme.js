@@ -1,7 +1,5 @@
 import { createTheme } from '@mui/material'
-
-const globalTheme = createTheme({
-    components: {
+export const data = {
         PopoverStyled: {
             styleOverrides: {
                 root: {},
@@ -1438,7 +1436,6 @@ const globalTheme = createTheme({
                 },
             },
         },
-    },
-})
+}
 
-export default globalTheme
+export const globalTheme = createTheme({components:data})

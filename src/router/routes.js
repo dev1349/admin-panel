@@ -52,6 +52,7 @@ import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
 import Delivery from '../components/pages/delivery/Delivery'
 import TestAtom from "../components/atoms/testAtom/TestAtom";
+import RefreshStyle from '../components/pages/refreshStyle/RefreshStyle'
 
 export const authRoutes = [
     {
@@ -154,6 +155,10 @@ export const authRoutes = [
     {
         path: DELIVERIES,
         Component: Delivery,
+    },
+    {
+        path: '/refreshStyle',
+        Component: RefreshStyle,
     },
 ]
 

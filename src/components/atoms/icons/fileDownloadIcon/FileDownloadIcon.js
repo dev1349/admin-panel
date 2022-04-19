@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const FileDownloadIconWS = props => {
-    const FileDownloadIconStyled = useStyle('FileDownloadIconStyled', FileDownloadIcon, null)
+    const FileDownloadIconStyled = useStyle('FileDownloadIconStyle', FileDownloadIcon)
     return <FileDownloadIconStyled {...props} />
 }
 

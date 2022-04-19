@@ -3,11 +3,10 @@ import { Breadcrumbs, Typography } from '@mui/material'
 import Link from '../../atoms/link/Link'
 import { Link as RouterLink } from 'react-router-dom'
 import { useStyle } from '../../../hooks/useStyle'
-import BreadcrumbsStyle from './BreadcrumbsStyle'
 
 
 const BreadcrumbsWS = ({ breadcrumbs }) => {
-    const BreadcrumbsStyled = useStyle('BreadcrumbsStyled', Breadcrumbs, BreadcrumbsStyle)
+    const BreadcrumbsStyled = useStyle('BreadcrumbsStyle', Breadcrumbs)
     return (
         <BreadcrumbsStyled aria-label="breadcrumb">
             {breadcrumbs.map((el, index) =>
