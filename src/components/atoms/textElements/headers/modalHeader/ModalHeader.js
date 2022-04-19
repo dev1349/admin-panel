@@ -1,11 +1,10 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { useStyle } from '../../../../../hooks/useStyle'
-import ModalHeaderStyle from './ModalHeaderStyle'
 
 
 const WSModalHeader = ({ children, ...rest }) => {
-    const ModalHeaderStyled = useStyle('ModalHeaderStyled', Typography, ModalHeaderStyle)
+    const ModalHeaderStyled = useStyle('ModalHeaderStyle', Typography)
     return (
         <ModalHeaderStyled
             id="modal-modal-title"

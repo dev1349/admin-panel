@@ -1,12 +1,10 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import PaddingBetweenButtonsTemplateStyle from './PaddingBetweenButtonsTemplateStyle'
-import ButtonWrapperStyle from './ButtonWrapperStyle'
 
 
 const PaddingBetweenButtonsTemplate = ({ children }) => {
-    const PaddingBetweenButtonsTemplateStyled = useStyle('PaddingBetweenButtonsTemplateStyled', 'ul', PaddingBetweenButtonsTemplateStyle)
-    const ButtonWrapperStyled = useStyle('ButtonWrapperStyled', 'li', ButtonWrapperStyle)
+    const PaddingBetweenButtonsTemplateStyled = useStyle('PaddingBetweenButtonsTemplateStyle', 'ul')
+    const ButtonWrapperStyled = useStyle('ButtonWrapperStyle', 'li')
     return (
         <PaddingBetweenButtonsTemplateStyled>
             {children.map((child, index) => (

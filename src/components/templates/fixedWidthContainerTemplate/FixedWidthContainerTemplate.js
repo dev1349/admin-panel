@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import FixedWidthContainerTemplateStyle from './FixedWidthContainerTemplateStyle'
 
 
 const WSFixedWidthContainerTemplate = ({ children }) => {
-    const FixedWidthContainerTemplateStyled = useStyle('FixedWidthContainerTemplateStyled', 'div', FixedWidthContainerTemplateStyle)
+    const FixedWidthContainerTemplateStyled = useStyle('FixedWidthContainerTemplateStyle', 'div')
     return (
         <FixedWidthContainerTemplateStyled>
             {children}

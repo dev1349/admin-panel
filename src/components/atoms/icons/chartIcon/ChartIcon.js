@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const BarChartIconWS = props => {
-    const BarChartIconStyled = useStyle('BarChartIconStyled', BarChartIcon, null)
+    const BarChartIconStyled = useStyle('BarChartIconStyle', BarChartIcon)
     return <BarChartIconStyled {...props} />
 }
 

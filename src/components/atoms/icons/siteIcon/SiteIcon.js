@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const SiteIconWS = props => {
-    const SiteIconStyled = useStyle('SiteIconStyled', DesktopWindowsIcon, null)
+    const SiteIconStyled = useStyle('SiteIconStyle', DesktopWindowsIcon)
     return <SiteIconStyled {...props} />
 }
 

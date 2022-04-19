@@ -1,10 +1,8 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import LabelTemplateStyle from './LabelTemplateStyle'
-
 
 const WSLabelTemplate = ({ children, alignLeft, alignLeftFixedWidth }) => {
-    const LabelTemplateStyled = useStyle('LabelTemplateStyled', 'div', LabelTemplateStyle,
+    const LabelTemplateStyled = useStyle('LabelTemplateStyle', 'div',
         'alignLeft', 'alignLeftFixedWidth')
     return (
         <LabelTemplateStyled

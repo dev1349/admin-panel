@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSTableSortLabel = props => {
-    const TableSortLabelStyled = useStyle('TableSortLabelStyled', TableSortLabel, null)
+    const TableSortLabelStyled = useStyle('TableSortLabelStyle', TableSortLabel)
     return <TableSortLabelStyled {...props} />
 }
 

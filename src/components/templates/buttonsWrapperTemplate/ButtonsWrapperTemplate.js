@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import ButtonsWrapperTemplateStyle from './ButtonsWrapperTemplateStyle'
 
 
 const WSButtonsWrapperTemplate = ({ children }) => {
-    const ButtonsWrapperTemplateStyled = useStyle('ButtonsWrapperTemplateStyled', 'div', ButtonsWrapperTemplateStyle)
+    const ButtonsWrapperTemplateStyled = useStyle('ButtonsWrapperTemplateStyle', 'div')
     return (
         <ButtonsWrapperTemplateStyled>{children}</ButtonsWrapperTemplateStyled>
     )

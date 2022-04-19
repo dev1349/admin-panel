@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const MenuIconWS = props => {
-    const MenuIconStyled = useStyle('MenuIconStyled', MenuIcon, null)
+    const MenuIconStyled = useStyle('MenuIconStyle', MenuIcon)
     return <MenuIconStyled {...props} />
 }
 

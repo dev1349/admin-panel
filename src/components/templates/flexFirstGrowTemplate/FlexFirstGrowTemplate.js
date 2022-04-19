@@ -1,15 +1,12 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import FlexFirstGrowTemplateStyle from './FlexFirstGrowTemplateStyle'
-import FirstElementTemplateStyle from './FirstElementTemplateStyle'
-import OtherElementTemplateStyle from './OtherElementTemplateStyle'
 
 
 const FlexFirstGrowTemplate = ({ children, noMargin, ...rest }) => {
-    const FlexFirstGrowTemplateStyled = useStyle('FlexFirstGrowTemplateStyled', 'div', FlexFirstGrowTemplateStyle,
+    const FlexFirstGrowTemplateStyled = useStyle('FlexFirstGrowTemplateStyle', 'div',
         'noPadding', 'alignItemsCenter')
-    const FirstElementTemplateStyled = useStyle('FirstElementTemplateStyled', 'div', FirstElementTemplateStyle)
-    const OtherElementTemplateStyled = useStyle('OtherElementTemplateStyled', 'div', OtherElementTemplateStyle, noMargin)
+    const FirstElementTemplateStyled = useStyle('FirstElementTemplateStyle', 'div')
+    const OtherElementTemplateStyled = useStyle('OtherElementTemplateStyle', 'div', 'noMargin')
 
     const isManyChildren = Array.isArray(children)
 

@@ -15,7 +15,7 @@ const WSTableRow = ({
     onEditRow,
     isRowChecked,
 }) => {
-    const TableRowStyled = useStyle('TableRowStyled', TableRow, null)
+    const TableRowStyled = useStyle('TableRowStyle', TableRow)
     const labelId = `enhanced-table-checkbox-${id}`
 
     return (

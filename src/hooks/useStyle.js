@@ -1,25 +1,27 @@
 import { styled } from '@mui/material'
-import { postStyleLocal } from '../reducers/styleSlice'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+// import { postStyleLocal } from '../reducers/styleSlice'
+// import { useDispatch } from 'react-redux'
+// import { useEffect } from 'react'
 // import {useReducer} from "react";
 
 
-export const useStyle = (name, tag, style, shouldForwardProp1, shouldForwardProp2) => {
+export const useStyle = (name, tag, shouldForwardProp1, shouldForwardProp2) => {
     // const [state, dispatch] = useReducer(postStyleLocal, {style: {}});
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     // if ('development' === process.env.NODE_ENV) {
     //     // postStyleLocal(style)
     //     dispatch(postStyleSuccess(style))
     // }
 
-    useEffect(() => {
-        if ('development' === process.env.NODE_ENV) {
-            // postStyleLocal(style)
-            dispatch(postStyleLocal({ name: name, style: style }))
-        }
-        // dispatch(postAllStyleSuccess(theme.components))
-    })
+    // useEffect(() => {
+    //     if ('development' === process.env.NODE_ENV) {
+    //         // postStyleLocal(style)
+    //         dispatch(postStyleLocal({ name: name, style: style }))
+    //     }
+    //     // dispatch(postAllStyleSuccess(theme.components))
+    // })
+
+    //todo переделать shouldForwardProps на массив
     if (shouldForwardProp1 === undefined) {
         return styled(tag, {
             name: name,

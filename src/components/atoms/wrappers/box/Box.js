@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const BoxWS = ({ children, ...rest }) => {
-    const BoxStyled = useStyle('BoxStyled', Box, null)
+    const BoxStyled = useStyle('BoxStyle', Box)
     return <BoxStyled {...rest}>{children}</BoxStyled>
 }
 

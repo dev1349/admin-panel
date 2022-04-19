@@ -1,10 +1,9 @@
 import React from 'react'
-import GreyBorderedWrapperStyle from './GreyBorderedWrapperStyle'
 import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSGreyBorderWrapper = ({ children, ...rest }) => {
-    const GreyBorderedWrapperStyled = useStyle('GreyBorderedWrapperStyled', 'div', GreyBorderedWrapperStyle,
+    const GreyBorderedWrapperStyled = useStyle('GreyBorderedWrapperStyle', 'div',
         'topBottomMargin', 'withPadding')
     return (
         <GreyBorderedWrapperStyled {...rest}>

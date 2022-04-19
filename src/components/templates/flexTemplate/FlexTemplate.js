@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import FlexTemplateStyle from './FlexTemplateStyle'
 
 
 const FlexTemplate = ({ children, ...rest }) => {
-    const FlexTemplateStyled = useStyle('FlexTemplateStyled', 'div', FlexTemplateStyle, 'alignItemsCenter')
+    const FlexTemplateStyled = useStyle('FlexTemplateStyle', 'div', 'alignItemsCenter')
     return <FlexTemplateStyled {...rest}>{children}</FlexTemplateStyled>
 }
 

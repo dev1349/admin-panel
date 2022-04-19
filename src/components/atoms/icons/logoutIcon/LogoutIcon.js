@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const LogoutIconWS = props => {
-    const LogoutIconStyled = useStyle('LogoutIconStyled', LogoutIcon, null)
+    const LogoutIconStyled = useStyle('LogoutIconStyle', LogoutIcon)
     return <LogoutIconStyled {...props} />
 }
 

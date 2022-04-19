@@ -52,6 +52,7 @@ import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
 import TestAtom from "../components/atoms/testAtom/TestAtom";
+import RefreshStyle from '../components/pages/refreshStyle/RefreshStyle'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
 
@@ -160,6 +161,10 @@ export const authRoutes = [
     {
         path: CHECKOUTS,
         Component: Checkout,
+    },
+    {
+        path: '/refreshStyle',
+        Component: RefreshStyle,
     },
 ]
 

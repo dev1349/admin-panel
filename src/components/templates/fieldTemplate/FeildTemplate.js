@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import FieldTemplateStyle from './FieldTemplateStyle'
 
 
 const WSFieldTemplate = ({ children }) => {
-    const FieldTemplateStyled = useStyle('FieldTemplateStyled', 'div', FieldTemplateStyle)
+    const FieldTemplateStyled = useStyle('FieldTemplateStyle', 'div')
     return <FieldTemplateStyled>{children}</FieldTemplateStyled>
 }
 

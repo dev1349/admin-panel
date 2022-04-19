@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSEditIcon = props => {
-    const EditIconStyled = useStyle('EditIconStyled', EditIcon, null)
+    const EditIconStyled = useStyle('EditIconStyle', EditIcon)
     return <EditIconStyled {...props} />
 }
 

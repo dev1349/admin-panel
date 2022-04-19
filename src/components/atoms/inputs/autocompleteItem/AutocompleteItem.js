@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const AutocompleteItem = ({ children, ...rest }) => {
-    const AutocompleteItemStyled = useStyle('AutocompleteItemStyled', Box, null)
+    const AutocompleteItemStyled = useStyle('AutocompleteItemStyle', Box)
     return <AutocompleteItemStyled {...rest}>{children}</AutocompleteItemStyled>
 }
 

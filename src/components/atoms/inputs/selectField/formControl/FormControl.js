@@ -4,7 +4,7 @@ import { useStyle } from '../../../../../hooks/useStyle'
 
 
 const WSFormControl = ({ children, ...rest }) => {
-    const FormControlStyled = useStyle('FormControlStyled', FormControl, null)
+    const FormControlStyled = useStyle('FormControlStyle', FormControl)
     return <FormControlStyled {...rest}>{children}</FormControlStyled>
 }
 

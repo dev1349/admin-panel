@@ -1,11 +1,10 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { useStyle } from '../../../../hooks/useStyle'
-import TypographyStyle from './TypographyStyle'
 
 
 const TypographyWS = ({ children, ...rest }) => {
-    const TypographyStyled = useStyle('TypographyStyled', Typography, TypographyStyle, 'smallFontSize')
+    const TypographyStyled = useStyle('TypographyStyle', Typography, 'smallFontSize')
     return <TypographyStyled {...rest}>{children}</TypographyStyled>
 }
 

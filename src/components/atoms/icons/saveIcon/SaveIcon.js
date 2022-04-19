@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSSaveIcon = props => {
-    const SaveIconStyled = useStyle('SaveIconStyled', SaveIcon, null)
+    const SaveIconStyled = useStyle('SaveIconStyle', SaveIcon)
     return <SaveIconStyled {...props} />
 }
 

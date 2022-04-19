@@ -1,11 +1,10 @@
 import React from 'react'
 import { MenuItem } from '@mui/material'
 import { useStyle } from '../../../../../hooks/useStyle'
-import MenuItemStyle from './MenuItemStyle'
 
 
 const WSMenuItem = ({ children, ...rest }) => {
-    const MenuItemStyled = useStyle('MenuItemStyled', MenuItem, MenuItemStyle, 'forTable')
+    const MenuItemStyled = useStyle('MenuItemStyle', MenuItem, 'forTable')
     return <MenuItemStyled {...rest}>{children}</MenuItemStyled>
 }
 

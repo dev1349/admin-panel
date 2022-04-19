@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const StatisticsText = ({ children, ...rest }) => {
-    const StatisticsTextStyled = useStyle('StatisticsTextStyled', Typography, null)
+    const StatisticsTextStyled = useStyle('StatisticsTextStyle', Typography)
     return (
         <StatisticsTextStyled variant={'span'} component={'div'} {...rest}>
             {children}

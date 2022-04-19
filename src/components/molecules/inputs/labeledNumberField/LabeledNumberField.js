@@ -15,7 +15,7 @@ const WSLabeledNumberField = ({
                                   autoFocus,
                                   onPaste,
                               }) => {
-    const LabeledNumberFieldStyled = useStyle('LabeledNumberFieldStyled', 'div', null)
+    const LabeledNumberFieldStyled = useStyle('LabeledNumberFieldStyle', 'div')
     return (
         <LabeledNumberFieldStyled>
             <LabeledInputTemplate>

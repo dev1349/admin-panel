@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const SettingsIconWS = props => {
-    const SettingsIconStyled = useStyle('SettingsIconStyled', SettingsIcon, null)
+    const SettingsIconStyled = useStyle('SettingsIconStyle', SettingsIcon)
     return <SettingsIconStyled {...props} />
 }
 

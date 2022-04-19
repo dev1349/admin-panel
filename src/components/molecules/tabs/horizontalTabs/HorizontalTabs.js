@@ -3,11 +3,10 @@ import { Box } from '@mui/material'
 import HorizontalTabTitles from '../horizontalTabTitles/HorizontalTabTitles'
 import TabPanel from '../../../atoms/tabs/tabPanel/TabPanel'
 import { useStyle } from '../../../../hooks/useStyle'
-import HorizontalTabsBoxStyle from './HorizontalTabsBoxStyle'
 
 
 const WSTabsHorizontal = ({ titles, children, ...rest }) => {
-    const HorizontalTabsBoxStyled = useStyle('HorizontalTabsBoxStyled', Box, HorizontalTabsBoxStyle)
+    const HorizontalTabsBoxStyled = useStyle('HorizontalTabsBoxStyle', Box)
     const [value, setValue] = useState(0)
     const handleChange = (event, newValue) => {
         setValue(newValue)

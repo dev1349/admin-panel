@@ -7,7 +7,6 @@ import StatisticsMenuItem from '../../menu/statisticsMenuItem/StatisticsMenuItem
 import ListDivider from '../../../atoms/list/listDivider/ListDivider'
 import Badge from '../../../atoms/badge/Badge'
 import { useStyle } from '../../../../hooks/useStyle'
-import StatisticsUlStyle from './StatisticsUlStyle'
 
 
 const StatisticsButton = ({
@@ -19,9 +18,9 @@ const StatisticsButton = ({
                               children,
                               ...rest
                           }) => {
-    const StatisticsButtonWrapperStyled = useStyle('StatisticsButtonWrapperStyled', 'div', null)
-    const StatisticsUlStyled = useStyle('StatisticsUlStyled', 'ul', StatisticsUlStyle)
-    const StatisticsLiStyled = useStyle('StatisticsLiStyled', 'li', null)
+    const StatisticsButtonWrapperStyled = useStyle('StatisticsButtonWrapperStyle', 'div')
+    const StatisticsUlStyled = useStyle('StatisticsUlStyle', 'ul')
+    const StatisticsLiStyled = useStyle('StatisticsLiStyle', 'li')
 
     const NotificationsCount = menuItems.reduce((acc, item) => {
         return (

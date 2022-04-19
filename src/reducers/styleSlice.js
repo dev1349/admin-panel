@@ -8,11 +8,13 @@ import {
 } from '../api/styleApi'
 
 // todo добавить варианты запуска с мок стилями и с серверными стилями
-// todo добавить модуль для регистрации локальных стилей на сервере(в каждый стиль, отправленный на сервер добавлять версию)
+// todo добавить модуль для регистрации локальных стилей на сервере
 
 const styleSlice = createSlice({
     name: 'style',
     initialState: {
+        styleFrom: 'server', // local/server
+        themeName: 'default', // задать уникальное имя своих изменений
         allStyle: {}
     },
     reducers: {
@@ -24,7 +26,6 @@ const styleSlice = createSlice({
         },
         postStyleLocal(state, action) {
             state.allStyle[action.payload.name] = action.payload.style
-            console.log(state.allStyle)
         },
         getStyleSuccess(state, action) {
             state.currentStyle = action.payload
@@ -32,10 +33,8 @@ const styleSlice = createSlice({
         getAllStyleSuccess(state, action) {
             state.allStyle = action.payload
         },
-        putStyleSuccess(state) {
-            return {
-                ...state,
-            }
+        putStyleSuccess(state, action) {
+            state.allStyle = action.payload
         },
         deleteStyleSuccess(state, action) {
             state.allStyle.filter(item => item.id !== action.payload.id)
@@ -57,6 +56,8 @@ export const {
 export default styleSlice.reducer
 
 export const allStyle = state => state.style.allStyle
+export const themeName = state => state.style.themeName
+export const styleFrom = state => state.style.styleFrom
 
 export const postStyle = style => dispatch => {
     postStyleFetch(style)

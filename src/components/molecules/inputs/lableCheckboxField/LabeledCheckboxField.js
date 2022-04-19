@@ -13,7 +13,7 @@ const WSLabeledCheckboxField = ({
                                     onChange,
                                     alignLeft,
                                 }) => {
-    const LabeledCheckboxStyled = useStyle('LabeledCheckboxStyled', 'div', null)
+    const LabeledCheckboxStyled = useStyle('LabeledCheckboxStyle', 'div')
     const changeHandler = evt => {
         const sendValue = evt.target.checked === '' ? null : evt.target.checked
         onChange({ [name]: sendValue })

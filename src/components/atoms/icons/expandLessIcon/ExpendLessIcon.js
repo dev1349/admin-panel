@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ExpandLessIconWS = props => {
-    const ExpandLessIconStyled = useStyle('ExpandLessIconStyled', ExpandLess, null)
+    const ExpandLessIconStyled = useStyle('ExpandLessIconStyle', ExpandLess)
     return <ExpandLessIconStyled {...props} />
 }
 

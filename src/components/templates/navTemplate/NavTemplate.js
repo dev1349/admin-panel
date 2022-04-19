@@ -1,10 +1,9 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import NavTemplateStyle from './NavTemplateStyle'
 
 
 const NavTemplateWSM = ({ children }) => {
-    const NavTemplateStyled = useStyle('NavTemplateStyled', 'div', NavTemplateStyle)
+    const NavTemplateStyled = useStyle('NavTemplateStyle', 'div')
     return <NavTemplateStyled>{children}</NavTemplateStyled>
 }
 

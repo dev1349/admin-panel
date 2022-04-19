@@ -1,9 +1,8 @@
 import React from 'react'
 import { useStyle } from '../../../hooks/useStyle'
-import SpaceBetweenTemplateStyle from './SpaceBetweenTemplateStyle'
 
 const SpaceBetweenClientButtonGroupsTemplate = ({ children }) => {
-    const SpaceBetweenTemplateStyled = useStyle('SpaceBetweenTemplateStyled', 'div', SpaceBetweenTemplateStyle)
+    const SpaceBetweenTemplateStyled = useStyle('SpaceBetweenTemplateStyle', 'div')
     return <SpaceBetweenTemplateStyled>{children}</SpaceBetweenTemplateStyled>
 }
 

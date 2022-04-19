@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const WSCircularProgress = props => {
-    const CircularProgressStyled = useStyle('CircularProgressStyled', CircularProgress, null)
+    const CircularProgressStyled = useStyle('CircularProgressStyle', CircularProgress)
     return <CircularProgressStyled {...props} />
 }
 

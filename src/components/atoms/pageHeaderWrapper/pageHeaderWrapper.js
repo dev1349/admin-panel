@@ -3,7 +3,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 
 const PageHeaderWrapperWS = ({ children, ...rest }) => {
-    const PageHeaderWrapperStyled = useStyle('PageHeaderWrapperStyled', 'div', null)
+    const PageHeaderWrapperStyled = useStyle('PageHeaderWrapperStyle', 'div')
     return (
         <PageHeaderWrapperStyled {...rest}>{children}</PageHeaderWrapperStyled>
     )
