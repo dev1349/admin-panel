@@ -1,5 +1,5 @@
 import React from 'react'
-import Delivery from './Delivery'
+import Delivery from './TwoInputsImgPrev'
 
 export default {
     title: 'organisms/Delivery',

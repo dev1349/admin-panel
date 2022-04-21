@@ -25,6 +25,7 @@ import {
     CLIENTSID,
     CONTACTS,
     DELIVERIES,
+    CHECKOUTS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -51,7 +52,8 @@ import Export from '../components/pages/export/Export'
 import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
-import Delivery from '../components/pages/delivery/Delivery'
+import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
+import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
 
 export const authRoutes = [
     {
@@ -154,6 +156,10 @@ export const authRoutes = [
     {
         path: DELIVERIES,
         Component: Delivery,
+    },
+    {
+        path: CHECKOUTS,
+        Component: Checkout,
     },
 ]
 

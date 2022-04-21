@@ -1,19 +1,25 @@
 import React, { useCallback, useState } from 'react'
-import H1 from '../../atoms/textElements/headers/H1/H1'
-import LabeledTextField from '../../molecules/inputs/labeledTextField/LabeledTextField'
-import LabeledTextFieldMultiline from '../../molecules/inputs/labeledTextFieldMultiline/LabeledTextFieldMultiline'
-import FlexFirstGrowTemplate from '../../templates/flexFirstGrowTemplate/FlexFirstGrowTemplate'
-import GreyBorderedWrapper from '../../atoms/wrappers/greyBorderedWrapper/GreyBorderedWrapper'
-import UploadImageWithPreview from '../../molecules/inputs/uploadImageWithPreview/UploadImageWithPreview'
-import SimpleButton from '../../atoms/simpleButton/SimpleButton'
-import AddIcon from '../../atoms/icons/addIcon/AddIcon'
-import TextAlignRightTemplate from '../../templates/textAlignRightTemplate/TextAlignRightTemplate'
-import IconButton from '../../molecules/buttons/iconButton/IconButton'
-import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
-import SaveIcon from '../../atoms/icons/saveIcon/SaveIcon'
-import ButtonsRightTemplate from '../../templates/buttonsRightTemplate/ButtonsRightTemplate'
+import H1 from '../../../atoms/textElements/headers/H1/H1'
+import LabeledTextField from '../../../molecules/inputs/labeledTextField/LabeledTextField'
+import LabeledTextFieldMultiline from '../../../molecules/inputs/labeledTextFieldMultiline/LabeledTextFieldMultiline'
+import FlexFirstGrowTemplate from '../../../templates/flexFirstGrowTemplate/FlexFirstGrowTemplate'
+import GreyBorderedWrapper from '../../../atoms/wrappers/greyBorderedWrapper/GreyBorderedWrapper'
+import UploadImageWithPreview from '../../../molecules/inputs/uploadImageWithPreview/UploadImageWithPreview'
+import SimpleButton from '../../../atoms/simpleButton/SimpleButton'
+import AddIcon from '../../../atoms/icons/addIcon/AddIcon'
+import TextAlignRightTemplate from '../../../templates/textAlignRightTemplate/TextAlignRightTemplate'
+import IconButton from '../../../molecules/buttons/iconButton/IconButton'
+import DeleteIcon from '../../../atoms/icons/deleteIcon/DeleteIcon'
+import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
+import ButtonsRightTemplate from '../../../templates/buttonsRightTemplate/ButtonsRightTemplate'
 
-const Delivery = () => {
+const Delivery = ({
+    mainTitle,
+    labelInput,
+    labelMultiLine,
+    addButtonLabel,
+    saveButtonLabel,
+}) => {
     const initialDeliveries = {
         delivery_1: {
             image: null,
@@ -92,7 +98,7 @@ const Delivery = () => {
 
     return (
         <>
-            <H1>Доставка</H1>
+            <H1>{mainTitle}</H1>
 
             {Object.keys(deliveries).map((delivery, index) => (
                 <FlexFirstGrowTemplate
@@ -105,14 +111,14 @@ const Delivery = () => {
                         <LabeledTextField
                             id={`${delivery}_title`}
                             name={'title'}
-                            label={`Способ доставки ${index + 1}:`}
+                            label={labelInput + ' ' + (index + 1) + ':'}
                             value={deliveries[delivery]['title']}
                             onChange={handleChange(delivery)}
                         />
                         <LabeledTextFieldMultiline
                             id={`${delivery}_description`}
                             name={'description'}
-                            label={`Описание доставки:`}
+                            label={labelMultiLine}
                             value={deliveries[delivery]['description']}
                             onChange={handleChange(delivery)}
                         />
@@ -138,7 +144,7 @@ const Delivery = () => {
                     onClick={handleAddDelivery}
                     disabled={isAddDeliveryButtonDisabled}
                 >
-                    Добавить способ доставки
+                    {addButtonLabel}
                 </SimpleButton>
             </TextAlignRightTemplate>
 
@@ -156,7 +162,7 @@ const Delivery = () => {
                     onClick={handleSaveDeliveries}
                     disabled={!canSaveDeliveries}
                 >
-                    Сохранить доставки
+                    {saveButtonLabel}
                 </SimpleButton>
             </ButtonsRightTemplate>
         </>
