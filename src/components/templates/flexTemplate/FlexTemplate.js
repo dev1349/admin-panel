@@ -3,7 +3,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 
 const FlexTemplate = ({ children, ...rest }) => {
-    const FlexTemplateStyled = useStyle('FlexTemplateStyle', 'div', 'alignItemsCenter')
+    const FlexTemplateStyled = useStyle('FlexTemplateStyle', 'div', ['alignItemsCenter'])
     return <FlexTemplateStyled {...rest}>{children}</FlexTemplateStyled>
 }
 

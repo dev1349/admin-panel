@@ -3,7 +3,7 @@ import { useStyle } from '../../../hooks/useStyle'
 
 const WSLabelTemplate = ({ children, alignLeft, alignLeftFixedWidth }) => {
     const LabelTemplateStyled = useStyle('LabelTemplateStyle', 'div',
-        'alignLeft', 'alignLeftFixedWidth')
+        ['alignLeft', 'alignLeftFixedWidth'])
     return (
         <LabelTemplateStyled
             alignLeft={alignLeft}

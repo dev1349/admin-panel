@@ -1,39 +1,26 @@
-// import {useSelector} from "react-redux";
-// import { createTheme } from '@mui/material'
-// import {data} from "../theme";
-// import { useEffect } from 'react'
-// import {allStyle} from "../reducers/styleSlice";
-import { componentsArr } from './styleRegistrationService'
-import { data } from '../theme'
+import { useEffect } from 'react'
 import { createTheme } from '@mui/material'
-// import { postAllStyleSuccess } from '../reducers/styleSlice'
-// import { useDispatch, useSelector } from 'react-redux'
-// import globalTheme from '../theme'
+import {
+    getTheme,
+    isThemeLoadedSelector,
+    styleFromSelector,
+    themeNameSelector,
+    themeSelector
+} from '../reducers/styleSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const useTheme = () => {
+    const dispatch = useDispatch()
+    const themeName = useSelector(themeNameSelector)
+    const loadType = useSelector(styleFromSelector)
+    const isThemeLoaded = useSelector(isThemeLoadedSelector)
+    const theme = useSelector(themeSelector)
 
-    // todo убрать после тестирования
-    // const dispatch = useDispatch()
-    // const theme = data
-    // useEffect(() => {
-    //     dispatch(postAllStyleSuccess(theme.components))
-    // })
+    useEffect(() => {
+        if (!isThemeLoaded) {
+            dispatch(getTheme(loadType, themeName))
+        }
+    })
 
-
-    // const allStyles = useSelector(allStyle)
-    // const themeData = {
-    //     components: allStyles
-    // }
-
-    // const themeData = theme
-    //
-    // useEffect(() => {
-    //     dispatch(postAllStyleSuccess(theme.components))
-    // })
-    console.log(componentsArr)
-    console.log(data)
-    return createTheme({components: componentsArr})
-    // return createTheme({components: componentsArr})
-    // return globalTheme
-    // return globalTheme
+    return createTheme({ components: theme })
 }

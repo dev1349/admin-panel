@@ -1,8 +1,8 @@
 import React from 'react'
 import TestAtom from './TestAtom'
 // import TestAtomStyle from './TestAtomStyle'
-import { getVariantExample } from '../../../hooks/getExample'
-// import { getExample } from '../../../hooks/getExample'
+import { getVariantExample } from '../../../services/story/storyService'
+// import { getExample } from '../../../hooks/storyService'
 
 export default {
     title: 'atoms/TestAtom',

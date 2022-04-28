@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 
 const ListItemButtonWS = props => {
-    const ListItemButtonStyled = useStyle('ListItemButtonStyle', ListItemButton, 'sub')
+    const ListItemButtonStyled = useStyle('ListItemButtonStyle', ListItemButton, ['sub'])
     return <ListItemButtonStyled {...props} />
 }
 

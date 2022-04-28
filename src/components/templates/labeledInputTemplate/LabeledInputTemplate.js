@@ -10,7 +10,7 @@ const WSLabeledInputTemplate = ({
     alignLeftFixedWidth,
     fixedWidthWithMarginRight,
 }) => {
-    const LabeledInputTemplateStyled = useStyle('LabeledInputTemplateStyle', 'div', 'fixedWidthWithMarginRight')
+    const LabeledInputTemplateStyled = useStyle('LabeledInputTemplateStyle', 'div', ['fixedWidthWithMarginRight'])
     return (
         <LabeledInputTemplateStyled
             fixedWidthWithMarginRight={fixedWidthWithMarginRight}

@@ -5,7 +5,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 const ListItemTextWS = props => {
     const ListItemTextStyled = useStyle('ListItemTextStyle', ListItemText,
-        'withoutExpandIcon', 'activeItem')
+        ['withoutExpandIcon', 'activeItem'])
     return <ListItemTextStyled {...props} />
 }
 

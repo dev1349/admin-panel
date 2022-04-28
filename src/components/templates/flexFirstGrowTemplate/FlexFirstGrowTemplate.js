@@ -4,9 +4,9 @@ import { useStyle } from '../../../hooks/useStyle'
 
 const FlexFirstGrowTemplate = ({ children, noMargin, ...rest }) => {
     const FlexFirstGrowTemplateStyled = useStyle('FlexFirstGrowTemplateStyle', 'div',
-        'noPadding', 'alignItemsCenter')
+        ['noPadding', 'alignItemsCenter'])
     const FirstElementTemplateStyled = useStyle('FirstElementTemplateStyle', 'div')
-    const OtherElementTemplateStyled = useStyle('OtherElementTemplateStyle', 'div', 'noMargin')
+    const OtherElementTemplateStyled = useStyle('OtherElementTemplateStyle', 'div', ['noMargin'])
 
     const isManyChildren = Array.isArray(children)
 

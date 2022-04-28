@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 const WSGreyBorderWrapper = ({ children, ...rest }) => {
     const GreyBorderedWrapperStyled = useStyle('GreyBorderedWrapperStyle', 'div',
-        'topBottomMargin', 'withPadding')
+        ['topBottomMargin', 'withPadding'])
     return (
         <GreyBorderedWrapperStyled {...rest}>
             {children}
