@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import { useStyle } from '../../../../hooks/useStyle'
-import CellContentStyle from './CellContentStyle'
 
 
 const CellContent = ({ children, ...rest }) => {

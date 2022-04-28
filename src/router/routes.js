@@ -24,7 +24,7 @@ import {
     MENU_AND_PAGES,
     CLIENTSID,
     CONTACTS,
-    DELIVERIES,
+    DELIVERIES, UPLOAD_THEME,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -52,7 +52,7 @@ import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
 import Delivery from '../components/pages/delivery/Delivery'
 import TestAtom from "../components/atoms/testAtom/TestAtom";
-import RefreshStyle from '../components/pages/refreshStyle/RefreshStyle'
+import UploadTheme from '../components/pages/refreshStyle/UploadTheme'
 
 export const authRoutes = [
     {
@@ -156,10 +156,6 @@ export const authRoutes = [
         path: DELIVERIES,
         Component: Delivery,
     },
-    {
-        path: '/refreshStyle',
-        Component: RefreshStyle,
-    },
 ]
 
 export const publicRoutes = [
@@ -170,5 +166,9 @@ export const publicRoutes = [
     {
         path: '/testAtom',
         Component: TestAtom,
-    }
+    },
+    {
+        path: UPLOAD_THEME,
+        Component: UploadTheme,
+    },
 ]

@@ -4,7 +4,7 @@ import { useStyle } from '../../../../hooks/useStyle'
 
 const WSGreyBorderedWrapper = ({ displayedComponent }) => {
     const GreyBorderedWrapperStyled = useStyle('GreyBorderedWrapperStyle', 'div',
-        'topBottomMargin', 'withPadding')
+        ['topBottomMargin', 'withPadding'])
     return (
         <GreyBorderedWrapperStyled>
             <PaddingTemplate>{displayedComponent}</PaddingTemplate>
