@@ -1,10 +1,18 @@
 import {
     ADD_CATEGORY_ROUTE,
+    ADD_CLIENT,
+    ADD_PRODUCT,
+    ADD_USER,
     ATTRIBUTE_GROUP,
     ATTRIBUTE_LIST,
     CATEGORIES_LIST_ROUTE,
+    CHECKOUTS,
+    CLIENTSID,
+    CONTACTS,
     COUPONS_LIST_ROUTE,
+    DELIVERIES,
     EDIT_GOOD,
+    EXPORT,
     GOOD_ADD_ROUTE,
     GOODS,
     GOODS_FILTER_ROUTE,
@@ -12,21 +20,13 @@ import {
     LOGIN_ROUTE,
     MADE_COMPONENT_LIST,
     MAIN_ROUTE,
+    MENU_AND_PAGES,
     MY_GOODS_LIST_ROUTE,
+    NEW_ORDER,
     ORDER_INFO,
     ORDERS,
-    ADD_PRODUCT,
-    USERS,
-    ADD_USER,
-    NEW_ORDER,
-    ADD_CLIENT,
-    EXPORT,
-    MENU_AND_PAGES,
-    CLIENTSID,
-    CONTACTS,
-    DELIVERIES,
     UPLOAD_THEME,
-    CHECKOUTS,
+    USERS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -52,8 +52,7 @@ import Export from '../components/pages/export/Export'
 import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
-import TestAtom from "../components/atoms/testAtom/TestAtom";
-import RefreshStyle from '../components/pages/refreshStyle/RefreshStyle'
+import TestAtom from '../components/atoms/testAtom/TestAtom'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
 import UploadTheme from '../components/pages/refreshStyle/UploadTheme'
@@ -163,10 +162,6 @@ export const authRoutes = [
     {
         path: CHECKOUTS,
         Component: Checkout,
-    },
-    {
-        path: '/refreshStyle',
-        Component: RefreshStyle,
     },
 ]
 

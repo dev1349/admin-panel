@@ -7,7 +7,7 @@ const styleSlice = createSlice({
     initialState: {
         styleFrom: 'local', // local/server
         refreshStyle: 'endpoint', // auto/endpoint (auto пока не реализован)
-        themeName: 'fff', // задать уникальное имя своих изменений
+        themeName: 'default', // задать уникальное имя своих изменений
         isThemeLoaded: false,
         styles: {}
     },
