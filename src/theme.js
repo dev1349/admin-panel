@@ -1438,6 +1438,13 @@ const globalTheme = createTheme({
                 },
             },
         },
+        LastOrdersTitleStyled: {
+            styleOverrides: {
+                root: {
+                    fontSize: '40px',
+                },
+            },
+        },
     },
 })
 
