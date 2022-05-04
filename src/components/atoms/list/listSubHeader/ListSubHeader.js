@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import ListSubheader from '@mui/material/ListSubheader'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ListSubHeaderStyled = styled(ListSubheader, {
-    name: 'ListSubHeaderStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ListSubHeaderWS = props => {
+    const ListSubHeaderStyled = useStyle('ListSubHeaderStyle', ListSubheader)
     return <ListSubHeaderStyled {...props} />
 }
 

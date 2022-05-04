@@ -1,14 +1,10 @@
 import React from 'react'
-import { Link, styled } from '@mui/material'
+import { Link } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const LinkStyled = styled(Link, {
-    shouldForwardProp: prop => prop !== 'hoverUnderline',
-    name: 'LinkStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const LinkWS = ({ children, ...rest }) => {
+    const LinkStyled = useStyle('LinkStyle', Link, ['hoverUnderline'])
     return <LinkStyled {...rest}>{children}</LinkStyled>
 }
 

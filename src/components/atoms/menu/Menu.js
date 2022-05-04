@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import Menu from '@mui/material/Menu'
+import { useStyle } from '../../../hooks/useStyle'
 
-const MenuStyled = styled(Menu, {
-    name: 'MenuStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const MenuWS = ({ children, ...rest }) => {
+    const MenuStyled = useStyle('MenuStyle', Menu)
     return <MenuStyled {...rest}>{children}</MenuStyled>
 }
 

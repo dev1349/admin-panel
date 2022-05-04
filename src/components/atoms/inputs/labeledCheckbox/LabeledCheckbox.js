@@ -1,20 +1,18 @@
 import React from 'react'
-import { FormControlLabel, styled } from '@mui/material'
+import { FormControlLabel } from '@mui/material'
 import Checkbox from '@mui/material/Checkbox'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const FormControlLabelStyled = styled(FormControlLabel, {
-    name: 'FormControlLabelStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FormControlLabelWS = ({ name, label, checked, onChange, ...rest }) => {
+    const FormControlLabelStyled = useStyle('FormControlLabelStyle', FormControlLabel)
+
     const handleChange = () => {
         onChange({ [name]: !checked })
     }
     return (
         <FormControlLabelStyled
-            control={<Checkbox checked={checked} onChange={handleChange} />}
+            control={<Checkbox checked={checked} onChange={handleChange}/>}
             label={label}
             {...rest}
         />

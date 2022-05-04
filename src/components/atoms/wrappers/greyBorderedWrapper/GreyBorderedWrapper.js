@@ -1,15 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const GreyBorderedWrapperStyled = styled('div', {
-    shouldForwardProp: prop =>
-        prop !== 'topBottomMargin' && prop !== 'withPadding',
-    name: 'GreyBorderedWrapperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSGreyBorderWrapper = ({ children, ...rest }) => {
+    const GreyBorderedWrapperStyled = useStyle('GreyBorderedWrapperStyle', 'div',
+        ['topBottomMargin', 'withPadding'])
     return (
         <GreyBorderedWrapperStyled {...rest}>
             {children}

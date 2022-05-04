@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const LoaderWindowTemplateStyled = styled(Box, {
-    name: 'LoaderWindowTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSLoader = ({ children, ...rest }) => {
+    const LoaderWindowTemplateStyled = useStyle('LoaderWindowTemplateStyle', Box)
     return (
         <LoaderWindowTemplateStyled {...rest}>
             {children}

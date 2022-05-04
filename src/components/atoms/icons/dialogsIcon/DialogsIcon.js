@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import ForumIcon from '@mui/icons-material/Forum'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const DialogsIconStyled = styled(ForumIcon, {
-    name: 'DialogsIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const DialogsIconWS = props => {
+    const DialogsIconStyled = useStyle('DialogsIconStyle', ForumIcon)
     return <DialogsIconStyled {...props} />
 }
 

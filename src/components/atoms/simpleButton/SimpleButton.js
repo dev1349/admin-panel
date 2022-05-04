@@ -1,15 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Button } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const SimpleButtonStyled = styled(Button, {
-    shouldForwardProp: prop => prop !== 'noUppercase',
-    name: 'SimpleButtonStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSSimpleButton = ({ children, modalType, ...rest }) => {
+    const SimpleButtonStyled = useStyle('SimpleButtonStyle', Button, 'noUppercase')
     return (
         <SimpleButtonStyled color={modalType} variant={'contained'} {...rest}>
             {children}

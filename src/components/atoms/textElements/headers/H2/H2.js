@@ -1,13 +1,10 @@
 import React from 'react'
-import { styled, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import { useStyle } from '../../../../../hooks/useStyle'
 
-const H2Styled = styled(Typography, {
-    name: 'H2Styled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSH2 = ({ children, ...rest }) => {
+    const H2Styled = useStyle('H2Style', Typography)
     return <H2Styled {...rest}>{children}</H2Styled>
 }
 

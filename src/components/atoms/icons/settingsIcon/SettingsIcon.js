@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import SettingsIcon from '@mui/icons-material/Settings'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const SettingsIconStyled = styled(SettingsIcon, {
-    name: 'SettingsIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SettingsIconWS = props => {
+    const SettingsIconStyled = useStyle('SettingsIconStyle', SettingsIcon)
     return <SettingsIconStyled {...props} />
 }
 

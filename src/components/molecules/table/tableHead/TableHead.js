@@ -1,15 +1,9 @@
 import React from 'react'
-import { styled, TableHead } from '@mui/material'
+import { TableHead, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import TableSortLabel from '../../../atoms/table/tableSortLabel/TableSortLabel'
-import { TableRowStyled } from '../tableRow/TableRow'
-
-const TableHeadStyled = styled(TableHead, {
-    name: 'TableHeadStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
+import { useStyle } from '../../../../hooks/useStyle'
 
 const WSTableHead = ({
     headerCells,
@@ -20,6 +14,8 @@ const WSTableHead = ({
     selectedRowCount,
     onCheckAll,
 }) => {
+    const TableRowStyled = useStyle('TableRowStyle', TableRow)
+    const TableHeadStyled = useStyle('TableHeadStyle', TableHead)
     return (
         <TableHeadStyled>
             <TableRowStyled>

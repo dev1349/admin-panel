@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled, TableRow } from '@mui/material'
+import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import SelectField from '../../inputs/selectField/SelectField'
 import FloatField from '../../inputs/floatField/FloatField'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const SimpleTableFooterStyled = styled(TableRow, {
-    name: 'SimpleTableFooterStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SimpleTableFooter = ({
     deliveryTypes,
@@ -18,6 +14,7 @@ const SimpleTableFooter = ({
     changeDeliveryPrice,
     disabled,
 }) => {
+    const SimpleTableFooterStyled = useStyle('SimpleTableFooterStyle', TableRow)
     return (
         <SimpleTableFooterStyled>
             <TableCell />

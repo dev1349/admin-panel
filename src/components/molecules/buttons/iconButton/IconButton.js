@@ -1,15 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const IconButtonStyled = styled(IconButton, {
-    shouldForwardProp: prop => prop !== 'menuButton',
-    name: 'IconButtonStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSIconButton = ({ children, ...rest }) => {
+    const IconButtonStyled = useStyle('IconButtonStyle', IconButton, 'menuButton')
     return <IconButtonStyled {...rest}>{children}</IconButtonStyled>
 }
 

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const RowTmp = ({ children }) => {
     return <RowTmpStyle>{children}</RowTmpStyle>
 }
-
+//todo mui styled
 const RowTmpStyle = styled.div`
     display: flex;
     flex-direction: row;

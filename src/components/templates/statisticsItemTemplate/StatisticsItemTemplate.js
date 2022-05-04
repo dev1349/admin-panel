@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const StatisticsItemTemplateStyled = styled('div', {
-    name: 'StatisticsItemTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const StatisticsItemTemplate = ({ children }) => {
+    const StatisticsItemTemplateStyled = useStyle('StatisticsItemTemplateStyle', 'div')
     return (
         <StatisticsItemTemplateStyled>{children}</StatisticsItemTemplateStyled>
     )

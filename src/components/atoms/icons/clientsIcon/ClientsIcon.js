@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import PeopleIcon from '@mui/icons-material/People'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ClientsIconStyled = styled(PeopleIcon, {
-    name: 'ClientsIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ClientsIconWS = props => {
+    const ClientsIconStyled = useStyle('ClientsIconStyle', PeopleIcon)
     return <ClientsIconStyled {...props} />
 }
 

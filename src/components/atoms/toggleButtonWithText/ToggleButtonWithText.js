@@ -1,20 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { ToggleButton } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-export const ToggleButtonWithTextStyled = styled(ToggleButton, {
-    name: 'ToggleButtonWithTextStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-export const ToggleButtonTextStyled = styled('div', {
-    name: 'ToggleButtonTextStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ToggleButtonWS = ({ icon, text, ...rest }) => {
+    const ToggleButtonWithTextStyled = useStyle('ToggleButtonWithTextStyle', ToggleButton)
+    const ToggleButtonTextStyled = useStyle('ToggleButtonTextStyle', 'div')
     return (
         <ToggleButtonWithTextStyled {...rest}>
             {icon}

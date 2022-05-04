@@ -5,15 +5,16 @@ import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
 import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'
 import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/ButtonsWrapperTemplate'
 import TitleAndButtonsTemplate from '../../../templates/titleAndButtonsTemplate/TitleAndButtonsTemplate'
-import { Header1Styled } from '../header1/Header1'
+import { useStyle } from '../../../../hooks/useStyle'
 
 const WSSimpleHeader1SaveReturn = ({
-    children,
-    onSave,
-    onReturn,
-    isSaveButtonDisabled,
-    isReturnButtonDisabled,
-}) => {
+                                       children,
+                                       onSave,
+                                       onReturn,
+                                       isSaveButtonDisabled,
+                                       isReturnButtonDisabled,
+                                   }) => {
+    const Header1Styled = useStyle('Header1Style', 'header')
     return (
         <Header1Styled>
             <TitleAndButtonsTemplate>
@@ -23,13 +24,13 @@ const WSSimpleHeader1SaveReturn = ({
                         onClick={onSave}
                         disabled={isSaveButtonDisabled}
                     >
-                        <SaveIcon />
+                        <SaveIcon/>
                     </IconButton>
                     <IconButton
                         onClick={onReturn}
                         disabled={isReturnButtonDisabled}
                     >
-                        <UndoIcon />
+                        <UndoIcon/>
                     </IconButton>
                 </ButtonsWrapperTemplate>
             </TitleAndButtonsTemplate>

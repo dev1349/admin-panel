@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const InputStyled = styled('input', {
-    name: 'InputStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FileField = ({ refer, ...rest }) => {
+    const InputStyled = useStyle('InputStyle', 'input')
     return <InputStyled type={'file'} ref={refer} {...rest} />
 }
 

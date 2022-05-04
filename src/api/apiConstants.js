@@ -41,3 +41,5 @@ export const GET_ALL_USER_PATH = SERVER_PATH + '/api/getAllUser'
 export const GET_USER_PATH = SERVER_PATH + '/api/getUser'
 export const POST_USER_PATH = SERVER_PATH + '/api/postUser'
 export const PUT_USER_PATH = SERVER_PATH + '/api/putUser'
+
+export const THEMES_PATH = SERVER_PATH + '/themes'

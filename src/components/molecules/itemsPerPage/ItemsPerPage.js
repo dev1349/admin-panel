@@ -1,16 +1,12 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import ToggleButtonGroup from '../../atoms/toggleButtonGroup/ToggleButtonGroup'
 import ToggleButton from '../../atoms/toggleButton/ToggleButton'
 import Typography from '../../atoms/textElements/typography/Typography'
+import { useStyle } from '../../../hooks/useStyle'
 
-export const ItemsOnPageStyled = styled('div', {
-    name: 'ItemsOnPageStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ItemsPerPage = ({ title, buttonValues, currentValue, onChange }) => {
+    const ItemsOnPageStyled = useStyle('ItemsOnPageStyle', 'div')
     const handleChange = (event, newValue) => {
         if (newValue !== null) {
             onChange(newValue)

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import { InputLabel } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const InputLabelStyled = styled(InputLabel, {
-    name: 'InputLabelStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSInputLabel = ({ children, ...rest }) => {
+    const InputLabelStyled = useStyle('InputLabelStyle', InputLabel)
     return <InputLabelStyled {...rest}>{children}</InputLabelStyled>
 }
 

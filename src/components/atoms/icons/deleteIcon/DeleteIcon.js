@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const DeleteIconStyled = styled(DeleteIcon, {
-    name: 'DeleteIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSDeleteIcon = props => {
+    const DeleteIconStyled = useStyle('DeleteIconStyle', DeleteIcon)
     return <DeleteIconStyled {...props} />
 }
 

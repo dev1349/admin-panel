@@ -1,15 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const PriceStyled = styled(Typography, {
-    shouldForwardProp: prop => prop !== 'oldPrice',
-    name: 'PriceStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSPrice = ({ children, ...rest }) => {
+    const PriceStyled = useStyle('PriceStyle', Typography, 'oldPrice')
     return <PriceStyled {...rest}>{children}</PriceStyled>
 }
 

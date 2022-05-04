@@ -1,25 +1,22 @@
 import React from 'react'
-import { Link, styled } from '@mui/material'
+import { Link } from '@mui/material'
 import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
 import IconButton from '../iconButton/IconButton'
 import Menu from '../../../atoms/menu/Menu'
 import { Link as RouterLink } from 'react-router-dom'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const MenuButtonWrapperStyled = styled('div', {
-    name: 'MenuButtonWrapperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const MenuButtonWS = ({
-    id,
-    anchorEl,
-    handleClick,
-    handleClose,
-    menuItems,
-    children,
-    ...rest
-}) => {
+                          id,
+                          anchorEl,
+                          handleClick,
+                          handleClose,
+                          menuItems,
+                          children,
+                          ...rest
+                      }) => {
+    const MenuButtonWrapperStyled = useStyle('MenuButtonWrapperStyle', 'div')
     return (
         <MenuButtonWrapperStyled {...rest}>
             <IconButton

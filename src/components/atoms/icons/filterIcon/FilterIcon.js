@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const FilterIconStyled = styled(FilterAltIcon, {
-    name: 'FilterIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSFilterIcon = props => {
+    const FilterIconStyled = useStyle('FilterIconStyle', FilterAltIcon)
     return <FilterIconStyled {...props} />
 }
 

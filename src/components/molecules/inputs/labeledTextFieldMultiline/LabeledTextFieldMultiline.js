@@ -1,24 +1,20 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import TextFieldMultiline from '../textFieldMultiline/TextFieldMultiline'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const LabeledTextFieldMultilineStyled = styled('div', {
-    name: 'LabeledTextFieldMultilineStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const LabeledMultilineTextField = ({
-    id,
-    label,
-    name,
-    value,
-    onChange,
-    autoFocus,
-    placeholder,
-}) => {
+                                       id,
+                                       label,
+                                       name,
+                                       value,
+                                       onChange,
+                                       autoFocus,
+                                       placeholder,
+                                   }) => {
+    const LabeledTextFieldMultilineStyled = useStyle('LabeledTextFieldMultilineStyle', 'div')
     return (
         <LabeledTextFieldMultilineStyled>
             <LabeledInputTemplate>

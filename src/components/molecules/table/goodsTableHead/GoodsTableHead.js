@@ -1,15 +1,13 @@
 import React from 'react'
-import { styled, TableHead } from '@mui/material'
+import { TableHead, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
-import { TableRowStyled } from '../tableRow/TableRow'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const GoodsTableHeadStyled = styled(TableHead, {
-    name: 'GoodsTableHeadStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SimpleTableHeadWS = ({ headerCells }) => {
+    const TableRowStyled = useStyle('TableRowStyle', TableRow)
+    const GoodsTableHeadStyled = useStyle('GoodsTableHeadStyle', TableHead)
+    //todo TableRowStyled
     return (
         <GoodsTableHeadStyled>
             <TableRowStyled>
@@ -20,16 +18,16 @@ const SimpleTableHeadWS = ({ headerCells }) => {
                             cell.numeric === undefined
                                 ? 'center'
                                 : cell.numeric
-                                ? 'right'
-                                : 'left'
+                                    ? 'right'
+                                    : 'left'
                         }
                         padding={cell.disablePadding ? 'none' : 'normal'}
                     >
                         {cell.label}
                     </TableCell>
                 ))}
-                <TableCell key={'delete'} padding={'none'} />
-                <TableCell key={'change'} padding={'none'} />
+                <TableCell key={'delete'} padding={'none'}/>
+                <TableCell key={'change'} padding={'none'}/>
             </TableRowStyled>
         </GoodsTableHeadStyled>
     )

@@ -1,14 +1,8 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import LabelTemplate from '../labelTemplate/LabelTemplate'
 import FieldTemplate from '../fieldTemplate/FeildTemplate'
+import { useStyle } from '../../../hooks/useStyle'
 
-const LabeledInputTemplateStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'fixedWidthWithMarginRight',
-    name: 'LabeledInputTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSLabeledInputTemplate = ({
     children,
@@ -16,6 +10,7 @@ const WSLabeledInputTemplate = ({
     alignLeftFixedWidth,
     fixedWidthWithMarginRight,
 }) => {
+    const LabeledInputTemplateStyled = useStyle('LabeledInputTemplateStyle', 'div', ['fixedWidthWithMarginRight'])
     return (
         <LabeledInputTemplateStyled
             fixedWidthWithMarginRight={fixedWidthWithMarginRight}

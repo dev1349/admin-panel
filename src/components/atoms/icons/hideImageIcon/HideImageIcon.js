@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import HideImageIcon from '@mui/icons-material/HideImage'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const HideImageIconStyled = styled(HideImageIcon, {
-    name: 'HideImageIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSHideImageIcon = props => {
+    const HideImageIconStyled = useStyle('HideImageIconStyle', HideImageIcon)
     return <HideImageIconStyled {...props} />
 }
 

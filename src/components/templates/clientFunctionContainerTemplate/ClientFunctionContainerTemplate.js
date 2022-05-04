@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const ClientFunctionContainerTemplateStyled = styled('div', {
-    name: 'ClientFunctionContainerTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ClientFunctionContainerTemplate = ({ children }) => {
+    const ClientFunctionContainerTemplateStyled = useStyle('ClientFunctionContainerTemplateStyle', 'div')
     return (
         <ClientFunctionContainerTemplateStyled>
             {children}

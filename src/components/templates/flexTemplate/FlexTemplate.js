@@ -1,14 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
+import { useStyle } from '../../../hooks/useStyle'
 
-const FlexTemplateStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'alignItemsCenter',
-    name: 'FlexTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FlexTemplate = ({ children, ...rest }) => {
+    const FlexTemplateStyled = useStyle('FlexTemplateStyle', 'div', ['alignItemsCenter'])
     return <FlexTemplateStyled {...rest}>{children}</FlexTemplateStyled>
 }
 

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import HelpCenterIcon from '@mui/icons-material/HelpCenter'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const HelpIconStyled = styled(HelpCenterIcon, {
-    name: 'HelpIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const HelpIconWS = props => {
+    const HelpIconStyled = useStyle('HelpIconStyle', HelpCenterIcon)
     return <HelpIconStyled {...props} />
 }
 

@@ -1,16 +1,12 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import DateTimeFromToField from '../dateTimeFromToField/DateTimeFromToField'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const LabeledDateTimeFromToFieldStyled = styled('div', {
-    name: 'LabeledDateTimeFromToFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const LabeledDateTimeFromToField = ({ id, label, date, timeFrom, timeTo }) => {
+    const LabeledDateTimeFromToFieldStyled = useStyle('LabeledDateTimeFromToFieldStyle', 'div')
     return (
         <LabeledDateTimeFromToFieldStyled>
             <LabeledInputTemplate>

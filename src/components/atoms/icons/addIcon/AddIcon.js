@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const AddIconStyled = styled(AddIcon, {
-    name: 'AddIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSAddIcon = props => {
+    const AddIconStyled = useStyle('AddIconStyle', AddIcon)
     return <AddIconStyled {...props} />
 }
 

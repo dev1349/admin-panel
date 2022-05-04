@@ -1,32 +1,33 @@
 import {
     ADD_CATEGORY_ROUTE,
+    ADD_CLIENT,
+    ADD_PRODUCT,
+    ADD_USER,
     ATTRIBUTE_GROUP,
     ATTRIBUTE_LIST,
     CATEGORIES_LIST_ROUTE,
+    CHECKOUTS,
+    CLIENTSID,
+    CONTACTS,
     COUPONS_LIST_ROUTE,
+    DELIVERIES,
     EDIT_GOOD,
+    EXPORT,
     GOOD_ADD_ROUTE,
     GOODS,
     GOODS_FILTER_ROUTE,
     GOODS_LIST_ROUTE,
+    LAST_ORDERS,
     LOGIN_ROUTE,
     MADE_COMPONENT_LIST,
     MAIN_ROUTE,
+    MENU_AND_PAGES,
     MY_GOODS_LIST_ROUTE,
+    NEW_ORDER,
     ORDER_INFO,
     ORDERS,
-    ADD_PRODUCT,
+    UPLOAD_THEME,
     USERS,
-    ADD_USER,
-    NEW_ORDER,
-    ADD_CLIENT,
-    EXPORT,
-    MENU_AND_PAGES,
-    CLIENTSID,
-    CONTACTS,
-    DELIVERIES,
-    LAST_ORDERS,
-    CHECKOUTS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -36,7 +37,6 @@ import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterCon
 import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsList from '../components/pages/myGoodsList/MyGoodsList'
-import { GoodPageA } from '../components/pages/goodPageA/GoodPageA'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
 import AddProduct from '../components/organisms/forms/addProduct/AddProduct'
@@ -54,8 +54,10 @@ import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
 import LastOrders from '../components/organisms/tables/lastOrdersTable/LastOrders'
+import TestAtom from '../components/atoms/testAtom/TestAtom'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
+import UploadTheme from '../components/pages/refreshStyle/UploadTheme'
 
 export const authRoutes = [
     {
@@ -175,7 +177,11 @@ export const publicRoutes = [
         Component: LoginContainer,
     },
     {
-        path: '/goodA',
-        Component: GoodPageA,
+        path: '/testAtom',
+        Component: TestAtom,
+    },
+    {
+        path: UPLOAD_THEME,
+        Component: UploadTheme,
     },
 ]

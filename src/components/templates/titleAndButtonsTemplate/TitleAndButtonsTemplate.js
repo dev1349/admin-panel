@@ -1,13 +1,8 @@
 import React from 'react'
-import { styled } from '@mui/material'
-
-const TitleAndButtonsTemplateStyled = styled('div', {
-    name: 'TitleAndButtonsTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
+import { useStyle } from '../../../hooks/useStyle'
 
 const WSTitleAndButtonsTemplate = ({ children }) => {
+    const TitleAndButtonsTemplateStyled = useStyle('TitleAndButtonsTemplateStyle', 'div')
     return (
         <TitleAndButtonsTemplateStyled>
             {children}

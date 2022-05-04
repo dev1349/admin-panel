@@ -1,14 +1,10 @@
 import React from 'react'
-import { Select, styled } from '@mui/material'
+import { Select } from '@mui/material'
+import { useStyle } from '../../../../../hooks/useStyle'
 
-const SelectStyled = styled(Select, {
-    shouldForwardProp: prop => prop !== 'forTable',
-    name: 'SelectStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSSelect = ({ children, ...rest }) => {
+    const SelectStyled = useStyle('SelectStyle', Select, 'forTable')
     return <SelectStyled {...rest}>{children}</SelectStyled>
 }
 

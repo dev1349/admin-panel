@@ -1,5 +1,4 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import H1 from '../../../atoms/textElements/headers/H1/H1'
 import IconButton from '../../buttons/iconButton/IconButton'
 import AddIcon from '../../../atoms/icons/addIcon/AddIcon'
@@ -8,24 +7,20 @@ import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
 import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'
 import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/ButtonsWrapperTemplate'
 import TitleAndButtonsTemplate from '../../../templates/titleAndButtonsTemplate/TitleAndButtonsTemplate'
-
-export const Header1Styled = styled('header', {
-    name: 'Header1Styled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
+import { useStyle } from '../../../../hooks/useStyle'
 
 const WSHeader1 = ({
-    mode,
-    children,
-    toAdd,
-    toReturn,
-    isAllButtonDisabled,
-    toSave,
-    isSaveButtonDisabled,
-    toDelete,
-    isDeleteButtonDisabled,
-}) => {
+                       mode,
+                       children,
+                       toAdd,
+                       toReturn,
+                       isAllButtonDisabled,
+                       toSave,
+                       isSaveButtonDisabled,
+                       toDelete,
+                       isDeleteButtonDisabled,
+                   }) => {
+    const Header1Styled = useStyle('Header1Style', 'header')
     return (
         <Header1Styled>
             <TitleAndButtonsTemplate>
@@ -37,13 +32,13 @@ const WSHeader1 = ({
                                 onClick={toAdd}
                                 disabled={isAllButtonDisabled}
                             >
-                                <AddIcon />
+                                <AddIcon/>
                             </IconButton>
                             <IconButton
                                 onClick={toDelete}
                                 disabled={isDeleteButtonDisabled}
                             >
-                                <DeleteIcon />
+                                <DeleteIcon/>
                             </IconButton>
                         </>
                     )}
@@ -53,13 +48,13 @@ const WSHeader1 = ({
                                 disabled={isSaveButtonDisabled}
                                 onClick={toSave}
                             >
-                                <SaveIcon />
+                                <SaveIcon/>
                             </IconButton>
                             <IconButton
                                 onClick={toReturn}
                                 disabled={isAllButtonDisabled}
                             >
-                                <UndoIcon />
+                                <UndoIcon/>
                             </IconButton>
                         </>
                     )}

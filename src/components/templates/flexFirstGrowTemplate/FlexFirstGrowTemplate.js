@@ -1,28 +1,13 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const FlexFirstGrowTemplateStyled = styled('div', {
-    shouldForwardProp: prop =>
-        prop !== 'noPadding' && prop !== 'alignItemsCenter',
-    name: 'FlexFirstGrowTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const FirstElementTemplateStyled = styled('div', {
-    name: 'FirstElementTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const OtherElementTemplateStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'noMargin',
-    name: 'OtherElementTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FlexFirstGrowTemplate = ({ children, noMargin, ...rest }) => {
+    const FlexFirstGrowTemplateStyled = useStyle('FlexFirstGrowTemplateStyle', 'div',
+        ['noPadding', 'alignItemsCenter'])
+    const FirstElementTemplateStyled = useStyle('FirstElementTemplateStyle', 'div')
+    const OtherElementTemplateStyled = useStyle('OtherElementTemplateStyle', 'div', ['noMargin'])
+
     const isManyChildren = Array.isArray(children)
 
     return (

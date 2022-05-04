@@ -1,15 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { ListItemButton } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ListItemButtonStyled = styled(ListItemButton, {
-    shouldForwardProp: prop => prop !== 'sub',
-    name: 'ListItemButtonStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ListItemButtonWS = props => {
+    const ListItemButtonStyled = useStyle('ListItemButtonStyle', ListItemButton, ['sub'])
     return <ListItemButtonStyled {...props} />
 }
 

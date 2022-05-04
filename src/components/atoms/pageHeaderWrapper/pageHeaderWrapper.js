@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
+import { useStyle } from '../../../hooks/useStyle'
 
-const PageHeaderWrapperStyled = styled('div', {
-    name: 'PageHeaderWrapperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const PageHeaderWrapperWS = ({ children, ...rest }) => {
+    const PageHeaderWrapperStyled = useStyle('PageHeaderWrapperStyle', 'div')
     return (
         <PageHeaderWrapperStyled {...rest}>{children}</PageHeaderWrapperStyled>
     )

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const TextAlignRightTemplateStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'topBottomMargin',
-    name: 'TextAlignRightTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const TextAlignRightTemplate = ({ children, ...rest }) => {
+    const TextAlignRightTemplateStyled = useStyle('TextAlignRightTemplateStyle', 'div', ['topBottomMargin'])
+
     return (
         <TextAlignRightTemplateStyled {...rest}>
             {children}

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import SaveIcon from '@mui/icons-material/Save'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const SaveIconStyled = styled(SaveIcon, {
-    name: 'SaveIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSSaveIcon = props => {
+    const SaveIconStyled = useStyle('SaveIconStyle', SaveIcon)
     return <SaveIconStyled {...props} />
 }
 

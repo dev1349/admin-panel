@@ -1,15 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import TableCell from '@mui/material/TableCell'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TableCellStyled = styled(TableCell, {
-    shouldForwardProp: prop => prop !== 'headCell',
-    name: 'TableCellStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTableCell = ({ children, ...rest }) => {
+    const TableCellStyled = useStyle('TableCellStyle', TableCell, 'headCell')
     return <TableCellStyled {...rest}>{children}</TableCellStyled>
 }
 

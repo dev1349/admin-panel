@@ -1,23 +1,19 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const LabeledCheckboxStyled = styled('div', {
-    name: 'LabeledCheckboxFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSLabeledCheckboxField = ({
-    id,
-    label,
-    name,
-    checked,
-    onChange,
-    alignLeft,
-}) => {
+                                    id,
+                                    label,
+                                    name,
+                                    checked,
+                                    onChange,
+                                    alignLeft,
+                                }) => {
+    const LabeledCheckboxStyled = useStyle('LabeledCheckboxStyle', 'div')
     const changeHandler = evt => {
         const sendValue = evt.target.checked === '' ? null : evt.target.checked
         onChange({ [name]: sendValue })

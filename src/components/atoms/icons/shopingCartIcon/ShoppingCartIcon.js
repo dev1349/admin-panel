@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ShoppingCartIconStyled = styled(ShoppingCartIcon, {
-    name: 'ShoppingCartIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ShoppingCartIconWS = props => {
+    const ShoppingCartIconStyled = useStyle('ShoppingCartIconStyle', ShoppingCartIcon)
     return <ShoppingCartIconStyled {...props} />
 }
 

@@ -1,13 +1,8 @@
 import React from 'react'
-import { styled } from '@mui/material'
-
-const FormStyled = styled('form', {
-    name: 'FormStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})``
+import { useStyle } from '../../../hooks/useStyle'
 
 const WSForm = ({ children, ...rest }) => {
+    const FormStyled = useStyle('FormStyle', 'form')
     return (
         <FormStyled onSubmit={evt => evt.preventDefault()} {...rest} noValidate>
             {children}

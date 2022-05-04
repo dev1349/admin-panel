@@ -1,13 +1,8 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import {useStyle} from '../../../hooks/useStyle'
 
-const TitleTextPaddingLeftStyled = styled('div', {
-    name: 'TitleTextPaddingLeftStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const WSTitleTextPaddingLeftTemplate = ({ children }) => {
+const WSTitleTextPaddingLeftTemplate = ({children}) => {
+    const TitleTextPaddingLeftStyled = useStyle('TitleTextPaddingLeftStyle', 'div')
     return <TitleTextPaddingLeftStyled>{children}</TitleTextPaddingLeftStyled>
 }
 

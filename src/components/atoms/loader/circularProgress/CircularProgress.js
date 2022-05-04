@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { CircularProgress } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const CircularProgressStyled = styled(CircularProgress, {
-    name: 'CircularProgressStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSCircularProgress = props => {
+    const CircularProgressStyled = useStyle('CircularProgressStyle', CircularProgress)
     return <CircularProgressStyled {...props} />
 }
 

@@ -1,14 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const ImageBorderStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'noSizes' && prop !== 'noBorder',
-    name: 'ImageBorderStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})``
 
 const ImageBorder = ({ children, ...rest }) => {
+    const ImageBorderStyled = useStyle('ImageBorderStyle', 'div', 'noSizes', 'noBorder')
     return <ImageBorderStyled {...rest}>{children}</ImageBorderStyled>
 }
 

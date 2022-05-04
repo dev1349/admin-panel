@@ -1,19 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const PaddingBetweenButtonsTemplateStyled = styled('ul', {
-    name: 'PaddingBetweenButtonsTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const ButtonWrapperStyled = styled('li', {
-    name: 'ButtonWrapperStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const PaddingBetweenButtonsTemplate = ({ children }) => {
+    const PaddingBetweenButtonsTemplateStyled = useStyle('PaddingBetweenButtonsTemplateStyle', 'ul')
+    const ButtonWrapperStyled = useStyle('ButtonWrapperStyle', 'li')
     return (
         <PaddingBetweenButtonsTemplateStyled>
             {children.map((child, index) => (

@@ -1,15 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import TableRow from '@mui/material/TableRow'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TableRowStyled = styled(TableRow, {
-    shouldForwardProp: prop => prop !== 'default' && prop !== 'defaultHeading',
-    name: 'TableRowStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSTableRow = ({ children, ...rest }) => {
+    const TableRowStyled = useStyle('TableRowStyle', TableRow,
+        'default', 'defaultHeading')
     return <TableRowStyled {...rest}>{children}</TableRowStyled>
 }
 

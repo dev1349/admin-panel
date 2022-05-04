@@ -1,15 +1,12 @@
 import React from 'react'
-import { styled, TableHead } from '@mui/material'
+import { TableHead, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
-import { TableRowStyled } from '../tableRow/TableRow'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const SimpleTableHeadStyled = styled(TableHead, {
-    name: 'SimpleTableHeadStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SimpleTableHeadWS = ({ headerCells }) => {
+    const SimpleTableHeadStyled = useStyle('SimpleTableHeadStyle', TableHead)
+    const TableRowStyled = useStyle('TableRowStyle', TableRow)
     return (
         <SimpleTableHeadStyled>
             <TableRowStyled>

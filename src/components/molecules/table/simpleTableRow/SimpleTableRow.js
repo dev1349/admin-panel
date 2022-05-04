@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled, TableRow } from '@mui/material'
+import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import IconButton from '../../buttons/iconButton/IconButton'
 import DeleteIcon from '../../../atoms/icons/deleteIcon/DeleteIcon'
@@ -7,12 +7,8 @@ import HideImageIcon from '../../../atoms/icons/hideImageIcon/HideImageIcon'
 import Img from '../../../atoms/img/Img'
 import FloatField from '../../inputs/floatField/FloatField'
 import NumberField from '../../inputs/numberField/NumberField'
+import { useStyle } from '../../../../hooks/useStyle'
 
-export const SimpleTableRowStyled = styled(TableRow, {
-    name: 'TableRowStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const SimpleTableRow = ({
     rowFields,
@@ -21,6 +17,7 @@ const SimpleTableRow = ({
     changePrice,
     changeCount,
 }) => {
+    const SimpleTableRowStyled = useStyle('SimpleTableRowStyle', TableRow)
     const handleBlur = () => {
         if (!rowFields.count) {
             deleteRow(rowFields.id)()

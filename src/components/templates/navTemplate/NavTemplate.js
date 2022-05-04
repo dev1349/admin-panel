@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const NavTemplateStyled = styled('div', {
-    name: 'NavTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const NavTemplateWSM = ({ children }) => {
+    const NavTemplateStyled = useStyle('NavTemplateStyle', 'div')
     return <NavTemplateStyled>{children}</NavTemplateStyled>
 }
 

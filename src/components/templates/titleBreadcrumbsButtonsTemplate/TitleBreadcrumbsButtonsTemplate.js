@@ -1,19 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const TitleBreadcrumbsButtonsTemplateStyled = styled('div', {
-    name: 'TitleBreadcrumbsButtonsTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const LastChildToRightTemplateStyled = styled('div', {
-    name: 'LastChildToRightTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const TitleBreadcrumbsButtonsTemplate = ({ children }) => {
+    const TitleBreadcrumbsButtonsTemplateStyled = useStyle('TitleBreadcrumbsButtonsTemplateStyle', 'div')
+    const LastChildToRightTemplateStyled = useStyle('LastChildToRightTemplateStyle', 'div')
     return (
         <TitleBreadcrumbsButtonsTemplateStyled>
             {children.slice(0, -1)}

@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import StorageIcon from '@mui/icons-material/Storage'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const CatalogIconStyled = styled(StorageIcon, {
-    name: 'CatalogIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const CatalogIconWS = props => {
+    const CatalogIconStyled = useStyle('CatalogIconStyle', StorageIcon)
     return <CatalogIconStyled {...props} />
 }
 

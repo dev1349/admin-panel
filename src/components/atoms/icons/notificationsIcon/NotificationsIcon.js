@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import NotificationsIcon from '@mui/icons-material/Notifications'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const NotificationsIconStyled = styled(NotificationsIcon, {
-    name: 'NotificationsIconStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const NotificationsIconWS = props => {
+    const NotificationsIconStyled = useStyle('NotificationsIconStyle', NotificationsIcon)
     return <NotificationsIconStyled {...props} />
 }
 

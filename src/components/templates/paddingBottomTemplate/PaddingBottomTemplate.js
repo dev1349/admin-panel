@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const PaddingBottomTemplateStyled = styled('div', {
-    name: 'PaddingBottomTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSPaddingBottomTemplate = ({ children }) => {
+    const PaddingBottomTemplateStyled = useStyle('PaddingBottomTemplateStyle', 'div')
     return <PaddingBottomTemplateStyled>{children}</PaddingBottomTemplateStyled>
 }
 

@@ -1,19 +1,11 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const ButtonsRightTemplateStyled = styled('div', {
-    name: 'ButtonsRightTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
-
-const ButtonTemplateStyled = styled('span', {
-    name: 'ButtonTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const FlexFirstGrowTemplate = ({ children, ...rest }) => {
+    const ButtonsRightTemplateStyled = useStyle('ButtonsRightTemplateStyle', 'div')
+    const ButtonTemplateStyled = useStyle('ButtonTemplateStyle', 'span')
+
     const isManyChildren = Array.isArray(children)
 
     return (

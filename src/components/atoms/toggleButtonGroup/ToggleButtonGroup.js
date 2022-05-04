@@ -1,14 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { ToggleButtonGroup } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-export const ToggleButtonGroupStyled = styled(ToggleButtonGroup, {
-    name: 'ToggleButtonStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const ToggleButtonGroupWS = ({ children, ...rest }) => {
+    const ToggleButtonGroupStyled = useStyle('ToggleButtonGroupStyle', ToggleButtonGroup)
     return (
         <ToggleButtonGroupStyled {...rest}>{children}</ToggleButtonGroupStyled>
     )

@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const FixedWidthContainerTemplateStyled = styled('div', {
-    name: 'FixedWidthContainerTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSFixedWidthContainerTemplate = ({ children }) => {
+    const FixedWidthContainerTemplateStyled = useStyle('FixedWidthContainerTemplateStyle', 'div')
     return (
         <FixedWidthContainerTemplateStyled>
             {children}

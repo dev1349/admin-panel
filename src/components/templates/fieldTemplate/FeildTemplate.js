@@ -1,13 +1,9 @@
 import React from 'react'
-import { styled } from '@mui/material'
+import { useStyle } from '../../../hooks/useStyle'
 
-const FieldTemplateStyled = styled('div', {
-    name: 'FieldTemplateStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const WSFieldTemplate = ({ children }) => {
+    const FieldTemplateStyled = useStyle('FieldTemplateStyle', 'div')
     return <FieldTemplateStyled>{children}</FieldTemplateStyled>
 }
 

@@ -1,19 +1,14 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { TextField } from '@mui/material'
-
-export const TextFieldStyled = styled(TextField, {
-    shouldForwardProp: prop =>
-        prop !== 'forTable' &&
-        prop !== 'forFilter' &&
-        prop !== 'dateForFilter' &&
-        prop !== 'clientSearch',
-    name: 'TextFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
+import { useStyle } from '../../../../hooks/useStyle'
 
 const TextFieldWS = props => {
+    const TextFieldStyled = useStyle('TextFieldStyle', TextField, [
+        'forTable',
+        'forFilter',
+        'dateForFilter',
+        'clientSearch'
+    ])
     return <TextFieldStyled {...props} />
 }
 
