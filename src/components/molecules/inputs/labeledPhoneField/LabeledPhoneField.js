@@ -1,29 +1,30 @@
 import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
-import { LabeledTextFieldStyled } from '../labeledTextField/LabeledTextField'
 import PhoneField from '../phoneField/PhoneField'
+import { useStyle } from '../../../../hooks/useStyle'
 
 const LabeledPhoneField = ({
-    id,
-    label,
-    name,
-    value,
-    onChange,
-    autoFocus,
-    pattern,
-    alignLeft,
-    alignLeftFixedWidth,
-    fixedWidth,
-    shouldValidate,
-    required,
-    validationRules,
-    validatingNow,
-    setValidationResult,
-    haveHelperText,
-    clearTouch,
-    ...rest
-}) => {
+                               id,
+                               label,
+                               name,
+                               value,
+                               onChange,
+                               autoFocus,
+                               pattern,
+                               alignLeft,
+                               alignLeftFixedWidth,
+                               fixedWidth,
+                               shouldValidate,
+                               required,
+                               validationRules,
+                               validatingNow,
+                               setValidationResult,
+                               haveHelperText,
+                               clearTouch,
+                               ...rest
+                           }) => {
+    const LabeledTextFieldStyled = useStyle('LabeledTextFieldStyle', 'div', ['fixedWidth'])
     return (
         <LabeledTextFieldStyled fixedWidth={fixedWidth}>
             <LabeledInputTemplate

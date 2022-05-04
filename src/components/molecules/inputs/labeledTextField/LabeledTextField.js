@@ -1,36 +1,29 @@
 import React from 'react'
-import { styled } from '@mui/material'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import TextField from '../textField/TextField'
-
-//todo export
-export const LabeledTextFieldStyled = styled('div', {
-    shouldForwardProp: prop => prop !== 'fixedWidth',
-    name: 'LabeledTextFieldStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
+import { useStyle } from '../../../../hooks/useStyle'
 
 const LabeledTextField = ({
-    id,
-    label,
-    name,
-    value,
-    onChange,
-    autoFocus,
-    pattern,
-    alignLeft,
-    alignLeftFixedWidth,
-    fixedWidth,
-    shouldValidate,
-    required,
-    validationRules,
-    validatingNow,
-    setValidationResult,
-    haveHelperText,
-    ...rest
-}) => {
+                              id,
+                              label,
+                              name,
+                              value,
+                              onChange,
+                              autoFocus,
+                              pattern,
+                              alignLeft,
+                              alignLeftFixedWidth,
+                              fixedWidth,
+                              shouldValidate,
+                              required,
+                              validationRules,
+                              validatingNow,
+                              setValidationResult,
+                              haveHelperText,
+                              ...rest
+                          }) => {
+    const LabeledTextFieldStyled = useStyle('LabeledTextFieldStyle', 'div', ['fixedWidth'])
     return (
         <LabeledTextFieldStyled fixedWidth={fixedWidth}>
             <LabeledInputTemplate

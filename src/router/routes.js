@@ -17,6 +17,7 @@ import {
     GOODS,
     GOODS_FILTER_ROUTE,
     GOODS_LIST_ROUTE,
+    LAST_ORDERS,
     LOGIN_ROUTE,
     MADE_COMPONENT_LIST,
     MAIN_ROUTE,
@@ -27,16 +28,6 @@ import {
     ORDERS,
     UPLOAD_THEME,
     USERS,
-    ADD_USER,
-    NEW_ORDER,
-    ADD_CLIENT,
-    EXPORT,
-    MENU_AND_PAGES,
-    CLIENTSID,
-    CONTACTS,
-    DELIVERIES,
-    LAST_ORDERS,
-    CHECKOUTS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'

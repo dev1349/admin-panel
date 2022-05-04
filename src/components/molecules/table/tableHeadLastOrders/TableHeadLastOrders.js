@@ -1,15 +1,13 @@
 import React from 'react'
-import { styled, TableHead } from '@mui/material'
+import { TableHead, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
-import { TableRowStyled } from '../tableRow/TableRow'
+import { useStyle } from '../../../../hooks/useStyle'
 
-const TableHeadLastOrdersStyled = styled(TableHead, {
-    name: 'TableHeadLastOrdersStyled',
-    slot: 'Root',
-    overridesResolver: (props, styles) => [styles.root],
-})(() => ({}))
 
 const TableHeadLastOrders = () => {
+    // todo Не подключать стили из внешних компонентов
+    const TableRowStyled = useStyle('TableRowStyle', TableRow)
+    const TableHeadLastOrdersStyled = useStyle('TableHeadLastOrdersStyle', TableHead)
     return (
         <TableHeadLastOrdersStyled>
             <TableRowStyled>

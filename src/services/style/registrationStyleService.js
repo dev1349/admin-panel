@@ -105,6 +105,7 @@ import ToggleButtonTextStyle from '../../components/atoms/toggleButtonWithText/T
 import TypographyStyle from '../../components/atoms/textElements/typography/TypographyStyle'
 import VerticalModalTemplateStyle from '../../components/templates/verticalModalTemplate/VerticalModalTemplateStyle'
 import ZIndexedModalStyle from '../../components/molecules/modals/simpleModal/ZIndexedModalStyle'
+import LastOrdersStyle from '../../components/organisms/tables/lastOrdersTable/LastOrdersStyle'
 
 
 export const styledComponents = {
@@ -199,4 +200,5 @@ export const styledComponents = {
     TypographyStyle,
     VerticalModalTemplateStyle,
     ZIndexedModalStyle,
+    LastOrdersStyle
 }
