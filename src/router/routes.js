@@ -27,6 +27,16 @@ import {
     ORDERS,
     UPLOAD_THEME,
     USERS,
+    ADD_USER,
+    NEW_ORDER,
+    ADD_CLIENT,
+    EXPORT,
+    MENU_AND_PAGES,
+    CLIENTSID,
+    CONTACTS,
+    DELIVERIES,
+    LAST_ORDERS,
+    CHECKOUTS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -52,6 +62,7 @@ import Export from '../components/pages/export/Export'
 import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
+import LastOrders from '../components/organisms/tables/lastOrdersTable/LastOrders'
 import TestAtom from '../components/atoms/testAtom/TestAtom'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
@@ -158,6 +169,10 @@ export const authRoutes = [
     {
         path: DELIVERIES,
         Component: Delivery,
+    },
+    {
+        path: LAST_ORDERS,
+        Component: LastOrders,
     },
     {
         path: CHECKOUTS,

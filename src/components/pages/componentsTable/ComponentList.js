@@ -156,6 +156,12 @@ const componentList = [
         routeLink: '/delivery',
     },
     {
+        componentName: 'Страница "Последние заказы"',
+        task: 'WSADMIN-63',
+        routeText: '/lastorders',
+        routeLink: '/lastorders',
+    },
+    {
         componentName: 'Страница "Оплаты"',
         task: 'WSADMIN-106',
         routeText: '/checkout',
