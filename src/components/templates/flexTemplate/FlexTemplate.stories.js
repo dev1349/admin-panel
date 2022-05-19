@@ -36,3 +36,63 @@ Example2.args = {
     ],
     alignItemsCenter: true,
 }
+
+export const Example3 = Template.bind({})
+Example3.args = {
+    children: [
+        <div
+            key={0}
+            style={{ height: '20px', width: '30px', backgroundColor: 'blue' }}
+        />,
+        <div
+            key={1}
+            style={{ height: '40px', width: '60px', backgroundColor: 'red' }}
+        />,
+    ],
+    justifyContentCenter: true,
+}
+
+export const Example4 = Template.bind({})
+Example4.args = {
+    children: [
+        <div
+            key={0}
+            style={{ height: '20px', width: '30px', backgroundColor: 'blue' }}
+        />,
+        <div
+            key={1}
+            style={{ height: '40px', width: '60px', backgroundColor: 'red' }}
+        />,
+    ],
+    spaceBetween: true,
+}
+
+export const Example5 = Template.bind({})
+Example5.args = {
+    children: [
+        <div
+            key={0}
+            style={{ height: '20px', width: '30px', backgroundColor: 'blue' }}
+        />,
+        <div
+            key={1}
+            style={{ height: '40px', width: '60px', backgroundColor: 'red' }}
+        />,
+    ],
+    gap10: true,
+}
+
+export const Example6 = Template.bind({})
+Example6.args = {
+    children: [
+        <div
+            key={0}
+            style={{ height: '20px', width: '30px', backgroundColor: 'blue' }}
+        />,
+        <div
+            key={1}
+            style={{ height: '40px', width: '60px', backgroundColor: 'red' }}
+        />,
+    ],
+    gap7: true,
+}

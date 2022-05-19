@@ -3,7 +3,7 @@ import List from './List'
 import { ListItem, ListSubheader } from '@mui/material'
 
 export default {
-    title: 'atoms/list/list/List',
+    title: 'atoms/list/List',
     component: List,
 }
 

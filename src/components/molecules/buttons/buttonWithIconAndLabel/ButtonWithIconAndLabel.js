@@ -1,14 +1,17 @@
 import React from 'react'
 import Button from '@mui/material/Button'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ButtonWithIconAndLabelStyled = createStyled(
+    'ButtonWidthIconAndLabelStyle',
+    Button
+)
 
 const ButtonWidthIconAndLabel = ({ label, icon, ...rest }) => {
-    const ButtonWidthIconAndLabelStyled = useStyle('ButtonWidthIconAndLabelStyle', Button)
     return (
-        <ButtonWidthIconAndLabelStyled startIcon={icon} {...rest}>
+        <ButtonWithIconAndLabelStyled startIcon={icon} {...rest}>
             {label}
-        </ButtonWidthIconAndLabelStyled>
+        </ButtonWithIconAndLabelStyled>
     )
 }
 

@@ -1,11 +1,10 @@
 import React from 'react'
 import { Popover } from '@mui/material'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const PopoverStyled = createStyled('PopoverStyle', Popover)
 
 const PopoverWS = ({ children, ...rest }) => {
-    const PopoverStyled = useStyle('PopoverStyle', Popover)
-
     return <PopoverStyled {...rest}>{children}</PopoverStyled>
 }
 

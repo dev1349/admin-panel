@@ -3,33 +3,32 @@ import { Autocomplete } from '@mui/material'
 import TextField from '../../../atoms/inputs/textField/TextField'
 import AutocompleteItem from '../../../atoms/inputs/autocompleteItem/AutocompleteItem'
 import useValidation from '../../../hooks/useValidation'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const AutocompleteStyled = createStyled('AutocompleteStyle', Autocomplete)
 
 const AutocompleteWS = ({
-                            textFieldId,
-                            name,
-                            value,
-                            changeValue,
-                            options,
-                            getOptionLabel,
-                            canAddValue,
-                            autoFocus,
-                            shouldValidate,
-                            required,
-                            validationRules,
-                            validatingNow,
-                            setValidationResult,
-                            haveHelperText,
-                            filterOptions,
-                            selectOnFocus,
-                            clearOnBlur,
-                            handleHomeEndKeys,
-                            isOptionEqualToValue,
-                            ...rest
-                        }) => {
-    const AutocompleteStyled = useStyle('AutocompleteStyle', Autocomplete)
-
+    textFieldId,
+    name,
+    value,
+    changeValue,
+    options,
+    getOptionLabel,
+    canAddValue,
+    autoFocus,
+    shouldValidate,
+    required,
+    validationRules,
+    validatingNow,
+    setValidationResult,
+    haveHelperText,
+    filterOptions,
+    selectOnFocus,
+    clearOnBlur,
+    handleHomeEndKeys,
+    isOptionEqualToValue,
+    ...rest
+}) => {
     const { handleBlur, errorMessage } = useValidation(
         name,
         value,

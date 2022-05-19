@@ -1,9 +1,12 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const FlexStartWithPaddingTemplateStyled = createStyled(
+    'FlexStartWithPaddingTemplateStyle',
+    'div'
+)
 
 const WSFlexStartWithPaddingTemplate = ({ children }) => {
-    const FlexStartWithPaddingTemplateStyled = useStyle('FlexStartWithPaddingTemplateStyle', 'div')
     return (
         <FlexStartWithPaddingTemplateStyled>
             {children}

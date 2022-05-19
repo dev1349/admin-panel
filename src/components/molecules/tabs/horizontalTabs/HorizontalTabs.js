@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Box } from '@mui/material'
 import HorizontalTabTitles from '../horizontalTabTitles/HorizontalTabTitles'
 import TabPanel from '../../../atoms/tabs/tabPanel/TabPanel'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const HorizontalTabsBoxStyled = createStyled('HorizontalTabsBoxStyle', Box)
 
 const WSTabsHorizontal = ({ titles, children, ...rest }) => {
-    const HorizontalTabsBoxStyled = useStyle('HorizontalTabsBoxStyle', Box)
     const [value, setValue] = useState(0)
     const handleChange = (event, newValue) => {
         setValue(newValue)

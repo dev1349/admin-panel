@@ -1,10 +1,10 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../../hooks/useStyle'
+import { createStyled } from '../../../../../services/style/createStyled'
 
+const H3Styled = createStyled('H3Style', Typography)
 
 const H3 = ({ children, ...rest }) => {
-    const H3Styled = useStyle('H3Style', Typography)
     return <H3Styled {...rest}>{children}</H3Styled>
 }
 

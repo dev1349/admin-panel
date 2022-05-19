@@ -7,17 +7,12 @@ export default {
     },
     variants: [
         {
-            props: { withoutExpandIcon: true },
+            props: { dialogItem: true },
             style: {
-                paddingLeft: '25px',
-            },
-        },
-        {
-            props: { activeItem: true },
-            style: {
-                '& .MuiTypography-root': {
-                    fontWeight: 'bold',
-                },
+                paddingTop: '5px',
+                paddingBottom: '5px',
+                fontSize: '16px',
+                color: '#525050',
             },
         },
     ],

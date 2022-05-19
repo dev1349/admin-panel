@@ -1,10 +1,10 @@
 import React from 'react'
 import { TableRow } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const AtomTableRowStyled = createStyled('AtomTableRowStyle', TableRow)
 
 const AtomTableRow = ({ children, ...rest }) => {
-    const AtomTableRowStyled = useStyle('AtomTableRowStyle', TableRow)
     return <AtomTableRowStyled {...rest}>{children}</AtomTableRowStyled>
 }
 

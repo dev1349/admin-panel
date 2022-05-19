@@ -3,9 +3,10 @@ export default {
         root: {
             display: 'block',
             width: '100%',
+            marginTop: '5px',
             '@media (min-width: 600px)': {
-                marginLeft: '10px',
-                width: '75%',
+                width: '65%',
+                marginTop: 0,
             },
         },
     },

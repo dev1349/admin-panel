@@ -1,10 +1,13 @@
 import React from 'react'
 import IconButton from '@mui/material/IconButton'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const IconButtonStyled = createStyled('IconButtonStyle', IconButton, [
+    'menuButton',
+    'dialogButton',
+])
 
 const WSIconButton = ({ children, ...rest }) => {
-    const IconButtonStyled = useStyle('IconButtonStyle', IconButton, 'menuButton')
     return <IconButtonStyled {...rest}>{children}</IconButtonStyled>
 }
 

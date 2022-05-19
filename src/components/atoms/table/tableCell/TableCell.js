@@ -1,10 +1,15 @@
 import React from 'react'
 import TableCell from '@mui/material/TableCell'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TableCellStyled = createStyled('TableCellStyle', TableCell, [
+    'headCell',
+    'dialogCell',
+    'dialogHeadCell',
+    'dialogButtonCell',
+])
 
 const WSTableCell = ({ children, ...rest }) => {
-    const TableCellStyled = useStyle('TableCellStyle', TableCell, 'headCell')
     return <TableCellStyled {...rest}>{children}</TableCellStyled>
 }
 

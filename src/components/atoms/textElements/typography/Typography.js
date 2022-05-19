@@ -1,10 +1,14 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TypographyStyled = createStyled('TypographyStyle', Typography, [
+    'smallFontSize',
+    'mainAdminText',
+    'textAlignCenter',
+])
 
 const TypographyWS = ({ children, ...rest }) => {
-    const TypographyStyled = useStyle('TypographyStyle', Typography, 'smallFontSize')
     return <TypographyStyled {...rest}>{children}</TypographyStyled>
 }
 

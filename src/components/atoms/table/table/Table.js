@@ -1,10 +1,10 @@
 import React from 'react'
 import { Table } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TableStyled = createStyled('TableStyle', Table, 'dialogTable')
 
 const TableWS = ({ children, ...rest }) => {
-    const TableStyled = useStyle('TableStyle', Table)
     return <TableStyled {...rest}>{children}</TableStyled>
 }
 

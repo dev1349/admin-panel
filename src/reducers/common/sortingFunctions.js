@@ -1,8 +1,17 @@
+export const getFieldValueByPath = (pathToField, obj = null) => {
+    const properties = Array.isArray(pathToField)
+        ? pathToField
+        : pathToField.split('.')
+    return properties.reduce((prev, curr) => prev && prev[curr], obj)
+}
+
 export const descendingComparator = (a, b, orderBy) => {
-    if (b[orderBy] < a[orderBy]) {
+    const aValue = getFieldValueByPath(orderBy, a) || ''
+    const bValue = getFieldValueByPath(orderBy, b) || ''
+    if (bValue < aValue) {
         return -1
     }
-    if (b[orderBy] > a[orderBy]) {
+    if (bValue > aValue) {
         return 1
     }
     return 0

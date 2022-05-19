@@ -1,10 +1,10 @@
 import React from 'react'
 import HelpCenterIcon from '@mui/icons-material/HelpCenter'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const HelpIconStyled = createStyled('HelpIconStyle', HelpCenterIcon)
 
 const HelpIconWS = props => {
-    const HelpIconStyled = useStyle('HelpIconStyle', HelpCenterIcon)
     return <HelpIconStyled {...props} />
 }
 

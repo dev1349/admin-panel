@@ -9,4 +9,6 @@ export default {
 const Template = args => <CircularProgress {...args} />
 
 export const Example1 = Template.bind({})
-Example1.args = {}
+Example1.args = {
+    dialogProgress: true,
+}

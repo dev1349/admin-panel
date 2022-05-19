@@ -1,10 +1,10 @@
 import React from 'react'
 import { Select } from '@mui/material'
-import { useStyle } from '../../../../../hooks/useStyle'
+import { createStyled } from '../../../../../services/style/createStyled'
 
+const SelectStyled = createStyled('SelectStyle', Select, 'forTable')
 
 const WSSelect = ({ children, ...rest }) => {
-    const SelectStyled = useStyle('SelectStyle', Select, 'forTable')
     return <SelectStyled {...rest}>{children}</SelectStyled>
 }
 

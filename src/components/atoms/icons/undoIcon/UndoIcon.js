@@ -1,10 +1,10 @@
 import React from 'react'
 import UndoIcon from '@mui/icons-material/Undo'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const UndoIconStyled = createStyled('UndoIconStyle', UndoIcon)
 
 const WSUndoIcon = props => {
-    const UndoIconStyled = useStyle('UndoIconStyle', UndoIcon)
     return <UndoIconStyled {...props} />
 }
 

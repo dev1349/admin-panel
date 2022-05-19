@@ -1,11 +1,11 @@
 import React from 'react'
 import H2 from '../../../atoms/textElements/headers/H2/H2'
 import IconTitleTemplate from '../../../templates/iconTitleTemplate/IconTitleTemplate'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const Header2Styled = createStyled('Header2Style', 'header')
 
 const Header2 = ({ icon = null, children }) => {
-    const Header2Styled = useStyle('Header2Style', 'header')
     return (
         <Header2Styled>
             <IconTitleTemplate>

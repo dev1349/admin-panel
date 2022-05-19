@@ -1,10 +1,13 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const StatisticsSubHeaderStyled = createStyled(
+    'StatisticsSubHeaderStyle',
+    Typography
+)
 
 const StatisticsSubHeader = ({ children, ...rest }) => {
-    const StatisticsSubHeaderStyled = useStyle('StatisticsSubHeaderStyle', Typography)
     return (
         <StatisticsSubHeaderStyled {...rest}>
             {children}

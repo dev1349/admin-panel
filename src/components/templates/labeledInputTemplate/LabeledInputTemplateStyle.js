@@ -1,12 +1,14 @@
 export default {
     styleOverrides: {
         root: {
-            padding: '5px 0',
             border: 'none',
             display: 'block',
+            lineHeight: 1,
+            gap: '10px',
+            marginTop: '10px',
             '@media (min-width: 600px)': {
                 display: 'flex',
-                alignItems: 'center',
+                marginTop: '7px',
             },
         },
     },
@@ -19,6 +21,12 @@ export default {
                     width: '18%',
                     marginRight: '20px',
                 },
+            },
+        },
+        {
+            props: { alignItemsCenter: true },
+            style: {
+                alignItems: 'center',
             },
         },
     ],

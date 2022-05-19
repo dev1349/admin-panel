@@ -1,9 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const MaxWidthTemplateStyled = createStyled('MaxWidthTemplateStyle', 'div')
 
 const WSMaxWidthContainer = ({ children }) => {
-    const MaxWidthTemplateStyled = useStyle('MaxWidthTemplateStyle', 'div')
     return <MaxWidthTemplateStyled>{children}</MaxWidthTemplateStyled>
 }
 

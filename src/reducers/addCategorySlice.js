@@ -1,6 +1,5 @@
 import initialState from '../mock/addCategoryInitialState'
 import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { postCategoryFetch } from '../api/addCategoryApi'
 
 const todosSlice = createSlice({
     name: 'addCategory',
@@ -40,9 +39,9 @@ export const isSaveButtonDisabled = createSelector(
     }
 )
 
-export const postCategory = () => (dispatch, getState) => {
+export const postCategory = () => dispatch => {
     dispatch(changeFetchStatus('pending'))
-    postCategoryFetch(getState().addCategory.categoryFields)
+        // postCategoryFetch(getState().addCategory.categoryFields)
         .then(() => {
             dispatch(changeFetchStatus('success'))
         })

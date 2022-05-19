@@ -1,10 +1,10 @@
 import React from 'react'
 import HideImageIcon from '@mui/icons-material/HideImage'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const HideImageIconStyled = createStyled('HideImageIconStyle', HideImageIcon)
 
 const WSHideImageIcon = props => {
-    const HideImageIconStyled = useStyle('HideImageIconStyle', HideImageIcon)
     return <HideImageIconStyled {...props} />
 }
 

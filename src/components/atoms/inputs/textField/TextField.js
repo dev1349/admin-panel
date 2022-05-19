@@ -1,14 +1,15 @@
 import React from 'react'
 import { TextField } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const TextFieldStyled = createStyled('TextFieldStyle', TextField, [
+    'forTable',
+    'forFilter',
+    'dateForFilter',
+    'clientSearch',
+])
 
 const TextFieldWS = props => {
-    const TextFieldStyled = useStyle('TextFieldStyle', TextField, [
-        'forTable',
-        'forFilter',
-        'dateForFilter',
-        'clientSearch'
-    ])
     return <TextFieldStyled {...props} />
 }
 

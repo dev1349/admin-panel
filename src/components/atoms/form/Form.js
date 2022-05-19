@@ -1,8 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
+
+const FormStyled = createStyled('FormStyle', 'form')
 
 const WSForm = ({ children, ...rest }) => {
-    const FormStyled = useStyle('FormStyle', 'form')
     return (
         <FormStyled onSubmit={evt => evt.preventDefault()} {...rest} noValidate>
             {children}

@@ -1,11 +1,14 @@
 import React from 'react'
 import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TableRowLastOrdersStyled = createStyled(
+    'TableRowLastOrdersStyle',
+    TableRow
+)
 
 const WSTableRow = ({ userOrder }) => {
-    const TableRowLastOrdersStyled = useStyle('TableRowLastOrdersStyle', TableRow)
     return (
         <TableRowLastOrdersStyled>
             {Object.keys(userOrder).map(keyName => {

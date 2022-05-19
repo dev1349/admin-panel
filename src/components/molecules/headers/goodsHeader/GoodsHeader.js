@@ -5,30 +5,30 @@ import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/Bu
 import AddIcon from '../../../atoms/icons/addIcon/AddIcon'
 import DeleteIcon from '../../../atoms/icons/deleteIcon/DeleteIcon'
 import Breadcrumbs from '../../breadcrumbs/Breadcrumbs'
-import TitleBreadcrumbsButtonsTemplate
-    from '../../../templates/titleBreadcrumbsButtonsTemplate/TitleBreadcrumbsButtonsTemplate'
-import { useStyle } from '../../../../hooks/useStyle'
+import TitleBreadcrumbsButtonsTemplate from '../../../templates/titleBreadcrumbsButtonsTemplate/TitleBreadcrumbsButtonsTemplate'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const GoodsHeaderStyled = createStyled('GoodsHeaderStyle', 'header')
 
 const GoodsHeader = ({ title, buttons, breadcrumbs }) => {
-    const Header1Styled = useStyle('Header1Style', 'header')
     return (
-        <Header1Styled>
+        <GoodsHeaderStyled>
             <TitleBreadcrumbsButtonsTemplate>
                 <H1>{title}</H1>
-                <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                <Breadcrumbs breadcrumbs={breadcrumbs} />
                 <ButtonsWrapperTemplate>
                     <IconButton onClick={buttons.add.addGood}>
-                        <AddIcon/>
+                        <AddIcon />
                     </IconButton>
                     <IconButton
                         onClick={buttons.delete.deleteGood}
                         disabled={buttons.delete.isDeleteButtonDisabled}
                     >
-                        <DeleteIcon/>
+                        <DeleteIcon />
                     </IconButton>
                 </ButtonsWrapperTemplate>
             </TitleBreadcrumbsButtonsTemplate>
-        </Header1Styled>
+        </GoodsHeaderStyled>
     )
 }
 

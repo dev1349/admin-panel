@@ -2,11 +2,14 @@ import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import DateTimeFromToField from '../dateTimeFromToField/DateTimeFromToField'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const LabeledDateTimeFromToFieldStyled = createStyled(
+    'LabeledDateTimeFromToFieldStyle',
+    'div'
+)
 
 const LabeledDateTimeFromToField = ({ id, label, date, timeFrom, timeTo }) => {
-    const LabeledDateTimeFromToFieldStyled = useStyle('LabeledDateTimeFromToFieldStyle', 'div')
     return (
         <LabeledDateTimeFromToFieldStyled>
             <LabeledInputTemplate>

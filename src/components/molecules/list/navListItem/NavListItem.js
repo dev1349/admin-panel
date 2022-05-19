@@ -4,13 +4,12 @@ import ListItemIcon from '../../../atoms/list/listItemIcon/ListItemIcon'
 import ListItemText from '../../../atoms/list/listItemText/ListItemText'
 import Link from '../../../atoms/link/Link'
 import { Link as RouterLink } from 'react-router-dom'
-import ExpandLessIcon from '../../../atoms/icons/expandLessIcon/ExpendLessIcon'
+import ExpandLessIcon from '../../../atoms/icons/expandLessIcon/ExpandLessIcon'
 import ExpandMoreIcon from '../../../atoms/icons/expandMoreIcon/ExpandMoreIcon'
 
 const NavListItemWS = ({
     id,
     title,
-    // label,
     link,
     subItems,
     open,

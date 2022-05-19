@@ -1,9 +1,14 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../../hooks/useStyle'
+import { createStyled } from '../../../../../services/style/createStyled'
+
+const H1Styled = createStyled('H1Style', Typography, [
+    'fs',
+    'dialogH1',
+    'textAlignCenter',
+])
 
 const H1 = ({ children, ...rest }) => {
-    const H1Styled = useStyle('H1Style', Typography, 'fs')
     return (
         <H1Styled component={'h1'} {...rest}>
             {children}

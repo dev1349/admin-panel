@@ -1,9 +1,12 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const StatisticsItemTemplateStyled = createStyled(
+    'StatisticsItemTemplateStyle',
+    'div'
+)
 
 const StatisticsItemTemplate = ({ children }) => {
-    const StatisticsItemTemplateStyled = useStyle('StatisticsItemTemplateStyle', 'div')
     return (
         <StatisticsItemTemplateStyled>{children}</StatisticsItemTemplateStyled>
     )

@@ -1,10 +1,16 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const TitleBreadcrumbsButtonsTemplateStyled = createStyled(
+    'TitleBreadcrumbsButtonsTemplateStyle',
+    'div'
+)
+const LastChildToRightTemplateStyled = createStyled(
+    'LastChildToRightTemplateStyle',
+    'div'
+)
 
 const TitleBreadcrumbsButtonsTemplate = ({ children }) => {
-    const TitleBreadcrumbsButtonsTemplateStyled = useStyle('TitleBreadcrumbsButtonsTemplateStyle', 'div')
-    const LastChildToRightTemplateStyled = useStyle('LastChildToRightTemplateStyle', 'div')
     return (
         <TitleBreadcrumbsButtonsTemplateStyled>
             {children.slice(0, -1)}

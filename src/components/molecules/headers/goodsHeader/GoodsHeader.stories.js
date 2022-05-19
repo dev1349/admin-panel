@@ -35,17 +35,3 @@ Example1.args = {
         },
     ],
 }
-
-export const Example2 = Template.bind({})
-Example2.args = {
-    title: 'Товары',
-    buttons: {
-        add: {
-            addGood: () => console.log('Добавление товара...'),
-        },
-        delete: {
-            deleteGood: () => console.log('Удаление товара...'),
-            isDeleteButtonDisabled: false,
-        },
-    },
-}

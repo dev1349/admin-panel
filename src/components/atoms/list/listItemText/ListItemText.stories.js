@@ -2,7 +2,7 @@ import React from 'react'
 import ListItemText from './ListItemText'
 
 export default {
-    title: 'atoms/list/listItemText/ListItemText',
+    title: 'atoms/list/ListItemText',
     component: ListItemText,
 }
 

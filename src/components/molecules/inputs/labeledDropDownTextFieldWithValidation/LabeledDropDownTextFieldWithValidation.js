@@ -2,22 +2,27 @@ import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import DropDownTextFieldWithValidation from '../dropDownTextFieldWithValidation/DropDownTextFieldWithValidation'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const LabeledDropDownTextFieldWithValidationStyled = createStyled(
+    'LabeledDropDownTextFieldWithValidationStyle',
+    'div',
+    ['fixedWidth']
+)
 
 const LabeledDropDownTextFieldWithValidation = ({
-                                                    id,
-                                                    label,
-                                                    name,
-                                                    value,
-                                                    onChange,
-                                                    autoFocus,
-                                                    pattern,
-                                                    helperText,
-                                                    check,
-                                                }) => {
-    const LabeledTextFieldStyled = useStyle('LabeledTextFieldStyle', 'div', ['fixedWidth'])
+    id,
+    label,
+    name,
+    value,
+    onChange,
+    autoFocus,
+    pattern,
+    helperText,
+    check,
+}) => {
     return (
-        <LabeledTextFieldStyled>
+        <LabeledDropDownTextFieldWithValidationStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <DropDownTextFieldWithValidation
@@ -32,7 +37,7 @@ const LabeledDropDownTextFieldWithValidation = ({
                     check={check}
                 />
             </LabeledInputTemplate>
-        </LabeledTextFieldStyled>
+        </LabeledDropDownTextFieldWithValidationStyled>
     )
 }
 

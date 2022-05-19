@@ -1,15 +1,8 @@
 import React from 'react'
-import { useStyle } from '../../../../hooks/useStyle'
-import { TextField } from '@mui/material'
+import TextField from '../textField/TextField'
 
 const PhoneField = props => {
-    const TextFieldStyled = useStyle('TextFieldStyle', TextField, [
-        'forTable',
-        'forFilter',
-        'dateForFilter',
-        'clientSearch'
-    ])
-    return <TextFieldStyled type={'phone'} {...props} />
+    return <TextField type={'phone'} {...props} />
 }
 
 export default PhoneField

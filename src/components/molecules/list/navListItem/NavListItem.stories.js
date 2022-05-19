@@ -4,7 +4,7 @@ import HomeIcon from '../../../atoms/icons/homeIcon/HomeIcon'
 import { BrowserRouter } from 'react-router-dom'
 
 export default {
-    title: 'molecules/list/navListItem/NavListItem',
+    title: 'molecules/list/NavListItem',
     component: NavListItem,
 }
 

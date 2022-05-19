@@ -1,9 +1,12 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const PaddingWidthContainerTemplateStyled = createStyled(
+    'PaddingWidthContainerTemplateStyle',
+    'div'
+)
 
 const WSPaddingWidthContainerTemplate = ({ children }) => {
-    const PaddingWidthContainerTemplateStyled = useStyle('PaddingWidthContainerTemplateStyle', 'div')
     return (
         <PaddingWidthContainerTemplateStyled>
             {children}

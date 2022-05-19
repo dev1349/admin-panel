@@ -1,10 +1,10 @@
 import React from 'react'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SettingsIconStyled = createStyled('SettingsIconStyle', SettingsIcon)
 
 const SettingsIconWS = props => {
-    const SettingsIconStyled = useStyle('SettingsIconStyle', SettingsIcon)
     return <SettingsIconStyled {...props} />
 }
 

@@ -2,31 +2,34 @@ import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import PhoneField from '../phoneField/PhoneField'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const LabeledPhoneFieldStyled = createStyled('LabeledPhoneFieldStyle', 'div', [
+    'fixedWidth',
+])
 
 const LabeledPhoneField = ({
-                               id,
-                               label,
-                               name,
-                               value,
-                               onChange,
-                               autoFocus,
-                               pattern,
-                               alignLeft,
-                               alignLeftFixedWidth,
-                               fixedWidth,
-                               shouldValidate,
-                               required,
-                               validationRules,
-                               validatingNow,
-                               setValidationResult,
-                               haveHelperText,
-                               clearTouch,
-                               ...rest
-                           }) => {
-    const LabeledTextFieldStyled = useStyle('LabeledTextFieldStyle', 'div', ['fixedWidth'])
+    id,
+    label,
+    name,
+    value,
+    onChange,
+    autoFocus,
+    pattern,
+    alignLeft,
+    alignLeftFixedWidth,
+    fixedWidth,
+    shouldValidate,
+    required,
+    validationRules,
+    validatingNow,
+    setValidationResult,
+    haveHelperText,
+    clearTouch,
+    ...rest
+}) => {
     return (
-        <LabeledTextFieldStyled fixedWidth={fixedWidth}>
+        <LabeledPhoneFieldStyled fixedWidth={fixedWidth}>
             <LabeledInputTemplate
                 alignLeft={alignLeft}
                 alignLeftFixedWidth={alignLeftFixedWidth}
@@ -50,7 +53,7 @@ const LabeledPhoneField = ({
                     {...rest}
                 />
             </LabeledInputTemplate>
-        </LabeledTextFieldStyled>
+        </LabeledPhoneFieldStyled>
     )
 }
 

@@ -1,10 +1,13 @@
 import React from 'react'
 import ImportExportIcon from '@mui/icons-material/ImportExport'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ImportExportIconStyled = createStyled(
+    'ImportExportIconStyle',
+    ImportExportIcon
+)
 
 const ImportExportIconWS = props => {
-    const ImportExportIconStyled = useStyle('ImportExportIconStyle', ImportExportIcon)
     return <ImportExportIconStyled {...props} />
 }
 

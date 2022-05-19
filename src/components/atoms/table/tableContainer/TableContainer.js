@@ -1,10 +1,10 @@
 import React from 'react'
 import { TableContainer } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TableContainerStyled = createStyled('TableContainerStyle', TableContainer)
 
 const TableContainerAtom = ({ children, ...rest }) => {
-    const TableContainerStyled = useStyle('TableContainerStyle', TableContainer)
     return <TableContainerStyled {...rest}>{children}</TableContainerStyled>
 }
 

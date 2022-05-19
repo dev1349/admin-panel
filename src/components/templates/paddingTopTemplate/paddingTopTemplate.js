@@ -1,9 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const PaddingTopTemplateStyled = createStyled('PaddingTopTemplateStyle', 'div')
 
 const PaddingTopTemplate = ({ children }) => {
-    const PaddingTopTemplateStyled = useStyle('PaddingTopTemplateStyle', 'div')
     return <PaddingTopTemplateStyled>{children}</PaddingTopTemplateStyled>
 }
 

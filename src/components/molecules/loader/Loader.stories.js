@@ -9,4 +9,6 @@ export default {
 const Template = args => <Loader {...args} />
 
 export const Example1 = Template.bind({})
-Example1.args = {}
+Example1.args = {
+    dialogProgress: true,
+}

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TabTitlesWrapperStyled = createStyled('TabTitlesWrapperStyle', 'div')
 
 const WSTabsTitleWrapper = ({ children }) => {
-    const TabTitlesWrapperStyled = useStyle('TabTitlesWrapperStyle', 'div')
     return <TabTitlesWrapperStyled>{children}</TabTitlesWrapperStyled>
 }
 

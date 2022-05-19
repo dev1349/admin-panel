@@ -1,10 +1,13 @@
 import React from 'react'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const NotificationsIconStyled = createStyled(
+    'NotificationsIconStyle',
+    NotificationsIcon
+)
 
 const NotificationsIconWS = props => {
-    const NotificationsIconStyled = useStyle('NotificationsIconStyle', NotificationsIcon)
     return <NotificationsIconStyled {...props} />
 }
 

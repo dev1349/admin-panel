@@ -3,7 +3,10 @@ import { TableHead, TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import TableSortLabel from '../../../atoms/table/tableSortLabel/TableSortLabel'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const TableRowStyled = createStyled('TableRowStyle', TableRow)
+const TableHeadStyled = createStyled('TableHeadStyle', TableHead)
 
 const WSTableHead = ({
     headerCells,
@@ -14,8 +17,6 @@ const WSTableHead = ({
     selectedRowCount,
     onCheckAll,
 }) => {
-    const TableRowStyled = useStyle('TableRowStyle', TableRow)
-    const TableHeadStyled = useStyle('TableHeadStyle', TableHead)
     return (
         <TableHeadStyled>
             <TableRowStyled>

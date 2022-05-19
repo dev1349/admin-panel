@@ -1,9 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const PageHeaderWrapperStyled = createStyled('PageHeaderWrapperStyle', 'div')
 
 const PageHeaderWrapperWS = ({ children, ...rest }) => {
-    const PageHeaderWrapperStyled = useStyle('PageHeaderWrapperStyle', 'div')
     return (
         <PageHeaderWrapperStyled {...rest}>{children}</PageHeaderWrapperStyled>
     )

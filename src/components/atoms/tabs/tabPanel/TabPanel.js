@@ -1,9 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TabPanelStyled = createStyled('TabPanelStyle', 'div')
 
 const WSTabPanel = ({ children, value, index, ...other }) => {
-    const TabPanelStyled = useStyle('TabPanelStyle', 'div')
     return (
         <TabPanelStyled
             role="tabpanel"

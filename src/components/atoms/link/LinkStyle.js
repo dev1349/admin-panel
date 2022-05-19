@@ -4,6 +4,16 @@ export default {
     },
     variants: [
         {
+            props: { dialogLink: true },
+            style: {
+                textDecoration: 'none',
+                '&:hover': {
+                    textDecoration: 'none',
+                    color: 'inherit',
+                },
+            },
+        },
+        {
             props: { hoverUnderline: true },
             style: {
                 '&:hover': {

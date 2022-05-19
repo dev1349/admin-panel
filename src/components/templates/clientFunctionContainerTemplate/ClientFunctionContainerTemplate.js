@@ -1,9 +1,12 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const ClientFunctionContainerTemplateStyled = createStyled(
+    'ClientFunctionContainerTemplateStyle',
+    'div'
+)
 
 const ClientFunctionContainerTemplate = ({ children }) => {
-    const ClientFunctionContainerTemplateStyled = useStyle('ClientFunctionContainerTemplateStyle', 'div')
     return (
         <ClientFunctionContainerTemplateStyled>
             {children}

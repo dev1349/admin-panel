@@ -2,7 +2,7 @@ import React from 'react'
 import { Tabs } from '@mui/material'
 import Tab from '../../../atoms/tabs/tabTitle/TabTitle'
 import TabTitlesWrapper from '../../../atoms/tabs/tabTitlesWrapper/TabTitlesWrapper'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
 const a11yProps = index => {
     return {
@@ -11,8 +11,9 @@ const a11yProps = index => {
     }
 }
 
+const HorizontalTabTitlesStyled = createStyled('HorizontalTabTitlesStyle', Tabs)
+
 const WSHorizontalTabTitles = ({ titles, value, onChange, ...rest }) => {
-    const HorizontalTabTitlesStyled = useStyle('HorizontalTabTitlesStyle', Tabs)
     return (
         <TabTitlesWrapper>
             <HorizontalTabTitlesStyled

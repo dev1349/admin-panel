@@ -1,10 +1,10 @@
 import React from 'react'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const LogoutIconStyled = createStyled('LogoutIconStyle', LogoutIcon)
 
 const LogoutIconWS = props => {
-    const LogoutIconStyled = useStyle('LogoutIconStyle', LogoutIcon)
     return <LogoutIconStyled {...props} />
 }
 

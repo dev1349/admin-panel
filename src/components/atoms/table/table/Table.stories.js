@@ -27,4 +27,6 @@ const Template = args => (
 )
 
 export const Example1 = Template.bind({})
-Example1.args = {}
+Example1.args = {
+    dialogTable: true,
+}

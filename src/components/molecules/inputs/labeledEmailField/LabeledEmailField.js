@@ -2,30 +2,30 @@ import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import EmailField from '../emailField/EmailField'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const LabeledEmailFieldStyled = createStyled('LabeledEmailFieldStyle', 'div')
 
 const LabeledEmailField = ({
-                               id,
-                               label,
-                               name,
-                               value,
-                               onChange,
-                               autoFocus,
-                               pattern,
-                               alignLeft,
-                               alignLeftFixedWidth,
-                               fixedWidth,
-                               shouldValidate,
-                               required,
-                               validationRules,
-                               validatingNow,
-                               setValidationResult,
-                               haveHelperText,
-                               ...rest
-                           }) => {
-    const LabeledTextFieldStyled = useStyle('LabeledTextFieldStyle', 'div', ['fixedWidth'])
+    id,
+    label,
+    name,
+    value,
+    onChange,
+    autoFocus,
+    pattern,
+    alignLeft,
+    alignLeftFixedWidth,
+    shouldValidate,
+    required,
+    validationRules,
+    validatingNow,
+    setValidationResult,
+    haveHelperText,
+    ...rest
+}) => {
     return (
-        <LabeledTextFieldStyled fixedWidth={fixedWidth}>
+        <LabeledEmailFieldStyled>
             <LabeledInputTemplate
                 alignLeft={alignLeft}
                 alignLeftFixedWidth={alignLeftFixedWidth}
@@ -48,7 +48,7 @@ const LabeledEmailField = ({
                     {...rest}
                 />
             </LabeledInputTemplate>
-        </LabeledTextFieldStyled>
+        </LabeledEmailFieldStyled>
     )
 }
 

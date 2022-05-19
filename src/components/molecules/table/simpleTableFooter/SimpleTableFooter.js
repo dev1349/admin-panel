@@ -3,8 +3,9 @@ import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
 import SelectField from '../../inputs/selectField/SelectField'
 import FloatField from '../../inputs/floatField/FloatField'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SimpleTableFooterStyled = createStyled('SimpleTableFooterStyle', TableRow)
 
 const SimpleTableFooter = ({
     deliveryTypes,
@@ -14,7 +15,6 @@ const SimpleTableFooter = ({
     changeDeliveryPrice,
     disabled,
 }) => {
-    const SimpleTableFooterStyled = useStyle('SimpleTableFooterStyle', TableRow)
     return (
         <SimpleTableFooterStyled>
             <TableCell />

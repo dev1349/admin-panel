@@ -1,10 +1,14 @@
 import React from 'react'
 import { ListItemButton } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ListItemButtonStyled = createStyled(
+    'ListItemButtonStyle',
+    ListItemButton,
+    ['sub', 'dialogItemButton']
+)
 
 const ListItemButtonWS = props => {
-    const ListItemButtonStyled = useStyle('ListItemButtonStyle', ListItemButton, ['sub'])
     return <ListItemButtonStyled {...props} />
 }
 

@@ -1,11 +1,14 @@
 import React from 'react'
 import { ToggleButton } from '@mui/material'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const ToggleButtonWithTextStyled = createStyled(
+    'ToggleButtonWithTextStyle',
+    ToggleButton
+)
+const ToggleButtonTextStyled = createStyled('ToggleButtonTextStyle', 'div')
 
 const ToggleButtonWS = ({ icon, text, ...rest }) => {
-    const ToggleButtonWithTextStyled = useStyle('ToggleButtonWithTextStyle', ToggleButton)
-    const ToggleButtonTextStyled = useStyle('ToggleButtonTextStyle', 'div')
     return (
         <ToggleButtonWithTextStyled {...rest}>
             {icon}

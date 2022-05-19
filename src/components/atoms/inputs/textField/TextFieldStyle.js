@@ -1,8 +1,29 @@
 export default {
     styleOverrides: {
         root: {
+            color: '#525050',
+            fontSize: '16px',
+            fontWeight: 400,
+            lineHeight: 1,
             '& .MuiInputBase-input': {
                 padding: `7px 10px`,
+            },
+            '& .MuiOutlinedInput-root': {
+                '&.Mui-focused fieldset': {
+                    borderColor: '#525050',
+                },
+                '& fieldset': {
+                    borderColor: '#C4C4C4',
+                },
+                '&:hover fieldset': {
+                    borderColor: '#525050',
+                },
+            },
+            '& .MuiFormHelperText-root': {
+                color: '#C4C4C4',
+                fontWeight: 400,
+                marginLeft: 0,
+                fontSize: '12px',
             },
         },
     },
@@ -35,10 +56,9 @@ export default {
                 },
                 width: '120px',
                 verticalAlign: 'middle',
-                '& .MuiInputBase-input::-webkit-calendar-picker-indicator':
-                    {
-                        marginLeft: '-15px',
-                    },
+                '& .MuiInputBase-input::-webkit-calendar-picker-indicator': {
+                    marginLeft: '-15px',
+                },
             },
         },
         {

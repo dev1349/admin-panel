@@ -22,6 +22,7 @@ export const PUT_ATTRIBUTE_PATH = SERVER_PATH + '/api/putAttribute'
 export const DELETE_ATTRIBUTE_PATH = SERVER_PATH + '/api/deleteAttribute'
 
 export const POST_CATEGORY_PATH = SERVER_PATH + '/api/postCategory'
+export const CATEGORY_PATH = SERVER_PATH + '/categories'
 
 export const GET_ALL_ATTRIBUTE_GROUP_PATH =
     SERVER_PATH + '/api/getAllAttributeGroup'
@@ -41,5 +42,11 @@ export const GET_ALL_USER_PATH = SERVER_PATH + '/api/getAllUser'
 export const GET_USER_PATH = SERVER_PATH + '/api/getUser'
 export const POST_USER_PATH = SERVER_PATH + '/api/postUser'
 export const PUT_USER_PATH = SERVER_PATH + '/api/putUser'
+
+const CHARACTERISTICS = '/characteristics'
+export const CHARACTERISTICS_PATH = SERVER_PATH + CHARACTERISTICS
+
+const CHARACTERISTICGROUPS = '/characteristic-groups'
+export const CHARACTERISTICGROUPS_PATH = SERVER_PATH + CHARACTERISTICGROUPS
 
 export const THEMES_PATH = SERVER_PATH + '/themes'

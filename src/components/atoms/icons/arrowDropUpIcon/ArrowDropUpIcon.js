@@ -1,10 +1,13 @@
 import React from 'react'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ArrowDropUpIconStyled = createStyled(
+    'ArrowDropUpIconStyle',
+    ArrowDropUpIcon
+)
 
 const WSArrowDropUpIcon = props => {
-    const ArrowDropUpIconStyled = useStyle('ArrowDropUpIconStyle', ArrowDropUpIcon)
     return <ArrowDropUpIconStyled {...props} />
 }
 

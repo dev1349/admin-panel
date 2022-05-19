@@ -25,7 +25,6 @@ const SelectField = ({
                 value={value === null || value === undefined ? '' : value}
                 onChange={changeHandler}
                 displayEmpty
-                inputProps={{ 'aria-label': 'Without label' }}
                 autoFocus={autoFocus}
                 disabled={disabled}
                 forTable={forTable}
@@ -36,6 +35,8 @@ const SelectField = ({
                     value=""
                     disabled={isStartItemDisabled}
                     forTable={forTable}
+                    dialogMenuItem
+                    disableRipple
                 >
                     {defaultLabel}
                 </MenuItem>
@@ -44,6 +45,8 @@ const SelectField = ({
                         key={item.id}
                         value={item.value}
                         forTable={forTable}
+                        dialogMenuItem
+                        disableRipple
                     >
                         {item.label}
                     </MenuItem>

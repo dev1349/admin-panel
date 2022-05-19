@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeIcon from '../../atoms/icons/homeIcon/HomeIcon'
-import ShoppingCartIcon from '../../atoms/icons/shopingCartIcon/ShoppingCartIcon'
+import ShoppingCartIcon from '../../atoms/icons/shoppingCartIcon/ShoppingCartIcon'
 import CatalogIcon from '../../atoms/icons/catalogIcon/CatalogIcon'
 import ChartIcon from '../../atoms/icons/chartIcon/ChartIcon'
 import ClientsIcon from '../../atoms/icons/clientsIcon/ClientsIcon'

@@ -1,11 +1,11 @@
 import React from 'react'
 import { TextField } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const MultilineFieldStyled = createStyled('MultilineFieldStyle', TextField)
 
 const WSTextField = props => {
-    const MultilineFieldStyled = useStyle('MultilineFieldStyle', TextField)
-    return <MultilineFieldStyled {...props} multiline rows={4}/>
+    return <MultilineFieldStyled {...props} multiline rows={4} />
 }
 
 export default WSTextField

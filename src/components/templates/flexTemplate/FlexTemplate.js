@@ -1,9 +1,19 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const FlexTemplateStyled = createStyled('FlexTemplateStyle', 'div', [
+    'alignItemsCenter',
+    'justifyContentCenter',
+    'spaceBetween',
+    'gap10',
+    'gap7',
+    'justifyContentRight',
+    'noWrap',
+    'justifyContentLeftSm',
+    'directionColumn',
+])
 
 const FlexTemplate = ({ children, ...rest }) => {
-    const FlexTemplateStyled = useStyle('FlexTemplateStyle', 'div', ['alignItemsCenter'])
     return <FlexTemplateStyled {...rest}>{children}</FlexTemplateStyled>
 }
 

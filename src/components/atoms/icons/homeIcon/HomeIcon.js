@@ -1,10 +1,10 @@
 import React from 'react'
 import HomeIcon from '@mui/icons-material/Home'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const HomeIconStyled = createStyled('HomeIconStyle', HomeIcon)
 
 const HomeIconWS = props => {
-    const HomeIconStyled = useStyle('HomeIconStyle', HomeIcon)
     return <HomeIconStyled {...props} />
 }
 

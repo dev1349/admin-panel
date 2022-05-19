@@ -1,11 +1,11 @@
 import React from 'react'
 import { Tab } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TabTitleStyled = createStyled('TabTitleStyle', Tab)
 
-const WSTab = props => {
-    const TabStyled = useStyle('TabStyle', Tab)
-    return <TabStyled {...props} />
+const TabTitleAtom = props => {
+    return <TabTitleStyled {...props} />
 }
 
-export default WSTab
+export default TabTitleAtom

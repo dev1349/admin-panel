@@ -1,10 +1,13 @@
 import React from 'react'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const AddImageIconStyled = createStyled(
+    'AddImageIconStyle',
+    AddPhotoAlternateIcon
+)
 
 const AddImageIconWS = props => {
-    const AddImageIconStyled = useStyle('AddImageIconStyle', AddPhotoAlternateIcon)
     return <AddImageIconStyled {...props} />
 }
 

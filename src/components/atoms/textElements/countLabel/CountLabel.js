@@ -1,10 +1,14 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const CountLabelStyled = createStyled(
+    'CountLabelStyle',
+    Typography,
+    'attention'
+)
 
 const WSCountLabel = ({ children, ...rest }) => {
-    const CountLabelStyled = useStyle('CountLabelStyle', Typography, 'attention')
     return <CountLabelStyled {...rest}>{children}</CountLabelStyled>
 }
 

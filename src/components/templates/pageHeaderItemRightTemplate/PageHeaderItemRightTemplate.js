@@ -1,9 +1,12 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const PageHeaderItemRightTemplateStyled = createStyled(
+    'PageHeaderItemRightTemplateStyle',
+    'div'
+)
 
 const PageHeaderItemRightTemplateWS = ({ children }) => {
-    const PageHeaderItemRightTemplateStyled = useStyle('PageHeaderItemRightTemplateStyle', 'div')
     return (
         <PageHeaderItemRightTemplateStyled>
             {children}

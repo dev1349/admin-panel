@@ -1,10 +1,10 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const PriceStyled = createStyled('PriceStyle', Typography, 'oldPrice')
 
 const WSPrice = ({ children, ...rest }) => {
-    const PriceStyled = useStyle('PriceStyle', Typography, 'oldPrice')
     return <PriceStyled {...rest}>{children}</PriceStyled>
 }
 

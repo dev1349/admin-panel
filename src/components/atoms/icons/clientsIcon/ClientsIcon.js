@@ -1,10 +1,10 @@
 import React from 'react'
 import PeopleIcon from '@mui/icons-material/People'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ClientsIconStyled = createStyled('ClientsIconStyle', PeopleIcon)
 
 const ClientsIconWS = props => {
-    const ClientsIconStyled = useStyle('ClientsIconStyle', PeopleIcon)
     return <ClientsIconStyled {...props} />
 }
 

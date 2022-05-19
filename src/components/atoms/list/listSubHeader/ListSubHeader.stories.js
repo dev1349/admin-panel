@@ -2,7 +2,7 @@ import React from 'react'
 import ListSubHeader from './ListSubHeader'
 
 export default {
-    title: 'atoms/list/listSubHeader/ListSubHeader',
+    title: 'atoms/list/ListSubHeader',
     component: ListSubHeader,
 }
 

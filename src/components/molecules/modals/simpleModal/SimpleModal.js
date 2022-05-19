@@ -4,12 +4,12 @@ import Box from '@mui/material/Box'
 import VerticalModalTemplate from '../../../templates/verticalModalTemplate/VerticalModalTemplate'
 import ModalHeader from '../../../atoms/textElements/headers/modalHeader/ModalHeader'
 import SimpleButton from '../../../atoms/simpleButton/SimpleButton'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SimpleModalStyled = createStyled('SimpleModalStyle', Box)
+const ZIndexedModalStyled = createStyled('ZIndexedModalStyle', Modal)
 
 const WSSimpleModal = ({ modalText, modalType, action, ...rest }) => {
-    const SimpleModalStyled = useStyle('SimpleModalStyle', Box)
-    const ZIndexedModalStyled = useStyle('ZIndexedModalStyle', Modal)
     return (
         <ZIndexedModalStyled {...rest}>
             <SimpleModalStyled>

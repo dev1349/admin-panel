@@ -10,7 +10,7 @@ import DialogsIcon from '../../../atoms/icons/dialogsIcon/DialogsIcon'
 import HelpIcon from '../../../atoms/icons/helpIcon/HelpIcon'
 
 export default {
-    title: 'molecules/list/navList/NavList',
+    title: 'molecules/list/NavList',
     component: NavList,
 }
 

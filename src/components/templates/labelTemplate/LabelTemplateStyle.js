@@ -3,8 +3,10 @@ export default {
         root: {
             display: 'block',
             width: '100%',
+
             '@media (min-width: 600px)': {
-                width: '25%',
+                marginTop: '10px',
+                width: '35%',
                 textAlign: 'right',
             },
         },
@@ -27,6 +29,14 @@ export default {
                 '@media (min-width: 600px)': {
                     textAlign: 'left',
                     width: '20%',
+                },
+            },
+        },
+        {
+            props: { noMarginTop: true },
+            style: {
+                '@media (min-width: 600px)': {
+                    marginTop: 0,
                 },
             },
         },

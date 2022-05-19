@@ -1,10 +1,10 @@
 import React from 'react'
 import List from '@mui/material/List'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ListStyled = createStyled('ListStyle', List)
 
 const ListWS = props => {
-    const ListStyled = useStyle('ListStyle', List)
     return <ListStyled {...props} />
 }
 

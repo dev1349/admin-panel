@@ -1,10 +1,13 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const TextAlignRightTemplateStyled = createStyled(
+    'TextAlignRightTemplateStyle',
+    'div',
+    ['topBottomMargin']
+)
 
 const TextAlignRightTemplate = ({ children, ...rest }) => {
-    const TextAlignRightTemplateStyled = useStyle('TextAlignRightTemplateStyle', 'div', ['topBottomMargin'])
-
     return (
         <TextAlignRightTemplateStyled {...rest}>
             {children}

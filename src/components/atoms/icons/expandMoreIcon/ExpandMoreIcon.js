@@ -1,10 +1,14 @@
 import React from 'react'
 import { ExpandMore } from '@mui/icons-material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ExpandMoreIconStyled = createStyled(
+    'ExpandMoreIconStyle',
+    ExpandMore,
+    'dialogIcon'
+)
 
 const ExpandMoreIconWS = props => {
-    const ExpandMoreIconStyled = useStyle('ExpandMoreIconStyle', ExpandMore)
     return <ExpandMoreIconStyled {...props} />
 }
 

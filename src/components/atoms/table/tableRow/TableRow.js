@@ -1,11 +1,15 @@
 import React from 'react'
 import TableRow from '@mui/material/TableRow'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TableRowStyled = createStyled('TableRowStyle', TableRow, [
+    'default',
+    'defaultHeading',
+    'dialogRow',
+    'dialogSelectedRow',
+])
 
 const WSTableRow = ({ children, ...rest }) => {
-    const TableRowStyled = useStyle('TableRowStyle', TableRow,
-        'default', 'defaultHeading')
     return <TableRowStyled {...rest}>{children}</TableRowStyled>
 }
 

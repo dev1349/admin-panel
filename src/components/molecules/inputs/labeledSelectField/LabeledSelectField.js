@@ -1,45 +1,29 @@
 import React from 'react'
-import styled from 'styled-components'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import SelectField from '../selectField/SelectField'
+import { createStyled } from '../../../../services/style/createStyled'
 
-const InputWrapper = styled.div``
+const LabeledSelectFieldStyled = createStyled('LabeledSelectFieldStyle', 'div')
 
-const WSLabeledSelectField = ({
+const LabeledSelectField = ({
     id,
     label,
-    name,
-    value,
-    onChange,
-    autoFocus,
-    items,
-    defaultLabel,
-    isStartItemDisabled,
     alignLeft,
     fixedWidthWithMarginRight,
+    ...rest
 }) => {
     return (
-        <InputWrapper>
+        <LabeledSelectFieldStyled>
             <LabeledInputTemplate
                 alignLeft={alignLeft}
                 fixedWidthWithMarginRight={fixedWidthWithMarginRight}
             >
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <SelectField
-                    id={id}
-                    fullWidth={true}
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    autoFocus={autoFocus}
-                    items={items}
-                    defaultLabel={defaultLabel}
-                    isStartItemDisabled={isStartItemDisabled}
-                />
+                <SelectField id={id} fullWidth {...rest} />
             </LabeledInputTemplate>
-        </InputWrapper>
+        </LabeledSelectFieldStyled>
     )
 }
 
-export default WSLabeledSelectField
+export default LabeledSelectField

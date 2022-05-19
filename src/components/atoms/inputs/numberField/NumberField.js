@@ -1,16 +1,9 @@
 import React from 'react'
-import { useStyle } from '../../../../hooks/useStyle'
-import { TextField } from '@mui/material'
+import TextField from '../textField/TextField'
 
 const NumberFieldWS = props => {
-    const TextFieldStyled = useStyle('TextFieldStyle', TextField, [
-        'forTable',
-        'forFilter',
-        'dateForFilter',
-        'clientSearch'
-    ])
     return (
-        <TextFieldStyled
+        <TextField
             type={'text'}
             inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
             {...props}

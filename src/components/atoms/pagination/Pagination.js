@@ -1,10 +1,10 @@
 import React from 'react'
 import { Pagination } from '@mui/material'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const PaginationStyled = createStyled('PaginationStyle', Pagination)
 
 const PaginationWS = props => {
-    const PaginationStyled = useStyle('PaginationStyle', Pagination)
     return <PaginationStyled {...props} />
 }
 

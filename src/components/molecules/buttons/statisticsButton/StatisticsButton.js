@@ -6,22 +6,24 @@ import StatisticsSubHeader from '../../../atoms/textElements/statisticsSubHeader
 import StatisticsMenuItem from '../../menu/statisticsMenuItem/StatisticsMenuItem'
 import ListDivider from '../../../atoms/list/listDivider/ListDivider'
 import Badge from '../../../atoms/badge/Badge'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const StatisticsButtonWrapperStyled = createStyled(
+    'StatisticsButtonWrapperStyle',
+    'div'
+)
+const StatisticsUlStyled = createStyled('StatisticsUlStyle', 'ul')
+const StatisticsLiStyled = createStyled('StatisticsLiStyle', 'li')
 
 const StatisticsButton = ({
-                              id,
-                              anchorEl,
-                              handleClick,
-                              handleClose,
-                              menuItems,
-                              children,
-                              ...rest
-                          }) => {
-    const StatisticsButtonWrapperStyled = useStyle('StatisticsButtonWrapperStyle', 'div')
-    const StatisticsUlStyled = useStyle('StatisticsUlStyle', 'ul')
-    const StatisticsLiStyled = useStyle('StatisticsLiStyle', 'li')
-
+    id,
+    anchorEl,
+    handleClick,
+    handleClose,
+    menuItems,
+    children,
+    ...rest
+}) => {
     const NotificationsCount = menuItems.reduce((acc, item) => {
         return (
             acc +
@@ -69,7 +71,7 @@ const StatisticsButton = ({
                                 </MenuItem>
                             ))}
                         </StatisticsUlStyled>
-                        <ListDivider/>
+                        <ListDivider />
                     </StatisticsLiStyled>
                 ))}
             </Menu>

@@ -1,8 +1,12 @@
 import React from 'react'
-import {useStyle} from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
-const WSTitleTextPaddingLeftTemplate = ({children}) => {
-    const TitleTextPaddingLeftStyled = useStyle('TitleTextPaddingLeftStyle', 'div')
+const TitleTextPaddingLeftStyled = createStyled(
+    'TitleTextPaddingLeftStyle',
+    'div'
+)
+
+const WSTitleTextPaddingLeftTemplate = ({ children }) => {
     return <TitleTextPaddingLeftStyled>{children}</TitleTextPaddingLeftStyled>
 }
 

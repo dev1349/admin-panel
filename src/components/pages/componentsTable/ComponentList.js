@@ -14,8 +14,8 @@ const componentList = [
     {
         componentName: 'Компонент "Список категорий"',
         task: 'WSADMIN-3',
-        routeText: '/categoriesList',
-        routeLink: '/categoriesList',
+        routeText: '/categories',
+        routeLink: '/categories',
     },
     {
         componentName: 'Компонент "Статистика"',
@@ -166,6 +166,18 @@ const componentList = [
         task: 'WSADMIN-106',
         routeText: '/checkout',
         routeLink: '/checkout',
+    },
+    {
+        componentName: 'Страница "Характеристики товара"',
+        task: 'WSADMIN-128',
+        routeText: '/characteristics',
+        routeLink: '/characteristics',
+    },
+    {
+        componentName: 'Страница "Добавление характеристики товара"',
+        task: 'WSADMIN-128',
+        routeText: '/addCharacteristic',
+        routeLink: '/addCharacteristic',
     },
 ]
 

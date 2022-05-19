@@ -1,9 +1,13 @@
 import React from 'react'
 import PaddingBottomTemplate from '../paddingBottomTemplate/PaddingBottomTemplate'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
+
+const VerticalModalTemplateStyled = createStyled(
+    'VerticalModalTemplateStyle',
+    'div'
+)
 
 const WSVerticalModalTemplate = ({ children, ...rest }) => {
-    const VerticalModalTemplateStyled = useStyle('VerticalModalTemplateStyle', 'div')
     return (
         <VerticalModalTemplateStyled {...rest}>
             <PaddingBottomTemplate>{children[0]}</PaddingBottomTemplate>

@@ -4,12 +4,11 @@ import TableCell from '../../../atoms/table/tableCell/TableCell'
 import IconButton from '../../buttons/iconButton/IconButton'
 import DeleteIcon from '../../../atoms/icons/deleteIcon/DeleteIcon'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const GoodsTableRowStyled = createStyled('GoodsTableRowStyle', TableRow)
 
 const SimpleTableRow = ({ rowValues, cellsTypes, deleteGood, changeGood }) => {
-    const GoodsTableRowStyled = useStyle('GoodsTableRowStyle', TableRow)
-
     const handleDeleteGood = () => {
         deleteGood(rowValues)
     }

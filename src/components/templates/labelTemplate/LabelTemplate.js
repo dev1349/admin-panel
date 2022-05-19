@@ -1,13 +1,23 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
-const WSLabelTemplate = ({ children, alignLeft, alignLeftFixedWidth }) => {
-    const LabelTemplateStyled = useStyle('LabelTemplateStyle', 'div',
-        ['alignLeft', 'alignLeftFixedWidth'])
+const LabelTemplateStyled = createStyled('LabelTemplateStyle', 'div', [
+    'alignLeft',
+    'alignLeftFixedWidth',
+    'noMarginTop',
+])
+
+const WSLabelTemplate = ({
+    children,
+    alignLeft,
+    alignLeftFixedWidth,
+    noMarginTop,
+}) => {
     return (
         <LabelTemplateStyled
             alignLeft={alignLeft}
             alignLeftFixedWidth={alignLeftFixedWidth}
+            noMarginTop={noMarginTop}
         >
             {children}
         </LabelTemplateStyled>

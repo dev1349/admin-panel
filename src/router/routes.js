@@ -28,13 +28,16 @@ import {
     ORDERS,
     UPLOAD_THEME,
     USERS,
+    EDIT_CATEGORY_ROUTE,
+    CHARACTERISTICS,
+    ADDCHARACTERISTIC,
+    EDITCHARACTERISTIC,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
 import AddGoodContainer from '../components/pages/addGood/AddGoodContainer'
 import AttributesListContainer from '../components/attributeList/AttributesListContainer'
 import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterContainer'
-import AddAttributeCategoryContainer from '../components/pages/addAttributeCategory/AddAttributeCategoryContainer'
 import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsList from '../components/pages/myGoodsList/MyGoodsList'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
@@ -57,6 +60,11 @@ import LastOrders from '../components/organisms/tables/lastOrdersTable/LastOrder
 import TestAtom from '../components/atoms/testAtom/TestAtom'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
+import AddCategory from '../components/pages/addCategory/AddCategory'
+import EditCategory from '../components/pages/editCategory/EditCategory'
+import Characteristics from '../components/pages/characteristics/Characteristics'
+import AddCharacteristic from '../components/pages/addCharacteristic/AddCharacteristic'
+import EditCharacteristic from '../components/pages/editCharacteristic/EditCharacteristic'
 import UploadTheme from '../components/pages/refreshStyle/UploadTheme'
 
 export const authRoutes = [
@@ -82,7 +90,11 @@ export const authRoutes = [
     },
     {
         path: ADD_CATEGORY_ROUTE,
-        Component: AddAttributeCategoryContainer,
+        Component: AddCategory,
+    },
+    {
+        path: EDIT_CATEGORY_ROUTE,
+        Component: EditCategory,
     },
     {
         path: ATTRIBUTE_GROUP,
@@ -168,6 +180,18 @@ export const authRoutes = [
     {
         path: CHECKOUTS,
         Component: Checkout,
+    },
+    {
+        path: CHARACTERISTICS,
+        Component: Characteristics,
+    },
+    {
+        path: ADDCHARACTERISTIC,
+        Component: AddCharacteristic,
+    },
+    {
+        path: EDITCHARACTERISTIC,
+        Component: EditCharacteristic,
     },
 ]
 

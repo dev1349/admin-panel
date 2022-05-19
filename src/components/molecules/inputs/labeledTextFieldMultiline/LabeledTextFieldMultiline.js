@@ -2,19 +2,22 @@ import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import TextFieldMultiline from '../textFieldMultiline/TextFieldMultiline'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const LabeledTextFieldMultilineStyled = createStyled(
+    'LabeledTextFieldMultilineStyle',
+    'div'
+)
 
 const LabeledMultilineTextField = ({
-                                       id,
-                                       label,
-                                       name,
-                                       value,
-                                       onChange,
-                                       autoFocus,
-                                       placeholder,
-                                   }) => {
-    const LabeledTextFieldMultilineStyled = useStyle('LabeledTextFieldMultilineStyle', 'div')
+    id,
+    label,
+    name,
+    value,
+    onChange,
+    autoFocus,
+    placeholder,
+}) => {
     return (
         <LabeledTextFieldMultilineStyled>
             <LabeledInputTemplate>

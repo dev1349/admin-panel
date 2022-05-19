@@ -1,10 +1,10 @@
 import React from 'react'
 import { ListItemIcon } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ListItemIconStyled = createStyled('ListItemIconStyle', ListItemIcon)
 
 const ListItemIconWS = props => {
-    const ListItemIconStyled = useStyle('ListItemIconStyle', ListItemIcon)
     return <ListItemIconStyled {...props} />
 }
 

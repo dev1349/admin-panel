@@ -1,16 +1,14 @@
 import React from 'react'
 import Checkbox from '@mui/material/Checkbox'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const CheckboxStyled = createStyled('CheckboxStyle', Checkbox, [
+    'forTable',
+    'dialogCheckbox',
+])
 
-const CheckboxWS = props => {
-    const CheckboxStyled = useStyle('CheckboxStyle', Checkbox, 'forTable')
-    return (
-        <CheckboxStyled
-            {...props}
-            inputProps={{ 'aria-label': 'Checkbox demo' }}
-        />
-    )
+const CheckboxAtom = props => {
+    return <CheckboxStyled {...props} />
 }
 
-export default CheckboxWS
+export default CheckboxAtom

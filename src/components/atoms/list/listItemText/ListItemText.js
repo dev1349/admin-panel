@@ -1,11 +1,12 @@
 import React from 'react'
 import { ListItemText } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ListItemTextStyled = createStyled('ListItemTextStyle', ListItemText, [
+    'dialogItem',
+])
 
 const ListItemTextWS = props => {
-    const ListItemTextStyled = useStyle('ListItemTextStyle', ListItemText,
-        ['withoutExpandIcon', 'activeItem'])
     return <ListItemTextStyled {...props} />
 }
 

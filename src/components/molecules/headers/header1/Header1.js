@@ -7,20 +7,21 @@ import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
 import UndoIcon from '../../../atoms/icons/undoIcon/UndoIcon'
 import ButtonsWrapperTemplate from '../../../templates/buttonsWrapperTemplate/ButtonsWrapperTemplate'
 import TitleAndButtonsTemplate from '../../../templates/titleAndButtonsTemplate/TitleAndButtonsTemplate'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
+
+const Header1Styled = createStyled('Header1Style', 'header')
 
 const WSHeader1 = ({
-                       mode,
-                       children,
-                       toAdd,
-                       toReturn,
-                       isAllButtonDisabled,
-                       toSave,
-                       isSaveButtonDisabled,
-                       toDelete,
-                       isDeleteButtonDisabled,
-                   }) => {
-    const Header1Styled = useStyle('Header1Style', 'header')
+    mode,
+    children,
+    toAdd,
+    toReturn,
+    isAllButtonDisabled,
+    toSave,
+    isSaveButtonDisabled,
+    toDelete,
+    isDeleteButtonDisabled,
+}) => {
     return (
         <Header1Styled>
             <TitleAndButtonsTemplate>
@@ -32,13 +33,13 @@ const WSHeader1 = ({
                                 onClick={toAdd}
                                 disabled={isAllButtonDisabled}
                             >
-                                <AddIcon/>
+                                <AddIcon />
                             </IconButton>
                             <IconButton
                                 onClick={toDelete}
                                 disabled={isDeleteButtonDisabled}
                             >
-                                <DeleteIcon/>
+                                <DeleteIcon />
                             </IconButton>
                         </>
                     )}
@@ -48,13 +49,13 @@ const WSHeader1 = ({
                                 disabled={isSaveButtonDisabled}
                                 onClick={toSave}
                             >
-                                <SaveIcon/>
+                                <SaveIcon />
                             </IconButton>
                             <IconButton
                                 onClick={toReturn}
                                 disabled={isAllButtonDisabled}
                             >
-                                <UndoIcon/>
+                                <UndoIcon />
                             </IconButton>
                         </>
                     )}

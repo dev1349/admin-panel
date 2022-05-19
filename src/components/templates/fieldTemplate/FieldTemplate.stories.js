@@ -1,5 +1,5 @@
 import React from 'react'
-import FieldTemplate from './FeildTemplate'
+import FieldTemplate from './FieldTemplate'
 
 export default {
     title: 'templates/FieldTemplate',

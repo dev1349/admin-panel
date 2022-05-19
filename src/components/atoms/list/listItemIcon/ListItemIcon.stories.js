@@ -3,7 +3,7 @@ import ListItemIcon from './ListItemIcon'
 import SaveIcon from '../../icons/saveIcon/SaveIcon'
 
 export default {
-    title: 'atoms/list/listItemIcon/ListItemIcon',
+    title: 'atoms/list/ListItemIcon',
     component: ListItemIcon,
 }
 

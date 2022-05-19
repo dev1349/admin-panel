@@ -18,5 +18,21 @@ export default {
                 backgroundColor: 'lightgrey',
             },
         },
+        {
+            props: { dialogRow: true },
+            style: {
+                border: 'none',
+                borderBottom: '1px solid #C4C4C4',
+                '.MuiTableBody-root &:hover': {
+                    backgroundColor: '#C4C4C4',
+                },
+            },
+        },
+        {
+            props: { dialogSelectedRow: true },
+            style: {
+                backgroundColor: '#F2EFEF',
+            },
+        },
     ],
 }

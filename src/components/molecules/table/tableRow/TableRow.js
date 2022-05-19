@@ -4,8 +4,9 @@ import TableCell from '../../../atoms/table/tableCell/TableCell'
 import Checkbox from '../../../atoms/inputs/checkbox/Checkbox'
 import IconButton from '../../buttons/iconButton/IconButton'
 import EditIcon from '../../../atoms/icons/editIcon/EditIcon'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TableRowStyled = createStyled('TableRowStyle', TableRow)
 
 const WSTableRow = ({
     rowFields,
@@ -15,7 +16,6 @@ const WSTableRow = ({
     onEditRow,
     isRowChecked,
 }) => {
-    const TableRowStyled = useStyle('TableRowStyle', TableRow)
     const labelId = `enhanced-table-checkbox-${id}`
 
     return (

@@ -1,10 +1,10 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SearchIconStyled = createStyled('SearchIconStyle', SearchIcon)
 
 const SearchIconWS = props => {
-    const SearchIconStyled = useStyle('SearchIconStyle', SearchIcon)
     return <SearchIconStyled {...props} />
 }
 

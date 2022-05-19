@@ -1,10 +1,10 @@
 import React from 'react'
 import ClearIcon from '@mui/icons-material/Clear'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ClearIconStyled = createStyled('ClearIconStyle', ClearIcon)
 
 const WSClearIcon = props => {
-    const ClearIconStyled = useStyle('ClearIconStyle', ClearIcon)
     return <ClearIconStyled {...props} />
 }
 

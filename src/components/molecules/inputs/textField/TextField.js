@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from '../../../atoms/inputs/textField/TextField'
 import useValidation from '../../../hooks/useValidation'
 
-const TextFieldWS = ({
+const TextFieldMolecule = ({
     id,
     name,
     value,
@@ -58,4 +58,4 @@ const TextFieldWS = ({
     )
 }
 
-export default TextFieldWS
+export default TextFieldMolecule

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Divider } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const ListDividerStyled = createStyled('ListDividerStyle', Divider)
 
 const ListDivider = props => {
-    const ListDividerStyled = useStyle('ListDividerStyle', Divider)
     return <ListDividerStyled {...props} />
 }
 

@@ -1,11 +1,17 @@
 import React from 'react'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const FlexContainerStyled = createStyled('FlexContainerStyle', 'div')
+const RelativePositionContainerStyled = createStyled(
+    'RelativePositionContainerStyle',
+    'div'
+)
+const RightBottomContainerStyled = createStyled(
+    'RightBottomContainerStyle',
+    'div'
+)
 
 const RightBottomPositionTemplate = ({ children }) => {
-    const FlexContainerStyled = useStyle('FlexContainerStyle', 'div')
-    const RelativePositionContainerStyled = useStyle('RelativePositionContainerStyle', 'div')
-    const RightBottomContainerStyled = useStyle('RightBottomContainerStyle', 'div')
     return (
         <FlexContainerStyled>
             <RelativePositionContainerStyled>

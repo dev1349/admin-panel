@@ -1,10 +1,10 @@
 import React from 'react'
 import { FormControl } from '@mui/material'
-import { useStyle } from '../../../../../hooks/useStyle'
+import { createStyled } from '../../../../../services/style/createStyled'
 
+const FormControlStyled = createStyled('FormControlStyle', FormControl)
 
 const WSFormControl = ({ children, ...rest }) => {
-    const FormControlStyled = useStyle('FormControlStyle', FormControl)
     return <FormControlStyled {...rest}>{children}</FormControlStyled>
 }
 

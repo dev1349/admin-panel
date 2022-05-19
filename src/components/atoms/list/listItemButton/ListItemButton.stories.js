@@ -5,7 +5,7 @@ import { ListItemText } from '@mui/material'
 import ListItemIcon from '../listItemIcon/ListItemIcon'
 
 export default {
-    title: 'atoms/list/listItemButton/ListItemButton',
+    title: 'atoms/list/ListItemButton',
     component: ListItemButton,
 }
 

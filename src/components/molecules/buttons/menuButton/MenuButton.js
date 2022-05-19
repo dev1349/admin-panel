@@ -4,19 +4,19 @@ import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
 import IconButton from '../iconButton/IconButton'
 import Menu from '../../../atoms/menu/Menu'
 import { Link as RouterLink } from 'react-router-dom'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const MenuButtonWrapperStyled = createStyled('MenuButtonWrapperStyle', 'div')
 
 const MenuButtonWS = ({
-                          id,
-                          anchorEl,
-                          handleClick,
-                          handleClose,
-                          menuItems,
-                          children,
-                          ...rest
-                      }) => {
-    const MenuButtonWrapperStyled = useStyle('MenuButtonWrapperStyle', 'div')
+    id,
+    anchorEl,
+    handleClick,
+    handleClose,
+    menuItems,
+    children,
+    ...rest
+}) => {
     return (
         <MenuButtonWrapperStyled {...rest}>
             <IconButton

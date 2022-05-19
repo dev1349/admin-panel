@@ -1,10 +1,10 @@
 import React from 'react'
 import SaveIcon from '@mui/icons-material/Save'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SaveIconStyled = createStyled('SaveIconStyle', SaveIcon)
 
 const WSSaveIcon = props => {
-    const SaveIconStyled = useStyle('SaveIconStyle', SaveIcon)
     return <SaveIconStyled {...props} />
 }
 

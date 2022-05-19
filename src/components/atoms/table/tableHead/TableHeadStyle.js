@@ -5,4 +5,13 @@ export default {
             border: '1px solid lightgrey',
         },
     },
+    variants: [
+        {
+            props: { dialogTableHead: true },
+            style: {
+                backgroundColor: '#C4C4C4',
+                border: 'none',
+            },
+        },
+    ],
 }

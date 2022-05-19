@@ -1,10 +1,13 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const TextBetweenInputsStyled = createStyled(
+    'TextBetweenInputsStyle',
+    Typography
+)
 
 const TextBetweenInputs = ({ children, ...rest }) => {
-    const TextBetweenInputsStyled = useStyle('TextBetweenInputsStyle', Typography)
     return (
         <TextBetweenInputsStyled component={'div'} {...rest}>
             {children}

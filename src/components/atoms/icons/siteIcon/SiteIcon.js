@@ -1,10 +1,10 @@
 import React from 'react'
 import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SiteIconStyled = createStyled('SiteIconStyle', DesktopWindowsIcon)
 
 const SiteIconWS = props => {
-    const SiteIconStyled = useStyle('SiteIconStyle', DesktopWindowsIcon)
     return <SiteIconStyled {...props} />
 }
 

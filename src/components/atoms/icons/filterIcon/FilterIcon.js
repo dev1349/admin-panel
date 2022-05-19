@@ -1,10 +1,10 @@
 import React from 'react'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const FilterIconStyled = createStyled('FilterIconStyle', FilterAltIcon)
 
 const WSFilterIcon = props => {
-    const FilterIconStyled = useStyle('FilterIconStyle', FilterAltIcon)
     return <FilterIconStyled {...props} />
 }
 

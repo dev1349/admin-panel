@@ -1,10 +1,10 @@
 import React from 'react'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const FileFieldStyled = createStyled('FileFieldStyled', 'input')
 
 const FileField = ({ refer, ...rest }) => {
-    const InputStyled = useStyle('InputStyle', 'input')
-    return <InputStyled type={'file'} ref={refer} {...rest} />
+    return <FileFieldStyled type={'file'} ref={refer} {...rest} />
 }
 
 export default FileField

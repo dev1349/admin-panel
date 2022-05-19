@@ -2,11 +2,11 @@ import React from 'react'
 import ToggleButtonGroup from '../../atoms/toggleButtonGroup/ToggleButtonGroup'
 import ToggleButton from '../../atoms/toggleButton/ToggleButton'
 import Typography from '../../atoms/textElements/typography/Typography'
-import { useStyle } from '../../../hooks/useStyle'
+import { createStyled } from '../../../services/style/createStyled'
 
+const ItemsOnPageStyled = createStyled('ItemsOnPageStyle', 'div')
 
 const ItemsPerPage = ({ title, buttonValues, currentValue, onChange }) => {
-    const ItemsOnPageStyled = useStyle('ItemsOnPageStyle', 'div')
     const handleChange = (event, newValue) => {
         if (newValue !== null) {
             onChange(newValue)

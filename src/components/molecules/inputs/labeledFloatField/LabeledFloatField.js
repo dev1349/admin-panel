@@ -1,10 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import TextField from '../textField/TextField'
+import { createStyled } from '../../../../services/style/createStyled'
 
-const InputWrapper = styled.div``
+const LabeledFloatFieldStyled = createStyled('LabeledTextFieldStyle', 'div', [
+    'fixedWidth',
+])
 
 const LabeledFloatField = ({
     id,
@@ -16,7 +18,7 @@ const LabeledFloatField = ({
     autoFocus,
 }) => {
     return (
-        <InputWrapper>
+        <LabeledFloatFieldStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <TextField
@@ -29,7 +31,7 @@ const LabeledFloatField = ({
                     autoFocus={autoFocus}
                 />
             </LabeledInputTemplate>
-        </InputWrapper>
+        </LabeledFloatFieldStyled>
     )
 }
 

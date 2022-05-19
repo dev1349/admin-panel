@@ -1,10 +1,10 @@
 import React from 'react'
 import { Typography } from '@mui/material'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const StatisticsTextStyled = createStyled('StatisticsTextStyle', Typography)
 
 const StatisticsText = ({ children, ...rest }) => {
-    const StatisticsTextStyled = useStyle('StatisticsTextStyle', Typography)
     return (
         <StatisticsTextStyled variant={'span'} component={'div'} {...rest}>
             {children}

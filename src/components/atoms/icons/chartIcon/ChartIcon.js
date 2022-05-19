@@ -1,10 +1,10 @@
 import React from 'react'
 import BarChartIcon from '@mui/icons-material/BarChart'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const BarChartIconStyled = createStyled('BarChartIconStyle', BarChartIcon)
 
 const BarChartIconWS = props => {
-    const BarChartIconStyled = useStyle('BarChartIconStyle', BarChartIcon)
     return <BarChartIconStyled {...props} />
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ExpendLessIcon from './ExpendLessIcon'
+import ExpendLessIcon from './ExpandLessIcon'
 
 export default {
     title: 'atoms/icons/ExpendLessIcon',
@@ -9,6 +9,14 @@ export default {
 const Template = args => <ExpendLessIcon {...args} />
 
 export const Example1 = Template.bind({})
-Example1.args = {
+Example1.args = {}
+
+export const Example2 = Template.bind({})
+Example2.args = {
     color: 'action',
+}
+
+export const Example3 = Template.bind({})
+Example3.args = {
+    dialogIcon: true,
 }

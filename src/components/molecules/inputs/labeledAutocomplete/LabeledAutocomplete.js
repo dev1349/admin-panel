@@ -2,32 +2,34 @@ import React from 'react'
 import InputLabel from '../../../atoms/inputs/inputLabel/InputLabel'
 import LabeledInputTemplate from '../../../templates/labeledInputTemplate/LabeledInputTemplate'
 import Autocomplete from '../autocomplete/Autocomplete'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const LabeledAutocompleteStyled = createStyled(
+    'LabeledAutocompleteStyle',
+    'div'
+)
 
 const LabeledAutocomplete = ({
-                                 id,
-                                 label,
-                                 name,
-                                 value,
-                                 changeValue,
-                                 options,
-                                 getOptionLabel,
-                                 canAddValue,
-                                 shouldValidate,
-                                 required,
-                                 validationRules,
-                                 validatingNow,
-                                 setValidationResult,
-                                 haveHelperText,
-                                 filterOptions,
-                                 selectOnFocus,
-                                 clearOnBlur,
-                                 handleHomeEndKeys,
-                                 ...rest
-                             }) => {
-    const LabeledAutocompleteStyled = useStyle('LabeledAutocompleteStyle', 'div')
-
+    id,
+    label,
+    name,
+    value,
+    changeValue,
+    options,
+    getOptionLabel,
+    canAddValue,
+    shouldValidate,
+    required,
+    validationRules,
+    validatingNow,
+    setValidationResult,
+    haveHelperText,
+    filterOptions,
+    selectOnFocus,
+    clearOnBlur,
+    handleHomeEndKeys,
+    ...rest
+}) => {
     return (
         <LabeledAutocompleteStyled>
             <LabeledInputTemplate>

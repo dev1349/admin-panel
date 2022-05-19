@@ -1,11 +1,11 @@
 import React from 'react'
 import { TableRow } from '@mui/material'
 import TableCell from '../../../atoms/table/tableCell/TableCell'
-import { useStyle } from '../../../../hooks/useStyle'
+import { createStyled } from '../../../../services/style/createStyled'
 
+const SimpleTableTotalStyled = createStyled('SimpleTableTotalStyle', TableRow)
 
 const SimpleTableTotal = ({ totalPrice }) => {
-    const SimpleTableTotalStyled = useStyle('SimpleTableTotalStyle', TableRow)
     return (
         <SimpleTableTotalStyled>
             <TableCell />
