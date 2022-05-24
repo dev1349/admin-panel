@@ -27,6 +27,25 @@ const initialState = {
                             id: 'catalog.goods',
                             title: 'Товары',
                             link: '/catalog/goods',
+                            subItems: {
+                                items: [
+                                    {
+                                        id: 'novelities',
+                                        title: 'Новинки',
+                                        link: '/novelities',
+                                    },
+                                    {
+                                        id: 'top_sale',
+                                        title: 'Топ продаж',
+                                        link: '/top',
+                                    },
+                                    {
+                                        id: 'slidebar',
+                                        title: 'Слайдбар',
+                                        link: '/slidebar',
+                                    },
+                                ],
+                            },
                         },
                         {
                             id: 'catalog.attributes',
