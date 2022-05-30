@@ -5,7 +5,7 @@ import {
     isThemeLoadedSelector,
     styleFromSelector,
     themeNameSelector,
-    themeSelector
+    themeSelector,
 } from '../reducers/styleSlice'
 import { useDispatch, useSelector } from 'react-redux'
 

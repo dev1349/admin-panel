@@ -3,6 +3,11 @@ const isObject = value => {
     return objectToString.call(value).split(' ')[1].slice(0, -1) === 'Object'
 }
 
+const isString = value => {
+    const objectToString = Object.prototype.toString
+    return objectToString.call(value).split(' ')[1].slice(0, -1) === 'String'
+}
+
 const isEmptyObject = value => Object.keys(value).length === 0
 
 const isArray = value => Array.isArray(value)
@@ -21,11 +26,7 @@ const valuesWithoutNull = (sendingData, ignoreFields, clearType) => {
             resultDataObject[key] = sendingData[key]
             return
         }
-        if (
-            isArray(sendingData[key]) &&
-            isEmptyArray(sendingData[key]) &&
-            clearType === 'FOR_UPDATING'
-        ) {
+        if (isArray(sendingData[key]) && isEmptyArray(sendingData[key]) && clearType === 'FOR_UPDATING') {
             resultDataObject[key] = []
             return
         }
@@ -46,13 +47,9 @@ const valuesWithoutNull = (sendingData, ignoreFields, clearType) => {
             if (!isEmptyArray(resultArray)) resultDataObject[key] = resultArray
             return
         }
-        if (isObject(sendingData[key]) && isEmptyObject(sendingData[key]))
-            return
+        if (isObject(sendingData[key]) && isEmptyObject(sendingData[key])) return
         if (isObject(sendingData[key])) {
-            resultDataObject[key] = valuesWithoutNull(
-                sendingData[key],
-                ignoreFields
-            )
+            resultDataObject[key] = valuesWithoutNull(sendingData[key], ignoreFields)
             return
         }
 
@@ -64,13 +61,63 @@ const valuesWithoutNull = (sendingData, ignoreFields, clearType) => {
     return resultDataObject
 }
 
-export const deleteNullValuesFromObject = (
-    sendingData,
-    ignoreFields = [],
-    clearType = 'FOR_CREATING'
-) => {
+export const deleteNullValuesFromObject = (sendingData, withoutTransformFields = [], clearType = 'FOR_CREATING') => {
     if (!isObject(sendingData)) return sendingData
-    return valuesWithoutNull(sendingData, ignoreFields, clearType)
+    return valuesWithoutNull(sendingData, withoutTransformFields, clearType)
+}
+
+const leaveIdOnly = (objectData, convertFields) => {
+    let resultDataObject = {}
+    const keys = Object.keys(objectData)
+    if (isEmptyArray(keys)) return null
+
+    keys.forEach(key => {
+        if (convertFields.includes(key) && !isEmptyArray(objectData[key])) {
+            resultDataObject[key] = objectData[key].map(elem => ({
+                id: elem.id,
+            }))
+            return
+        }
+        if (isArray(objectData[key]) && isEmptyArray(objectData[key])) {
+            resultDataObject[key] = []
+            return
+        }
+        if (isArray(objectData[key])) {
+            let resultArray = objectData[key].map(elem => {
+                if (isObject(elem) && isEmptyObject(elem)) {
+                    return {}
+                }
+                if (isObject(elem)) {
+                    const resultObject = leaveIdOnly(elem, convertFields)
+                    if (isEmptyObject(resultObject)) return
+                    return resultObject
+                }
+                return elem
+            })
+
+            resultDataObject[key] = resultArray
+            return
+        }
+        if (isObject(objectData[key]) && isEmptyObject(objectData[key])) {
+            resultDataObject[key] = {}
+            return
+        }
+
+        if (isObject(objectData[key])) {
+            resultDataObject[key] = leaveIdOnly(objectData[key], convertFields)
+            return
+        }
+
+        resultDataObject[key] = objectData[key]
+    })
+
+    return resultDataObject
+}
+
+export const leaveIdOnlyInObject = (objectData, convertFields = []) => {
+    if (!isObject(objectData)) return objectData
+    if (convertFields.length === 0) return objectData
+    return leaveIdOnly(objectData, convertFields)
 }
 
 const valuesWithId = (value, fieldNames, ignoreFields) => {
@@ -89,19 +136,11 @@ const valuesWithId = (value, fieldNames, ignoreFields) => {
             return
         }
         if (isObject(value[valueKey])) {
-            newValue[valueKey] = valuesWithId(
-                value[valueKey],
-                fieldNames,
-                ignoreFields
-            )
+            newValue[valueKey] = valuesWithId(value[valueKey], fieldNames, ignoreFields)
             return
         }
         if (isArray(value[valueKey])) {
-            newValue[valueKey] = value[valueKey]
-                .map(valueElem =>
-                    valuesWithId(valueElem, fieldNames, ignoreFields)
-                )
-                .filter(elem => elem)
+            newValue[valueKey] = value[valueKey].map(valueElem => valuesWithId(valueElem, fieldNames, ignoreFields)).filter(elem => elem)
             return
         }
         newValue[valueKey] = value[valueKey]
@@ -109,23 +148,14 @@ const valuesWithId = (value, fieldNames, ignoreFields) => {
     return newValue
 }
 
-export const changeToObjectWithId = (
-    value,
-    fieldNames = [],
-    ignoreFields = []
-) => {
-    if (!isObject(value) || isEmptyObject(value) || isEmptyArray(fieldNames)) {
+export const changeToObjectWithId = (value, fieldNamesForLeaveNullValue = [], ignoreFields = []) => {
+    if (!isObject(value) || isEmptyObject(value)) {
         return value
     }
-    return valuesWithId(value, fieldNames, ignoreFields)
+    return valuesWithId(value, fieldNamesForLeaveNullValue, ignoreFields)
 }
 
-const getValueForUpdating = (
-    initialValue,
-    changedValue,
-    typeOfCommand,
-    level = 0
-) => {
+const getValueForUpdating = (initialValue, changedValue, typeOfCommand, level = 0) => {
     const newChangedValue = {}
     const changedValueKeys = Object.keys(changedValue)
     changedValueKeys.forEach(key => {
@@ -138,12 +168,7 @@ const getValueForUpdating = (
             return
         }
         if (isObject(changedValue[key])) {
-            const newObjectValue = getValueForUpdating(
-                initialValue[key],
-                changedValue[key],
-                typeOfCommand,
-                level + 1
-            )
+            const newObjectValue = getValueForUpdating(initialValue[key], changedValue[key], typeOfCommand, level + 1)
 
             if (isNull(newObjectValue) || isEmptyObject(newObjectValue)) return
             newObjectValue.id = changedValue[key].id
@@ -159,25 +184,23 @@ const getValueForUpdating = (
             return
         }
         if (isArray(changedValue[key])) {
-            const valueForCreating = changedValue[key].filter(elem => !elem.id)
+            const existingValuesForAdding = changedValue[key]
+                .filter(elem => elem.id)
+                .filter(changedElem => !initialValue[key].find(initialElem => initialElem.id === changedElem.id))
 
-            const valueForDeleting = initialValue[key]
-                .filter(
-                    elem =>
-                        !changedValue[key].find(
-                            changedElem => changedElem.id === elem.id
-                        )
-                )
+            const valuesForCreating = changedValue[key].filter(elem => !elem.id)
+
+            const valuesForDeleting = initialValue[key]
+                .filter(elem => !changedValue[key].find(changedElem => changedElem.id === elem.id))
                 .map(elem => ({ id: elem.id, command: typeOfCommand }))
 
-            let valueForChanging = changedValue[key].filter(elem => elem.id)
-
-            valueForChanging = valueForChanging
+            let valuesForChanging = changedValue[key]
+                .filter(elem => elem.id)
+                .filter(changedElem => initialValue[key].find(initialElem => initialElem.id === changedElem.id))
+            valuesForChanging = valuesForChanging
                 .map(elem =>
                     getValueForUpdating(
-                        initialValue[key].find(
-                            initialElem => initialElem.id === elem.id
-                        ),
+                        initialValue[key].find(initialElem => initialElem.id === elem.id),
                         elem,
                         typeOfCommand,
                         level + 1
@@ -185,11 +208,7 @@ const getValueForUpdating = (
                 )
                 .filter(elem => elem)
 
-            const newChangedValueArray = [
-                ...valueForCreating,
-                ...valueForDeleting,
-                ...valueForChanging,
-            ]
+            const newChangedValueArray = [...existingValuesForAdding, ...valuesForCreating, ...valuesForDeleting, ...valuesForChanging]
 
             if (!isEmptyArray(newChangedValueArray)) {
                 newChangedValue[key] = newChangedValueArray
@@ -197,10 +216,14 @@ const getValueForUpdating = (
 
             return
         }
-        if (
-            changedValue[key] !== initialValue[key] &&
-            changedValue[key] === null
-        ) {
+        if (isString(changedValue[key])) {
+            if (changedValue[key].trim() !== initialValue[key].trim()) {
+                newChangedValue[key] = changedValue[key].trim()
+                return
+            }
+            return
+        }
+        if (changedValue[key] !== initialValue[key] && changedValue[key] === null) {
             newChangedValue.command = 'DELETE_FROM_PARENT'
             return
         }
@@ -225,12 +248,7 @@ const getValueForUpdating = (
     return newChangedValue
 }
 
-export const createValueForUpdating = (
-    initialValue,
-    changedValue,
-    ignoreFields,
-    typeOfCommand = null
-) => {
+export const createValueForUpdating = (initialValue, changedValue, withoutTransformFields, typeOfCommand = null) => {
     if (
         initialValue === null ||
         changedValue === null ||
@@ -238,14 +256,6 @@ export const createValueForUpdating = (
         (isObject(changedValue) && isEmptyObject(changedValue))
     )
         return null
-    const changedValueWithoutNull = deleteNullValuesFromObject(
-        changedValue,
-        ignoreFields,
-        'FOR_UPDATING'
-    )
-    return getValueForUpdating(
-        initialValue,
-        changedValueWithoutNull,
-        typeOfCommand
-    )
+    const changedValueWithoutNull = deleteNullValuesFromObject(changedValue, withoutTransformFields, 'FOR_UPDATING')
+    return getValueForUpdating(initialValue, changedValueWithoutNull, typeOfCommand)
 }

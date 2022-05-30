@@ -11,10 +11,9 @@ export const loadStyles = (loadType, themeName) => {
 }
 
 const localLoading = () => {
-    return new Promise((resolve) => resolve(styledComponents))
+    return new Promise(resolve => resolve(styledComponents))
 }
 
 const serverLoading = name => {
-    return getThemeFetch(name)
-        .then(data => themeDeserialize(data))
+    return getThemeFetch(name).then(data => themeDeserialize(data))
 }

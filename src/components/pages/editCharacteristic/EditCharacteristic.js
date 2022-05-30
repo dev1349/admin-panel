@@ -33,14 +33,9 @@ const EditCharacteristicPage = () => {
         characteristicValues: [],
     }
 
-    const [characteristicFieldValues, setCharacteristicFieldValues] = useState(
-        initialCharacteristicState
-    )
+    const [characteristicFieldValues, setCharacteristicFieldValues] = useState(initialCharacteristicState)
 
-    const [
-        characteristicInitialFieldValues,
-        setCharacteristicInitialFieldValues,
-    ] = useState(null)
+    const [characteristicInitialFieldValues, setCharacteristicInitialFieldValues] = useState(null)
 
     const handleChangeCharacteristicFields = payload => {
         setCharacteristicFieldValues(prev => ({ ...prev, ...payload }))
@@ -83,24 +78,15 @@ const EditCharacteristicPage = () => {
     const handleAddCharacteristicValue = () => {
         setCharacteristicFieldValues(prev => ({
             ...prev,
-            characteristicValues: [
-                ...prev.characteristicValues,
-                { value: null },
-            ],
+            characteristicValues: [...prev.characteristicValues, { value: null }],
         }))
     }
 
-    const getAllCharacteristicGroupsFetchStatus = useSelector(
-        getGetAllCharacteristicGroupsFetchStatus
-    )
+    const getAllCharacteristicGroupsFetchStatus = useSelector(getGetAllCharacteristicGroupsFetchStatus)
 
-    const getPostPutDeleteCharacteristicsFetchStatus = useSelector(
-        getGetPostPutDeleteCharacteristicsFetchStatus
-    )
+    const getPostPutDeleteCharacteristicsFetchStatus = useSelector(getGetPostPutDeleteCharacteristicsFetchStatus)
 
-    const isPending =
-        getAllCharacteristicGroupsFetchStatus === 'pending' ||
-        getPostPutDeleteCharacteristicsFetchStatus === 'pending'
+    const isPending = getAllCharacteristicGroupsFetchStatus === 'pending' || getPostPutDeleteCharacteristicsFetchStatus === 'pending'
 
     const isGoBackButtonDisabled = isPending
 
@@ -109,11 +95,7 @@ const EditCharacteristicPage = () => {
     useEffect(() => {
         if (getAllCharacteristicGroupsFetchStatus !== 'idle') return
         dispatch(getAllCharacteristicGroups())
-    }, [
-        getAllCharacteristicGroupsFetchStatus,
-        dispatch,
-        getAllCharacteristicGroups,
-    ])
+    }, [getAllCharacteristicGroupsFetchStatus, dispatch, getAllCharacteristicGroups])
 
     const characteristicGroups = useSelector(getCharacteristicGroups)
 
@@ -122,14 +104,9 @@ const EditCharacteristicPage = () => {
     useEffect(() => {
         if (characteristicId === undefined) return
         dispatch(
-            getCharacteristic(
-                parseInt(characteristicId),
-                characteristicFieldValues => {
-                    setCharacteristicInitialFieldValues(
-                        characteristicFieldValues
-                    )
-                }
-            )
+            getCharacteristic(parseInt(characteristicId), characteristicFieldValues => {
+                setCharacteristicInitialFieldValues(characteristicFieldValues)
+            })
         )
     }, [characteristicId, dispatch, getCharacteristic])
 
@@ -138,11 +115,7 @@ const EditCharacteristicPage = () => {
         if (getAllCharacteristicGroupsFetchStatus !== 'success') return
 
         setCharacteristicFieldValues(characteristicInitialFieldValues)
-    }, [
-        characteristicInitialFieldValues,
-        getAllCharacteristicGroupsFetchStatus,
-        setCharacteristicFieldValues,
-    ])
+    }, [characteristicInitialFieldValues, getAllCharacteristicGroupsFetchStatus, setCharacteristicFieldValues])
 
     const history = useHistory()
     const handleGoBack = () => history.push('/characteristics')
@@ -170,34 +143,19 @@ const EditCharacteristicPage = () => {
 
     const isSaveChangesButtonDisabled =
         isPending ||
-        !(characteristicFieldValues.name
-            ? characteristicFieldValues.name.trim()
-            : characteristicFieldValues.name) ||
+        !(characteristicFieldValues.name ? characteristicFieldValues.name.trim() : characteristicFieldValues.name) ||
         !(characteristicFieldValues.orderNumber >= 0) ||
         characteristicInitialFieldValues === null ||
-        !createValueForUpdating(
-            characteristicInitialFieldValues,
-            characteristicFieldValues,
-            ['characteristicGroup'],
-            'HARD_DELETE'
-        )
+        !createValueForUpdating(characteristicInitialFieldValues, characteristicFieldValues, ['characteristicGroup'], 'HARD_DELETE')
 
-    const isServerError =
-        getAllCharacteristicGroupsFetchStatus === 'error' ||
-        getPostPutDeleteCharacteristicsFetchStatus === 'error'
+    const isServerError = getAllCharacteristicGroupsFetchStatus === 'error' || getPostPutDeleteCharacteristicsFetchStatus === 'error'
 
     const handleCloseServerErrorModal = () => {
         if (getAllCharacteristicGroupsFetchStatus === 'error') {
-            dispatch(
-                changeGetAllCharacteristicGroupsFetchStatus('idleAfterError')
-            )
+            dispatch(changeGetAllCharacteristicGroupsFetchStatus('idleAfterError'))
         }
         if (getPostPutDeleteCharacteristicsFetchStatus === 'error') {
-            dispatch(
-                changeGetPostPutDeleteCharacteristicsFetchStatus(
-                    'idleAfterError'
-                )
-            )
+            dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('idleAfterError'))
         }
         dispatch(changeGetAllCharacteristicsFetchStatus('idle'))
         dispatch(getAllCharacteristicGroups())
@@ -210,13 +168,7 @@ const EditCharacteristicPage = () => {
                 icon={<EditIcon dialogIcon />}
                 title={'Редактирование характеристики товара'}
                 buttons={[
-                    <IconButton
-                        key={0}
-                        dialogButton
-                        disableRipple
-                        onClick={handleGoBack}
-                        disabled={isGoBackButtonDisabled}
-                    >
+                    <IconButton key={0} dialogButton disableRipple onClick={handleGoBack} disabled={isGoBackButtonDisabled}>
                         <UndoIcon />
                     </IconButton>,
                     <IconButton
@@ -233,12 +185,11 @@ const EditCharacteristicPage = () => {
                 changeCharacteristicFields={handleChangeCharacteristicFields}
                 changeCharacteristicGroup={handleChangeCharacteristicGroup}
                 characteristicGroups={characteristicGroups}
-                characteristicValues={
-                    characteristicFieldValues.characteristicValues
-                }
+                characteristicValues={characteristicFieldValues.characteristicValues}
                 changeCharacteristicValue={handleChangeCharacteristicValue}
                 deleteCharacteristicValue={handleDeleteCharacteristicValue}
                 addCharacteristicValue={handleAddCharacteristicValue}
+                orderNumberHelper={'Значение от 0 до 999'}
             />
             <ServerErrorModal
                 open={isServerError}

@@ -4,11 +4,7 @@ import { useTheme } from '../../../hooks/useTheme'
 
 const ReduxThemeProvider = ({ children }) => {
     const globalTheme = useTheme()
-    return (
-        <ThemeProvider theme={globalTheme}>
-            {children}
-        </ThemeProvider>
-    )
+    return <ThemeProvider theme={globalTheme}>{children}</ThemeProvider>
 }
 
 export default ReduxThemeProvider

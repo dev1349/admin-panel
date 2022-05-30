@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PhoneField from '../../../atoms/inputs/phoneField/PhoneField'
-import useValidation from '../../../hooks/useValidation'
+import useValidation from '../../../../hooks/useValidation'
 
 const PhoneFieldMolecules = ({
     id,

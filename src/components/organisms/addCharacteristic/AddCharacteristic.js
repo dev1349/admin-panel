@@ -21,6 +21,7 @@ const AddCharacteristic = ({
     deleteCharacteristicValue,
     addCharacteristicValue,
     isDisableGroupSelect,
+    orderNumberHelper,
 }) => {
     const characteristicGroupItems = characteristicGroups.map(
         characteristicGroup => ({
@@ -54,7 +55,7 @@ const AddCharacteristic = ({
                     value={characteristicField['orderNumber']}
                     onChange={changeCharacteristicFields}
                     inputProps={{ 'aria-label': 'sort order' }}
-                    helperText={'Значение от 0 до 999'}
+                    helperText={orderNumberHelper}
                 />
                 <LabeledSelectField
                     id={'characteristicGroup'}

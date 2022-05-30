@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { putThemeFetch, } from '../api/styleApi'
+import { putThemeFetch } from '../api/styleApi'
 import { loadStyles } from '../services/style/loadStyleService'
 
 const styleSlice = createSlice({
@@ -9,19 +9,17 @@ const styleSlice = createSlice({
         refreshStyle: 'endpoint', // auto/endpoint (auto пока не реализован)
         themeName: 'default', // задать уникальное имя своих изменений
         isThemeLoaded: false,
-        styles: {}
+        styles: {},
     },
     reducers: {
         getStyleSuccess(state, action) {
             state.styles = action.payload
             state.isThemeLoaded = true
-        }
-    }
+        },
+    },
 })
 
-export const {
-    getStyleSuccess,
-} = styleSlice.actions
+export const { getStyleSuccess } = styleSlice.actions
 
 export default styleSlice.reducer
 
@@ -31,13 +29,11 @@ export const styleFromSelector = state => state.style.styleFrom
 export const isThemeLoadedSelector = state => state.style.isThemeLoaded
 
 export const getTheme = (loadType, themeName) => dispatch => {
-    loadStyles(loadType, themeName)
-        .then(data => {
-            dispatch(getStyleSuccess(data))
-        })
+    loadStyles(loadType, themeName).then(data => {
+        dispatch(getStyleSuccess(data))
+    })
 }
 
 export const putTheme = theme => {
-    putThemeFetch(theme)
-        .then(response => response.json())
+    putThemeFetch(theme).then(response => response.json())
 }

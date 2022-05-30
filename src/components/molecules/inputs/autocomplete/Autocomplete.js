@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Autocomplete } from '@mui/material'
 import TextField from '../../../atoms/inputs/textField/TextField'
 import AutocompleteItem from '../../../atoms/inputs/autocompleteItem/AutocompleteItem'
-import useValidation from '../../../hooks/useValidation'
+import useValidation from '../../../../hooks/useValidation'
 import { createStyled } from '../../../../services/style/createStyled'
 
 const AutocompleteStyled = createStyled('AutocompleteStyle', Autocomplete)
@@ -73,9 +73,7 @@ const AutocompleteWS = ({
             clearOnBlur={clearOnBlur}
             handleHomeEndKeys={handleHomeEndKeys}
             renderOption={(props, option) => (
-                <AutocompleteItem {...props}>
-                    {option.inputValue ? option.title : getOptionLabel(option)}
-                </AutocompleteItem>
+                <AutocompleteItem {...props}>{option.inputValue ? option.title : getOptionLabel(option)}</AutocompleteItem>
             )}
             renderInput={params => (
                 <TextField

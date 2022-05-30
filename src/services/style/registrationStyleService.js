@@ -186,6 +186,8 @@ import TableHeadLastOrdersStyle from '../../components/molecules/table/tableHead
 import TableRowLastOrderStyle from '../../components/molecules/table/tableRowLastOrders/TableRowLastOrderStyle'
 import GreyBorderedWrapperForComponentStyle from '../../components/molecules/wrappers/greyBorderedWrapperForComponent/GreyBorderedWrapperForComponentStyle'
 import TitleTableStyle from '../../components/organisms/tables/lastOrdersTable/TitleTableStyle'
+import LabeledTextLabelsStyle from '../../components/molecules/inputs/lageledTextLabels/LabeledTextLabelsStyle'
+import ShowIconStyle from '../../components/atoms/icons/showIcon/ShowIconStyle'
 
 export const styledComponents = {
     AddIconStyle,
@@ -281,6 +283,7 @@ export const styledComponents = {
     LabeledTextFieldStyle,
     LabeledTextFieldsStyle,
     LabeledTextFieldMultilineStyle,
+    LabeledTextLabelsStyle,
     LabelTemplateStyle,
     LastChildToRightTemplateStyle,
     LastOrdersStyle,
@@ -329,6 +332,7 @@ export const styledComponents = {
     SettingsIconStyle,
     ShoppingCartIconStyle,
     ShopsIconStyle,
+    ShowIconStyle,
     SimpleButtonStyle,
     SimpleModalStyle,
     SimpleTableFooterStyle,

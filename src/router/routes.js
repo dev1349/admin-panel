@@ -32,6 +32,9 @@ import {
     CHARACTERISTICS,
     ADDCHARACTERISTIC,
     EDITCHARACTERISTIC,
+    CHARACTERISTICGROUPS,
+    ADDCHARACTERISTICGROUP,
+    EDITCHARACTERISTICGROUP,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -66,6 +69,9 @@ import Characteristics from '../components/pages/characteristics/Characteristics
 import AddCharacteristic from '../components/pages/addCharacteristic/AddCharacteristic'
 import EditCharacteristic from '../components/pages/editCharacteristic/EditCharacteristic'
 import UploadTheme from '../components/pages/refreshStyle/UploadTheme'
+import CharacteristicGroups from '../components/pages/characteristicGroups/CharacteristicGroups'
+import AddCharacteristicGroup from '../components/pages/addCharacteristicGroup/AddCharacteristicGroup'
+import EditCharacteristicGroup from '../components/pages/editCharacteristicGroup/EditCharacteristicGroup'
 
 export const authRoutes = [
     {
@@ -192,6 +198,18 @@ export const authRoutes = [
     {
         path: EDITCHARACTERISTIC,
         Component: EditCharacteristic,
+    },
+    {
+        path: CHARACTERISTICGROUPS,
+        Component: CharacteristicGroups,
+    },
+    {
+        path: ADDCHARACTERISTICGROUP,
+        Component: AddCharacteristicGroup,
+    },
+    {
+        path: EDITCHARACTERISTICGROUP,
+        Component: EditCharacteristicGroup,
     },
 ]
 

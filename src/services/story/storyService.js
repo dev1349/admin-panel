@@ -4,20 +4,18 @@ export const getVariantExample = (template, variant) => {
     //     result.args[r] = true
     // })
     result.args = {
-        [variant]: true
+        [variant]: true,
     }
     return result
 }
 
-
 // export const getDefaultExample = (template, )
-
 
 export const getExample = (template, style) => {
     let examples
     let counter = 1
     if (!arrayIsEmpty(style.variants)) {
-        examples = style.variants.map((variant) => {
+        examples = style.variants.map(variant => {
             a(template, variant, counter)
             counter++
             return variant.props
@@ -27,15 +25,13 @@ export const getExample = (template, style) => {
     return examples
 }
 
-
 function a(template, variant) {
     const Example = template.bind({})
     Example.args = {
-        [variant]: true
+        [variant]: true,
     }
     return Example
 }
-
 
 // todo refactor
 function arrayIsEmpty(array) {
@@ -51,4 +47,3 @@ function arrayIsEmpty(array) {
     //Otherwise, return FALSE.
     return false
 }
-

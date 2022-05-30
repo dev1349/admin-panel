@@ -39,5 +39,18 @@ export default {
                 marginTop: '7px',
             },
         },
+        {
+            props: { marginTop2: true },
+            style: {
+                marginTop: '2px',
+            },
+        },
+        {
+            props: { maxHeight500: true },
+            style: {
+                maxHeight: '500px',
+                overflow: 'auto',
+            },
+        },
     ],
 }

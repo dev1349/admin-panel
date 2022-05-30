@@ -19,6 +19,8 @@ import {
     changeGetPostPutDeleteCharacteristicsFetchStatus,
     getGetPostPutDeleteCharacteristicsFetchStatus,
     saveNewCharacteristic,
+    setOrder,
+    setOrderBy,
 } from '../../../reducers/characteristicsSlice'
 
 const AddCharacteristicPage = () => {
@@ -31,9 +33,7 @@ const AddCharacteristicPage = () => {
         characteristicValues: [],
     }
 
-    const [characteristicFieldValues, setCharacteristicFieldValues] = useState(
-        initialCharacteristicState
-    )
+    const [characteristicFieldValues, setCharacteristicFieldValues] = useState(initialCharacteristicState)
 
     const handleChangeCharacteristicFields = payload => {
         setCharacteristicFieldValues(prev => ({ ...prev, ...payload }))
@@ -73,10 +73,7 @@ const AddCharacteristicPage = () => {
     const handleAddCharacteristicValue = () => {
         setCharacteristicFieldValues(prev => ({
             ...prev,
-            characteristicValues: [
-                ...prev.characteristicValues,
-                { value: null },
-            ],
+            characteristicValues: [...prev.characteristicValues, { value: null }],
         }))
     }
 
@@ -88,35 +85,27 @@ const AddCharacteristicPage = () => {
 
     const handleSaveNewCharacteristic = () => {
         dispatch(saveNewCharacteristic(characteristicFieldValues))
+        dispatch(setOrder('desc'))
+        dispatch(setOrderBy(''))
     }
 
-    const getAllCharacteristicGroupsFetchStatus = useSelector(
-        getGetAllCharacteristicGroupsFetchStatus
-    )
+    const getAllCharacteristicGroupsFetchStatus = useSelector(getGetAllCharacteristicGroupsFetchStatus)
 
-    const getPostPutDeleteCharacteristicsFetchStatus = useSelector(
-        getGetPostPutDeleteCharacteristicsFetchStatus
-    )
+    const getPostPutDeleteCharacteristicsFetchStatus = useSelector(getGetPostPutDeleteCharacteristicsFetchStatus)
 
     useEffect(() => {
         if (getPostPutDeleteCharacteristicsFetchStatus === 'success') {
             dispatch(changeGetAllCharacteristicsFetchStatus('idle'))
             history.push('/characteristics')
         }
-    }, [getPostPutDeleteCharacteristicsFetchStatus, history])
+    }, [getPostPutDeleteCharacteristicsFetchStatus, dispatch, history])
 
     useEffect(() => {
         if (getAllCharacteristicGroupsFetchStatus !== 'idle') return
         dispatch(getAllCharacteristicGroups())
-    }, [
-        getAllCharacteristicGroupsFetchStatus,
-        dispatch,
-        getAllCharacteristicGroups,
-    ])
+    }, [getAllCharacteristicGroupsFetchStatus, dispatch, getAllCharacteristicGroups])
 
-    const isPending =
-        getAllCharacteristicGroupsFetchStatus === 'pending' ||
-        getPostPutDeleteCharacteristicsFetchStatus === 'pending'
+    const isPending = getAllCharacteristicGroupsFetchStatus === 'pending' || getPostPutDeleteCharacteristicsFetchStatus === 'pending'
 
     const isGoBackButtonDisabled = isPending
 
@@ -126,22 +115,14 @@ const AddCharacteristicPage = () => {
         characteristicFieldValues.name.trim() === '' ||
         characteristicFieldValues.orderNumber === null
 
-    const isServerError =
-        getAllCharacteristicGroupsFetchStatus === 'error' ||
-        getPostPutDeleteCharacteristicsFetchStatus === 'error'
+    const isServerError = getAllCharacteristicGroupsFetchStatus === 'error' || getPostPutDeleteCharacteristicsFetchStatus === 'error'
 
     const handleCloseServerErrorModal = () => {
         if (getAllCharacteristicGroupsFetchStatus === 'error') {
-            dispatch(
-                changeGetAllCharacteristicGroupsFetchStatus('idleAfterError')
-            )
+            dispatch(changeGetAllCharacteristicGroupsFetchStatus('idleAfterError'))
         }
         if (getPostPutDeleteCharacteristicsFetchStatus === 'error') {
-            dispatch(
-                changeGetPostPutDeleteCharacteristicsFetchStatus(
-                    'idleAfterError'
-                )
-            )
+            dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('idleAfterError'))
         }
     }
 
@@ -151,22 +132,10 @@ const AddCharacteristicPage = () => {
                 icon={<AddIcon dialogIcon />}
                 title={'Добавление характеристики товара'}
                 buttons={[
-                    <IconButton
-                        key={0}
-                        dialogButton
-                        disableRipple
-                        onClick={handleGoBack}
-                        disabled={isGoBackButtonDisabled}
-                    >
+                    <IconButton key={0} dialogButton disableRipple onClick={handleGoBack} disabled={isGoBackButtonDisabled}>
                         <UndoIcon />
                     </IconButton>,
-                    <IconButton
-                        key={1}
-                        dialogButton
-                        disableRipple
-                        onClick={handleSaveNewCharacteristic}
-                        disabled={isSaveButtonDisable}
-                    >
+                    <IconButton key={1} dialogButton disableRipple onClick={handleSaveNewCharacteristic} disabled={isSaveButtonDisable}>
                         <SaveIcon />
                     </IconButton>,
                 ]}
@@ -174,15 +143,12 @@ const AddCharacteristicPage = () => {
                 changeCharacteristicFields={handleChangeCharacteristicFields}
                 changeCharacteristicGroup={handleChangeCharacteristicGroup}
                 characteristicGroups={characteristicGroups}
-                characteristicValues={
-                    characteristicFieldValues.characteristicValues
-                }
+                characteristicValues={characteristicFieldValues.characteristicValues}
                 changeCharacteristicValue={handleChangeCharacteristicValue}
                 deleteCharacteristicValue={handleDeleteCharacteristicValue}
                 addCharacteristicValue={handleAddCharacteristicValue}
-                isDisableGroupSelect={
-                    getAllCharacteristicGroupsFetchStatus !== 'success'
-                }
+                isDisableGroupSelect={getAllCharacteristicGroupsFetchStatus !== 'success'}
+                orderNumberHelper={'Значение от 0 до 999'}
             />
             <ServerErrorModal
                 open={isServerError}

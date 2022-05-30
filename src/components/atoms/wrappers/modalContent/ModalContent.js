@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const ModalContentStyled = createStyled('ModalContentStyle', 'div')
+const ModalContentStyled = createStyled('ModalContentStyle', 'div', 'flexContent')
 
 const ModalContent = ({ children, forwardedRef, ...rest }) => {
     return (
@@ -11,6 +11,4 @@ const ModalContent = ({ children, forwardedRef, ...rest }) => {
     )
 }
 
-export default React.forwardRef((props, ref) => (
-    <ModalContent {...props} forwardedRef={ref} />
-))
+export default React.forwardRef((props, ref) => <ModalContent {...props} forwardedRef={ref} />)

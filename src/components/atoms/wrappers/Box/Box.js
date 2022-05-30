@@ -8,6 +8,9 @@ const BoxStyled = createStyled('BoxStyle', Box, [
     'marginLeft4',
     'paddingRight41',
     'marginTop7',
+    'marginLeft31',
+    'maxHeight500',
+    'marginTop2',
 ])
 
 const BoxWS = ({ children, ...rest }) => {

@@ -1,8 +1,4 @@
-import {
-    deleteNullValuesFromObject,
-    changeToObjectWithId,
-    createValueForUpdating,
-} from './preparingDataForSending'
+import { deleteNullValuesFromObject, changeToObjectWithId, createValueForUpdating, leaveIdOnlyInObject } from './preparingDataForSending'
 
 // eslint-disable-next-line no-undef
 describe('testing function "deleteNullValuesFromObject"', () => {
@@ -38,9 +34,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             ],
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -62,9 +56,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             orderNumber: 0,
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -87,9 +79,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             characteristicValues: [],
         }
         // eslint-disable-next-line no-undef
-        expect(
-            deleteNullValuesFromObject(valuesWithNull, [], 'FOR_UPDATING')
-        ).toEqual(valuesWithoutNull)
+        expect(deleteNullValuesFromObject(valuesWithNull, [], 'FOR_UPDATING')).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -112,9 +102,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             characteristicGroup: null,
         }
         // eslint-disable-next-line no-undef
-        expect(
-            deleteNullValuesFromObject(valuesWithNull, ['characteristicGroup'])
-        ).toEqual(valuesWithoutNull)
+        expect(deleteNullValuesFromObject(valuesWithNull, ['characteristicGroup'])).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -136,9 +124,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             orderNumber: 0,
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -162,9 +148,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             characteristicValues: [3, 4, 5],
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -196,9 +180,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             ],
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -221,9 +203,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             orderNumber: 0,
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 
     // eslint-disable-next-line no-undef
@@ -246,9 +226,7 @@ describe('testing function "deleteNullValuesFromObject"', () => {
             characteristicGroup: { id: 1 },
         }
         // eslint-disable-next-line no-undef
-        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(
-            valuesWithoutNull
-        )
+        expect(deleteNullValuesFromObject(valuesWithNull)).toEqual(valuesWithoutNull)
     })
 })
 
@@ -297,9 +275,7 @@ describe('testing function "changeToObjectWithId"', () => {
             characteristicGroup: { id: 1 },
         }
         // eslint-disable-next-line no-undef
-        expect(
-            changeToObjectWithId(initialValue, ['characteristicGroup'])
-        ).toEqual(value)
+        expect(changeToObjectWithId(initialValue, ['characteristicGroup'])).toEqual(value)
     })
 
     // eslint-disable-next-line no-undef
@@ -322,9 +298,7 @@ describe('testing function "changeToObjectWithId"', () => {
             characteristicGroup: null,
         }
         // eslint-disable-next-line no-undef
-        expect(
-            changeToObjectWithId(initialValue, ['characteristicGroup'])
-        ).toEqual(value)
+        expect(changeToObjectWithId(initialValue, ['characteristicGroup'])).toEqual(value)
     })
 
     // eslint-disable-next-line no-undef
@@ -370,13 +344,7 @@ describe('testing function "changeToObjectWithId"', () => {
             ],
         }
         // eslint-disable-next-line no-undef
-        expect(
-            changeToObjectWithId(
-                initialValue,
-                ['characteristicGroup'],
-                ['command']
-            )
-        ).toEqual(value)
+        expect(changeToObjectWithId(initialValue, ['characteristicGroup'], ['command'])).toEqual(value)
     })
 
     // eslint-disable-next-line no-undef
@@ -419,9 +387,7 @@ describe('testing function "changeToObjectWithId"', () => {
             characteristicSets: [],
         }
         // eslint-disable-next-line no-undef
-        expect(
-            changeToObjectWithId(initialValue, ['parentCategory'], ['command'])
-        ).toEqual(value)
+        expect(changeToObjectWithId(initialValue, ['parentCategory'], ['command'])).toEqual(value)
     })
 })
 
@@ -514,11 +480,7 @@ describe('testing function "createValueForUpdating"', () => {
             ],
         }
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(initialValue, changedValue, [
-                'characteristicGroup',
-            ])
-        ).toEqual(null)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'])).toEqual(null)
     })
 
     // eslint-disable-next-line no-undef
@@ -565,11 +527,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(initialValue, changedValue, [
-                'characteristicGroup',
-            ])
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'])).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -616,11 +574,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(initialValue, changedValue, [
-                'characteristicGroup',
-            ])
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'])).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -667,11 +621,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(initialValue, changedValue, [
-                'characteristicGroup',
-            ])
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'])).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -719,11 +669,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(initialValue, changedValue, [
-                'characteristicGroup',
-            ])
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'])).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -770,14 +716,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(
-                initialValue,
-                changedValue,
-                ['characteristicGroup'],
-                'HARD_DELETE'
-            )
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'], 'HARD_DELETE')).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -825,14 +764,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(
-                initialValue,
-                changedValue,
-                ['characteristicGroup'],
-                'HARD_DELETE'
-            )
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'], 'HARD_DELETE')).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -884,14 +816,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(
-                initialValue,
-                changedValue,
-                ['characteristicGroup'],
-                'HARD_DELETE'
-            )
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'], 'HARD_DELETE')).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -945,14 +870,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(
-                initialValue,
-                changedValue,
-                ['characteristicGroup'],
-                'HARD_DELETE'
-            )
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'], 'HARD_DELETE')).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -1018,14 +936,7 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(
-                initialValue,
-                changedValue,
-                ['characteristicGroup'],
-                'HARD_DELETE'
-            )
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['characteristicGroup'], 'HARD_DELETE')).toEqual(result)
     })
 
     // eslint-disable-next-line no-undef
@@ -1070,10 +981,370 @@ describe('testing function "createValueForUpdating"', () => {
         }
 
         // eslint-disable-next-line no-undef
-        expect(
-            createValueForUpdating(initialValue, changedValue, [
-                'parentCategory',
-            ])
-        ).toEqual(result)
+        expect(createValueForUpdating(initialValue, changedValue, ['parentCategory'])).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only object', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+            ],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+            ],
+        }
+        const result = null
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue)).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only objects (add new characteristic)', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+            ],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+                {
+                    id: 23,
+                },
+            ],
+        }
+        const result = {
+            id: 25,
+            characteristics: [
+                {
+                    id: 23,
+                },
+            ],
+        }
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only objects (delete characteristic)', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+                {
+                    id: 23,
+                },
+            ],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+            ],
+        }
+        const result = {
+            id: 25,
+            characteristics: [
+                {
+                    id: 23,
+                    command: 'DELETE_FROM_PARENT',
+                },
+            ],
+        }
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only objects (delete all characteristic)', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 22,
+                },
+                {
+                    id: 23,
+                },
+            ],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [],
+        }
+        const result = {
+            id: 25,
+            characteristics: [
+                {
+                    id: 22,
+                    command: 'DELETE_FROM_PARENT',
+                },
+                {
+                    id: 23,
+                    command: 'DELETE_FROM_PARENT',
+                },
+            ],
+        }
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only objects (delete all characteristic)', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 21,
+                },
+                {
+                    id: 22,
+                },
+                {
+                    id: 23,
+                },
+            ],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 21,
+                },
+                {
+                    id: 22,
+                },
+                {
+                    id: 24,
+                },
+            ],
+        }
+        const result = {
+            id: 25,
+            characteristics: [
+                {
+                    id: 24,
+                },
+                {
+                    id: 23,
+                    command: 'DELETE_FROM_PARENT',
+                },
+            ],
+        }
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only objects (delete all characteristic)', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [
+                {
+                    id: 21,
+                },
+                {
+                    id: 22,
+                },
+                {
+                    id: 24,
+                },
+            ],
+        }
+        const result = {
+            id: 25,
+            characteristics: [
+                {
+                    id: 21,
+                },
+                {
+                    id: 22,
+                },
+                {
+                    id: 24,
+                },
+            ],
+        }
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating characteristic group with id only objects (without space in string properties)', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [],
+        }
+        const changedValue = {
+            id: 25,
+            name: ' Проверка ',
+            isAdminOnly: true,
+            orderNumber: 11,
+            characteristics: [],
+        }
+        const result = null
+
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+})
+
+// eslint-disable-next-line no-undef
+describe('testing function "leaveIdOnlyInObject"', () => {
+    // eslint-disable-next-line no-undef
+    it('convert fields is empty', () => {
+        const objectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: true,
+            isAvailableInFilter: true,
+            orderNumber: 0,
+            characteristicGroup: null,
+            characteristicValues: [
+                {
+                    id: 0,
+                    value: 'someName',
+                    characteristic: 0,
+                },
+            ],
+        }
+        // eslint-disable-next-line no-undef
+        expect(leaveIdOnlyInObject(objectData)).toEqual(objectData)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('convert fields is not empty', () => {
+        const objectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: true,
+            isAvailableInFilter: true,
+            orderNumber: 0,
+            characteristicGroup: null,
+            characteristicValues: [
+                {
+                    id: 0,
+                    value: 'someName',
+                    characteristic: 0,
+                },
+            ],
+        }
+        const convertObjectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: true,
+            isAvailableInFilter: true,
+            orderNumber: 0,
+            characteristicGroup: null,
+            characteristicValues: [
+                {
+                    id: 0,
+                },
+            ],
+        }
+        // eslint-disable-next-line no-undef
+        expect(leaveIdOnlyInObject(objectData, ['characteristicValues'])).toEqual(convertObjectData)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('object has empty objects and empty arrays and empty array of empty objects)', () => {
+        const objectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: {},
+            isAvailableInFilter: [],
+            orderNumber: [{}, {}, {}],
+            characteristicGroup: null,
+            characteristicValues: [
+                {
+                    id: 0,
+                    value: 'someName',
+                    characteristic: 0,
+                },
+            ],
+        }
+        const convertObjectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: {},
+            isAvailableInFilter: [],
+            orderNumber: [{}, {}, {}],
+            characteristicGroup: null,
+            characteristicValues: [
+                {
+                    id: 0,
+                },
+            ],
+        }
+        // eslint-disable-next-line no-undef
+        expect(leaveIdOnlyInObject(objectData, ['characteristicValues'])).toEqual(convertObjectData)
     })
 })

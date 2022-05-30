@@ -30,69 +30,41 @@ const CharacteristicsPage = () => {
     const [selectedCharacteristics, setSelectedCharacteristics] = useState([])
 
     const handleSelectCharacteristic = id => () => {
-        const index = selectedCharacteristics.findIndex(
-            characteristicId => characteristicId === id
-        )
+        const index = selectedCharacteristics.findIndex(characteristicId => characteristicId === id)
         if (index === -1) {
             setSelectedCharacteristics(prev => [...prev, id])
         } else {
-            setSelectedCharacteristics(prev => [
-                ...prev.filter(characteristicId => characteristicId !== id),
-            ])
+            setSelectedCharacteristics(prev => [...prev.filter(characteristicId => characteristicId !== id)])
         }
     }
 
-    const handleClearSelectedCharacteristics = () =>
-        setSelectedCharacteristics([])
+    const isIndeterminate = selectedCharacteristics.length > 0 && selectedCharacteristics.length < characteristics.length
 
-    const isIndeterminate =
-        selectedCharacteristics.length > 0 &&
-        selectedCharacteristics.length < characteristics.length
-
-    const isChecked =
-        selectedCharacteristics.length > 0 &&
-        selectedCharacteristics.length === characteristics.length
+    const isChecked = selectedCharacteristics.length > 0 && selectedCharacteristics.length === characteristics.length
 
     const handleSelectAllCharacteristic = () => {
         if (isChecked) {
             setSelectedCharacteristics([])
             return
         }
-        setSelectedCharacteristics([
-            ...characteristics.map(characteristic => characteristic.id),
-        ])
+        setSelectedCharacteristics([...characteristics.map(characteristic => characteristic.id)])
     }
 
-    const getAllCharacteristicsFetchStatus = useSelector(
-        getGetAllCharacteristicsFetchStatus
-    )
+    const getAllCharacteristicsFetchStatus = useSelector(getGetAllCharacteristicsFetchStatus)
 
-    const getPostPutDeleteCharacteristicsFetchStatus = useSelector(
-        getGetPostPutDeleteCharacteristicsFetchStatus
-    )
+    const getPostPutDeleteCharacteristicsFetchStatus = useSelector(getGetPostPutDeleteCharacteristicsFetchStatus)
 
-    const isPending =
-        getAllCharacteristicsFetchStatus === 'pending' ||
-        getPostPutDeleteCharacteristicsFetchStatus === 'pending'
+    const isPending = getAllCharacteristicsFetchStatus === 'pending' || getPostPutDeleteCharacteristicsFetchStatus === 'pending'
 
-    const isDeleteButtonDisabled =
-        selectedCharacteristics.length === 0 || isPending
+    const isDeleteButtonDisabled = selectedCharacteristics.length === 0 || isPending
 
     const dispatch = useDispatch()
 
     const handleDeleteCharacteristics = () => {
         const unselectCharacteristic = id => {
-            setSelectedCharacteristics(prev => [
-                ...prev.filter(characteristicId => characteristicId !== id),
-            ])
+            setSelectedCharacteristics(prev => [...prev.filter(characteristicId => characteristicId !== id)])
         }
-        dispatch(
-            deleteCharacteristic(
-                selectedCharacteristics,
-                unselectCharacteristic,
-                handleClearSelectedCharacteristics
-            )
-        )
+        dispatch(deleteCharacteristic(selectedCharacteristics, unselectCharacteristic))
         handleCloseDeleteModal()
     }
 
@@ -110,8 +82,7 @@ const CharacteristicsPage = () => {
 
     const handleAddNewCharacteristic = () => history.push('/addCharacteristic')
 
-    const handleEditCharacteristic = id => () =>
-        history.push(`/editCharacteristic/${id}`)
+    const handleEditCharacteristic = id => () => history.push(`/editCharacteristic/${id}`)
 
     useEffect(() => {
         if (getAllCharacteristicsFetchStatus !== 'idle') return
@@ -142,31 +113,15 @@ const CharacteristicsPage = () => {
                 icon={<ViewListIcon dialogIcon />}
                 title={'Характеристики товаров'}
                 buttons={[
-                    <IconButton
-                        key={0}
-                        dialogButton
-                        disableRipple
-                        onClick={handleAddNewCharacteristic}
-                        disabled={isAddEditButtonDisabled}
-                    >
+                    <IconButton key={0} dialogButton disableRipple onClick={handleAddNewCharacteristic} disabled={isAddEditButtonDisabled}>
                         <AddIcon />
                     </IconButton>,
-                    <IconButton
-                        key={1}
-                        dialogButton
-                        disableRipple
-                        onClick={handleOpenDeleteModal}
-                        disabled={isDeleteButtonDisabled}
-                    >
+                    <IconButton key={1} dialogButton disableRipple onClick={handleOpenDeleteModal} disabled={isDeleteButtonDisabled}>
                         <DeleteIcon />
                     </IconButton>,
                 ]}
                 characteristics={characteristics}
-                headLines={headLines(
-                    isIndeterminate,
-                    isChecked,
-                    handleSelectAllCharacteristic
-                )}
+                headLines={headLines(isIndeterminate, isChecked, handleSelectAllCharacteristic)}
                 onSelect={handleSelectCharacteristic}
                 selectedCharacteristics={selectedCharacteristics}
                 order={order}

@@ -37,7 +37,6 @@ export const blue = getVariantExample(Template, 'blue')
 //
 // export const result = [ar1,ar2]
 
-
 // export const Big = Template.bind({})
 // Big.args = {
 //     big: true

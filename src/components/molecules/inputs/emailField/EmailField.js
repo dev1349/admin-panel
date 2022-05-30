@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import EmailField from '../../../atoms/inputs/emailField/EmailField'
-import useValidation from '../../../hooks/useValidation'
+import useValidation from '../../../../hooks/useValidation'
 
 const EmailFieldMolecules = ({
     id,
@@ -22,12 +22,8 @@ const EmailFieldMolecules = ({
     const resultRules = useMemo(
         () => [
             {
-                checking: value =>
-                    !new RegExp(
-                        /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i
-                    ).test(value),
-                errorMessage:
-                    validationRules || 'Адрес электронной почты указан неверно',
+                checking: value => !new RegExp(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i).test(value),
+                errorMessage: validationRules || 'Адрес электронной почты указан неверно',
             },
         ],
         [validationRules]

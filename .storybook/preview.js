@@ -1,10 +1,10 @@
 import React from 'react'
-import {store} from '../src'
-import {Provider} from 'react-redux'
+import { store } from '../src'
+import { Provider } from 'react-redux'
 import StorybookReduxProvider from './StorybookReduxProvider'
 
 export const parameters = {
-    actions: {argTypesRegex: '^on[A-Z].*'},
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
         matchers: {
             color: /(background|color)$/i,
@@ -19,10 +19,10 @@ export const decorators = [
             // <div style={{ border: '1px solid red', boxSizing: 'border-box' }}>
             <Provider store={store}>
                 <StorybookReduxProvider>
-                    <Story/>
+                    <Story />
                 </StorybookReduxProvider>
             </Provider>
             // </div>
-        );
+        )
     },
 ]

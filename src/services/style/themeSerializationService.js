@@ -1,7 +1,7 @@
 export const themeSerialize = (themeName, data) => {
     return {
         themeName: themeName,
-        components: componentSerialize(themeName, data)
+        components: componentSerialize(themeName, data),
     }
 }
 
@@ -12,8 +12,12 @@ const componentSerialize = (themeName, data) => {
         const newEl = {
             themeName: themeName,
             styledComponentName: key,
-            styleOverrides: styleOverrideSerialize(themeName, key, data[key].styleOverrides),
-            variants: variantSerialize(themeName, key, data[key].variants)
+            styleOverrides: styleOverrideSerialize(
+                themeName,
+                key,
+                data[key].styleOverrides
+            ),
+            variants: variantSerialize(themeName, key, data[key].variants),
         }
         resultArr.push(newEl)
     })
@@ -28,7 +32,7 @@ const styleOverrideSerialize = (themeName, compName, data) => {
             themeName: themeName,
             styledComponentName: compName,
             styleOverrideName: key,
-            styles: styleSoSerialize(themeName, compName, key, data[key])
+            styles: styleSoSerialize(themeName, compName, key, data[key]),
         }
         resultArr.push(newEl)
     })
@@ -37,16 +41,17 @@ const styleOverrideSerialize = (themeName, compName, data) => {
 
 const variantSerialize = (themeName, compName, data) => {
     const resultArr = []
-    data && data.forEach((el, index) => {
-        const newEl = {
-            themeName: themeName,
-            styledComponentName: compName,
-            variantNumber: index,
-            styles: styleVSerialize(themeName, compName, index, el.style),
-            props: propsSerialize(themeName, compName, index, el.props),
-        }
-        resultArr.push(newEl)
-    })
+    data &&
+        data.forEach((el, index) => {
+            const newEl = {
+                themeName: themeName,
+                styledComponentName: compName,
+                variantNumber: index,
+                styles: styleVSerialize(themeName, compName, index, el.style),
+                props: propsSerialize(themeName, compName, index, el.props),
+            }
+            resultArr.push(newEl)
+        })
     return resultArr
 }
 
@@ -59,7 +64,7 @@ const styleSoSerialize = (themeName, compName, styleOverrideName, data) => {
             styledComponentName: compName,
             styleOverrideName: styleOverrideName,
             key: key,
-            value: data[key]
+            value: data[key],
         }
         resultArr.push(newEl)
     })
@@ -76,7 +81,7 @@ const styleVSerialize = (themeName, compName, variantNumber, data) => {
             styledComponentName: compName,
             variantNumber: variantNumber,
             key: key,
-            value: data[key]
+            value: data[key],
         }
         resultArr.push(newEl)
     })
@@ -92,7 +97,7 @@ const propsSerialize = (themeName, compName, variantNumber, data) => {
             styledComponentName: compName,
             variantNumber: variantNumber,
             key: key,
-            value: data[key]
+            value: data[key],
         }
         resultArr.push(newEl)
     })
