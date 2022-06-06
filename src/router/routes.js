@@ -35,6 +35,7 @@ import {
     CHARACTERISTICGROUPS,
     ADDCHARACTERISTICGROUP,
     EDITCHARACTERISTICGROUP,
+    Np,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -72,7 +73,7 @@ import UploadTheme from '../components/pages/refreshStyle/UploadTheme'
 import CharacteristicGroups from '../components/pages/characteristicGroups/CharacteristicGroups'
 import AddCharacteristicGroup from '../components/pages/addCharacteristicGroup/AddCharacteristicGroup'
 import EditCharacteristicGroup from '../components/pages/editCharacteristicGroup/EditCharacteristicGroup'
-
+import Novaposhta from '../components/pages/novaPoshta/NovaPoshta'
 export const authRoutes = [
     {
         path: MAIN_ROUTE,
@@ -198,6 +199,10 @@ export const authRoutes = [
     {
         path: EDITCHARACTERISTIC,
         Component: EditCharacteristic,
+    },
+    {
+        path: Np,
+        Component: Novaposhta,
     },
     {
         path: CHARACTERISTICGROUPS,

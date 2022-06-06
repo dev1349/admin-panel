@@ -156,6 +156,12 @@ const componentList = [
         routeLink: '/delivery',
     },
     {
+        componentName: 'Страница "Новая почта"',
+        task: 'WSADMIN-122',
+        routeText: '/np',
+        routeLink: '/np',
+    },
+    {
         componentName: 'Страница "Последние заказы"',
         task: 'WSADMIN-63',
         routeText: '/lastorders',

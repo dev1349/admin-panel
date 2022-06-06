@@ -31,8 +31,7 @@ const CategoryTree = ({
         setOpen(false)
     }
 
-    const hasCategories =
-        categories && Array.isArray(categories) && categories.length !== 0
+    const hasCategories = categories && Array.isArray(categories) && categories.length !== 0
 
     const canDrop = () => draggingCategory.parentCategory !== null
 
@@ -82,28 +81,15 @@ const CategoryTree = ({
                 <FlexTemplate spaceBetween alignItemsCenter gap7>
                     {hasCategories &&
                         (open ? (
-                            <ExpandLessIcon
-                                onClick={handleCloseSubCategory}
-                                dialogIcon
-                            />
+                            <ExpandLessIcon onClick={handleCloseSubCategory} dialogIcon />
                         ) : (
-                            <ExpandMoreIcon
-                                onClick={handleOpenSubCategory}
-                                dialogIcon
-                            />
+                            <ExpandMoreIcon onClick={handleOpenSubCategory} dialogIcon />
                         ))}
                     <Box marginLeft31={!hasCategories} flexGrow1>
-                        <Link
-                            component={RouterLink}
-                            to={`/${categoryUrl}`}
-                            dialogLink
-                        >
+                        <Link component={RouterLink} to={`/${categoryUrl}`} dialogLink>
                             <FlexTemplate alignItemsCenter gap7>
                                 <FolderIcon dialogIcon />
-                                <ListItemText
-                                    primary={'Категории'}
-                                    dialogItem
-                                />
+                                <ListItemText primary={'Категории'} dialogItem />
                             </FlexTemplate>
                         </Link>
                     </Box>
@@ -121,9 +107,7 @@ const CategoryTree = ({
                             activeCategoryId={activeCategoryId}
                             editCategory={editCategory}
                             openCategories={openCategories}
-                            openCategoriesAfterDragging={
-                                openCategoriesAfterDragging
-                            }
+                            openCategoriesAfterDragging={openCategoriesAfterDragging}
                             setDraggedCategory={setDraggedCategory}
                         />
                     </Box>

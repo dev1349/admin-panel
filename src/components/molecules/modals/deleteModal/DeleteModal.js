@@ -11,20 +11,11 @@ import ModalWindow from '../../../atoms/modalWindow/ModalWindow'
 
 const DeleteModal = ({ open, onClose, onYes, title, description }) => {
     return (
-        <ModalWindow
-            open={open}
-            onClose={onClose}
-            aria-labelledby={title}
-            aria-describedby={description}
-        >
+        <ModalWindow open={open} onClose={onClose} aria-labelledby={title} aria-describedby={description}>
             <ModalContent>
                 <AdminModalHeader title={title} />
                 <AdminPageBorder>
-                    <FlexTemplate
-                        alignItemsCenter
-                        justifyContentCenter
-                        directionColumn
-                    >
+                    <FlexTemplate alignItemsCenter justifyContentCenter directionColumn>
                         <Box marginTop7>
                             <AttentionIcon alertIcon />
                         </Box>

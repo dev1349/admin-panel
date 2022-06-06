@@ -5,17 +5,7 @@ import Box from '../../atoms/wrappers/Box/Box'
 import Checkbox from '../inputs/checkbox/Checkbox'
 import TableFilterContentTemplate from '../../templates/tableFilterContentTemplate/TableFilterContentTemplate'
 
-const CheckboxFilterPopper = ({
-    id,
-    open,
-    anchorEl,
-    onClose,
-    filter,
-    placement = 'bottom-end',
-    checkItems,
-    onApply,
-    ...rest
-}) => {
+const CheckboxFilterPopper = ({ id, open, anchorEl, onClose, filter, placement = 'bottom-end', checkItems, onApply, ...rest }) => {
     const [checkboxesChecked, setCheckboxesChecked] = useState(null)
     const handleSetCheckboxesChecked = checkboxId => () => {
         setCheckboxesChecked(prev => {
@@ -77,28 +67,12 @@ const CheckboxFilterPopper = ({
     }
 
     return (
-        <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            placement={placement}
-            {...rest}
-        >
+        <Popper id={id} open={open} anchorEl={anchorEl} placement={placement} {...rest}>
             <Box>
-                <SimpleButton
-                    onClick={handleCheckAll}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleCheckAll} variant={'text'} size={'small'} noUppercase>
                     Выбрать все
                 </SimpleButton>
-                <SimpleButton
-                    onClick={handleResetAll}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleResetAll} variant={'text'} size={'small'} noUppercase>
                     Сбросить все
                 </SimpleButton>
             </Box>
@@ -108,11 +82,7 @@ const CheckboxFilterPopper = ({
                         <Checkbox
                             label={el.title}
                             checked={
-                                checkboxesChecked
-                                    ? checkboxesChecked[el.id] === undefined
-                                        ? false
-                                        : checkboxesChecked[el.id]
-                                    : false
+                                checkboxesChecked ? (checkboxesChecked[el.id] === undefined ? false : checkboxesChecked[el.id]) : false
                             }
                             onChange={handleSetCheckboxesChecked(el.id)}
                             labelPlacement={'end'}
@@ -125,12 +95,7 @@ const CheckboxFilterPopper = ({
                 <SimpleButton onClick={handleApply} size={'small'} noUppercase>
                     Применить
                 </SimpleButton>
-                <SimpleButton
-                    onClick={handleCancel}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleCancel} variant={'text'} size={'small'} noUppercase>
                     Отменить
                 </SimpleButton>
             </Box>

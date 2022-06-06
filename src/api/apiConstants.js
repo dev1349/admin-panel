@@ -1,7 +1,10 @@
 // eslint-disable-next-line no-undef
-export const SERVER_ADDRESS = process.env.REACT_APP_SERVER_ADDRESS
+const env = process.env
+export const SERVER_ADDRESS = env.REACT_APP_SERVER_ADDRESS
 export const SERVER_PORT = '8077'
 export const SERVER_PATH = SERVER_ADDRESS + ':' + SERVER_PORT
+export const NOVAPOSHTA_URL = env.REACT_APP_NOVAPOSHTA_ADDRESS
+export const NOVAPOSHTA_API = env.REACT_APP_NOVAPOSHTA_API_KEY
 
 export const POST_GOOD_PATH = SERVER_PATH + '/api/postGood'
 export const GET_GOOD_PATH = SERVER_PATH + '/api/getGood'

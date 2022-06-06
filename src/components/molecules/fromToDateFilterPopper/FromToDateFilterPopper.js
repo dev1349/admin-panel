@@ -6,16 +6,7 @@ import TableFilterContentTemplate from '../../templates/tableFilterContentTempla
 import Typography from '../../atoms/textElements/typography/Typography'
 import DateField from '../inputs/dateField/DateField'
 
-const FromToFloatFilterPopper = ({
-    id,
-    open,
-    anchorEl,
-    onClose,
-    filter,
-    placement = 'bottom-end',
-    onApply,
-    ...rest
-}) => {
+const FromToFloatFilterPopper = ({ id, open, anchorEl, onClose, filter, placement = 'bottom-end', onApply, ...rest }) => {
     const [fieldsValues, setFieldsValues] = useState(null)
     const handleSetFieldsValues = key => payload => {
         setFieldsValues(prev => {
@@ -84,57 +75,26 @@ const FromToFloatFilterPopper = ({
     }
 
     return (
-        <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            placement={placement}
-            {...rest}
-        >
+        <Popper id={id} open={open} anchorEl={anchorEl} placement={placement} {...rest}>
             <Box>
-                <SimpleButton
-                    onClick={handleResetAll}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleResetAll} variant={'text'} size={'small'} noUppercase>
                     Сбросить все
                 </SimpleButton>
             </Box>
             <TableFilterContentTemplate>
                 <Typography component={'div'} smallFontSize>
                     От&nbsp;
-                    <DateField
-                        name={'from'}
-                        value={value('from')}
-                        onChange={handleSetFieldsValues('from')}
-                        dateForFilter
-                    />
+                    <DateField name={'from'} value={value('from')} onChange={handleSetFieldsValues('from')} dateForFilter />
                     <br />
                     До&nbsp;
-                    <DateField
-                        name={'to'}
-                        value={value('to')}
-                        onChange={handleSetFieldsValues('to')}
-                        dateForFilter
-                    />
+                    <DateField name={'to'} value={value('to')} onChange={handleSetFieldsValues('to')} dateForFilter />
                 </Typography>
             </TableFilterContentTemplate>
             <Box>
-                <SimpleButton
-                    onClick={handleApply}
-                    size={'small'}
-                    disabled={applyButtonDisabled()}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleApply} size={'small'} disabled={applyButtonDisabled()} noUppercase>
                     Применить
                 </SimpleButton>
-                <SimpleButton
-                    onClick={handleCancel}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleCancel} variant={'text'} size={'small'} noUppercase>
                     Отменить
                 </SimpleButton>
             </Box>

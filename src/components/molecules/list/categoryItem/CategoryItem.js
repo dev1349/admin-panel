@@ -37,10 +37,7 @@ const CategoryItem = ({
     useEffect(() => {
         if (!Array.isArray(openCategories)) return
         if (!Array.isArray(openCategoriesAfterDragging)) return
-        if (
-            openCategories.includes(category.id) ||
-            openCategoriesAfterDragging.includes(category.id)
-        ) {
+        if (openCategories.includes(category.id) || openCategoriesAfterDragging.includes(category.id)) {
             setOpen(true)
         }
     }, [openCategories, setOpen])
@@ -113,24 +110,12 @@ const CategoryItem = ({
                     onDragEnter={dragEnterHandler}
                     onDrop={dropHandler}
                 >
-                    <FlexTemplate
-                        spaceBetween
-                        alignItemsCenter
-                        gap7
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                    >
+                    <FlexTemplate spaceBetween alignItemsCenter gap7 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                         {hasSubCategories() &&
                             (open ? (
-                                <ExpandLessIcon
-                                    onClick={handleCloseSubCategory}
-                                    dialogIcon
-                                />
+                                <ExpandLessIcon onClick={handleCloseSubCategory} dialogIcon />
                             ) : (
-                                <ExpandMoreIcon
-                                    onClick={handleOpenSubCategory}
-                                    dialogIcon
-                                />
+                                <ExpandMoreIcon onClick={handleOpenSubCategory} dialogIcon />
                             ))}
                         <Box
                             marginLeft31={!hasSubCategories()}
@@ -139,30 +124,16 @@ const CategoryItem = ({
                             onDragStart={dragStartHandler}
                             onDragEnd={dragEndHandler}
                         >
-                            <Link
-                                component={RouterLink}
-                                to={`/${categoryUrl}/${category.id}`}
-                                dialogLink
-                            >
+                            <Link component={RouterLink} to={`/${categoryUrl}/${category.id}`} dialogLink>
                                 <FlexTemplate alignItemsCenter gap7>
-                                    {category.categoryType === 'WITH_GOODS' ? (
-                                        <CategoryIcon dialogIcon />
-                                    ) : (
-                                        <FolderIcon dialogIcon />
-                                    )}
-                                    <ListItemText
-                                        primary={category.name}
-                                        dialogItem
-                                    />
+                                    {category.categoryType === 'WITH_GOODS' ? <CategoryIcon dialogIcon /> : <FolderIcon dialogIcon />}
+                                    <ListItemText primary={category.name} dialogItem />
                                 </FlexTemplate>
                             </Link>
                         </Box>
                         <Fade in={showEditButton}>
                             <div>
-                                <IconButton
-                                    dialogButton
-                                    onClick={editCategory(category.id)}
-                                >
+                                <IconButton dialogButton onClick={editCategory(category.id)}>
                                     <EditIcon />
                                 </IconButton>
                             </div>
@@ -181,9 +152,7 @@ const CategoryItem = ({
                                 activeCategoryId={activeCategoryId}
                                 editCategory={editCategory}
                                 openCategories={openCategories}
-                                openCategoriesAfterDragging={
-                                    openCategoriesAfterDragging
-                                }
+                                openCategoriesAfterDragging={openCategoriesAfterDragging}
                                 setDraggedCategory={setDraggedCategory}
                             />
                         </Box>

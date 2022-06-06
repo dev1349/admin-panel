@@ -188,6 +188,8 @@ import GreyBorderedWrapperForComponentStyle from '../../components/molecules/wra
 import TitleTableStyle from '../../components/organisms/tables/lastOrdersTable/TitleTableStyle'
 import LabeledTextLabelsStyle from '../../components/molecules/inputs/lageledTextLabels/LabeledTextLabelsStyle'
 import ShowIconStyle from '../../components/atoms/icons/showIcon/ShowIconStyle'
+import CityTemplateStyle from '../../components/templates/npCityTemlate/CityTemplateStyle'
+import OfficeTemplateStyle from '../../components/templates/npOfficeTemlate/OfficeTemplateStyle'
 
 export const styledComponents = {
     AddIconStyle,
@@ -380,4 +382,6 @@ export const styledComponents = {
     ViewListIconStyle,
     UndoIconStyle,
     ZIndexedModalStyle,
+    CityTemplateStyle,
+    OfficeTemplateStyle,
 }

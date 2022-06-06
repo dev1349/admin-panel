@@ -1,15 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-const useValidation = (
-    name,
-    value,
-    required,
-    shouldValidate,
-    validationRules,
-    validatingNow,
-    setValidationResult,
-    clearTouch = false
-) => {
+const useValidation = (name, value, required, shouldValidate, validationRules, validatingNow, setValidationResult, clearTouch = false) => {
     const [touched, setTouched] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -58,11 +49,7 @@ const useValidation = (
     }, [touched, value, createErrorMessage, setErrorMessage])
 
     const getValidationResult = useCallback(
-        value =>
-            validationRules.reduce(
-                (acc, current) => !current.checking(value) && acc,
-                true
-            ),
+        value => validationRules.reduce((acc, current) => !current.checking(value) && acc, true),
         [validationRules]
     )
 
@@ -75,8 +62,7 @@ const useValidation = (
             validationResult[name].isNotEmpty = !isEmpty(transformValue)
         }
         if (shouldValidate) {
-            validationResult[name].validationResult =
-                getValidationResult(transformValue)
+            validationResult[name].validationResult = getValidationResult(transformValue)
         }
         setValidationResult(validationResult)
     }, [setValidationResult, shouldValidate, required, transformValue])

@@ -6,16 +6,7 @@ import TableFilterContentTemplate from '../../templates/tableFilterContentTempla
 import Typography from '../../atoms/textElements/typography/Typography'
 import NumberField from '../inputs/numberField/NumberField'
 
-const FromToIntegerFilterPopper = ({
-    id,
-    open,
-    anchorEl,
-    onClose,
-    filter,
-    placement = 'bottom-end',
-    onApply,
-    ...rest
-}) => {
+const FromToIntegerFilterPopper = ({ id, open, anchorEl, onClose, filter, placement = 'bottom-end', onApply, ...rest }) => {
     const [fieldsValues, setFieldsValues] = useState(null)
     const handleSetFieldsValues = key => payload => {
         setFieldsValues(prev => {
@@ -84,20 +75,9 @@ const FromToIntegerFilterPopper = ({
     }
 
     return (
-        <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            placement={placement}
-            {...rest}
-        >
+        <Popper id={id} open={open} anchorEl={anchorEl} placement={placement} {...rest}>
             <Box>
-                <SimpleButton
-                    onClick={handleResetAll}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleResetAll} variant={'text'} size={'small'} noUppercase>
                     Сбросить все
                 </SimpleButton>
             </Box>
@@ -112,30 +92,14 @@ const FromToIntegerFilterPopper = ({
                         forFilter
                     />
                     &nbsp;&nbsp;До&nbsp;
-                    <NumberField
-                        name={'to'}
-                        value={value('to')}
-                        pattern={'^[0-9]*$'}
-                        onChange={handleSetFieldsValues('to')}
-                        forFilter
-                    />
+                    <NumberField name={'to'} value={value('to')} pattern={'^[0-9]*$'} onChange={handleSetFieldsValues('to')} forFilter />
                 </Typography>
             </TableFilterContentTemplate>
             <Box>
-                <SimpleButton
-                    onClick={handleApply}
-                    size={'small'}
-                    disabled={applyButtonDisabled()}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleApply} size={'small'} disabled={applyButtonDisabled()} noUppercase>
                     Применить
                 </SimpleButton>
-                <SimpleButton
-                    onClick={handleCancel}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleCancel} variant={'text'} size={'small'} noUppercase>
                     Отменить
                 </SimpleButton>
             </Box>

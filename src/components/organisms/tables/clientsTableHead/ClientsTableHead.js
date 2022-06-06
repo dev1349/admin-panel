@@ -219,12 +219,7 @@ const ClientsTableHead = () => {
             <TableRow>
                 <TableCell />
                 {headCells.map(cell => (
-                    <TableCell
-                        key={cell.id}
-                        align={cell.align}
-                        headCell
-                        sortDirection={orderBy === cell.id ? order : false}
-                    >
+                    <TableCell key={cell.id} align={cell.align} headCell sortDirection={orderBy === cell.id ? order : false}>
                         {cell.haveSorting ? (
                             <TableSortLabel
                                 active={orderBy === cell.id}
@@ -241,30 +236,13 @@ const ClientsTableHead = () => {
                         )}
                         {cell.haveFiltering && (
                             <>
-                                <ClickAwayListener
-                                    onClickAway={
-                                        cell.id === anchorEl?.id
-                                            ? handleClosePopper
-                                            : () => {}
-                                    }
-                                >
+                                <ClickAwayListener onClickAway={cell.id === anchorEl?.id ? handleClosePopper : () => {}}>
                                     <BoxNative component={'span'}>
-                                        <IconButton
-                                            id={cell.id}
-                                            size="small"
-                                            onClick={handleShowPopper}
-                                        >
-                                            {filter &&
-                                            filter[cell.id] !== undefined ? (
-                                                <FilterIcon
-                                                    fontSize={'small'}
-                                                    cursor={'pointer'}
-                                                />
+                                        <IconButton id={cell.id} size="small" onClick={handleShowPopper}>
+                                            {filter && filter[cell.id] !== undefined ? (
+                                                <FilterIcon fontSize={'small'} cursor={'pointer'} />
                                             ) : (
-                                                <ExpandMoreIcon
-                                                    cursor={'pointer'}
-                                                    fontSize={'small'}
-                                                />
+                                                <ExpandMoreIcon cursor={'pointer'} fontSize={'small'} />
                                             )}
                                         </IconButton>
                                         {cell.filterPopper}

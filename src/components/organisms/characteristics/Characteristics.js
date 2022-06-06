@@ -6,16 +6,13 @@ import TableHead from '../../atoms/table/tableHead/TableHead'
 import TableRow from '../../atoms/table/tableRow/TableRow'
 import TableCell from '../../atoms/table/tableCell/TableCell'
 import TableBody from '../../atoms/table/tableBody/TableBody'
-import Box from '../../atoms/wrappers/Box/Box'
+import Box from '../../../components/atoms/wrappers/Box/Box'
 import Checkbox from '../../atoms/inputs/checkbox/Checkbox'
 import CheckIcon from '../../atoms/icons/checkIcon/CheckIcon'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import EditIcon from '../../atoms/icons/editIcon/EditIcon'
 import { Fade } from '@mui/material'
-import {
-    getComparator,
-    stableSort,
-} from '../../../reducers/common/sortingFunctions'
+import { getComparator, stableSort } from '../../../reducers/common/sortingFunctions'
 import TableSortLabel from '../../atoms/table/tableSortLabel/TableSortLabel'
 import { visuallyHidden } from '@mui/utils'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
@@ -36,9 +33,7 @@ const Characteristics = ({
     onEditCharacteristic,
     isEditButtonDisabled,
 }) => {
-    const aligns = headLines.map(headLine =>
-        headLine.align ? headLine.align : 'left'
-    )
+    const aligns = headLines.map(headLine => (headLine.align ? headLine.align : 'left'))
 
     const hasValues = characteristic =>
         characteristic.characteristicValues &&
@@ -49,9 +44,7 @@ const Characteristics = ({
         if (!hasValues(characteristic)) {
             return ''
         }
-        const stringValues = getValuesString(
-            characteristic.characteristicValues
-        )
+        const stringValues = getValuesString(characteristic.characteristicValues)
         if (stringValues.length > valueLength) {
             return stringValues.slice(0, valueLength) + '...'
         }
@@ -59,19 +52,13 @@ const Characteristics = ({
         return stringValues
     }
 
-    const getValuesString = values =>
-        values.reduce(
-            (acc, elem) =>
-                acc === '' ? acc + elem.value : acc + ', ' + elem.value,
-            ''
-        )
+    const getValuesString = values => values.reduce((acc, elem) => (acc === '' ? acc + elem.value : acc + ', ' + elem.value), '')
 
     const [activeRow, setActiveRow] = useState(null)
     const handleSetActiveRow = index => () => setActiveRow(index)
     const handleUnSetActiveRow = () => setActiveRow(null)
 
-    const isSelected = (id, selectedCharacteristics) =>
-        selectedCharacteristics.includes(id)
+    const isSelected = (id, selectedCharacteristics) => selectedCharacteristics.includes(id)
 
     return (
         <MaxWidthTemplate>
@@ -82,35 +69,18 @@ const Characteristics = ({
                         <TableHead dialogTableHead>
                             <TableRow dialogRow>
                                 {headLines.map(headLine => (
-                                    <TableCell
-                                        dialogHeadCell
-                                        key={headLine.id}
-                                        align={headLine.align}
-                                    >
+                                    <TableCell dialogHeadCell key={headLine.id} align={headLine.align}>
                                         {headLine.canSort ? (
                                             <TableSortLabel
                                                 dialogSortLabel
-                                                active={
-                                                    orderBy === headLine.name
-                                                }
-                                                direction={
-                                                    orderBy === headLine.name
-                                                        ? order
-                                                        : 'asc'
-                                                }
-                                                onClick={onRequestSort(
-                                                    headLine.name
-                                                )}
+                                                active={orderBy === headLine.name}
+                                                direction={orderBy === headLine.name ? order : 'asc'}
+                                                onClick={onRequestSort(headLine.name)}
                                             >
                                                 {headLine.content}
                                                 {orderBy === headLine.name ? (
-                                                    <Box
-                                                        component="span"
-                                                        sx={visuallyHidden}
-                                                    >
-                                                        {order === 'desc'
-                                                            ? 'sorted descending'
-                                                            : 'sorted ascending'}
+                                                    <Box component="span" sx={visuallyHidden}>
+                                                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                                                     </Box>
                                                 ) : null}
                                             </TableSortLabel>
@@ -122,18 +92,12 @@ const Characteristics = ({
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {stableSort(
-                                characteristics,
-                                getComparator(order, orderBy)
-                            ).map((characteristic, index) => (
+                            {stableSort(characteristics, getComparator(order, orderBy)).map((characteristic, index) => (
                                 <TableRow
                                     hover
                                     dialogRow
                                     key={characteristic.id}
-                                    dialogSelectedRow={isSelected(
-                                        characteristic.id,
-                                        selectedCharacteristics
-                                    )}
+                                    dialogSelectedRow={isSelected(characteristic.id, selectedCharacteristics)}
                                     onMouseEnter={handleSetActiveRow(index)}
                                     onMouseLeave={handleUnSetActiveRow}
                                 >
@@ -141,13 +105,8 @@ const Characteristics = ({
                                         <Checkbox
                                             dialogCheckbox
                                             disableRipple
-                                            checked={isSelected(
-                                                characteristic.id,
-                                                selectedCharacteristics
-                                            )}
-                                            onChange={onSelect(
-                                                characteristic.id
-                                            )}
+                                            checked={isSelected(characteristic.id, selectedCharacteristics)}
+                                            onChange={onSelect(characteristic.id)}
                                         />
                                     </TableCell>
                                     <TableCell align={aligns[1]} dialogCell>
@@ -157,40 +116,22 @@ const Characteristics = ({
                                         {characteristic.orderNumber}
                                     </TableCell>
                                     <TableCell align={aligns[3]} dialogCell>
-                                        {characteristic.isAdminOnly ? (
-                                            <CheckIcon dialogIcon />
-                                        ) : (
-                                            ''
-                                        )}
+                                        {characteristic.isAdminOnly ? <CheckIcon dialogIcon /> : ''}
                                     </TableCell>
                                     <TableCell align={aligns[4]} dialogCell>
-                                        {characteristic.isAvailableInFilter ? (
-                                            <CheckIcon dialogIcon />
-                                        ) : (
-                                            ''
-                                        )}
+                                        {characteristic.isAvailableInFilter ? <CheckIcon dialogIcon /> : ''}
                                     </TableCell>
                                     <TableCell align={aligns[5]} dialogCell>
-                                        {characteristicValues(
-                                            characteristic,
-                                            valueLength
-                                        )}
+                                        {characteristicValues(characteristic, valueLength)}
                                     </TableCell>
                                     <TableCell align={aligns[6]} dialogCell>
-                                        <Fade
-                                            in={index === activeRow}
-                                            timeout={0}
-                                        >
+                                        <Fade in={index === activeRow} timeout={0}>
                                             <div>
                                                 <IconButton
                                                     dialogButton
                                                     disableRipple
-                                                    onClick={onEditCharacteristic(
-                                                        characteristic.id
-                                                    )}
-                                                    disabled={
-                                                        isEditButtonDisabled
-                                                    }
+                                                    onClick={onEditCharacteristic(characteristic.id)}
+                                                    disabled={isEditButtonDisabled}
                                                 >
                                                     <EditIcon />
                                                 </IconButton>
@@ -203,11 +144,7 @@ const Characteristics = ({
                     </Table>
                     {!characteristics.length ? (
                         <Box marginTop7>
-                            <Typography
-                                mainAdminText
-                                textAlignCenter
-                                component={'div'}
-                            >
+                            <Typography mainAdminText textAlignCenter component={'div'}>
                                 Список характеристик пуст :(
                             </Typography>
                         </Box>

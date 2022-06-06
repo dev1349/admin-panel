@@ -23,13 +23,11 @@ const AddCharacteristic = ({
     isDisableGroupSelect,
     orderNumberHelper,
 }) => {
-    const characteristicGroupItems = characteristicGroups.map(
-        characteristicGroup => ({
-            id: characteristicGroup.id,
-            label: characteristicGroup.name,
-            value: characteristicGroup.id,
-        })
-    )
+    const characteristicGroupItems = characteristicGroups.map(characteristicGroup => ({
+        id: characteristicGroup.id,
+        label: characteristicGroup.name,
+        value: characteristicGroup.id,
+    }))
 
     return (
         <MaxWidthTemplate>
@@ -48,9 +46,7 @@ const AddCharacteristic = ({
                 <LabeledNumberField
                     id={'orderNumber'}
                     label={'Порядковый номер *'}
-                    placeholder={
-                        'Введите порядковый номер отображения характеристики товара'
-                    }
+                    placeholder={'Введите порядковый номер отображения характеристики товара'}
                     name={'orderNumber'}
                     value={characteristicField['orderNumber']}
                     onChange={changeCharacteristicFields}
@@ -61,11 +57,7 @@ const AddCharacteristic = ({
                     id={'characteristicGroup'}
                     label={'Группа характеристик'}
                     name={'characteristicGroup'}
-                    value={
-                        characteristicField['characteristicGroup']
-                            ? characteristicField['characteristicGroup'].id
-                            : null
-                    }
+                    value={characteristicField['characteristicGroup'] ? characteristicField['characteristicGroup'].id : null}
                     onChange={changeCharacteristicGroup}
                     items={characteristicGroupItems}
                     defaultLabel={'Выберите группу характеристик'}

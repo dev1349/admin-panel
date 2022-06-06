@@ -6,16 +6,7 @@ import TableFilterContentTemplate from '../../templates/tableFilterContentTempla
 import Typography from '../../atoms/textElements/typography/Typography'
 import FloatField from '../inputs/floatField/FloatField'
 
-const FromToFloatFilterPopper = ({
-    id,
-    open,
-    anchorEl,
-    onClose,
-    filter,
-    placement = 'bottom-end',
-    onApply,
-    ...rest
-}) => {
+const FromToFloatFilterPopper = ({ id, open, anchorEl, onClose, filter, placement = 'bottom-end', onApply, ...rest }) => {
     const [fieldsValues, setFieldsValues] = useState(null)
     const handleSetFieldsValues = key => payload => {
         setFieldsValues(prev => {
@@ -89,20 +80,9 @@ const FromToFloatFilterPopper = ({
     }
 
     return (
-        <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            placement={placement}
-            {...rest}
-        >
+        <Popper id={id} open={open} anchorEl={anchorEl} placement={placement} {...rest}>
             <Box>
-                <SimpleButton
-                    onClick={handleResetAll}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleResetAll} variant={'text'} size={'small'} noUppercase>
                     Сбросить все
                 </SimpleButton>
             </Box>
@@ -112,9 +92,7 @@ const FromToFloatFilterPopper = ({
                     <FloatField
                         name={'from'}
                         value={value('from')}
-                        pattern={
-                            '^(|0|0[.]|[1-9][0-9]*|[1-9][0-9]*[.]|0[.][0-9]{1,2}|[1-9][0-9]*[.][0-9]{1,2})$'
-                        }
+                        pattern={'^(|0|0[.]|[1-9][0-9]*|[1-9][0-9]*[.]|0[.][0-9]{1,2}|[1-9][0-9]*[.][0-9]{1,2})$'}
                         onChange={handleSetFieldsValues('from')}
                         forFilter
                     />
@@ -122,29 +100,17 @@ const FromToFloatFilterPopper = ({
                     <FloatField
                         name={'to'}
                         value={value('to')}
-                        pattern={
-                            '^(|0|0[.]|[1-9][0-9]*|[1-9][0-9]*[.]|0[.][0-9]{1,2}|[1-9][0-9]*[.][0-9]{1,2})$'
-                        }
+                        pattern={'^(|0|0[.]|[1-9][0-9]*|[1-9][0-9]*[.]|0[.][0-9]{1,2}|[1-9][0-9]*[.][0-9]{1,2})$'}
                         onChange={handleSetFieldsValues('to')}
                         forFilter
                     />
                 </Typography>
             </TableFilterContentTemplate>
             <Box>
-                <SimpleButton
-                    onClick={handleApply}
-                    size={'small'}
-                    disabled={applyButtonDisabled()}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleApply} size={'small'} disabled={applyButtonDisabled()} noUppercase>
                     Применить
                 </SimpleButton>
-                <SimpleButton
-                    onClick={handleCancel}
-                    variant={'text'}
-                    size={'small'}
-                    noUppercase
-                >
+                <SimpleButton onClick={handleCancel} variant={'text'} size={'small'} noUppercase>
                     Отменить
                 </SimpleButton>
             </Box>

@@ -24,9 +24,7 @@ const PhoneFieldMolecules = ({
         () => [
             {
                 checking: value => !new RegExp(/^(\+38)?0\d{9}$/).test(value),
-                errorMessage:
-                    validationRules ||
-                    'Укажите телефон в формате "0XX XXX XX XX"',
+                errorMessage: validationRules || 'Укажите телефон в формате "0XX XXX XX XX"',
             },
         ],
         [validationRules]
