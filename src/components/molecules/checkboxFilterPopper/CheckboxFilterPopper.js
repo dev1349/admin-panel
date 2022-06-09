@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Popper from '../../atoms/popper/Popper'
 import SimpleButton from '../../atoms/simpleButton/SimpleButton'
-import Box from '../../atoms/wrappers/Box/Box'
+import Box from '../../atoms/wrappers/box/Box'
 import Checkbox from '../inputs/checkbox/Checkbox'
 import TableFilterContentTemplate from '../../templates/tableFilterContentTemplate/TableFilterContentTemplate'
 

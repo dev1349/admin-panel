@@ -12,6 +12,7 @@ import attributeGroupSlice from './attributeGroupSlice'
 import newOrderSlice from './newOrderSlice'
 import usersSlice from './usersSlice'
 import clientsSlice from './clientsSlice'
+import novelitiesSlice from './novelitiesSlice'
 import characteristicsReducer from './characteristicsSlice'
 import characteristicGroupsReducer from './characteristicGroupsSlice'
 import behaviorServerInteractionReducer from './behaviorServerInteraction'
@@ -30,6 +31,7 @@ export const rootReducer = combineReducers({
     newOrder: newOrderSlice,
     users: usersSlice,
     clients: clientsSlice,
+    novelities: novelitiesSlice,
     categories: categoriesReducer,
     characteristics: characteristicsReducer,
     characteristicGroups: characteristicGroupsReducer,

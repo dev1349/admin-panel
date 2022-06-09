@@ -3,7 +3,7 @@ import ModalContent from '../../../atoms/wrappers/modalContent/ModalContent'
 import AdminPageBorder from '../../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
 import ModalWindow from '../../../atoms/modalWindow/ModalWindow'
 import AdminPageHeader from '../../headers/adminPageHeader/AdminPageHeader'
-import Box from '../../../atoms/wrappers/Box/Box'
+import Box from '../../../atoms/wrappers/box/Box'
 
 const AdminModal = ({ open, onClose, title, description, buttons, children }) => {
     return (

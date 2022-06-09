@@ -88,6 +88,7 @@ import TypographyStyle from '../../components/atoms/textElements/typography/Typo
 import VerticalModalTemplateStyle from '../../components/templates/verticalModalTemplate/VerticalModalTemplateStyle'
 import ZIndexedModalStyle from '../../components/molecules/modals/simpleModal/ZIndexedModalStyle'
 import LastOrdersStyle from '../../components/organisms/tables/lastOrdersTable/LastOrdersStyle'
+import NovTableContainer from '../../components/templates/tableContainerTemplate/NovTableContainerStyle'
 import ButtonStyle from '../../components/atoms/button/ButtonStyle'
 import AddIconStyle from '../../components/atoms/icons/addIcon/AddIconStyle'
 import AddImageIconStyle from '../../components/atoms/icons/addImageIcon/AddImageIconStyle'
@@ -157,7 +158,7 @@ import ToggleButtonStyle from '../../components/atoms/toggleButton/ToggleButtonS
 import ToggleButtonGroupStyle from '../../components/atoms/toggleButtonGroup/ToggleButtonGroupStyle'
 import ToggleButtonWithTextStyle from '../../components/atoms/toggleButtonWithText/ToggleButtonWithTextStyle'
 import AdminPageBorderStyle from '../../components/atoms/wrappers/AdminPageBorder/AdminPageBorderStyle'
-import BoxStyle from '../../components/atoms/wrappers/Box/BoxStyle'
+import BoxStyle from '../../components/atoms/wrappers/box/BoxStyle'
 import IconWrapperForTooltipStyle from '../../components/atoms/wrappers/iconWrapperForTooltip/IconWrapperForTooltipStyle'
 import ModalContentStyle from '../../components/atoms/wrappers/modalContent/ModalContentStyle'
 import ButtonWithIconAndLabelStyle from '../../components/molecules/buttons/buttonWithIconAndLabel/ButtonWithIconAndLabelStyle'
@@ -184,7 +185,6 @@ import LabeledCheckboxFieldStyle from '../../components/molecules/inputs/lableCh
 import SimpleTableTotal from '../../components/molecules/table/simpleTableTotal/SimpleTableTotal'
 import TableHeadLastOrdersStyle from '../../components/molecules/table/tableHeadLastOrders/TableHeadLastOrdersStyle'
 import TableRowLastOrderStyle from '../../components/molecules/table/tableRowLastOrders/TableRowLastOrderStyle'
-import GreyBorderedWrapperForComponentStyle from '../../components/molecules/wrappers/greyBorderedWrapperForComponent/GreyBorderedWrapperForComponentStyle'
 import TitleTableStyle from '../../components/organisms/tables/lastOrdersTable/TitleTableStyle'
 import LabeledTextLabelsStyle from '../../components/molecules/inputs/lageledTextLabels/LabeledTextLabelsStyle'
 import ShowIconStyle from '../../components/atoms/icons/showIcon/ShowIconStyle'
@@ -251,7 +251,6 @@ export const styledComponents = {
     GoodsHeaderStyle,
     GoodsTableHeadStyle,
     GoodsTableRowStyle,
-    GreyBorderedWrapperForComponentStyle,
     GreyBorderedWrapperStyle,
     H1Style,
     H2Style,
@@ -288,7 +287,6 @@ export const styledComponents = {
     LabeledTextLabelsStyle,
     LabelTemplateStyle,
     LastChildToRightTemplateStyle,
-    LastOrdersStyle,
     LinkStyle,
     ListDividerStyle,
     ListIconStyle,
@@ -382,6 +380,8 @@ export const styledComponents = {
     ViewListIconStyle,
     UndoIconStyle,
     ZIndexedModalStyle,
+    LastOrdersStyle,
+    NovTableContainer,
     CityTemplateStyle,
     OfficeTemplateStyle,
 }

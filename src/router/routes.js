@@ -1,18 +1,11 @@
 import {
     ADD_CATEGORY_ROUTE,
-    ADD_CLIENT,
     ADD_PRODUCT,
-    ADD_USER,
     ATTRIBUTE_GROUP,
     ATTRIBUTE_LIST,
     CATEGORIES_LIST_ROUTE,
-    CHECKOUTS,
-    CLIENTSID,
-    CONTACTS,
     COUPONS_LIST_ROUTE,
-    DELIVERIES,
     EDIT_GOOD,
-    EXPORT,
     GOOD_ADD_ROUTE,
     GOODS,
     GOODS_FILTER_ROUTE,
@@ -21,13 +14,21 @@ import {
     LOGIN_ROUTE,
     MADE_COMPONENT_LIST,
     MAIN_ROUTE,
-    MENU_AND_PAGES,
     MY_GOODS_LIST_ROUTE,
-    NEW_ORDER,
     ORDER_INFO,
     ORDERS,
     UPLOAD_THEME,
     USERS,
+    ADD_USER,
+    NEW_ORDER,
+    ADD_CLIENT,
+    EXPORT,
+    MENU_AND_PAGES,
+    CLIENTSID,
+    CONTACTS,
+    CHECKOUTS,
+    DELIVERIES,
+    NOVELITIES,
     EDIT_CATEGORY_ROUTE,
     CHARACTERISTICS,
     ADDCHARACTERISTIC,
@@ -64,6 +65,7 @@ import LastOrders from '../components/organisms/tables/lastOrdersTable/LastOrder
 import TestAtom from '../components/atoms/testAtom/TestAtom'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
+import Novelities from '../components/pages/novelitiesPage/NovelitiesPage'
 import AddCategory from '../components/pages/addCategory/AddCategory'
 import EditCategory from '../components/pages/editCategory/EditCategory'
 import Characteristics from '../components/pages/characteristics/Characteristics'
@@ -187,6 +189,10 @@ export const authRoutes = [
     {
         path: CHECKOUTS,
         Component: Checkout,
+    },
+    {
+        path: NOVELITIES,
+        Component: Novelities,
     },
     {
         path: CHARACTERISTICS,

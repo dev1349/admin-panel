@@ -5,17 +5,8 @@ import { NOVAPOSHTA_API } from '../../../../api/apiConstants'
 import { OfficesFetch } from '../../../../api/novaposhtaApi'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const AutocompleteStyled = createStyled('AutocompleteStyle', Autocomplete, [
-    'city',
-    'office',
-])
-const AutocompleteOffices = ({
-    settlementRef,
-    setSelectedOffice,
-    officeFocused,
-    inputValue,
-    setInputValue,
-}) => {
+const AutocompleteStyled = createStyled('AutocompleteStyle', Autocomplete, ['city', 'office'])
+const AutocompleteOffices = ({ settlementRef, setSelectedOffice, officeFocused, inputValue, setInputValue }) => {
     const [options, setOptions] = useState([])
     const inpt = useRef(null)
     const queryParams = {
@@ -54,14 +45,7 @@ const AutocompleteOffices = ({
             office
             id="inputOffice"
             options={options}
-            renderInput={params => (
-                <TextField
-                    {...params}
-                    inputRef={inpt}
-                    label="Виберіть відділення"
-                    autoFocus={officeFocused}
-                />
-            )}
+            renderInput={params => <TextField {...params} inputRef={inpt} label="Виберіть відділення" autoFocus={officeFocused} />}
             getOptionLabel={option => option.Description}
             onChange={getSelectedValue}
             openOnFocus={true}

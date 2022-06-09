@@ -41,22 +41,10 @@ const AdditionalClientFunctions = ({
                         indeterminate={allSelectedClientsIndeterminate}
                         onChange={onChangeAllSelectedClients}
                     />
-                    <SimpleButton
-                        startIcon={<AddIcon />}
-                        size={'small'}
-                        variant="outlined"
-                        noUppercase
-                        onClick={handleCreateNewClient}
-                    >
+                    <SimpleButton startIcon={<AddIcon />} size={'small'} variant="outlined" noUppercase onClick={handleCreateNewClient}>
                         Клиент
                     </SimpleButton>
-                    <ExportButton
-                        tableList={clients}
-                        fileName={'clients-data'}
-                        size={'small'}
-                        variant="outlined"
-                        noUppercase
-                    >
+                    <ExportButton tableList={clients} fileName={'clients-data'} size={'small'} variant="outlined" noUppercase>
                         Експорт
                     </ExportButton>
                 </ClientButtonsTemplate>
@@ -68,12 +56,7 @@ const AdditionalClientFunctions = ({
                         placeholder={'Поиск по имени, телефону и email-у'}
                         clientSearch
                     />
-                    <SimpleButton
-                        startIcon={<SearchIcon />}
-                        size={'small'}
-                        variant="contained"
-                        noUppercase
-                    >
+                    <SimpleButton startIcon={<SearchIcon />} size={'small'} variant="contained" noUppercase>
                         Найти
                     </SimpleButton>
                     {isSelectedClients && (

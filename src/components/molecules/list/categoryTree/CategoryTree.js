@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Box from '../../../atoms/wrappers/Box/Box'
+import Box from '../../../atoms/wrappers/box/Box'
 import FlexTemplate from '../../../templates/flexTemplate/FlexTemplate'
 import ExpandLessIcon from '../../../atoms/icons/expandLessIcon/ExpandLessIcon'
 import ExpandMoreIcon from '../../../atoms/icons/expandMoreIcon/ExpandMoreIcon'
