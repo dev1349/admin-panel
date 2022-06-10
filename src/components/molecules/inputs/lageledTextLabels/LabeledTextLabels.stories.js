@@ -13,7 +13,7 @@ export const Example1 = Template.bind({})
 Example1.args = {
     id: 'someIdValue',
     label: 'Some label text...',
-    characteristics: [
+    items: [
         {
             id: 0,
             name: 'name 01',
@@ -84,5 +84,5 @@ Example1.args = {
     buttonText: 'Button text',
     buttonIcon: <AddIcon />,
     onClick: () => console.log('button click'),
-    characteristicValuesLength: 20,
+    valuesLength: 20,
 }

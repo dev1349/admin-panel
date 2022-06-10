@@ -6,6 +6,8 @@ const TypographyStyled = createStyled('TypographyStyle', Typography, [
     'smallFontSize',
     'mainAdminText',
     'textAlignCenter',
+    'bold',
+    'lineHeight15',
 ])
 
 const TypographyWS = ({ children, ...rest }) => {

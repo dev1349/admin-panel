@@ -40,6 +40,12 @@ export default {
             },
         },
         {
+            props: { marginTop10: true },
+            style: {
+                marginTop: '10px',
+            },
+        },
+        {
             props: { marginTop2: true },
             style: {
                 marginTop: '2px',
@@ -50,6 +56,12 @@ export default {
             style: {
                 maxHeight: '500px',
                 overflow: 'auto',
+            },
+        },
+        {
+            props: { marginLeft62: true },
+            style: {
+                marginLeft: '62px',
             },
         },
     ],

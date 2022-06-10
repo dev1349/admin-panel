@@ -14,6 +14,7 @@ import Box from '../../../atoms/wrappers/box/Box'
 import { createChildrenCategoryIds } from '../../../pages/addCategory/categoryOperations'
 import FolderIcon from '../../../atoms/icons/folderIcon/FolderIcon'
 import CategoryIcon from '../../../atoms/icons/categoryIcon/CategoryIcon'
+import SetIcon from '../../../atoms/icons/setIcon/SetIcon'
 
 const CategoryItem = ({
     category,
@@ -100,6 +101,8 @@ const CategoryItem = ({
         event.currentTarget.style.backgroundColor = null
     }
 
+    const hasSet = category.characteristicSets.length > 0
+
     return (
         <ListItem dialogItem>
             <Box flexGrow1>
@@ -127,6 +130,7 @@ const CategoryItem = ({
                             <Link component={RouterLink} to={`/${categoryUrl}/${category.id}`} dialogLink>
                                 <FlexTemplate alignItemsCenter gap7>
                                     {category.categoryType === 'WITH_GOODS' ? <CategoryIcon dialogIcon /> : <FolderIcon dialogIcon />}
+                                    {hasSet && <SetIcon dialogIcon />}
                                     <ListItemText primary={category.name} dialogItem />
                                 </FlexTemplate>
                             </Link>

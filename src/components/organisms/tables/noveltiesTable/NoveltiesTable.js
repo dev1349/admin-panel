@@ -10,9 +10,7 @@ const columns = [
         field: 'imgSrc',
         headerName: 'Фото',
         width: 200,
-        renderCell: params => (
-            <img style={{ width: '70px' }} src={params.value} />
-        ),
+        renderCell: params => <img style={{ width: '70px' }} src={params.value} />,
     },
     { field: 'name', headerName: 'Название', width: 300 },
     { field: 'aticle', headerName: 'Артикуль', width: 300 },
@@ -27,9 +25,7 @@ const DataTable = () => {
     const dispatch = useDispatch()
 
     const selectionHandler = selectedItems => {
-        selectedItems.length > 0
-            ? setSelected(true) || setSelectedRows(selectedItems)
-            : setSelected(false) || setSelectedRows([])
+        selectedItems.length > 0 ? setSelected(true) || setSelectedRows(selectedItems) : setSelected(false) || setSelectedRows([])
     }
 
     return (

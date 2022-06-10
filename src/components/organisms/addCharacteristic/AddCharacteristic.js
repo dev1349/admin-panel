@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
-import AdminPageBorder from '../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
+import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import LabeledTextField from '../../molecules/inputs/labeledTextField/LabeledTextField'
 import LabeledNumberField from '../../molecules/inputs/labeledNumberField/LabeledNumberField'

@@ -30,6 +30,7 @@ Example1.args = {
                     subCategories: null,
                     parent: 1,
                     categoryType: 'WITH_GOODS',
+                    characteristicSets: [],
                 },
                 {
                     id: 12,
@@ -37,6 +38,7 @@ Example1.args = {
                     subCategories: null,
                     parent: 1,
                     categoryType: 'WITH_GOODS',
+                    characteristicSets: [],
                 },
                 {
                     id: 13,
@@ -44,10 +46,12 @@ Example1.args = {
                     subCategories: null,
                     parent: 1,
                     categoryType: 'WITH_GOODS',
+                    characteristicSets: [],
                 },
             ],
             parent: null,
             categoryType: 'WITH_CATEGORIES',
+            characteristicSets: [],
         },
         {
             id: 2,
@@ -67,6 +71,7 @@ Example1.args = {
                                     subCategories: null,
                                     parent: 24,
                                     categoryType: 'WITH_GOODS',
+                                    characteristicSets: [],
                                 },
                                 {
                                     id: 35,
@@ -74,10 +79,12 @@ Example1.args = {
                                     subCategories: null,
                                     parent: 24,
                                     categoryType: 'WITH_GOODS',
+                                    characteristicSets: [],
                                 },
                             ],
                             parent: 14,
                             categoryType: 'WITH_CATEGORIES',
+                            characteristicSets: [],
                         },
                         {
                             id: 25,
@@ -85,10 +92,12 @@ Example1.args = {
                             subCategories: null,
                             parent: 14,
                             categoryType: 'WITH_GOODS',
+                            characteristicSets: [],
                         },
                     ],
                     parent: 2,
                     categoryType: 'WITH_CATEGORIES',
+                    characteristicSets: [],
                 },
                 {
                     id: 15,
@@ -96,10 +105,12 @@ Example1.args = {
                     subCategories: null,
                     parent: 2,
                     categoryType: 'WITH_GOODS',
+                    characteristicSets: [],
                 },
             ],
             parent: null,
             categoryType: 'WITH_CATEGORIES',
+            characteristicSets: [],
         },
         {
             id: 3,
@@ -107,6 +118,7 @@ Example1.args = {
             subCategories: null,
             parent: null,
             categoryType: 'WITH_GOODS',
+            characteristicSets: [],
         },
         {
             id: 4,
@@ -118,10 +130,12 @@ Example1.args = {
                     subCategories: null,
                     parent: 4,
                     categoryType: 'WITH_GOODS',
+                    characteristicSets: [],
                 },
             ],
             parent: null,
             categoryType: 'WITH_CATEGORIES',
+            characteristicSets: [],
         },
     ],
     draggingCategory: {
@@ -130,8 +144,9 @@ Example1.args = {
         subCategories: null,
         parent: 4,
         categoryType: 'WITH_GOODS',
+        characteristicSets: [],
     },
-    setDraggingCategory: () => console.log('set dragging category'),
+    // setDraggingCategory: id => () => console.log('set dragging category ', id),
     moveCategory: () => console.log('move category'),
     moveCategoryToRoot: () => console.log('move category to root'),
     categoryUrl: '/someCategoryUrl',
@@ -141,20 +156,13 @@ Example1.args = {
     icon: <CategoryIcon dialogIcon />,
     title: 'Список категорий',
     buttons: [
-        <IconButton
-            key={0}
-            dialogButton
-            onClick={() => console.log('click add category button')}
-        >
+        <IconButton key={0} dialogButton onClick={() => console.log('click add category button')}>
             <AddIcon />
         </IconButton>,
-        <IconButton
-            key={1}
-            dialogButton
-            onClick={() => console.log('click delete caetgory button')}
-            disabled={true}
-        >
+        <IconButton key={1} dialogButton onClick={() => console.log('click delete caetgory button')} disabled={true}>
             <DeleteIcon />
         </IconButton>,
     ],
+    openCategoriesAfterDragging: [1, 2, 14],
+    setDraggedCategory: id => () => console.log('set dragging category ', id),
 }

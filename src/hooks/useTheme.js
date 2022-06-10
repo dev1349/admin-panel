@@ -1,12 +1,6 @@
 import { useEffect } from 'react'
 import { createTheme } from '@mui/material'
-import {
-    getTheme,
-    isThemeLoadedSelector,
-    styleFromSelector,
-    themeNameSelector,
-    themeSelector,
-} from '../reducers/styleSlice'
+import { getTheme, isThemeLoadedSelector, styleFromSelector, themeNameSelector, themeSelector } from '../reducers/styleSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const useTheme = () => {

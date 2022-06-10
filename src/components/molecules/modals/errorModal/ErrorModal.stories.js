@@ -1,12 +1,12 @@
 import React from 'react'
-import ServerErrorModal from './ServerErrorModal'
+import ErrorModal from './ErrorModal'
 
 export default {
-    title: 'molecules/modals/ServerErrorModal',
-    component: ServerErrorModal,
+    title: 'molecules/modals/ErrorModal',
+    component: ErrorModal,
 }
 
-const Template = args => <ServerErrorModal {...args} />
+const Template = args => <ErrorModal {...args} />
 
 export const Example1 = Template.bind({})
 Example1.args = {

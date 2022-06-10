@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
-import AdminPageBorder from '../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
+import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import LabeledTextField from '../../molecules/inputs/labeledTextField/LabeledTextField'
 import LabeledNumberField from '../../molecules/inputs/labeledNumberField/LabeledNumberField'
@@ -14,12 +14,13 @@ import ListItem from '../../atoms/list/listItem/ListItem'
 import ListItemText from '../../atoms/list/listItemText/ListItemText'
 import FlexTemplate from '../../templates/flexTemplate/FlexTemplate'
 import Switch from '../../molecules/inputs/switch/Switch'
-import Box from '../../../components/atoms/wrappers/box/Box'
+import Box from '../../atoms/wrappers/box/Box'
 import ShowIcon from '../../atoms/icons/showIcon/ShowIcon'
 import { Fade } from '@mui/material'
 import Typography from '../../atoms/textElements/typography/Typography'
-import { stringValues } from '../../../common/commonValueFunction'
+import { totalStringValues } from '../../../common/commonValueFunction'
 import AdminModal from '../../molecules/modals/adminModal/AdminModal'
+import CharacteristicIcon from '../../atoms/icons/characteristicIcon/CharacteristicIcon'
 
 const AddCharacteristicGroup = ({
     icon,
@@ -86,7 +87,9 @@ const AddCharacteristicGroup = ({
                 <LabeledTextLabels
                     id={'characteristics'}
                     label={'Характеристики в группе'}
-                    characteristics={characteristicGroupField.characteristics}
+                    items={[...characteristicGroupField.characteristics].sort((firstEl, secondEl) =>
+                        firstEl.name > secondEl.name ? 1 : -1
+                    )}
                     buttonText={
                         characteristicGroupField.characteristics.length === 0
                             ? 'Добавить характеристику'
@@ -94,104 +97,116 @@ const AddCharacteristicGroup = ({
                     }
                     buttonIcon={<AddIcon dialogIcon />}
                     onClick={onOpenCharacteristicListModal}
+                    itemIcon={<CharacteristicIcon dialogIcon />}
+                    propertiesForSting={[{ itemsProperty: 'characteristicValues', propertyName: 'value' }]}
                 />
-                <AdminModal
-                    open={isOpenCharacteristicListModal}
-                    onClose={onCloseCharacteristicListModal}
-                    title={'Характеристики'}
-                    buttons={[
-                        <IconButton key={0} dialogButton disableRipple onClick={onCloseCharacteristicListModal} autoFocus>
-                            <UndoIcon />
-                        </IconButton>,
-                    ]}
-                >
-                    <Box marginTop7>
-                        {characteristics.length === 0 ? (
-                            <Typography mainAdminText>Нет &quot;свободных&quot; характеристик :(</Typography>
-                        ) : (
-                            <List component={'ol'}>
-                                {[...characteristics]
-                                    .sort((firstEl, secondEl) => firstEl.name > secondEl.name)
-                                    .map((characteristic, index) => (
-                                        <ListItem
-                                            key={characteristic.id}
-                                            onMouseEnter={handleMouseEnterListItem(characteristic.id)}
-                                            onMouseLeave={handleMouseLeaveListItem}
-                                            dialogItem
-                                        >
-                                            <Box flexGrow1>
-                                                <FlexTemplate spaceBetween alignItemsCenter gap10>
-                                                    <ListItemText dialogItem primary={`${index + 1}) ${characteristic.name}`} />
-                                                    <FlexTemplate alignItemsCenter gap10>
-                                                        <Switch
-                                                            name={`switch${characteristic.id}`}
-                                                            dialogSwitch
-                                                            disableRipple
-                                                            checked={isCharacteristicInGroup(characteristic.id)}
-                                                            onChange={addRemoveCharacteristic(characteristic)}
-                                                        />
-                                                        <Fade in={activeListItem === characteristic.id} timeout={0}>
-                                                            <div>
-                                                                <IconButton
-                                                                    dialogButton
-                                                                    disableRipple
-                                                                    onClick={handleOpenCharacteristicModal(characteristic)}
-                                                                >
-                                                                    <ShowIcon />
-                                                                </IconButton>
-                                                            </div>
-                                                        </Fade>
-                                                    </FlexTemplate>
-                                                </FlexTemplate>
-                                            </Box>
-                                        </ListItem>
-                                    ))}
-                            </List>
-                        )}
-                        <AdminModal
-                            open={isCharacteristicModalOpen}
-                            onClose={handleCloseCharacteristicModal}
-                            title={'Характеристика'}
-                            buttons={[
-                                <IconButton key={0} dialogButton disableRipple onClick={handleCloseCharacteristicModal} autoFocus>
-                                    <UndoIcon />
-                                </IconButton>,
-                            ]}
-                        >
-                            <List component={'ol'}>
-                                <ListItem dialogItem>
-                                    <ListItemText primary={`1) Имя характеристики: ${characteristicForOpen?.name}`} dialogItem />
-                                </ListItem>
-                                <ListItem dialogItem>
-                                    <ListItemText primary={`2) Порядковый номер: ${characteristicForOpen?.orderNumber}`} dialogItem />
-                                </ListItem>
-                                <ListItem dialogItem>
-                                    <ListItemText
-                                        primary={`3) Только для администратора: ${characteristicForOpen?.isAdminOnly ? 'Да' : 'Нет'}`}
-                                        dialogItem
-                                    />
-                                </ListItem>
-                                <ListItem dialogItem>
-                                    <ListItemText
-                                        primary={`4) Для фильтрации: ${characteristicForOpen?.isAvailableInFilter ? 'Да' : 'Нет'}`}
-                                        dialogItem
-                                    />
-                                </ListItem>
-                                <ListItem dialogItem>
-                                    <ListItemText
-                                        primary={`5) Значения характеристики: ${stringValues(
-                                            characteristicForOpen?.characteristicValues,
-                                            40,
-                                            'value'
-                                        )}`}
-                                        dialogItem
-                                    />
-                                </ListItem>
-                            </List>
-                        </AdminModal>
-                    </Box>
-                </AdminModal>
             </AdminPageBorder>
+            <AdminModal
+                open={isOpenCharacteristicListModal}
+                onClose={onCloseCharacteristicListModal}
+                title={'Характеристики'}
+                buttons={[
+                    <IconButton key={0} dialogButton disableRipple onClick={onCloseCharacteristicListModal} autoFocus>
+                        <UndoIcon />
+                    </IconButton>,
+                ]}
+            >
+                <Box marginTop7>
+                    {characteristics.length === 0 ? (
+                        <Typography mainAdminText>Нет &quot;свободных&quot; характеристик :(</Typography>
+                    ) : (
+                        <List component={'ol'}>
+                            {[...characteristics]
+                                .sort((firstEl, secondEl) => (firstEl.name > secondEl.name ? 1 : -1))
+                                .map(characteristic => (
+                                    <ListItem
+                                        key={characteristic.id}
+                                        onMouseEnter={handleMouseEnterListItem(characteristic.id)}
+                                        onMouseLeave={handleMouseLeaveListItem}
+                                        dialogItem
+                                    >
+                                        <Box flexGrow1>
+                                            <FlexTemplate spaceBetween alignItemsCenter gap10>
+                                                <FlexTemplate alignItemsCenter gap7>
+                                                    <CharacteristicIcon dialogIcon />
+                                                    <ListItemText dialogItem primary={characteristic.name} />
+                                                </FlexTemplate>
+
+                                                <FlexTemplate alignItemsCenter gap10>
+                                                    <Switch
+                                                        name={`switch${characteristic.id}`}
+                                                        dialogSwitch
+                                                        disableRipple
+                                                        checked={isCharacteristicInGroup(characteristic.id)}
+                                                        onChange={addRemoveCharacteristic(characteristic)}
+                                                    />
+                                                    <Fade in={activeListItem === characteristic.id} timeout={0}>
+                                                        <div>
+                                                            <IconButton
+                                                                dialogButton
+                                                                disableRipple
+                                                                onClick={handleOpenCharacteristicModal(characteristic)}
+                                                            >
+                                                                <ShowIcon />
+                                                            </IconButton>
+                                                        </div>
+                                                    </Fade>
+                                                </FlexTemplate>
+                                            </FlexTemplate>
+                                        </Box>
+                                    </ListItem>
+                                ))}
+                        </List>
+                    )}
+                    <AdminModal
+                        open={isCharacteristicModalOpen}
+                        onClose={handleCloseCharacteristicModal}
+                        title={'Характеристика'}
+                        buttons={[
+                            <IconButton key={0} dialogButton disableRipple onClick={handleCloseCharacteristicModal} autoFocus>
+                                <UndoIcon />
+                            </IconButton>,
+                        ]}
+                    >
+                        <List component={'ol'}>
+                            <ListItem dialogItem>
+                                <ListItemText primary={`1) Имя характеристики: ${characteristicForOpen?.name}`} dialogItem />
+                            </ListItem>
+                            <ListItem dialogItem>
+                                <ListItemText primary={`2) Порядковый номер: ${characteristicForOpen?.orderNumber}`} dialogItem />
+                            </ListItem>
+                            <ListItem dialogItem>
+                                <ListItemText
+                                    primary={`3) Только для администратора: ${characteristicForOpen?.isAdminOnly ? 'Да' : 'Нет'}`}
+                                    dialogItem
+                                />
+                            </ListItem>
+                            <ListItem dialogItem>
+                                <ListItemText
+                                    primary={`4) Для фильтрации: ${characteristicForOpen?.isAvailableInFilter ? 'Да' : 'Нет'}`}
+                                    dialogItem
+                                />
+                            </ListItem>
+                            <ListItem dialogItem>
+                                <ListItemText
+                                    primary={
+                                        <>
+                                            5) Значения характеристики:&nbsp;
+                                            {characteristicForOpen &&
+                                                totalStringValues(
+                                                    characteristicForOpen,
+                                                    [{ itemsProperty: 'characteristicValues', propertyName: 'value' }],
+                                                    40
+                                                )}
+                                        </>
+                                    }
+                                    dialogItem
+                                />
+                            </ListItem>
+                        </List>
+                    </AdminModal>
+                </Box>
+            </AdminModal>
         </MaxWidthTemplate>
     )
 }

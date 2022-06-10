@@ -48,6 +48,7 @@ Example1.args = {
             ],
             parent: null,
             categoryType: 'WITH_CATEGORIES',
+            characteristicSets: [],
         },
         {
             id: 2,
@@ -100,6 +101,7 @@ Example1.args = {
             ],
             parent: null,
             categoryType: 'WITH_CATEGORIES',
+            characteristicSets: [],
         },
         {
             id: 3,
@@ -107,6 +109,7 @@ Example1.args = {
             subCategories: null,
             parent: null,
             categoryType: 'WITH_GOODS',
+            characteristicSets: [],
         },
         {
             id: 4,
@@ -122,37 +125,51 @@ Example1.args = {
             ],
             parent: null,
             categoryType: 'WITH_CATEGORIES',
+            characteristicSets: [],
         },
     ],
 
     icon: <AddIcon dialogIcon />,
     title: 'Добавить категорию товаров',
     buttons: [
-        <IconButton
-            key={0}
-            dialogButton
-            onClick={() => console.log('go back...')}
-        >
+        <IconButton key={0} dialogButton onClick={() => console.log('go back...')}>
             <UndoIcon />
         </IconButton>,
-        <IconButton
-            key={1}
-            dialogButton
-            onClick={() => console.log('save new category')}
-            disabled={false}
-        >
+        <IconButton key={1} dialogButton onClick={() => console.log('save new category')} disabled={false}>
             <SaveIcon />
         </IconButton>,
     ],
     categoryFields: {
-        name: 'Детские',
-        parent: 1,
+        name: null,
         categoryType: 'WITH_GOODS',
+        parentCategory: null,
+        characteristicSets: [],
     },
-    changeCategoryFieldValues: () =>
-        console.log('change category fields values'),
+    changeCategoryFieldValues: () => console.log('change category fields values'),
     changeCategoryType: () => console.log('change category type'),
     changeCategoryParent: () => console.log('change category parent'),
     categoryTypeTooltip:
         'Категория с товарами может содержать только товары! Обычная же категория может содержать в себе только другие категории!',
+    sets: [
+        {
+            id: 18,
+            name: 'set 01',
+            characteristics: [],
+            characteristicsGroup: [],
+        },
+        {
+            id: 19,
+            name: 'set 02',
+            characteristics: [],
+            characteristicsGroup: [],
+        },
+        {
+            id: 20,
+            name: 'set 03',
+            characteristics: [],
+            characteristicsGroup: [],
+        },
+    ],
+    handleAddRemoveSetInCategory: payload => () => console.log('add/remove set in category ', payload),
+    isSetInCategory: () => true,
 }

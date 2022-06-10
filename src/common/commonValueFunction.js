@@ -2,14 +2,25 @@ export const hasValues = values => values && Array.isArray(values) && values.len
 
 export const getStringValues = (values, name) => values.reduce((acc, elem) => (acc === '' ? acc + elem[name] : acc + ', ' + elem[name]), '')
 
-export const stringValues = (values, valueLength, name) => {
+export const stringValues = (values, name) => {
     if (!hasValues(values)) {
         return ''
     }
-    const stringLine = getStringValues(values, name)
-    if (stringLine.length > valueLength) {
-        return stringLine.slice(0, valueLength) + '...'
-    }
+    return getStringValues(values, name)
+}
 
-    return stringLine
+export const totalStringValues = (item, propertiesForString, valueLength) => {
+    let totalString = propertiesForString.reduce((accString, property) => {
+        let result = accString !== '' ? ', ' : ''
+        result = result + stringValues(item[property.itemsProperty], property.propertyName)
+        return accString + result
+    }, '')
+
+    if (valueLength === 0) {
+        return totalString
+    }
+    if (totalString.length > valueLength) {
+        return totalString.slice(0, valueLength) + '...'
+    }
+    return totalString
 }

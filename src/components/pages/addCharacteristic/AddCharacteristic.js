@@ -12,7 +12,7 @@ import {
     getCharacteristicGroups,
     getGetAllCharacteristicGroupsFetchStatus,
 } from '../../../reducers/characteristicGroupsSlice'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
 import {
     changeGetAllCharacteristicsFetchStatus,
@@ -150,7 +150,7 @@ const AddCharacteristicPage = () => {
                 isDisableGroupSelect={getAllCharacteristicGroupsFetchStatus !== 'success'}
                 orderNumberHelper={'Значение от 0 до 999'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

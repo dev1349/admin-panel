@@ -20,7 +20,7 @@ import {
     getGetAllCharacteristicGroupsFetchStatus,
 } from '../../../reducers/characteristicGroupsSlice'
 import { createValueForUpdating } from '../../../common/preparingDataForSending/preparingDataForSending'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
 
 const EditCharacteristicPage = () => {
@@ -191,7 +191,7 @@ const EditCharacteristicPage = () => {
                 addCharacteristicValue={handleAddCharacteristicValue}
                 orderNumberHelper={'Значение от 0 до 999'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

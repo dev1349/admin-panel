@@ -17,13 +17,21 @@ import {
 } from '../../../reducers/categoriesSlice'
 import { getCategoryFetch, putCategoryFetch } from '../../../api/categoriesApi'
 import EditIcon from '../../atoms/icons/editIcon/EditIcon'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
 import {
     changeToObjectWithId,
     createValueForUpdating,
+    leaveIdOnlyInObject,
 } from '../../../common/preparingDataForSending/preparingDataForSending'
 import { getBehaviorMode } from '../../../reducers/behaviorServerInteraction'
+import {
+    changeCharacteristicSetsFetchStatus,
+    getAllCharacteristicSets,
+    getCharacteristicSets,
+    getCharacteristicSetsFetchStatus,
+} from '../../../reducers/characteristicSetsSlice'
+import { setInParentCategoryNames } from '../addCategory/categoryOperations'
 
 const EditCategoryPage = () => {
     let history = useHistory()
@@ -39,9 +47,10 @@ const EditCategoryPage = () => {
     const handleSaveChangedCategory = () => {
         dispatch(changePostPutDeleteFetchStatus('pending'))
         const valuesForSend = createValueForUpdating(
-            initialCategoryFieldValues,
-            categoryFieldValues,
-            ['parentCategory']
+            leaveIdOnlyInObject(initialCategoryFieldValues, ['characteristicSets']),
+            leaveIdOnlyInObject(categoryFieldValues, ['characteristicSets']),
+            ['parentCategory'],
+            'DELETE_FROM_PARENT'
         )
         putCategoryFetch(valuesForSend)
             .then(() => {
@@ -62,11 +71,9 @@ const EditCategoryPage = () => {
         characteristicSets: [],
     }
 
-    const [categoryFieldValues, setCategoryFieldValues] =
-        useState(initialFieldValues)
+    const [categoryFieldValues, setCategoryFieldValues] = useState(initialFieldValues)
 
-    const [initialCategoryFieldValues, setInitialCategoryFieldValues] =
-        useState(null)
+    const [initialCategoryFieldValues, setInitialCategoryFieldValues] = useState(null)
 
     const categories = useSelector(getCategories)
 
@@ -76,45 +83,36 @@ const EditCategoryPage = () => {
         if (!intCategoryId) return
         try {
             const category = await getCategoryFetch(intCategoryId)
-            setCategoryFieldValues(
-                changeToObjectWithId(category, ['parentCategory'], ['command'])
-            )
-            setInitialCategoryFieldValues(
-                changeToObjectWithId(category, ['parentCategory'], ['command'])
-            )
+            setCategoryFieldValues(changeToObjectWithId(category, ['parentCategory'], ['command']))
+            setInitialCategoryFieldValues(changeToObjectWithId(category, ['parentCategory'], ['command']))
         } catch (e) {
             console.log(e)
             dispatch(changePostPutDeleteFetchStatus('error'))
         }
-    }, [
-        categories,
-        categoryId,
-        getCategoryFetch,
-        setCategoryFieldValues,
-        setInitialCategoryFieldValues,
-        changeToObjectWithId,
-    ])
+    }, [categories, categoryId, getCategoryFetch, setCategoryFieldValues, setInitialCategoryFieldValues, changeToObjectWithId])
 
     const handleChangeCategoryValue = payload => {
         setCategoryFieldValues({ ...categoryFieldValues, ...payload })
     }
 
     const handleChangeCategoryType = payload => {
-        setCategoryFieldValues({
-            ...categoryFieldValues,
-            categoryType: payload.categoryType
-                ? 'WITH_GOODS'
-                : 'WITH_CATEGORIES',
-        })
+        setCategoryFieldValues(prev => ({
+            ...prev,
+            categoryType: payload.categoryType ? 'WITH_GOODS' : 'WITH_CATEGORIES',
+        }))
+        if (!payload.categoryType) {
+            setCategoryFieldValues(prev => ({
+                ...prev,
+                characteristicSets: [],
+            }))
+        }
     }
 
     const handleChangeCategoryParent = payload => {
-        setCategoryFieldValues({
-            ...categoryFieldValues,
-            parentCategory: payload.parentCategory
-                ? { id: payload.parentCategory }
-                : null,
-        })
+        setCategoryFieldValues(prev => ({
+            ...prev,
+            parentCategory: payload.parentCategory ? { id: payload.parentCategory } : null,
+        }))
     }
 
     const fetchStatus = useSelector(getFetchStatus)
@@ -132,27 +130,49 @@ const EditCategoryPage = () => {
 
     const isSaveButtonDisabled =
         isPending ||
-        !(categoryFieldValues?.name
-            ? categoryFieldValues?.name.trim()
-            : categoryFieldValues?.name) ||
+        !(categoryFieldValues?.name ? categoryFieldValues?.name.trim() : categoryFieldValues?.name) ||
         initialCategoryFieldValues === null ||
-        !createValueForUpdating(
-            initialCategoryFieldValues,
-            categoryFieldValues,
-            ['parentCategory']
-        )
+        !createValueForUpdating(initialCategoryFieldValues, categoryFieldValues, ['parentCategory'])
 
     const isServerError = useSelector(getIsServerError)
+
+    const characteristicSetsFetchStatus = useSelector(getCharacteristicSetsFetchStatus)
 
     const handleCloseServerErrorModal = () => {
         dispatch(closeServerErrorModal())
         dispatch(changeFetchStatus('idle'))
+        if (characteristicSetsFetchStatus === 'error') {
+            dispatch(changeCharacteristicSetsFetchStatus('idle'))
+        }
         history.push(`/categories`)
     }
 
     const isSwitchCategoryTypeDisabled =
-        Array.isArray(categoryFieldValues?.subCategories) &&
-        categoryFieldValues.subCategories?.length !== 0
+        Array.isArray(categoryFieldValues?.subCategories) && categoryFieldValues.subCategories?.length !== 0
+
+    useEffect(() => {
+        dispatch(getAllCharacteristicSets())
+    }, [dispatch, getAllCharacteristicSets])
+
+    const characteristicSets = useSelector(getCharacteristicSets)
+
+    const setIdsInCategory = categoryFieldValues.characteristicSets.map(set => set.id)
+
+    const isSetInCategory = setId => setIdsInCategory.includes(setId)
+
+    const handleAddRemoveSetInCategory = set => () => {
+        if (isSetInCategory(set.id)) {
+            setCategoryFieldValues(prev => ({
+                ...prev,
+                characteristicSets: [...prev.characteristicSets.filter(currentSet => currentSet.id !== set.id)],
+            }))
+            return
+        }
+        setCategoryFieldValues(prev => ({
+            ...prev,
+            characteristicSets: [...prev.characteristicSets, set],
+        }))
+    }
 
     return (
         <>
@@ -160,20 +180,10 @@ const EditCategoryPage = () => {
                 icon={<EditIcon dialogIcon />}
                 title={'Редактировать категорию товаров'}
                 buttons={[
-                    <IconButton
-                        key={0}
-                        dialogButton
-                        onClick={handleGoBackToCategories}
-                        disabled={isReturnButtonDisabled}
-                    >
+                    <IconButton key={0} dialogButton onClick={handleGoBackToCategories} disabled={isReturnButtonDisabled}>
                         <UndoIcon />
                     </IconButton>,
-                    <IconButton
-                        key={1}
-                        dialogButton
-                        onClick={handleSaveChangedCategory}
-                        disabled={isSaveButtonDisabled}
-                    >
+                    <IconButton key={1} dialogButton onClick={handleSaveChangedCategory} disabled={isSaveButtonDisabled}>
                         <SaveIcon />
                     </IconButton>,
                 ]}
@@ -187,8 +197,12 @@ const EditCategoryPage = () => {
                 categoryTypeTooltip={
                     'Категория с товарами может содержать только товары! Обычная же категория может содержать в себе только другие категории!'
                 }
+                sets={characteristicSets}
+                handleAddRemoveSetInCategory={handleAddRemoveSetInCategory}
+                isSetInCategory={isSetInCategory}
+                setInParentCategoryNames={setInParentCategoryNames(categories, categoryFieldValues.parentCategory?.id)}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

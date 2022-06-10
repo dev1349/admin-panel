@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
-import AdminPageBorder from '../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
+import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import FlexTemplate from '../../templates/flexTemplate/FlexTemplate'
 import CategoryGoods from '../../molecules/list/categoryGoods/CategoryGoods'
 import CategoryTree from '../../molecules/list/categoryTree/CategoryTree'
@@ -37,9 +37,7 @@ const Categories = ({
                         activeCategoryId={activeCategoryId}
                         editCategory={editCategory}
                         openCategories={openCategories}
-                        openCategoriesAfterDragging={
-                            openCategoriesAfterDragging
-                        }
+                        openCategoriesAfterDragging={openCategoriesAfterDragging}
                         setDraggedCategory={setDraggedCategory}
                     />
                     <CategoryGoods />

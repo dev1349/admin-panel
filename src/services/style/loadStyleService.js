@@ -11,11 +11,12 @@ export const loadStyles = (loadType, themeName) => {
 }
 
 const localLoading = () => {
-    return new Promise((resolve) => resolve(
-        {
+    return new Promise(resolve =>
+        resolve({
             constants: loadConstants(styleConstants),
-            styles: loadStyledComponents(styledComponents, loadConstants(styleConstants))
-        }))
+            styles: loadStyledComponents(styledComponents, loadConstants(styleConstants)),
+        })
+    )
 }
 
 const serverLoading = name => {
@@ -24,12 +25,12 @@ const serverLoading = name => {
         .then(res => {
             return {
                 constants: res.constants,
-                styles: loadStyledComponents(res.components, res.constants)
+                styles: loadStyledComponents(res.components, res.constants),
             }
         })
 }
 
-export const loadConstants = (constants) => {
+export const loadConstants = constants => {
     const res = []
     const constantKeys = Object.keys(constants)
     constantKeys.forEach(x => {
@@ -68,7 +69,7 @@ const loadStyledComponents = (components, constants) => {
         }
     }
 
-    const styleOverridesConstantInitiation = (component) => {
+    const styleOverridesConstantInitiation = component => {
         const styleOverrides = components[component]['styleOverrides']
         if (styleOverrides === undefined) {
             return
@@ -117,7 +118,7 @@ const loadStyledComponents = (components, constants) => {
         })
     }
 
-    const variantsConstantInitiation = (component) => {
+    const variantsConstantInitiation = component => {
         const variants = components[component].variants
         if (variants === undefined) {
             return

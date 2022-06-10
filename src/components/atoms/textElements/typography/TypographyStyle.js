@@ -15,12 +15,25 @@ export default {
                 fontSize: '16px',
                 fontWeight: 400,
                 color: '#525050',
+                lineHeight: 1,
             },
         },
         {
             props: { textAlignCenter: true },
             style: {
                 textAlign: 'center',
+            },
+        },
+        {
+            props: { bold: true },
+            style: {
+                fontWeight: 800,
+            },
+        },
+        {
+            props: { lineHeight15: true },
+            style: {
+                lineHeight: 1.5,
             },
         },
     ],

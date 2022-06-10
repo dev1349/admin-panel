@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
-import AdminPageBorder from '../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
+import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import Table from '../../atoms/table/table/Table'
 import TableHead from '../../atoms/table/tableHead/TableHead'
 import TableRow from '../../atoms/table/tableRow/TableRow'
@@ -16,7 +16,7 @@ import { Fade } from '@mui/material'
 import { getComparator, stableSort } from '../../../reducers/common/sortingFunctions'
 import TableSortLabel from '../../atoms/table/tableSortLabel/TableSortLabel'
 import { visuallyHidden } from '@mui/utils'
-import { stringValues } from '../../../common/commonValueFunction'
+import { totalStringValues } from '../../../common/commonValueFunction'
 import Typography from '../../atoms/textElements/typography/Typography'
 
 const CharacteristicGroups = ({
@@ -102,7 +102,11 @@ const CharacteristicGroups = ({
                                         {characteristicGroup.isAdminOnly ? <CheckIcon dialogIcon /> : ''}
                                     </TableCell>
                                     <TableCell align={aligns[4]} dialogCell>
-                                        {stringValues(characteristicGroup.characteristics, characteristicsStringLength, 'name')}
+                                        {totalStringValues(
+                                            characteristicGroup,
+                                            [{ itemsProperty: 'characteristics', propertyName: 'name' }],
+                                            characteristicsStringLength
+                                        )}
                                     </TableCell>
                                     <TableCell align={aligns[5]} dialogCell>
                                         <Fade in={index === activeRow} timeout={0}>

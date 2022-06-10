@@ -7,10 +7,10 @@ export const getVariant = (template, variants, children) => {
         if (!Array.isArray(variants)) {
             result.args = {
                 children: children,
-                [variants]: true
+                [variants]: true,
             }
         } else {
-            variants.forEach((el) => {
+            variants.forEach(el => {
                 arr.push([[el], true])
             })
             arr.push({ children: children })

@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import UndoIcon from '../../atoms/icons/undoIcon/UndoIcon'
 import SaveIcon from '../../atoms/icons/saveIcon/SaveIcon'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
 import AddCharacteristicGroup from '../../organisms/addCharacteristicGroup/AddCharacteristicGroup'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     changeGetAllCharacteristicsFetchStatus,
     getAllCharacteristics,
-    getCharacteristics,
     getGetAllCharacteristicsFetchStatus,
 } from '../../../reducers/characteristicsSlice'
 import {
@@ -21,6 +20,12 @@ import {
 import { useHistory, useParams } from 'react-router-dom'
 import EditIcon from '../../atoms/icons/editIcon/EditIcon'
 import { createValueForUpdating, leaveIdOnlyInObject } from '../../../common/preparingDataForSending/preparingDataForSending'
+import {
+    changeCharacteristicsWithoutGroupFetchStatus,
+    getCharacteristicsWithoutGroup,
+    getCharacteristicsWithoutGroupFetchStatus,
+    getCharacteristicsWithoutGroupFromServer,
+} from '../../../reducers/characteristicsWithoutGroupSlice'
 
 const EditCharacteristicGroupPage = () => {
     const initialCharacteristicGroupState = {
@@ -77,12 +82,17 @@ const EditCharacteristicGroupPage = () => {
 
     const dispatch = useDispatch()
 
+    const characteristicsWithoutGroupFetchStatus = useSelector(getCharacteristicsWithoutGroupFetchStatus)
+
     const handleCloseServerErrorModal = () => {
         if (getAllCharacteristicsFetchStatus === 'error') {
             dispatch(changeGetAllCharacteristicsFetchStatus('idleAfterError'))
         }
         if (getPostPutDeleteCharacteristicGroupsFetchStatus === 'error') {
             dispatch(changeGetPostPutDeleteCharacteristicGroupsFetchStatus('idleAfterError'))
+        }
+        if (characteristicsWithoutGroupFetchStatus === 'error') {
+            dispatch(changeCharacteristicsWithoutGroupFetchStatus('idle'))
         }
     }
 
@@ -109,13 +119,6 @@ const EditCharacteristicGroupPage = () => {
     const handleOpenCharacteristicListModal = () => setOpenCharacteristicListModal(true)
 
     const handleCloseCharacteristicListModal = () => setOpenCharacteristicListModal(false)
-
-    const characteristics = useSelector(getCharacteristics)
-
-    const characteristicsWithoutGroupAndCurrentGroup = [
-        ...characteristics.filter(characteristic => characteristic.characteristicGroup === null),
-        ...characteristics.filter(characteristic => characteristic.characteristicGroup === characteristicGroupFieldValues.id),
-    ]
 
     useEffect(() => {
         if (getAllCharacteristicsFetchStatus !== 'idle') return
@@ -144,6 +147,17 @@ const EditCharacteristicGroupPage = () => {
         setCharacteristicGroupFieldValues,
         characteristicGroupInitialFieldValues,
     ])
+
+    useEffect(() => {
+        dispatch(getCharacteristicsWithoutGroupFromServer())
+    }, [dispatch, getCharacteristicsWithoutGroupFromServer])
+
+    const characteristicsWithoutGroup = useSelector(getCharacteristicsWithoutGroup)
+
+    const characteristicsWithoutGroupAndCurrentGroup = [
+        ...characteristicsWithoutGroup,
+        ...(characteristicGroupInitialFieldValues ? characteristicGroupInitialFieldValues.characteristics : []),
+    ]
 
     return (
         <>
@@ -174,7 +188,7 @@ const EditCharacteristicGroupPage = () => {
                 addRemoveCharacteristic={handleAddRemoveCharacteristic}
                 orderNumberHelper={'Значение от 0 до 999'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

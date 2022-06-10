@@ -17,11 +17,16 @@ import AddCharacteristicGroup from '../../organisms/addCharacteristicGroup/AddCh
 import {
     changeGetAllCharacteristicsFetchStatus,
     getAllCharacteristics,
-    getCharacteristics,
     getGetAllCharacteristicsFetchStatus,
 } from '../../../reducers/characteristicsSlice'
 import Loader from '../../molecules/loader/Loader'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
+import {
+    changeCharacteristicsWithoutGroupFetchStatus,
+    getCharacteristicsWithoutGroup,
+    getCharacteristicsWithoutGroupFetchStatus,
+    getCharacteristicsWithoutGroupFromServer,
+} from '../../../reducers/characteristicsWithoutGroupSlice'
 
 const AddCharacteristicGroupPage = () => {
     const initialCharacteristicGroupState = {
@@ -82,10 +87,6 @@ const AddCharacteristicGroupPage = () => {
         dispatch(setOrderBy(''))
     }
 
-    const characteristics = useSelector(getCharacteristics)
-
-    const characteristicsWithoutGroup = characteristics.filter(characteristic => characteristic.characteristicGroup === null)
-
     const [openCharacteristicListModal, setOpenCharacteristicListModal] = useState(false)
 
     const handleOpenCharacteristicListModal = () => setOpenCharacteristicListModal(true)
@@ -104,6 +105,8 @@ const AddCharacteristicGroupPage = () => {
 
     const isServerError = getAllCharacteristicsFetchStatus === 'error' || getPostPutDeleteCharacteristicGroupsFetchStatus === 'error'
 
+    const characteristicsWithoutGroupFetchStatus = useSelector(getCharacteristicsWithoutGroupFetchStatus)
+
     const handleCloseServerErrorModal = () => {
         if (getAllCharacteristicsFetchStatus === 'error') {
             dispatch(changeGetAllCharacteristicsFetchStatus('idleAfterError'))
@@ -111,7 +114,16 @@ const AddCharacteristicGroupPage = () => {
         if (getPostPutDeleteCharacteristicGroupsFetchStatus === 'error') {
             dispatch(changeGetPostPutDeleteCharacteristicGroupsFetchStatus('idleAfterError'))
         }
+        if (characteristicsWithoutGroupFetchStatus === 'error') {
+            dispatch(changeCharacteristicsWithoutGroupFetchStatus('idle'))
+        }
     }
+
+    useEffect(() => {
+        dispatch(getCharacteristicsWithoutGroupFromServer())
+    }, [dispatch, getCharacteristicsWithoutGroupFromServer])
+
+    const characteristicsWithoutGroup = useSelector(getCharacteristicsWithoutGroup)
 
     return (
         <>
@@ -142,7 +154,7 @@ const AddCharacteristicGroupPage = () => {
                 addRemoveCharacteristic={handleAddRemoveCharacteristic}
                 orderNumberHelper={'Значение от 0 до 999'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

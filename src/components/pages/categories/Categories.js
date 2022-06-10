@@ -17,12 +17,9 @@ import {
     moveCategoryToRoot,
 } from '../../../reducers/categoriesSlice'
 import { useHistory, useParams } from 'react-router-dom'
-import {
-    createOpenCategoryArrayToActive,
-    findCategoryById,
-} from '../addCategory/categoryOperations'
+import { createOpenCategoryArrayToActive, findCategoryById } from '../addCategory/categoryOperations'
 import DeleteModal from '../../molecules/modals/deleteModal/DeleteModal'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
 
 const CategoriesPage = () => {
@@ -32,14 +29,8 @@ const CategoriesPage = () => {
 
     const dispatch = useDispatch()
 
-    const handleMoveCategory = (
-        draggingCategoryId,
-        parentCategoryId,
-        openCategory
-    ) => {
-        dispatch(
-            moveCategory(draggingCategoryId, parentCategoryId, openCategory)
-        )
+    const handleMoveCategory = (draggingCategoryId, parentCategoryId, openCategory) => {
+        dispatch(moveCategory(draggingCategoryId, parentCategoryId, openCategory))
     }
 
     const handleMoveCategoryToRoot = draggingCategoryId => {
@@ -51,15 +42,11 @@ const CategoriesPage = () => {
     const { categoryId } = useParams()
 
     const handleAddCategory = () => {
-        history.push(
-            '/addCategory' + (categoryId !== undefined ? `/${categoryId}` : '')
-        )
+        history.push('/addCategory' + (categoryId !== undefined ? `/${categoryId}` : ''))
     }
 
     const handleEditCategory = categoryId => () => {
-        history.push(
-            '/editCategory' + (categoryId !== undefined ? `/${categoryId}` : '')
-        )
+        history.push('/editCategory' + (categoryId !== undefined ? `/${categoryId}` : ''))
     }
 
     useEffect(() => {
@@ -73,43 +60,26 @@ const CategoriesPage = () => {
         if (!categories) return
         if (!categoryId) return
 
-        setOpenCategories(
-            createOpenCategoryArrayToActive(categories, parseInt(categoryId))
-        )
+        setOpenCategories(createOpenCategoryArrayToActive(categories, parseInt(categoryId)))
     }, [categoryId, categories, setOpenCategories])
 
     const [draggedCategory, setDraggedCategory] = useState(null)
 
     const handleSetDraggedCategory = category => setDraggedCategory(category)
 
-    const [openCategoriesAfterDragging, setOpenCategoriesAfterDragging] =
-        useState([])
+    const [openCategoriesAfterDragging, setOpenCategoriesAfterDragging] = useState([])
 
     useEffect(() => {
         if (!categories) return
         if (!draggedCategory) return
 
-        setOpenCategoriesAfterDragging(
-            createOpenCategoryArrayToActive(
-                categories,
-                parseInt(draggedCategory.id)
-            )
-        )
+        setOpenCategoriesAfterDragging(createOpenCategoryArrayToActive(categories, parseInt(draggedCategory.id)))
     }, [categories, draggedCategory])
 
     const canCategoryDelete = categoryId => {
-        const activeCategory = findCategoryById(
-            categories,
-            parseInt(categoryId)
-        )
+        const activeCategory = findCategoryById(categories, parseInt(categoryId))
 
-        return (
-            categoryId &&
-            activeCategory &&
-            (activeCategory.subCategories
-                ? activeCategory.subCategories.length === 0
-                : true)
-        )
+        return categoryId && activeCategory && (activeCategory.subCategories ? activeCategory.subCategories.length === 0 : true)
     }
 
     const handleHistoryToCategories = () => history.push('/categories')
@@ -143,8 +113,7 @@ const CategoriesPage = () => {
 
     const isAddCategoryButtonDisabled = isPending
 
-    const isDeleteCategoryButtonDisabled =
-        isPending || !canCategoryDelete(categoryId)
+    const isDeleteCategoryButtonDisabled = isPending || !canCategoryDelete(categoryId)
 
     return (
         <>
@@ -153,20 +122,10 @@ const CategoriesPage = () => {
                 categories={categories}
                 title={'Категории товаров'}
                 buttons={[
-                    <IconButton
-                        key={0}
-                        dialogButton
-                        onClick={handleAddCategory}
-                        disabled={isAddCategoryButtonDisabled}
-                    >
+                    <IconButton key={0} dialogButton onClick={handleAddCategory} disabled={isAddCategoryButtonDisabled}>
                         <AddIcon />
                     </IconButton>,
-                    <IconButton
-                        key={1}
-                        dialogButton
-                        onClick={handleOpenModal}
-                        disabled={isDeleteCategoryButtonDisabled}
-                    >
+                    <IconButton key={1} dialogButton onClick={handleOpenModal} disabled={isDeleteCategoryButtonDisabled}>
                         <DeleteIcon />
                     </IconButton>,
                 ]}
@@ -186,7 +145,7 @@ const CategoriesPage = () => {
                 title={'Подтверждение удаления'}
                 description={'Вы действительно хотите удалить эту категорию?'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

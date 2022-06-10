@@ -14,7 +14,9 @@ import usersSlice from './usersSlice'
 import clientsSlice from './clientsSlice'
 import novelitiesSlice from './novelitiesSlice'
 import characteristicsReducer from './characteristicsSlice'
+import characteristicsWithoutGroupReducer from './characteristicsWithoutGroupSlice'
 import characteristicGroupsReducer from './characteristicGroupsSlice'
+import characteristicSetsReducer from './characteristicSetsSlice'
 import behaviorServerInteractionReducer from './behaviorServerInteraction'
 
 export const rootReducer = combineReducers({
@@ -24,7 +26,6 @@ export const rootReducer = combineReducers({
     header: headerSlice,
     addCategory: addCategorySlice,
     attributeGroup: attributeGroupSlice,
-
     statistics: statisticsSlice,
     style: styleSlice,
     coupons: couponsReducer,
@@ -34,6 +35,8 @@ export const rootReducer = combineReducers({
     novelities: novelitiesSlice,
     categories: categoriesReducer,
     characteristics: characteristicsReducer,
+    characteristicsWithoutGroup: characteristicsWithoutGroupReducer,
     characteristicGroups: characteristicGroupsReducer,
+    characteristicSets: characteristicSetsReducer,
     behaviorServerInteraction: behaviorServerInteractionReducer,
 })

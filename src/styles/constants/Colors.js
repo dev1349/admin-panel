@@ -20,10 +20,3 @@ export default {
     pink30: '#E198E1',
     pink20: '#E3BFE3',
 }
-
-
-
-
-
-
-

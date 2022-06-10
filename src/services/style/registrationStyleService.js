@@ -160,7 +160,7 @@ import StatisticsTextStyle from '../../components/atoms/textElements/statisticsT
 import ToggleButtonStyle from '../../components/atoms/toggleButton/ToggleButtonStyle'
 import ToggleButtonGroupStyle from '../../components/atoms/toggleButtonGroup/ToggleButtonGroupStyle'
 import ToggleButtonWithTextStyle from '../../components/atoms/toggleButtonWithText/ToggleButtonWithTextStyle'
-import AdminPageBorderStyle from '../../components/atoms/wrappers/AdminPageBorder/AdminPageBorderStyle'
+import AdminPageBorderStyle from '../../components/atoms/wrappers/adminPageBorder/AdminPageBorderStyle'
 import BoxStyle from '../../components/atoms/wrappers/box/BoxStyle'
 import IconWrapperForTooltipStyle from '../../components/atoms/wrappers/iconWrapperForTooltip/IconWrapperForTooltipStyle'
 import ModalContentStyle from '../../components/atoms/wrappers/modalContent/ModalContentStyle'
@@ -175,8 +175,7 @@ import GoodsHeaderStyle from '../../components/molecules/headers/goodsHeader/Goo
 import Header1Style from '../../components/molecules/headers/header1/Header1Style'
 import LabeledAutocompleteStyle from '../../components/molecules/inputs/labeledAutocomplete/LabeledAutocompleteStyle'
 import LabeledDateTimeFromToFieldStyle from '../../components/molecules/inputs/labeledDateTimeFromToField/LabeledDateTimeFromToFieldStyle'
-import LabeledDropDownTextFieldWithValidationStyle
-    from '../../components/molecules/inputs/labeledDropDownTextFieldWithValidation/LabeledDropDownTextFieldWithValidationStyle'
+import LabeledDropDownTextFieldWithValidationStyle from '../../components/molecules/inputs/labeledDropDownTextFieldWithValidation/LabeledDropDownTextFieldWithValidationStyle'
 import LabeledTextFieldStyle from '../../components/molecules/inputs/labeledTextField/LabeledTextFieldStyle'
 import LabeledNumberFieldStyle from '../../components/molecules/inputs/labeledNumberField/LabeledNumberFieldStyle'
 import LabeledFloatFieldStyle from '../../components/molecules/inputs/labeledFloatField/LabeledFloatFieldStyle'
@@ -192,6 +191,10 @@ import TableRowLastOrderStyle from '../../components/molecules/table/tableRowLas
 import TitleTableStyle from '../../components/organisms/tables/lastOrdersTable/TitleTableStyle'
 import LabeledTextLabelsStyle from '../../components/molecules/inputs/lageledTextLabels/LabeledTextLabelsStyle'
 import ShowIconStyle from '../../components/atoms/icons/showIcon/ShowIconStyle'
+import LabeledTotalLabelsStyle from '../../components/molecules/inputs/labeledTotalLabels/LabeledTotalLabelsStyle'
+import GroupIconStyle from '../../components/atoms/icons/groupIcon/GroupIconStyle'
+import CharacteristicIconStyle from '../../components/atoms/icons/characteristicIcon/CharacteristicIconStyle'
+import SetIconStyle from '../../components/atoms/icons/setIcon/SetIconStyle'
 import CityTemplateStyle from '../../components/templates/npCityTemlate/CityTemplateStyle'
 import OfficeTemplateStyle from '../../components/templates/npOfficeTemlate/OfficeTemplateStyle'
 
@@ -199,7 +202,7 @@ export const styleConstants = {
     Colors,
     Fonts,
     Gradients,
-    Borders
+    Borders,
 }
 
 export const styledComponents = {
@@ -231,6 +234,7 @@ export const styledComponents = {
     CatalogIconStyle,
     CategoryIconStyle,
     CellContentStyle,
+    CharacteristicIconStyle,
     CheckboxStyle,
     CheckIconStyle,
     CircularProgressStyle,
@@ -263,6 +267,7 @@ export const styledComponents = {
     GoodsTableHeadStyle,
     GoodsTableRowStyle,
     GreyBorderedWrapperStyle,
+    GroupIconStyle,
     H1Style,
     H2Style,
     H3Style,
@@ -296,6 +301,7 @@ export const styledComponents = {
     LabeledTextFieldsStyle,
     LabeledTextFieldMultilineStyle,
     LabeledTextLabelsStyle,
+    LabeledTotalLabelsStyle,
     LabelTemplateStyle,
     LastChildToRightTemplateStyle,
     LinkStyle,
@@ -341,6 +347,7 @@ export const styledComponents = {
     SearchIconStyle,
     SelectStyle,
     SettingsIconStyle,
+    SetIconStyle,
     ShoppingCartIconStyle,
     ShopsIconStyle,
     ShowIconStyle,

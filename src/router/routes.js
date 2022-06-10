@@ -1,11 +1,28 @@
 import {
     ADD_CATEGORY_ROUTE,
+    ADD_CHARACTERISTIC,
+    ADD_CHARACTERISTIC_GROUP,
+    ADD_CHARACTERISTIC_SET,
+    ADD_CLIENT,
     ADD_PRODUCT,
+    ADD_USER,
     ATTRIBUTE_GROUP,
     ATTRIBUTE_LIST,
     CATEGORIES_LIST_ROUTE,
+    CHARACTERISTICS,
+    CHARACTERISTIC_GROUPS,
+    CHARACTERISTIC_SETS,
+    CHECKOUTS,
+    CLIENTSID,
+    CONTACTS,
     COUPONS_LIST_ROUTE,
+    DELIVERIES,
+    EDIT_CATEGORY_ROUTE,
+    EDIT_CHARACTERISTIC,
+    EDIT_CHARACTERISTIC_GROUP,
+    EDIT_CHARACTERISTIC_SET,
     EDIT_GOOD,
+    EXPORT,
     GOOD_ADD_ROUTE,
     GOODS,
     GOODS_FILTER_ROUTE,
@@ -14,28 +31,14 @@ import {
     LOGIN_ROUTE,
     MADE_COMPONENT_LIST,
     MAIN_ROUTE,
+    MENU_AND_PAGES,
     MY_GOODS_LIST_ROUTE,
+    NEW_ORDER,
+    NOVELITIES,
     ORDER_INFO,
     ORDERS,
     UPLOAD_THEME,
     USERS,
-    ADD_USER,
-    NEW_ORDER,
-    ADD_CLIENT,
-    EXPORT,
-    MENU_AND_PAGES,
-    CLIENTSID,
-    CONTACTS,
-    CHECKOUTS,
-    DELIVERIES,
-    NOVELITIES,
-    EDIT_CATEGORY_ROUTE,
-    CHARACTERISTICS,
-    ADDCHARACTERISTIC,
-    EDITCHARACTERISTIC,
-    CHARACTERISTICGROUPS,
-    ADDCHARACTERISTICGROUP,
-    EDITCHARACTERISTICGROUP,
     Np,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
@@ -75,6 +78,10 @@ import CharacteristicGroups from '../components/pages/characteristicGroups/Chara
 import AddCharacteristicGroup from '../components/pages/addCharacteristicGroup/AddCharacteristicGroup'
 import EditCharacteristicGroup from '../components/pages/editCharacteristicGroup/EditCharacteristicGroup'
 import Novaposhta from '../components/pages/novaPoshta/NovaPoshta'
+import CharacteristicSets from '../components/pages/characteristicSets/CharacteristicSets'
+import AddCharacteristicSet from '../components/pages/addCharacteristicSet/AddCharacteristicSet'
+import EditCharacteristicSet from '../components/pages/editCharacteristicSet/EditCharacteristicSet'
+
 export const authRoutes = [
     {
         path: MAIN_ROUTE,
@@ -198,28 +205,40 @@ export const authRoutes = [
         Component: Characteristics,
     },
     {
-        path: ADDCHARACTERISTIC,
+        path: ADD_CHARACTERISTIC,
         Component: AddCharacteristic,
     },
     {
-        path: EDITCHARACTERISTIC,
+        path: EDIT_CHARACTERISTIC,
         Component: EditCharacteristic,
+    },
+    {
+        path: CHARACTERISTIC_GROUPS,
+        Component: CharacteristicGroups,
+    },
+    {
+        path: ADD_CHARACTERISTIC_GROUP,
+        Component: AddCharacteristicGroup,
+    },
+    {
+        path: EDIT_CHARACTERISTIC_GROUP,
+        Component: EditCharacteristicGroup,
+    },
+    {
+        path: CHARACTERISTIC_SETS,
+        Component: CharacteristicSets,
+    },
+    {
+        path: ADD_CHARACTERISTIC_SET,
+        Component: AddCharacteristicSet,
+    },
+    {
+        path: EDIT_CHARACTERISTIC_SET,
+        Component: EditCharacteristicSet,
     },
     {
         path: Np,
         Component: Novaposhta,
-    },
-    {
-        path: CHARACTERISTICGROUPS,
-        Component: CharacteristicGroups,
-    },
-    {
-        path: ADDCHARACTERISTICGROUP,
-        Component: AddCharacteristicGroup,
-    },
-    {
-        path: EDITCHARACTERISTICGROUP,
-        Component: EditCharacteristicGroup,
     },
 ]
 

@@ -2,7 +2,7 @@ export const themeSerialize = (themeName, constants, components) => {
     return {
         name: themeName,
         constants: constantSerialize(themeName, constants),
-        components: componentSerialize(components)
+        components: componentSerialize(components),
     }
 }
 
@@ -13,7 +13,7 @@ const componentSerialize = data => {
         const newEl = {
             name: key,
             styleOverrides: styleOverrideSerialize(data[key].styleOverrides),
-            variants: variantSerialize(data[key].variants)
+            variants: variantSerialize(data[key].variants),
         }
         resultArr.push(newEl)
     })
@@ -26,7 +26,7 @@ const styleOverrideSerialize = data => {
     keys.map(key => {
         const newEl = {
             name: key,
-            styles: styleSoSerialize(data[key])
+            styles: styleSoSerialize(data[key]),
         }
         resultArr.push(newEl)
     })
@@ -35,13 +35,14 @@ const styleOverrideSerialize = data => {
 
 const variantSerialize = data => {
     const resultArr = []
-    data && data.forEach(el => {
-        const newEl = {
-            styles: styleVSerialize(el.style),
-            props: propsSerialize(el.props),
-        }
-        resultArr.push(newEl)
-    })
+    data &&
+        data.forEach(el => {
+            const newEl = {
+                styles: styleVSerialize(el.style),
+                props: propsSerialize(el.props),
+            }
+            resultArr.push(newEl)
+        })
     return resultArr
 }
 
@@ -51,7 +52,7 @@ const styleSoSerialize = data => {
     keys.map(key => {
         const newEl = {
             key: key,
-            value: data[key]
+            value: data[key],
         }
         resultArr.push(newEl)
     })
@@ -65,7 +66,7 @@ const styleVSerialize = data => {
     keys.map(key => {
         const newEl = {
             key: key,
-            value: data[key]
+            value: data[key],
         }
         resultArr.push(newEl)
     })
@@ -78,7 +79,7 @@ const propsSerialize = data => {
     keys.map(key => {
         const newEl = {
             key: key,
-            value: data[key]
+            value: data[key],
         }
         resultArr.push(newEl)
     })

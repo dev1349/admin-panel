@@ -1,12 +1,17 @@
 import { deleteRequestOptions, getRequestOptions, postRequestOptions, putRequestOptions } from './requestOptions'
-import { CHARACTERISTICGROUPS_PATH } from './apiConstants'
+import { CHARACTERISTIC_GROUPS_PATH } from './apiConstants'
 
 export const getAllCharacteristicGroupsFetch = () => {
-    return fetch(CHARACTERISTICGROUPS_PATH, getRequestOptions()).then(response => response.json())
+    return fetch(CHARACTERISTIC_GROUPS_PATH, getRequestOptions()).then(response => {
+        if (!response.ok) {
+            throw new Error(response)
+        }
+        return response.json()
+    })
 }
 
 export const getCharacteristicGroupFetch = id => {
-    return fetch(CHARACTERISTICGROUPS_PATH + `/${id}`, getRequestOptions()).then(response => {
+    return fetch(CHARACTERISTIC_GROUPS_PATH + `/${id}`, getRequestOptions()).then(response => {
         if (!response.ok) {
             throw new Error(response)
         }
@@ -15,11 +20,16 @@ export const getCharacteristicGroupFetch = id => {
 }
 
 export const postCharacteristicGroupFetch = body => {
-    return fetch(CHARACTERISTICGROUPS_PATH, postRequestOptions(body)).then(response => response.json())
+    return fetch(CHARACTERISTIC_GROUPS_PATH, postRequestOptions(body)).then(response => {
+        if (!response.ok) {
+            throw new Error(response)
+        }
+        return response.json()
+    })
 }
 
 export const putCharacteristicGroupFetch = body => {
-    return fetch(CHARACTERISTICGROUPS_PATH + `/${body.id}`, putRequestOptions(body)).then(response => {
+    return fetch(CHARACTERISTIC_GROUPS_PATH + `/${body.id}`, putRequestOptions(body)).then(response => {
         if (!response.ok) {
             throw new Error(response)
         }
@@ -28,7 +38,7 @@ export const putCharacteristicGroupFetch = body => {
 }
 
 export const deleteCharacteristicGroupFetch = (id, body = null) => {
-    return fetch(CHARACTERISTICGROUPS_PATH + `/${id}`, deleteRequestOptions(body)).then(response => {
+    return fetch(CHARACTERISTIC_GROUPS_PATH + `/${id}`, deleteRequestOptions(body)).then(response => {
         if (!response.ok) {
             throw new Error(response)
         }

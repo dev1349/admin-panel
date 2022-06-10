@@ -197,6 +197,18 @@ const componentList = [
         routeText: '/addCharacteristicGroup',
         routeLink: '/addCharacteristicGroup',
     },
+    {
+        componentName: 'Страница "Наборы характеристик товаров"',
+        task: 'WSADMIN-132',
+        routeText: '/characteristicSets',
+        routeLink: '/characteristicSets',
+    },
+    {
+        componentName: 'Страница "Добавление набора характеристик"',
+        task: 'WSADMIN-132',
+        routeText: '/addCharacteristicSet',
+        routeLink: '/addCharacteristicSet',
+    },
 ]
 
 export default componentList

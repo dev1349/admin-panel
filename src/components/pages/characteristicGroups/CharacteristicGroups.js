@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ViewListIcon from '../../atoms/icons/viewListIcon/ViewListIcon'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
@@ -21,7 +20,8 @@ import { useHistory } from 'react-router-dom'
 import Loader from '../../molecules/loader/Loader'
 import headLines from './headLines'
 import DeleteModal from '../../molecules/modals/deleteModal/DeleteModal'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
+import GroupIcon from '../../atoms/icons/groupIcon/GroupIcon'
 
 const CharacteristicGroupsPage = () => {
     const getAllCharacteristicGroupsFetchStatus = useSelector(getGetAllCharacteristicGroupsFetchStatus)
@@ -113,7 +113,7 @@ const CharacteristicGroupsPage = () => {
     return (
         <>
             <CharacteristicGroups
-                icon={<ViewListIcon dialogIcon />}
+                icon={<GroupIcon dialogIcon />}
                 title={'Группы характеристик'}
                 buttons={[
                     <IconButton
@@ -145,7 +145,7 @@ const CharacteristicGroupsPage = () => {
                 title={'Подтверждение удаления'}
                 description={'Вы действительно хотите удалить эту категорию?'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

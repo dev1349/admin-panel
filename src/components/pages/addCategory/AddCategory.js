@@ -8,7 +8,6 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     addNewCategory,
-    canFetchGetPostPutDelete,
     changePostPutDeleteFetchStatus,
     closeServerErrorModal,
     getAllCategories,
@@ -19,10 +18,16 @@ import {
 } from '../../../reducers/categoriesSlice'
 import { postCategoryFetch } from '../../../api/categoriesApi'
 import { findCategoryById } from './categoryOperations'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
-import { deleteNullValuesFromObject } from '../../../common/preparingDataForSending/preparingDataForSending'
+import { deleteNullValuesFromObject, leaveIdOnlyInObject } from '../../../common/preparingDataForSending/preparingDataForSending'
 import { getBehaviorMode } from '../../../reducers/behaviorServerInteraction'
+import {
+    changeCharacteristicSetsFetchStatus,
+    getAllCharacteristicSets,
+    getCharacteristicSets,
+    getCharacteristicSetsFetchStatus,
+} from '../../../reducers/characteristicSetsSlice'
 
 const AddCategoryPage = () => {
     let history = useHistory()
@@ -39,19 +44,14 @@ const AddCategoryPage = () => {
     }, [fetchStatus, dispatch, getAllCategories])
 
     const handleGoBackToCategories = () => {
-        history.push(
-            parentCategoryId ? `/categories/${parentCategoryId}` : `/categories`
-        )
+        history.push(parentCategoryId ? `/categories/${parentCategoryId}` : `/categories`)
     }
-
-    const canFetch = useSelector(canFetchGetPostPutDelete)
 
     const behaviorMode = useSelector(getBehaviorMode)
 
     const handleSaveNewCategory = () => {
-        if (!canFetch) return
         dispatch(changePostPutDeleteFetchStatus('pending'))
-        postCategoryFetch(deleteNullValuesFromObject(categoryFieldValues))
+        postCategoryFetch(leaveIdOnlyInObject(deleteNullValuesFromObject(categoryFieldValues), ['characteristicSets']))
             .then(response => {
                 dispatch(changePostPutDeleteFetchStatus('success'))
                 dispatch(changePostPutDeleteFetchStatus('idle'))
@@ -61,9 +61,7 @@ const AddCategoryPage = () => {
                 if (behaviorMode === 'SAFE_MODE') {
                     dispatch(getAllCategories())
                 }
-                history.push(
-                    response.id ? `/categories/${response.id}` : `/categories`
-                )
+                history.push(response.id ? `/categories/${response.id}` : `/categories`)
             })
             .catch(() => {
                 dispatch(changePostPutDeleteFetchStatus('error'))
@@ -80,29 +78,30 @@ const AddCategoryPage = () => {
         characteristicSets: [],
     }
 
-    const [categoryFieldValues, setCategoryFieldValues] =
-        useState(initialFieldValues)
+    const [categoryFieldValues, setCategoryFieldValues] = useState(initialFieldValues)
 
     const handleChangeCategoryValue = payload => {
         setCategoryFieldValues({ ...categoryFieldValues, ...payload })
     }
 
     const handleChangeCategoryType = payload => {
-        setCategoryFieldValues({
-            ...categoryFieldValues,
-            categoryType: payload.categoryType
-                ? 'WITH_GOODS'
-                : 'WITH_CATEGORIES',
-        })
+        setCategoryFieldValues(prev => ({
+            ...prev,
+            categoryType: payload.categoryType ? 'WITH_GOODS' : 'WITH_CATEGORIES',
+        }))
+        if (!payload.categoryType) {
+            setCategoryFieldValues(prev => ({
+                ...prev,
+                characteristicSets: [],
+            }))
+        }
     }
 
     const handleChangeCategoryParent = payload => {
-        setCategoryFieldValues({
-            ...categoryFieldValues,
-            parentCategory: payload.parentCategory
-                ? { id: payload.parentCategory }
-                : null,
-        })
+        setCategoryFieldValues(prev => ({
+            ...prev,
+            parentCategory: payload.parentCategory ? { id: payload.parentCategory } : null,
+        }))
     }
 
     const categories = useSelector(getCategories)
@@ -117,22 +116,28 @@ const AddCategoryPage = () => {
             return
         }
 
-        const parentCategory = findCategoryById(
-            categories,
-            parseInt(parentCategoryId)
-        )
+        const parentCategory = findCategoryById(categories, parseInt(parentCategoryId))
         if (parentCategory && parentCategory.categoryType !== 'WITH_GOODS') {
             setCategoryFieldValues(prevValue => ({
                 ...prevValue,
-                parentCategory: { id: parentCategoryId },
+                parentCategory: { id: parseInt(parentCategoryId) },
             }))
         }
     }, [categories, parentCategoryId, setCategoryFieldValues])
 
-    const isServerError = useSelector(getIsServerError)
+    const isCategoryServerError = useSelector(getIsServerError)
+
+    const isCharacteristicGroupServerError = useSelector(getCharacteristicSetsFetchStatus) === 'error'
+
+    const isServerError = isCategoryServerError || isCharacteristicGroupServerError
+
+    const characteristicSetsFetchStatus = useSelector(getCharacteristicSetsFetchStatus)
 
     const handleCloseServerErrorModal = () => {
         dispatch(closeServerErrorModal())
+        if (characteristicSetsFetchStatus === 'error') {
+            dispatch(changeCharacteristicSetsFetchStatus('idle'))
+        }
     }
 
     const isPending = useSelector(getIsPending)
@@ -141,26 +146,40 @@ const AddCategoryPage = () => {
 
     const isDisabledGoBackButton = isPending
 
+    useEffect(() => {
+        dispatch(getAllCharacteristicSets())
+    }, [dispatch, getAllCharacteristicSets])
+
+    const characteristicSets = useSelector(getCharacteristicSets)
+
+    const setIdsInCategory = categoryFieldValues.characteristicSets.map(set => set.id)
+
+    const isSetInCategory = setId => setIdsInCategory.includes(setId)
+
+    const handleAddRemoveSetInCategory = set => () => {
+        if (isSetInCategory(set.id)) {
+            setCategoryFieldValues(prev => ({
+                ...prev,
+                characteristicSets: [...prev.characteristicSets.filter(currentSet => currentSet.id !== set.id)],
+            }))
+            return
+        }
+        setCategoryFieldValues(prev => ({
+            ...prev,
+            characteristicSets: [...prev.characteristicSets, set],
+        }))
+    }
+
     return (
         <>
             <AddCategory
                 icon={<AddIcon dialogIcon />}
                 title={'Добавить категорию товаров'}
                 buttons={[
-                    <IconButton
-                        key={0}
-                        dialogButton
-                        onClick={handleGoBackToCategories}
-                        disabled={isDisabledGoBackButton}
-                    >
+                    <IconButton key={0} dialogButton onClick={handleGoBackToCategories} disabled={isDisabledGoBackButton}>
                         <UndoIcon />
                     </IconButton>,
-                    <IconButton
-                        key={1}
-                        dialogButton
-                        onClick={handleSaveNewCategory}
-                        disabled={isDisabledSaveButton}
-                    >
+                    <IconButton key={1} dialogButton onClick={handleSaveNewCategory} disabled={isDisabledSaveButton}>
                         <SaveIcon />
                     </IconButton>,
                 ]}
@@ -172,8 +191,11 @@ const AddCategoryPage = () => {
                 categoryTypeTooltip={
                     'Категория с товарами может содержать только товары! Обычная же категория может содержать в себе только другие категории!'
                 }
+                sets={characteristicSets}
+                handleAddRemoveSetInCategory={handleAddRemoveSetInCategory}
+                isSetInCategory={isSetInCategory}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

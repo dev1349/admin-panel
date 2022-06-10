@@ -1,6 +1,6 @@
 import React from 'react'
 import ModalContent from '../../../atoms/wrappers/modalContent/ModalContent'
-import AdminPageBorder from '../../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
+import AdminPageBorder from '../../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import ModalWindow from '../../../atoms/modalWindow/ModalWindow'
 import AdminPageHeader from '../../headers/adminPageHeader/AdminPageHeader'
 import Box from '../../../atoms/wrappers/box/Box'

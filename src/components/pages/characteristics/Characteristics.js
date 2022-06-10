@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
-import ViewListIcon from '../../atoms/icons/viewListIcon/ViewListIcon'
 import Characteristics from '../../organisms/characteristics/Characteristics'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -20,9 +19,10 @@ import {
 } from '../../../reducers/characteristicsSlice'
 import { useHistory } from 'react-router-dom'
 import DeleteModal from '../../molecules/modals/deleteModal/DeleteModal'
-import ServerErrorModal from '../../molecules/modals/serverErrorModal/ServerErrorModal'
+import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import Loader from '../../molecules/loader/Loader'
 import headLines from './headLines'
+import CharacteristicIcon from '../../atoms/icons/characteristicIcon/CharacteristicIcon'
 
 const CharacteristicsPage = () => {
     const characteristics = useSelector(getCharacteristics)
@@ -110,7 +110,7 @@ const CharacteristicsPage = () => {
     return (
         <>
             <Characteristics
-                icon={<ViewListIcon dialogIcon />}
+                icon={<CharacteristicIcon dialogIcon />}
                 title={'Характеристики товаров'}
                 buttons={[
                     <IconButton key={0} dialogButton disableRipple onClick={handleAddNewCharacteristic} disabled={isAddEditButtonDisabled}>
@@ -138,7 +138,7 @@ const CharacteristicsPage = () => {
                 title={'Подтверждение удаления'}
                 description={'Вы действительно хотите удалить эту категорию?'}
             />
-            <ServerErrorModal
+            <ErrorModal
                 open={isServerError}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}

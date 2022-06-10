@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalContent from '../../../atoms/wrappers/modalContent/ModalContent'
 import AdminModalHeader from '../../headers/adminModalHeader/AdminModalHeader'
-import AdminPageBorder from '../../../atoms/wrappers/AdminPageBorder/AdminPageBorder'
+import AdminPageBorder from '../../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import FlexTemplate from '../../../templates/flexTemplate/FlexTemplate'
 import Box from '../../../atoms/wrappers/box/Box'
 import AttentionIcon from '../../../atoms/icons/attentionIcon/AttentionIcon'
@@ -9,7 +9,7 @@ import Typography from '../../../atoms/textElements/typography/Typography'
 import Button from '../../../atoms/button/Button'
 import ModalWindow from '../../../atoms/modalWindow/ModalWindow'
 
-const DeleteModal = ({ open, onClose, title, description }) => {
+const ErrorModal = ({ open, onClose, title, description }) => {
     return (
         <ModalWindow open={open} onClose={onClose} aria-labelledby={title} aria-describedby={description}>
             <ModalContent>
@@ -20,7 +20,7 @@ const DeleteModal = ({ open, onClose, title, description }) => {
                             <AttentionIcon alertIcon />
                         </Box>
                         <Box marginTop7>
-                            <Typography mainAdminText textAlignCenter>
+                            <Typography mainAdminText textAlignCenter lineHeight15>
                                 {description}
                             </Typography>
                         </Box>
@@ -38,4 +38,4 @@ const DeleteModal = ({ open, onClose, title, description }) => {
     )
 }
 
-export default DeleteModal
+export default ErrorModal

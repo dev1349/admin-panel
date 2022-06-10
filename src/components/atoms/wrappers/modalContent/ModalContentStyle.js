@@ -14,7 +14,6 @@ export default {
             props: { flexContent: true },
             style: {
                 width: 'auto',
-                minWidth: '400px',
             },
         },
     ],
