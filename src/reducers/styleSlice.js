@@ -7,13 +7,14 @@ const styleSlice = createSlice({
     initialState: {
         styleFrom: 'local', // local/server
         refreshStyle: 'endpoint', // auto/endpoint (auto пока не реализован)
-        themeName: 'default', // задать уникальное имя своих изменений
+        themeName: 'admin-default', // задать уникальное имя своих изменений
         isThemeLoaded: false,
         styles: {},
     },
     reducers: {
         getStyleSuccess(state, action) {
-            state.styles = action.payload
+            state.styles = action.payload.styles
+            state.constants = action.payload.constants
             state.isThemeLoaded = true
         },
     },

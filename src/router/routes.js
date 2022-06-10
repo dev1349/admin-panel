@@ -62,7 +62,6 @@ import MegaMenu from '../components/pages/megaMenu/MegaMenu'
 import Clients from '../components/pages/clients/Clients'
 import Contacts from '../components/pages/contacts/Contacts'
 import LastOrders from '../components/organisms/tables/lastOrdersTable/LastOrders'
-import TestAtom from '../components/atoms/testAtom/TestAtom'
 import Delivery from '../components/pages/twoInputsImgPrev/Delivery'
 import Checkout from '../components/pages/twoInputsImgPrev/Checkout'
 import Novelities from '../components/pages/novelitiesPage/NovelitiesPage'
@@ -228,10 +227,6 @@ export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         Component: LoginContainer,
-    },
-    {
-        path: '/testAtom',
-        Component: TestAtom,
     },
     {
         path: UPLOAD_THEME,

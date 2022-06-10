@@ -1,70 +1,57 @@
-export const themeSerialize = (themeName, data) => {
+export const themeSerialize = (themeName, constants, components) => {
     return {
-        themeName: themeName,
-        components: componentSerialize(themeName, data),
+        name: themeName,
+        constants: constantSerialize(themeName, constants),
+        components: componentSerialize(components)
     }
 }
 
-const componentSerialize = (themeName, data) => {
+const componentSerialize = data => {
     const keys = Object.keys(data)
     const resultArr = []
     keys.map(key => {
         const newEl = {
-            themeName: themeName,
-            styledComponentName: key,
-            styleOverrides: styleOverrideSerialize(
-                themeName,
-                key,
-                data[key].styleOverrides
-            ),
-            variants: variantSerialize(themeName, key, data[key].variants),
+            name: key,
+            styleOverrides: styleOverrideSerialize(data[key].styleOverrides),
+            variants: variantSerialize(data[key].variants)
         }
         resultArr.push(newEl)
     })
     return resultArr
 }
 
-const styleOverrideSerialize = (themeName, compName, data) => {
+const styleOverrideSerialize = data => {
     const keys = Object.keys(data)
     const resultArr = []
     keys.map(key => {
         const newEl = {
-            themeName: themeName,
-            styledComponentName: compName,
-            styleOverrideName: key,
-            styles: styleSoSerialize(themeName, compName, key, data[key]),
+            name: key,
+            styles: styleSoSerialize(data[key])
         }
         resultArr.push(newEl)
     })
     return resultArr
 }
 
-const variantSerialize = (themeName, compName, data) => {
+const variantSerialize = data => {
     const resultArr = []
-    data &&
-        data.forEach((el, index) => {
-            const newEl = {
-                themeName: themeName,
-                styledComponentName: compName,
-                variantNumber: index,
-                styles: styleVSerialize(themeName, compName, index, el.style),
-                props: propsSerialize(themeName, compName, index, el.props),
-            }
-            resultArr.push(newEl)
-        })
+    data && data.forEach(el => {
+        const newEl = {
+            styles: styleVSerialize(el.style),
+            props: propsSerialize(el.props),
+        }
+        resultArr.push(newEl)
+    })
     return resultArr
 }
 
-const styleSoSerialize = (themeName, compName, styleOverrideName, data) => {
+const styleSoSerialize = data => {
     const keys = Object.keys(data)
     const resultArr = []
     keys.map(key => {
         const newEl = {
-            themeName: themeName,
-            styledComponentName: compName,
-            styleOverrideName: styleOverrideName,
             key: key,
-            value: data[key],
+            value: data[key]
         }
         resultArr.push(newEl)
     })
@@ -72,34 +59,42 @@ const styleSoSerialize = (themeName, compName, styleOverrideName, data) => {
 }
 
 //todo обработка стилей такого типа '& .MuiTypography-root'
-const styleVSerialize = (themeName, compName, variantNumber, data) => {
+const styleVSerialize = data => {
     const keys = Object.keys(data)
     const resultArr = []
     keys.map(key => {
         const newEl = {
-            themeName: themeName,
-            styledComponentName: compName,
-            variantNumber: variantNumber,
             key: key,
-            value: data[key],
+            value: data[key]
         }
         resultArr.push(newEl)
     })
     return resultArr
 }
 
-const propsSerialize = (themeName, compName, variantNumber, data) => {
+const propsSerialize = data => {
     const keys = Object.keys(data)
     const resultArr = []
     keys.map(key => {
         const newEl = {
-            themeName: themeName,
-            styledComponentName: compName,
-            variantNumber: variantNumber,
             key: key,
-            value: data[key],
+            value: data[key]
         }
         resultArr.push(newEl)
     })
     return resultArr
+}
+
+const constantSerialize = (themeName, constants) => {
+    const res = []
+    const constantKeys = Object.keys(constants)
+    constantKeys.forEach(x => {
+        const keys = Object.keys(constants[x])
+        keys.forEach(y => {
+            const key = '$' + x.toString() + '.' + y
+            const value = constants[x][y]
+            res.push({ themeName, key, value })
+        })
+    })
+    return res
 }

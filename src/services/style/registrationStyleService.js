@@ -76,7 +76,6 @@ import TableFilterContentTemplateStyle from '../../components/templates/tableFil
 import TableHeadStyle from '../../components/atoms/table/tableHead/TableHeadStyle'
 import TableRowStyle from '../../components/atoms/table/tableRow/TableRowStyle'
 import TabTitlesWrapperStyle from '../../components/atoms/tabs/tabTitlesWrapper/TabTitlesWrapperStyle'
-import TestAtomStyle from '../../components/atoms/testAtom/TestAtomStyle'
 import TextAlignRightTemplateStyle from '../../components/templates/textAlignRightTemplate/TextAlignRightTemplateStyle'
 import TextBetweenInputsStyle from '../../components/atoms/textElements/textBetweenInputs/TextBetweenInputsStyle'
 import TextFieldStyle from '../../components/atoms/inputs/textField/TextFieldStyle'
@@ -89,6 +88,10 @@ import VerticalModalTemplateStyle from '../../components/templates/verticalModal
 import ZIndexedModalStyle from '../../components/molecules/modals/simpleModal/ZIndexedModalStyle'
 import LastOrdersStyle from '../../components/organisms/tables/lastOrdersTable/LastOrdersStyle'
 import NovTableContainer from '../../components/templates/tableContainerTemplate/NovTableContainerStyle'
+import Colors from '../../styles/constants/Colors'
+import Fonts from '../../styles/constants/Fonts'
+import Gradients from '../../styles/constants/Gradients'
+import Borders from '../../styles/constants/Borders'
 import ButtonStyle from '../../components/atoms/button/ButtonStyle'
 import AddIconStyle from '../../components/atoms/icons/addIcon/AddIconStyle'
 import AddImageIconStyle from '../../components/atoms/icons/addImageIcon/AddImageIconStyle'
@@ -172,7 +175,8 @@ import GoodsHeaderStyle from '../../components/molecules/headers/goodsHeader/Goo
 import Header1Style from '../../components/molecules/headers/header1/Header1Style'
 import LabeledAutocompleteStyle from '../../components/molecules/inputs/labeledAutocomplete/LabeledAutocompleteStyle'
 import LabeledDateTimeFromToFieldStyle from '../../components/molecules/inputs/labeledDateTimeFromToField/LabeledDateTimeFromToFieldStyle'
-import LabeledDropDownTextFieldWithValidationStyle from '../../components/molecules/inputs/labeledDropDownTextFieldWithValidation/LabeledDropDownTextFieldWithValidationStyle'
+import LabeledDropDownTextFieldWithValidationStyle
+    from '../../components/molecules/inputs/labeledDropDownTextFieldWithValidation/LabeledDropDownTextFieldWithValidationStyle'
 import LabeledTextFieldStyle from '../../components/molecules/inputs/labeledTextField/LabeledTextFieldStyle'
 import LabeledNumberFieldStyle from '../../components/molecules/inputs/labeledNumberField/LabeledNumberFieldStyle'
 import LabeledFloatFieldStyle from '../../components/molecules/inputs/labeledFloatField/LabeledFloatFieldStyle'
@@ -190,6 +194,13 @@ import LabeledTextLabelsStyle from '../../components/molecules/inputs/lageledTex
 import ShowIconStyle from '../../components/atoms/icons/showIcon/ShowIconStyle'
 import CityTemplateStyle from '../../components/templates/npCityTemlate/CityTemplateStyle'
 import OfficeTemplateStyle from '../../components/templates/npOfficeTemlate/OfficeTemplateStyle'
+
+export const styleConstants = {
+    Colors,
+    Fonts,
+    Gradients,
+    Borders
+}
 
 export const styledComponents = {
     AddIconStyle,
@@ -363,7 +374,6 @@ export const styledComponents = {
     TabPanelStyle,
     TabTitleStyle,
     TabTitlesWrapperStyle,
-    TestAtomStyle,
     TextAlignRightTemplateStyle,
     TextBetweenInputsStyle,
     TextFieldStyle,

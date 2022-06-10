@@ -1,0 +1,29 @@
+export default {
+    whiteBasic: '#F5F5F3',
+    white100: '#FFFFFF',
+    white60: '#F2F2F0',
+    white40: '#EFEFEE',
+    white20: '#EBEBEA',
+    blackBasic: '#373737',
+    // black100: '#000000',
+    black60: '#5A5A5A',
+    black40: '#7D7D7D',
+    black20: '#B1B1B1',
+    blue100: '#0327CD',
+    blue80: '#304DD2',
+    blue60: '#5E73D7',
+    blue40: '#8A99DB',
+    blue20: '#B8BFE0',
+    pink100: '#DC26DC',
+    pink80: '#DE4CDE',
+    pink60: '#E073E0',
+    pink30: '#E198E1',
+    pink20: '#E3BFE3',
+}
+
+
+
+
+
+
+
