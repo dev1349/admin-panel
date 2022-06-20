@@ -187,7 +187,7 @@ import LabeledTextFieldsStyle from '../../components/molecules/inputs/labeledTex
 import LabeledCheckboxFieldStyle from '../../components/molecules/inputs/lableCheckboxField/LabeledCheckboxFieldStyle'
 import SimpleTableTotal from '../../components/molecules/table/simpleTableTotal/SimpleTableTotal'
 import TableHeadLastOrdersStyle from '../../components/molecules/table/tableHeadLastOrders/TableHeadLastOrdersStyle'
-import TableRowLastOrderStyle from '../../components/molecules/table/tableRowLastOrders/TableRowLastOrderStyle'
+import TableRowLastOrdersStyle from '../../components/molecules/table/tableRowLastOrders/TableRowLastOrdersStyle'
 import TitleTableStyle from '../../components/organisms/tables/lastOrdersTable/TitleTableStyle'
 import LabeledTextLabelsStyle from '../../components/molecules/inputs/lageledTextLabels/LabeledTextLabelsStyle'
 import ShowIconStyle from '../../components/atoms/icons/showIcon/ShowIconStyle'
@@ -371,10 +371,10 @@ export const styledComponents = {
     TableCellStyle,
     TableContainerStyle,
     TableFilterContentTemplateStyle,
+    TableRowLastOrdersStyle,
     TableHeadLastOrdersStyle,
     TableHeadStyle,
     TablePaginationStyle,
-    TableRowLastOrderStyle,
     TableRowStyle,
     TableSortLabelStyle,
     TableStyle,

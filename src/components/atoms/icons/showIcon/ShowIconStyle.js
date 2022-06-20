@@ -11,5 +11,11 @@ export default {
                 fill: '#525050',
             },
         },
+        {
+            props: { blue: true },
+            style: {
+                color: 'blue',
+            },
+        },
     ],
 }
