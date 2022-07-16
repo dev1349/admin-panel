@@ -197,6 +197,17 @@ import CharacteristicIconStyle from '../../components/atoms/icons/characteristic
 import SetIconStyle from '../../components/atoms/icons/setIcon/SetIconStyle'
 import CityTemplateStyle from '../../components/templates/npCityTemlate/CityTemplateStyle'
 import OfficeTemplateStyle from '../../components/templates/npOfficeTemlate/OfficeTemplateStyle'
+import CardStyle from '../../components/molecules/card/CardStyle'
+import PackageIconStyle from '../../components/atoms/icons/packageIcon/PackageIconStyle'
+import BuyerIconStyle from '../../components/atoms/icons/buyerIcon/BuyerIconStyle'
+import UsersIconStyle from '../../components/atoms/icons/usersIcon/UsersIconStyle'
+import CardHeaderStyle from '../../components/atoms/card/CardHeader/CardHeaderStyle'
+import CardContentStyle from '../../components/atoms/card/CardContent/CardContentStyle'
+import CardMainStyle from '../../components/atoms/card/CardMain/CardMainStyle'
+import CardFooterStyle from '../../components/atoms/card/CardFooter/CardFooterStyle'
+import LeverageIconStyle from '../../components/atoms/icons/leverageIcon/LeverageIconStyle'
+import CardContainerStyle from '../../components/atoms/card/CardContainer/CardContainerStyle'
+import BasketIconStyle from '../../components/atoms/icons/basketIcon/BasketIconStyle'
 
 export const styleConstants = {
     Colors,
@@ -206,6 +217,17 @@ export const styleConstants = {
 }
 
 export const styledComponents = {
+    BasketIconStyle,
+    CardContainerStyle,
+    CardFooterStyle,
+    LeverageIconStyle,
+    CardMainStyle,
+    CardContentStyle,
+    CardHeaderStyle,
+    PackageIconStyle,
+    BuyerIconStyle,
+    UsersIconStyle,
+    CardStyle,
     AddIconStyle,
     AddImageIconStyle,
     AdminModalHeaderStyle,
