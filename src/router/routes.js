@@ -40,6 +40,7 @@ import {
     UPLOAD_THEME,
     USERS,
     Np,
+    CARDS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -81,6 +82,7 @@ import Novaposhta from '../components/pages/novaPoshta/NovaPoshta'
 import CharacteristicSets from '../components/pages/characteristicSets/CharacteristicSets'
 import AddCharacteristicSet from '../components/pages/addCharacteristicSet/AddCharacteristicSet'
 import EditCharacteristicSet from '../components/pages/editCharacteristicSet/EditCharacteristicSet'
+import Card from '../components/molecules/card/Card'
 
 export const authRoutes = [
     {
@@ -239,6 +241,10 @@ export const authRoutes = [
     {
         path: Np,
         Component: Novaposhta,
+    },
+    {
+        path: CARDS,
+        Component: Card,
     },
 ]
 

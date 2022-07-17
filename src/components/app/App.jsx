@@ -6,8 +6,6 @@ import './App.sass'
 import './Constants.sass'
 import PageHeader from '../pages/pageHeader/PageHeader'
 import ReduxThemeProvider from '../molecules/reduxThemeProvider/ReduxThemeProvider'
-import Card from '../molecules/card/Card'
-import cards from '../../mock/cards'
 
 const App = () => {
     const isAuth = true
@@ -16,7 +14,6 @@ const App = () => {
         <BrowserRouter>
             <ReduxThemeProvider>
                 <PageHeader />
-                <Card cards={cards} />
                 {isAuth && authRoutes.map(({ path, Component }) => <Route key={path} path={path} component={Component} exact />)}
                 {publicRoutes.map(({ path, Component }) => (
                     <Route key={path} path={path} component={Component} exact />

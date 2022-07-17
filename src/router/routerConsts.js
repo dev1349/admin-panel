@@ -40,3 +40,4 @@ export const EDIT_CHARACTERISTIC_GROUP = '/editCharacteristicGroup/:characterist
 export const CHARACTERISTIC_SETS = '/characteristicSets'
 export const ADD_CHARACTERISTIC_SET = '/addCharacteristicSet'
 export const EDIT_CHARACTERISTIC_SET = '/editCharacteristicSet/:characteristicSetId'
+export const CARDS = '/cards'

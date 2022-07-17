@@ -6,10 +6,11 @@ import CardMain from '../../atoms/card/CardMain/CardMain'
 import LeverageIcon from '../../atoms/icons/leverageIcon/LeverageIcon'
 import CardFooter from '../../atoms/card/CardFooter/CardFooter'
 import CardContainer from '../../atoms/card/CardContainer/CardContainer'
+import cards from '../../../mock/cards'
 
 const CardStyled = createStyled('CardStyle', 'section')
 
-const Card = ({ cards }) => {
+const Card = () => {
     return (
         <CardStyled>
             {cards.map((card, index) => (

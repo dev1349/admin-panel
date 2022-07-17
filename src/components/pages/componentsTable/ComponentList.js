@@ -209,6 +209,12 @@ const componentList = [
         routeText: '/addCharacteristicSet',
         routeLink: '/addCharacteristicSet',
     },
+    {
+        componentName: 'карточки"',
+        task: 'WSADMIN-135',
+        routeText: '/cards',
+        routeLink: '/cards',
+    },
 ]
 
 export default componentList
