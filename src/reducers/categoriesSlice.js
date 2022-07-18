@@ -1,7 +1,7 @@
 import { categoriesMockData } from '../mock/categoriesMockData'
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { deepCopyCategories, findCategoryById } from '../components/pages/addCategory/categoryOperations'
-import { deleteCategoryFetch, getAllCategoriesFetch, putCategoryFetch } from '../api/categoriesApi'
+import { deleteCategoryFetch, getAllCategoriesFetch, getCategoryFetch, putCategoryFetch } from '../api/categoriesApi'
 import { getBehaviorMode } from './behaviorServerInteraction'
 
 const categoriesSlice = createSlice({
@@ -249,4 +249,17 @@ export const changeCategory = changedCategory => (dispatch, getState) => {
     category.characteristicSets = changedCategory.characteristicSets
 
     dispatch(setCategories(categories))
+}
+
+export const getCategory = (categoryId, callback) => async dispatch => {
+    dispatch(changePostPutDeleteFetchStatus('pending'))
+    try {
+        const category = await getCategoryFetch(categoryId)
+        dispatch(changePostPutDeleteFetchStatus('success'))
+        dispatch(changePostPutDeleteFetchStatus('idle'))
+        callback(category)
+    } catch (e) {
+        console.log(e)
+        dispatch(changePostPutDeleteFetchStatus('error'))
+    }
 }

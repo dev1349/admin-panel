@@ -3,10 +3,7 @@ import Pagination from '../../atoms/pagination/Pagination'
 import { useHistory, useParams } from 'react-router-dom'
 import { createStyled } from '../../../services/style/createStyled'
 
-const PaginationContainerStyled = createStyled(
-    'PaginationContainerStyle',
-    'div'
-)
+const PaginationContainerStyled = createStyled('PaginationContainerStyle', 'div')
 
 const PaginationMolecule = ({ pathName, count, ...rest }) => {
     const [currentPage, setCurrentPage] = useState(1)

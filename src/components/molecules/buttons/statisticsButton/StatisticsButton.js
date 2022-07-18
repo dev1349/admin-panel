@@ -8,22 +8,11 @@ import ListDivider from '../../../atoms/list/listDivider/ListDivider'
 import Badge from '../../../atoms/badge/Badge'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const StatisticsButtonWrapperStyled = createStyled(
-    'StatisticsButtonWrapperStyle',
-    'div'
-)
+const StatisticsButtonWrapperStyled = createStyled('StatisticsButtonWrapperStyle', 'div')
 const StatisticsUlStyled = createStyled('StatisticsUlStyle', 'ul')
 const StatisticsLiStyled = createStyled('StatisticsLiStyle', 'li')
 
-const StatisticsButton = ({
-    id,
-    anchorEl,
-    handleClick,
-    handleClose,
-    menuItems,
-    children,
-    ...rest
-}) => {
+const StatisticsButton = ({ id, anchorEl, handleClick, handleClose, menuItems, children, ...rest }) => {
     const NotificationsCount = menuItems.reduce((acc, item) => {
         return (
             acc +
@@ -40,9 +29,7 @@ const StatisticsButton = ({
                     id={`menuButton${id}`}
                     aria-controls="basic-menu"
                     aria-haspopup="true"
-                    aria-expanded={
-                        anchorEl?.id === `menuButton${id}` ? 'true' : undefined
-                    }
+                    aria-expanded={anchorEl?.id === `menuButton${id}` ? 'true' : undefined}
                     onClick={handleClick}
                     menuButton
                 >
@@ -64,10 +51,7 @@ const StatisticsButton = ({
                         <StatisticsUlStyled>
                             {item.subItems.map(subItems => (
                                 <MenuItem key={subItems.id} component={'li'}>
-                                    <StatisticsMenuItem
-                                        itemText={subItems.title}
-                                        itemCount={subItems.count}
-                                    />
+                                    <StatisticsMenuItem itemText={subItems.title} itemCount={subItems.count} />
                                 </MenuItem>
                             ))}
                         </StatisticsUlStyled>

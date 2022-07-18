@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import IconButton from '@mui/material/IconButton'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const IconButtonStyled = createStyled('IconButtonStyle', IconButton, [
-    'menuButton',
-    'dialogButton',
-])
+const IconButtonStyled = createStyled('IconButtonStyle', IconButton, ['menuButton', 'dialogButton', 'checkedImages'])
 
-const WSIconButton = ({ children, ...rest }) => {
-    return <IconButtonStyled {...rest}>{children}</IconButtonStyled>
-}
+const IconButtonAtom = forwardRef(({ children, ...rest }, ref) => {
+    return (
+        <IconButtonStyled ref={ref} {...rest}>
+            {children}
+        </IconButtonStyled>
+    )
+})
 
-export default WSIconButton
+IconButtonAtom.displayName = 'IconButtonAtom'
+
+export default IconButtonAtom

@@ -2,10 +2,7 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const ButtonWithIconAndLabelStyled = createStyled(
-    'ButtonWidthIconAndLabelStyle',
-    Button
-)
+const ButtonWithIconAndLabelStyled = createStyled('ButtonWidthIconAndLabelStyle', Button)
 
 const ButtonWidthIconAndLabel = ({ label, icon, ...rest }) => {
     return (

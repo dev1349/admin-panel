@@ -155,7 +155,6 @@ import TableContainerStyle from '../../components/atoms/table/tableContainer/Tab
 import TablePaginationStyle from '../../components/atoms/table/tablePagination/TablePaginationStyle'
 import TableSortLabelStyle from '../../components/atoms/table/tableSortLabel/TableSortLabelStyle'
 import TabPanelStyle from '../../components/atoms/tabs/tabPanel/TabPanelStyle'
-import TabTitleStyle from '../../components/atoms/tabs/tabTitle/TabTitleStyle'
 import StatisticsTextStyle from '../../components/atoms/textElements/statisticsText/StatisticsTextStyle'
 import ToggleButtonStyle from '../../components/atoms/toggleButton/ToggleButtonStyle'
 import ToggleButtonGroupStyle from '../../components/atoms/toggleButtonGroup/ToggleButtonGroupStyle'
@@ -208,6 +207,12 @@ import CardFooterStyle from '../../components/atoms/card/CardFooter/CardFooterSt
 import LeverageIconStyle from '../../components/atoms/icons/leverageIcon/LeverageIconStyle'
 import CardContainerStyle from '../../components/atoms/card/CardContainer/CardContainerStyle'
 import BasketIconStyle from '../../components/atoms/icons/basketIcon/BasketIconStyle'
+import TabStyle from '../../components/atoms/tabs/tab/TabStyle'
+import ContainerStyle from '../../components/templates/container/ContainerStyle'
+import TabsStyle from '../../components/atoms/tabs/tabs/TabsStyle'
+import LinkTabStyle from '../../components/atoms/tabs/linkTab/LinkTabStyle'
+import CharacteristicSetBorderStyle from '../../components/atoms/wrappers/characteristicSetBorder/CharacteristicSetBorderStyle'
+import FragmentStyle from '../../components/atoms/fragment/FragmentStyle'
 
 export const styleConstants = {
     Colors,
@@ -217,17 +222,6 @@ export const styleConstants = {
 }
 
 export const styledComponents = {
-    BasketIconStyle,
-    CardContainerStyle,
-    CardFooterStyle,
-    LeverageIconStyle,
-    CardMainStyle,
-    CardContentStyle,
-    CardHeaderStyle,
-    PackageIconStyle,
-    BuyerIconStyle,
-    UsersIconStyle,
-    CardStyle,
     AddIconStyle,
     AddImageIconStyle,
     AdminModalHeaderStyle,
@@ -245,6 +239,7 @@ export const styledComponents = {
     AutocompleteItemStyle,
     BadgeStyle,
     BarChartIconStyle,
+    BasketIconStyle,
     BoxStyle,
     BreadcrumbsStyle,
     ButtonsRightTemplateStyle,
@@ -253,17 +248,27 @@ export const styledComponents = {
     ButtonsWrapperTemplateStyle,
     ButtonTemplateStyle,
     ButtonWrapperStyle,
+    BuyerIconStyle,
+    CardContainerStyle,
+    CardContentStyle,
+    CardFooterStyle,
+    CardHeaderStyle,
+    CardMainStyle,
+    CardStyle,
     CatalogIconStyle,
     CategoryIconStyle,
     CellContentStyle,
     CharacteristicIconStyle,
+    CharacteristicSetBorderStyle,
     CheckboxStyle,
     CheckIconStyle,
     CircularProgressStyle,
+    CityTemplateStyle,
     ClearIconStyle,
     ClientButtonSpaceTemplateStyle,
     ClientFunctionContainerTemplateStyle,
     ClientsIconStyle,
+    ContainerStyle,
     CountLabelStyle,
     DeleteIconStyle,
     DialogsIconStyle,
@@ -285,6 +290,7 @@ export const styledComponents = {
     FolderIconStyle,
     FormControlStyle,
     FormStyle,
+    FragmentStyle,
     GoodsHeaderStyle,
     GoodsTableHeadStyle,
     GoodsTableRowStyle,
@@ -326,6 +332,9 @@ export const styledComponents = {
     LabeledTotalLabelsStyle,
     LabelTemplateStyle,
     LastChildToRightTemplateStyle,
+    LastOrdersStyle,
+    LeverageIconStyle,
+    LinkTabStyle,
     LinkStyle,
     ListDividerStyle,
     ListIconStyle,
@@ -349,7 +358,10 @@ export const styledComponents = {
     MultilineFieldStyle,
     NavTemplateStyle,
     NotificationsIconStyle,
+    NovTableContainer,
+    OfficeTemplateStyle,
     OtherElementTemplateStyle,
+    PackageIconStyle,
     PaddingBetweenButtonsTemplateStyle,
     PaddingBottomTemplateStyle,
     PaddingTemplateStyle,
@@ -401,7 +413,8 @@ export const styledComponents = {
     TableSortLabelStyle,
     TableStyle,
     TabPanelStyle,
-    TabTitleStyle,
+    TabStyle,
+    TabsStyle,
     TabTitlesWrapperStyle,
     TextAlignRightTemplateStyle,
     TextBetweenInputsStyle,
@@ -418,9 +431,6 @@ export const styledComponents = {
     VerticalModalTemplateStyle,
     ViewListIconStyle,
     UndoIconStyle,
+    UsersIconStyle,
     ZIndexedModalStyle,
-    LastOrdersStyle,
-    NovTableContainer,
-    CityTemplateStyle,
-    OfficeTemplateStyle,
 }

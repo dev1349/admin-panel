@@ -15,11 +15,7 @@ const WSSimpleModal = ({ modalText, modalType, action, ...rest }) => {
             <SimpleModalStyled>
                 <VerticalModalTemplate>
                     <ModalHeader>{modalText}</ModalHeader>
-                    <SimpleButton
-                        onClick={action}
-                        modalType={modalType}
-                        autoFocus={true}
-                    >
+                    <SimpleButton onClick={action} modalType={modalType} autoFocus={true}>
                         Ok
                     </SimpleButton>
                 </VerticalModalTemplate>

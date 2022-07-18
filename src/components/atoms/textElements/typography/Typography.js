@@ -8,6 +8,8 @@ const TypographyStyled = createStyled('TypographyStyle', Typography, [
     'textAlignCenter',
     'bold',
     'lineHeight15',
+    'characteristicSetTitle',
+    'characteristicGroupTitle',
 ])
 
 const TypographyWS = ({ children, ...rest }) => {

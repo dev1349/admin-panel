@@ -4,10 +4,7 @@ import LabeledInputTemplate from '../../../templates/labeledInputTemplate/Labele
 import Autocomplete from '../autocomplete/Autocomplete'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const LabeledAutocompleteStyled = createStyled(
-    'LabeledAutocompleteStyle',
-    'div'
-)
+const LabeledAutocompleteStyled = createStyled('LabeledAutocompleteStyle', 'div')
 
 const LabeledAutocomplete = ({
     id,

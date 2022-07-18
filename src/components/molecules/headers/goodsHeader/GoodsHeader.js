@@ -20,10 +20,7 @@ const GoodsHeader = ({ title, buttons, breadcrumbs }) => {
                     <IconButton onClick={buttons.add.addGood}>
                         <AddIcon />
                     </IconButton>
-                    <IconButton
-                        onClick={buttons.delete.deleteGood}
-                        disabled={buttons.delete.isDeleteButtonDisabled}
-                    >
+                    <IconButton onClick={buttons.delete.deleteGood} disabled={buttons.delete.isDeleteButtonDisabled}>
                         <DeleteIcon />
                     </IconButton>
                 </ButtonsWrapperTemplate>

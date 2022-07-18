@@ -1347,4 +1347,34 @@ describe('testing function "leaveIdOnlyInObject"', () => {
         // eslint-disable-next-line no-undef
         expect(leaveIdOnlyInObject(objectData, ['characteristicValues'])).toEqual(convertObjectData)
     })
+
+    // eslint-disable-next-line no-undef
+    it('object has key with nested object with key id)', () => {
+        const objectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: {},
+            isAvailableInFilter: [],
+            orderNumber: [{}, {}, {}],
+            characteristicGroup: null,
+            characteristicValues: {
+                id: 0,
+                value: 'someName',
+                characteristic: 0,
+            },
+        }
+        const convertObjectData = {
+            id: 0,
+            name: 'someName',
+            isAdminOnly: {},
+            isAvailableInFilter: [],
+            orderNumber: [{}, {}, {}],
+            characteristicGroup: null,
+            characteristicValues: {
+                id: 0,
+            },
+        }
+        // eslint-disable-next-line no-undef
+        expect(leaveIdOnlyInObject(objectData, ['characteristicValues'])).toEqual(convertObjectData)
+    })
 })

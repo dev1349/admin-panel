@@ -2,10 +2,7 @@ import React from 'react'
 import PaddingBottomTemplate from '../paddingBottomTemplate/PaddingBottomTemplate'
 import { createStyled } from '../../../services/style/createStyled'
 
-const VerticalModalTemplateStyled = createStyled(
-    'VerticalModalTemplateStyle',
-    'div'
-)
+const VerticalModalTemplateStyled = createStyled('VerticalModalTemplateStyle', 'div')
 
 const WSVerticalModalTemplate = ({ children, ...rest }) => {
     return (

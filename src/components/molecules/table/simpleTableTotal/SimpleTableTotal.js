@@ -14,9 +14,7 @@ const SimpleTableTotal = ({ totalPrice }) => {
             <TableCell />
             <TableCell />
             <TableCell align={'right'}>Итого:</TableCell>
-            <TableCell align={'right'}>
-                {totalPrice && totalPrice + ' грн.'}
-            </TableCell>
+            <TableCell align={'right'}>{totalPrice && totalPrice + ' грн.'}</TableCell>
             <TableCell />
         </SimpleTableTotalStyled>
     )

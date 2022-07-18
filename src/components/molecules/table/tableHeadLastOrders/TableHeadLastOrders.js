@@ -4,10 +4,7 @@ import TableCell from '../../../atoms/table/tableCell/TableCell'
 import { createStyled } from '../../../../services/style/createStyled'
 
 const TableRowStyled = createStyled('TableRowStyle', TableRow)
-const TableHeadLastOrdersStyled = createStyled(
-    'TableHeadLastOrdersStyle',
-    TableHead
-)
+const TableHeadLastOrdersStyled = createStyled('TableHeadLastOrdersStyle', TableHead)
 
 const TableHeadLastOrders = () => {
     // todo Не подключать стили из внешних компонентов

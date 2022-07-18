@@ -6,19 +6,10 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const LabeledTextFieldStyled = createStyled('LabeledTextFieldStyle', 'div')
 
-const LabeledTextField = ({
-    id,
-    label,
-    alignLeft,
-    alignLeftFixedWidth,
-    ...rest
-}) => {
+const LabeledTextField = ({ id, label, alignLeft, alignLeftFixedWidth, ...rest }) => {
     return (
         <LabeledTextFieldStyled>
-            <LabeledInputTemplate
-                alignLeft={alignLeft}
-                alignLeftFixedWidth={alignLeftFixedWidth}
-            >
+            <LabeledInputTemplate alignLeft={alignLeft} alignLeftFixedWidth={alignLeftFixedWidth}>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <TextField id={id} fullWidth {...rest} />
             </LabeledInputTemplate>

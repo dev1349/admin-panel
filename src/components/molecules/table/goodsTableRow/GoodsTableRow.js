@@ -22,16 +22,7 @@ const SimpleTableRow = ({ rowValues, cellsTypes, deleteGood, changeGood }) => {
                 .slice(1)
                 .map((el, index) => {
                     return (
-                        <TableCell
-                            key={el}
-                            align={
-                                cellsTypes[index] === undefined
-                                    ? 'center'
-                                    : cellsTypes[index]
-                                    ? 'right'
-                                    : 'left'
-                            }
-                        >
+                        <TableCell key={el} align={cellsTypes[index] === undefined ? 'center' : cellsTypes[index] ? 'right' : 'left'}>
                             {rowValues[el]}
                         </TableCell>
                     )

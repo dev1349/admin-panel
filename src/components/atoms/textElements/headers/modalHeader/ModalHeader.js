@@ -6,12 +6,7 @@ const ModalHeaderStyled = createStyled('ModalHeaderStyle', Typography)
 
 const WSModalHeader = ({ children, ...rest }) => {
     return (
-        <ModalHeaderStyled
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            {...rest}
-        >
+        <ModalHeaderStyled id="modal-modal-title" variant="h6" component="h2" {...rest}>
             {children}
         </ModalHeaderStyled>
     )

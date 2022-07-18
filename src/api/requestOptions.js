@@ -21,6 +21,17 @@ export const postRequestOptions = body => {
     }
 }
 
+export const postImageRequestOptions = body => {
+    return {
+        method: 'POST',
+        headers: {
+            Authorization: localStorage.getItem('token'),
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: body,
+    }
+}
+
 export const putRequestOptions = body => {
     return {
         method: 'PUT',

@@ -23,12 +23,7 @@ const WSTabsHorizontal = ({ titles, children, ...rest }) => {
 
     return (
         <HorizontalTabsBoxStyled>
-            <HorizontalTabTitles
-                titles={titles}
-                value={value}
-                onChange={handleChange}
-                {...rest}
-            />
+            <HorizontalTabTitles titles={titles} value={value} onChange={handleChange} {...rest} />
             {tabsContent.map((ch, index) => (
                 <TabPanel key={index} value={value} index={index}>
                     {ch}

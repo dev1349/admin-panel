@@ -7,14 +7,7 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const SimpleTableFooterStyled = createStyled('SimpleTableFooterStyle', TableRow)
 
-const SimpleTableFooter = ({
-    deliveryTypes,
-    deliveryCurrentType,
-    changeDelivery,
-    deliveryPrice,
-    changeDeliveryPrice,
-    disabled,
-}) => {
+const SimpleTableFooter = ({ deliveryTypes, deliveryCurrentType, changeDelivery, deliveryPrice, changeDeliveryPrice, disabled }) => {
     return (
         <SimpleTableFooterStyled>
             <TableCell />
@@ -48,9 +41,7 @@ const SimpleTableFooter = ({
             </TableCell>
             <TableCell />
             <TableCell />
-            <TableCell align={'right'}>
-                {deliveryPrice && deliveryPrice + ' грн.'}
-            </TableCell>
+            <TableCell align={'right'}>{deliveryPrice && deliveryPrice + ' грн.'}</TableCell>
             <TableCell />
         </SimpleTableFooterStyled>
     )

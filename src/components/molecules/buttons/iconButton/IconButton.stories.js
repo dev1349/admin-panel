@@ -19,4 +19,5 @@ Example1.args = {
     disabled: false,
     menuButton: false,
     disableRipple: true,
+    checkedImages: false,
 }

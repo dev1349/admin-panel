@@ -14,7 +14,6 @@ Example1.args = {
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
-    pattern: '^[1-9][0-9]*$',
     fullWidth: true,
 }
 
@@ -24,7 +23,7 @@ Example2.args = {
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
-    pattern: '^[1-9][0-9]*$',
+    pattern: '^(|[1-9][0-9]*)$',
     fullWidth: true,
     forTable: true,
 }
@@ -35,7 +34,7 @@ Example3.args = {
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
-    pattern: '^[1-9][0-9]*$',
+    pattern: '^(|[1-9][0-9]*)$',
     forTable: false,
     disabled: false,
 }
@@ -46,7 +45,7 @@ Example4.args = {
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
-    pattern: '^[1-9][0-9]*$',
+    pattern: '^(|[1-9][0-9]*)$',
     forFilter: true,
     disabled: false,
 }
@@ -57,7 +56,8 @@ Example5.args = {
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
-    pattern: '^[1-9][0-9]*$',
+    pattern: '^(|[1-9][0-9]*)$',
     clientSearch: true,
     disabled: false,
+    onPaste: event => console.log(event),
 }

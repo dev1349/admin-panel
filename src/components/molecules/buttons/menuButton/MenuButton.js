@@ -8,15 +8,7 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const MenuButtonWrapperStyled = createStyled('MenuButtonWrapperStyle', 'div')
 
-const MenuButtonWS = ({
-    id,
-    anchorEl,
-    handleClick,
-    handleClose,
-    menuItems,
-    children,
-    ...rest
-}) => {
+const MenuButtonWS = ({ id, anchorEl, handleClick, handleClose, menuItems, children, ...rest }) => {
     return (
         <MenuButtonWrapperStyled {...rest}>
             <IconButton
@@ -40,12 +32,7 @@ const MenuButtonWS = ({
             >
                 {menuItems.map(el => (
                     <MenuItem key={el.id} onClick={handleClose}>
-                        <Link
-                            component={RouterLink}
-                            to={el.link}
-                            color="inherit"
-                            underline="none"
-                        >
+                        <Link component={RouterLink} to={el.link} color="inherit" underline="none">
                             {el.title}
                         </Link>
                     </MenuItem>

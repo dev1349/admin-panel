@@ -15,13 +15,7 @@ const LabeledSwitch = ({ id, label, tooltip, ...rest }) => {
         <LabeledSwitchStyled>
             <LabeledInputTemplate alignItemsCenter labelNoMarginTop>
                 {tooltip ? (
-                    <FlexTemplate
-                        alignItemsCenter
-                        gap10
-                        justifyContentRight
-                        noWrap
-                        justifyContentLeftSm
-                    >
+                    <FlexTemplate alignItemsCenter gap10 justifyContentRight noWrap justifyContentLeftSm>
                         <InputLabel htmlFor={id}>{label}</InputLabel>
                         <Tooltip arrow title={tooltip}>
                             {/*<div>*/}

@@ -6,19 +6,10 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const LabeledSelectFieldStyled = createStyled('LabeledSelectFieldStyle', 'div')
 
-const LabeledSelectField = ({
-    id,
-    label,
-    alignLeft,
-    fixedWidthWithMarginRight,
-    ...rest
-}) => {
+const LabeledSelectField = ({ id, label, alignLeft, fixedWidthWithMarginRight, ...rest }) => {
     return (
         <LabeledSelectFieldStyled>
-            <LabeledInputTemplate
-                alignLeft={alignLeft}
-                fixedWidthWithMarginRight={fixedWidthWithMarginRight}
-            >
+            <LabeledInputTemplate alignLeft={alignLeft} fixedWidthWithMarginRight={fixedWidthWithMarginRight}>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <SelectField id={id} fullWidth {...rest} />
             </LabeledInputTemplate>

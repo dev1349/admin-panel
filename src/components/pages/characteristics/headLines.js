@@ -1,11 +1,7 @@
 import Checkbox from '../../atoms/inputs/checkbox/Checkbox'
 import React from 'react'
 
-const headLines = (
-    isIndeterminate,
-    isChecked,
-    handleSelectAllCharacteristic
-) => [
+const headLines = (isIndeterminate, isChecked, handleSelectAllCharacteristic) => [
     {
         id: 0,
         content: (

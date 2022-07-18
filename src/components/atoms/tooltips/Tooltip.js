@@ -2,9 +2,7 @@ import React from 'react'
 import { styled, tooltipClasses } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip'
 
-const TooltipStyled = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-))(() => ({
+const TooltipStyled = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)(() => ({
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: '#525050',
         color: '#FFF',

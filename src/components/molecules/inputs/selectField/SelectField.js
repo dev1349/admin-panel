@@ -30,24 +30,11 @@ const SelectField = ({
                 forTable={forTable}
                 {...rest}
             >
-                <MenuItem
-                    key={'start'}
-                    value=""
-                    disabled={isStartItemDisabled}
-                    forTable={forTable}
-                    dialogMenuItem
-                    disableRipple
-                >
+                <MenuItem key={'start'} value="" disabled={isStartItemDisabled} forTable={forTable} dialogMenuItem disableRipple>
                     {defaultLabel}
                 </MenuItem>
                 {items.map(item => (
-                    <MenuItem
-                        key={item.id}
-                        value={item.value}
-                        forTable={forTable}
-                        dialogMenuItem
-                        disableRipple
-                    >
+                    <MenuItem key={item.id} value={item.value} forTable={forTable} dialogMenuItem disableRipple>
                         {item.label}
                     </MenuItem>
                 ))}

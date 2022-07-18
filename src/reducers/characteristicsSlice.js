@@ -332,3 +332,15 @@ export const getCharacteristic = (characteristicId, callbackSuccess) => dispatch
         })
         .catch(() => dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('error')))
 }
+
+export const saveCharacteristicNewValues = characteristic => async dispatch => {
+    dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('pending'))
+    try {
+        await putCharacteristicFetch(characteristic.id, characteristic)
+        dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('success'))
+        dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('idle'))
+    } catch (e) {
+        console.log(e)
+        dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('error'))
+    }
+}

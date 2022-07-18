@@ -9,28 +9,16 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const Header1Styled = createStyled('Header1Style', 'header')
 
-const WSSimpleHeader1SaveReturn = ({
-    children,
-    onSave,
-    onReturn,
-    isSaveButtonDisabled,
-    isReturnButtonDisabled,
-}) => {
+const WSSimpleHeader1SaveReturn = ({ children, onSave, onReturn, isSaveButtonDisabled, isReturnButtonDisabled }) => {
     return (
         <Header1Styled>
             <TitleAndButtonsTemplate>
                 <H1>{children}</H1>
                 <ButtonsWrapperTemplate>
-                    <IconButton
-                        onClick={onSave}
-                        disabled={isSaveButtonDisabled}
-                    >
+                    <IconButton onClick={onSave} disabled={isSaveButtonDisabled}>
                         <SaveIcon />
                     </IconButton>
-                    <IconButton
-                        onClick={onReturn}
-                        disabled={isReturnButtonDisabled}
-                    >
+                    <IconButton onClick={onReturn} disabled={isReturnButtonDisabled}>
                         <UndoIcon />
                     </IconButton>
                 </ButtonsWrapperTemplate>

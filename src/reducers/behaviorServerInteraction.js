@@ -15,5 +15,4 @@ export default behaviorServerInteractionSlice.reducer
 
 export const { setBehaviorMode } = behaviorServerInteractionSlice.actions
 
-export const getBehaviorMode = state =>
-    state.behaviorServerInteraction.behaviorMode
+export const getBehaviorMode = state => state.behaviorServerInteraction.behaviorMode

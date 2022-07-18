@@ -17,6 +17,7 @@ const TextFieldMolecule = ({
     validatingNow,
     setValidationResult,
     haveHelperText,
+    textFieldRef,
     ...rest
 }) => {
     const { handleBlur, transformValue, errorMessage } = useValidation(
@@ -53,6 +54,7 @@ const TextFieldMolecule = ({
             onBlur={handleBlur}
             error={!!errorMessage}
             helperText={haveHelperText ? errorMessage || ' ' : ''}
+            textFieldRef={textFieldRef}
             {...rest}
         />
     )

@@ -11,4 +11,5 @@ const Template = args => <HelpIcon {...args} />
 export const Example1 = Template.bind({})
 Example1.args = {
     color: 'action',
+    canHover: true,
 }

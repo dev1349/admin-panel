@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStyled } from '../../../services/style/createStyled'
 
-const ImgStyled = createStyled('ImgStyle', 'img', ['logo', 'block'])
+const ImgStyled = createStyled('ImgStyle', 'img', ['logo', 'block', 'imageInImageList'])
 
-const ImgWS = ({ path, altText, ...rest }) => {
+const ImgAtom = ({ path, altText, ...rest }) => {
     return <ImgStyled src={path} alt={altText} {...rest} />
 }
 
-export default ImgWS
+export default ImgAtom

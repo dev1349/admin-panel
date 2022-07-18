@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-} from '@mui/material'
+import { Table, TableBody, TableCell, TableContainer, TableHead } from '@mui/material'
 import TableRow from './TableRow'
 
 export default {

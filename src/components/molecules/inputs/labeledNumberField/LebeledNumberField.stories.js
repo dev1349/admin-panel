@@ -1,5 +1,6 @@
 import React from 'react'
 import LabeledNumberField from './LabeledNumberField'
+import HelpIcon from '../../../atoms/icons/helpIcon/HelpIcon'
 
 export default {
     title: 'molecules/inputs/LabeledNumberField',
@@ -11,10 +12,13 @@ const Template = args => <LabeledNumberField {...args} />
 export const Example1 = Template.bind({})
 Example1.args = {
     id: 'addEditAttributeGroupLabel0',
-    label: 'Some label text...',
+    label: 'Some label text',
     value: 3,
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
-    pattern: '^[1-9]+[,.]?[0-9]*$',
+    pattern: '^(|[0-9]*)$',
+    isHelp: true,
+    helpText: 'Some help text',
+    helpIcon: <HelpIcon canHover />,
 }

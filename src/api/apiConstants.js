@@ -57,3 +57,9 @@ const CHARACTERISTIC_SETS = '/characteristic-sets'
 export const CHARACTERISTIC_SETS_PATH = SERVER_PATH + CHARACTERISTIC_SETS
 
 export const THEMES_PATH = SERVER_PATH + '/themes'
+
+const GOODS = '/goods'
+export const GOODS_PATH = SERVER_PATH + GOODS
+
+const IMAGES = '/images'
+export const IMAGES_PATH = SERVER_PATH + IMAGES

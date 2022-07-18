@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const ModalContentStyled = createStyled('ModalContentStyle', 'div', 'flexContent')
+const ModalContentStyled = createStyled('ModalContentStyle', 'div', ['flexContent', 'addImageContent'])
 
 const ModalContent = ({ children, forwardedRef, ...rest }) => {
     return (

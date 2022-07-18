@@ -2,10 +2,7 @@ import * as React from 'react'
 import TablePagination from '@mui/material/TablePagination'
 import { createStyled } from '../../../services/style/createStyled'
 
-const TablePaginationStyled = createStyled(
-    'TablePaginationStyle',
-    TablePagination
-)
+const TablePaginationStyled = createStyled('TablePaginationStyle', TablePagination)
 
 const TablePaginationWS = () => {
     const [page, setPage] = React.useState(2)

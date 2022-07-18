@@ -18,19 +18,9 @@ const ItemsPerPage = ({ title, buttonValues, currentValue, onChange }) => {
             <Typography component={'div'} smallFontSize>
                 {title}&nbsp;
             </Typography>
-            <ToggleButtonGroup
-                aria-label="items on page"
-                value={currentValue}
-                onChange={handleChange}
-                exclusive
-            >
+            <ToggleButtonGroup aria-label="items on page" value={currentValue} onChange={handleChange} exclusive>
                 {buttonValues.map((value, index) => (
-                    <ToggleButton
-                        value={value}
-                        aria-label={value}
-                        key={index}
-                        size={'small'}
-                    >
+                    <ToggleButton value={value} aria-label={value} key={index} size={'small'}>
                         {value}
                     </ToggleButton>
                 ))}

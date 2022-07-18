@@ -20,17 +20,14 @@ const todosSlice = createSlice({
     },
 })
 
-export const { setAttributes, changeFetchStatus, resetAttributes } =
-    todosSlice.actions
+export const { setAttributes, changeFetchStatus, resetAttributes } = todosSlice.actions
 
 export default todosSlice.reducer
 
 export const getCategoryFields = state => state.addCategory.categoryFields
 export const getFetchStatus = state => state.addCategory.fetchStatus
-export const isButtonDisabled = state =>
-    state.addCategory.fetchStatus !== 'idle'
-export const isCategoryNameFieldsValueEmpty = state =>
-    !state.addCategory.categoryFields.name
+export const isButtonDisabled = state => state.addCategory.fetchStatus !== 'idle'
+export const isCategoryNameFieldsValueEmpty = state => !state.addCategory.categoryFields.name
 export const isSaveButtonDisabled = createSelector(
     isButtonDisabled,
     isCategoryNameFieldsValueEmpty,

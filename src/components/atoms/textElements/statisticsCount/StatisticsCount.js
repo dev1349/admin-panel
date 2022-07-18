@@ -2,11 +2,7 @@ import React from 'react'
 import { Typography } from '@mui/material'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const StatisticsCountStyled = createStyled(
-    'StatisticsCountStyle',
-    Typography,
-    'attention'
-)
+const StatisticsCountStyled = createStyled('StatisticsCountStyle', Typography, 'attention')
 
 const StatisticsCount = ({ children, ...rest }) => {
     return (

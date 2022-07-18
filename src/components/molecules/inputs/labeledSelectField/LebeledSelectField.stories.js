@@ -14,7 +14,7 @@ Example1.args = {
     label: 'Тип',
     name: 'type',
     value: '',
-    onChange: () => console.log('change'),
+    onChange: () => console.log(`change ${name}`),
     items: [
         {
             id: 0,

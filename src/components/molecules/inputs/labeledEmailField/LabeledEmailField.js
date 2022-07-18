@@ -26,10 +26,7 @@ const LabeledEmailField = ({
 }) => {
     return (
         <LabeledEmailFieldStyled>
-            <LabeledInputTemplate
-                alignLeft={alignLeft}
-                alignLeftFixedWidth={alignLeftFixedWidth}
-            >
+            <LabeledInputTemplate alignLeft={alignLeft} alignLeftFixedWidth={alignLeftFixedWidth}>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <EmailField
                     id={id}

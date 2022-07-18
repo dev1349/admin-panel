@@ -23,21 +23,10 @@ Example1.args = {
     icon: <ViewListIcon dialogIcon />,
     title: 'Характеристики товаров',
     buttons: [
-        <IconButton
-            key={0}
-            dialogButton
-            disableRipple
-            onClick={() => console.log('add new characteristics')}
-        >
+        <IconButton key={0} dialogButton disableRipple onClick={() => console.log('add new characteristics')}>
             <AddIcon />
         </IconButton>,
-        <IconButton
-            key={1}
-            dialogButton
-            disableRipple
-            onClick={() => console.log('delete characteristic/s')}
-            disabled={false}
-        >
+        <IconButton key={1} dialogButton disableRipple onClick={() => console.log('delete characteristic/s')} disabled={false}>
             <DeleteIcon />
         </IconButton>,
     ],

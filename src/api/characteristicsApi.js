@@ -28,7 +28,12 @@ export const postCharacteristicFetch = body => {
 }
 
 export const putCharacteristicFetch = (id, body) => {
-    return fetch(CHARACTERISTICS_PATH + `/${id}`, putRequestOptions(body))
+    return fetch(CHARACTERISTICS_PATH + `/${id}`, putRequestOptions(body)).then(response => {
+        if (!response.ok) {
+            throw new Error(response)
+        }
+        return response.json()
+    })
 }
 
 export const deleteCharacteristicFetch = (id, body = null) => {

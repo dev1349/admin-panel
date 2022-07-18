@@ -8,14 +8,7 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const TableRowStyled = createStyled('TableRowStyle', TableRow)
 
-const WSTableRow = ({
-    rowFields,
-    id,
-    headerCellTypes,
-    onCheckRow,
-    onEditRow,
-    isRowChecked,
-}) => {
+const WSTableRow = ({ rowFields, id, headerCellTypes, onCheckRow, onEditRow, isRowChecked }) => {
     const labelId = `enhanced-table-checkbox-${id}`
 
     return (
@@ -34,13 +27,7 @@ const WSTableRow = ({
                 .map((keyName, index) => (
                     <TableCell
                         key={keyName}
-                        align={
-                            headerCellTypes[index] === undefined
-                                ? 'center'
-                                : headerCellTypes[index]
-                                ? 'right'
-                                : 'left'
-                        }
+                        align={headerCellTypes[index] === undefined ? 'center' : headerCellTypes[index] ? 'right' : 'left'}
                         padding={'none'}
                     >
                         {rowFields[keyName]}

@@ -41,6 +41,7 @@ import {
     USERS,
     Np,
     CARDS,
+    ADD_GOOD,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -83,6 +84,7 @@ import CharacteristicSets from '../components/pages/characteristicSets/Character
 import AddCharacteristicSet from '../components/pages/addCharacteristicSet/AddCharacteristicSet'
 import EditCharacteristicSet from '../components/pages/editCharacteristicSet/EditCharacteristicSet'
 import Card from '../components/molecules/card/Card'
+import AddGood from '../components/pages/addGood/AddGood'
 
 export const authRoutes = [
     {
@@ -245,6 +247,10 @@ export const authRoutes = [
     {
         path: CARDS,
         Component: Card,
+    },
+    {
+        path: ADD_GOOD,
+        Component: AddGood,
     },
 ]
 

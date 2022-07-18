@@ -1,10 +1,7 @@
 import React from 'react'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const IconWrapperForTooltipStyled = createStyled(
-    'IconWrapperForTooltipStyle',
-    'div'
-)
+const IconWrapperForTooltipStyled = createStyled('IconWrapperForTooltipStyle', 'div')
 
 const IconWrapperForTooltip = ({ children, forwardedRef, ...rest }) => {
     return (
@@ -14,6 +11,4 @@ const IconWrapperForTooltip = ({ children, forwardedRef, ...rest }) => {
     )
 }
 
-export default React.forwardRef((props, ref) => (
-    <IconWrapperForTooltip {...props} forwardedRef={ref} />
-))
+export default React.forwardRef((props, ref) => <IconWrapperForTooltip {...props} forwardedRef={ref} />)

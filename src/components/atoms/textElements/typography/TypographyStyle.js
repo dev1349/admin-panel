@@ -36,5 +36,23 @@ export default {
                 lineHeight: 1.5,
             },
         },
+        {
+            props: { characteristicSetTitle: true },
+            style: {
+                fontSize: '16px',
+                fontWeight: 400,
+                color: '#525050',
+                lineHeight: 1,
+            },
+        },
+        {
+            props: { characteristicGroupTitle: true },
+            style: {
+                fontSize: '16px',
+                fontWeight: 400,
+                color: '#525050',
+                lineHeight: 1,
+            },
+        },
     ],
 }

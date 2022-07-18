@@ -34,3 +34,16 @@ Example4.args = {
     altText: 'logo',
     block: true,
 }
+
+const Template2 = args => (
+    <div style={{ border: '1px solid red', width: '300px', height: '300px', position: 'relative' }}>
+        <Img {...args} />
+    </div>
+)
+
+export const imageInImageList = Template2.bind({})
+imageInImageList.args = {
+    path: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Logo-Logo.svg',
+    altText: 'logo',
+    imageInImageList: true,
+}

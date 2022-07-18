@@ -72,10 +72,16 @@ const leaveIdOnly = (objectData, convertFields) => {
     if (isEmptyArray(keys)) return null
 
     keys.forEach(key => {
-        if (convertFields.includes(key) && !isEmptyArray(objectData[key])) {
+        if (convertFields.includes(key) && isArray(objectData[key]) && !isEmptyArray(objectData[key])) {
             resultDataObject[key] = objectData[key].map(elem => ({
                 id: elem.id,
             }))
+            return
+        }
+        if (convertFields.includes(key) && isObject(objectData[key]) && !isEmptyArray(objectData[key])) {
+            resultDataObject[key] = {
+                id: objectData[key].id,
+            }
             return
         }
         if (isArray(objectData[key]) && isEmptyArray(objectData[key])) {

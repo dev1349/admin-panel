@@ -2,10 +2,7 @@ import React from 'react'
 import { Link } from '@mui/material'
 import { createStyled } from '../../../services/style/createStyled'
 
-const LinkStyled = createStyled('LinkStyle', Link, [
-    'dialogLink',
-    'hoverUnderline',
-])
+const LinkStyled = createStyled('LinkStyle', Link, ['dialogLink', 'hoverUnderline'])
 
 const LinkWS = ({ children, ...rest }) => {
     return <LinkStyled {...rest}>{children}</LinkStyled>

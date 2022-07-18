@@ -5,19 +5,15 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const AdminPageHeaderStyled = createStyled('AdminPageHeaderStyle', 'header')
 
-const AdminPageHeader = ({
-    icon = null,
-    title = 'Page title...',
-    buttons = null,
-}) => {
+const AdminPageHeader = ({ icon = null, title = 'Page title...', buttons = null }) => {
     return (
         <AdminPageHeaderStyled>
-            <FlexTemplate spaceBetween alignItemsCenter gap10>
+            <FlexTemplate spaceBetween alignItemsCenter gap10 noWrap>
                 <FlexTemplate alignItemsCenter gap10>
                     {icon}
                     <H1 dialogH1>{title}</H1>
                 </FlexTemplate>
-                <FlexTemplate alignItemsCenter gap7>
+                <FlexTemplate alignItemsCenter gap7 noWrap>
                     {buttons}
                 </FlexTemplate>
             </FlexTemplate>

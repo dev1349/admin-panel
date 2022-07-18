@@ -4,35 +4,14 @@ import LabeledInputTemplate from '../../../templates/labeledInputTemplate/Labele
 import TextFieldMultiline from '../textFieldMultiline/TextFieldMultiline'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const LabeledTextFieldMultilineStyled = createStyled(
-    'LabeledTextFieldMultilineStyle',
-    'div'
-)
+const LabeledTextFieldMultilineStyled = createStyled('LabeledTextFieldMultilineStyle', 'div')
 
-const LabeledMultilineTextField = ({
-    id,
-    label,
-    name,
-    value,
-    onChange,
-    autoFocus,
-    placeholder,
-}) => {
+const LabeledMultilineTextField = ({ id, label, ...rest }) => {
     return (
         <LabeledTextFieldMultilineStyled>
             <LabeledInputTemplate>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <TextFieldMultiline
-                    id={id}
-                    fullWidth={true}
-                    name={name}
-                    value={value}
-                    multiline
-                    rows={4}
-                    onChange={onChange}
-                    autoFocus={autoFocus}
-                    placeholder={placeholder}
-                />
+                <TextFieldMultiline id={id} fullWidth {...rest} />
             </LabeledInputTemplate>
         </LabeledTextFieldMultilineStyled>
     )

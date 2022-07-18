@@ -29,32 +29,20 @@ const WSHeader1 = ({
                 <ButtonsWrapperTemplate>
                     {mode === 'list' && (
                         <>
-                            <IconButton
-                                onClick={toAdd}
-                                disabled={isAllButtonDisabled}
-                            >
+                            <IconButton onClick={toAdd} disabled={isAllButtonDisabled}>
                                 <AddIcon />
                             </IconButton>
-                            <IconButton
-                                onClick={toDelete}
-                                disabled={isDeleteButtonDisabled}
-                            >
+                            <IconButton onClick={toDelete} disabled={isDeleteButtonDisabled}>
                                 <DeleteIcon />
                             </IconButton>
                         </>
                     )}
                     {(mode === 'add' || mode === 'edit') && (
                         <>
-                            <IconButton
-                                disabled={isSaveButtonDisabled}
-                                onClick={toSave}
-                            >
+                            <IconButton disabled={isSaveButtonDisabled} onClick={toSave}>
                                 <SaveIcon />
                             </IconButton>
-                            <IconButton
-                                onClick={toReturn}
-                                disabled={isAllButtonDisabled}
-                            >
+                            <IconButton onClick={toReturn} disabled={isAllButtonDisabled}>
                                 <UndoIcon />
                             </IconButton>
                         </>

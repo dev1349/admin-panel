@@ -10,3 +10,8 @@ const Template = args => <ListDivider {...args} />
 
 export const Example1 = Template.bind({})
 Example1.args = {}
+
+export const DialogDivider = Template.bind({})
+DialogDivider.args = {
+    dialogDivider: true,
+}

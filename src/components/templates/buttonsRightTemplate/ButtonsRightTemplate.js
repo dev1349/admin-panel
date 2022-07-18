@@ -1,10 +1,7 @@
 import React from 'react'
 import { createStyled } from '../../../services/style/createStyled'
 
-const ButtonsRightTemplateStyled = createStyled(
-    'ButtonsRightTemplateStyle',
-    'div'
-)
+const ButtonsRightTemplateStyled = createStyled('ButtonsRightTemplateStyle', 'div')
 const ButtonTemplateStyled = createStyled('ButtonTemplateStyle', 'span')
 
 const FlexFirstGrowTemplate = ({ children, ...rest }) => {
@@ -12,18 +9,12 @@ const FlexFirstGrowTemplate = ({ children, ...rest }) => {
 
     return (
         <ButtonsRightTemplateStyled {...rest}>
-            <ButtonTemplateStyled>
-                {isManyChildren ? children[0] : children}
-            </ButtonTemplateStyled>
+            <ButtonTemplateStyled>{isManyChildren ? children[0] : children}</ButtonTemplateStyled>
             {isManyChildren &&
                 children
                     .slice(1)
                     .filter(child => child)
-                    .map((elem, index) => (
-                        <ButtonTemplateStyled key={index}>
-                            {elem}
-                        </ButtonTemplateStyled>
-                    ))}
+                    .map((elem, index) => <ButtonTemplateStyled key={index}>{elem}</ButtonTemplateStyled>)}
         </ButtonsRightTemplateStyled>
     )
 }

@@ -68,8 +68,8 @@ const componentList = [
     {
         componentName: 'Компонент "Хедер добавления товаров"',
         task: 'WSADMIN-33',
-        routeText: '/goodAdd',
-        routeLink: '/goodAdd',
+        routeText: '/addGood',
+        routeLink: '/addGood',
     },
     {
         componentName: 'Компонент "Главное меню"',
@@ -214,6 +214,12 @@ const componentList = [
         task: 'WSADMIN-135',
         routeText: '/cards',
         routeLink: '/cards',
+    },
+    {
+        componentName: 'Компонент "Добавление товара"',
+        task: 'WSADMIN-109',
+        routeText: '/addGood',
+        routeLink: '/addGood',
     },
 ]
 

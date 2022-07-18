@@ -8,23 +8,13 @@ import { createStyled } from '../../../../services/style/createStyled'
 const TableRowStyled = createStyled('TableRowStyle', TableRow)
 const TableHeadStyled = createStyled('TableHeadStyle', TableHead)
 
-const WSTableHead = ({
-    headerCells,
-    order,
-    orderBy,
-    onClickSortLabel,
-    rowCount,
-    selectedRowCount,
-    onCheckAll,
-}) => {
+const WSTableHead = ({ headerCells, order, orderBy, onClickSortLabel, rowCount, selectedRowCount, onCheckAll }) => {
     return (
         <TableHeadStyled>
             <TableRowStyled>
                 <TableCell key={'checkbox'} align={'left'} padding="checkbox">
                     <Checkbox
-                        indeterminate={
-                            selectedRowCount > 0 && selectedRowCount < rowCount
-                        }
+                        indeterminate={selectedRowCount > 0 && selectedRowCount < rowCount}
                         checked={rowCount > 0 && selectedRowCount === rowCount}
                         onChange={onCheckAll}
                         inputProps={{
@@ -35,13 +25,7 @@ const WSTableHead = ({
                 {headerCells.map(cell => (
                     <TableCell
                         key={cell.id}
-                        align={
-                            cell.numeric === undefined
-                                ? 'center'
-                                : cell.numeric
-                                ? 'right'
-                                : 'left'
-                        }
+                        align={cell.numeric === undefined ? 'center' : cell.numeric ? 'right' : 'left'}
                         padding={cell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === cell.id ? order : false}
                     >

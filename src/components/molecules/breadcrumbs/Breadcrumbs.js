@@ -11,13 +11,7 @@ const BreadcrumbsWS = ({ breadcrumbs }) => {
         <BreadcrumbsStyled aria-label="breadcrumb">
             {breadcrumbs.map((el, index) =>
                 el.link ? (
-                    <Link
-                        key={index}
-                        underline="hover"
-                        color="inherit"
-                        to={el.link}
-                        component={RouterLink}
-                    >
+                    <Link key={index} underline="hover" color="inherit" to={el.link} component={RouterLink}>
                         {el.title}
                     </Link>
                 ) : (

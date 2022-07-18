@@ -7,17 +7,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import ExpandLessIcon from '../../../atoms/icons/expandLessIcon/ExpandLessIcon'
 import ExpandMoreIcon from '../../../atoms/icons/expandMoreIcon/ExpandMoreIcon'
 
-const NavListItemWS = ({
-    id,
-    title,
-    link,
-    subItems,
-    open,
-    onClick,
-    icon,
-    sx,
-    hideNavMenu,
-}) => {
+const NavListItemWS = ({ id, title, link, subItems, open, onClick, icon, sx, hideNavMenu }) => {
     const handleClick = () => {
         if (onClick) onClick(id)
     }
@@ -25,13 +15,7 @@ const NavListItemWS = ({
     return (
         <>
             {!subItems && (
-                <Link
-                    component={RouterLink}
-                    to={link}
-                    color="inherit"
-                    underline="none"
-                    onClick={hideNavMenu}
-                >
+                <Link component={RouterLink} to={link} color="inherit" underline="none" onClick={hideNavMenu}>
                     <ListItemButton sx={sx}>
                         {icon && <ListItemIcon>{icon}</ListItemIcon>}
                         <ListItemText primary={title} />
@@ -40,21 +24,11 @@ const NavListItemWS = ({
             )}
 
             {subItems && (
-                <Link
-                    component={RouterLink}
-                    to={link}
-                    color="inherit"
-                    underline="none"
-                >
+                <Link component={RouterLink} to={link} color="inherit" underline="none">
                     <ListItemButton onClick={handleClick} sx={sx}>
                         {icon && <ListItemIcon>{icon}</ListItemIcon>}
                         <ListItemText primary={title} />
-                        {subItems &&
-                            (open[id] ? (
-                                <ExpandLessIcon />
-                            ) : (
-                                <ExpandMoreIcon />
-                            ))}
+                        {subItems && (open[id] ? <ExpandLessIcon /> : <ExpandMoreIcon />)}
                     </ListItemButton>
                 </Link>
             )}

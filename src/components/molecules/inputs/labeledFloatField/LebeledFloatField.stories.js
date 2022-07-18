@@ -13,8 +13,18 @@ Example1.args = {
     id: 'addEditAttributeGroupLabel01',
     label: 'Some label text...',
     value: 345,
+    onChange: () => console.log('change'),
+    autoFocus: false,
+    name: 'sortOrder',
+}
+
+export const Example2 = Template.bind({})
+Example2.args = {
+    id: 'addEditAttributeGroupLabel01',
+    label: 'Some label text...',
+    value: 345,
     pattern:
-        '^(|0|0[.]|0[.][0-9]+|[1-9]|[1-9][0-9]*|[1-9][0-9]*[.]|[1-9][0-9]*[.][0-9]+)$',
+        '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
     onChange: () => console.log('change'),
     autoFocus: false,
     name: 'sortOrder',

@@ -4,9 +4,7 @@ import LabeledInputTemplate from '../../../templates/labeledInputTemplate/Labele
 import PhoneField from '../phoneField/PhoneField'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const LabeledPhoneFieldStyled = createStyled('LabeledPhoneFieldStyle', 'div', [
-    'fixedWidth',
-])
+const LabeledPhoneFieldStyled = createStyled('LabeledPhoneFieldStyle', 'div', ['fixedWidth'])
 
 const LabeledPhoneField = ({
     id,
@@ -30,10 +28,7 @@ const LabeledPhoneField = ({
 }) => {
     return (
         <LabeledPhoneFieldStyled fixedWidth={fixedWidth}>
-            <LabeledInputTemplate
-                alignLeft={alignLeft}
-                alignLeftFixedWidth={alignLeftFixedWidth}
-            >
+            <LabeledInputTemplate alignLeft={alignLeft} alignLeftFixedWidth={alignLeftFixedWidth}>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
                 <PhoneField
                     id={id}

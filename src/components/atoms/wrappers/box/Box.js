@@ -13,6 +13,7 @@ const BoxStyled = createStyled('BoxStyle', Box, [
     'maxHeight500',
     'marginTop2',
     'marginLeft62',
+    'addImageContent',
 ])
 
 const BoxWS = ({ children, ...rest }) => {

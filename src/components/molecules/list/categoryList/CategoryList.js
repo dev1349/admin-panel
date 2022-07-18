@@ -14,16 +14,8 @@ const CategoryList = ({
     openCategoriesAfterDragging,
     setDraggedCategory,
 }) => {
-    const folderCategories = [
-        ...categories.filter(
-            category => category.categoryType === 'WITH_CATEGORIES'
-        ),
-    ]
-    const goodCategories = [
-        ...categories.filter(
-            category => category.categoryType === 'WITH_GOODS'
-        ),
-    ]
+    const folderCategories = [...categories.filter(category => category.categoryType === 'WITH_CATEGORIES')]
+    const goodCategories = [...categories.filter(category => category.categoryType === 'WITH_GOODS')]
     const sortedCategories = [
         ...folderCategories.sort((el1, el2) => (el1.name > el2.name ? 1 : -1)),
         ...goodCategories.sort((el1, el2) => (el1.name > el2.name ? 1 : -1)),

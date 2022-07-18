@@ -13,13 +13,7 @@ import DeleteIcon from '../../../atoms/icons/deleteIcon/DeleteIcon'
 import SaveIcon from '../../../atoms/icons/saveIcon/SaveIcon'
 import ButtonsRightTemplate from '../../../templates/buttonsRightTemplate/ButtonsRightTemplate'
 
-const Delivery = ({
-    mainTitle,
-    labelInput,
-    labelMultiLine,
-    addButtonLabel,
-    saveButtonLabel,
-}) => {
+const Delivery = ({ mainTitle, labelInput, labelMultiLine, addButtonLabel, saveButtonLabel }) => {
     const initialDeliveries = {
         delivery_1: {
             image: null,
@@ -41,21 +35,14 @@ const Delivery = ({
     )
 
     const isAddDeliveryButtonDisabled = Object.keys(deliveries).reduce(
-        (acc, cur) =>
-            Object.keys(deliveries[cur]).reduce(
-                (subAcc, subCur) => subAcc && !deliveries[cur][subCur],
-                true
-            ) || acc,
+        (acc, cur) => Object.keys(deliveries[cur]).reduce((subAcc, subCur) => subAcc && !deliveries[cur][subCur], true) || acc,
         false
     )
 
     const handleAddDelivery = () => {
         setDeliveries(prev => {
             const newDeliveries = { ...prev }
-            const NextDeliveryNumber =
-                Math.max(
-                    ...Object.keys(prev).map(key => Number(key.split('_')[1]))
-                ) + 1
+            const NextDeliveryNumber = Math.max(...Object.keys(prev).map(key => Number(key.split('_')[1]))) + 1
             newDeliveries[`delivery_${NextDeliveryNumber}`] = {
                 image: null,
                 title: null,
@@ -101,12 +88,7 @@ const Delivery = ({
             <H1>{mainTitle}</H1>
 
             {Object.keys(deliveries).map((delivery, index) => (
-                <FlexFirstGrowTemplate
-                    noPadding
-                    alignItemsCenter
-                    noMargin
-                    key={delivery}
-                >
+                <FlexFirstGrowTemplate noPadding alignItemsCenter noMargin key={delivery}>
                     <GreyBorderedWrapper topBottomMargin withPadding>
                         <LabeledTextField
                             id={`${delivery}_title`}
@@ -139,11 +121,7 @@ const Delivery = ({
             ))}
 
             <TextAlignRightTemplate>
-                <SimpleButton
-                    startIcon={<AddIcon />}
-                    onClick={handleAddDelivery}
-                    disabled={isAddDeliveryButtonDisabled}
-                >
+                <SimpleButton startIcon={<AddIcon />} onClick={handleAddDelivery} disabled={isAddDeliveryButtonDisabled}>
                     {addButtonLabel}
                 </SimpleButton>
             </TextAlignRightTemplate>
@@ -157,11 +135,7 @@ const Delivery = ({
                 >
                     Удалить
                 </SimpleButton>
-                <SimpleButton
-                    startIcon={<SaveIcon />}
-                    onClick={handleSaveDeliveries}
-                    disabled={!canSaveDeliveries}
-                >
+                <SimpleButton startIcon={<SaveIcon />} onClick={handleSaveDeliveries} disabled={!canSaveDeliveries}>
                     {saveButtonLabel}
                 </SimpleButton>
             </ButtonsRightTemplate>

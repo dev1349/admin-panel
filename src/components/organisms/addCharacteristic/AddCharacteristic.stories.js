@@ -22,21 +22,10 @@ Example1.args = {
     icon: <AddIcon dialogIcon />,
     title: 'Добавление характеристики товара',
     buttons: [
-        <IconButton
-            key={0}
-            dialogButton
-            disableRipple
-            onClick={() => console.log('go back')}
-        >
+        <IconButton key={0} dialogButton disableRipple onClick={() => console.log('go back')}>
             <UndoIcon />
         </IconButton>,
-        <IconButton
-            key={1}
-            dialogButton
-            disableRipple
-            onClick={() => console.log('save new characteristic')}
-            disabled={false}
-        >
+        <IconButton key={1} dialogButton disableRipple onClick={() => console.log('save new characteristic')} disabled={false}>
             <SaveIcon />
         </IconButton>,
     ],
@@ -48,10 +37,8 @@ Example1.args = {
         characteristicGroup: null,
         values: [],
     },
-    changeCharacteristicFields: payload =>
-        console.log('change characteristic value', payload),
-    changeCharacteristicGroup: payload =>
-        console.log('change characreristic group ', payload),
+    changeCharacteristicFields: payload => console.log('change characteristic value', payload),
+    changeCharacteristicGroup: payload => console.log('change characreristic group ', payload),
     characteristicGroups: [
         {
             id: 0,
@@ -100,9 +87,7 @@ Example1.args = {
             value: 'value 15',
         },
     ],
-    changeCharacteristicValue: payload =>
-        console.log('change characteristic value ', payload),
-    deleteCharacteristicValue: index => () =>
-        console.log('delete characteristic value ', index),
+    changeCharacteristicValue: payload => console.log('change characteristic value ', payload),
+    deleteCharacteristicValue: index => () => console.log('delete characteristic value ', index),
     addCharacteristicValue: () => console.log('add new characteristic value'),
 }

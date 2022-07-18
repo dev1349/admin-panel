@@ -21,3 +21,33 @@ Example1.args = {
         </div>
     ),
 }
+
+export const AddImageContent = Template.bind({})
+AddImageContent.args = {
+    children: (
+        <div
+            style={{
+                height: '200px',
+                backgroundColor: 'yellow',
+            }}
+        >
+            Some text in modal...
+        </div>
+    ),
+    addImageContent: true,
+}
+
+export const FlexContent = Template.bind({})
+FlexContent.args = {
+    children: (
+        <div
+            style={{
+                height: '200px',
+                backgroundColor: 'yellow',
+            }}
+        >
+            Some text in modal...
+        </div>
+    ),
+    flexContent: true,
+}

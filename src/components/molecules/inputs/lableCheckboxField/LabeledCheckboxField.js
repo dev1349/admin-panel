@@ -6,14 +6,7 @@ import { createStyled } from '../../../../services/style/createStyled'
 
 const LabeledCheckboxStyled = createStyled('LabeledCheckboxStyle', 'div')
 
-const WSLabeledCheckboxField = ({
-    id,
-    label,
-    name,
-    checked,
-    onChange,
-    alignLeft,
-}) => {
+const WSLabeledCheckboxField = ({ id, label, name, checked, onChange, alignLeft }) => {
     const changeHandler = evt => {
         const sendValue = evt.target.checked === '' ? null : evt.target.checked
         onChange({ [name]: sendValue })
@@ -22,11 +15,7 @@ const WSLabeledCheckboxField = ({
         <LabeledCheckboxStyled>
             <LabeledInputTemplate alignLeft={alignLeft}>
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                <Checkbox
-                    name={name}
-                    checked={checked}
-                    onChange={changeHandler}
-                />
+                <Checkbox name={name} checked={checked} onChange={changeHandler} />
             </LabeledInputTemplate>
         </LabeledCheckboxStyled>
     )

@@ -4,23 +4,9 @@ import LabeledInputTemplate from '../../../templates/labeledInputTemplate/Labele
 import DropDownTextFieldWithValidation from '../dropDownTextFieldWithValidation/DropDownTextFieldWithValidation'
 import { createStyled } from '../../../../services/style/createStyled'
 
-const LabeledDropDownTextFieldWithValidationStyled = createStyled(
-    'LabeledDropDownTextFieldWithValidationStyle',
-    'div',
-    ['fixedWidth']
-)
+const LabeledDropDownTextFieldWithValidationStyled = createStyled('LabeledDropDownTextFieldWithValidationStyle', 'div', ['fixedWidth'])
 
-const LabeledDropDownTextFieldWithValidation = ({
-    id,
-    label,
-    name,
-    value,
-    onChange,
-    autoFocus,
-    pattern,
-    helperText,
-    check,
-}) => {
+const LabeledDropDownTextFieldWithValidation = ({ id, label, name, value, onChange, autoFocus, pattern, helperText, check }) => {
     return (
         <LabeledDropDownTextFieldWithValidationStyled>
             <LabeledInputTemplate>

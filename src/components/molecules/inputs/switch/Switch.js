@@ -6,15 +6,7 @@ const SwitchMolecules = ({ id, name, checked, onChange, ...rest }) => {
         onChange({ [name]: !checked })
     }
 
-    return (
-        <Switch
-            id={id}
-            name={name}
-            checked={checked}
-            onChange={handleChange}
-            {...rest}
-        />
-    )
+    return <Switch id={id} name={name} checked={checked} onChange={handleChange} {...rest} />
 }
 
 export default SwitchMolecules

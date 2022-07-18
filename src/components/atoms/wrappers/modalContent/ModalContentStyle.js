@@ -16,5 +16,12 @@ export default {
                 width: 'auto',
             },
         },
+        {
+            props: { addImageContent: true },
+            style: {
+                width: '100%',
+                maxWidth: '800px',
+            },
+        },
     ],
 }

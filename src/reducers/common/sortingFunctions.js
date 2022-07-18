@@ -1,7 +1,5 @@
 export const getFieldValueByPath = (pathToField, obj = null) => {
-    const properties = Array.isArray(pathToField)
-        ? pathToField
-        : pathToField.split('.')
+    const properties = Array.isArray(pathToField) ? pathToField : pathToField.split('.')
     return properties.reduce((prev, curr) => prev && prev[curr], obj)
 }
 
@@ -18,9 +16,7 @@ export const descendingComparator = (a, b, orderBy) => {
 }
 
 export const getComparator = (order, orderBy) => {
-    return order === 'desc'
-        ? (a, b) => descendingComparator(a, b, orderBy)
-        : (a, b) => -descendingComparator(a, b, orderBy)
+    return order === 'desc' ? (a, b) => descendingComparator(a, b, orderBy) : (a, b) => -descendingComparator(a, b, orderBy)
 }
 
 // This method is created for cross-browser compatibility, if you don't

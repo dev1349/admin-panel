@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabs } from '@mui/material'
-import Tab from '../../../atoms/tabs/tabTitle/TabTitle'
+import Tab from '../../../atoms/tabs/tab/Tab'
 import TabTitlesWrapper from '../../../atoms/tabs/tabTitlesWrapper/TabTitlesWrapper'
 import { createStyled } from '../../../../services/style/createStyled'
 
@@ -16,12 +16,7 @@ const HorizontalTabTitlesStyled = createStyled('HorizontalTabTitlesStyle', Tabs)
 const WSHorizontalTabTitles = ({ titles, value, onChange, ...rest }) => {
     return (
         <TabTitlesWrapper>
-            <HorizontalTabTitlesStyled
-                value={value}
-                onChange={onChange}
-                aria-label="basic tabs example"
-                {...rest}
-            >
+            <HorizontalTabTitlesStyled value={value} onChange={onChange} aria-label="basic tabs example" {...rest}>
                 {titles.map((title, index) => (
                     <Tab key={index} label={title} {...a11yProps(index)} />
                 ))}

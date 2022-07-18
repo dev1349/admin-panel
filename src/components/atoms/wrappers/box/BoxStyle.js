@@ -64,5 +64,13 @@ export default {
                 marginLeft: '62px',
             },
         },
+        {
+            props: { addImageContent: true },
+            style: {
+                maxHeight: '80vh',
+                overflowY: 'auto',
+                mawWidth: '800px',
+            },
+        },
     ],
 }

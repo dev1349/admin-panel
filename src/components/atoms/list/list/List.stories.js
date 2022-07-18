@@ -11,11 +11,7 @@ const Template = args => <List {...args} />
 
 export const Example1 = Template.bind({})
 Example1.args = {
-    children: [
-        <ListItem key={0}>one</ListItem>,
-        <ListItem key={1}>two</ListItem>,
-        <ListItem key={2}>three</ListItem>,
-    ],
+    children: [<ListItem key={0}>one</ListItem>, <ListItem key={1}>two</ListItem>, <ListItem key={2}>three</ListItem>],
     component: 'nav',
     'aria-labelledby': 'nested-list-subheader',
     subheader: (
