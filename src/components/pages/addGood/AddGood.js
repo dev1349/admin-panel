@@ -32,11 +32,10 @@ import {
     saveCharacteristicNewValues,
 } from '../../../reducers/characteristicsSlice'
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
-import { getAllImagesFetch, postImageFetch } from '../../../api/imagesApi'
+import { deleteImageFetch, getAllImagesFetch, postImageFetch } from '../../../api/imagesApi'
 import { SERVER_PATH } from '../../../api/apiConstants'
 import goodStateItems from './goodStateItems'
 import { getPageSize } from '../../../reducers/goodsSlice'
-// import { setTotalPages } from '../../../reducers/goodsSlice'
 
 const AddGoodPage = () => {
     let history = useHistory()
@@ -45,7 +44,7 @@ const AddGoodPage = () => {
         history.goBack()
     }
 
-    const isGoBAckButtonDisabled = false
+    const isGoBackButtonDisabled = false
 
     const [goodsFetchStatus, setGoodsFetchStatus] = useState('idle')
 
@@ -233,11 +232,15 @@ const AddGoodPage = () => {
 
     const isSaveButtonDisabled = isPending || isGoodsNameEmpty
 
-    const handleGetImagesFromServer = useCallback(async () => {
+    const handleGetImagesFromServer = useCallback(async query => {
         setImageFetchStatus('pending')
         try {
-            let images = await getAllImagesFetch()
+            let images = await getAllImagesFetch(query)
             setImages(images.content)
+            setTotalPages(images.totalPages)
+            setCurrentPageNumber(images.number)
+            setImagesPerPage(images.size)
+            setTotalImages(images.totalElements)
             setImageFetchStatus('success')
             setImageFetchStatus('idle')
         } catch (e) {
@@ -252,7 +255,57 @@ const AddGoodPage = () => {
             await Promise.all(allData.map(data => postImageFetch(data)))
             setImageFetchStatus('success')
             setImageFetchStatus('idle')
-            handleGetImagesFromServer()
+            handleGetImagesFromServer(`?pageSize=${imagesPerPage}`)
+        } catch (error) {
+            console.log(error)
+            setImageFetchStatus('error')
+        }
+    }
+
+    const defaultImagesPerPage = 23
+
+    const [imagesPerPage, setImagesPerPage] = useState(defaultImagesPerPage)
+
+    const [currentPageNumber, setCurrentPageNumber] = useState(null)
+
+    const [totalPages, setTotalPages] = useState(null)
+
+    const [totalImages, setTotalImages] = useState(null)
+
+    const handleChangeImagesPerPage = pageSize => {
+        if (currentPageNumber === null) {
+            handleGetImagesFromServer(`?pageSize=${pageSize}`)
+            return
+        }
+        if (currentPageNumber !== null) {
+            handleGetImagesFromServer(`?&pageSize=${pageSize}`)
+        }
+    }
+
+    const isPaginationDisabled = imageFetchStatus === 'pending'
+
+    const handlePaginationItemClick = (event, page) => {
+        if (imagesPerPage === null) {
+            handleGetImagesFromServer(`?pageNo=${page - 1}`)
+            return
+        }
+        if (imagesPerPage !== null) {
+            handleGetImagesFromServer(`?pageNo=${page - 1}&pageSize=${imagesPerPage}`)
+        }
+    }
+
+    const handleDeleteImageFromServer = async id => {
+        setImageFetchStatus('pending')
+        try {
+            await deleteImageFetch(id)
+            setImageFetchStatus('success')
+            setImageFetchStatus('idle')
+            const totalPageNumberAfterDeleting = Math.floor((totalImages - 1) / imagesPerPage)
+            if (currentPageNumber > totalPageNumberAfterDeleting) {
+                handleGetImagesFromServer(`?pageNo=${totalPageNumberAfterDeleting}&pageSize=${imagesPerPage}`)
+                return
+            }
+            handleGetImagesFromServer(`?pageNo=${currentPageNumber}&pageSize=${imagesPerPage}`)
         } catch (error) {
             console.log(error)
             setImageFetchStatus('error')
@@ -266,7 +319,7 @@ const AddGoodPage = () => {
                     icon={<AddIcon dialogIcon />}
                     title={'Добавить товар'}
                     buttons={[
-                        <IconButton key={0} dialogButton disableRipple onClick={handleGoBackToGoods} disabled={isGoBAckButtonDisabled}>
+                        <IconButton key={0} dialogButton disableRipple onClick={handleGoBackToGoods} disabled={isGoBackButtonDisabled}>
                             <UndoIcon dialogIcon />
                         </IconButton>,
                         <IconButton key={1} dialogButton disableRipple onClick={handleSaveNewGood} disabled={isSaveButtonDisabled}>
@@ -292,6 +345,13 @@ const AddGoodPage = () => {
                                     images={images}
                                     getImagesFromServer={handleGetImagesFromServer}
                                     pathToImage={`${SERVER_PATH}/img/`}
+                                    imagesPerPage={imagesPerPage}
+                                    changeImagesPerPage={handleChangeImagesPerPage}
+                                    isPaginationDisabled={isPaginationDisabled}
+                                    totalPages={totalPages}
+                                    currentPageNumber={currentPageNumber}
+                                    paginationItemClick={handlePaginationItemClick}
+                                    deleteImageFromServer={handleDeleteImageFromServer}
                                 />
                             ),
                         },

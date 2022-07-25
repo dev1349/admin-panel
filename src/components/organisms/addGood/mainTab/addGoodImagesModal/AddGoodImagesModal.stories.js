@@ -40,4 +40,10 @@ AddGoodImagesModalDefault.args = {
     ],
     getImagesFromServer: (categoryId, callback) => console.log('get images from server ', categoryId, callback),
     pathToImage: `${SERVER_PATH}/img/`,
+    imagesPerPage: 23,
+    changeImagesPerPage: pageSize => console.log(pageSize),
+    isPaginationDisabled: false,
+    totalPages: 6,
+    currentPageNumber: 0,
+    paginationItemClick: (event, page) => console.log(page),
 }

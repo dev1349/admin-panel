@@ -1,8 +1,8 @@
-import { getRequestOptions, postImageRequestOptions } from './requestOptions'
+import { deleteRequestOptions, getRequestOptions, postImageRequestOptions } from './requestOptions'
 import { IMAGES_PATH } from './apiConstants'
 
-export const getAllImagesFetch = () => {
-    return fetch(IMAGES_PATH, getRequestOptions()).then(response => {
+export const getAllImagesFetch = (query = '') => {
+    return fetch(IMAGES_PATH + query, getRequestOptions()).then(response => {
         if (!response.ok) {
             throw new Error(response)
         }
@@ -16,5 +16,13 @@ export const postImageFetch = body => {
             throw new Error(response)
         }
         return response.json()
+    })
+}
+
+export const deleteImageFetch = id => {
+    return fetch(IMAGES_PATH + `/${id}`, deleteRequestOptions()).then(response => {
+        if (!response.ok) {
+            throw new Error(response)
+        }
     })
 }

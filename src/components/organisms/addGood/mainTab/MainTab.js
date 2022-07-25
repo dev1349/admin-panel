@@ -19,6 +19,13 @@ const MainTab = ({
     images,
     getImagesFromServer,
     pathToImage,
+    imagesPerPage,
+    changeImagesPerPage,
+    isPaginationDisabled,
+    totalPages,
+    currentPageNumber,
+    paginationItemClick,
+    deleteImageFromServer,
 }) => {
     const [openAddGoodImagesModal, setOpenAddGoodImagesModal] = useState(false)
 
@@ -108,6 +115,13 @@ const MainTab = ({
                 uploadImageToServer={uploadImageToServer}
                 addedImageIds={addedImageIds}
                 pathToImage={pathToImage}
+                imagesPerPage={imagesPerPage}
+                changeImagesPerPage={changeImagesPerPage}
+                isPaginationDisabled={isPaginationDisabled}
+                totalPages={totalPages}
+                currentPageNumber={currentPageNumber}
+                paginationItemClick={paginationItemClick}
+                deleteImageFromServer={deleteImageFromServer}
             />
         </>
     )

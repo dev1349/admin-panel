@@ -225,7 +225,6 @@ const Goods = ({
                                 page={currentPage}
                                 onChange={onPaginationItemClick}
                                 disabled={isPaginationDisabled}
-                                // variant="outlined"
                                 shape="rounded"
                             />
                         </Container>

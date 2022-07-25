@@ -28,10 +28,13 @@ ImagesListWithUploadToServerDefault.args = {
             uploadTime: '2022-07-14T12:02:12.155+00:00',
         },
     ],
-    getImagesFromServer: () => console.log('get images from server'),
     makeImageAsChecked: id => () => console.log('make image as checked...', id),
     uploadImageToServer: payload => console.log('upload image to server...', payload),
-    deleteImage: null,
+    deleteImage: id => () => console.log('deleting image', id),
     addedImageIds: [0, 1, 2],
     pathToImage: `${SERVER_PATH}/img/`,
+    isDeleteButtonDisabled: id => {
+        console.log('disabling true', id)
+        return true
+    },
 }
