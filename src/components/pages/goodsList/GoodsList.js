@@ -1,18 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    deleteGood,
-    getAllGoods,
-    getGoodsFields,
-    getHeaderCells,
-} from '../../../reducers/goodsSlice'
+import { deleteGood, getAllGoodsFromServer, getGoodsFields, getHeaderCells } from '../../../reducers/goodsSlice'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import GoodsTable from '../../organisms/tables/goodsTable/GoodsTable'
 
 const GoodsList = () => {
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getAllGoods())
+        dispatch(getAllGoodsFromServer())
     }, [dispatch])
     const allGoods = useSelector(getGoodsFields)
     const headerCells = useSelector(getHeaderCells)
@@ -25,12 +20,7 @@ const GoodsList = () => {
     return (
         <MaxWidthTemplate>
             {allGoods && (
-                <GoodsTable
-                    headerCells={headerCells}
-                    tableRows={allGoods}
-                    deleteGood={deleteHandler}
-                    changeGood={changeHandler}
-                />
+                <GoodsTable headerCells={headerCells} tableRows={allGoods} deleteGood={deleteHandler} changeGood={changeHandler} />
             )}
         </MaxWidthTemplate>
     )

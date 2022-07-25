@@ -29,5 +29,17 @@ export default {
                 objectFit: 'contain',
             },
         },
+        {
+            props: { imageInGoodList: true },
+            style: {
+                display: 'block',
+                position: 'absolute',
+                top: '0px',
+                left: '0px',
+                height: '100%',
+                width: '100%',
+                objectFit: 'contain',
+            },
+        },
     ],
 }

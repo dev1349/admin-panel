@@ -4,8 +4,8 @@ import { createStyled } from '../../../services/style/createStyled'
 
 const ToggleButtonGroupStyled = createStyled('ToggleButtonGroupStyle', ToggleButtonGroup)
 
-const ToggleButtonGroupWS = ({ children, ...rest }) => {
+const ToggleButtonGroupAtom = ({ children, ...rest }) => {
     return <ToggleButtonGroupStyled {...rest}>{children}</ToggleButtonGroupStyled>
 }
 
-export default ToggleButtonGroupWS
+export default ToggleButtonGroupAtom

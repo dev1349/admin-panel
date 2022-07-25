@@ -22,6 +22,12 @@ const ContainerStyled = createStyled('ContainerStyle', 'div', [
     'textFieldOfTextFieldWithButtonTemplate',
     'checkedImageContainerInImageList',
     'modalContentPadding',
+    'marginTop7',
+    'imageInGoodListContainer',
+    'absolutePositionInCenter',
+    'maxWidthImageInGoodListContainer',
+    'flexCenter',
+    'flexEnd',
 ])
 
 const Container = ({ children, ...rest }) => {

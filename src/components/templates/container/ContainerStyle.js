@@ -200,5 +200,53 @@ export default {
                 padding: '10px 17px 17px 17px',
             },
         },
+        {
+            props: { marginTop7: true },
+            style: {
+                marginTop: '7px',
+            },
+        },
+        {
+            props: { imageInGoodListContainer: true },
+            style: {
+                position: 'relative',
+                width: '100%',
+                paddingTop: '100%',
+                content: "''",
+            },
+        },
+        {
+            props: { absolutePositionInCenter: true },
+            style: {
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                content: "''",
+            },
+        },
+        {
+            props: { maxWidthImageInGoodListContainer: true },
+            style: {
+                maxWidth: '40px',
+                margin: '0 auto',
+            },
+        },
+        {
+            props: { flexCenter: true },
+            style: {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            },
+        },
+        {
+            props: { flexEnd: true },
+            style: {
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+            },
+        },
     ],
 }

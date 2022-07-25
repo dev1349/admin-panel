@@ -21,3 +21,9 @@ Example1.args = {
     shape: 'rounded',
     size: 'small',
 }
+
+export const DialogPagiation = Template.bind({})
+DialogPagiation.args = {
+    count: 10,
+    dialogPagination: true,
+}

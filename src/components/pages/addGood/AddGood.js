@@ -6,7 +6,7 @@ import UndoIcon from '../../atoms/icons/undoIcon/UndoIcon'
 import SaveIcon from '../../atoms/icons/saveIcon/SaveIcon'
 import AddGood from '../../organisms/addGood/AddGood'
 import MainTab from '../../organisms/addGood/mainTab/MainTab'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import {
     changeFetchStatus,
     changePostPutDeleteFetchStatus,
@@ -34,10 +34,15 @@ import {
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import { getAllImagesFetch, postImageFetch } from '../../../api/imagesApi'
 import { SERVER_PATH } from '../../../api/apiConstants'
+import goodStateItems from './goodStateItems'
+import { getPageSize } from '../../../reducers/goodsSlice'
+// import { setTotalPages } from '../../../reducers/goodsSlice'
 
 const AddGoodPage = () => {
+    let history = useHistory()
+
     const handleGoBackToGoods = () => {
-        console.log('Go back to all goods ')
+        history.goBack()
     }
 
     const isGoBAckButtonDisabled = false
@@ -45,6 +50,8 @@ const AddGoodPage = () => {
     const [goodsFetchStatus, setGoodsFetchStatus] = useState('idle')
 
     const categories = useSelector(getCategories)
+
+    const pageSize = useSelector(getPageSize)
 
     const handleSaveNewGood = async () => {
         let preparedGoodsValues = deleteNullValuesFromObject(goodProperties)
@@ -68,6 +75,11 @@ const AddGoodPage = () => {
             await postGoodsFetch(preparedGoodsValues)
             setGoodsFetchStatus('success')
             setGoodsFetchStatus('idle')
+            if (pageSize) {
+                history.push(`/goods?pageSize=${pageSize}`)
+                return
+            }
+            history.push(`/goods`)
         } catch (e) {
             console.log(e)
             setGoodsFetchStatus('error')
@@ -95,14 +107,6 @@ const AddGoodPage = () => {
             ...payload,
         }))
     }
-
-    const goodStateItems = [
-        { id: 0, label: 'В наличии', value: 'IN_STOCK' },
-        { id: 1, label: 'Нет в наличии', value: 'NOT_IN_STOCK' },
-        { id: 2, label: 'Под заказ', value: 'UNDER_THE_ORDER' },
-        { id: 3, label: 'Ожидается поступление', value: 'DELIVERY_IS_EXPECTED' },
-        { id: 4, label: 'Заканчивается', value: 'IS_RUNNING_OUT' },
-    ]
 
     const addImageToGood = id => () => {
         if (goodProperties.images === null || !goodProperties.images.find(image => image.image.id === id)) {

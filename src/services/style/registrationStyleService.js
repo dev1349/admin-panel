@@ -32,7 +32,6 @@ import HorizontalTabsBoxStyle from '../../components/molecules/tabs/horizontalTa
 import HorizontalTabTitlesStyle from '../../components/molecules/tabs/horizontalTabTitles/HorizontalTabTitlesStyle'
 import IconButtonStyle from '../../components/molecules/buttons/iconButton/IconButtonStyle'
 import ImageBorderStyle from '../../components/atoms/wrappers/imageBorder/ImageBorderStyle'
-import ItemsOnPageStyle from '../../components/molecules/itemsPerPage/ItemsOnPageStyle'
 import LabeledInputTemplateStyle from '../../components/templates/labeledInputTemplate/LabeledInputTemplateStyle'
 import LabelTemplateStyle from '../../components/templates/labelTemplate/LabelTemplateStyle'
 import LastChildToRightTemplateStyle from '../../components/templates/titleBreadcrumbsButtonsTemplate/LastChildToRightTemplateStyle'
@@ -213,6 +212,7 @@ import TabsStyle from '../../components/atoms/tabs/tabs/TabsStyle'
 import LinkTabStyle from '../../components/atoms/tabs/linkTab/LinkTabStyle'
 import CharacteristicSetBorderStyle from '../../components/atoms/wrappers/characteristicSetBorder/CharacteristicSetBorderStyle'
 import FragmentStyle from '../../components/atoms/fragment/FragmentStyle'
+import GoodIconStyle from '../../components/atoms/icons/goodIcon/GoodIconStyle'
 
 export const styleConstants = {
     Colors,
@@ -291,6 +291,7 @@ export const styledComponents = {
     FormControlStyle,
     FormStyle,
     FragmentStyle,
+    GoodIconStyle,
     GoodsHeaderStyle,
     GoodsTableHeadStyle,
     GoodsTableRowStyle,
@@ -313,7 +314,6 @@ export const styledComponents = {
     ImportExportIconStyle,
     InfoIconStyle,
     InputLabelStyle,
-    ItemsOnPageStyle,
     LabeledAutocompleteStyle,
     LabeledDateTimeFromToFieldStyle,
     LabeledDropDownTextFieldWithValidationStyle,

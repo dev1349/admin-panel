@@ -47,3 +47,10 @@ imageInImageList.args = {
     altText: 'logo',
     imageInImageList: true,
 }
+
+export const imageInGoodList = Template2.bind({})
+imageInGoodList.args = {
+    path: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Logo-Logo.svg',
+    altText: 'logo',
+    imageInGoodList: true,
+}

@@ -1,12 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { goodsMockData } from '../mock/goodsMockData'
-import {
-    deleteGoodFetch,
-    getAllGoodFetch,
-    getGoodFetch,
-    postGoodFetch,
-    putGoodFetch,
-} from '../api/goodApi'
+import { deleteGoodFetch, getAllGoodsFetch, getGoodFetch, postGoodFetch, putGoodFetch } from '../api/goodApi'
 import { getComparator, toSortTable } from './common/sortingFunctions'
 
 const goodsSlice = createSlice({
@@ -18,6 +12,9 @@ const goodsSlice = createSlice({
         },
         setCurrentGood(state, action) {
             state.currentGood = action.payload
+        },
+        setGoods(state, action) {
+            state.goods = action.payload
         },
         setAllGoods(state, action) {
             state.allGoods = action.payload
@@ -64,6 +61,21 @@ const goodsSlice = createSlice({
                 ...action.payload.fields,
             }
         },
+        setFetchStatus(state, action) {
+            state.fetchStatus = action.payload
+        },
+        setTotalPages(state, action) {
+            state.totalPages = action.payload
+        },
+        setTotalElements(state, action) {
+            state.totalElements = action.payload
+        },
+        setPageSize(state, action) {
+            state.pageSize = action.payload
+        },
+        setCurrentPageNumber(state, action) {
+            state.currentPageNumber = action.payload
+        },
     },
 })
 
@@ -72,6 +84,7 @@ export default goodsSlice.reducer
 export const {
     addGood,
     setCurrentGood,
+    setGoods,
     setAllGoods,
     deleteGoodSuccess,
     setGoodsFilter,
@@ -82,6 +95,11 @@ export const {
     clearSelectedGoods,
     changeEditGoodFields,
     saveGoodChanges,
+    setFetchStatus,
+    setTotalPages,
+    setTotalElements,
+    setPageSize,
+    setCurrentPageNumber,
 } = goodsSlice.actions
 
 export const postGood = good => {
@@ -100,11 +118,32 @@ export const getGood = id => {
     }
 }
 
-export const getAllGoods = () => {
-    return dispatch => {
-        getAllGoodFetch().then(data => {
-            dispatch(setAllGoods(data))
-        })
+export const getAllGoodsFromServer = (query, callback = null, currentPage) => {
+    return async dispatch => {
+        dispatch(setFetchStatus('pending'))
+        try {
+            const data = await getAllGoodsFetch(query)
+            dispatch(setGoods(data.content))
+            dispatch(setTotalPages(data.totalPages))
+            dispatch(setTotalElements(data.totalElements))
+            dispatch(setPageSize(data.size))
+            dispatch(setCurrentPageNumber(data.number))
+            dispatch(setFetchStatus('success'))
+            dispatch(setFetchStatus('idle'))
+            if (!callback) return
+            if (isNaN(currentPage)) {
+                callback(1)
+            }
+            if (currentPage + 1 > data.totalPages) {
+                callback(0)
+            }
+            if (!isNaN(currentPage) && currentPage + 1 <= data.totalPages) {
+                callback(currentPage + 1)
+            }
+        } catch (e) {
+            console.log(e)
+            dispatch(setFetchStatus('error'))
+        }
     }
 }
 
@@ -126,9 +165,7 @@ export const deleteGood = good => {
 
 export const filteringGoods = () => {
     const getFieldValueByPath = (pathToField, obj = null) => {
-        const properties = Array.isArray(pathToField)
-            ? pathToField
-            : pathToField.split('.')
+        const properties = Array.isArray(pathToField) ? pathToField : pathToField.split('.')
         return properties.reduce((prev, curr) => prev && prev[curr], obj)
     }
 
@@ -140,9 +177,7 @@ export const filteringGoods = () => {
                     return true
                 }
 
-                return (
-                    filter[eachKey] === getFieldValueByPath(eachKey, eachGood)
-                )
+                return filter[eachKey] === getFieldValueByPath(eachKey, eachGood)
             })
         })
     }
@@ -150,10 +185,7 @@ export const filteringGoods = () => {
     return (dispatch, getState) => {
         dispatch(
             setGoodsFilter({
-                salePrice:
-                    getFilterValues(getState()).salePrice === null
-                        ? null
-                        : parseFloat(getFilterValues(getState()).salePrice),
+                salePrice: getFilterValues(getState()).salePrice === null ? null : parseFloat(getFilterValues(getState()).salePrice),
             })
         )
 
@@ -166,20 +198,14 @@ export const filteringGoods = () => {
             dispatch(setGoodsFilter({ model: model.trim() }))
         }
 
-        const filteredGoods = filteringGoodByFilter(
-            getGoods(getState()),
-            getFilterValues(getState())
-        )
+        const filteredGoods = filteringGoodByFilter(getGoods(getState()), getFilterValues(getState()))
         dispatch(setFilteredGoods(filteredGoods))
     }
 }
 
 export const sortingGoods = () => (dispatch, getState) => {
     const goods = getState().goods.allGoods
-    const comparator = getComparator(
-        getState().goods.order,
-        getState().goods.orderBy
-    )
+    const comparator = getComparator(getState().goods.order, getState().goods.orderBy)
     const sortedGoods = toSortTable(goods, comparator)
     dispatch(setAllGoods(sortedGoods))
 
@@ -213,10 +239,7 @@ export const selectGood = id => (dispatch, getState) => {
 export const selectAllGoods = () => (dispatch, getState) => {
     const allGoods = getState().goods.allGoods
     if (!allGoods.length) return
-    if (
-        getState().goods.allGoods.length ===
-        getState().goods.selectedGoods.length
-    ) {
+    if (getState().goods.allGoods.length === getState().goods.selectedGoods.length) {
         dispatch(clearSelectedGoods())
     } else {
         dispatch(clearSelectedGoods())
@@ -227,10 +250,7 @@ export const selectAllGoods = () => (dispatch, getState) => {
 export const selectAllFilteredGoods = () => (dispatch, getState) => {
     const filteredGoods = getState().goods.filteredGoods
     if (!filteredGoods.length) return
-    if (
-        getState().goods.filteredGoods.length ===
-        getState().goods.selectedGoods.length
-    ) {
+    if (getState().goods.filteredGoods.length === getState().goods.selectedGoods.length) {
         dispatch(clearSelectedGoods())
     } else {
         dispatch(clearSelectedGoods())
@@ -239,9 +259,7 @@ export const selectAllFilteredGoods = () => (dispatch, getState) => {
 }
 
 export const setEditGoodStartFieldValues = goodId => (dispatch, getState) => {
-    const currentGood = getState().goods.allGoods.find(
-        good => good.id === parseInt(goodId)
-    )
+    const currentGood = getState().goods.allGoods.find(good => good.id === parseInt(goodId))
     dispatch(
         changeEditGoodFields({
             name: currentGood.name || null,
@@ -256,9 +274,7 @@ export const setEditGoodStartFieldValues = goodId => (dispatch, getState) => {
 
 export const saveGoodFieldsValues = goodId => (dispatch, getState) => {
     const goodFieldsValues = getState().goods.editGoodFields
-    const goodIndex = getState().goods.allGoods.findIndex(
-        good => parseInt(goodId) === good.id
-    )
+    const goodIndex = getState().goods.allGoods.findIndex(good => parseInt(goodId) === good.id)
     dispatch(
         saveGoodChanges({
             goodIndex,
@@ -271,40 +287,22 @@ export const deleteSelectedGoods = (dispatch, getState) => {
     const selectedGoods = getState().goods.selectedGoods
     const allGoods = getState().goods.allGoods
     let newAllGoods = [...allGoods]
-    selectedGoods.forEach(
-        selected =>
-            (newAllGoods = newAllGoods.filter(good => good.id !== selected))
-    )
+    selectedGoods.forEach(selected => (newAllGoods = newAllGoods.filter(good => good.id !== selected)))
     dispatch(setAllGoods(newAllGoods))
     dispatch(setFilteredGoods(newAllGoods))
     dispatch(setSelectedGoodId([]))
 
-    if (!getGoodStatus(getState()).includes(getFilterValues(getState()).status))
-        dispatch(setGoodsFilter({ status: null }))
-    if (
-        !getGoodImageStatus(getState()).includes(
-            getFilterValues(getState()).imageStatus
-        )
-    )
-        dispatch(setGoodsFilter({ imageStatus: null }))
-    if (
-        !getGoodTypes(getState()).includes(
-            getFilterValues(getState())['goodType.name']
-        )
-    )
+    if (!getGoodStatus(getState()).includes(getFilterValues(getState()).status)) dispatch(setGoodsFilter({ status: null }))
+    if (!getGoodImageStatus(getState()).includes(getFilterValues(getState()).imageStatus)) dispatch(setGoodsFilter({ imageStatus: null }))
+    if (!getGoodTypes(getState()).includes(getFilterValues(getState())['goodType.name']))
         dispatch(setGoodsFilter({ 'goodType.name': null }))
 
     dispatch(filteringGoods(getState().goods.allGoods, getState().goods.filter))
 }
 
-export const getGoodStatus = state =>
-    Array.from(new Set(state.goods.allGoods.map(el => el.status)).values())
-export const getGoodImageStatus = state =>
-    Array.from(new Set(state.goods.allGoods.map(el => el.imageStatus)).values())
-export const getGoodTypes = state =>
-    Array.from(
-        new Set(state.goods.allGoods.map(el => el.goodType.name)).values()
-    )
+export const getGoodStatus = state => Array.from(new Set(state.goods.allGoods.map(el => el.status)).values())
+export const getGoodImageStatus = state => Array.from(new Set(state.goods.allGoods.map(el => el.imageStatus)).values())
+export const getGoodTypes = state => Array.from(new Set(state.goods.allGoods.map(el => el.goodType.name)).values())
 export const getFilterValues = state => state.goods.filter
 export const getGoods = state => state.goods.allGoods
 export const getOrder = state => state.goods.order
@@ -312,8 +310,7 @@ export const getOrderBy = state => state.goods.orderBy
 export const getRowCount = state => state.goods.allGoods.length
 export const getFilteredRowCount = state => state.goods.filteredGoods.length
 export const getSelectedRowCount = state => state.goods.selectedGoods.length
-export const getGoodChecked = id => state =>
-    state.goods.selectedGoods.includes(id)
+export const getGoodChecked = id => state => state.goods.selectedGoods.includes(id)
 export const getGoodsFields = state =>
     state.goods.allGoods.map(good => ({
         id: good.id,
@@ -324,20 +321,17 @@ export const getGoodsFields = state =>
     }))
 export const getHeaderCells = state => state.goods.headerCells
 export const getEditGoodFields = state => state.goods.editGoodFields
-export const isGoodInAllGoods = goodId => state =>
-    state.goods.allGoods.find(good => good.id === parseInt(goodId))
+export const isGoodInAllGoods = goodId => state => state.goods.allGoods.find(good => good.id === parseInt(goodId))
 export const isSaveDisabled = goodId =>
     createSelector(
         getEditGoodFields,
         isGoodInAllGoods(goodId),
         (editFields, goodFields) =>
             editFields.name === goodFields.name &&
-            editFields.description ===
-                (goodFields.description === '' && null) &&
+            editFields.description === (goodFields.description === '' && null) &&
             editFields.htmlTitle === (goodFields.htmlTitle || null) &&
             editFields.htmlH1 === (goodFields.htmlH1 || null) &&
-            editFields.metaDescription ===
-                (goodFields.metaDescription || null) &&
+            editFields.metaDescription === (goodFields.metaDescription || null) &&
             editFields.metaKeywords === (goodFields.metaKeywords || null)
     )
 export const getFilteredGoods = state => state.goods.filteredGoods
@@ -347,3 +341,9 @@ export const getNamePriceGoods = state =>
         name: good.name,
         salePrice: good.salePrice,
     }))
+export const getGoodsFetchStatus = state => state.goods.fetchStatus
+export const getGoodsFromState = state => state.goods.goods
+export const getTotalPages = state => state.goods.totalPages
+export const getTotalElements = state => state.goods.totalElements
+export const getPageSize = state => state.goods.pageSize
+export const getCurrentPageNumber = state => state.goods.currentPageNumber

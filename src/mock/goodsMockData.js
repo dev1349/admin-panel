@@ -653,4 +653,10 @@ export const goodsMockData = {
             numeric: true,
         },
     ],
+    fetchStatus: 'idle',
+    goods: null,
+    totalPages: null,
+    totalElements: null,
+    pageSize: null,
+    currentPageNumber: null,
 }
