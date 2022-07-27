@@ -4,6 +4,7 @@ export default {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            marginBottom: '5px',
 
             h3: {
                 color: '#4f70a0',

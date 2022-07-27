@@ -42,7 +42,9 @@ import {
     Np,
     CARDS,
     ADD_GOOD,
+    CAROUSEL,
 } from './routerConsts'
+
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
 import AddGoodContainer from '../components/pages/addGood/AddGoodContainer'
@@ -85,6 +87,7 @@ import AddCharacteristicSet from '../components/pages/addCharacteristicSet/AddCh
 import EditCharacteristicSet from '../components/pages/editCharacteristicSet/EditCharacteristicSet'
 import Card from '../components/molecules/card/Card'
 import AddGood from '../components/pages/addGood/AddGood'
+import Stock from '../components/molecules/stock/Stock'
 
 export const authRoutes = [
     {
@@ -247,6 +250,10 @@ export const authRoutes = [
     {
         path: CARDS,
         Component: Card,
+    },
+    {
+        path: CAROUSEL,
+        Component: Stock,
     },
     {
         path: ADD_GOOD,

@@ -5,6 +5,7 @@ export default {
             flexDirection: 'column',
             justifyContent: 'center',
             height: '100px',
+            margin: 0,
         },
     },
 }

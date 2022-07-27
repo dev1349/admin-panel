@@ -7,6 +7,7 @@ import LeverageIcon from '../../atoms/icons/leverageIcon/LeverageIcon'
 import CardFooter from '../../atoms/card/CardFooter/CardFooter'
 import CardContainer from '../../atoms/card/CardContainer/CardContainer'
 import cards from '../../../mock/cards'
+import CardText from '../../atoms/card/CardText/CardText'
 
 const CardStyled = createStyled('CardStyle', 'section')
 
@@ -22,7 +23,9 @@ const Card = () => {
                     <CardContent>
                         <CardMain>
                             <card.Svg />
-                            <h2>{card.count}</h2>
+                            <CardText>
+                                <h3>{card.count}</h3>
+                            </CardText>
                         </CardMain>
                         <CardFooter>
                             <LeverageIcon />

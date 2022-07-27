@@ -221,6 +221,12 @@ const componentList = [
         routeText: '/addGood',
         routeLink: '/addGood',
     },
+    {
+        componentName: 'Акции',
+        task: 'WSADMIN-136',
+        routeText: '/carousel',
+        routeLink: '/carousel',
+    },
 ]
 
 export default componentList

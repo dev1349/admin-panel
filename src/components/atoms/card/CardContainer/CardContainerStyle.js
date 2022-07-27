@@ -3,7 +3,6 @@ export default {
         root: {
             fontFamily: 'Roboto Slab',
             width: '272px',
-            maxHeight: '155px',
             borderRadius: '16px',
             background: 'rgba(191, 244, 255, 0.81)',
             padding: '11px',

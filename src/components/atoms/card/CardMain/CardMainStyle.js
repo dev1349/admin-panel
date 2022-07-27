@@ -11,9 +11,9 @@ export default {
             paddingRight: '32px',
             height: '100px',
 
-            h2: {
-                fontWeight: 300,
-                fontSize: '32px',
+            img: {
+                width: '83px',
+                height: '93px',
             },
         },
     },

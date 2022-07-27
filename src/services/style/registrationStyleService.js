@@ -195,6 +195,13 @@ import CharacteristicIconStyle from '../../components/atoms/icons/characteristic
 import SetIconStyle from '../../components/atoms/icons/setIcon/SetIconStyle'
 import CityTemplateStyle from '../../components/templates/npCityTemlate/CityTemplateStyle'
 import OfficeTemplateStyle from '../../components/templates/npOfficeTemlate/OfficeTemplateStyle'
+import CarouselStyle from '../../components/molecules/carousel/CarouselStyle'
+import ArrowIconStyle from '../../components/atoms/icons/arrowIcon/ArrowIconStyle'
+import CarouselContainerStyle from '../../components/atoms/carousel/CarouselContainer/CarouselContainerStyle'
+import ScrollStyle from '../../components/atoms/scroll/ScrollStyle'
+import ProgressBarStyle from '../../components/molecules/ProgressBar/ProgressBarStyle'
+import StockStyle from '../../components/molecules/stock/StockStyle'
+import SectionStyle from '../../components/atoms/section/SectionStyle'
 import CardStyle from '../../components/molecules/card/CardStyle'
 import PackageIconStyle from '../../components/atoms/icons/packageIcon/PackageIconStyle'
 import BuyerIconStyle from '../../components/atoms/icons/buyerIcon/BuyerIconStyle'
@@ -203,6 +210,7 @@ import CardHeaderStyle from '../../components/atoms/card/CardHeader/CardHeaderSt
 import CardContentStyle from '../../components/atoms/card/CardContent/CardContentStyle'
 import CardMainStyle from '../../components/atoms/card/CardMain/CardMainStyle'
 import CardFooterStyle from '../../components/atoms/card/CardFooter/CardFooterStyle'
+import CardTextStyle from '../../components/atoms/card/CardText/CardTextStyle'
 import LeverageIconStyle from '../../components/atoms/icons/leverageIcon/LeverageIconStyle'
 import CardContainerStyle from '../../components/atoms/card/CardContainer/CardContainerStyle'
 import BasketIconStyle from '../../components/atoms/icons/basketIcon/BasketIconStyle'
@@ -213,6 +221,8 @@ import LinkTabStyle from '../../components/atoms/tabs/linkTab/LinkTabStyle'
 import CharacteristicSetBorderStyle from '../../components/atoms/wrappers/characteristicSetBorder/CharacteristicSetBorderStyle'
 import FragmentStyle from '../../components/atoms/fragment/FragmentStyle'
 import GoodIconStyle from '../../components/atoms/icons/goodIcon/GoodIconStyle'
+import CardStockStyle from '../../components/molecules/cardStock/CardStokStyle'
+import ContainerStockStyle from '../../components/atoms/cardStock/ContainerStock/ContainerStockStyle'
 
 export const styleConstants = {
     Colors,
@@ -229,45 +239,51 @@ export const styledComponents = {
     AdminPageHeaderStyle,
     ArrowBackIconStyle,
     ArrowBackIosIconStyle,
-    ArrowForwardIosIconStyle,
     ArrowDropDownIconStyle,
     ArrowDropUpIconStyle,
-    AttentionIconStyle,
+    ArrowForwardIosIconStyle,
+    ArrowIconStyle,
     AtomTableHeadStyle,
     AtomTableRowStyle,
-    AutocompleteStyle,
+    AttentionIconStyle,
     AutocompleteItemStyle,
+    AutocompleteStyle,
     BadgeStyle,
     BarChartIconStyle,
     BasketIconStyle,
     BoxStyle,
     BreadcrumbsStyle,
-    ButtonsRightTemplateStyle,
     ButtonStyle,
-    ButtonWithIconAndLabelStyle,
-    ButtonsWrapperTemplateStyle,
     ButtonTemplateStyle,
+    ButtonWithIconAndLabelStyle,
     ButtonWrapperStyle,
+    ButtonsRightTemplateStyle,
+    ButtonsWrapperTemplateStyle,
     BuyerIconStyle,
     CardContainerStyle,
     CardContentStyle,
     CardFooterStyle,
     CardHeaderStyle,
     CardMainStyle,
+    CardStockStyle,
     CardStyle,
+    CardTextStyle,
+    CarouselContainerStyle,
+    CarouselStyle,
     CatalogIconStyle,
     CategoryIconStyle,
     CellContentStyle,
     CharacteristicIconStyle,
     CharacteristicSetBorderStyle,
-    CheckboxStyle,
     CheckIconStyle,
+    CheckboxStyle,
     CircularProgressStyle,
     CityTemplateStyle,
     ClearIconStyle,
     ClientButtonSpaceTemplateStyle,
     ClientFunctionContainerTemplateStyle,
     ClientsIconStyle,
+    ContainerStockStyle,
     ContainerStyle,
     CountLabelStyle,
     DeleteIconStyle,
@@ -305,8 +321,8 @@ export const styledComponents = {
     HelpIconStyle,
     HideImageIconStyle,
     HomeIconStyle,
-    HorizontalTabsBoxStyle,
     HorizontalTabTitlesStyle,
+    HorizontalTabsBoxStyle,
     IconButtonStyle,
     IconWrapperForTooltipStyle,
     ImageBorderStyle,
@@ -314,33 +330,33 @@ export const styledComponents = {
     ImportExportIconStyle,
     InfoIconStyle,
     InputLabelStyle,
+    LabelTemplateStyle,
     LabeledAutocompleteStyle,
+    LabeledCheckboxFieldStyle,
+    LabeledCheckboxStyle,
     LabeledDateTimeFromToFieldStyle,
     LabeledDropDownTextFieldWithValidationStyle,
-    LabeledCheckboxStyle,
-    LabeledCheckboxFieldStyle,
     LabeledFloatFieldStyle,
     LabeledInputTemplateStyle,
     LabeledNumberFieldStyle,
     LabeledPhoneFieldStyle,
     LabeledSelectFieldStyle,
     LabeledSwitchStyle,
+    LabeledTextFieldMultilineStyle,
     LabeledTextFieldStyle,
     LabeledTextFieldsStyle,
-    LabeledTextFieldMultilineStyle,
     LabeledTextLabelsStyle,
     LabeledTotalLabelsStyle,
-    LabelTemplateStyle,
     LastChildToRightTemplateStyle,
     LastOrdersStyle,
     LeverageIconStyle,
-    LinkTabStyle,
     LinkStyle,
+    LinkTabStyle,
     ListDividerStyle,
     ListIconStyle,
-    ListItemStyle,
     ListItemButtonStyle,
     ListItemIconStyle,
+    ListItemStyle,
     ListItemTextStyle,
     ListStyle,
     ListSubHeaderStyle,
@@ -352,8 +368,8 @@ export const styledComponents = {
     MenuIconStyle,
     MenuItemStyle,
     MenuStyle,
-    ModalHeaderStyle,
     ModalContentStyle,
+    ModalHeaderStyle,
     ModalWindowStyle,
     MultilineFieldStyle,
     NavTemplateStyle,
@@ -375,13 +391,16 @@ export const styledComponents = {
     PopoverStyle,
     PopperStyle,
     PriceStyle,
+    ProgressBarStyle,
     RelativePositionContainerStyle,
     RightBottomContainerStyle,
     SaveIconStyle,
+    ScrollStyle,
     SearchIconStyle,
+    SectionStyle,
     SelectStyle,
-    SettingsIconStyle,
     SetIconStyle,
+    SettingsIconStyle,
     ShoppingCartIconStyle,
     ShopsIconStyle,
     ShowIconStyle,
@@ -400,22 +419,23 @@ export const styledComponents = {
     StatisticsSubHeaderStyle,
     StatisticsTextStyle,
     StatisticsUlStyle,
+    StockStyle,
     SwitchStyle,
+    TabPanelStyle,
+    TabStyle,
+    TabTitlesWrapperStyle,
     TableBodyStyle,
     TableCellStyle,
     TableContainerStyle,
     TableFilterContentTemplateStyle,
-    TableRowLastOrdersStyle,
     TableHeadLastOrdersStyle,
     TableHeadStyle,
     TablePaginationStyle,
+    TableRowLastOrdersStyle,
     TableRowStyle,
     TableSortLabelStyle,
     TableStyle,
-    TabPanelStyle,
-    TabStyle,
     TabsStyle,
-    TabTitlesWrapperStyle,
     TextAlignRightTemplateStyle,
     TextBetweenInputsStyle,
     TextFieldStyle,
@@ -428,9 +448,24 @@ export const styledComponents = {
     ToggleButtonTextStyle,
     ToggleButtonWithTextStyle,
     TypographyStyle,
-    VerticalModalTemplateStyle,
-    ViewListIconStyle,
     UndoIconStyle,
     UsersIconStyle,
+    VerticalModalTemplateStyle,
+    ViewListIconStyle,
     ZIndexedModalStyle,
 }
+/*
+// Эта функция возвращает отсортированые ключи styledComponents по алфавиту
+const sort = styles => {
+    const arr = []
+    for (const i in styles) {
+        arr.push(i)
+    }
+
+    return  arr.sort()
+            .map(style => style)
+            .toString()
+            .replaceAll(',', ',\n')
+}
+console.log(sort(styledComponents))
+*/
