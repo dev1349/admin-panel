@@ -11,6 +11,9 @@ export default {
             style: {
                 backgroundColor: '#C4C4C4',
                 border: 'none',
+                position: 'sticky',
+                top: '51px',
+                zIndex: 1000,
             },
         },
     ],

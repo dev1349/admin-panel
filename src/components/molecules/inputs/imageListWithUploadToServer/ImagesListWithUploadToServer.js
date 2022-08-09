@@ -17,7 +17,7 @@ const ImagesListWithUploadToServer = ({
             <Container imageListItem>
                 <UploadImageButtonToImageList uploadImage={uploadImageToServer} />
             </Container>
-            {images !== null &&
+            {images &&
                 images.map(image => (
                     <Container imageListItem key={image.id}>
                         <ImageInServerImageList

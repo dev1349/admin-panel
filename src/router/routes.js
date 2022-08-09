@@ -44,7 +44,6 @@ import {
     ADD_GOOD,
     CAROUSEL,
 } from './routerConsts'
-
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
 import AddGoodContainer from '../components/pages/addGood/AddGoodContainer'
@@ -58,7 +57,6 @@ import AddProduct from '../components/organisms/forms/addProduct/AddProduct'
 import ComponentsTable from '../components/pages/componentsTable/ComponentsTable'
 import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
 import GoodsList from '../components/pages/goodsList/GoodsList'
-import EditGood from '../components/pages/editGood/EditGood'
 import AddUser from '../components/pages/addUser/AddUser'
 import UsersTable from '../components/pages/usersTable/UsersTable'
 import Categories from '../components/pages/categories/Categories'
@@ -88,6 +86,7 @@ import EditCharacteristicSet from '../components/pages/editCharacteristicSet/Edi
 import Card from '../components/molecules/card/Card'
 import AddGood from '../components/pages/addGood/AddGood'
 import Stock from '../components/molecules/stock/Stock'
+import EditGood from '../components/pages/editGood/EditGood'
 
 export const authRoutes = [
     {

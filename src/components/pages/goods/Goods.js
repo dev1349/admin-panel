@@ -1,16 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
-import {
-    getAllGoodsFromServer,
-    getCurrentPageNumber,
-    getGoodsFetchStatus,
-    getGoodsFromState,
-    getPageSize,
-    getTotalElements,
-    getTotalPages,
-    setFetchStatus,
-} from '../../../reducers/goodsSlice'
-import { useDispatch, useSelector } from 'react-redux'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
@@ -23,84 +12,127 @@ import { useHistory } from 'react-router-dom'
 import Loader from '../../molecules/loader/Loader'
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import DeleteModal from '../../molecules/modals/deleteModal/DeleteModal'
-import { deleteGoodFetch } from '../../../api/goodApi'
 import { useQuery } from '../../../hooks/useQuery'
+import { useDeleteGoodMutation, useGetGoodsQuery } from '../../../api/goodsApi'
 
 const GoodsPage = () => {
-    let history = useHistory()
+    const [addressBarQuery, setAddressBarQuery] = useState(null)
 
-    const dispatch = useDispatch()
+    const {
+        partialGoods,
+        totalPages,
+        pageSize,
+        pageNumber,
+        totalGoods,
+        isLoading: isGoodsLoading,
+        isFetching: isGoodsFetching,
+        isError: isGetGoodsError,
+    } = useGetGoodsQuery(addressBarQuery, {
+        skip: addressBarQuery === null,
+        selectFromResult: ({ data, isLoading, isFetching, isError }) => ({
+            partialGoods: data?.partialGoods,
+            totalPages: data?.totalPages,
+            pageSize: data?.pageSize,
+            pageNumber: data?.pageNumber,
+            totalGoods: data?.totalGoods,
+            isLoading,
+            isFetching,
+            isError,
+        }),
+    })
+
+    const [deleteGood, { isError: isDeleteGoodError, isLoading: isGoodDeleting }] = useDeleteGoodMutation()
 
     const query = useQuery()
 
-    const [currentPage, setCurrentPage] = useState(1)
-
-    const getGoodsFromAddressBar = () => {
+    const getGoodsFromAddressBar = async () => {
         const pageNo = query.get('pageNo')
         const pageSize = query.get('pageSize')
+
         if (pageNo === null && pageSize === null) {
-            dispatch(getAllGoodsFromServer('', setCurrentPage, parseInt(pageNo)))
+            setAddressBarQuery('')
             return
         }
         if (pageNo === null && pageSize !== null) {
-            dispatch(getAllGoodsFromServer(`?pageSize=${pageSize}`, setCurrentPage, parseInt(pageNo)))
+            setAddressBarQuery(`?pageSize=${pageSize}`)
             return
         }
         if (pageNo !== null && pageSize === null) {
-            dispatch(getAllGoodsFromServer(`?pageNo=${pageNo}`, setCurrentPage, parseInt(pageNo)))
+            setAddressBarQuery(`?pageNo=${pageNo}`)
             return
         }
         if (pageNo !== null && pageSize !== null) {
-            dispatch(getAllGoodsFromServer(`?pageNo=${pageNo}&pageSize=${pageSize}`, setCurrentPage, parseInt(pageNo)))
+            setAddressBarQuery(`?pageNo=${pageNo}&pageSize=${pageSize}`)
         }
     }
 
-    useEffect(getGoodsFromAddressBar, [query, dispatch, getAllGoodsFromServer])
+    useEffect(getGoodsFromAddressBar, [query, setAddressBarQuery])
+
+    const saveToLocalStoragePageSizePageNumber = useCallback(() => {
+        localStorage.setItem('adminGoodsPageSize', pageSize)
+        localStorage.setItem('adminGoodsPageNumber', pageNumber)
+    }, [pageSize, pageNumber])
+
+    useEffect(saveToLocalStoragePageSizePageNumber, [saveToLocalStoragePageSizePageNumber])
+
+    let history = useHistory()
+
+    const defaultPageSize = 25
 
     const handleClickToPaginationItem = (event, page) => {
         setSelectedGoods([])
-        const pageSize = query.get('pageSize')
-        if (pageSize === null) {
-            if (page - 1 === 0) {
-                history.push(`/goods`)
-                return
-            }
+
+        if (pageSize === null && page - 1 === 0) {
+            history.push(`/goods`)
+            return
+        }
+        if (pageSize === null && page - 1 > 0) {
             history.push(`/goods?pageNo=${page - 1}`)
             return
         }
-        if (pageSize) {
-            if (page - 1 === 0) {
-                history.push(`/goods?pageSize=${pageSize}`)
-                return
-            }
+        if (pageSize && pageSize === defaultPageSize && page - 1 === 0) {
+            history.push(`/goods`)
+            return
+        }
+        if (pageSize && page - 1 === 0) {
+            history.push(`/goods?pageSize=${pageSize}`)
+            return
+        }
+        if (pageSize && pageSize === defaultPageSize && page - 1 > 0) {
+            history.push(`/goods?pageNo=${page - 1}`)
+            return
+        }
+        if (pageSize && page - 1 > 0) {
             history.push(`/goods?pageNo=${page - 1}&pageSize=${pageSize}`)
         }
     }
 
-    const handleAddNewGood = () => history.push('/addGood')
-
-    const isAddEditButtonDisabled = false
+    const handleAddNewGood = () => {
+        history.push('/addGood')
+    }
 
     const handleRequestSort = property => () => console.log('sorting by ', property)
 
-    const goods = useSelector(getGoodsFromState)
-
     const [selectedGoods, setSelectedGoods] = useState([])
 
-    const isIndeterminate = selectedGoods.length > 0 && selectedGoods.length < goods.length
+    const isIndeterminate = selectedGoods.length > 0 && selectedGoods.length < partialGoods?.length
 
-    const isChecked = selectedGoods.length > 0 && selectedGoods.length === goods.length
+    const isChecked = selectedGoods.length > 0 && selectedGoods.length === partialGoods?.length
 
     const handleSelectAllGoods = () => {
         if (isChecked) {
             setSelectedGoods([])
             return
         }
-        setSelectedGoods([...goods.map(good => good.id)])
+
+        if (partialGoods) {
+            setSelectedGoods([...partialGoods.map(good => good.id)])
+        }
     }
 
     const handleSelectGood = id => () => {
         const index = selectedGoods.findIndex(goodId => goodId === id)
+
         if (index === -1) {
             setSelectedGoods(prev => [...prev, id])
         } else {
@@ -108,18 +140,21 @@ const GoodsPage = () => {
         }
     }
 
-    const handleEditGood = id => () => console.log('edit good...', id)
+    const handleEditGood = id => () => history.push(`/editGood/${id}`)
 
-    const goodFetchStatus = useSelector(getGoodsFetchStatus)
+    const isPending = isGoodsLoading || isGoodsFetching || isGoodDeleting
 
-    const isPending = goodFetchStatus === 'pending'
+    const isAddEditButtonDisabled = isPending
 
-    const isServerError = goodFetchStatus === 'error'
+    const [isShowServerErrorModal, setIsShowServerErrorModal] = useState(false)
 
     const handleCloseServerErrorModal = () => {
-        dispatch(setFetchStatus('idle'))
-        getGoodsFromAddressBar()
+        setIsShowServerErrorModal(false)
     }
+
+    useEffect(() => {
+        if (isDeleteGoodError || isGetGoodsError) setIsShowServerErrorModal(true)
+    }, [isDeleteGoodError, isGetGoodsError, setIsShowServerErrorModal])
 
     const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
@@ -131,47 +166,42 @@ const GoodsPage = () => {
         setOpenDeleteModal(false)
     }
 
-    const totalElements = useSelector(getTotalElements)
-
-    const pageSize = useSelector(getPageSize)
-
-    const currentPageNumber = useSelector(getCurrentPageNumber)
-
     const handleDeleteGoods = async () => {
         handleCloseDeleteModal()
+
         const unselectGoods = id => {
             setSelectedGoods(prev => [...prev.filter(goodId => goodId !== id)])
         }
+
         const forDeletingGoodsCount = selectedGoods.length
-        try {
-            dispatch(setFetchStatus('pending'))
-            await Promise.all(
-                selectedGoods.map(async selectedGoodId => {
-                    await deleteGoodFetch(selectedGoodId)
-                    unselectGoods(selectedGoodId)
-                })
-            )
-            dispatch(setFetchStatus('success'))
-            dispatch(setFetchStatus('idle'))
-            const totalPageNumberAfterDeleting = Math.floor((totalElements - forDeletingGoodsCount) / pageSize)
-            if (currentPageNumber > totalPageNumberAfterDeleting) {
-                history.push(`/goods?pageNo=${totalPageNumberAfterDeleting}&pageSize=${pageSize}`)
-                return
-            }
-            dispatch(getAllGoodsFromServer(`?pageNo=${currentPageNumber}&pageSize=${pageSize}`))
-        } catch (error) {
-            console.log(error)
-            dispatch(setFetchStatus('error'))
+
+        await Promise.all(
+            selectedGoods.map(async selectedGoodId => {
+                await deleteGood(selectedGoodId)
+                    .unwrap()
+                    .then(() => unselectGoods(selectedGoodId))
+                    .catch(error => console.log(error))
+            })
+        )
+
+        const totalPageNumberAfterDeleting = Math.floor((totalGoods - forDeletingGoodsCount) / pageSize)
+
+        if (pageNumber > totalPageNumberAfterDeleting) {
+            history.push(`/goods?pageNo=${totalPageNumberAfterDeleting}&pageSize=${pageSize}`)
         }
     }
 
     const isDeleteButtonDisabled = isPending || selectedGoods.length === 0
 
-    const totalPages = useSelector(getTotalPages)
-
     const handleChangeItemsPerPage = pageSize => {
-        history.push(`/goods?pageSize=${pageSize}`)
         setSelectedGoods([])
+
+        if (pageSize === defaultPageSize) {
+            history.push(`/goods`)
+            return
+        }
+
+        history.push(`/goods?pageSize=${pageSize}`)
     }
 
     return (
@@ -192,7 +222,7 @@ const GoodsPage = () => {
                     order={'asc'}
                     orderBy={''}
                     onRequestSort={handleRequestSort}
-                    goods={goods}
+                    goods={partialGoods}
                     selectedGoods={selectedGoods}
                     onSelect={handleSelectGood}
                     onEditGood={handleEditGood}
@@ -200,10 +230,10 @@ const GoodsPage = () => {
                     pathToImage={`${SERVER_PATH}/img/`}
                     goodStateItems={goodStateItems}
                     totalPages={totalPages}
-                    currentPage={currentPage}
+                    currentPage={pageNumber + 1}
                     onPaginationItemClick={handleClickToPaginationItem}
                     isPaginationDisabled={isPending}
-                    itemsPerPage={query.get('pageSize') === null ? 25 : parseInt(query.get('pageSize'))}
+                    itemsPerPage={pageSize}
                     onChangeItemsPerPage={handleChangeItemsPerPage}
                 />
 
@@ -215,7 +245,7 @@ const GoodsPage = () => {
                     description={'Вы действительно хотите удалить этот/и товар/ы?'}
                 />
                 <ErrorModal
-                    open={isServerError}
+                    open={isShowServerErrorModal}
                     onClose={handleCloseServerErrorModal}
                     title={'Ошибка сервера'}
                     description={'Сервер не может выполнить указанную операцию :('}

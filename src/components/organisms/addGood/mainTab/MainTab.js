@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import LabeledTextField from '../../../molecules/inputs/labeledTextField/LabeledTextField'
 import LabeledTextFieldMultiline from '../../../molecules/inputs/labeledTextFieldMultiline/LabeledTextFieldMultiline'
 import LabeledFloatField from '../../../molecules/inputs/labeledFloatField/LabeledFloatField'
@@ -13,11 +13,10 @@ const MainTab = ({
     changeGoodProperties,
     goodStateItems,
     uploadImageToServer,
-    addImageToGood,
+    addImagesToGood,
     deleteImageFromGood,
     makeImageAsMain,
     images,
-    getImagesFromServer,
     pathToImage,
     imagesPerPage,
     changeImagesPerPage,
@@ -26,17 +25,12 @@ const MainTab = ({
     currentPageNumber,
     paginationItemClick,
     deleteImageFromServer,
+    isDeleteImageButtonDisabled,
+    addedImages,
+    isOpenAddGoodImagesModal,
+    openAddGoodImagesModal,
+    closeAddGoodImagesModal,
 }) => {
-    const [openAddGoodImagesModal, setOpenAddGoodImagesModal] = useState(false)
-
-    const handleOpenAddGoodImagesModal = () => {
-        setOpenAddGoodImagesModal(true)
-    }
-
-    const handleCloseAddGoodImages = () => setOpenAddGoodImagesModal(false)
-
-    const addedImageIds = goodProperties['images'] ? goodProperties['images'].map(image => image.image.id) : []
-
     return (
         <>
             <LabeledTextField
@@ -101,19 +95,18 @@ const MainTab = ({
                 label={'Фото'}
                 name={'images'}
                 images={goodProperties['images']}
-                onAdd={handleOpenAddGoodImagesModal}
+                onAdd={openAddGoodImagesModal}
                 deleteImage={deleteImageFromGood}
                 makeImageAsChecked={makeImageAsMain}
                 pathToImage={pathToImage}
             />
             <AddGoodImagesModal
-                openAddGoodImagesModal={openAddGoodImagesModal}
-                closeAddGoodImagesModal={handleCloseAddGoodImages}
+                openAddGoodImagesModal={isOpenAddGoodImagesModal}
+                closeAddGoodImagesModal={closeAddGoodImagesModal}
                 images={images}
-                getImagesFromServer={getImagesFromServer}
-                makeImageAsChecked={addImageToGood}
+                addImagesToGood={addImagesToGood}
                 uploadImageToServer={uploadImageToServer}
-                addedImageIds={addedImageIds}
+                addedImages={addedImages}
                 pathToImage={pathToImage}
                 imagesPerPage={imagesPerPage}
                 changeImagesPerPage={changeImagesPerPage}
@@ -122,6 +115,7 @@ const MainTab = ({
                 currentPageNumber={currentPageNumber}
                 paginationItemClick={paginationItemClick}
                 deleteImageFromServer={deleteImageFromServer}
+                isDeleteImageButtonDisabled={isDeleteImageButtonDisabled}
             />
         </>
     )

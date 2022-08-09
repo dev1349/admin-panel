@@ -29,7 +29,7 @@ const Goods = ({
     order,
     orderBy,
     onRequestSort,
-    goods,
+    goods = [],
     selectedGoods,
     onSelect,
     onEditGood,
@@ -97,8 +97,7 @@ const Goods = ({
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {goods !== null &&
-                                goods.length !== 0 &&
+                            {goods.length !== 0 &&
                                 goods.map(good => (
                                     <TableRow
                                         hover
@@ -199,7 +198,7 @@ const Goods = ({
                                 ))}
                         </TableBody>
                     </Table>
-                    {(goods === null || goods.length === 0) && (
+                    {goods.length === 0 && (
                         <Container marginTop7>
                             <Typography mainAdminText textAlignCenter component={'div'}>
                                 Список характеристик пуст :(
@@ -207,17 +206,19 @@ const Goods = ({
                         </Container>
                     )}
 
-                    <Container marginTop7>
-                        <ItemsPerPage
-                            title={'Показывать на странице:'}
-                            buttonValues={[5, 10, 25]}
-                            currentValue={itemsPerPage}
-                            onChange={onChangeItemsPerPage}
-                            disabled={isPaginationDisabled}
-                        />
-                    </Container>
+                    {itemsPerPage && (
+                        <Container marginTop7>
+                            <ItemsPerPage
+                                title={'Показывать на странице:'}
+                                buttonValues={[10, 25, 50]}
+                                currentValue={itemsPerPage}
+                                onChange={onChangeItemsPerPage}
+                                disabled={isPaginationDisabled}
+                            />
+                        </Container>
+                    )}
 
-                    {totalPages !== null && totalPages !== 1 && (
+                    {totalPages && totalPages !== 1 && currentPage && (
                         <Container marginTop7>
                             <Pagination
                                 dialogPagination

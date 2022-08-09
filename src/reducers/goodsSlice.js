@@ -1,6 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { goodsMockData } from '../mock/goodsMockData'
-import { deleteGoodFetch, getAllGoodsFetch, getGoodFetch, postGoodFetch, putGoodFetch } from '../api/goodApi'
+import { deleteGoodFetch, getGoodFetch, getGoodsFetch, postGoodFetch, putGoodFetch } from '../api/goodApi'
 import { getComparator, toSortTable } from './common/sortingFunctions'
 
 const goodsSlice = createSlice({
@@ -122,7 +122,7 @@ export const getAllGoodsFromServer = (query, callback = null, currentPage) => {
     return async dispatch => {
         dispatch(setFetchStatus('pending'))
         try {
-            const data = await getAllGoodsFetch(query)
+            const data = await getGoodsFetch(query)
             dispatch(setGoods(data.content))
             dispatch(setTotalPages(data.totalPages))
             dispatch(setTotalElements(data.totalElements))

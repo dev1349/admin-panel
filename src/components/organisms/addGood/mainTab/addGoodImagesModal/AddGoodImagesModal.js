@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import IconButton from '../../../../molecules/buttons/iconButton/IconButton'
 import UndoIcon from '../../../../atoms/icons/undoIcon/UndoIcon'
 import AdminModal from '../../../../molecules/modals/adminModal/AdminModal'
@@ -7,15 +7,15 @@ import Container from '../../../../templates/container/Container'
 import ItemsPerPage from '../../../../molecules/itemsPerPage/ItemsPerPage'
 import Pagination from '../../../../atoms/pagination/Pagination'
 import DeleteModal from '../../../../molecules/modals/deleteModal/DeleteModal'
+import SaveIcon from '../../../../atoms/icons/saveIcon/SaveIcon'
 
 const AddGoodImagesModal = ({
     openAddGoodImagesModal,
     closeAddGoodImagesModal,
     images,
-    getImagesFromServer,
-    makeImageAsChecked,
+    addImagesToGood,
     uploadImageToServer,
-    addedImageIds,
+    addedImages,
     pathToImage,
     imagesPerPage,
     changeImagesPerPage,
@@ -24,18 +24,8 @@ const AddGoodImagesModal = ({
     currentPageNumber,
     paginationItemClick,
     deleteImageFromServer,
+    isDeleteImageButtonDisabled,
 }) => {
-    useEffect(() => {
-        if (!openAddGoodImagesModal) return
-        if (currentPageNumber === null) {
-            getImagesFromServer(`?pageSize=${imagesPerPage}`)
-            return
-        }
-        if (currentPageNumber) {
-            getImagesFromServer(`?pageNo=${currentPageNumber}&pageSize=${imagesPerPage}`)
-        }
-    }, [openAddGoodImagesModal, getImagesFromServer])
-
     const [openDeletingWindow, setOpenDeletingWindow] = useState(false)
 
     const handleCloseDeletingWindow = () => setOpenDeletingWindow(false)
@@ -52,16 +42,54 @@ const AddGoodImagesModal = ({
         deleteImageFromServer(deletingImageId)
     }
 
-    const isDeleteImageButtonDisabled = id => isPaginationDisabled || addedImageIds.includes(id)
+    const [selectedImages, setSelectedImages] = useState([])
+
+    useEffect(() => {
+        setSelectedImages(addedImages)
+    }, [setSelectedImages, addedImages])
+
+    const addedImageIds = useMemo(() => addedImages.map(currentImage => currentImage.id), [addedImages])
+
+    const selectedImageIds = useMemo(() => selectedImages.map(currentSelectedImage => currentSelectedImage.id), [selectedImages])
+
+    const handleSelectImage = id => () => {
+        if (selectedImageIds.includes(id)) {
+            setSelectedImages(prev => prev.filter(currentImage => currentImage.id !== id))
+            return
+        }
+
+        const selectImage = images.find(currentImage => currentImage.id === id)
+        setSelectedImages(prev => [...prev, selectImage])
+    }
+
+    const handleAddImagesToGood = () => {
+        closeAddGoodImagesModal()
+        addImagesToGood(selectedImages)
+        setSelectedImages([])
+    }
+
+    const isEqualImageIds =
+        selectedImages.length === addedImageIds.length &&
+        selectedImages.map(currentImage => currentImage.id).reduce((prev, current) => addedImageIds.includes(current) && prev, true)
+
+    const isAddImagesToGoodButtonDisabled = selectedImages.length === 0 || isEqualImageIds
+
+    const handleCloseAddGoodImagesModal = () => {
+        closeAddGoodImagesModal()
+        setSelectedImages([])
+    }
 
     return (
         <AdminModal
             open={openAddGoodImagesModal}
-            onClose={closeAddGoodImagesModal}
+            onClose={handleCloseAddGoodImagesModal}
             title={'Выбор/добавление фото товара'}
             buttons={[
-                <IconButton key={0} dialogButton disableRipple onClick={closeAddGoodImagesModal} autoFocus>
+                <IconButton key={0} dialogButton disableRipple onClick={handleCloseAddGoodImagesModal} autoFocus>
                     <UndoIcon />
+                </IconButton>,
+                <IconButton key={1} dialogButton disableRipple onClick={handleAddImagesToGood} disabled={isAddImagesToGoodButtonDisabled}>
+                    <SaveIcon dialogIcon />
                 </IconButton>,
             ]}
             addImageContent
@@ -69,9 +97,9 @@ const AddGoodImagesModal = ({
             <Container imageListBorder>
                 <ImagesListWithUploadToServer
                     images={images}
-                    makeImageAsChecked={makeImageAsChecked}
+                    makeImageAsChecked={handleSelectImage}
                     uploadImageToServer={uploadImageToServer}
-                    addedImageIds={addedImageIds}
+                    addedImageIds={selectedImageIds}
                     pathToImage={pathToImage}
                     deleteImage={handleSetDeletingImageId}
                     isDeleteButtonDisabled={isDeleteImageButtonDisabled}
@@ -80,7 +108,7 @@ const AddGoodImagesModal = ({
             <Container marginTop7>
                 <ItemsPerPage
                     title={'Показывать на странице:'}
-                    buttonValues={[11, 23]}
+                    buttonValues={[10, 25, 50]}
                     currentValue={imagesPerPage}
                     onChange={changeImagesPerPage}
                     disabled={isPaginationDisabled}

@@ -5,28 +5,7 @@ import Typography from '../../atoms/textElements/typography/Typography'
 import LabeledSelectFieldWithButton from '../inputs/labeledSelectFieldWithButton/LabeledSelectFieldWithButton'
 import IconButton from '../buttons/iconButton/IconButton'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
-
-const createCharacteristicValueItems = characteristic => {
-    let characteristicValueItems = []
-
-    const createItem = characteristicValue => {
-        return {
-            id: characteristicValue.id,
-            label: characteristicValue.value,
-            value: JSON.stringify({
-                id: characteristicValue.id,
-                value: characteristicValue.value,
-                characteristic: characteristicValue.characteristic,
-            }),
-        }
-    }
-
-    if (characteristic?.characteristicValues) {
-        characteristic.characteristicValues.forEach(characteristicValue => characteristicValueItems.push(createItem(characteristicValue)))
-    }
-
-    return characteristicValueItems.sort((firstEl, secondEl) => (firstEl.label > secondEl.label ? 1 : -1))
-}
+import { createCharacteristicValueItems } from './createCharacteristicValueItems'
 
 const CharacteristicSetContainer = ({
     setTitle,

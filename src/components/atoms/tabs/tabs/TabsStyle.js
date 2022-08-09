@@ -19,6 +19,10 @@ export default {
                 '& .MuiTabs-scrollButtons.Mui-disabled': {
                     opacity: 0.3,
                 },
+                position: 'sticky',
+                top: '51px',
+                zIndex: 1000,
+                backgroundColor: '#FFF',
             },
         },
     ],

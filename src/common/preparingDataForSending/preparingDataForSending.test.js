@@ -1,4 +1,10 @@
-import { deleteNullValuesFromObject, changeToObjectWithId, createValueForUpdating, leaveIdOnlyInObject } from './preparingDataForSending'
+import {
+    deleteNullValuesFromObject,
+    changeToObjectWithId,
+    createValueForUpdating,
+    leaveIdOnlyInObject,
+    transformStringValueToFloat,
+} from './preparingDataForSending'
 
 // eslint-disable-next-line no-undef
 describe('testing function "deleteNullValuesFromObject"', () => {
@@ -1255,6 +1261,111 @@ describe('testing function "createValueForUpdating"', () => {
         // eslint-disable-next-line no-undef
         expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
     })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating with string property (different value))', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка 2',
+        }
+        const result = {
+            id: 25,
+            name: 'Проверка 2',
+        }
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating with string property (different value, first value is null))', () => {
+        const initialValue = {
+            id: 25,
+            count: 5,
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка 2',
+            count: 5,
+        }
+        const result = {
+            id: 25,
+            name: 'Проверка 2',
+        }
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating with string property (different value, first value is not null, second value is null))', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            count: 5,
+        }
+        const changedValue = {
+            id: 25,
+            count: 5,
+        }
+        const result = null
+        // eslint-disable-next-line no-undef
+        expect(createValueForUpdating(initialValue, changedValue, [], 'DELETE_FROM_PARENT')).toEqual(result)
+    })
+
+    // eslint-disable-next-line no-undef
+    it('create value for updating with different commands type ({default: "DELETE_FROM_PARENT", characteristics: "HARD_DELETE", images: "DELETE_FROM_PARENT"}))', () => {
+        const initialValue = {
+            id: 25,
+            name: 'Проверка',
+            count: 5,
+            characteristics: [
+                {
+                    id: 22,
+                },
+                {
+                    id: 23,
+                },
+            ],
+            images: [{ id: 1 }, { id: 2 }],
+        }
+        const changedValue = {
+            id: 25,
+            name: 'Проверка',
+            count: 5,
+            characteristics: [
+                {
+                    id: 22,
+                },
+            ],
+            images: [{ id: 1 }],
+        }
+        const result = {
+            id: 25,
+            characteristics: [
+                {
+                    id: 23,
+                    command: 'HARD_DELETE',
+                },
+            ],
+            images: [
+                {
+                    id: 2,
+                    command: 'DELETE_FROM_PARENT',
+                },
+            ],
+        }
+        // eslint-disable-next-line no-undef
+        expect(
+            createValueForUpdating(initialValue, changedValue, [], {
+                default: 'DELETE_FROM_PARENT',
+                characteristics: 'HARD_DELETE',
+                images: 'DELETE_FROM_PARENT',
+            })
+        ).toEqual(result)
+    })
 })
 
 // eslint-disable-next-line no-undef
@@ -1376,5 +1487,70 @@ describe('testing function "leaveIdOnlyInObject"', () => {
         }
         // eslint-disable-next-line no-undef
         expect(leaveIdOnlyInObject(objectData, ['characteristicValues'])).toEqual(convertObjectData)
+    })
+})
+
+// eslint-disable-next-line no-undef
+describe('testing function "transformStringValueToFloat"', () => {
+    // eslint-disable-next-line no-undef
+    it('convert string fields to float', () => {
+        const objectData = {
+            id: 0,
+            name: 'someName',
+            price: '3456.23',
+            discountPrice: '111.23',
+            characteristicValues: [
+                {
+                    id: 0,
+                    value: 'someName',
+                    price: '100',
+                },
+                {
+                    id: 1,
+                    value: 'someName',
+                    price: '200',
+                },
+                {
+                    id: 2,
+                    value: 'someName',
+                    price: '300.12',
+                },
+            ],
+            prices: {
+                price: '34.34',
+                discountPrice: '34.34',
+            },
+        }
+
+        const resultObjectData = {
+            id: 0,
+            name: 'someName',
+            price: 3456.23,
+            discountPrice: 111.23,
+            characteristicValues: [
+                {
+                    id: 0,
+                    value: 'someName',
+                    price: 100,
+                },
+                {
+                    id: 1,
+                    value: 'someName',
+                    price: 200,
+                },
+                {
+                    id: 2,
+                    value: 'someName',
+                    price: 300.12,
+                },
+            ],
+            prices: {
+                price: 34.34,
+                discountPrice: 34.34,
+            },
+        }
+
+        // eslint-disable-next-line no-undef
+        expect(transformStringValueToFloat(objectData, ['price', 'discountPrice'])).toEqual(resultObjectData)
     })
 })

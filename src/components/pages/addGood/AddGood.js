@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
@@ -25,78 +25,89 @@ import {
     leaveIdOnlyInObject,
 } from '../../../common/preparingDataForSending/preparingDataForSending'
 import { findCategoryById } from '../addCategory/categoryOperations'
-import { postGoodsFetch } from '../../../api/goodApi'
 import {
     changeGetPostPutDeleteCharacteristicsFetchStatus,
     getGetPostPutDeleteCharacteristicsFetchStatus,
     saveCharacteristicNewValues,
 } from '../../../reducers/characteristicsSlice'
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
-import { deleteImageFetch, getAllImagesFetch, postImageFetch } from '../../../api/imagesApi'
 import { SERVER_PATH } from '../../../api/apiConstants'
 import goodStateItems from './goodStateItems'
-import { getPageSize } from '../../../reducers/goodsSlice'
+import { useAddGoodMutation } from '../../../api/goodsApi'
+import { useAddImageMutation, useDeleteImageMutation, useGetImagesQuery } from '../../../api/imagesApi'
+
+const initialGoodProperties = {
+    name: null,
+    description: null,
+    goodState: null,
+    price: null,
+    discountPrice: null,
+    amount: 1,
+    category: null,
+    images: null,
+}
 
 const AddGoodPage = () => {
+    const [addNewGood, { isError: isAddNewGoodError, isLoading: isNewGoodAdding }] = useAddGoodMutation()
+
     let history = useHistory()
 
     const handleGoBackToGoods = () => {
-        history.goBack()
+        const goodsPageSize = localStorage.getItem('adminGoodsPageSize')
+        const goodsPageNumber = localStorage.getItem('adminGoodsPageNumber')
+
+        if (goodsPageSize && parseInt(goodsPageNumber) > 0) {
+            history.push(`/goods?pageNo=${goodsPageNumber}&pageSize=${goodsPageSize}`)
+            return
+        }
+
+        if (goodsPageSize && parseInt(goodsPageNumber) === 0) {
+            history.push(`/goods?pageSize=${goodsPageSize}`)
+            return
+        }
+
+        history.push(`/goods`)
     }
 
-    const isGoBackButtonDisabled = false
-
-    const [goodsFetchStatus, setGoodsFetchStatus] = useState('idle')
+    const dispatch = useDispatch()
 
     const categories = useSelector(getCategories)
 
-    const pageSize = useSelector(getPageSize)
-
-    const handleSaveNewGood = async () => {
+    const createValueForNewGoodSaving = goodProperties => {
         let preparedGoodsValues = deleteNullValuesFromObject(goodProperties)
+
         if (preparedGoodsValues.images) {
             preparedGoodsValues = leaveIdOnlyInObject(preparedGoodsValues, ['image'])
         }
-        if (goodProperties['category'] !== null) {
-            const selectedCategory = findCategoryById(categories, goodProperties['category'])
-            if (selectedCategory) {
-                preparedGoodsValues.category = { id: selectedCategory.id }
-                const selectedCharacteristicsValues = Object.keys(valuesFromCharacteristicSelects).map(key =>
-                    JSON.parse(valuesFromCharacteristicSelects[key])
-                )
-                preparedGoodsValues.characteristicValues = selectedCharacteristicsValues
-                preparedGoodsValues = changeToObjectWithId(preparedGoodsValues, ['characteristic'])
-            }
+
+        if (goodProperties['category'] === null) return preparedGoodsValues
+
+        const selectedCategory = findCategoryById(categories, goodProperties['category'])
+        if (selectedCategory) {
+            preparedGoodsValues.category = { id: selectedCategory.id }
+            preparedGoodsValues.characteristicValues = Object.keys(valuesFromCharacteristicSelects).map(key =>
+                JSON.parse(valuesFromCharacteristicSelects[key])
+            )
+            preparedGoodsValues = changeToObjectWithId(preparedGoodsValues, ['characteristic'])
         }
 
-        setGoodsFetchStatus('pending')
-        try {
-            await postGoodsFetch(preparedGoodsValues)
-            setGoodsFetchStatus('success')
-            setGoodsFetchStatus('idle')
-            if (pageSize) {
-                history.push(`/goods?pageSize=${pageSize}`)
-                return
-            }
-            history.push(`/goods`)
-        } catch (e) {
-            console.log(e)
-            setGoodsFetchStatus('error')
+        return preparedGoodsValues
+    }
+
+    const handleSaveNewGood = async () => {
+        const preparedGoodsValues = createValueForNewGoodSaving(goodProperties)
+
+        await addNewGood(preparedGoodsValues)
+
+        const goodsPageSize = localStorage.getItem('adminGoodsPageSize')
+        if (goodsPageSize) {
+            history.push(`/goods?pageSize=${goodsPageSize}`)
+            return
         }
+        history.push(`/goods`)
     }
 
     const { tabLabel } = useParams()
-
-    const initialGoodProperties = {
-        name: null,
-        description: null,
-        goodState: null,
-        price: null,
-        discountPrice: null,
-        amount: null,
-        category: null,
-        images: null,
-    }
 
     const [goodProperties, setGoodProperties] = useState(initialGoodProperties)
 
@@ -105,60 +116,69 @@ const AddGoodPage = () => {
             ...prev,
             ...payload,
         }))
+
+        if (payload.category) {
+            setValuesFromCharacteristicSelects({})
+        }
     }
 
-    const addImageToGood = id => () => {
-        if (goodProperties.images === null || !goodProperties.images.find(image => image.image.id === id)) {
-            const image = images.find(image => image.id === id)
-            setGoodProperties(prev => {
-                if (prev.images === null) {
-                    return {
-                        ...prev,
-                        images: [{ image: image, isMain: true }],
-                    }
-                }
-                return {
-                    ...prev,
-                    images: [...prev.images, { image: image, isMain: false }],
-                }
-            })
+    const addImagesToGood = changedImageList => {
+        const mainImageId = goodProperties.images ? goodProperties.images.find(image => image.isMain).image.id : null
+        const changedImageIds = changedImageList.map(currentImage => currentImage.id)
+
+        if (mainImageId && changedImageIds.includes(mainImageId)) {
+            const addingImages = changedImageList.map(currentImage => ({ image: currentImage, isMain: currentImage.id === mainImageId }))
+
+            setGoodProperties(prev => ({
+                ...prev,
+                images: addingImages,
+            }))
             return
         }
 
-        const isDeletedImageMain = goodProperties['images'].find(image => image.image.id === id).isMain
-        deleteImageFromGood(id, isDeletedImageMain)()
+        if (mainImageId && !changedImageIds.includes(mainImageId)) {
+            const addingImages = changedImageList.map((currentImage, index) => ({ image: currentImage, isMain: index === 0 }))
+
+            setGoodProperties(prev => ({
+                ...prev,
+                images: addingImages,
+            }))
+            return
+        }
+
+        const addingImages = changedImageList.map((currentImage, index) => ({ image: currentImage, isMain: index === 0 }))
+        setGoodProperties(prev => ({
+            ...prev,
+            images: addingImages,
+        }))
     }
 
     const deleteImageFromGood = (id, isMain) => () => {
         setGoodProperties(prev => {
-            let imagesCopy = [...prev.images]
-            imagesCopy = imagesCopy.filter(image => image.image.id !== id)
-            if (isMain && imagesCopy.length) {
-                let firstMainImage = { ...imagesCopy[0] }
+            let imageAfterDeleting = [...prev.images].filter(image => image.image.id !== id)
+
+            if (isMain && imageAfterDeleting.length) {
+                let firstMainImage = { ...imageAfterDeleting[0] }
                 firstMainImage.isMain = true
-                imagesCopy = [firstMainImage, ...imagesCopy.slice(1)]
+                imageAfterDeleting = [firstMainImage, ...imageAfterDeleting.slice(1)]
             }
+
             return {
                 ...prev,
-                images: imagesCopy.length ? imagesCopy : null,
+                images: imageAfterDeleting.length ? imageAfterDeleting : null,
             }
         })
     }
 
     const handleMakeImageAsMain = id => () => {
         setGoodProperties(prev => {
-            const imagesCopy = prev.images.map(image => {
-                const imageCopy = { ...image }
-                imageCopy.isMain = false
-                return imageCopy
-            })
-            const mainImage = prev.images.find(image => image.image.id === id)
-            mainImage.isMain = true
-            const mainImageIndex = prev.images.findIndex(image => image.image.id === id)
-            imagesCopy[mainImageIndex] = mainImage
+            const changedImages = prev.images.map(currentImage =>
+                currentImage.image.id === id ? { ...currentImage, isMain: true } : { ...currentImage, isMain: false }
+            )
+
             return {
                 ...prev,
-                images: imagesCopy,
+                images: changedImages,
             }
         })
     }
@@ -166,8 +186,6 @@ const AddGoodPage = () => {
     const categoryFetchStatus = useSelector(getFetchStatus)
 
     const categoryGetPostPutDeleteFetchStatus = useSelector(getFetchPostPutDeleteStatus)
-
-    const dispatch = useDispatch()
 
     useEffect(() => {
         if (categoryFetchStatus !== 'idle') return
@@ -190,6 +208,126 @@ const AddGoodPage = () => {
 
     const characteristicGetGetPostPutDeleteFetchStatus = useSelector(getGetPostPutDeleteCharacteristicsFetchStatus)
 
+    const handleGetCategoryFromServer = (categoryId, callback) => {
+        dispatch(getCategory(categoryId, callback))
+    }
+
+    const addedImageIds = useMemo(
+        () => (goodProperties.images ? goodProperties.images.map(currentImage => currentImage.image.id) : []),
+        [goodProperties.images]
+    )
+
+    const addedImages = useMemo(
+        () => (goodProperties.images ? goodProperties.images.map(currentImage => currentImage.image) : []),
+        [goodProperties.images]
+    )
+
+    const isDeleteImageButtonDisabled = id => isPaginationDisabled || addedImageIds.includes(id)
+
+    const [isOpenAddGoodImagesModal, setIsOpenAddGoodImagesModal] = useState(false)
+
+    const handleCloseAddGoodImagesModal = () => {
+        setIsOpenAddGoodImagesModal(false)
+        if (pageSize) {
+            localStorage.setItem('adminGoodImagesPageSize', pageSize)
+        }
+    }
+
+    const handleOpenAddGoodImagesModal = () => {
+        setIsOpenAddGoodImagesModal(true)
+        const pageSizeFromLocalStorage = localStorage.getItem('adminGoodImagesPageSize')
+        if (pageSizeFromLocalStorage) {
+            setImagesQuery(`?pageSize=${pageSizeFromLocalStorage}`)
+        }
+    }
+
+    const [imagesQuery, setImagesQuery] = useState('')
+
+    const {
+        partialImages,
+        totalPages,
+        pageSize,
+        pageNumber,
+        totalImages,
+        isLoading: isImagesLoading,
+        isFetching: isImagesFetching,
+        isError: isGetImagesError,
+    } = useGetImagesQuery(imagesQuery, {
+        skip: !isOpenAddGoodImagesModal && !imagesQuery,
+        selectFromResult: ({ data, isLoading, isFetching, isError }) => ({
+            partialImages: data?.partialImages,
+            totalPages: data?.totalPages,
+            pageSize: data?.pageSize,
+            pageNumber: data?.pageNumber,
+            totalGoods: data?.totalImages,
+            isLoading,
+            isFetching,
+            isError,
+        }),
+    })
+
+    const [addImage, { isError: isAddNewImageError, isLoading: isNewImageAdding }] = useAddImageMutation()
+
+    const [deleteImage, { isError: isDeleteImageError, isLoading: isImageDeleting }] = useDeleteImageMutation()
+
+    const isPaginationDisabled = isImagesLoading || isImagesFetching
+
+    const defaultPageSize = 25
+
+    const handlePaginationItemClick = (event, page) => {
+        if (!pageSize && page - 1 === 0) {
+            setImagesQuery(``)
+            return
+        }
+        if (!pageSize && page - 1 > 0) {
+            setImagesQuery(`?pageNo=${page - 1}`)
+            return
+        }
+        if (pageSize && pageSize === defaultPageSize && page - 1 === 0) {
+            setImagesQuery(``)
+            return
+        }
+        if (pageSize && page - 1 === 0) {
+            setImagesQuery(`?pageSize=${pageSize}`)
+            return
+        }
+        if (pageSize && pageSize === defaultPageSize && page - 1 > 0) {
+            setImagesQuery(`?pageNo=${page - 1}`)
+            return
+        }
+
+        setImagesQuery(`?pageNo=${page - 1}&pageSize=${pageSize}`)
+    }
+
+    const handleChangeImagesPerPage = pageSize => {
+        if (pageSize === defaultPageSize) {
+            setImagesQuery(``)
+            return
+        }
+
+        setImagesQuery(`?pageSize=${pageSize}`)
+    }
+
+    const isServerError =
+        categoryFetchStatus === 'error' ||
+        categoryGetPostPutDeleteFetchStatus === 'error' ||
+        characteristicGetGetPostPutDeleteFetchStatus === 'error' ||
+        isAddNewGoodError ||
+        isGetImagesError ||
+        isAddNewImageError
+
+    const isPending =
+        categoryFetchStatus === 'pending' ||
+        categoryGetPostPutDeleteFetchStatus === 'pending' ||
+        characteristicGetGetPostPutDeleteFetchStatus === 'pending' ||
+        isNewGoodAdding ||
+        isImagesLoading ||
+        isImagesFetching ||
+        isNewImageAdding ||
+        isImageDeleting
+
+    const [isShowErrorModal, setIsShowServerErrorModal] = useState(false)
+
     const handleCloseServerErrorModal = () => {
         if (categoryFetchStatus === 'error') {
             dispatch(changeFetchStatus('idle'))
@@ -200,117 +338,52 @@ const AddGoodPage = () => {
         if (characteristicGetGetPostPutDeleteFetchStatus === 'error') {
             dispatch(changeGetPostPutDeleteCharacteristicsFetchStatus('idle'))
         }
-        if (goodsFetchStatus === 'error') {
-            setGoodsFetchStatus('idle')
-        }
-        if (imageFetchStatus === 'error') {
-            setImageFetchStatus('idle')
-        }
+
+        setIsShowServerErrorModal(false)
     }
 
-    const handleGetCategoryFromServer = (categoryId, callback) => {
-        dispatch(getCategory(categoryId, callback))
-    }
+    useEffect(() => {
+        if (isServerError) {
+            setIsShowServerErrorModal(true)
+        }
+    }, [isServerError])
 
-    const [images, setImages] = useState(null)
-
-    const [imageFetchStatus, setImageFetchStatus] = useState('idle')
-
-    const isPending =
-        categoryFetchStatus === 'pending' ||
-        categoryGetPostPutDeleteFetchStatus === 'pending' ||
-        characteristicGetGetPostPutDeleteFetchStatus === 'pending' ||
-        goodsFetchStatus === 'pending' ||
-        imageFetchStatus === 'pending'
-
-    const isServerError =
-        categoryFetchStatus === 'error' ||
-        categoryGetPostPutDeleteFetchStatus === 'error' ||
-        characteristicGetGetPostPutDeleteFetchStatus === 'error' ||
-        goodsFetchStatus === 'error' ||
-        imageFetchStatus === 'error'
+    const isGoBackButtonDisabled = isPending
 
     const isSaveButtonDisabled = isPending || isGoodsNameEmpty
 
-    const handleGetImagesFromServer = useCallback(async query => {
-        setImageFetchStatus('pending')
-        try {
-            let images = await getAllImagesFetch(query)
-            setImages(images.content)
-            setTotalPages(images.totalPages)
-            setCurrentPageNumber(images.number)
-            setImagesPerPage(images.size)
-            setTotalImages(images.totalElements)
-            setImageFetchStatus('success')
-            setImageFetchStatus('idle')
-        } catch (e) {
-            console.log(e)
-            setImageFetchStatus('error')
-        }
-    }, [])
+    const handleUploadImageToServer = async images => {
+        await Promise.all(images.map(image => addImage(image)))
 
-    const handleUploadImageToServer = async allData => {
-        setImageFetchStatus('pending')
-        try {
-            await Promise.all(allData.map(data => postImageFetch(data)))
-            setImageFetchStatus('success')
-            setImageFetchStatus('idle')
-            handleGetImagesFromServer(`?pageSize=${imagesPerPage}`)
-        } catch (error) {
-            console.log(error)
-            setImageFetchStatus('error')
-        }
-    }
-
-    const defaultImagesPerPage = 23
-
-    const [imagesPerPage, setImagesPerPage] = useState(defaultImagesPerPage)
-
-    const [currentPageNumber, setCurrentPageNumber] = useState(null)
-
-    const [totalPages, setTotalPages] = useState(null)
-
-    const [totalImages, setTotalImages] = useState(null)
-
-    const handleChangeImagesPerPage = pageSize => {
-        if (currentPageNumber === null) {
-            handleGetImagesFromServer(`?pageSize=${pageSize}`)
+        if (pageSize === defaultPageSize) {
+            setImagesQuery(``)
             return
         }
-        if (currentPageNumber !== null) {
-            handleGetImagesFromServer(`?&pageSize=${pageSize}`)
-        }
-    }
 
-    const isPaginationDisabled = imageFetchStatus === 'pending'
-
-    const handlePaginationItemClick = (event, page) => {
-        if (imagesPerPage === null) {
-            handleGetImagesFromServer(`?pageNo=${page - 1}`)
-            return
-        }
-        if (imagesPerPage !== null) {
-            handleGetImagesFromServer(`?pageNo=${page - 1}&pageSize=${imagesPerPage}`)
-        }
+        setImagesQuery(`?pageSize=${pageSize}`)
     }
 
     const handleDeleteImageFromServer = async id => {
-        setImageFetchStatus('pending')
-        try {
-            await deleteImageFetch(id)
-            setImageFetchStatus('success')
-            setImageFetchStatus('idle')
-            const totalPageNumberAfterDeleting = Math.floor((totalImages - 1) / imagesPerPage)
-            if (currentPageNumber > totalPageNumberAfterDeleting) {
-                handleGetImagesFromServer(`?pageNo=${totalPageNumberAfterDeleting}&pageSize=${imagesPerPage}`)
-                return
-            }
-            handleGetImagesFromServer(`?pageNo=${currentPageNumber}&pageSize=${imagesPerPage}`)
-        } catch (error) {
-            console.log(error)
-            setImageFetchStatus('error')
-        }
+        await deleteImage(id)
+            .unwrap()
+            .then(() => {
+                const totalPageNumberAfterDeleting = Math.floor((totalImages - 1) / pageSize)
+                if (pageNumber > totalPageNumberAfterDeleting) {
+                    setImagesQuery(`?pageNo=${totalPageNumberAfterDeleting}&pageSize=${pageSize}`)
+                }
+            })
+            .catch(error => console.log(error))
     }
+
+    const [isShowDeleteImageErrorModal, setIsShowDeleteImageErrorModal] = useState(false)
+
+    const handleCloseDeleteImageErrorModal = () => {
+        setIsShowDeleteImageErrorModal(false)
+    }
+
+    useEffect(() => {
+        if (isDeleteImageError) setIsShowDeleteImageErrorModal(true)
+    }, [isDeleteImageError])
 
     return (
         <>
@@ -339,19 +412,23 @@ const AddGoodPage = () => {
                                     changeGoodProperties={handleSetGoodProperties}
                                     goodStateItems={goodStateItems}
                                     uploadImageToServer={handleUploadImageToServer}
-                                    addImageToGood={addImageToGood}
+                                    addImagesToGood={addImagesToGood}
                                     deleteImageFromGood={deleteImageFromGood}
                                     makeImageAsMain={handleMakeImageAsMain}
-                                    images={images}
-                                    getImagesFromServer={handleGetImagesFromServer}
+                                    images={partialImages}
                                     pathToImage={`${SERVER_PATH}/img/`}
-                                    imagesPerPage={imagesPerPage}
+                                    imagesPerPage={pageSize}
                                     changeImagesPerPage={handleChangeImagesPerPage}
                                     isPaginationDisabled={isPaginationDisabled}
                                     totalPages={totalPages}
-                                    currentPageNumber={currentPageNumber}
+                                    currentPageNumber={pageNumber}
                                     paginationItemClick={handlePaginationItemClick}
                                     deleteImageFromServer={handleDeleteImageFromServer}
+                                    isDeleteImageButtonDisabled={isDeleteImageButtonDisabled}
+                                    addedImages={addedImages}
+                                    isOpenAddGoodImagesModal={isOpenAddGoodImagesModal}
+                                    closeAddGoodImagesModal={handleCloseAddGoodImagesModal}
+                                    openAddGoodImagesModal={handleOpenAddGoodImagesModal}
                                 />
                             ),
                         },
@@ -379,10 +456,16 @@ const AddGoodPage = () => {
                 />
             </MaxWidthTemplate>
             <ErrorModal
-                open={isServerError}
+                open={isShowErrorModal}
                 onClose={handleCloseServerErrorModal}
                 title={'Ошибка сервера'}
                 description={'Сервер не может выполнить указанную операцию :('}
+            />
+            <ErrorModal
+                open={isShowDeleteImageErrorModal}
+                onClose={handleCloseDeleteImageErrorModal}
+                title={'Ошибка сервера'}
+                description={'Это изображение уже используется в товаре/ах! Вы не можете его удалить!'}
             />
             {isPending && <Loader dialogProgress />}
         </>

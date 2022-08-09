@@ -183,7 +183,6 @@ import LabeledSwitchStyle from '../../components/molecules/inputs/labeledSwitch/
 import LabeledTextFieldMultilineStyle from '../../components/molecules/inputs/labeledTextFieldMultiline/LabeledTextFieldMultilineStyle'
 import LabeledTextFieldsStyle from '../../components/molecules/inputs/labeledTextFields/LabeledTextFieldsStyle'
 import LabeledCheckboxFieldStyle from '../../components/molecules/inputs/lableCheckboxField/LabeledCheckboxFieldStyle'
-import SimpleTableTotal from '../../components/molecules/table/simpleTableTotal/SimpleTableTotal'
 import TableHeadLastOrdersStyle from '../../components/molecules/table/tableHeadLastOrders/TableHeadLastOrdersStyle'
 import TableRowLastOrdersStyle from '../../components/molecules/table/tableRowLastOrders/TableRowLastOrdersStyle'
 import TitleTableStyle from '../../components/organisms/tables/lastOrdersTable/TitleTableStyle'
@@ -223,6 +222,7 @@ import FragmentStyle from '../../components/atoms/fragment/FragmentStyle'
 import GoodIconStyle from '../../components/atoms/icons/goodIcon/GoodIconStyle'
 import CardStockStyle from '../../components/molecules/cardStock/CardStokStyle'
 import ContainerStockStyle from '../../components/atoms/cardStock/ContainerStock/ContainerStockStyle'
+import SimpleTableTotalStyle from '../../components/molecules/table/simpleTableTotal/SimpleTableTotalStyle'
 
 export const styleConstants = {
     Colors,
@@ -409,7 +409,7 @@ export const styledComponents = {
     SimpleTableFooterStyle,
     SimpleTableHeadStyle,
     SimpleTableRowStyle,
-    SimpleTableTotal,
+    SimpleTableTotalStyle,
     SiteIconStyle,
     SpaceBetweenTemplateStyle,
     StatisticsButtonWrapperStyle,

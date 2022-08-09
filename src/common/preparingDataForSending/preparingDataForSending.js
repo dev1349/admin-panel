@@ -34,7 +34,7 @@ const valuesWithoutNull = (sendingData, ignoreFields, clearType) => {
         if (isArray(sendingData[key])) {
             let resultArray = sendingData[key].map(elem => {
                 if (isObject(elem) && !isEmptyObject(elem)) {
-                    const resultObject = valuesWithoutNull(elem, ignoreFields)
+                    const resultObject = valuesWithoutNull(elem, ignoreFields, clearType)
                     if (isEmptyObject(resultObject)) return
                     return resultObject
                 }
@@ -49,7 +49,7 @@ const valuesWithoutNull = (sendingData, ignoreFields, clearType) => {
         }
         if (isObject(sendingData[key]) && isEmptyObject(sendingData[key])) return
         if (isObject(sendingData[key])) {
-            resultDataObject[key] = valuesWithoutNull(sendingData[key], ignoreFields)
+            resultDataObject[key] = valuesWithoutNull(sendingData[key], ignoreFields, clearType)
             return
         }
 
@@ -198,7 +198,10 @@ const getValueForUpdating = (initialValue, changedValue, typeOfCommand, level = 
 
             const valuesForDeleting = initialValue[key]
                 .filter(elem => !changedValue[key].find(changedElem => changedElem.id === elem.id))
-                .map(elem => ({ id: elem.id, command: typeOfCommand }))
+                .map(elem => ({
+                    id: elem.id,
+                    command: isObject(typeOfCommand) ? (typeOfCommand[key] ? typeOfCommand[key] : typeOfCommand.default) : typeOfCommand,
+                }))
 
             let valuesForChanging = changedValue[key]
                 .filter(elem => elem.id)
@@ -223,7 +226,11 @@ const getValueForUpdating = (initialValue, changedValue, typeOfCommand, level = 
             return
         }
         if (isString(changedValue[key])) {
-            if (changedValue[key].trim() !== initialValue[key].trim()) {
+            if (!initialValue[key] && changedValue[key] !== null && changedValue[key].trim()) {
+                newChangedValue[key] = changedValue[key].trim()
+                return
+            }
+            if (initialValue[key] && changedValue[key] && changedValue[key].trim() !== initialValue[key].trim()) {
                 newChangedValue[key] = changedValue[key].trim()
                 return
             }
@@ -254,7 +261,16 @@ const getValueForUpdating = (initialValue, changedValue, typeOfCommand, level = 
     return newChangedValue
 }
 
-export const createValueForUpdating = (initialValue, changedValue, withoutTransformFields, typeOfCommand = null) => {
+/**
+ *
+ * @param initialValue - value (must be an object), which got from server (don`t remove null value and empty arrays in this)
+ * @param changedValue - changed value (must be an object) from server
+ * @param withoutTransformFields - array of keys, which field don`t must transform (if simply field (number, string, boolean, null, undefined) - will return this value; if field is empty array - will return empty array)
+ * @param typeOfCommand - command for server (HARD_DELETE, DELETE_FROM_PARENT)
+ * @returns {{}|null}
+ */
+
+export const createValueForUpdating = (initialValue, changedValue, withoutTransformFields = [], typeOfCommand = null) => {
     if (
         initialValue === null ||
         changedValue === null ||
@@ -264,4 +280,61 @@ export const createValueForUpdating = (initialValue, changedValue, withoutTransf
         return null
     const changedValueWithoutNull = deleteNullValuesFromObject(changedValue, withoutTransformFields, 'FOR_UPDATING')
     return getValueForUpdating(initialValue, changedValueWithoutNull, typeOfCommand)
+}
+
+const stringValueToFloat = (sendingData, fieldNamesForTransformation, clearType) => {
+    let resultDataObject = {}
+    const keys = Object.keys(sendingData)
+    if (isEmptyArray(keys)) return null
+    keys.forEach(key => {
+        if (fieldNamesForTransformation.includes(key) && !isNull(sendingData[key])) {
+            resultDataObject[key] = parseFloat(sendingData[key])
+            return
+        }
+        if (isArray(sendingData[key]) && isEmptyArray(sendingData[key]) && clearType === 'FOR_UPDATING') {
+            resultDataObject[key] = []
+            return
+        }
+        if (isArray(sendingData[key]) && isEmptyArray(sendingData[key])) return
+        if (isArray(sendingData[key])) {
+            let resultArray = sendingData[key].map(elem => {
+                if (isObject(elem) && !isEmptyObject(elem)) {
+                    const resultObject = stringValueToFloat(elem, fieldNamesForTransformation, clearType)
+                    if (isEmptyObject(resultObject)) return
+                    return resultObject
+                }
+                if (!isNull(elem) && !isObject(elem)) {
+                    return elem
+                }
+            })
+
+            resultArray = resultArray.filter(elem => elem)
+            if (!isEmptyArray(resultArray)) resultDataObject[key] = resultArray
+            return
+        }
+        if (isObject(sendingData[key]) && isEmptyObject(sendingData[key])) return
+        if (isObject(sendingData[key])) {
+            resultDataObject[key] = stringValueToFloat(sendingData[key], fieldNamesForTransformation, clearType)
+            return
+        }
+
+        if (!isNull(sendingData[key])) {
+            resultDataObject[key] = sendingData[key]
+        }
+    })
+
+    return resultDataObject
+}
+
+/**
+ *
+ * @param sendingData - object with data for sending
+ * @param fieldNamesForTransformation - array of keys (by default these values are string), which must be a float value
+ * @param clearType - type of clearing (FOR_CREATING, FOR_UPDATING)
+ * @returns {{}|*} - object of transformed values
+ */
+
+export const transformStringValueToFloat = (sendingData, fieldNamesForTransformation = [], clearType = 'FOR_UPDATING') => {
+    if (!isObject(sendingData)) return sendingData
+    return stringValueToFloat(sendingData, fieldNamesForTransformation, clearType)
 }

@@ -1,5 +1,5 @@
 class Timer {
-    constructor({timer}) {
+    constructor({ timer }) {
         this.timer = timer
     }
 
@@ -8,11 +8,11 @@ class Timer {
         let minutes = parseInt((duration / (1000 * 60)) % 60)
         let hours = parseInt((duration / (1000 * 60 * 60)) % 24)
 
-        hours = (hours < 10) ? "0" + hours : hours
-        minutes = (minutes < 10) ? "0" + minutes : minutes
-        seconds = (seconds < 10) ? "0" + seconds : seconds
+        hours = hours < 10 ? '0' + hours : hours
+        minutes = minutes < 10 ? '0' + minutes : minutes
+        seconds = seconds < 10 ? '0' + seconds : seconds
 
-        return hours + ":" + minutes + ":" + seconds
+        return hours + ':' + minutes + ':' + seconds
     }
 
     stockTime() {
@@ -21,14 +21,12 @@ class Timer {
     }
 
     get time() {
-        return this.msToTime(
-            this.stockTime()
-        )
+        return this.msToTime(this.stockTime())
     }
 
     get days() {
         let days = parseInt(this.stockTime() / (1000 * 60 * 60 * 24))
-        days = (days < 10) ? "0" + days : days
+        days = days < 10 ? '0' + days : days
 
         return days
     }
