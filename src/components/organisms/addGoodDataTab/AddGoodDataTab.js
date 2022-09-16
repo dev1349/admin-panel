@@ -34,9 +34,7 @@ const AddGoodDataTab = ({ values, handleChange }) => {
                 id={'goodField13'}
                 label={'Цена'}
                 name={'price'}
-                pattern={
-                    '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$'
-                }
+                pattern={'^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$'}
                 value={values['price'] || ''}
                 onChange={handleChange}
             />
@@ -52,9 +50,7 @@ const AddGoodDataTab = ({ values, handleChange }) => {
                 label={'Минимальное количество'}
                 name={'minQuantity'}
                 pattern={'^(|[0-9]*)$'}
-                value={
-                    values['minQuantity'] !== null ? values['minQuantity'] : ''
-                }
+                value={values['minQuantity'] !== null ? values['minQuantity'] : ''}
                 onChange={handleChange}
                 isHelp={true}
                 helpText={'Минимальное количество для заказа этого товара'}

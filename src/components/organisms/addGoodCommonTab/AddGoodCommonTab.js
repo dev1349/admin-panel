@@ -40,9 +40,7 @@ const AddGoodCommonTab = ({ values, handleChange, allGoodType }) => {
                 id={'goodField04'}
                 label={'Цена'}
                 name={'price'}
-                pattern={
-                    '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$'
-                }
+                pattern={'^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$'}
                 value={values['price'] || ''}
                 onChange={handleChange}
             />
@@ -50,9 +48,7 @@ const AddGoodCommonTab = ({ values, handleChange, allGoodType }) => {
                 id={'goodField05'}
                 label={'Цена распродажи'}
                 name={'salePrice'}
-                pattern={
-                    '^(|0|0[.]|0[.][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.][0-9]{0,2})$'
-                }
+                pattern={'^(|0|0[.]|0[.][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.][0-9]{0,2})$'}
                 value={values['salePrice'] || ''}
                 onChange={handleChange}
             />

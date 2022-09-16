@@ -8,14 +8,14 @@ import SaveIcon from '../../atoms/icons/saveIcon/SaveIcon'
 import ButtonsRightTemplate from '../../templates/buttonsRightTemplate/ButtonsRightTemplate'
 import ContactPhone from '../../molecules/contactPhone/ContactPhone'
 import AddShop from '../../molecules/addShop/AddShop'
+import { postContacts } from '../../../api/contactsApi'
+import { createValueForUpdating } from '../../../common/preparingDataForSending/preparingDataForSending'
 
-const Contacts = () => {
-    const initialPhones = { phone_1: null }
-
-    const [phones, setPhones] = useState(initialPhones)
-
+const Contacts = ({ phones, setPhones, cities, setCities, citiesStarted, phonesStarted }) => {
     const handleChangePhones = payload => {
-        setPhones(prev => ({ ...prev, ...payload }))
+        setPhones(prev => {
+            return { ...prev, [Object.keys(payload)[0]]: { ...prev[Object.keys(payload)[0]], phone: payload[Object.keys(payload)[0]] } }
+        })
     }
 
     const handleDeletePhone = phoneName => () => {
@@ -30,24 +30,19 @@ const Contacts = () => {
     const handleAddPhone = () => {
         setPhones(prev => {
             const newPhones = { ...prev }
-            const NextPhoneNumber =
-                Math.max(
-                    ...Object.keys(prev).map(key => Number(key.split('_')[1]))
-                ) + 1
-            newPhones[`phone_${NextPhoneNumber}`] = null
+            const NextPhoneNumber = Math.max(...Object.keys(prev).map(key => Number(key.split('_')[1]))) + 1
+            newPhones[`phone_${NextPhoneNumber}`] = {}
             return newPhones
         })
     }
 
-    const isPhoneDeleteButton = !!(Object.keys(phones).length - 1)
+    const isPhoneDeleteButton = Object.keys(phones).length - 1
 
-    const isAddPhoneButtonDisabled = Object.keys(phones).reduce(
-        (acc, cur) => acc || !phones[cur],
-        false
-    )
+    const isAddPhoneButtonDisabled = Object.keys(phones).reduce((acc, cur) => acc || !phones[cur], false)
 
     const initialCities = {
         city_1: {
+            id: null,
             cityName: null,
             address: null,
             mod_fri: null,
@@ -55,8 +50,6 @@ const Contacts = () => {
             sun: null,
         },
     }
-
-    const [cities, setCities] = useState(initialCities)
 
     const handleChangeCities = cityName => payload => {
         setCities(prev => ({
@@ -76,10 +69,7 @@ const Contacts = () => {
     const handleAddCity = () => {
         setCities(prev => {
             const newCities = { ...prev }
-            const NextCityNumber =
-                Math.max(
-                    ...Object.keys(prev).map(key => Number(key.split('_')[1]))
-                ) + 1
+            const NextCityNumber = Math.max(...Object.keys(prev).map(key => Number(key.split('_')[1]))) + 1
             newCities[`city_${NextCityNumber}`] = {
                 cityName: null,
                 address: null,
@@ -94,11 +84,7 @@ const Contacts = () => {
     const isCityDeleteButton = !!(Object.keys(cities).length - 1)
 
     const isAddCityButtonDisabled = Object.keys(cities).reduce(
-        (acc, cur) =>
-            Object.keys(cities[cur]).reduce(
-                (subAcc, subCur) => subAcc && !cities[cur][subCur],
-                true
-            ) || acc,
+        (acc, cur) => Object.keys(cities[cur]).reduce((subAcc, subCur) => subAcc && !cities[cur][subCur], true) || acc,
         false
     )
 
@@ -110,19 +96,29 @@ const Contacts = () => {
 
     const [validationResult, setValidationResult] = useState(null)
 
-    const handleSetValidationResult = useCallback(
-        payload => setValidationResult(prev => ({ ...prev, ...payload })),
-        [setValidationResult]
-    )
+    const handleSetValidationResult = useCallback(payload => setValidationResult(prev => ({ ...prev, ...payload })), [setValidationResult])
 
     const handleSaveContacts = () => {
-        console.log('phones = ', phones)
-        console.log('cities = ', cities)
+        const newData = {
+            phoneContacts: Object.keys(phones).map(key => phones[key]),
+            storeContacts: Object.keys(cities).map(key => cities[key]),
+        }
+        const startData = {
+            phoneContacts: Object.keys(phonesStarted).map(key => phonesStarted[key]),
+            storeContacts: Object.keys(citiesStarted).map(key => citiesStarted[key]),
+        }
+
+        const valueForUpdating = createValueForUpdating(startData, newData, [], 'HARD_DELETE')
+        console.log(valueForUpdating)
+        postContacts(valueForUpdating).then(() => {
+            // updateFromServer() здесь нужно обновлять значения с сервера!!!
+            console.log('lol')
+        })
     }
 
     const handleClearContacts = () => {
         setClearTouch(true)
-        setPhones(initialPhones)
+        setPhones({ phone_1: {} })
         setCities(initialCities)
     }
 
@@ -176,11 +172,7 @@ const Contacts = () => {
             ))}
 
             <TextAlignRightTemplate>
-                <SimpleButton
-                    startIcon={<AddIcon />}
-                    onClick={handleAddPhone}
-                    disabled={isAddPhoneButtonDisabled}
-                >
+                <SimpleButton startIcon={<AddIcon />} onClick={handleAddPhone} disabled={isAddPhoneButtonDisabled}>
                     Еще добавить телефон
                 </SimpleButton>
             </TextAlignRightTemplate>
@@ -194,15 +186,13 @@ const Contacts = () => {
                     onChange={handleChangeCities}
                     isCityDeleteButton={isCityDeleteButton}
                     deleteCity={handleDeleteCity}
+                    clearTouch={clearTouch}
+                    setValidationResult={handleSetValidationResult}
                 />
             ))}
 
             <TextAlignRightTemplate>
-                <SimpleButton
-                    startIcon={<AddIcon />}
-                    onClick={handleAddCity}
-                    disabled={isAddCityButtonDisabled}
-                >
+                <SimpleButton startIcon={<AddIcon />} onClick={handleAddCity} disabled={isAddCityButtonDisabled}>
                     Еще добавить магазин
                 </SimpleButton>
             </TextAlignRightTemplate>
@@ -216,11 +206,7 @@ const Contacts = () => {
                 >
                     Удалить
                 </SimpleButton>
-                <SimpleButton
-                    startIcon={<SaveIcon />}
-                    onClick={handleSaveContacts}
-                    disabled={!canSaveContacts}
-                >
+                <SimpleButton startIcon={<SaveIcon />} onClick={handleSaveContacts} disabled={!canSaveContacts}>
                     Сохранить контакты
                 </SimpleButton>
             </ButtonsRightTemplate>

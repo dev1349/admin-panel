@@ -246,7 +246,10 @@ const getValueForUpdating = (initialValue, changedValue, typeOfCommand, level = 
     })
 
     if (Object.keys(newChangedValue).length === 1 && level === 0) {
-        return null
+        if (Object.keys(newChangedValue)[0] === 'id') {
+            return null
+        }
+        return newChangedValue
     }
 
     if (!isEmptyObject(newChangedValue) && level !== 0) {
@@ -278,6 +281,7 @@ export const createValueForUpdating = (initialValue, changedValue, withoutTransf
         (isObject(changedValue) && isEmptyObject(changedValue))
     )
         return null
+
     const changedValueWithoutNull = deleteNullValuesFromObject(changedValue, withoutTransformFields, 'FOR_UPDATING')
     return getValueForUpdating(initialValue, changedValueWithoutNull, typeOfCommand)
 }

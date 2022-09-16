@@ -8,11 +8,7 @@ const LabelWithHelpTemplateStyled = styled('div', {
 })(() => ({}))
 
 const LabelWithHelpTemplate = ({ children, ...rest }) => {
-    return (
-        <LabelWithHelpTemplateStyled {...rest}>
-            {children}
-        </LabelWithHelpTemplateStyled>
-    )
+    return <LabelWithHelpTemplateStyled {...rest}>{children}</LabelWithHelpTemplateStyled>
 }
 
 export default LabelWithHelpTemplate

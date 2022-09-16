@@ -19,8 +19,7 @@ Example1.args = {
 export const Example2 = Template.bind({})
 Example2.args = {
     value: 345,
-    pattern:
-        '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
+    pattern: '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
@@ -30,8 +29,7 @@ Example2.args = {
 export const Example3 = Template.bind({})
 Example3.args = {
     value: 345,
-    pattern:
-        '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
+    pattern: '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
@@ -42,8 +40,7 @@ Example3.args = {
 export const Example4 = Template.bind({})
 Example4.args = {
     value: 345,
-    pattern:
-        '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
+    pattern: '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',
@@ -54,8 +51,7 @@ Example4.args = {
 
 Example4.args = {
     value: 345,
-    pattern:
-        '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
+    pattern: '^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$',
     onChange: () => console.log('change'),
     autoFocus: true,
     name: 'sortOrder',

@@ -56,6 +56,8 @@ export const CHARACTERISTIC_GROUPS_PATH = SERVER_PATH + CHARACTERISTIC_GROUPS
 const CHARACTERISTIC_SETS = '/characteristic-sets'
 export const CHARACTERISTIC_SETS_PATH = SERVER_PATH + CHARACTERISTIC_SETS
 
+export const CONTACTS_PATH = SERVER_PATH + '/contacts'
+
 export const THEMES_PATH = SERVER_PATH + '/themes'
 
 const GOODS = '/goods'
