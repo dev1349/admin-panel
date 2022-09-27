@@ -25,6 +25,12 @@ const AddGoodImagesModal = ({
     paginationItemClick,
     deleteImageFromServer,
     isDeleteImageButtonDisabled,
+    modalTitle,
+    modalDescription,
+    imagesPerPageText,
+    yesButtonTitle,
+    noButtonTitle,
+    deleteImagesModalTitle,
 }) => {
     const [openDeletingWindow, setOpenDeletingWindow] = useState(false)
 
@@ -83,7 +89,7 @@ const AddGoodImagesModal = ({
         <AdminModal
             open={openAddGoodImagesModal}
             onClose={handleCloseAddGoodImagesModal}
-            title={'Выбор/добавление фото товара'}
+            title={modalTitle}
             buttons={[
                 <IconButton key={0} dialogButton disableRipple onClick={handleCloseAddGoodImagesModal} autoFocus>
                     <UndoIcon />
@@ -107,7 +113,7 @@ const AddGoodImagesModal = ({
             </Container>
             <Container marginTop7>
                 <ItemsPerPage
-                    title={'Показывать на странице:'}
+                    title={imagesPerPageText}
                     buttonValues={[10, 25, 50]}
                     currentValue={imagesPerPage}
                     onChange={changeImagesPerPage}
@@ -130,8 +136,10 @@ const AddGoodImagesModal = ({
                 open={openDeletingWindow}
                 onClose={handleCloseDeletingWindow}
                 onYes={handleDeleteImageFromServer}
-                title={'Подтверждение удаления'}
-                description={'Вы действительно хотите удалить это изображения с сервера?'}
+                title={deleteImagesModalTitle}
+                description={modalDescription}
+                yesButtonTitle={yesButtonTitle}
+                noButtonTitle={noButtonTitle}
             />
         </AdminModal>
     )

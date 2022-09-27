@@ -1,7 +1,7 @@
 import Checkbox from '../../atoms/inputs/checkbox/Checkbox'
 import React from 'react'
 
-const headLines = (isIndeterminate, isChecked, handleSelectAllGoods) => [
+const headLines = (isIndeterminate, isChecked, handleSelectAllGoods, t) => [
     {
         id: 0,
         content: (
@@ -13,14 +13,14 @@ const headLines = (isIndeterminate, isChecked, handleSelectAllGoods) => [
     },
     {
         id: 1,
-        content: 'Изображение',
+        content: t('goodListColumn01'),
         name: 'image',
         align: 'center',
         canSort: false,
     },
     {
         id: 2,
-        content: 'Название',
+        content: t('goodListColumn02'),
         name: 'name',
         align: 'left',
         canSort: true,
@@ -28,28 +28,28 @@ const headLines = (isIndeterminate, isChecked, handleSelectAllGoods) => [
 
     {
         id: 3,
-        content: 'Цена',
+        content: t('goodListColumn03'),
         name: 'price',
         align: 'right',
         canSort: true,
     },
     {
         id: 4,
-        content: 'Категория',
+        content: t('goodListColumn04'),
         name: 'category',
         align: 'left',
         canSort: true,
     },
     {
         id: 5,
-        content: 'Количество',
+        content: t('goodListColumn05'),
         name: 'amount',
         align: 'right',
         canSort: true,
     },
     {
         id: 6,
-        content: 'Состояние',
+        content: t('goodListColumn06'),
         name: 'goodState',
         align: 'left',
         canSort: true,

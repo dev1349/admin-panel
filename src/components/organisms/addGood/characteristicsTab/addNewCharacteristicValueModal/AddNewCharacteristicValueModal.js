@@ -12,7 +12,13 @@ import AdminModal from '../../../../molecules/modals/adminModal/AdminModal'
 import AddIcon from '../../../../atoms/icons/addIcon/AddIcon'
 import SaveIcon from '../../../../atoms/icons/saveIcon/SaveIcon'
 
-const AddNewCharacteristicValueModal = ({ openAddValueWindow, closeAddValueWindow, activeCharacteristic, saveCharacteristicNewValues }) => {
+const AddNewCharacteristicValueModal = ({
+    openAddValueWindow,
+    closeAddValueWindow,
+    activeCharacteristic,
+    saveCharacteristicNewValues,
+    addNewValueModalTitle,
+}) => {
     const [characteristicNewValue, setCharacteristicNewValue] = useState(null)
 
     const handleChangeNewValue = payload => {
@@ -87,7 +93,7 @@ const AddNewCharacteristicValueModal = ({ openAddValueWindow, closeAddValueWindo
         <AdminModal
             open={openAddValueWindow}
             onClose={handleCloseAddValueWindow}
-            title={'Новое значение'}
+            title={addNewValueModalTitle}
             buttons={[
                 <IconButton key={0} dialogButton disableRipple onClick={handleCloseAddValueWindow} autoFocus>
                     <UndoIcon />

@@ -9,7 +9,7 @@ import Typography from '../../../atoms/textElements/typography/Typography'
 import Button from '../../../atoms/button/Button'
 import ModalWindow from '../../../atoms/modalWindow/ModalWindow'
 
-const ErrorModal = ({ open, onClose, title, description }) => {
+const ErrorModal = ({ open, onClose, title, description, okButtonTitle }) => {
     return (
         <ModalWindow open={open} onClose={onClose} aria-labelledby={title} aria-describedby={description}>
             <ModalContent>
@@ -27,7 +27,7 @@ const ErrorModal = ({ open, onClose, title, description }) => {
                         <Box marginTop7>
                             <FlexTemplate justifyContentCenter gap10>
                                 <Button dialogButton autoFocus disableRipple onClick={onClose}>
-                                    Ok
+                                    {okButtonTitle}
                                 </Button>
                             </FlexTemplate>
                         </Box>

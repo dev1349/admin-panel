@@ -30,6 +30,25 @@ const MainTab = ({
     isOpenAddGoodImagesModal,
     openAddGoodImagesModal,
     closeAddGoodImagesModal,
+    nameLabel,
+    namePlaceholder,
+    descriptionLabel,
+    descriptionPlaceholder,
+    priceLabel,
+    pricePlaceholder,
+    discountPriceLabel,
+    discountPricePlaceholder,
+    amountLabel,
+    amountPlaceholder,
+    stateLabel,
+    statePlaceholder,
+    imagesLabel,
+    deleteImagesModalTitle,
+    deleteImagesModalDescription,
+    imagesPerPageText,
+    yesButtonTitle,
+    noButtonTitle,
+    imagesModalTitle,
 }) => {
     return (
         <>
@@ -37,62 +56,62 @@ const MainTab = ({
                 id={'goodsName'}
                 label={
                     <>
-                        Название <Fragment requiredFieldStar>*</Fragment>
+                        {nameLabel} <Fragment requiredFieldStar>*</Fragment>
                     </>
                 }
                 name={'name'}
                 value={goodProperties['name']}
                 onChange={changeGoodProperties}
-                placeholder={'Введите название товара'}
+                placeholder={namePlaceholder}
                 autoFocus
             />
             <LabeledTextFieldMultiline
                 id={'goodsDescription'}
-                label={'Описание'}
+                label={descriptionLabel}
                 name={'description'}
                 value={goodProperties['description']}
                 onChange={changeGoodProperties}
-                placeholder={'Введите описание товара'}
+                placeholder={descriptionPlaceholder}
             />
             <LabeledFloatField
                 id={'goodsPrice'}
-                label={'Цена'}
+                label={priceLabel}
                 name={'price'}
                 value={goodProperties['price']}
                 onChange={changeGoodProperties}
-                placeholder={'Введите цену товара'}
+                placeholder={pricePlaceholder}
                 pattern={'^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$'}
             />
             <LabeledFloatField
                 id={'discountGoodsPrice'}
-                label={'Цена по скидке'}
+                label={discountPriceLabel}
                 name={'discountPrice'}
                 value={goodProperties['discountPrice']}
                 onChange={changeGoodProperties}
-                placeholder={'Введите цену товара по скидке'}
+                placeholder={discountPricePlaceholder}
                 pattern={'^(|0|0[.,]|0[.,][0-9]{0,2}|[1-9][0-9]*|[1-9][0-9]*[.,][0-9]{0,2})$'}
             />
             <LabeledNumberField
                 id={'goodsCount'}
-                label={'Количество, шт.'}
+                label={amountLabel}
                 name={'amount'}
                 value={goodProperties['amount']}
                 onChange={changeGoodProperties}
-                placeholder={'Введите количество товара'}
+                placeholder={amountPlaceholder}
             />
             <LabeledSelectField
                 id={'goodsState'}
-                label={'Состояние'}
+                label={stateLabel}
                 name={'goodState'}
                 value={goodProperties['goodState']}
                 onChange={changeGoodProperties}
                 items={goodStateItems}
-                defaultLabel={'Выберите состояние товара'}
+                defaultLabel={statePlaceholder}
                 isStartItemDisabled={true}
             />
             <LabeledImageList
                 id={'goodsImages'}
-                label={'Фото'}
+                label={imagesLabel}
                 name={'images'}
                 images={goodProperties['images']}
                 onAdd={openAddGoodImagesModal}
@@ -116,6 +135,12 @@ const MainTab = ({
                 paginationItemClick={paginationItemClick}
                 deleteImageFromServer={deleteImageFromServer}
                 isDeleteImageButtonDisabled={isDeleteImageButtonDisabled}
+                modalTitle={imagesModalTitle}
+                deleteImagesModalTitle={deleteImagesModalTitle}
+                modalDescription={deleteImagesModalDescription}
+                imagesPerPageText={imagesPerPageText}
+                yesButtonTitle={yesButtonTitle}
+                noButtonTitle={noButtonTitle}
             />
         </>
     )

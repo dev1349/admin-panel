@@ -44,6 +44,7 @@ const Goods = ({
     isPaginationDisabled,
     itemsPerPage,
     onChangeItemsPerPage,
+    itemsPerPageText,
 }) => {
     const [activeRow, setActiveRow] = useState(null)
 
@@ -209,7 +210,7 @@ const Goods = ({
                     {itemsPerPage && (
                         <Container marginTop7>
                             <ItemsPerPage
-                                title={'Показывать на странице:'}
+                                title={itemsPerPageText}
                                 buttonValues={[10, 25, 50]}
                                 currentValue={itemsPerPage}
                                 onChange={onChangeItemsPerPage}

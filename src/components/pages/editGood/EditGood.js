@@ -24,12 +24,10 @@ import {
 } from '../../../reducers/characteristicsSlice'
 import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AddGood from '../../organisms/addGood/AddGood'
-import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import UndoIcon from '../../atoms/icons/undoIcon/UndoIcon'
 import SaveIcon from '../../atoms/icons/saveIcon/SaveIcon'
 import MainTab from '../../organisms/addGood/mainTab/MainTab'
-import goodStateItems from '../addGood/goodStateItems'
 import { SERVER_PATH } from '../../../api/apiConstants'
 import CharacteristicsTab from '../../organisms/addGood/characteristicsTab/CharacteristicsTab'
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
@@ -37,6 +35,9 @@ import Loader from '../../molecules/loader/Loader'
 import { createValue } from '../../molecules/characteristicSetContainer/createCharacteristicValueItems'
 import { useGetGoodQuery, useUpdateGoodMutation } from '../../../api/goodsApi'
 import { useAddImageMutation, useDeleteImageMutation, useGetImagesQuery } from '../../../api/imagesApi'
+import { useTranslation } from 'react-i18next'
+import getGoodStateItems from '../addGood/goodStateItems'
+import EditIcon from '../../atoms/icons/editIcon/EditIcon'
 
 const initialGoodProperties = {
     id: null,
@@ -495,12 +496,14 @@ const EditGood = () => {
         }
     }, [isServerError])
 
+    const { t } = useTranslation('goods')
+
     return (
         <>
             <MaxWidthTemplate>
                 <AddGood
-                    icon={<AddIcon dialogIcon />}
-                    title={'Добавить товар'}
+                    icon={<EditIcon dialogIcon />}
+                    title={t('editGoodTitle')}
                     buttons={[
                         <IconButton key={0} dialogButton disableRipple onClick={handleGoBackToGoods} disabled={isGoBackButtonDisabled}>
                             <UndoIcon dialogIcon />
@@ -514,13 +517,13 @@ const EditGood = () => {
                     tabs={[
                         {
                             id: 0,
-                            label: 'Основные',
+                            label: t('mainTab'),
                             link: '',
                             tabPanel: (
                                 <MainTab
                                     goodProperties={goodProperties}
                                     changeGoodProperties={handleSetGoodProperties}
-                                    goodStateItems={goodStateItems}
+                                    goodStateItems={getGoodStateItems(t)}
                                     uploadImageToServer={handleUploadImageToServer}
                                     addImagesToGood={addImagesToGood}
                                     deleteImageFromGood={deleteImageFromGood}
@@ -539,12 +542,31 @@ const EditGood = () => {
                                     isOpenAddGoodImagesModal={isOpenAddGoodImagesModal}
                                     closeAddGoodImagesModal={handleCloseAddGoodImagesModal}
                                     openAddGoodImagesModal={handleOpenAddGoodImagesModal}
+                                    nameLabel={t('goodName')}
+                                    namePlaceholder={t('goodNamePlaceholder')}
+                                    descriptionLabel={t('goodDescription')}
+                                    descriptionPlaceholder={t('goodDescriptionPlaceholder')}
+                                    priceLabel={t('goodPrice')}
+                                    pricePlaceholder={t('goodPricePlaceholder')}
+                                    discountPriceLabel={t('goodDiscountPrice')}
+                                    discountPricePlaceholder={t('goodDiscountPricePlaceholder')}
+                                    amountLabel={t('goodAmount')}
+                                    amountPlaceholder={t('goodAmountPlaceholder')}
+                                    stateLabel={t('goodState')}
+                                    statePlaceholder={t('goodStatePlaceholder')}
+                                    imagesLabel={t('goodImages')}
+                                    imagesModalTitle={t('addGoodImageModalTitle')}
+                                    deleteImagesModalTitle={t('deleteImagesTitle')}
+                                    deleteImagesModalDescription={t('deleteImagesDescription')}
+                                    imagesPerPageText={t('imagesPerPage')}
+                                    yesButtonTitle={t('yesButtonTitle')}
+                                    noButtonTitle={t('noButtonTitle')}
                                 />
                             ),
                         },
                         {
                             id: 1,
-                            label: 'Характеристики',
+                            label: t('goodCharacteristicsTab'),
                             link: 'characteristics',
                             tabPanel: (
                                 <CharacteristicsTab
@@ -559,6 +581,11 @@ const EditGood = () => {
                                     saveCharacteristicNewValues={handleSaveCharacteristicNewValues}
                                     characteristicGetGetPostPutDeleteFetchStatus={characteristicGetGetPostPutDeleteFetchStatus}
                                     getCategoryFromServer={handleGetCategoryFromServer}
+                                    categoryLabel={t('category')}
+                                    categoryPlaceholder={t('categoryPlaceholder')}
+                                    characteristicPlaceholder={t('characteristicPlaceholder')}
+                                    characteristicsHeader={t('characteristicsHeader')}
+                                    addNewValueModalTitle={t('addNewValueModalTitle')}
                                 />
                             ),
                         },
@@ -568,14 +595,16 @@ const EditGood = () => {
             <ErrorModal
                 open={isShowErrorModal}
                 onClose={handleCloseServerErrorModal}
-                title={'Ошибка сервера'}
-                description={'Сервер не может выполнить указанную операцию :('}
+                title={t('serverErrorTitle')}
+                description={t('serverErrorDescription')}
+                okButtonTitle={t('okButtonTitle')}
             />
             <ErrorModal
                 open={isShowDeleteImageErrorModal}
                 onClose={handleCloseDeleteImageErrorModal}
-                title={'Ошибка сервера'}
-                description={'Это изображение уже используется в товаре/ах! Вы не можете его удалить!'}
+                title={t('serverErrorTitle')}
+                description={t('deleteImageDescription')}
+                okButtonTitle={t('okButtonTitle')}
             />
             {isPending && <Loader dialogProgress />}
         </>

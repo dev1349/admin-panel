@@ -32,9 +32,10 @@ import {
 } from '../../../reducers/characteristicsSlice'
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import { SERVER_PATH } from '../../../api/apiConstants'
-import goodStateItems from './goodStateItems'
 import { useAddGoodMutation } from '../../../api/goodsApi'
 import { useAddImageMutation, useDeleteImageMutation, useGetImagesQuery } from '../../../api/imagesApi'
+import { useTranslation } from 'react-i18next'
+import getGoodStateItems from './goodStateItems'
 
 const initialGoodProperties = {
     name: null,
@@ -385,12 +386,14 @@ const AddGoodPage = () => {
         if (isDeleteImageError) setIsShowDeleteImageErrorModal(true)
     }, [isDeleteImageError])
 
+    const { t } = useTranslation('goods')
+
     return (
         <>
             <MaxWidthTemplate>
                 <AddGood
                     icon={<AddIcon dialogIcon />}
-                    title={'Добавить товар'}
+                    title={t('addGoodTitle')}
                     buttons={[
                         <IconButton key={0} dialogButton disableRipple onClick={handleGoBackToGoods} disabled={isGoBackButtonDisabled}>
                             <UndoIcon dialogIcon />
@@ -404,13 +407,13 @@ const AddGoodPage = () => {
                     tabs={[
                         {
                             id: 0,
-                            label: 'Основные',
+                            label: t('mainTab'),
                             link: '',
                             tabPanel: (
                                 <MainTab
                                     goodProperties={goodProperties}
                                     changeGoodProperties={handleSetGoodProperties}
-                                    goodStateItems={goodStateItems}
+                                    goodStateItems={getGoodStateItems(t)}
                                     uploadImageToServer={handleUploadImageToServer}
                                     addImagesToGood={addImagesToGood}
                                     deleteImageFromGood={deleteImageFromGood}
@@ -429,12 +432,31 @@ const AddGoodPage = () => {
                                     isOpenAddGoodImagesModal={isOpenAddGoodImagesModal}
                                     closeAddGoodImagesModal={handleCloseAddGoodImagesModal}
                                     openAddGoodImagesModal={handleOpenAddGoodImagesModal}
+                                    nameLabel={t('goodName')}
+                                    namePlaceholder={t('goodNamePlaceholder')}
+                                    descriptionLabel={t('goodDescription')}
+                                    descriptionPlaceholder={t('goodDescriptionPlaceholder')}
+                                    priceLabel={t('goodPrice')}
+                                    pricePlaceholder={t('goodPricePlaceholder')}
+                                    discountPriceLabel={t('goodDiscountPrice')}
+                                    discountPricePlaceholder={t('goodDiscountPricePlaceholder')}
+                                    amountLabel={t('goodAmount')}
+                                    amountPlaceholder={t('goodAmountPlaceholder')}
+                                    stateLabel={t('goodState')}
+                                    statePlaceholder={t('goodStatePlaceholder')}
+                                    imagesLabel={t('goodImages')}
+                                    imagesModalTitle={t('addGoodImageModalTitle')}
+                                    deleteImagesModalTitle={t('deleteImagesTitle')}
+                                    deleteImagesModalDescription={t('deleteImagesDescription')}
+                                    imagesPerPageText={t('imagesPerPage')}
+                                    yesButtonTitle={t('yesButtonTitle')}
+                                    noButtonTitle={t('noButtonTitle')}
                                 />
                             ),
                         },
                         {
                             id: 1,
-                            label: 'Характеристики',
+                            label: t('goodCharacteristicsTab'),
                             link: 'characteristics',
                             tabPanel: (
                                 <CharacteristicsTab
@@ -449,6 +471,11 @@ const AddGoodPage = () => {
                                     saveCharacteristicNewValues={handleSaveCharacteristicNewValues}
                                     characteristicGetGetPostPutDeleteFetchStatus={characteristicGetGetPostPutDeleteFetchStatus}
                                     getCategoryFromServer={handleGetCategoryFromServer}
+                                    categoryLabel={t('category')}
+                                    categoryPlaceholder={t('categoryPlaceholder')}
+                                    characteristicPlaceholder={t('characteristicPlaceholder')}
+                                    characteristicsHeader={t('characteristicsHeader')}
+                                    addNewValueModalTitle={t('addNewValueModalTitle')}
                                 />
                             ),
                         },
@@ -458,14 +485,16 @@ const AddGoodPage = () => {
             <ErrorModal
                 open={isShowErrorModal}
                 onClose={handleCloseServerErrorModal}
-                title={'Ошибка сервера'}
-                description={'Сервер не может выполнить указанную операцию :('}
+                title={t('serverErrorTitle')}
+                description={t('serverErrorDescription')}
+                okButtonTitle={t('okButtonTitle')}
             />
             <ErrorModal
                 open={isShowDeleteImageErrorModal}
                 onClose={handleCloseDeleteImageErrorModal}
-                title={'Ошибка сервера'}
-                description={'Это изображение уже используется в товаре/ах! Вы не можете его удалить!'}
+                title={t('serverErrorTitle')}
+                description={t('deleteImageDescription')}
+                okButtonTitle={t('okButtonTitle')}
             />
             {isPending && <Loader dialogProgress />}
         </>

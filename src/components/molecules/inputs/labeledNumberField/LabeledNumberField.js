@@ -9,7 +9,20 @@ import LabelWithHelpTemplate from '../../../templates/labelWithHelpTemplate/Labe
 
 const LabeledNumberFieldStyled = createStyled('LabeledNumberFieldStyle', 'div')
 
-const WSLabeledNumberField = ({ id, label, name, pattern, value, onChange, autoFocus, onPaste, isHelp, helpText, helpIcon }) => {
+const WSLabeledNumberField = ({
+    id,
+    label,
+    name,
+    pattern,
+    value,
+    onChange,
+    autoFocus,
+    onPaste,
+    isHelp,
+    helpText,
+    helpIcon,
+    placeholder,
+}) => {
     return (
         <LabeledNumberFieldStyled>
             <LabeledInputTemplate>
@@ -32,6 +45,7 @@ const WSLabeledNumberField = ({ id, label, name, pattern, value, onChange, autoF
                     autoFocus={autoFocus}
                     pattern={pattern}
                     onPaste={onPaste}
+                    placeholder={placeholder}
                 />
             </LabeledInputTemplate>
         </LabeledNumberFieldStyled>

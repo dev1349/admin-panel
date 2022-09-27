@@ -14,16 +14,10 @@ import Drawer from '../../atoms/drawer/Drawer'
 import NavMenu from '../../pages/navMenu/NavMenu'
 import StatisticsButton from '../../molecules/buttons/statisticsButton/StatisticsButton'
 import NotificationsIcon from '../../atoms/icons/notificationsIcon/NotificationsIcon'
+import ToggleButtonGroup from '../../atoms/toggleButtonGroup/ToggleButtonGroup'
+import ToggleButton from '../../atoms/toggleButton/ToggleButton'
 
-const PageHeader = ({
-    onClickMenu,
-    logo,
-    statisticsProps,
-    importExportProps,
-    shopsProps,
-    helpProps,
-    onClickLogout,
-}) => {
+const PageHeader = ({ onClickMenu, logo, statisticsProps, importExportProps, shopsProps, helpProps, onClickLogout, i18n }) => {
     const [anchorEl, setAnchorEl] = useState(null)
     const [isMenuOpen, setMenuOpenStatus] = useState(false)
     const handleClick = evt => {
@@ -46,13 +40,18 @@ const PageHeader = ({
         onClickLogout && onClickLogout()
     }
     const hideDrawer = event => {
-        if (
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return
         }
         setMenuOpenStatus(false)
+    }
+
+    const [language, setLanguage] = useState(localStorage.getItem('language') || 'uk')
+
+    const handleSetLanguage = (event, language) => {
+        localStorage.setItem('language', language)
+        i18n.changeLanguage(language)
+        setLanguage(language)
     }
 
     return (
@@ -64,16 +63,24 @@ const PageHeader = ({
                 <Img path={logo.imgSrc} altText={logo.altTextImg} logo />
             </Link>
             <PageHeaderItemRightTemplate>
-                <StatisticsButton
-                    id={statisticsProps.id}
-                    anchorEl={anchorEl}
-                    handleClick={handleClick}
-                    handleClose={handleClose}
-                    menuItems={statisticsProps.menuItems}
-                >
-                    <NotificationsIcon />
-                </StatisticsButton>
+                <ToggleButtonGroup exclusive value={language} onChange={handleSetLanguage}>
+                    <ToggleButton value={'uk'} aria-label="uk" languageToggleButton disableRipple>
+                        uk
+                    </ToggleButton>
+                    <ToggleButton value={'ru'} aria-label="ru" languageToggleButton disableRipple>
+                        ru
+                    </ToggleButton>
+                </ToggleButtonGroup>
             </PageHeaderItemRightTemplate>
+            <StatisticsButton
+                id={statisticsProps.id}
+                anchorEl={anchorEl}
+                handleClick={handleClick}
+                handleClose={handleClose}
+                menuItems={statisticsProps.menuItems}
+            >
+                <NotificationsIcon />
+            </StatisticsButton>
             <MenuButton
                 id={importExportProps.id}
                 anchorEl={anchorEl}

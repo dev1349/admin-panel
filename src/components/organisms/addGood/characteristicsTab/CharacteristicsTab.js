@@ -39,6 +39,11 @@ const CharacteristicsTab = ({
     saveCharacteristicNewValues,
     characteristicGetGetPostPutDeleteFetchStatus,
     getCategoryFromServer,
+    categoryLabel,
+    categoryPlaceholder,
+    characteristicPlaceholder,
+    characteristicsHeader,
+    addNewValueModalTitle,
 }) => {
     const categoryWithGoodItems = createCategoryWithGoodItems(categories).sort((el1, el2) => (el1.label > el2.label ? 1 : -1))
 
@@ -75,12 +80,12 @@ const CharacteristicsTab = ({
         <>
             <LabeledSelectField
                 id={'goodsCategory'}
-                label={'Категория товара'}
+                label={categoryLabel}
                 name={'category'}
                 value={activeCategoryId}
                 onChange={changeGoodProperties}
                 items={categoryWithGoodItems}
-                defaultLabel={'Выберите категорию товара'}
+                defaultLabel={categoryPlaceholder}
                 isStartItemDisabled={true}
                 disabled={isPending}
                 autoFocus
@@ -96,6 +101,8 @@ const CharacteristicsTab = ({
                             setValuesFromCharacteristicSelects={setValuesFromCharacteristicSelects}
                             valuesFromCharacteristicSelects={valuesFromCharacteristicSelects}
                             openAddValueWindow={handleOpenAddValueWindow}
+                            characteristicPlaceholder={characteristicPlaceholder}
+                            characteristicsHeader={characteristicsHeader}
                         />
                     )
                 })}
@@ -104,6 +111,7 @@ const CharacteristicsTab = ({
                 closeAddValueWindow={handleCloseAddValueWindow}
                 activeCharacteristic={activeCharacteristic}
                 saveCharacteristicNewValues={saveCharacteristicNewValues}
+                addNewValueModalTitle={addNewValueModalTitle}
             />
         </>
     )

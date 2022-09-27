@@ -7,13 +7,14 @@ import GoodIcon from '../../atoms/icons/goodIcon/GoodIcon'
 import Goods from '../../organisms/goods/Goods'
 import headLines from './headLines'
 import { SERVER_PATH } from '../../../api/apiConstants'
-import goodStateItems from '../addGood/goodStateItems'
 import { useHistory } from 'react-router-dom'
 import Loader from '../../molecules/loader/Loader'
 import ErrorModal from '../../molecules/modals/errorModal/ErrorModal'
 import DeleteModal from '../../molecules/modals/deleteModal/DeleteModal'
 import { useQuery } from '../../../hooks/useQuery'
 import { useDeleteGoodMutation, useGetGoodsQuery } from '../../../api/goodsApi'
+import { useTranslation } from 'react-i18next'
+import getGoodStateItems from '../addGood/goodStateItems'
 
 const GoodsPage = () => {
     const [addressBarQuery, setAddressBarQuery] = useState(null)
@@ -204,12 +205,14 @@ const GoodsPage = () => {
         history.push(`/goods?pageSize=${pageSize}`)
     }
 
+    const { t } = useTranslation('goods')
+
     return (
         <>
             <MaxWidthTemplate>
                 <Goods
                     icon={<GoodIcon dialogIcon />}
-                    title={'Товары'}
+                    title={t('goodListTitle')}
                     buttons={[
                         <IconButton key={0} dialogButton disableRipple onClick={handleAddNewGood} disabled={isAddEditButtonDisabled}>
                             <AddIcon />
@@ -218,7 +221,7 @@ const GoodsPage = () => {
                             <DeleteIcon />
                         </IconButton>,
                     ]}
-                    headLines={headLines(isIndeterminate, isChecked, handleSelectAllGoods)}
+                    headLines={headLines(isIndeterminate, isChecked, handleSelectAllGoods, t)}
                     order={'asc'}
                     orderBy={''}
                     onRequestSort={handleRequestSort}
@@ -228,27 +231,31 @@ const GoodsPage = () => {
                     onEditGood={handleEditGood}
                     isEditButtonDisabled={isAddEditButtonDisabled}
                     pathToImage={`${SERVER_PATH}/img/`}
-                    goodStateItems={goodStateItems}
+                    goodStateItems={getGoodStateItems(t)}
                     totalPages={totalPages}
                     currentPage={pageNumber + 1}
                     onPaginationItemClick={handleClickToPaginationItem}
                     isPaginationDisabled={isPending}
                     itemsPerPage={pageSize}
                     onChangeItemsPerPage={handleChangeItemsPerPage}
+                    itemsPerPageText={t('goodPerPage')}
                 />
 
                 <DeleteModal
                     open={openDeleteModal}
                     onClose={handleCloseDeleteModal}
                     onYes={handleDeleteGoods}
-                    title={'Подтверждение удаления'}
-                    description={'Вы действительно хотите удалить этот/и товар/ы?'}
+                    title={t('deleteGoodTitle')}
+                    description={t('deleteGoodDescription')}
+                    yesButtonTitle={t('yesButtonTitle')}
+                    noButtonTitle={t('noButtonTitle')}
                 />
                 <ErrorModal
                     open={isShowServerErrorModal}
                     onClose={handleCloseServerErrorModal}
-                    title={'Ошибка сервера'}
-                    description={'Сервер не может выполнить указанную операцию :('}
+                    title={t('serverErrorTitle')}
+                    description={t('serverErrorDescription')}
+                    okButtonTitle={t('okButtonTitle')}
                 />
                 {isPending && <Loader dialogProgress />}
             </MaxWidthTemplate>

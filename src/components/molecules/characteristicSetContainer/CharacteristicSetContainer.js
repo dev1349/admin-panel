@@ -14,6 +14,8 @@ const CharacteristicSetContainer = ({
     setValuesFromCharacteristicSelects,
     valuesFromCharacteristicSelects,
     openAddValueWindow,
+    characteristicPlaceholder,
+    characteristicsHeader,
 }) => {
     return (
         <Container characteristicSetPaddingTop>
@@ -43,7 +45,7 @@ const CharacteristicSetContainer = ({
                                                 value={valuesFromCharacteristicSelects[characteristic.id]}
                                                 onChange={setValuesFromCharacteristicSelects}
                                                 items={createCharacteristicValueItems(characteristic)}
-                                                defaultLabel={'Выберите значение характеристики'}
+                                                defaultLabel={characteristicPlaceholder}
                                                 isStartItemDisabled={true}
                                                 button={
                                                     <IconButton dialogButton disableRipple onClick={openAddValueWindow(characteristic)}>
@@ -59,7 +61,7 @@ const CharacteristicSetContainer = ({
                 {characteristics?.length !== 0 && (
                     <Container>
                         <Container characteristicGroupTitleContainer>
-                            <Typography characteristicGroupTitle>Характеристики</Typography>
+                            <Typography characteristicGroupTitle>{characteristicsHeader}</Typography>
                         </Container>
                         {characteristics.map(characteristic => {
                             return (
@@ -71,7 +73,7 @@ const CharacteristicSetContainer = ({
                                     value={valuesFromCharacteristicSelects[characteristic.id]}
                                     onChange={setValuesFromCharacteristicSelects}
                                     items={createCharacteristicValueItems(characteristic)}
-                                    defaultLabel={'Выберите значение характеристики'}
+                                    defaultLabel={characteristicPlaceholder}
                                     isStartItemDisabled={true}
                                     button={
                                         <IconButton dialogButton disableRipple onClick={openAddValueWindow(characteristic)}>

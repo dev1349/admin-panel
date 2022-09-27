@@ -9,7 +9,7 @@ import Typography from '../../../atoms/textElements/typography/Typography'
 import Button from '../../../atoms/button/Button'
 import ModalWindow from '../../../atoms/modalWindow/ModalWindow'
 
-const DeleteModal = ({ open, onClose, onYes, title, description }) => {
+const DeleteModal = ({ open, onClose, onYes, title, description, yesButtonTitle, noButtonTitle }) => {
     return (
         <ModalWindow open={open} onClose={onClose} aria-labelledby={title} aria-describedby={description}>
             <ModalContent>
@@ -27,10 +27,10 @@ const DeleteModal = ({ open, onClose, onYes, title, description }) => {
                         <Box marginTop7>
                             <FlexTemplate justifyContentCenter gap10>
                                 <Button dialogButton autoFocus onClick={onYes}>
-                                    Да
+                                    {yesButtonTitle}
                                 </Button>
                                 <Button dialogButton onClick={onClose}>
-                                    Нет
+                                    {noButtonTitle}
                                 </Button>
                             </FlexTemplate>
                         </Box>

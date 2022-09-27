@@ -7,10 +7,10 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        lng: localStorage.getItem('language') || 'en',
-        fallbackLng: 'en',
+        lng: localStorage.getItem('language') || 'uk',
+        fallbackLng: 'uk',
         debug: true,
-        ns: ['translate', 'header', 'admin'],
+        ns: ['translate', 'header', 'admin', 'goods'],
         defaultNS: 'translate',
         keySeparator: '.',
         interpolation: {
