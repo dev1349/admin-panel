@@ -33,7 +33,6 @@ import MegaMenuModalEditFilter from '../../organisms/modals/megaMenuModalEditFil
 import { decrementMegaMenuColumns, getMegaMenuColumns } from './calcMegaMenuColumns'
 import {
     COLUMN_WIDTH,
-    MEGA_MENU_SUB_CONTAINER_TOP_BOTTOM_MARGIN,
     SUB_ITEM_HEIGHT,
     SUB_ITEM_PADDING_BOTTOM,
     SUB_ITEMS_PADDING_LEFT,
@@ -45,7 +44,7 @@ import { useHistory } from 'react-router-dom'
 
 const CreateEditMegaMenu = () => {
     const { width: catalogFirstLevelContainerWidth, ref: catalogFirstLevelContainerRef } = useResizeDetector()
-    const { height: catalogSecondLevelContainerHeight, ref: catalogSecondLevelContainerRef } = useResizeDetector()
+    const { height: catalogSecondLevelContainerHeight, ref: firstLevelItemsListRef } = useResizeDetector()
 
     const [clientWidth, setClientWidth] = useState(document.documentElement.clientWidth)
 
@@ -103,9 +102,7 @@ const CreateEditMegaMenu = () => {
 
     const catalogContainerRef = useRef(null)
 
-    const COLUMN_HEIGHT = catalogSecondLevelContainerHeight
-        ? catalogSecondLevelContainerHeight - 2 * MEGA_MENU_SUB_CONTAINER_TOP_BOTTOM_MARGIN
-        : 400
+    const COLUMN_HEIGHT = catalogSecondLevelContainerHeight ? catalogSecondLevelContainerHeight : 400
     const MEGA_MENU_CONTAINER_RIGHT = catalogContainerRef?.current?.offsetLeft * 2 || 0
 
     let menuColumns = getMegaMenuColumns(
@@ -309,7 +306,7 @@ const CreateEditMegaMenu = () => {
                             <Container megaMenuShadowContainer>
                                 <Container catalogItemsContainer forwardRef={catalogFirstLevelContainerRef}>
                                     {megaMenuItems && megaMenuItems.length > 0 && (
-                                        <Ul catalogFirstLevelList>
+                                        <Ul catalogFirstLevelList forwardRef={firstLevelItemsListRef}>
                                             {[...megaMenuItems]
                                                 .sort((el1, el2) => el1.ordering - el2.ordering)
                                                 .map(firstLevelItem => {
@@ -379,11 +376,7 @@ const CreateEditMegaMenu = () => {
                                     </Container>
                                 </Container>
 
-                                <Container
-                                    catalogSubItemsContainer
-                                    style={{ width: !hasSubItems ? `${COLUMN_WIDTH + 68}px` : 'unset' }}
-                                    forwardRef={catalogSecondLevelContainerRef}
-                                >
+                                <Container catalogSubItemsContainer style={{ width: !hasSubItems ? `${COLUMN_WIDTH + 68}px` : 'unset' }}>
                                     {hoveredFirstLevelItem && hasSubItems && (
                                         <Ul catalogSubLevelList style={{ width: `${menuColumns * COLUMN_WIDTH}px`, columns: menuColumns }}>
                                             {[...hoveredFirstLevelItem.subItemList]
