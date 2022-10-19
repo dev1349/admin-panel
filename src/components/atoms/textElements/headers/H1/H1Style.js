@@ -29,5 +29,15 @@ export default {
                 textAlign: 'center',
             },
         },
+        {
+            props: { megaMenuHeader: true },
+            style: {
+                color: '#7fe376',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '18px',
+                lineHeight: 1,
+            },
+        },
     ],
 }

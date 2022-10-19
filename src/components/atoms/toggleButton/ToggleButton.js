@@ -2,7 +2,7 @@ import React from 'react'
 import { ToggleButton } from '@mui/material'
 import { createStyled } from '../../../services/style/createStyled'
 
-const ToggleButtonStyled = createStyled('ToggleButtonStyle', ToggleButton, ['dialogToggleButton'])
+const ToggleButtonStyled = createStyled('ToggleButtonStyle', ToggleButton, ['dialogToggleButton', 'languageToggleButton'])
 
 const ToggleButtonWS = ({ children, ...rest }) => {
     return <ToggleButtonStyled {...rest}>{children}</ToggleButtonStyled>

@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
+import MenuItem from '../../../atoms/inputs/menuItem/MenuItem'
 import IconButton from '../iconButton/IconButton'
 import Menu from '../../../atoms/menu/Menu'
 import StatisticsSubHeader from '../../../atoms/textElements/statisticsSubHeader/StatisticsSubHeader'

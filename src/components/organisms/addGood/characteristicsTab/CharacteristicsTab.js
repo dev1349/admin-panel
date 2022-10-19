@@ -3,29 +3,7 @@ import LabeledSelectField from '../../../molecules/inputs/labeledSelectField/Lab
 import { findCategoryById } from '../../../pages/addCategory/categoryOperations'
 import CharacteristicSetContainer from '../../../molecules/characteristicSetContainer/CharacteristicSetContainer'
 import AddNewCharacteristicValueModal from './addNewCharacteristicValueModal/AddNewCharacteristicValueModal'
-
-const createCategoryWithGoodItems = categories => {
-    let categoryItems = []
-
-    const createItems = category => {
-        if (category.categoryType === 'WITH_GOODS') {
-            categoryItems.push({
-                id: category.id,
-                label: category.name,
-                value: category.id,
-            })
-        }
-        if (Array.isArray(category.subCategories) && category.subCategories.length !== 0 && category.subCategories[0] !== null) {
-            category.subCategories.forEach(subCategory => createItems(subCategory))
-        }
-    }
-
-    if (categories) {
-        categories.forEach(category => createItems(category))
-    }
-
-    return categoryItems
-}
+import { createCategoriesWithGoodsItems } from '../../../../common/categories/getCategoriesForSelect'
 
 const CharacteristicsTab = ({
     activeCategoryId,
@@ -45,7 +23,7 @@ const CharacteristicsTab = ({
     characteristicsHeader,
     addNewValueModalTitle,
 }) => {
-    const categoryWithGoodItems = createCategoryWithGoodItems(categories).sort((el1, el2) => (el1.label > el2.label ? 1 : -1))
+    const categoryWithGoodItems = createCategoriesWithGoodsItems(categories).sort((el1, el2) => (el1.label > el2.label ? 1 : -1))
 
     const [selectedCategory, setSelectedCategory] = useState(null)
 

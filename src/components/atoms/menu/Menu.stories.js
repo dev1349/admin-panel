@@ -1,6 +1,6 @@
 import React from 'react'
 import Menu from './Menu'
-import MenuItem from '../inputs/selectField/menuItem/MenuItem'
+import MenuItem from '../inputs/menuItem/MenuItem'
 
 export default {
     title: 'atoms/Menu',
@@ -29,12 +29,7 @@ const Template = args => {
             >
                 click here to see MENU
             </div>
-            <Menu
-                {...args}
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            />
+            <Menu {...args} anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose} />
         </>
     )
 }
@@ -45,9 +40,5 @@ Example1.args = {
     anchorEl: null,
     open: false,
     onClose: () => console.log('close menu'),
-    children: [
-        <MenuItem key={0}>Profile</MenuItem>,
-        <MenuItem key={1}>My account</MenuItem>,
-        <MenuItem key={2}>Logout</MenuItem>,
-    ],
+    children: [<MenuItem key={0}>Profile</MenuItem>, <MenuItem key={1}>My account</MenuItem>, <MenuItem key={2}>Logout</MenuItem>],
 }

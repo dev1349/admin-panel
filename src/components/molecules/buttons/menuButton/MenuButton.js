@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@mui/material'
-import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
+import MenuItem from '../../../atoms/inputs/menuItem/MenuItem'
 import IconButton from '../iconButton/IconButton'
 import Menu from '../../../atoms/menu/Menu'
 import { Link as RouterLink } from 'react-router-dom'

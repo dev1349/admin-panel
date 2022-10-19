@@ -21,3 +21,11 @@ Example1.args = {
     disableRipple: true,
     checkedImages: false,
 }
+
+export const EditItemIconButton = Template.bind({})
+EditItemIconButton.args = {
+    children: <AddIcon />,
+    dialogButton: true,
+    editItemButton: true,
+    editItemButtonSmall: true,
+}

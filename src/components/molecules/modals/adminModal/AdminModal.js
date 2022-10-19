@@ -5,11 +5,11 @@ import AdminPageHeader from '../../headers/adminPageHeader/AdminPageHeader'
 import Box from '../../../atoms/wrappers/box/Box'
 import Container from '../../../templates/container/Container'
 
-const AdminModal = ({ open, onClose, title, description, buttons, children, ...rest }) => {
+const AdminModal = ({ open, onClose, title, description, buttons, children, icon, ...rest }) => {
     return (
         <ModalWindow open={open} onClose={onClose} aria-labelledby={title} aria-describedby={description}>
             <ModalContent flexContent {...rest}>
-                <AdminPageHeader title={title} buttons={buttons} />
+                <AdminPageHeader title={title} buttons={buttons} icon={icon} />
                 <Box maxHeight500 {...rest}>
                     <Container modalContentPadding>{children}</Container>
                 </Box>

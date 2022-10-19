@@ -65,3 +65,6 @@ export const GOODS_PATH = SERVER_PATH + GOODS
 
 const IMAGES = '/images'
 export const IMAGES_PATH = SERVER_PATH + IMAGES
+
+const MEGAMENU = '/megamenu_items'
+export const MEGAMENU_PATH = SERVER_PATH + MEGAMENU

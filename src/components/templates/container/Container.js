@@ -28,10 +28,38 @@ const ContainerStyled = createStyled('ContainerStyle', 'div', [
     'maxWidthImageInGoodListContainer',
     'flexCenter',
     'flexEnd',
+    'catalogContainer',
+    'catalogItemsContainer',
+    'catalogItemContainer',
+    'catalogItemLinkContainer',
+    'catalogSubItemsContainer',
+    'addNewFirstLevelItemButtonContainer',
+    'activeMenuItemContainer',
+    'catalogSubItemContainer',
+    'catalogSubSubItemContainer',
+    'megaMenuShadowContainer',
+    'activeCatalogSubItemContainer',
+    'catalogItemButtonsContainer',
+    'catalogSubItemButtonsContainer',
+    'activeCatalogSubSubLevelContainer',
+    'addSubSubItemsButtonContainer',
+    'activeCatalogSubSubItemContainer',
+    'addSubSubItemButtonsContainer',
+    'addNewSecondLevelItemButtonContainer',
+    'activeCatalogSubItemsContainer',
+    'megaMenuModalIconTitleContainer',
+    'megaMenuModalButtonsContainer',
+    'megaMenuModalHeaderContainer',
+    'megaMenuModalContentContainer',
+    'addNewSecondLevelItemButtonHideContainer',
 ])
 
-const Container = ({ children, ...rest }) => {
-    return <ContainerStyled {...rest}>{children}</ContainerStyled>
+const Container = ({ children, forwardRef, ...rest }) => {
+    return (
+        <ContainerStyled {...rest} ref={forwardRef}>
+            {children}
+        </ContainerStyled>
+    )
 }
 
 export default Container

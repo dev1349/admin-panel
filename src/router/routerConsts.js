@@ -43,3 +43,4 @@ export const EDIT_CHARACTERISTIC_SET = '/editCharacteristicSet/:characteristicSe
 export const CARDS = '/cards'
 export const ADD_GOOD = '/addGood/:tabLabel?'
 export const CAROUSEL = '/carousel'
+export const CREATE_EDIT_MEGA_MENU = '/create-edit-mega-menu'

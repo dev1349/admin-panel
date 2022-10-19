@@ -2,7 +2,7 @@ import React from 'react'
 import MenuItem from './MenuItem'
 
 export default {
-    title: 'atoms/inputs/selectField/MenuItem',
+    title: 'atoms/inputs/MenuItem',
     component: MenuItem,
     argTypes: {
         onChange: { action: 'change' },
@@ -20,4 +20,10 @@ export const Example2 = Template.bind({})
 Example2.args = {
     children: <div>menu item text...</div>,
     forTable: true,
+}
+
+export const DialogMenuItem = Template.bind({})
+DialogMenuItem.args = {
+    children: <div>menu item text...</div>,
+    dialogMenuItem: true,
 }

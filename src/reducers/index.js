@@ -21,6 +21,10 @@ import behaviorServerInteractionReducer from './behaviorServerInteraction'
 import { goodsApi } from '../api/goodsApi'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { imagesApi } from '../api/imagesApi'
+import megaMenuReducer from './megaMenuSlice'
+import { categoriesApi } from '../api/categoriesApiNew'
+import { facetsApi } from '../api/facetsApi'
+import { megaMenuApi } from '../api/megaMenuApi'
 
 export const store = configureStore({
     reducer: {
@@ -45,8 +49,18 @@ export const store = configureStore({
         behaviorServerInteraction: behaviorServerInteractionReducer,
         [goodsApi.reducerPath]: goodsApi.reducer,
         [imagesApi.reducerPath]: imagesApi.reducer,
+        megaMenu: megaMenuReducer,
+        [categoriesApi.reducerPath]: categoriesApi.reducer,
+        [facetsApi.reducerPath]: facetsApi.reducer,
+        [megaMenuApi.reducerPath]: megaMenuApi.reducer,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(goodsApi.middleware).concat(imagesApi.middleware),
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware()
+            .concat(goodsApi.middleware)
+            .concat(imagesApi.middleware)
+            .concat(categoriesApi.middleware)
+            .concat(facetsApi.middleware)
+            .concat(megaMenuApi.middleware),
 })
 
 setupListeners(store.dispatch)

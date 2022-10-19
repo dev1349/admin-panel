@@ -57,5 +57,24 @@ export default {
                 },
             },
         },
+        {
+            props: { editItemButton: true },
+            style: {
+                '& .MuiSvgIcon-root': {
+                    height: '16px',
+                    width: '16px',
+                },
+            },
+        },
+        {
+            props: { editItemButtonSmall: true },
+            style: {
+                padding: '2px',
+                '& .MuiSvgIcon-root': {
+                    height: '16px',
+                    width: '16px',
+                },
+            },
+        },
     ],
 }

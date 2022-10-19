@@ -5,9 +5,8 @@ import GoodIcon from '../../atoms/icons/goodIcon/GoodIcon'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
-import headLines from '../../pages/goods/headLines'
 import { SERVER_PATH } from '../../../api/apiConstants'
-import goodStateItems from '../../pages/addGood/goodStateItems'
+import Checkbox from '../../atoms/inputs/checkbox/Checkbox'
 
 export default {
     title: 'organisms/Goods',
@@ -2704,7 +2703,71 @@ GoodsDefault.args = {
             <DeleteIcon />
         </IconButton>,
     ],
-    headLines: headLines(false, false, () => console.log('select all checkboxes...')),
+    headLines: [
+        {
+            id: 0,
+            content: (
+                <Checkbox
+                    dialogCheckbox
+                    disableRipple
+                    indeterminate={false}
+                    checked={false}
+                    onChange={() => console.log('select all checkboxes...')}
+                />
+            ),
+            name: 'checkbox',
+            align: 'left',
+            canSort: false,
+        },
+        {
+            id: 1,
+            content: 'Зображення',
+            name: 'image',
+            align: 'center',
+            canSort: false,
+        },
+        {
+            id: 2,
+            content: 'Назва',
+            name: 'name',
+            align: 'left',
+            canSort: true,
+        },
+
+        {
+            id: 3,
+            content: 'Ціна',
+            name: 'price',
+            align: 'right',
+            canSort: true,
+        },
+        {
+            id: 4,
+            content: 'Категорія',
+            name: 'category',
+            align: 'left',
+            canSort: true,
+        },
+        {
+            id: 5,
+            content: 'Кількість',
+            name: 'amount',
+            align: 'right',
+            canSort: true,
+        },
+        {
+            id: 6,
+            content: 'Стан',
+            name: 'goodState',
+            align: 'left',
+            canSort: true,
+        },
+        {
+            id: 7,
+            content: '',
+            align: 'right',
+        },
+    ],
     order: 'asc',
     orderBy: '',
     onRequestSort: property => () => console.log('request sorting...', property),
@@ -2714,11 +2777,18 @@ GoodsDefault.args = {
     onEditGood: id => () => console.log('edit good ', id),
     isEditButtonDisabled: false,
     pathToImage: `${SERVER_PATH}/img/`,
-    goodStateItems: goodStateItems,
+    goodStateItems: [
+        { id: 0, label: 'В наявності', value: 'IN_STOCK' },
+        { id: 1, label: 'Немає в наявності', value: 'NOT_IN_STOCK' },
+        { id: 2, label: 'На замовлення', value: 'UNDER_THE_ORDER' },
+        { id: 3, label: 'Очікується надходження', value: 'DELIVERY_IS_EXPECTED' },
+        { id: 4, label: 'Закінчується', value: 'IS_RUNNING_OUT' },
+    ],
     totalPages: 1,
     currentPage: 1,
     onPaginationItemClick: (event, page) => console.log('click on pagination item ', page),
     isPaginationDisabled: false,
     itemsPerPage: 10,
     onChangeItemsPerPage: () => console.log('change items per page...'),
+    itemsPerPageText: 'Товарів на сторінці',
 }

@@ -42,7 +42,7 @@ import ListItemTextStyle from '../../components/atoms/list/listItemText/ListItem
 import ListStyle from '../../components/atoms/list/list/ListStyle'
 import LoaderWindowTemplateStyle from '../../components/templates/loaderWindowTemplate/LoaderWindowTemplateStyle'
 import MaxWidthTemplateStyle from '../../components/templates/maxWidthTemplate/MaxWidthTemplateStyle'
-import MenuItemStyle from '../../components/atoms/inputs/selectField/menuItem/MenuItemStyle'
+import MenuItemStyle from '../../components/atoms/inputs/menuItem/MenuItemStyle'
 import ModalHeaderStyle from '../../components/atoms/textElements/headers/modalHeader/ModalHeaderStyle'
 import MultilineFieldStyle from '../../components/atoms/inputs/multilineField/MultilineFieldStyle'
 import NavTemplateStyle from '../../components/templates/navTemplate/NavTemplateStyle'
@@ -59,7 +59,7 @@ import PopperStyle from '../../components/atoms/popper/PopperStyle'
 import PriceStyle from '../../components/atoms/textElements/price/PriceStyle'
 import RelativePositionContainerStyle from '../../components/templates/rightBottomPositionTemplate/RelativePositionContainerStyle'
 import RightBottomContainerStyle from '../../components/templates/rightBottomPositionTemplate/RightBottomContainerStyle'
-import SelectStyle from '../../components/atoms/inputs/selectField/select/SelectStyle'
+import SelectStyle from '../../components/atoms/inputs/select/SelectStyle'
 import SimpleButtonStyle from '../../components/atoms/simpleButton/SimpleButtonStyle'
 import SimpleModalStyle from '../../components/molecules/modals/simpleModal/SimpleModalStyle'
 import SimpleTableFooterStyle from '../../components/molecules/table/simpleTableFooter/SimpleTableFooterStyle'
@@ -135,7 +135,7 @@ import AutocompleteItemStyle from '../../components/atoms/inputs/autocompleteIte
 import FileFieldStyle from '../../components/atoms/inputs/fileField/FileFieldStyle'
 import InputLabelStyle from '../../components/atoms/inputs/inputLabel/InputLabelStyle'
 import LabeledCheckboxStyle from '../../components/atoms/inputs/labeledCheckbox/LabeledCheckboxStyle'
-import FormControlStyle from '../../components/atoms/inputs/selectField/formControl/FormControlStyle'
+import FormControlStyle from '../../components/atoms/inputs/formControl/FormControlStyle'
 import SwitchStyle from '../../components/atoms/inputs/switch/SwitchStyle'
 import ListDividerStyle from '../../components/atoms/list/listDivider/ListDividerStyle'
 import ListItemStyle from '../../components/atoms/list/listItem/ListItemStyle'
@@ -223,6 +223,13 @@ import GoodIconStyle from '../../components/atoms/icons/goodIcon/GoodIconStyle'
 import CardStockStyle from '../../components/molecules/cardStock/CardStokStyle'
 import ContainerStockStyle from '../../components/atoms/cardStock/ContainerStock/ContainerStockStyle'
 import SimpleTableTotalStyle from '../../components/molecules/table/simpleTableTotal/SimpleTableTotalStyle'
+import UlStyle from '../../components/atoms/ul/UlStyle'
+import LiStyle from '../../components/atoms/li/LiStyle'
+import RouterLinkStyle from '../../components/atoms/routerLink/RouterLinkStyle'
+import CatalogItemStyle from '../../components/atoms/catalogItem/CatalogItemStyle'
+import ChevronForwardStyle from '../../components/atoms/icons/chevronForward/ChevronForwardStyle'
+import OutlinedInputStyle from '../../components/atoms/inputs/outlinedInput/OutlinedInputStyle'
+import TextIconStyle from '../../components/atoms/icons/textIcon/TextIconStyle'
 
 export const styleConstants = {
     Colors,
@@ -271,12 +278,14 @@ export const styledComponents = {
     CarouselContainerStyle,
     CarouselStyle,
     CatalogIconStyle,
+    CatalogItemStyle,
     CategoryIconStyle,
     CellContentStyle,
     CharacteristicIconStyle,
     CharacteristicSetBorderStyle,
     CheckIconStyle,
     CheckboxStyle,
+    ChevronForwardStyle,
     CircularProgressStyle,
     CityTemplateStyle,
     ClearIconStyle,
@@ -352,6 +361,7 @@ export const styledComponents = {
     LeverageIconStyle,
     LinkStyle,
     LinkTabStyle,
+    LiStyle,
     ListDividerStyle,
     ListIconStyle,
     ListItemButtonStyle,
@@ -377,6 +387,7 @@ export const styledComponents = {
     NovTableContainer,
     OfficeTemplateStyle,
     OtherElementTemplateStyle,
+    OutlinedInputStyle,
     PackageIconStyle,
     PaddingBetweenButtonsTemplateStyle,
     PaddingBottomTemplateStyle,
@@ -394,6 +405,7 @@ export const styledComponents = {
     ProgressBarStyle,
     RelativePositionContainerStyle,
     RightBottomContainerStyle,
+    RouterLinkStyle,
     SaveIconStyle,
     ScrollStyle,
     SearchIconStyle,
@@ -439,6 +451,7 @@ export const styledComponents = {
     TextAlignRightTemplateStyle,
     TextBetweenInputsStyle,
     TextFieldStyle,
+    TextIconStyle,
     TitleAndButtonsTemplateStyle,
     TitleBreadcrumbsButtonsTemplateStyle,
     TitleTableStyle,
@@ -448,6 +461,7 @@ export const styledComponents = {
     ToggleButtonTextStyle,
     ToggleButtonWithTextStyle,
     TypographyStyle,
+    UlStyle,
     UndoIconStyle,
     UsersIconStyle,
     VerticalModalTemplateStyle,

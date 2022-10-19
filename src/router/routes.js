@@ -43,6 +43,7 @@ import {
     CARDS,
     ADD_GOOD,
     CAROUSEL,
+    CREATE_EDIT_MEGA_MENU,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -87,6 +88,7 @@ import Card from '../components/molecules/card/Card'
 import AddGood from '../components/pages/addGood/AddGood'
 import Stock from '../components/molecules/stock/Stock'
 import EditGood from '../components/pages/editGood/EditGood'
+import CreateEditMegaMenu from '../components/pages/createEditMegaMenu/CreateEditMegaMenu'
 
 export const authRoutes = [
     {
@@ -257,6 +259,10 @@ export const authRoutes = [
     {
         path: ADD_GOOD,
         Component: AddGood,
+    },
+    {
+        path: CREATE_EDIT_MEGA_MENU,
+        Component: CreateEditMegaMenu,
     },
 ]
 

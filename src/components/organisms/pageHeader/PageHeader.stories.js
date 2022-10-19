@@ -1,8 +1,6 @@
 import React from 'react'
 import PageHeader from './PageHeader'
 import { BrowserRouter } from 'react-router-dom'
-import { store } from '../../../index'
-import { Provider } from 'react-redux'
 
 export default {
     title: 'organisms/PageHeader',
@@ -10,11 +8,9 @@ export default {
 }
 
 const Template = args => (
-    <Provider store={store}>
-        <BrowserRouter>
-            <PageHeader {...args} />
-        </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+        <PageHeader {...args} />
+    </BrowserRouter>
 )
 
 export const Example1 = Template.bind({})

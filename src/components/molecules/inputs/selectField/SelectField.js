@@ -1,7 +1,7 @@
 import React from 'react'
-import FormControl from '../../../atoms/inputs/selectField/formControl/FormControl'
-import Select from '../../../atoms/inputs/selectField/select/Select'
-import MenuItem from '../../../atoms/inputs/selectField/menuItem/MenuItem'
+import FormControl from '../../../atoms/inputs/formControl/FormControl'
+import Select from '../../../atoms/inputs/select/Select'
+import MenuItem from '../../../atoms/inputs/menuItem/MenuItem'
 
 const SelectField = ({
     name,

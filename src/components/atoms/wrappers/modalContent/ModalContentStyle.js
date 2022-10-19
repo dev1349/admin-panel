@@ -23,5 +23,12 @@ export default {
                 maxWidth: '800px',
             },
         },
+        {
+            props: { addMegaMenuItemContent: true },
+            style: {
+                width: '100%',
+                maxWidth: '500px',
+            },
+        },
     ],
 }

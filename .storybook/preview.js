@@ -1,7 +1,9 @@
 import React from 'react'
-import { store } from '../src'
 import { Provider } from 'react-redux'
 import StorybookReduxProvider from './StorybookReduxProvider'
+import i18n from '../src/i18n'
+import { I18nextProvider } from 'react-i18next'
+import { store } from '../src/reducers'
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -19,7 +21,9 @@ export const decorators = [
             // <div style={{ border: '1px solid red', boxSizing: 'border-box' }}>
             <Provider store={store}>
                 <StorybookReduxProvider>
-                    <Story />
+                    <I18nextProvider i18n={i18n}>
+                        <Story />
+                    </I18nextProvider>
                 </StorybookReduxProvider>
             </Provider>
             // </div>

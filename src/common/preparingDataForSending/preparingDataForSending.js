@@ -3,7 +3,7 @@ const isObject = value => {
     return objectToString.call(value).split(' ')[1].slice(0, -1) === 'Object'
 }
 
-const isString = value => {
+export const isString = value => {
     const objectToString = Object.prototype.toString
     return objectToString.call(value).split(' ')[1].slice(0, -1) === 'String'
 }
@@ -154,11 +154,12 @@ const valuesWithId = (value, fieldNames, ignoreFields) => {
     return newValue
 }
 
-export const changeToObjectWithId = (value, fieldNamesForLeaveNullValue = [], ignoreFields = []) => {
+export const changeToObjectWithId = (value, fieldNamesForTransformingAndLeaveNullValue = [], ignoreFields = []) => {
     if (!isObject(value) || isEmptyObject(value)) {
         return value
     }
-    return valuesWithId(value, fieldNamesForLeaveNullValue, ignoreFields)
+
+    return valuesWithId(value, fieldNamesForTransformingAndLeaveNullValue, ignoreFields)
 }
 
 const getValueForUpdating = (initialValue, changedValue, typeOfCommand, level = 0) => {

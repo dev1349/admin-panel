@@ -1,6 +1,6 @@
 import React from 'react'
 import { MenuItem } from '@mui/material'
-import { createStyled } from '../../../../../services/style/createStyled'
+import { createStyled } from '../../../../services/style/createStyled'
 
 const MenuItemStyled = createStyled('MenuItemStyle', MenuItem, ['forTable', 'dialogMenuItem'])
 
