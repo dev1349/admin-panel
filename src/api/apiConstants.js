@@ -68,3 +68,6 @@ export const IMAGES_PATH = SERVER_PATH + IMAGES
 
 const MEGAMENU = '/megamenu_items'
 export const MEGAMENU_PATH = SERVER_PATH + MEGAMENU
+
+const LIQPAY = '/liqpay'
+export const LIQPAY_PATH = SERVER_PATH + LIQPAY

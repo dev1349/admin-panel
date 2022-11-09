@@ -8,7 +8,15 @@ export default {
 
 const Template = args => <Typography {...args} />
 
-export const Example1 = Template.bind({})
-Example1.args = {
+export const AllTypographyVariants = Template.bind({})
+AllTypographyVariants.args = {
     children: 'Some text...',
+    smallFontSize: true,
+    mainAdminText: true,
+    textAlignCenter: true,
+    bold: true,
+    lineHeight15: true,
+    characteristicSetTitle: true,
+    characteristicGroupTitle: true,
+    instructionsItem: true,
 }

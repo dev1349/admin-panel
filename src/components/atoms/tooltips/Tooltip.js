@@ -8,6 +8,7 @@ const TooltipStyled = styled(({ className, ...props }) => <Tooltip {...props} cl
         color: '#FFF',
         fontSize: '14px',
         padding: '10px 15px',
+        maxWidth: '700px',
     },
     [`& .${tooltipClasses.arrow}`]: {
         color: '#525050',

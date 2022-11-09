@@ -230,6 +230,9 @@ import CatalogItemStyle from '../../components/atoms/catalogItem/CatalogItemStyl
 import ChevronForwardStyle from '../../components/atoms/icons/chevronForward/ChevronForwardStyle'
 import OutlinedInputStyle from '../../components/atoms/inputs/outlinedInput/OutlinedInputStyle'
 import TextIconStyle from '../../components/atoms/icons/textIcon/TextIconStyle'
+import PaymentsIconStyle from '../../components/atoms/icons/paymentsIcon/PaymentsIconStyle'
+import IframeStyle from '../../components/atoms/iframe/IframeStyle'
+import TextFragmentStyle from '../../components/atoms/textElements/textFragment/TextFragmentStyle'
 
 export const styleConstants = {
     Colors,
@@ -334,6 +337,7 @@ export const styledComponents = {
     HorizontalTabsBoxStyle,
     IconButtonStyle,
     IconWrapperForTooltipStyle,
+    IframeStyle,
     ImageBorderStyle,
     ImgStyle,
     ImportExportIconStyle,
@@ -399,6 +403,7 @@ export const styledComponents = {
     PageHeaderTemplateStyle,
     PaginationContainerStyle,
     PaginationStyle,
+    PaymentsIconStyle,
     PopoverStyle,
     PopperStyle,
     PriceStyle,
@@ -451,6 +456,7 @@ export const styledComponents = {
     TextAlignRightTemplateStyle,
     TextBetweenInputsStyle,
     TextFieldStyle,
+    TextFragmentStyle,
     TextIconStyle,
     TitleAndButtonsTemplateStyle,
     TitleBreadcrumbsButtonsTemplateStyle,

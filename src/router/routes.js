@@ -44,6 +44,7 @@ import {
     ADD_GOOD,
     CAROUSEL,
     CREATE_EDIT_MEGA_MENU,
+    LIQPAY_PARAMETERS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
 import MainContainer from '../components/main/MainContainer'
@@ -89,6 +90,7 @@ import AddGood from '../components/pages/addGood/AddGood'
 import Stock from '../components/molecules/stock/Stock'
 import EditGood from '../components/pages/editGood/EditGood'
 import CreateEditMegaMenu from '../components/pages/createEditMegaMenu/CreateEditMegaMenu'
+import LiqPayParameters from '../components/pages/liqPayParameters/LiqpayParameters'
 
 export const authRoutes = [
     {
@@ -263,6 +265,10 @@ export const authRoutes = [
     {
         path: CREATE_EDIT_MEGA_MENU,
         Component: CreateEditMegaMenu,
+    },
+    {
+        path: LIQPAY_PARAMETERS,
+        Component: LiqPayParameters,
     },
 ]
 

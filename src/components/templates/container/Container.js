@@ -52,6 +52,11 @@ const ContainerStyled = createStyled('ContainerStyle', 'div', [
     'megaMenuModalHeaderContainer',
     'megaMenuModalContentContainer',
     'addNewSecondLevelItemButtonHideContainer',
+    'pageContentContainer',
+    'imagedSwitchContainer',
+    'instructionsContainer',
+    'youtubeResponseContainer560315',
+    'labelTooltipContainer',
 ])
 
 const Container = ({ children, forwardRef, ...rest }) => {

@@ -5,4 +5,12 @@ export default {
             padding: '10px 17px 17px 17px',
         },
     },
+    variants: [
+        {
+            props: { instructionsContentContainer: true },
+            style: {
+                padding: '25px 80px 25px 80px',
+            },
+        },
+    ],
 }

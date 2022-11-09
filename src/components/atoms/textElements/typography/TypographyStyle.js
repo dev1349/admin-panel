@@ -54,5 +54,18 @@ export default {
                 lineHeight: 1,
             },
         },
+        {
+            props: { instructionsItem: true },
+            style: {
+                marginTop: '15px',
+                fontWeight: 800,
+                color: '#525050',
+                fontSize: '16px',
+                lineHeight: 1.4,
+                '&:first-of-type': {
+                    marginTop: 0,
+                },
+            },
+        },
     ],
 }

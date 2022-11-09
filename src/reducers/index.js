@@ -25,6 +25,7 @@ import megaMenuReducer from './megaMenuSlice'
 import { categoriesApi } from '../api/categoriesApiNew'
 import { facetsApi } from '../api/facetsApi'
 import { megaMenuApi } from '../api/megaMenuApi'
+import { liqPayApi } from '../api/liqpayApi'
 
 export const store = configureStore({
     reducer: {
@@ -53,6 +54,7 @@ export const store = configureStore({
         [categoriesApi.reducerPath]: categoriesApi.reducer,
         [facetsApi.reducerPath]: facetsApi.reducer,
         [megaMenuApi.reducerPath]: megaMenuApi.reducer,
+        [liqPayApi.reducerPath]: liqPayApi.reducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware()
@@ -60,7 +62,8 @@ export const store = configureStore({
             .concat(imagesApi.middleware)
             .concat(categoriesApi.middleware)
             .concat(facetsApi.middleware)
-            .concat(megaMenuApi.middleware),
+            .concat(megaMenuApi.middleware)
+            .concat(liqPayApi.middleware),
 })
 
 setupListeners(store.dispatch)

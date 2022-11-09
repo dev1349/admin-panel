@@ -10,6 +10,7 @@ const TypographyStyled = createStyled('TypographyStyle', Typography, [
     'lineHeight15',
     'characteristicSetTitle',
     'characteristicGroupTitle',
+    'instructionsItem',
 ])
 
 const TypographyWS = ({ children, ...rest }) => {

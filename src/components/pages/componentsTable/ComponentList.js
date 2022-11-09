@@ -227,6 +227,18 @@ const componentList = [
         routeText: '/carousel',
         routeLink: '/carousel',
     },
+    {
+        componentName: 'Редактирование мега меню',
+        task: 'WSADMIN-153',
+        routeText: '/create-edit-mega-menu',
+        routeLink: '/create-edit-mega-menu',
+    },
+    {
+        componentName: 'Настройка параметров LiqPay',
+        task: 'WSADMIN-151',
+        routeText: '/liqpay-parameters',
+        routeLink: '/liqpay-parameters',
+    },
 ]
 
 export default componentList

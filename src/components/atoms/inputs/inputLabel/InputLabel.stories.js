@@ -12,3 +12,9 @@ export const Example1 = Template.bind({})
 Example1.args = {
     children: 'Label text...',
 }
+
+export const dialogLabel = Template.bind({})
+dialogLabel.args = {
+    dialogLabel: true,
+    children: 'Label text',
+}

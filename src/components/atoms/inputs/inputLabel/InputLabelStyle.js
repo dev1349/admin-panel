@@ -7,4 +7,17 @@ export default {
             lineHeight: 1,
         },
     },
+    variants: [
+        {
+            props: { dialogLabel: true },
+            style: {
+                position: 'static',
+                transform: 'unset',
+                textAlign: 'right',
+                // '&.Mui-focused': {
+                //     color: '#1976d2',
+                // },
+            },
+        },
+    ],
 }

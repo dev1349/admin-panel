@@ -510,5 +510,57 @@ export default {
                 padding: '10px',
             },
         },
+        {
+            props: { pageContentContainer: true },
+            style: {
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '10px',
+                boxSizing: 'content-box',
+            },
+        },
+        {
+            props: { imagedSwitchContainer: true },
+            style: {
+                display: 'flex',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                gap: '10px',
+            },
+        },
+        {
+            props: { instructionsContainer: true },
+            style: {
+                borderTop: '1px solid #c4c4c4',
+                marginTop: '15px',
+                padding: '15px',
+                backgroundColor: '#F2efef',
+            },
+        },
+        {
+            props: { youtubeResponseContainer560315: true },
+            style: {
+                position: 'relative',
+                content: '""',
+                width: '100%',
+                paddingTop: '56.25%',
+                backgroundColor: '#c4c4c4',
+            },
+        },
+        {
+            props: { labelTooltipContainer: true },
+            style: {
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+                flexWrap: 'nowrap',
+                '& > div': {
+                    marginLeft: '10px',
+                },
+                '& > div:first-of-type': {
+                    marginLeft: '0px',
+                },
+            },
+        },
     ],
 }

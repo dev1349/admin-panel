@@ -4,6 +4,44 @@ export default {
     },
     variants: [
         {
+            props: { labelInputContainer: true },
+            style: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                '& > label': {
+                    width: '40%',
+                },
+                '& > div': {
+                    marginLeft: '10px',
+                    width: 'calc(60% - 10px)',
+                },
+            },
+        },
+        {
+            props: { labelHideShowInputContainer: true },
+            style: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                '& > label': {
+                    width: '40%',
+                },
+                '& > div': {
+                    marginLeft: '10px',
+                    width: 'calc(60% - 10px)',
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    flexWrap: 'nowrap',
+                    '& > button': {
+                        marginLeft: '5px',
+                    },
+                },
+            },
+        },
+
+        {
             props: { verticalLabelInput: true },
             style: {
                 display: 'block',
@@ -68,6 +106,40 @@ export default {
                 },
                 '& fieldset': {
                     marginTop: '5px',
+                },
+            },
+        },
+        {
+            props: { labelSwitchContainer: true },
+            style: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                '& > label': {
+                    width: '40%',
+                },
+                '& > div': {
+                    marginLeft: '10px',
+                    width: 'calc(60% - 10px)',
+                },
+            },
+        },
+        {
+            props: { labelSwitchTooltipContainer: true },
+            style: {
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                '& > div:first-of-type': {
+                    marginLeft: 0,
+                    width: '40%',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+                    gap: '5px',
+                },
+                '& > div': {
+                    marginLeft: '10px',
                 },
             },
         },
