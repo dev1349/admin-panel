@@ -12,7 +12,6 @@ import attributeGroupSlice from './attributeGroupSlice'
 import newOrderSlice from './newOrderSlice'
 import usersSlice from './usersSlice'
 import clientsSlice from './clientsSlice'
-import novelitiesSlice from './novelitiesSlice'
 import characteristicsReducer from './characteristicsSlice'
 import characteristicsWithoutGroupReducer from './characteristicsWithoutGroupSlice'
 import characteristicGroupsReducer from './characteristicGroupsSlice'
@@ -21,6 +20,7 @@ import behaviorServerInteractionReducer from './behaviorServerInteraction'
 import { goodsApi } from '../api/goodsApi'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { imagesApi } from '../api/imagesApi'
+import { noveltiesApi } from './novelitiesSlice'
 import megaMenuReducer from './megaMenuSlice'
 import { categoriesApi } from '../api/categoriesApiNew'
 import { facetsApi } from '../api/facetsApi'
@@ -41,7 +41,6 @@ export const store = configureStore({
         newOrder: newOrderSlice,
         users: usersSlice,
         clients: clientsSlice,
-        novelities: novelitiesSlice,
         categories: categoriesReducer,
         characteristics: characteristicsReducer,
         characteristicsWithoutGroup: characteristicsWithoutGroupReducer,
@@ -50,6 +49,7 @@ export const store = configureStore({
         behaviorServerInteraction: behaviorServerInteractionReducer,
         [goodsApi.reducerPath]: goodsApi.reducer,
         [imagesApi.reducerPath]: imagesApi.reducer,
+        [noveltiesApi.reducerPath]: noveltiesApi.reducer,
         megaMenu: megaMenuReducer,
         [categoriesApi.reducerPath]: categoriesApi.reducer,
         [facetsApi.reducerPath]: facetsApi.reducer,
@@ -60,6 +60,7 @@ export const store = configureStore({
         getDefaultMiddleware()
             .concat(goodsApi.middleware)
             .concat(imagesApi.middleware)
+            .concat(noveltiesApi.middleware)
             .concat(categoriesApi.middleware)
             .concat(facetsApi.middleware)
             .concat(megaMenuApi.middleware)

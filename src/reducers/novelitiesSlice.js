@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+/*import { createSlice } from '@reduxjs/toolkit'
 import mockData from '../mock/novelitiesProducts'
 
 const novelitiesSlice = createSlice({
@@ -14,3 +14,19 @@ const novelitiesSlice = createSlice({
 export default novelitiesSlice.reducer
 
 export const { deleteProduct } = novelitiesSlice.actions
+
+*/
+
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { SERVER_PATH } from '../api/apiConstants'
+
+export const noveltiesApi = createApi({
+    reducerPath: 'novelties',
+    baseQuery: fetchBaseQuery({ baseUrl: SERVER_PATH + '/novelties' }),
+    endpoints: builder => ({
+        getNovelties: builder.query({
+            query: (name = '') => name,
+        }),
+    }),
+})
+export const { useGetNoveltiesQuery } = noveltiesApi
