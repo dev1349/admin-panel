@@ -6,8 +6,6 @@ import {
     ADD_CLIENT,
     ADD_PRODUCT,
     ADD_USER,
-    ATTRIBUTE_GROUP,
-    ATTRIBUTE_LIST,
     CATEGORIES_LIST_ROUTE,
     CHARACTERISTICS,
     CHARACTERISTIC_GROUPS,
@@ -23,14 +21,12 @@ import {
     EDIT_CHARACTERISTIC_SET,
     EDIT_GOOD,
     EXPORT,
-    GOOD_ADD_ROUTE,
     GOODS,
     GOODS_FILTER_ROUTE,
     GOODS_LIST_ROUTE,
     LAST_ORDERS,
     LOGIN_ROUTE,
     MADE_COMPONENT_LIST,
-    MAIN_ROUTE,
     MENU_AND_PAGES,
     MY_GOODS_LIST_ROUTE,
     NEW_ORDER,
@@ -47,17 +43,13 @@ import {
     LIQPAY_PARAMETERS,
 } from './routerConsts'
 import { LoginContainer } from '../components/login/LoginContainer'
-import MainContainer from '../components/main/MainContainer'
-import AddGoodContainer from '../components/pages/addGood/AddGoodContainer'
-import AttributesListContainer from '../components/attributeList/AttributesListContainer'
 import GoodsFilterContainer from '../components/pages/goodsFilter/GoodsFilterContainer'
-import AttributeGroupContainer from '../components/pages/AttributeGroup/AttributeGroupContainer'
 import MyGoodsList from '../components/pages/myGoodsList/MyGoodsList'
 import CouponsListContainer from '../components/couponsList/CouponsListContainer'
 import NewOrder from '../components/pages/newOrder/NewOrder'
 import AddProduct from '../components/organisms/forms/addProduct/AddProduct'
 import ComponentsTable from '../components/pages/componentsTable/ComponentsTable'
-import OrderInfoContainer from '../components/newOrder/orderInfo/OrderInfoContainer'
+import OrderInfoContainer from '../components/pages/orderInfo/OrderInfoContainer'
 import GoodsList from '../components/pages/goodsList/GoodsList'
 import AddUser from '../components/pages/addUser/AddUser'
 import UsersTable from '../components/pages/usersTable/UsersTable'
@@ -94,20 +86,8 @@ import LiqPayParameters from '../components/pages/liqPayParameters/LiqpayParamet
 
 export const authRoutes = [
     {
-        path: MAIN_ROUTE,
-        Component: MainContainer,
-    },
-    {
         path: GOODS_LIST_ROUTE,
         Component: GoodsList,
-    },
-    {
-        path: GOOD_ADD_ROUTE,
-        Component: AddGoodContainer,
-    },
-    {
-        path: ATTRIBUTE_LIST,
-        Component: AttributesListContainer,
     },
     {
         path: GOODS_FILTER_ROUTE,
@@ -120,10 +100,6 @@ export const authRoutes = [
     {
         path: EDIT_CATEGORY_ROUTE,
         Component: EditCategory,
-    },
-    {
-        path: ATTRIBUTE_GROUP,
-        Component: AttributeGroupContainer,
     },
     {
         path: MY_GOODS_LIST_ROUTE,

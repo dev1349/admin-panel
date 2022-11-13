@@ -21,5 +21,15 @@ export default {
                 },
             },
         },
+        {
+            props: { adminNavRouterLink: true },
+            style: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                flexGrow: 1,
+                gap: '8px',
+            },
+        },
     ],
 }

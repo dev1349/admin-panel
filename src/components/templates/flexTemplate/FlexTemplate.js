@@ -11,6 +11,7 @@ const FlexTemplateStyled = createStyled('FlexTemplateStyle', 'div', [
     'noWrap',
     'justifyContentLeftSm',
     'directionColumn',
+    'paddingTop7',
 ])
 
 const FlexTemplate = ({ children, ...rest }) => {

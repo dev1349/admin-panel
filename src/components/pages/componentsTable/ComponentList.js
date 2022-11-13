@@ -30,18 +30,6 @@ const componentList = [
         routeLink: '/addCategory',
     },
     {
-        componentName: 'Компонент "Атрибуты"',
-        task: 'WSADMIN-6',
-        routeText: '/attributeList',
-        routeLink: '/attributeList',
-    },
-    {
-        componentName: 'Компонент "Группы атрибутов"',
-        task: 'WSADMIN-7',
-        routeText: '/attributeGroup',
-        routeLink: '/attributeGroup',
-    },
-    {
         componentName: 'Компонент "Список товаров"',
         task: 'WSADMIN-9',
         routeText: '/myGoodsList',
@@ -238,6 +226,12 @@ const componentList = [
         task: 'WSADMIN-151',
         routeText: '/liqpay-parameters',
         routeLink: '/liqpay-parameters',
+    },
+    {
+        componentName: 'Новинки товаров',
+        task: '',
+        routeText: '/nov',
+        routeLink: '/nov',
     },
 ]
 

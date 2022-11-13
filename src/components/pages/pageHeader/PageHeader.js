@@ -1,6 +1,4 @@
 import React from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
-import PageHeaderWrapper from '../../atoms/pageHeaderWrapper/pageHeaderWrapper'
 import PageHeader from '../../organisms/pageHeader/PageHeader'
 import { getHeaderItemsConf } from '../../../reducers/headerSlice'
 import { useSelector } from 'react-redux'
@@ -15,19 +13,15 @@ const PageHeaderPage = () => {
     const { i18n } = useTranslation()
 
     return (
-        <PageHeaderWrapper>
-            <MaxWidthTemplate>
-                <PageHeader
-                    logo={logoItem}
-                    statisticsProps={statisticsProps}
-                    importExportProps={importExportItem}
-                    shopsProps={shopsItem}
-                    helpProps={helpItem}
-                    onClickLogout={() => console.log('logout')}
-                    i18n={i18n}
-                />
-            </MaxWidthTemplate>
-        </PageHeaderWrapper>
+        <PageHeader
+            logo={logoItem}
+            statisticsProps={statisticsProps}
+            importExportProps={importExportItem}
+            shopsProps={shopsItem}
+            helpProps={helpItem}
+            onClickLogout={() => console.log('logout')}
+            i18n={i18n}
+        />
     )
 }
 

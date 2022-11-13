@@ -15,7 +15,6 @@ import { Fade } from '@mui/material'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import EditIcon from '../../atoms/icons/editIcon/EditIcon'
 import Typography from '../../atoms/textElements/typography/Typography'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import { totalStringValues } from '../../../common/commonValueFunction'
 
 const CharacteristicSets = ({
@@ -44,7 +43,7 @@ const CharacteristicSets = ({
     const handleUnSetActiveRow = () => setActiveRow(null)
 
     return (
-        <MaxWidthTemplate>
+        <>
             <AdminPageHeader icon={icon} title={title} buttons={buttons} />
             <AdminPageBorder>
                 <Box marginTop7>
@@ -134,7 +133,7 @@ const CharacteristicSets = ({
                     )}
                 </Box>
             </AdminPageBorder>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

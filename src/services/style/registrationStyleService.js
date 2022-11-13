@@ -41,11 +41,9 @@ import ListItemIconStyle from '../../components/atoms/list/listItemIcon/ListItem
 import ListItemTextStyle from '../../components/atoms/list/listItemText/ListItemTextStyle'
 import ListStyle from '../../components/atoms/list/list/ListStyle'
 import LoaderWindowTemplateStyle from '../../components/templates/loaderWindowTemplate/LoaderWindowTemplateStyle'
-import MaxWidthTemplateStyle from '../../components/templates/maxWidthTemplate/MaxWidthTemplateStyle'
 import MenuItemStyle from '../../components/atoms/inputs/menuItem/MenuItemStyle'
 import ModalHeaderStyle from '../../components/atoms/textElements/headers/modalHeader/ModalHeaderStyle'
 import MultilineFieldStyle from '../../components/atoms/inputs/multilineField/MultilineFieldStyle'
-import NavTemplateStyle from '../../components/templates/navTemplate/NavTemplateStyle'
 import OtherElementTemplateStyle from '../../components/templates/flexFirstGrowTemplate/OtherElementTemplateStyle'
 import PaddingBetweenButtonsTemplateStyle from '../../components/templates/paddingBetweenButtonsTemplate/PaddingBetweenButtonsTemplateStyle'
 import PaddingBottomTemplateStyle from '../../components/templates/paddingBottomTemplate/PaddingBottomTemplateStyle'
@@ -53,7 +51,6 @@ import PaddingTemplateStyle from '../../components/templates/paddingTemplate/Pad
 import PaddingTopTemplateStyle from '../../components/templates/paddingTopTemplate/PaddingTopTemplateStyle'
 import PaddingWidthContainerTemplateStyle from '../../components/templates/paddingWidthContainerTemplate/PaddingWidthContainerTemplateStyle'
 import PageHeaderItemRightTemplateStyle from '../../components/templates/pageHeaderItemRightTemplate/PageHeaderItemRightTemplateStyle'
-import PageHeaderTemplateStyle from '../../components/templates/pageHeaderTemplate/PageHeaderTemplateStyle'
 import PaginationContainerStyle from '../../components/molecules/pagination/PaginationContainerStyle'
 import PopperStyle from '../../components/atoms/popper/PopperStyle'
 import PriceStyle from '../../components/atoms/textElements/price/PriceStyle'
@@ -143,7 +140,6 @@ import ListSubHeaderStyle from '../../components/atoms/list/listSubHeader/ListSu
 import CircularProgressStyle from '../../components/atoms/loader/circularProgress/CircularProgressStyle'
 import MenuStyle from '../../components/atoms/menu/MenuStyle'
 import ModalWindowStyle from '../../components/atoms/modalWindow/ModalWindowStyle'
-import PageHeaderStyle from '../../components/atoms/pageHeaderWrapper/PageHeaderWrapperStyle'
 import PaginationStyle from '../../components/atoms/pagination/PaginationStyle'
 import PopoverStyle from '../../components/atoms/popover/PopoverStyle'
 import AtomTableHeadStyle from '../../components/atoms/table/atomTableHead/AtomTableHeadStyle'
@@ -376,7 +372,6 @@ export const styledComponents = {
     ListSubHeaderStyle,
     LoaderWindowTemplateStyle,
     LogoutIconStyle,
-    MaxWidthTemplateStyle,
     MenuButtonStyle,
     MenuButtonWrapperStyle,
     MenuIconStyle,
@@ -386,7 +381,6 @@ export const styledComponents = {
     ModalHeaderStyle,
     ModalWindowStyle,
     MultilineFieldStyle,
-    NavTemplateStyle,
     NotificationsIconStyle,
     NovTableContainer,
     OfficeTemplateStyle,
@@ -399,8 +393,6 @@ export const styledComponents = {
     PaddingTopTemplateStyle,
     PaddingWidthContainerTemplateStyle,
     PageHeaderItemRightTemplateStyle,
-    PageHeaderStyle,
-    PageHeaderTemplateStyle,
     PaginationContainerStyle,
     PaginationStyle,
     PaymentsIconStyle,

@@ -1,5 +1,4 @@
 import React from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import ComponentsTable from '../../organisms/tables/componentsTable/ComponentsTable'
 import componentList from './ComponentList'
 
@@ -24,14 +23,7 @@ const tableHeader = [
 ]
 
 const ComponentsTablePage = () => {
-    return (
-        <MaxWidthTemplate>
-            <ComponentsTable
-                tableHeader={tableHeader}
-                tableRows={componentList}
-            />
-        </MaxWidthTemplate>
-    )
+    return <ComponentsTable tableHeader={tableHeader} tableRows={componentList} />
 }
 
 export default ComponentsTablePage

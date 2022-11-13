@@ -173,95 +173,93 @@ const LiqPayParameters = () => {
 
     return (
         <>
-            <Container pageContentContainer>
-                <AdminPageHeader
-                    icon={<PaymentsIcon dialogIcon />}
-                    title={'Способы оплаты'}
-                    buttons={[
-                        <IconButton key={0} dialogButton disableRipple onClick={handleGoBack} disabled={isUndoButtonDisabled}>
-                            <UndoIcon />
-                        </IconButton>,
-                        <IconButton key={1} dialogButton disableRipple onClick={handleSaveKeys} disabled={isSaveButtonDisabled}>
-                            <SaveIcon />
-                        </IconButton>,
-                    ]}
-                />
-                <AdminPageBorder>
-                    <Container marginTop7>
-                        <HorizontalLabeledSwitch
-                            id={'Cash'}
-                            label={'Наличными при получении'}
-                            checked={isCashChecked}
-                            onChange={handleSetCashChecked}
-                        />
-                    </Container>
-                    <Container marginTop7>
-                        <HorizontalLabeledTooltipImageSwitch
-                            id={'LiqPay'}
-                            label={'Платежный сервис LiqPay'}
-                            tooltip={toolTipContent}
-                            image={liqPayLogo}
-                            altText={'LiqPay'}
-                            checked={isLiqPayChecked}
-                            onChange={handleSetLiqPayChecked}
-                        />
-                    </Container>
+            <AdminPageHeader
+                icon={<PaymentsIcon dialogIcon />}
+                title={'Способы оплаты'}
+                buttons={[
+                    <IconButton key={0} dialogButton disableRipple onClick={handleGoBack} disabled={isUndoButtonDisabled}>
+                        <UndoIcon />
+                    </IconButton>,
+                    <IconButton key={1} dialogButton disableRipple onClick={handleSaveKeys} disabled={isSaveButtonDisabled}>
+                        <SaveIcon />
+                    </IconButton>,
+                ]}
+            />
+            <AdminPageBorder>
+                <Container marginTop7>
+                    <HorizontalLabeledSwitch
+                        id={'Cash'}
+                        label={'Наличными при получении'}
+                        checked={isCashChecked}
+                        onChange={handleSetCashChecked}
+                    />
+                </Container>
+                <Container marginTop7>
+                    <HorizontalLabeledTooltipImageSwitch
+                        id={'LiqPay'}
+                        label={'Платежный сервис LiqPay'}
+                        tooltip={toolTipContent}
+                        image={liqPayLogo}
+                        altText={'LiqPay'}
+                        checked={isLiqPayChecked}
+                        onChange={handleSetLiqPayChecked}
+                    />
+                </Container>
 
-                    {isLiqPayChecked && (
-                        <Container instructionsContainer>
-                            <Typography instructionsItem>
-                                1.&emsp;Зарегистрируйтесь в{' '}
-                                <Link href={`https://www.liqpay.ua/`} target={'_blank'}>
-                                    liqpay.ua
-                                </Link>{' '}
-                                согласно видеоинструкции
-                            </Typography>
-                            <Container youtubeResponseContainer560315 marginTop7>
-                                <Iframe
-                                    src="https://www.youtube.com/embed/-WlixDtoPGw"
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                    response
-                                />
-                            </Container>
-                            <Typography instructionsItem>2.&emsp;Введите публичный и приватный ключи</Typography>
-                            <Container marginTop7>
-                                <Img src={liqPayKeysImg} alt={'liqpay keys'} block />
-                            </Container>
-                            <Container marginTop7>
-                                <HorizontalLabeledOutlinedInput
-                                    id={'public_key'}
-                                    label={
-                                        <>
-                                            Публичный ключ<TextFragment redStar>*</TextFragment>
-                                        </>
-                                    }
-                                    value={publicKey}
-                                    onChange={setPublicKey}
-                                    placeholder={'Введите публичный ключ'}
-                                />
-                            </Container>
-                            <Container marginTop7>
-                                <HorizontalLabeledHideShowOutlinedInput
-                                    id={'private_key'}
-                                    label={
-                                        <>
-                                            Приватный ключ<TextFragment redStar>*</TextFragment>
-                                        </>
-                                    }
-                                    value={privateKey}
-                                    onChange={setPrivateKey}
-                                    placeholder={'Введите приватный ключ'}
-                                    onFocus={handleFocusHorizontalLabeledHideShowOutlinedInput}
-                                    onBlur={handleBlurHorizontalLabeledHideShowOutlinedInput}
-                                />
-                            </Container>
+                {isLiqPayChecked && (
+                    <Container instructionsContainer>
+                        <Typography instructionsItem>
+                            1.&emsp;Зарегистрируйтесь в{' '}
+                            <Link href={`https://www.liqpay.ua/`} target={'_blank'}>
+                                liqpay.ua
+                            </Link>{' '}
+                            согласно видеоинструкции
+                        </Typography>
+                        <Container youtubeResponseContainer560315 marginTop7>
+                            <Iframe
+                                src="https://www.youtube.com/embed/-WlixDtoPGw"
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                response
+                            />
                         </Container>
-                    )}
-                </AdminPageBorder>
-            </Container>
+                        <Typography instructionsItem>2.&emsp;Введите публичный и приватный ключи</Typography>
+                        <Container marginTop7>
+                            <Img src={liqPayKeysImg} alt={'liqpay keys'} block />
+                        </Container>
+                        <Container marginTop7>
+                            <HorizontalLabeledOutlinedInput
+                                id={'public_key'}
+                                label={
+                                    <>
+                                        Публичный ключ<TextFragment redStar>*</TextFragment>
+                                    </>
+                                }
+                                value={publicKey}
+                                onChange={setPublicKey}
+                                placeholder={'Введите публичный ключ'}
+                            />
+                        </Container>
+                        <Container marginTop7>
+                            <HorizontalLabeledHideShowOutlinedInput
+                                id={'private_key'}
+                                label={
+                                    <>
+                                        Приватный ключ<TextFragment redStar>*</TextFragment>
+                                    </>
+                                }
+                                value={privateKey}
+                                onChange={setPrivateKey}
+                                placeholder={'Введите приватный ключ'}
+                                onFocus={handleFocusHorizontalLabeledHideShowOutlinedInput}
+                                onBlur={handleBlurHorizontalLabeledHideShowOutlinedInput}
+                            />
+                        </Container>
+                    </Container>
+                )}
+            </AdminPageBorder>
             {isLoading && <Loader dialogProgress />}
             <DeleteModal
                 open={isDeleteModalOpen}

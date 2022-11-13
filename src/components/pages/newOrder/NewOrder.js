@@ -1,5 +1,4 @@
 import React from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import NewOrderTable from '../../organisms/tables/newOrderTable/NewOrderTable'
 import {
     addNewGoodToOrder,
@@ -49,13 +48,7 @@ import SimpleButton from '../../atoms/simpleButton/SimpleButton'
 import PaddingBetweenButtonsTemplate from '../../templates/paddingBetweenButtonsTemplate/PaddingBetweenButtonsTemplate'
 import Typography from '../../atoms/textElements/typography/Typography'
 import useDeliveryTime from '../../../hooks/deliveryTime.hook'
-import {
-    dayNumber,
-    hours,
-    minutes,
-    monthNumber,
-    year,
-} from '../../../common/getDayMonthYearHoursMinutes'
+import { dayNumber, hours, minutes, monthNumber, year } from '../../../common/getDayMonthYearHoursMinutes'
 
 const NewOrder = () => {
     const headerCells = useSelector(getHeaderCells)
@@ -155,9 +148,7 @@ const NewOrder = () => {
         dispatch(setPayedStatus(isPayed.checked))
     }
 
-    const dateForOutput = `${dayNumber(Date.now())}.${monthNumber(
-        Date.now()
-    )}.${year(Date.now())} ${hours(Date.now())}:${minutes(
+    const dateForOutput = `${dayNumber(Date.now())}.${monthNumber(Date.now())}.${year(Date.now())} ${hours(Date.now())}:${minutes(
         Date.now()
     )} Заказ создан пользователем`
 
@@ -166,17 +157,11 @@ const NewOrder = () => {
     }
 
     const isCreateOrderButtonDisabled =
-        !goodsInOrder.length ||
-        !clientFields.clientName ||
-        !clientFields.clientPhone ||
-        !clientFields.clientCity
+        !goodsInOrder.length || !clientFields.clientName || !clientFields.clientPhone || !clientFields.clientCity
 
     return (
-        <MaxWidthTemplate>
-            <NewOrderHeader
-                headerText={'Новый заказ'}
-                handleHeaderButtonClick={handleHeaderButtonClick}
-            />
+        <>
+            <NewOrderHeader headerText={'Новый заказ'} handleHeaderButtonClick={handleHeaderButtonClick} />
             <OrderAdditionalButtons
                 buttons={{
                     position: {
@@ -192,9 +177,7 @@ const NewOrder = () => {
                 }}
                 namePriceGoods={namePriceGoods}
                 addGoodFromAutocomplete={handleAddGoodFromAutocomplete}
-                addGoodFromCatalog={() =>
-                    console.log('Добавить заказ из каталога')
-                }
+                addGoodFromCatalog={() => console.log('Добавить заказ из каталога')}
                 addDiscount={handleAddDiscount}
                 hasDiscount={!!discount}
             />
@@ -227,9 +210,7 @@ const NewOrder = () => {
                 orderPaymentValue={currentPaymentStatus}
             />
             <ClientData
-                searchClients={() =>
-                    console.log('open form with registered client')
-                }
+                searchClients={() => console.log('open form with registered client')}
                 changeFieldsValue={changeFields}
                 clientFieldsValues={clientFields}
                 fields={{
@@ -254,8 +235,7 @@ const NewOrder = () => {
                                 checking: value => {
                                     return value?.length > 10
                                 },
-                                attentionMessage:
-                                    'Введите не более 10 символов',
+                                attentionMessage: 'Введите не более 10 символов',
                             },
                         ],
                     },
@@ -284,9 +264,7 @@ const NewOrder = () => {
                         date: {
                             id: '01',
                             name: 'date',
-                            value: clientFields['clientDeliveryDateTime'][
-                                'date'
-                            ],
+                            value: clientFields['clientDeliveryDateTime']['date'],
                             changeValue: changeDeliveryDateTime,
                         },
                         timeFrom: {
@@ -295,9 +273,7 @@ const NewOrder = () => {
                                 items: timeFromHoursItems,
                                 defaultLabel: '--',
                                 isStartItemDisabled: true,
-                                value: clientFields['clientDeliveryDateTime'][
-                                    'timeFromHours'
-                                ],
+                                value: clientFields['clientDeliveryDateTime']['timeFromHours'],
                                 changeValue: changeDeliveryFromHours,
                                 disabled: isFromHoursDisabled,
                             },
@@ -306,9 +282,7 @@ const NewOrder = () => {
                                 items: timeFromMinutesItems,
                                 defaultLabel: '--',
                                 isStartItemDisabled: true,
-                                value: clientFields['clientDeliveryDateTime'][
-                                    'timeFromMinutes'
-                                ],
+                                value: clientFields['clientDeliveryDateTime']['timeFromMinutes'],
                                 changeValue: changeDeliveryFromMinutes,
                                 disabled: isFromMinutesDisabled,
                             },
@@ -319,9 +293,7 @@ const NewOrder = () => {
                                 items: timeToHoursItems,
                                 defaultLabel: '--',
                                 isStartItemDisabled: true,
-                                value: clientFields['clientDeliveryDateTime'][
-                                    'timeToHours'
-                                ],
+                                value: clientFields['clientDeliveryDateTime']['timeToHours'],
                                 changeValue: changeDeliveryDateTime,
                                 disabled: isToHoursDisabled,
                             },
@@ -330,9 +302,7 @@ const NewOrder = () => {
                                 items: timeToMinutesItems,
                                 defaultLabel: '--',
                                 isStartItemDisabled: true,
-                                value: clientFields['clientDeliveryDateTime'][
-                                    'timeToMinutes'
-                                ],
+                                value: clientFields['clientDeliveryDateTime']['timeToMinutes'],
                                 changeValue: changeDeliveryDateTime,
                                 disabled: isToMinutesDisabled,
                             },
@@ -353,10 +323,7 @@ const NewOrder = () => {
             {creationDate && <Typography>{dateForOutput}</Typography>}
             {!creationDate && (
                 <PaddingBetweenButtonsTemplate>
-                    <SimpleButton
-                        onClick={handleCreateOrder}
-                        disabled={isCreateOrderButtonDisabled}
-                    >
+                    <SimpleButton onClick={handleCreateOrder} disabled={isCreateOrderButtonDisabled}>
                         Создать заказ
                     </SimpleButton>
                     <SimpleButton variant={'outlined'} onClick={resetOrder}>
@@ -364,7 +331,7 @@ const NewOrder = () => {
                     </SimpleButton>
                 </PaddingBetweenButtonsTemplate>
             )}
-        </MaxWidthTemplate>
+        </>
     )
 }
 

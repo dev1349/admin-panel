@@ -1,7 +1,6 @@
 import React from 'react'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
 import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import LabeledTextField from '../../molecules/inputs/labeledTextField/LabeledTextField'
 import LabeledNumberField from '../../molecules/inputs/labeledNumberField/LabeledNumberField'
 import LabeledSelectField from '../../molecules/inputs/labeledSelectField/LabeledSelectField'
@@ -30,7 +29,7 @@ const AddCharacteristic = ({
     }))
 
     return (
-        <MaxWidthTemplate>
+        <>
             <AdminPageHeader icon={icon} title={title} buttons={buttons} />
             <AdminPageBorder>
                 <LabeledTextField
@@ -92,7 +91,7 @@ const AddCharacteristic = ({
                     addCharacteristicValue={addCharacteristicValue}
                 />
             </AdminPageBorder>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

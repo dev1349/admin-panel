@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom'
 
 const RouterLinkStyled = createStyled('RouterLinkStyle', Link, ['catalogItem'])
 
-const RouterLinkAtom = ({ children, ...rest }) => {
-    return <RouterLinkStyled {...rest}>{children}</RouterLinkStyled>
+const RouterLinkAtom = ({ children, forwardedRef, ...rest }) => {
+    return (
+        <RouterLinkStyled {...rest} ref={forwardedRef}>
+            {children}
+        </RouterLinkStyled>
+    )
 }
 
-export default RouterLinkAtom
+export default React.forwardRef((props, ref) => <RouterLinkAtom {...props} forwardedRef={ref} />)

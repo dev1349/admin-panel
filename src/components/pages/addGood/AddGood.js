@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import UndoIcon from '../../atoms/icons/undoIcon/UndoIcon'
@@ -390,98 +389,96 @@ const AddGoodPage = () => {
 
     return (
         <>
-            <MaxWidthTemplate>
-                <AddGood
-                    icon={<AddIcon dialogIcon />}
-                    title={t('addGoodTitle')}
-                    buttons={[
-                        <IconButton key={0} dialogButton disableRipple onClick={handleGoBackToGoods} disabled={isGoBackButtonDisabled}>
-                            <UndoIcon dialogIcon />
-                        </IconButton>,
-                        <IconButton key={1} dialogButton disableRipple onClick={handleSaveNewGood} disabled={isSaveButtonDisabled}>
-                            <SaveIcon dialogIcon />
-                        </IconButton>,
-                    ]}
-                    urlPathToAddGoodPage={'/addGood'}
-                    activeTabLink={tabLabel ? tabLabel : ''}
-                    tabs={[
-                        {
-                            id: 0,
-                            label: t('mainTab'),
-                            link: '',
-                            tabPanel: (
-                                <MainTab
-                                    goodProperties={goodProperties}
-                                    changeGoodProperties={handleSetGoodProperties}
-                                    goodStateItems={getGoodStateItems(t)}
-                                    uploadImageToServer={handleUploadImageToServer}
-                                    addImagesToGood={addImagesToGood}
-                                    deleteImageFromGood={deleteImageFromGood}
-                                    makeImageAsMain={handleMakeImageAsMain}
-                                    images={partialImages}
-                                    pathToImage={`${SERVER_PATH}/img/`}
-                                    imagesPerPage={pageSize}
-                                    changeImagesPerPage={handleChangeImagesPerPage}
-                                    isPaginationDisabled={isPaginationDisabled}
-                                    totalPages={totalPages}
-                                    currentPageNumber={pageNumber}
-                                    paginationItemClick={handlePaginationItemClick}
-                                    deleteImageFromServer={handleDeleteImageFromServer}
-                                    isDeleteImageButtonDisabled={isDeleteImageButtonDisabled}
-                                    addedImages={addedImages}
-                                    isOpenAddGoodImagesModal={isOpenAddGoodImagesModal}
-                                    closeAddGoodImagesModal={handleCloseAddGoodImagesModal}
-                                    openAddGoodImagesModal={handleOpenAddGoodImagesModal}
-                                    nameLabel={t('goodName')}
-                                    namePlaceholder={t('goodNamePlaceholder')}
-                                    descriptionLabel={t('goodDescription')}
-                                    descriptionPlaceholder={t('goodDescriptionPlaceholder')}
-                                    priceLabel={t('goodPrice')}
-                                    pricePlaceholder={t('goodPricePlaceholder')}
-                                    discountPriceLabel={t('goodDiscountPrice')}
-                                    discountPricePlaceholder={t('goodDiscountPricePlaceholder')}
-                                    amountLabel={t('goodAmount')}
-                                    amountPlaceholder={t('goodAmountPlaceholder')}
-                                    stateLabel={t('goodState')}
-                                    statePlaceholder={t('goodStatePlaceholder')}
-                                    imagesLabel={t('goodImages')}
-                                    imagesModalTitle={t('addGoodImageModalTitle')}
-                                    deleteImagesModalTitle={t('deleteImagesTitle')}
-                                    deleteImagesModalDescription={t('deleteImagesDescription')}
-                                    imagesPerPageText={t('imagesPerPage')}
-                                    yesButtonTitle={t('yesButtonTitle')}
-                                    noButtonTitle={t('noButtonTitle')}
-                                />
-                            ),
-                        },
-                        {
-                            id: 1,
-                            label: t('goodCharacteristicsTab'),
-                            link: 'characteristics',
-                            tabPanel: (
-                                <CharacteristicsTab
-                                    activeCategoryId={goodProperties.category}
-                                    changeGoodProperties={handleSetGoodProperties}
-                                    categories={categories}
-                                    isPending={isPending}
-                                    setValuesFromCharacteristicSelects={handleSetValuesFromCharacteristicSelects}
-                                    valuesFromCharacteristicSelects={valuesFromCharacteristicSelects}
-                                    activeCharacteristic={activeCharacteristic}
-                                    setActiveCharacteristic={setActiveCharacteristic}
-                                    saveCharacteristicNewValues={handleSaveCharacteristicNewValues}
-                                    characteristicGetGetPostPutDeleteFetchStatus={characteristicGetGetPostPutDeleteFetchStatus}
-                                    getCategoryFromServer={handleGetCategoryFromServer}
-                                    categoryLabel={t('category')}
-                                    categoryPlaceholder={t('categoryPlaceholder')}
-                                    characteristicPlaceholder={t('characteristicPlaceholder')}
-                                    characteristicsHeader={t('characteristicsHeader')}
-                                    addNewValueModalTitle={t('addNewValueModalTitle')}
-                                />
-                            ),
-                        },
-                    ]}
-                />
-            </MaxWidthTemplate>
+            <AddGood
+                icon={<AddIcon dialogIcon />}
+                title={t('addGoodTitle')}
+                buttons={[
+                    <IconButton key={0} dialogButton disableRipple onClick={handleGoBackToGoods} disabled={isGoBackButtonDisabled}>
+                        <UndoIcon dialogIcon />
+                    </IconButton>,
+                    <IconButton key={1} dialogButton disableRipple onClick={handleSaveNewGood} disabled={isSaveButtonDisabled}>
+                        <SaveIcon dialogIcon />
+                    </IconButton>,
+                ]}
+                urlPathToAddGoodPage={'/addGood'}
+                activeTabLink={tabLabel ? tabLabel : ''}
+                tabs={[
+                    {
+                        id: 0,
+                        label: t('mainTab'),
+                        link: '',
+                        tabPanel: (
+                            <MainTab
+                                goodProperties={goodProperties}
+                                changeGoodProperties={handleSetGoodProperties}
+                                goodStateItems={getGoodStateItems(t)}
+                                uploadImageToServer={handleUploadImageToServer}
+                                addImagesToGood={addImagesToGood}
+                                deleteImageFromGood={deleteImageFromGood}
+                                makeImageAsMain={handleMakeImageAsMain}
+                                images={partialImages}
+                                pathToImage={`${SERVER_PATH}/img/`}
+                                imagesPerPage={pageSize}
+                                changeImagesPerPage={handleChangeImagesPerPage}
+                                isPaginationDisabled={isPaginationDisabled}
+                                totalPages={totalPages}
+                                currentPageNumber={pageNumber}
+                                paginationItemClick={handlePaginationItemClick}
+                                deleteImageFromServer={handleDeleteImageFromServer}
+                                isDeleteImageButtonDisabled={isDeleteImageButtonDisabled}
+                                addedImages={addedImages}
+                                isOpenAddGoodImagesModal={isOpenAddGoodImagesModal}
+                                closeAddGoodImagesModal={handleCloseAddGoodImagesModal}
+                                openAddGoodImagesModal={handleOpenAddGoodImagesModal}
+                                nameLabel={t('goodName')}
+                                namePlaceholder={t('goodNamePlaceholder')}
+                                descriptionLabel={t('goodDescription')}
+                                descriptionPlaceholder={t('goodDescriptionPlaceholder')}
+                                priceLabel={t('goodPrice')}
+                                pricePlaceholder={t('goodPricePlaceholder')}
+                                discountPriceLabel={t('goodDiscountPrice')}
+                                discountPricePlaceholder={t('goodDiscountPricePlaceholder')}
+                                amountLabel={t('goodAmount')}
+                                amountPlaceholder={t('goodAmountPlaceholder')}
+                                stateLabel={t('goodState')}
+                                statePlaceholder={t('goodStatePlaceholder')}
+                                imagesLabel={t('goodImages')}
+                                imagesModalTitle={t('addGoodImageModalTitle')}
+                                deleteImagesModalTitle={t('deleteImagesTitle')}
+                                deleteImagesModalDescription={t('deleteImagesDescription')}
+                                imagesPerPageText={t('imagesPerPage')}
+                                yesButtonTitle={t('yesButtonTitle')}
+                                noButtonTitle={t('noButtonTitle')}
+                            />
+                        ),
+                    },
+                    {
+                        id: 1,
+                        label: t('goodCharacteristicsTab'),
+                        link: 'characteristics',
+                        tabPanel: (
+                            <CharacteristicsTab
+                                activeCategoryId={goodProperties.category}
+                                changeGoodProperties={handleSetGoodProperties}
+                                categories={categories}
+                                isPending={isPending}
+                                setValuesFromCharacteristicSelects={handleSetValuesFromCharacteristicSelects}
+                                valuesFromCharacteristicSelects={valuesFromCharacteristicSelects}
+                                activeCharacteristic={activeCharacteristic}
+                                setActiveCharacteristic={setActiveCharacteristic}
+                                saveCharacteristicNewValues={handleSaveCharacteristicNewValues}
+                                characteristicGetGetPostPutDeleteFetchStatus={characteristicGetGetPostPutDeleteFetchStatus}
+                                getCategoryFromServer={handleGetCategoryFromServer}
+                                categoryLabel={t('category')}
+                                categoryPlaceholder={t('categoryPlaceholder')}
+                                characteristicPlaceholder={t('characteristicPlaceholder')}
+                                characteristicsHeader={t('characteristicsHeader')}
+                                addNewValueModalTitle={t('addNewValueModalTitle')}
+                            />
+                        ),
+                    },
+                ]}
+            />
             <ErrorModal
                 open={isShowErrorModal}
                 onClose={handleCloseServerErrorModal}

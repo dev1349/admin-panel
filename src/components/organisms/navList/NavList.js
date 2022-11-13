@@ -1,29 +1,28 @@
 import React, { useState } from 'react'
 import NavList from '../../molecules/list/navList/NavList'
 
-const NavListWS = ({ navItemsConf, hideNavMenu }) => {
-    const [open, setOpen] = useState({})
-    const handleOpenClose = id => {
-        if (open[id]) {
-            Object.keys(open).forEach(key => {
-                if (key.startsWith(id)) {
-                    delete open[key]
-                    setOpen({ ...open })
-                }
-            })
+const NavListOrganism = ({ navItems, pathname }) => {
+    const [openItems, setOpenItems] = useState([])
+
+    const handleOpenCloseItem = id => {
+        if (openItems.includes(id)) {
+            setOpenItems(prev => prev.filter(itemId => itemId !== id))
         } else {
-            setOpen({ ...open, [id]: true })
+            setOpenItems(prev => [...prev, id])
         }
     }
 
+    const handleOpenItem = id => setOpenItems(prev => [...prev, id])
+
     return (
         <NavList
-            navItemsConf={navItemsConf}
-            open={open}
-            setOpen={handleOpenClose}
-            hideNavMenu={hideNavMenu}
+            navItems={navItems}
+            open={openItems}
+            setOpenItem={handleOpenItem}
+            setOpenCloseItem={handleOpenCloseItem}
+            pathname={pathname}
         />
     )
 }
 
-export default NavListWS
+export default NavListOrganism

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
 import DeleteIcon from '../../atoms/icons/deleteIcon/DeleteIcon'
@@ -209,56 +208,54 @@ const GoodsPage = () => {
 
     return (
         <>
-            <MaxWidthTemplate>
-                <Goods
-                    icon={<GoodIcon dialogIcon />}
-                    title={t('goodListTitle')}
-                    buttons={[
-                        <IconButton key={0} dialogButton disableRipple onClick={handleAddNewGood} disabled={isAddEditButtonDisabled}>
-                            <AddIcon />
-                        </IconButton>,
-                        <IconButton key={1} dialogButton disableRipple onClick={handleOpenDeleteModal} disabled={isDeleteButtonDisabled}>
-                            <DeleteIcon />
-                        </IconButton>,
-                    ]}
-                    headLines={headLines(isIndeterminate, isChecked, handleSelectAllGoods, t)}
-                    order={'asc'}
-                    orderBy={''}
-                    onRequestSort={handleRequestSort}
-                    goods={partialGoods}
-                    selectedGoods={selectedGoods}
-                    onSelect={handleSelectGood}
-                    onEditGood={handleEditGood}
-                    isEditButtonDisabled={isAddEditButtonDisabled}
-                    pathToImage={`${SERVER_PATH}/img/`}
-                    goodStateItems={getGoodStateItems(t)}
-                    totalPages={totalPages}
-                    currentPage={pageNumber + 1}
-                    onPaginationItemClick={handleClickToPaginationItem}
-                    isPaginationDisabled={isPending}
-                    itemsPerPage={pageSize}
-                    onChangeItemsPerPage={handleChangeItemsPerPage}
-                    itemsPerPageText={t('goodPerPage')}
-                />
+            <Goods
+                icon={<GoodIcon dialogIcon />}
+                title={t('goodListTitle')}
+                buttons={[
+                    <IconButton key={0} dialogButton disableRipple onClick={handleAddNewGood} disabled={isAddEditButtonDisabled}>
+                        <AddIcon />
+                    </IconButton>,
+                    <IconButton key={1} dialogButton disableRipple onClick={handleOpenDeleteModal} disabled={isDeleteButtonDisabled}>
+                        <DeleteIcon />
+                    </IconButton>,
+                ]}
+                headLines={headLines(isIndeterminate, isChecked, handleSelectAllGoods, t)}
+                order={'asc'}
+                orderBy={''}
+                onRequestSort={handleRequestSort}
+                goods={partialGoods}
+                selectedGoods={selectedGoods}
+                onSelect={handleSelectGood}
+                onEditGood={handleEditGood}
+                isEditButtonDisabled={isAddEditButtonDisabled}
+                pathToImage={`${SERVER_PATH}/img/`}
+                goodStateItems={getGoodStateItems(t)}
+                totalPages={totalPages}
+                currentPage={pageNumber + 1}
+                onPaginationItemClick={handleClickToPaginationItem}
+                isPaginationDisabled={isPending}
+                itemsPerPage={pageSize}
+                onChangeItemsPerPage={handleChangeItemsPerPage}
+                itemsPerPageText={t('goodPerPage')}
+            />
 
-                <DeleteModal
-                    open={openDeleteModal}
-                    onClose={handleCloseDeleteModal}
-                    onYes={handleDeleteGoods}
-                    title={t('deleteGoodTitle')}
-                    description={t('deleteGoodDescription')}
-                    yesButtonTitle={t('yesButtonTitle')}
-                    noButtonTitle={t('noButtonTitle')}
-                />
-                <ErrorModal
-                    open={isShowServerErrorModal}
-                    onClose={handleCloseServerErrorModal}
-                    title={t('serverErrorTitle')}
-                    description={t('serverErrorDescription')}
-                    okButtonTitle={t('okButtonTitle')}
-                />
-                {isPending && <Loader dialogProgress />}
-            </MaxWidthTemplate>
+            <DeleteModal
+                open={openDeleteModal}
+                onClose={handleCloseDeleteModal}
+                onYes={handleDeleteGoods}
+                title={t('deleteGoodTitle')}
+                description={t('deleteGoodDescription')}
+                yesButtonTitle={t('yesButtonTitle')}
+                noButtonTitle={t('noButtonTitle')}
+            />
+            <ErrorModal
+                open={isShowServerErrorModal}
+                onClose={handleCloseServerErrorModal}
+                title={t('serverErrorTitle')}
+                description={t('serverErrorDescription')}
+                okButtonTitle={t('okButtonTitle')}
+            />
+            {isPending && <Loader dialogProgress />}
         </>
     )
 }

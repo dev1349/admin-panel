@@ -3,81 +3,90 @@ const initialState = {
         items: [
             {
                 id: 'mainPage',
-                title: 'Главная',
-                label: 3,
+                title: 'Головна',
                 link: '/',
             },
             {
                 id: 'orders',
-                title: 'Заказы',
-                link: '/orders/1',
+                title: 'Замовлення',
+                link: '/lastOrders',
+                subItems: [
+                    {
+                        id: 'lastOrders',
+                        title: 'Нове замовлення',
+                        link: '/new-order',
+                    },
+                ],
+                routesWhenItemOpen: ['lastOrder'],
             },
             {
                 id: 'catalog',
                 title: 'Каталог',
-                link: '/catalog',
-                subItems: {
-                    items: [
-                        {
-                            id: 'catalog.category',
-                            title: 'Категории',
-                            link: '/catalog/category',
-                        },
-                        {
-                            id: 'catalog.goods',
-                            title: 'Товары',
-                            link: '/catalog/goods',
-                            subItems: {
-                                items: [
-                                    {
-                                        id: 'novelities',
-                                        title: 'Новинки',
-                                        link: '/novelities',
-                                    },
-                                    {
-                                        id: 'top_sale',
-                                        title: 'Топ продаж',
-                                        link: '/top',
-                                    },
-                                    {
-                                        id: 'slidebar',
-                                        title: 'Слайдбар',
-                                        link: '/slidebar',
-                                    },
-                                ],
+                link: '',
+                subItems: [
+                    {
+                        id: 'categories',
+                        title: 'Категорії',
+                        link: '/categories',
+                    },
+                    {
+                        id: 'characteristics',
+                        title: 'Характеристики',
+                        link: '/characteristics',
+                    },
+                    {
+                        id: 'characteristicGroups',
+                        title: 'Групи характеристик',
+                        link: '/characteristicGroups',
+                    },
+                    {
+                        id: 'characteristicSets',
+                        title: 'Набори характеристик',
+                        link: '/characteristicSets',
+                    },
+                    {
+                        id: 'goods',
+                        title: 'Товари',
+                        link: '/goods',
+                        subItems: [
+                            {
+                                id: 'nov',
+                                title: 'Новинки',
+                                link: '/nov',
                             },
-                        },
-                        {
-                            id: 'catalog.attributes',
-                            title: 'Атрибуты',
-                            link: '/catalog/attributes',
-                            subItems: {
-                                items: [
-                                    {
-                                        id: 'catalog.attributes.attributes',
-                                        title: 'Атрибуты',
-                                        link: '/catalog/attributes',
-                                    },
-                                    {
-                                        id: 'catalog.attributes.attributesGroup',
-                                        title: 'Группы атрибутов',
-                                        link: '/catalog/attributes/attributesGroup',
-                                    },
-                                ],
+                            {
+                                id: 'top_sale',
+                                title: 'Топ продаж',
+                                link: '/top',
                             },
-                        },
-                    ],
-                },
+                            {
+                                id: 'slidebar',
+                                title: 'Слайдбар',
+                                link: '/slidebar',
+                            },
+                        ],
+                    },
+                    {
+                        id: 'couponsList',
+                        title: 'Купони',
+                        link: '/couponsList',
+                    },
+                    {
+                        id: 'shares',
+                        title: 'Акції',
+                        link: '/carousel',
+                    },
+                ],
             },
             {
                 id: 'chart',
-                title: 'Показатели',
-                link: '/chart',
+                title: 'Статистика',
+                link: '/cards',
             },
             {
                 id: 'clients',
-                title: 'Клиенты',
-                link: '/clients',
+                title: 'Клієнти',
+                link: '/clients/pages/1',
             },
             {
                 id: 'dialogs',
@@ -90,53 +99,56 @@ const initialState = {
                 link: '/help',
             },
             {
-                id: 'site',
-                title: 'Сайт',
-                link: '/site',
-                subItems: {
-                    items: [
-                        {
-                            id: 'site.design',
-                            title: 'Дизайн',
-                            link: '/site/design',
-                        },
-                        {
-                            id: 'site.menu',
-                            title: 'Меню и страницы',
-                            link: '/site/menu-and-pages',
-                        },
-                        {
-                            id: 'site.articles',
-                            title: 'Статьи',
-                            link: '/site/articles',
-                        },
-                        {
-                            id: 'site.files',
-                            title: 'Файлы',
-                            link: '/site/files',
-                        },
-                        {
-                            id: 'site.domains',
-                            title: 'Домены',
-                            link: '/site/domains',
-                        },
-                        {
-                            id: 'site.delivery',
-                            title: 'Доставка',
-                            link: '/site/delivery',
-                        },
-                        {
-                            id: 'site.payment',
-                            title: 'Оплата',
-                            link: '/site/payment',
-                        },
-                    ],
-                },
-            },
-            {
                 id: 'settings',
                 title: 'Настройки',
                 link: '/settings',
+                subItems: [
+                    {
+                        id: 'design',
+                        title: 'Дизайн',
+                        link: '/design',
+                    },
+                    {
+                        id: 'menu',
+                        title: 'Меню',
+                        link: '/create-edit-mega-menu',
+                    },
+                    {
+                        id: 'articles',
+                        title: 'Статьи',
+                        link: '/articles',
+                    },
+                    {
+                        id: 'files',
+                        title: 'Файлы',
+                        link: '/files',
+                    },
+                    {
+                        id: 'domains',
+                        title: 'Домены',
+                        link: '/domains',
+                    },
+                    {
+                        id: 'contacts',
+                        title: 'Контакти',
+                        link: '/contacts',
+                    },
+                    {
+                        id: 'delivery',
+                        title: 'Доставка',
+                        link: '/delivery',
+                    },
+                    {
+                        id: 'payment',
+                        title: 'Оплата',
+                        link: '/checkout',
+                    },
+                    {
+                        id: 'liqPay',
+                        title: 'LiqPay',
+                        link: '/liqpay-parameters',
+                    },
+                ],
             },
             {
                 id: 'account',
@@ -152,20 +164,18 @@ const initialState = {
                 id: 'site',
                 title: 'Сайт',
                 link: '/site',
-                subItems: {
-                    items: [
-                        {
-                            id: 'site.design',
-                            title: 'Дизайн',
-                            link: '/site/design',
-                        },
-                        {
-                            id: 'catalog.goods',
-                            title: 'Товары',
-                            link: '/catalog/goods',
-                        },
-                    ],
-                },
+                subItems: [
+                    {
+                        id: 'site.design',
+                        title: 'Дизайн',
+                        link: '/site/design',
+                    },
+                    {
+                        id: 'catalog.goods',
+                        title: 'Товары',
+                        link: '/catalog/goods',
+                    },
+                ],
             },
         ],
     },

@@ -15,7 +15,6 @@ import { Fade } from '@mui/material'
 import { getComparator, stableSort } from '../../../reducers/common/sortingFunctions'
 import TableSortLabel from '../../atoms/table/tableSortLabel/TableSortLabel'
 import { visuallyHidden } from '@mui/utils'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import Typography from '../../atoms/textElements/typography/Typography'
 
 const Characteristics = ({
@@ -61,7 +60,7 @@ const Characteristics = ({
     const isSelected = (id, selectedCharacteristics) => selectedCharacteristics.includes(id)
 
     return (
-        <MaxWidthTemplate>
+        <>
             <AdminPageHeader icon={icon} title={title} buttons={buttons} />
             <AdminPageBorder>
                 <Box marginTop7>
@@ -153,7 +152,7 @@ const Characteristics = ({
                     )}
                 </Box>
             </AdminPageBorder>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

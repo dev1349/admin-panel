@@ -57,6 +57,12 @@ const ContainerStyled = createStyled('ContainerStyle', 'div', [
     'instructionsContainer',
     'youtubeResponseContainer560315',
     'labelTooltipContainer',
+    'mainContainer',
+    'headerContainer',
+    'adminNavAndContentContainer',
+    'sideNavContainer',
+    'adminMainContentContainer',
+    'expandIconContainer',
 ])
 
 const Container = ({ children, forwardRef, ...rest }) => {

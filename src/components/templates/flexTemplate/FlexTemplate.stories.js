@@ -62,3 +62,12 @@ Example6.args = {
     ],
     gap7: true,
 }
+
+export const paddingTop7 = Template.bind({})
+paddingTop7.args = {
+    children: [
+        <div key={0} style={{ height: '20px', width: '30px', backgroundColor: 'blue' }} />,
+        <div key={1} style={{ height: '40px', width: '60px', backgroundColor: 'red' }} />,
+    ],
+    paddingTop7: true,
+}

@@ -6,13 +6,12 @@ import TableRowLastOrders from '../../../molecules/table/tableRowLastOrders/Tabl
 import userOrders from '../../../../mock/lastOrders'
 import TableBody from '../../../atoms/table/tableBody/TableBody'
 import { createStyled } from '../../../../services/style/createStyled'
-import MaxWidthTemplate from '../../../templates/maxWidthTemplate/MaxWidthTemplate'
 
 const TitleTable = createStyled('TitleTableStyle', 'div')
 
 const WSLastOrders = () => {
     return (
-        <MaxWidthTemplate>
+        <>
             <TitleTable>
                 <ShoppingCartIconStyled />
                 Последние заказы
@@ -25,7 +24,7 @@ const WSLastOrders = () => {
                     })}
                 </TableBody>
             </Table>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

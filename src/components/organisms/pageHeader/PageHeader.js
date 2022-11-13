@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import IconButton from '../../molecules/buttons/iconButton/IconButton'
-import MenuIcon from '../../atoms/icons/menuIcon/MenuIcon'
+// import MenuIcon from '../../atoms/icons/menuIcon/MenuIcon'
 import Img from '../../atoms/img/Img'
-import PageHeaderTemplate from '../../templates/pageHeaderTemplate/PageHeaderTemplate'
 import ImportExportIcon from '../../atoms/icons/importExportIcon/ImportExportIcon'
 import MenuButton from '../../molecules/buttons/menuButton/MenuButton'
 import ShopsIcon from '../../atoms/icons/shopsIcon/ShopsIcon'
@@ -10,16 +9,17 @@ import HelpIcon from '../../atoms/icons/helpIcon/HelpIcon'
 import LogoutIcon from '../../atoms/icons/logoutIcon/LogoutIcon'
 import PageHeaderItemRightTemplate from '../../templates/pageHeaderItemRightTemplate/PageHeaderItemRightTemplate'
 import Link from '../../atoms/link/Link'
-import Drawer from '../../atoms/drawer/Drawer'
-import NavMenu from '../../pages/navMenu/NavMenu'
+// import Drawer from '../../atoms/drawer/Drawer'
+// import NavMenu from '../../pages/navMenu/NavMenu'
 import StatisticsButton from '../../molecules/buttons/statisticsButton/StatisticsButton'
 import NotificationsIcon from '../../atoms/icons/notificationsIcon/NotificationsIcon'
 import ToggleButtonGroup from '../../atoms/toggleButtonGroup/ToggleButtonGroup'
 import ToggleButton from '../../atoms/toggleButton/ToggleButton'
+import Container from '../../templates/container/Container'
 
-const PageHeader = ({ onClickMenu, logo, statisticsProps, importExportProps, shopsProps, helpProps, onClickLogout, i18n }) => {
+const PageHeader = ({ logo, statisticsProps, importExportProps, shopsProps, helpProps, onClickLogout, i18n }) => {
     const [anchorEl, setAnchorEl] = useState(null)
-    const [isMenuOpen, setMenuOpenStatus] = useState(false)
+    // const [isMenuOpen, setMenuOpenStatus] = useState(false)
     const handleClick = evt => {
         if (evt.currentTarget === anchorEl) {
             setAnchorEl(null)
@@ -30,21 +30,21 @@ const PageHeader = ({ onClickMenu, logo, statisticsProps, importExportProps, sho
     const handleClose = () => {
         setAnchorEl(null)
     }
-    const handleMenuButtonClick = () => {
-        setAnchorEl(null)
-        setMenuOpenStatus(true)
-        onClickMenu && onClickMenu()
-    }
+    // const handleMenuButtonClick = () => {
+    //     setAnchorEl(null)
+    //     setMenuOpenStatus(true)
+    //     onClickMenu && onClickMenu()
+    // }
     const handleLogoutButtonClick = () => {
         setAnchorEl(null)
         onClickLogout && onClickLogout()
     }
-    const hideDrawer = event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return
-        }
-        setMenuOpenStatus(false)
-    }
+    // const hideDrawer = event => {
+    //     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    //         return
+    //     }
+    //     setMenuOpenStatus(false)
+    // }
 
     const [language, setLanguage] = useState(localStorage.getItem('language') || 'uk')
 
@@ -55,10 +55,10 @@ const PageHeader = ({ onClickMenu, logo, statisticsProps, importExportProps, sho
     }
 
     return (
-        <PageHeaderTemplate>
-            <IconButton onClick={handleMenuButtonClick} menuButton>
-                <MenuIcon />
-            </IconButton>
+        <Container headerContainer>
+            {/*<IconButton onClick={handleMenuButtonClick} menuButton>*/}
+            {/*    <MenuIcon />*/}
+            {/*</IconButton>*/}
             <Link href={logo.link}>
                 <Img path={logo.imgSrc} altText={logo.altTextImg} logo />
             </Link>
@@ -111,10 +111,10 @@ const PageHeader = ({ onClickMenu, logo, statisticsProps, importExportProps, sho
             <IconButton onClick={handleLogoutButtonClick} menuButton>
                 <LogoutIcon />
             </IconButton>
-            <Drawer anchor={'left'} open={isMenuOpen} onClose={hideDrawer}>
-                <NavMenu hideNavMenu={hideDrawer} />
-            </Drawer>
-        </PageHeaderTemplate>
+            {/*<Drawer anchor={'left'} open={isMenuOpen} onClose={hideDrawer}>*/}
+            {/*    <NavMenu hideNavMenu={hideDrawer} />*/}
+            {/*</Drawer>*/}
+        </Container>
     )
 }
 

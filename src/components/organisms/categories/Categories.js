@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
 import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import FlexTemplate from '../../templates/flexTemplate/FlexTemplate'
@@ -23,10 +22,10 @@ const Categories = ({
     const [draggingCategory, setDraggingCategory] = useState(null)
 
     return (
-        <MaxWidthTemplate>
+        <>
             <AdminPageHeader icon={icon} title={title} buttons={buttons} />
             <AdminPageBorder>
-                <FlexTemplate gap7>
+                <FlexTemplate gap7 paddingTop7>
                     <CategoryTree
                         categories={categories}
                         draggingCategory={draggingCategory}
@@ -43,7 +42,7 @@ const Categories = ({
                     <CategoryGoods />
                 </FlexTemplate>
             </AdminPageBorder>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

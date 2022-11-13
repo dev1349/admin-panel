@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
 import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import Container from '../../templates/container/Container'
@@ -290,176 +289,174 @@ const CreateEditMegaMenu = () => {
 
     return (
         <>
-            <MaxWidthTemplate>
-                <AdminPageHeader
-                    icon={<MenuIcon dialogIcon />}
-                    title={'Створення/редагування МЕГАМЕНЮ'}
-                    buttons={[
-                        <IconButton key={0} dialogButton disableRipple onClick={() => history.goBack()}>
-                            <UndoIcon />
-                        </IconButton>,
-                    ]}
-                />
-                <AdminPageBorder>
-                    <Container marginTop7>
-                        <Container catalogContainer forwardRef={catalogContainerRef}>
-                            <Container megaMenuShadowContainer>
-                                <Container catalogItemsContainer forwardRef={catalogFirstLevelContainerRef}>
-                                    {megaMenuItems && megaMenuItems.length > 0 && (
-                                        <Ul catalogFirstLevelList forwardRef={firstLevelItemsListRef}>
-                                            {[...megaMenuItems]
-                                                .sort((el1, el2) => el1.ordering - el2.ordering)
-                                                .map(firstLevelItem => {
-                                                    return (
-                                                        <MegaMenuItem
-                                                            key={firstLevelItem.id}
-                                                            firstLevelItem={firstLevelItem}
-                                                            setActiveFirstLevelItem={handleSetActiveItem}
-                                                            activeFirstLevelItemId={activeFirstLevelItem?.id}
-                                                            hoveredFirstLevelItemId={hoveredFirstLevelItem?.id}
-                                                            onDeleteMegaMenuItem={handleDeleteMegaMenuItem}
-                                                            onChangeMegaMenuItem={handleChangeMegaMenuItem}
-                                                        />
-                                                    )
-                                                })}
-                                        </Ul>
-                                    )}
-                                    <Container addNewFirstLevelItemButtonContainer onClick={event => event.stopPropagation()}>
-                                        <IconButton
-                                            dialogButton
-                                            disableRipple
-                                            onClick={handleClickAddFirstLevelItemButton}
-                                            id={'add-first-level-item-button'}
-                                        >
-                                            <AddIcon />
-                                        </IconButton>
-                                        <Menu
-                                            id={'add-first-level-mega-menu-item'}
-                                            anchorEl={firstLevelAnchorEl}
-                                            open={isAddFirstLevelItemMenuOpen}
-                                            onClose={handleCloseAddFirstLevelItemMenu}
-                                            MenuListProps={{ 'aria-labelledby': 'add-first-level-item-button' }}
-                                            anchorOrigin={{
-                                                vertical: 'bottom',
-                                                horizontal: 'right',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'right',
-                                            }}
-                                        >
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithSubCategoryItemClick}>
-                                                <ListItemIcon>
-                                                    <FolderIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт з категоріями</ListItemText>
-                                            </MenuItem>
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithGoodsItemClick}>
-                                                <ListItemIcon>
-                                                    <CategoryIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт з товарами</ListItemText>
-                                            </MenuItem>
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleFilterItemClick}>
-                                                <ListItemIcon>
-                                                    <FilterIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт з фільтром</ListItemText>
-                                            </MenuItem>
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleTextItemClick}>
-                                                <ListItemIcon>
-                                                    <TextIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт без посилання</ListItemText>
-                                            </MenuItem>
-                                        </Menu>
-                                    </Container>
-                                </Container>
-
-                                <Container catalogSubItemsContainer style={{ width: !hasSubItems ? `${COLUMN_WIDTH + 68}px` : 'unset' }}>
-                                    {hoveredFirstLevelItem && hasSubItems && (
-                                        <Ul catalogSubLevelList style={{ width: `${menuColumns * COLUMN_WIDTH}px`, columns: menuColumns }}>
-                                            {[...hoveredFirstLevelItem.subItemList]
-                                                .sort((el1, el2) => el1.ordering - el2.ordering)
-                                                .map(subLevelItem => (
-                                                    <MegaMenuSubItem
-                                                        key={subLevelItem.id}
-                                                        subItem={subLevelItem}
-                                                        activeSubItemId={activeSecondLevelItem?.id}
-                                                        setActiveSecondLevelItem={handleSetActiveSubItem}
-                                                        activeSubSubItemId={activeThirdLevelItem?.id}
-                                                        setActiveThirdLevelItem={handleSetActiveSubSubItem}
-                                                        thirdLevelAnchorEl={thirdLevelAnchorEl}
-                                                        onClickAddThirdLevelItemButton={handleClickAddThirdLevelItemButton}
-                                                        onCloseAddThirdLevelItemButton={handleCloseAddThirdLevelItemMenu}
-                                                        onCategoryWithSubCategoryItemClick={handleCategoryWithSubCategoryItemClick}
-                                                        onCategoryWithGoodsItemClick={handleCategoryWithGoodsItemClick}
-                                                        onFilterItemClick={handleFilterItemClick}
+            <AdminPageHeader
+                icon={<MenuIcon dialogIcon />}
+                title={'Створення/редагування МЕГАМЕНЮ'}
+                buttons={[
+                    <IconButton key={0} dialogButton disableRipple onClick={() => history.goBack()}>
+                        <UndoIcon />
+                    </IconButton>,
+                ]}
+            />
+            <AdminPageBorder>
+                <Container marginTop7>
+                    <Container catalogContainer forwardRef={catalogContainerRef}>
+                        <Container megaMenuShadowContainer>
+                            <Container catalogItemsContainer forwardRef={catalogFirstLevelContainerRef}>
+                                {megaMenuItems && megaMenuItems.length > 0 && (
+                                    <Ul catalogFirstLevelList forwardRef={firstLevelItemsListRef}>
+                                        {[...megaMenuItems]
+                                            .sort((el1, el2) => el1.ordering - el2.ordering)
+                                            .map(firstLevelItem => {
+                                                return (
+                                                    <MegaMenuItem
+                                                        key={firstLevelItem.id}
+                                                        firstLevelItem={firstLevelItem}
+                                                        setActiveFirstLevelItem={handleSetActiveItem}
+                                                        activeFirstLevelItemId={activeFirstLevelItem?.id}
+                                                        hoveredFirstLevelItemId={hoveredFirstLevelItem?.id}
                                                         onDeleteMegaMenuItem={handleDeleteMegaMenuItem}
                                                         onChangeMegaMenuItem={handleChangeMegaMenuItem}
                                                     />
-                                                ))}
-                                        </Ul>
-                                    )}
-                                    <Container
-                                        addNewSecondLevelItemButtonContainer
-                                        addNewSecondLevelItemButtonHideContainer={!hoveredFirstLevelItem}
+                                                )
+                                            })}
+                                    </Ul>
+                                )}
+                                <Container addNewFirstLevelItemButtonContainer onClick={event => event.stopPropagation()}>
+                                    <IconButton
+                                        dialogButton
+                                        disableRipple
+                                        onClick={handleClickAddFirstLevelItemButton}
+                                        id={'add-first-level-item-button'}
                                     >
-                                        <IconButton
-                                            dialogButton
-                                            disableRipple
-                                            id={'add-second-level-item-button'}
-                                            onClick={handleClickAddSecondLevelItemButton(hoveredFirstLevelItem)}
-                                        >
-                                            <AddIcon />
-                                        </IconButton>
-                                        <Menu
-                                            id={'add-second-level-mega-menu-item'}
-                                            anchorEl={secondLevelAnchorEl}
-                                            open={isAddSecondLevelItemMenuOpen}
-                                            onClose={handleCloseAddSecondLevelItemMenu}
-                                            MenuListProps={{ 'aria-labelledby': 'add-second-level-item-button' }}
-                                            anchorOrigin={{
-                                                vertical: 'bottom',
-                                                horizontal: 'right',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'right',
-                                            }}
-                                        >
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithSubCategoryItemClick}>
-                                                <ListItemIcon>
-                                                    <FolderIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт з категоріями</ListItemText>
-                                            </MenuItem>
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithSubCategoryItemClick}>
-                                                <ListItemIcon>
-                                                    <CategoryIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт з товарами</ListItemText>
-                                            </MenuItem>
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleFilterItemClick}>
-                                                <ListItemIcon>
-                                                    <FilterIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт з фільтром</ListItemText>
-                                            </MenuItem>
-                                            <MenuItem disableRipple dialogMenuItem onClick={handleTextItemClick}>
-                                                <ListItemIcon>
-                                                    <TextIcon />
-                                                </ListItemIcon>
-                                                <ListItemText>Пункт без посилання</ListItemText>
-                                            </MenuItem>
-                                        </Menu>
-                                    </Container>
+                                        <AddIcon />
+                                    </IconButton>
+                                    <Menu
+                                        id={'add-first-level-mega-menu-item'}
+                                        anchorEl={firstLevelAnchorEl}
+                                        open={isAddFirstLevelItemMenuOpen}
+                                        onClose={handleCloseAddFirstLevelItemMenu}
+                                        MenuListProps={{ 'aria-labelledby': 'add-first-level-item-button' }}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'right',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                    >
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithSubCategoryItemClick}>
+                                            <ListItemIcon>
+                                                <FolderIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт з категоріями</ListItemText>
+                                        </MenuItem>
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithGoodsItemClick}>
+                                            <ListItemIcon>
+                                                <CategoryIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт з товарами</ListItemText>
+                                        </MenuItem>
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleFilterItemClick}>
+                                            <ListItemIcon>
+                                                <FilterIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт з фільтром</ListItemText>
+                                        </MenuItem>
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleTextItemClick}>
+                                            <ListItemIcon>
+                                                <TextIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт без посилання</ListItemText>
+                                        </MenuItem>
+                                    </Menu>
+                                </Container>
+                            </Container>
+
+                            <Container catalogSubItemsContainer style={{ width: !hasSubItems ? `${COLUMN_WIDTH + 68}px` : 'unset' }}>
+                                {hoveredFirstLevelItem && hasSubItems && (
+                                    <Ul catalogSubLevelList style={{ width: `${menuColumns * COLUMN_WIDTH}px`, columns: menuColumns }}>
+                                        {[...hoveredFirstLevelItem.subItemList]
+                                            .sort((el1, el2) => el1.ordering - el2.ordering)
+                                            .map(subLevelItem => (
+                                                <MegaMenuSubItem
+                                                    key={subLevelItem.id}
+                                                    subItem={subLevelItem}
+                                                    activeSubItemId={activeSecondLevelItem?.id}
+                                                    setActiveSecondLevelItem={handleSetActiveSubItem}
+                                                    activeSubSubItemId={activeThirdLevelItem?.id}
+                                                    setActiveThirdLevelItem={handleSetActiveSubSubItem}
+                                                    thirdLevelAnchorEl={thirdLevelAnchorEl}
+                                                    onClickAddThirdLevelItemButton={handleClickAddThirdLevelItemButton}
+                                                    onCloseAddThirdLevelItemButton={handleCloseAddThirdLevelItemMenu}
+                                                    onCategoryWithSubCategoryItemClick={handleCategoryWithSubCategoryItemClick}
+                                                    onCategoryWithGoodsItemClick={handleCategoryWithGoodsItemClick}
+                                                    onFilterItemClick={handleFilterItemClick}
+                                                    onDeleteMegaMenuItem={handleDeleteMegaMenuItem}
+                                                    onChangeMegaMenuItem={handleChangeMegaMenuItem}
+                                                />
+                                            ))}
+                                    </Ul>
+                                )}
+                                <Container
+                                    addNewSecondLevelItemButtonContainer
+                                    addNewSecondLevelItemButtonHideContainer={!hoveredFirstLevelItem}
+                                >
+                                    <IconButton
+                                        dialogButton
+                                        disableRipple
+                                        id={'add-second-level-item-button'}
+                                        onClick={handleClickAddSecondLevelItemButton(hoveredFirstLevelItem)}
+                                    >
+                                        <AddIcon />
+                                    </IconButton>
+                                    <Menu
+                                        id={'add-second-level-mega-menu-item'}
+                                        anchorEl={secondLevelAnchorEl}
+                                        open={isAddSecondLevelItemMenuOpen}
+                                        onClose={handleCloseAddSecondLevelItemMenu}
+                                        MenuListProps={{ 'aria-labelledby': 'add-second-level-item-button' }}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'right',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                    >
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithSubCategoryItemClick}>
+                                            <ListItemIcon>
+                                                <FolderIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт з категоріями</ListItemText>
+                                        </MenuItem>
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleCategoryWithSubCategoryItemClick}>
+                                            <ListItemIcon>
+                                                <CategoryIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт з товарами</ListItemText>
+                                        </MenuItem>
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleFilterItemClick}>
+                                            <ListItemIcon>
+                                                <FilterIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт з фільтром</ListItemText>
+                                        </MenuItem>
+                                        <MenuItem disableRipple dialogMenuItem onClick={handleTextItemClick}>
+                                            <ListItemIcon>
+                                                <TextIcon />
+                                            </ListItemIcon>
+                                            <ListItemText>Пункт без посилання</ListItemText>
+                                        </MenuItem>
+                                    </Menu>
                                 </Container>
                             </Container>
                         </Container>
                     </Container>
-                </AdminPageBorder>
-            </MaxWidthTemplate>
+                </Container>
+            </AdminPageBorder>
             <MegaMenuModalAddNewCategory
                 open={isMegaMenuModalAddNewCategoryOpen}
                 onClose={() => setMegaMenuModalAddNewCategoryOpen(false)}

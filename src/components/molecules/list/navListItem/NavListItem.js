@@ -2,38 +2,60 @@ import React from 'react'
 import ListItemButton from '../../../atoms/list/listItemButton/ListItemButton'
 import ListItemIcon from '../../../atoms/list/listItemIcon/ListItemIcon'
 import ListItemText from '../../../atoms/list/listItemText/ListItemText'
-import Link from '../../../atoms/link/Link'
-import { Link as RouterLink } from 'react-router-dom'
 import ExpandLessIcon from '../../../atoms/icons/expandLessIcon/ExpandLessIcon'
 import ExpandMoreIcon from '../../../atoms/icons/expandMoreIcon/ExpandMoreIcon'
+import RouterLink from '../../../atoms/routerLink/RouterLink'
+import Link from '../../../atoms/link/Link'
+import Container from '../../../templates/container/Container'
 
-const NavListItemWS = ({ id, title, link, subItems, open, onClick, icon, sx, hideNavMenu }) => {
+const NavListItemMolecules = ({ id, title, link, subItems, open, onClick, icon, sx, pathname }) => {
     const handleClick = () => {
-        if (onClick) onClick(id)
+        onClick(id)
     }
+
+    const isItemActive = !!pathname && !!link && (link === '/' ? link === pathname : pathname.includes(link))
 
     return (
         <>
             {!subItems && (
-                <Link component={RouterLink} to={link} color="inherit" underline="none" onClick={hideNavMenu}>
-                    <ListItemButton sx={sx}>
-                        {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                        <ListItemText primary={title} />
-                    </ListItemButton>
-                </Link>
+                <ListItemButton
+                    sx={sx}
+                    component={RouterLink}
+                    to={link}
+                    color="inherit"
+                    underline="none"
+                    disableRipple
+                    adminListItemButton
+                    adminActiveListItemButton={isItemActive}
+                >
+                    {icon && <ListItemIcon adminListItemIcon>{icon}</ListItemIcon>}
+                    <ListItemText primary={title} withoutIconListItemText={!icon} />
+                </ListItemButton>
             )}
 
             {subItems && (
-                <Link component={RouterLink} to={link} color="inherit" underline="none">
-                    <ListItemButton onClick={handleClick} sx={sx}>
-                        {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                        <ListItemText primary={title} />
-                        {subItems && (open[id] ? <ExpandLessIcon /> : <ExpandMoreIcon />)}
-                    </ListItemButton>
-                </Link>
+                <ListItemButton sx={sx} disableRipple adminListItemButton adminActiveListItemButton={isItemActive}>
+                    {link ? (
+                        <Link component={RouterLink} to={link} color="inherit" underline="none" adminNavRouterLink>
+                            {icon && <ListItemIcon adminListItemIcon>{icon}</ListItemIcon>}
+                            <ListItemText primary={title} withoutIconListItemText={!icon} />
+                        </Link>
+                    ) : (
+                        <>
+                            {icon && <ListItemIcon adminListItemIcon>{icon}</ListItemIcon>}
+                            <ListItemText primary={title} withoutIconListItemText={!icon} />
+                        </>
+                    )}
+
+                    {subItems && (
+                        <Container expandIconContainer>
+                            {open.includes(id) ? <ExpandLessIcon onClick={handleClick} /> : <ExpandMoreIcon onClick={handleClick} />}
+                        </Container>
+                    )}
+                </ListItemButton>
             )}
         </>
     )
 }
 
-export default NavListItemWS
+export default NavListItemMolecules

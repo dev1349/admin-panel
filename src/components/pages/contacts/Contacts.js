@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import Contacts from '../../organisms/contacts/Contacts'
 import { loadContacts } from '../../../api/contactsApi'
 
@@ -58,19 +57,17 @@ const ContactsPage = () => {
     }, [])
 
     return (
-        <MaxWidthTemplate>
-            <Contacts
-                phones={phones}
-                setPhones={setPhones}
-                cities={cities}
-                setCities={setCities}
-                citiesStarted={citiesStarted}
-                phonesStarted={phonesStarted}
-                setPhonesStarted={setPhonesStarted}
-                setCitiesStarted={setCitiesStarted}
-                updateFromServer={updateFromServer}
-            />
-        </MaxWidthTemplate>
+        <Contacts
+            phones={phones}
+            setPhones={setPhones}
+            cities={cities}
+            setCities={setCities}
+            citiesStarted={citiesStarted}
+            phonesStarted={phonesStarted}
+            setPhonesStarted={setPhonesStarted}
+            setCitiesStarted={setCitiesStarted}
+            updateFromServer={updateFromServer}
+        />
     )
 }
 

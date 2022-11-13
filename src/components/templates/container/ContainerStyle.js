@@ -562,5 +562,59 @@ export default {
                 },
             },
         },
+        {
+            props: { mainContainer: true },
+            style: {
+                maxWidth: '1600px',
+                margin: '0 auto',
+                padding: '0 10px',
+                boxSizing: 'border-box',
+                '@media (min-width: 992px)': {
+                    paddingLeft: '15px',
+                    paddingRight: '15px',
+                },
+            },
+        },
+        {
+            props: { headerContainer: true },
+            style: {
+                display: 'flex',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                padding: '10px 0',
+            },
+        },
+        {
+            props: { adminNavAndContentContainer: true },
+            style: {
+                display: 'flex',
+                justifyContent: 'flex-start',
+                alignItems: 'top',
+                paddingBottom: '15px',
+            },
+        },
+        {
+            props: { sideNavContainer: true },
+            style: {
+                padding: '17px',
+                flexShrink: 0,
+                backgroundColor: '#c4c4c4',
+            },
+        },
+        {
+            props: { adminMainContentContainer: true },
+            style: {
+                flexGrow: 1,
+                marginLeft: '17px',
+            },
+        },
+        {
+            props: { expandIconContainer: true },
+            style: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            },
+        },
     ],
 }

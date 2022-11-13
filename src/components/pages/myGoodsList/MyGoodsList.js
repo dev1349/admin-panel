@@ -17,7 +17,6 @@ import {
     sortingGoods,
 } from '../../../reducers/goodsSlice'
 import { useHistory } from 'react-router-dom'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 
 const HeadCells = [
     {
@@ -73,11 +72,7 @@ const HeadCells = [
 const printCategory = (categorySet, printArray = []) => {
     if (categorySet.length > 0) {
         const newPrintArray = [...printArray]
-        const stringItem = categorySet.reduce(
-            (stringItem, category) =>
-                stringItem + (stringItem && ' > ') + category.name,
-            ''
-        )
+        const stringItem = categorySet.reduce((stringItem, category) => stringItem + (stringItem && ' > ') + category.name, '')
         newPrintArray.push(stringItem)
         const newCategorySet = categorySet.slice(0, -1)
 
@@ -92,11 +87,7 @@ const MyGoodsList = () => {
 
     const goodsForTable = filteredGoods.map(good => ({
         id: good.id,
-        picture: good.imageStatus ? (
-            <img src={good.imageSrc} alt={'goodPicture'} width={'50'} />
-        ) : (
-            <HideImageIcon />
-        ),
+        picture: good.imageStatus ? <img src={good.imageSrc} alt={'goodPicture'} width={'50'} /> : <HideImageIcon />,
         name: good.name,
         model: good.model,
         price: [
@@ -153,7 +144,7 @@ const MyGoodsList = () => {
     }
 
     return (
-        <MaxWidthTemplate>
+        <>
             {goodsForTable.length ? (
                 <SortingTable
                     headerCells={HeadCells}
@@ -171,7 +162,7 @@ const MyGoodsList = () => {
             ) : (
                 <div>Нет товаров для отображения...(</div>
             )}
-        </MaxWidthTemplate>
+        </>
     )
 }
 

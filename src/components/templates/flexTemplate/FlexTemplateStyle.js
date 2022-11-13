@@ -69,5 +69,11 @@ export default {
                 flexDirection: 'column',
             },
         },
+        {
+            props: { paddingTop7: true },
+            style: {
+                paddingTop: '7px',
+            },
+        },
     ],
 }

@@ -1,6 +1,6 @@
 import iconLibrary from './iconLibrary'
 
-const addItemsIcons = items => {
+const addItemIcon = items => {
     return items.map(item => {
         const newItem = { ...item }
 
@@ -8,18 +8,14 @@ const addItemsIcons = items => {
             newItem.icon = iconLibrary[item.id]
         }
         if (newItem.subItems) {
-            newItem.subItems = { ...newItem.subItems }
-            newItem.subItems.items = addItemsIcons(newItem.subItems.items)
+            newItem.subItems = addItemIcon(newItem.subItems)
         }
         return newItem
     })
 }
 
-const addNavItemsIcons = navItemConf => {
-    return {
-        ...navItemConf,
-        items: addItemsIcons(navItemConf.items),
-    }
+const addNavItemIcon = navItems => {
+    return addItemIcon(navItems)
 }
 
-export default addNavItemsIcons
+export default addNavItemIcon

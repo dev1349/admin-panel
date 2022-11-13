@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
 import LabeledTextField from '../../molecules/inputs/labeledTextField/LabeledTextField'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import LabeledTotalLabels from '../../molecules/inputs/labeledTotalLabels/LabeledTotalLabels'
 import AddIcon from '../../atoms/icons/addIcon/AddIcon'
@@ -62,7 +61,7 @@ const AddCharacteristicSet = ({
         characteristicSetFieldValues.characteristicsGroup.reduce((acc, currentGroup) => acc + currentGroup.characteristics.length, 0)
 
     return (
-        <MaxWidthTemplate>
+        <>
             <AdminPageHeader icon={icon} title={title} buttons={buttons} />
             <AdminPageBorder>
                 <LabeledTextField
@@ -181,7 +180,7 @@ const AddCharacteristicSet = ({
                     </AdminModal>
                 </Box>
             </AdminModal>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 import AdminPageHeader from '../../molecules/headers/adminPageHeader/AdminPageHeader'
 import AdminPageBorder from '../../atoms/wrappers/adminPageBorder/AdminPageBorder'
 import Table from '../../atoms/table/table/Table'
@@ -44,7 +43,7 @@ const CharacteristicGroups = ({
     const isSelected = (id, selectedCharacteristics) => selectedCharacteristics.includes(id)
 
     return (
-        <MaxWidthTemplate>
+        <>
             <AdminPageHeader icon={icon} title={title} buttons={buttons} />
             <AdminPageBorder>
                 <Box marginTop7>
@@ -136,7 +135,7 @@ const CharacteristicGroups = ({
                     )}
                 </Box>
             </AdminPageBorder>
-        </MaxWidthTemplate>
+        </>
     )
 }
 

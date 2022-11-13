@@ -1,19 +1,17 @@
 import React from 'react'
-import NavTemplate from '../../templates/navTemplate/NavTemplate'
 import NavList from '../../organisms/navList/NavList'
 import { useSelector } from 'react-redux'
-import { getNavItemsConf } from '../../../reducers/headerSlice'
-import addNavItemsIcons from './addNavItemsIcons'
+import { getNavItems } from '../../../reducers/headerSlice'
+import addNavItemIcon from './addNavItemsIcons'
+import { useLocation } from 'react-router-dom'
 
-const NavMenu = ({ hideNavMenu }) => {
-    let navItemConf = useSelector(getNavItemsConf)
-    navItemConf = addNavItemsIcons(navItemConf)
+const NavMenu = () => {
+    let navItem = useSelector(getNavItems)
+    navItem = addNavItemIcon(navItem)
 
-    return (
-        <NavTemplate>
-            <NavList navItemsConf={navItemConf} hideNavMenu={hideNavMenu} />
-        </NavTemplate>
-    )
+    const location = useLocation()
+
+    return <NavList navItems={navItem} pathname={location.pathname} />
 }
 
 export default NavMenu

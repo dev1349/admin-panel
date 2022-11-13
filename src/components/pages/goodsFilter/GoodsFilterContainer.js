@@ -10,7 +10,6 @@ import {
     setGoodsFilter,
 } from '../../../reducers/goodsSlice'
 import GoodsFilter from '../../organisms/forms/goodsFilter/GoodsFilter'
-import MaxWidthTemplate from '../../templates/maxWidthTemplate/MaxWidthTemplate'
 
 const GoodsFilterContainer = () => {
     const goodStatus = useSelector(getGoodStatus)
@@ -28,16 +27,14 @@ const GoodsFilterContainer = () => {
     }
 
     return (
-        <MaxWidthTemplate>
-            <GoodsFilter
-                goodStatus={goodStatus}
-                goodImageStatus={goodImageStatus}
-                goodTypes={goodTypes}
-                filter={filter}
-                setGoodsFilterHandler={setGoodsFilterHandler}
-                filteringGoodsHandler={filteringGoodsHandler}
-            />
-        </MaxWidthTemplate>
+        <GoodsFilter
+            goodStatus={goodStatus}
+            goodImageStatus={goodImageStatus}
+            goodTypes={goodTypes}
+            filter={filter}
+            setGoodsFilterHandler={setGoodsFilterHandler}
+            filteringGoodsHandler={filteringGoodsHandler}
+        />
     )
 }
 

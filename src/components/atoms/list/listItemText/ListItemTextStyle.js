@@ -15,5 +15,11 @@ export default {
                 color: '#525050',
             },
         },
+        {
+            props: { withoutIconListItemText: true },
+            style: {
+                paddingLeft: '32px',
+            },
+        },
     ],
 }

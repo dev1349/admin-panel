@@ -6,6 +6,8 @@ import './App.sass'
 import './Constants.sass'
 import PageHeader from '../pages/pageHeader/PageHeader'
 import ReduxThemeProvider from '../molecules/reduxThemeProvider/ReduxThemeProvider'
+import Container from '../templates/container/Container'
+import NavMenu from '../pages/navMenu/NavMenu'
 
 const App = () => {
     const isAuth = true
@@ -13,11 +15,21 @@ const App = () => {
     return (
         <BrowserRouter>
             <ReduxThemeProvider>
-                <PageHeader />
-                {isAuth && authRoutes.map(({ path, Component }) => <Route key={path} path={path} component={Component} exact />)}
-                {publicRoutes.map(({ path, Component }) => (
-                    <Route key={path} path={path} component={Component} exact />
-                ))}
+                <Container mainContainer>
+                    <PageHeader />
+                    <Container adminNavAndContentContainer>
+                        <Container sideNavContainer>
+                            <NavMenu />
+                        </Container>
+                        <Container adminMainContentContainer>
+                            {isAuth &&
+                                authRoutes.map(({ path, Component }) => <Route key={path} path={path} component={Component} exact />)}
+                            {publicRoutes.map(({ path, Component }) => (
+                                <Route key={path} path={path} component={Component} exact />
+                            ))}
+                        </Container>
+                    </Container>
+                </Container>
             </ReduxThemeProvider>
         </BrowserRouter>
     )
